@@ -1,5 +1,5 @@
-export default function HardwarePage() {
+export default function CompanyPage() {
     return(
-        <h1>Hardware Page</h1>
+        <h1>Company Page</h1>
     )
 }

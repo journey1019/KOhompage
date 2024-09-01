@@ -1,5 +1,5 @@
-export default function SolutionsPage() {
+export default function HardwarePage() {
     return(
-        <h1>Solutions Page</h1>
+        <h1>Hardware Page</h1>
     )
 }

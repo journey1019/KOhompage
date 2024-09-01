@@ -1,5 +1,5 @@
-export default function CompanyPage() {
+export default function SupportPage() {
     return(
-        <h1>Company Page</h1>
+        <h1>Support Page</h1>
     )
 }
