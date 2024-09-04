@@ -1,0 +1,34 @@
+[
+  {
+    "index": 1,
+    "name": "해양경찰청",
+    "category": "AIS",
+    "issue": "MDA체계 구축 위한 서비스 공급",
+    "date": "2020-11-04",
+    "end": "Y"
+  },
+  {
+    "index": 2,
+    "name": "고려해운",
+    "category": "AIS",
+    "issue": "AIS API",
+    "date": "2023-01-10",
+    "end": false
+  },
+  {
+    "index": 3,
+    "name": "장금마리타임",
+    "category": "AIS",
+    "issue": "AIS API",
+    "date": "2024-03-14",
+    "end": false
+  },
+  {
+    "index": 4,
+    "name": "해양진흥공사",
+    "category": "AIS",
+    "issue": "수출입 물류 데이터 공유 플랫폼",
+    "date": "2028-05-06",
+    "end": false
+  }
+]
