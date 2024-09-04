@@ -1,13 +1,23 @@
-import { getPostData } from '@/service/posts';
+import { getFeaturedPosts, getPostData } from '@/service/posts';
 import Image from 'next/image';
 import PostContent from '@/components/PostContent';
 import AdjacentPostCard from '@/components/AdjacentPostCard';
+import { Metadata } from 'next';
 
 type Props = {
     params: {
         slug: string;
     };
 };
+
+export async function generateMetadata({ params: {slug} }: Props): Promise<Metadata> {
+    const { title, description } = await getPostData(slug);
+    return {
+        title,
+        description
+    }
+}
+
 export default async function PostPage({ params: {slug} }: Props) {
     const post = await getPostData(slug);
     const { title, path, next, prev }= post;
@@ -22,4 +32,13 @@ export default async function PostPage({ params: {slug} }: Props) {
             </section>
         </article>
     )
+}
+
+// 모든걸 SSR(ServerSideRendering) 으로 client 에서 만드는 게 아니라,
+// 원하는 slug 에 한해서 미리 만들어두고 싶음
+export async function generateStaticParams() {
+    const posts = await getFeaturedPosts();
+    return posts.map((post) => ({
+        slug: post.path,
+    }))
 }

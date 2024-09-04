@@ -1,6 +1,7 @@
 // 비즈니스 로직을 담당
 import path from 'path';
 import {readFile} from 'fs/promises';
+import {cache} from 'react';
 
 export type Post = {
     title: string;
@@ -25,12 +26,14 @@ export async function getNonFeaturedPosts():Promise<Post[]> {
     return getAllPosts().then((posts) => posts.filter((post) => !post.featured));
 }
 
-export async function getAllPosts():Promise<Post[]> {
+// DB에 접근하거나 file을 읽는 함수는 여러번 호출하면 중복방지가 안돼서, 중복을 방지해줄 수 있도록
+export const getAllPosts = cache(async () => {
+    console.log('getAllPosts');
     const filePath = path.join(process.cwd(), 'data', 'posts.json');
     return readFile(filePath, 'utf-8')
         .then<Post[]>(JSON.parse)
         .then(posts => posts.sort((a, b) => (a.date > b.date ? -1 : 1)))
-}
+})
 
 export async function getPostData(fileName: string): Promise<PostData> {
     const filePath = path.join(process.cwd(), 'data', 'posts', `${fileName}.md`);
