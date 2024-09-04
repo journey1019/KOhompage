@@ -10,7 +10,7 @@ const LINKS = [
 export default function Contact() {
     return(
         <section className='flex flex-col items-center'>
-            <h2 className='text-3xl font-bold my-2'>Contact Me</h2>
+            <h2 className='text-3xl font-bold my-2'>Contact Us</h2>
             <p>info@orbcomm.co.kr</p>
             <ul className='flex gap-4 my-2'>
                 {LINKS.map((link, index) =>
