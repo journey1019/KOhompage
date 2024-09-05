@@ -4,6 +4,7 @@ import FeaturedPosts from '@/components/FeaturedPosts';
 import CarouselPosts from '@/components/CarouselPosts';
 import CaseStudies from '@/components/CaseStudies';
 import Patners from '@/components/Patners';
+import StartNow from '@/components/StartNow';
 
 export default function Home() {
     return (
@@ -11,8 +12,9 @@ export default function Home() {
             <Hero/>
             <FeaturedPosts />
             <CarouselPosts />
-            {/*<CaseStudies />*/}
+            <CaseStudies />
             <Patners/>
+            <StartNow />
         </section>
     );
 }

@@ -1,0 +1,20 @@
+[
+  {
+    "company": "Dutch Valley",
+    "comment": "We're able to tract trailers, the temperatures in the trailers all the time, the trucks, everything.",
+    "url": "https://www.orbcomm.com/PDF/casestudies/Dutch-Valley-Case-Study-na.pdf",
+    "index": "case_01"
+  },
+  {
+    "company": "Queen Transpotation",
+    "comment": "We expect to realize a full return on investment in the technology in improved efficiency and performance.",
+    "url": "https://www.orbcomm.com/PDF/casestudies/queen-transportation.pdf",
+    "index": "case_02"
+  },
+  {
+    "company": "ETNECA",
+    "comment": "The devices and service from ORBCOMM are very stable and reliable.They are highly programmable and configurable.",
+    "url": "https://www.orbcomm.com/PDF/casestudies/etneca-cs.pdf",
+    "index": "case_03"
+  }
+]
