@@ -4,7 +4,7 @@ import { readFile } from 'fs/promises';
 export type Case = {
     company: string;
     comment: string;
-    url: URL,
+    url: string;
     index: string;
 }
 

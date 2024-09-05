@@ -7,6 +7,8 @@ export const metadata: Metadata = {
 
 export default function SolutionsPage() {
     return(
-        <h1>Solutions Page</h1>
+        <section>
+
+        </section>
     )
 }

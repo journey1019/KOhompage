@@ -1,10 +1,11 @@
-import Image from 'next/image';
 import Hero from '@/components/Hero';
 import FeaturedPosts from '@/components/FeaturedPosts';
 import CarouselPosts from '@/components/CarouselPosts';
 import CaseStudies from '@/components/CaseStudies';
-import Patners from '@/components/Patners';
+import Partners from '@/components/Partners';
 import StartNow from '@/components/StartNow';
+import Partner from '@/components/Partner';
+
 
 export default function Home() {
     return (
@@ -13,7 +14,8 @@ export default function Home() {
             <FeaturedPosts />
             <CarouselPosts />
             <CaseStudies />
-            <Patners/>
+            <Partners/>
+            <Partner/>
             <StartNow />
         </section>
     );

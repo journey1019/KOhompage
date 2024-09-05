@@ -2,6 +2,7 @@
 import './globals.css';
 import { Open_Sans } from 'next/font/google';
 import Header from '@/components/Header';
+import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 
 const sans = Open_Sans({ subsets: ['latin'] });
@@ -25,6 +26,7 @@ export default function RootLayout({ children }: Props) {
         <html lang="en" className={sans.className}>
         <body className='flex flex-col w-full max-w-screen-2xl mx-auto'>
         <Header />
+        <Navbar />
         <main className='grow'>{children}</main>
         <Footer />
         </body>
