@@ -24,7 +24,8 @@ type Props = {
 export default function RootLayout({ children }: Props) {
     return (
         <html lang="en" className={sans.className}>
-        <body className='flex flex-col w-full max-w-screen-2xl mx-auto'>
+        {/*<body className='flex flex-col w-full max-w-screen-2xl mx-auto'>*/}
+        <body className='flex flex-col w-full mx-auto'>
         <Header />
         <Navbar />
         <main className='grow'>{children}</main>

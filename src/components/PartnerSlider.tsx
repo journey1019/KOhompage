@@ -43,7 +43,7 @@ export default function PartnerSlider() {
 
     return (
         <section
-            className="py-8 bg-red-50"
+            className="py-8 overflow-hidden"
             onMouseEnter={() => setIsPaused(true)}  // 마우스가 슬라이더에 들어가면 일시 정지
             onMouseLeave={() => setIsPaused(false)} // 마우스가 슬라이더를 벗어나면 재개
         >

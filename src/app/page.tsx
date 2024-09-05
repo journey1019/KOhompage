@@ -5,17 +5,21 @@ import CaseStudies from '@/components/CaseStudies';
 import Partners from '@/components/Partners';
 import StartNow from '@/components/StartNow';
 import Partner from '@/components/Partner';
+import Introduce from '@/components/Introduce';
+import ResponsiveSection from '@/components/ResponsiveSection';
 
 
 export default function Home() {
     return (
         <section className='bd-gray-500'>
+            <ResponsiveSection/>
             <Hero/>
+            {/*<Partners/>*/}
+            <Partner/>
+            <Introduce/>
             <FeaturedPosts />
             <CarouselPosts />
             <CaseStudies />
-            <Partners/>
-            <Partner/>
             <StartNow />
         </section>
     );

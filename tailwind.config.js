@@ -9,7 +9,14 @@ module.exports = {
     './src/**/*.{js,ts,jsx,tsx,mdx}',
   ],
   theme: {
-    extend: {},
+    extend: {
+      brightness: {
+        '30': '.3',
+        '60': '.6',
+        '70': '.7',
+        '80': '.8' // 클수록 밝음
+      }
+    },
   },
   plugins: [require('@tailwindcss/typography')],
 }
