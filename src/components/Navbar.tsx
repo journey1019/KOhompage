@@ -1,14 +1,18 @@
+import Link from 'next/link';
+import Image from 'next/image';
+
 export default function Navbar() {
 
     return (
         <header>
             <nav className="bg-white border-gray-200 dark:border-gray-600 dark:bg-gray-900">
                 <div className="flex flex-wrap justify-between items-center mx-auto max-w-screen-xl p-4">
-                    <a href="https://flowbite.com" className="flex items-center space-x-3 rtl:space-x-reverse">
-                        <img src="https://flowbite.com/docs/images/logo.svg" className="h-8" alt="Flowbite Logo" />
-                        <span
-                            className="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">Flowbite</span>
-                    </a>
+                    <Link href="/" className="flex items-center space-x-3 rtl:space-x-reverse">
+                        <Image src={`/images/KO_SmallLogo.png`} alt='KO Logo' width={180} height={130} unoptimized/>
+                        {/*<img src="/images/KO_SmallLogo.png" className="h-8" alt="Flowbite Logo" />*/}
+                        {/*<img src={'https://www.orbcomm.co.kr/'} className="h-8" alt="KO Logo" />*/}
+                        {/*<span className="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">KOREA ORBCOMM</span>*/}
+                    </Link>
                     <button data-collapse-toggle="mega-menu-full-image" type="button"
                             className="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
                             aria-controls="mega-menu-full-image" aria-expanded="false">
@@ -23,9 +27,14 @@ export default function Navbar() {
                          className="items-center justify-between hidden w-full md:flex md:w-auto md:order-1">
                         <ul className="flex flex-col mt-4 font-medium md:flex-row md:mt-0 md:space-x-8 rtl:space-x-reverse">
                             <li>
-                                <a href="#"
+                                <Link href="/solutions"
                                    className="block py-2 px-3 text-gray-900 border-b border-gray-100 hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-blue-500 md:dark:hover:bg-transparent dark:border-gray-700"
-                                   aria-current="page">Home</a>
+                                   aria-current="page">Solutions</Link>
+                            </li>
+                            <li>
+                                <Link href="/hardware"
+                                   className="block py-2 px-3 text-gray-900 border-b border-gray-100 hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-blue-500 md:dark:hover:bg-transparent dark:border-gray-700"
+                                   aria-current="page">Hardware</Link>
                             </li>
                             <li>
                                 <button id="mega-menu-full-cta-image-button"
@@ -33,25 +42,24 @@ export default function Navbar() {
                                         className="flex items-center justify-between w-full py-2 px-3 font-medium text-gray-900 border-b border-gray-100 md:w-auto hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:text-blue-600 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-blue-500 md:dark:hover:bg-transparent dark:border-gray-700">Company <svg
                                     className="w-2.5 h-2.5 ms-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
                                     fill="none" viewBox="0 0 10 6">
-                                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
-                                          stroke-width="2" d="m1 1 4 4 4-4" />
-                                </svg></button>
+                                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4" />
+                                </svg>
+                                </button>
                             </li>
                             <li>
-                                <a href="#"
-                                   className="block py-2 px-3 text-gray-900 border-b border-gray-100 hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-blue-500 md:dark:hover:bg-transparent dark:border-gray-700">Marketplace</a>
+                                <Link href="/marketPlace" className="block py-2 px-3 text-gray-900 border-b border-gray-100 hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-blue-500 md:dark:hover:bg-transparent dark:border-gray-700">Marketplace</Link>
                             </li>
                             <li>
-                                <a href="#"
-                                   className="block py-2 px-3 text-gray-900 border-b border-gray-100 hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-blue-500 md:dark:hover:bg-transparent dark:border-gray-700">Resources</a>
+                                <Link href="/resource" className="block py-2 px-3 text-gray-900 border-b border-gray-100 hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-blue-500 md:dark:hover:bg-transparent dark:border-gray-700">Resources</Link>
                             </li>
                             <li>
-                                <a href="#"
-                                   className="block py-2 px-3 text-gray-900 border-b border-gray-100 hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-blue-500 md:dark:hover:bg-transparent dark:border-gray-700">Contact</a>
+                                <Link href="/support" className="block py-2 px-3 text-gray-900 border-b border-gray-100 hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-blue-500 md:dark:hover:bg-transparent dark:border-gray-700">Support</Link>
                             </li>
                         </ul>
                     </div>
                 </div>
+
+                {/* Company Dropdown*/}
                 <div id="mega-menu-full-image-dropdown"
                      className="mt-1 bg-white border-gray-200 shadow-sm border-y dark:bg-gray-800 dark:border-gray-600">
                     <div
@@ -119,7 +127,6 @@ export default function Navbar() {
                     </div>
                 </div>
             </nav>
-
 
         </header>
     )

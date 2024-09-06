@@ -16,7 +16,7 @@ export default function Introduce() {
         //     </section>
         // </section>
         <section className='flex flex-col md:flex-row md:justify-between my-10 p-10 bg-gray-50'>
-            <section className='flex-1 flex flex-col justify-center items-start mb-8 md:mb-0 pr-5'>
+            <section className='flex-1 flex flex-col justify-center items-start mb-8 md:mb-0 px-5'>
                 <h2 className='mb-2 text-4xl font-bold tracking-tight dark:text-white py-4'>
                     데이터 기반 의사 결정을 위한 통찰력으로 고객 지원
                 </h2>
@@ -41,6 +41,7 @@ export default function Introduce() {
                     alt='KOREA ORBCOMM'
                 />
             </section>
+
         </section>
     )
 }

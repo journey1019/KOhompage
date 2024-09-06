@@ -1,4 +1,3 @@
-// src/app/layout.tsx
 import './globals.css';
 import { Open_Sans } from 'next/font/google';
 import Header from '@/components/Header';
