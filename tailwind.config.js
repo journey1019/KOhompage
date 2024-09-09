@@ -20,6 +20,33 @@ module.exports = {
       }
     },
   },
-  plugins: [require('@tailwindcss/typography')],
+  plugins: [
+      require(
+          '@tailwindcss/typography',
+          '@tailwindcss/forms', // Main/SubscribeSection
+          '@tailwindcss/aspect-ratio' // Hardware/Products
+      ),
+    function ({ addComponents }) { // CarouselSolutions/SolutionCarousel.tsx (className="custom-dot-list")
+      addComponents({
+        '.custom-dot-list': {
+          display: 'flex',
+          justifyContent: 'center',
+          paddingBottom: '50px !important',
+          margin: '0',
+        },
+        '.custom-dot-list .react-multiple-carousel-dot': {
+          backgroundColor: '#ccc',
+          borderRadius: '50%',
+          width: '10px',
+          height: '10px',
+          margin: '0 5px',
+          cursor: 'pointer',
+        },
+        '.custom-dot-list .react-multiple-carousel-dot--active': {
+          backgroundColor: '#000',
+        },
+      });
+    },
+  ],
 }
 

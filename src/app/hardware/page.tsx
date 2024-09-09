@@ -1,4 +1,5 @@
 import { Metadata } from 'next';
+import ProductGrid from '@/components/ProductGrid';
 
 export const metadata: Metadata = {
     title: 'Hardware',
@@ -7,6 +8,8 @@ export const metadata: Metadata = {
 
 export default function HardwarePage() {
     return(
-        <h1>Hardware Page</h1>
+        <>
+            <ProductGrid/>
+        </>
     )
 }

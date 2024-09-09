@@ -4,7 +4,7 @@ export default function AllPartner() {
         <section className="bg-white py-8 mt-10 max-w-screen-2xl mx-auto">
             <div className='border-t border-gray-800 border-2 mb-5' />
             <h2 className="text-start text-3xl font-semibold mb-8">Our Partners</h2>
-            <p className="text-start text-5xl font-semibold my-16">저희는 약 15개의 국내외 브랜드와 협업하여 총<br/>80회의 프로젝트를 성공적으로 진행하였습니다</p>
+            <p className="text-start xl:text-5xl lg:text-4xl text-2xl font-semibold my-16">저희는 약 15개의 국내외 브랜드와 협업하여 총<br/>80회의 프로젝트를 성공적으로 진행하였습니다</p>
             <div className='p-9'>
                 <table className="table-auto w-full border-collapse p-20">
                     <tbody>

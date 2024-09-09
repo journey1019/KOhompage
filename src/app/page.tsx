@@ -11,8 +11,14 @@ import ThreeComponent from '@/components/ThreeComponenet';
 import Solutions from '@/components/Solutions';
 import Intro from '@/components/Intro';
 import AllPartner from '@/components/PartnerTable';
+import RightNow from '@/components/RightNow';
+import SubscribeSection from '@/components/SubscribeSection';
+import CarouselSolutions from '@/components/CarouselSolutions';
 
 
+/**
+ * @Todo: 스크롤 내릴 때 컴포넌트 스무스 생성
+ * */
 export default function Home() {
     return (
         <section className='bd-gray-500'>
@@ -24,11 +30,14 @@ export default function Home() {
             <Introduce/>
             <Intro/>
             <ThreeComponent />
-            <Solutions/>
-            <FeaturedPosts />
-            <CarouselPosts />
+            <CarouselSolutions />
+            {/*<Solutions/>*/}
+            {/*<FeaturedPosts />*/}
+            {/*<CarouselPosts />*/}
             <CaseStudies />
-            <StartNow />
+            <SubscribeSection/>
+            {/*<StartNow />*/}
+            <RightNow/>
         </section>
     );
 }
