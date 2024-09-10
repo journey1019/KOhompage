@@ -52,7 +52,7 @@ export default function Intro() {
         // </section>
 
 
-        <section className="relative my-10 h-[60vh] dark:none">
+        <section className="relative h-[60vh] dark:none">
             {/* Fixed background image */}
             <div
                 className="absolute inset-0 w-full h-[60vh] bg-fixed bg-cover bg-center z-0"
@@ -71,7 +71,7 @@ export default function Intro() {
                         ORBCOMM의 선구적인 IoT 기술로 운영을 최적화하고, 수익성을 극대화하고, 보다 지속 가능한 미래를 구축하세요.<br />
                         30년의 경험을 바탕으로 ORBCOMM은 데이터의 힘을 통해 전 세계적으로 백만 개가 넘는 자산을 관리할 수 있도록 지원합니다.
                     </p>
-                    <button className="inline-flex items-center px-6 py-3 font-medium text-center rounded-full bg-gray-100 bg-opacity-90 hover:bg-gray-300 border border-red-700 focus:ring-4 focus:outline-none focus:ring-red-300 dark:hover:bg-red-800 dark:focus:ring-red-100">
+                    <button className="inline-flex items-center px-6 py-3 font-medium text-center rounded-full bg-white bg-opacity-90 hover:bg-gray-300 border border-red-700 focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-100">
                         <p className="text-base text-sm font-semibold text-red-800">
                             KOREA ORBCOMM에 대해 알아보세요
                         </p>

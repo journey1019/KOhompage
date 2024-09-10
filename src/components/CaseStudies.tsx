@@ -10,16 +10,18 @@ export const metadata: Metadata = {
 export default async function CaseStudies() {
     const cases = await getAllCases();
     return(
-        <section className="bg-white py-8 mt-10 max-w-screen-2xl mx-auto">
-            <div className="border-t border-gray-800 border-2 mb-5" />
-            <h2 className="text-start text-3xl font-semibold mb-8">Case Studies</h2>
-            <section className="flex m-4">
-                <ul className='flex grid w-full justify-between grid-cols-1 sm:grid-cols-2 md:grid-cols-3'>
-                    {cases.map((caseItem) => (
-                        <CaseCard case={caseItem} key={caseItem.company} />
-                    ))}
-                </ul>
-            </section>
+        <section className="bg-white dark:bg-gray-900 w-full">
+            <div className='max-w-screen-2xl mx-auto py-10'>
+                <div className="border-t border-gray-800 border-2 mb-5 dark:border-amber-50"/>
+                <h2 className="text-start text-3xl font-semibold dark:text-white mb-8">Case Studies</h2>
+                <section className="flex m-4">
+                    <ul className='flex grid w-full justify-between grid-cols-1 sm:grid-cols-2 md:grid-cols-3'>
+                        {cases.map((caseItem) => (
+                            <CaseCard case={caseItem} key={caseItem.company} />
+                        ))}
+                    </ul>
+                </section>
+            </div>
         </section>
     )
 }

@@ -17,6 +17,10 @@ module.exports = {
         '60': '.6',
         '70': '.7',
         '80': '.8' // 클수록 밝음
+      },
+      colors: {
+        customWhite: '#FAFBFC',
+        customDark: '#272542'
       }
     },
   },

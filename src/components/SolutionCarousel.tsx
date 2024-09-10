@@ -35,7 +35,7 @@ export default function SolutionCarousel({children}: Props) {
             autoPlaySpeed={6000} // 6초
             responsive={responsive}
             dotListClass="custom-dot-list" // Add this line
-            itemClass='m-2'
+            // itemClass='m-2'
         >
             {children}
         </Carousel>
