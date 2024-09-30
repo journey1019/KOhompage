@@ -1,13 +1,16 @@
+// CarouselSolutions.tsx
 import SolutionCarousel from '@/components/SolutionCarousel';
 import SolutionCard from '@/components/SolutionCard';
-import { getAllSolutions } from '@/service/solutions';
+import { Solution } from '@/service/solutions';
 
-export default async function CarouselSolutions() {
-    const solutions = await getAllSolutions();
+type Props = { solutions: Solution[] }; // props 타입 정의
 
-    return(
+export default function CarouselSolutions({ solutions }: Props) {
+    return (
         <SolutionCarousel>
-            {solutions.map(solution => <SolutionCard key={solution.solution} solution={solution}/>)}
+            {solutions.map(solution => (
+                <SolutionCard key={solution.solution} solution={solution} />
+            ))}
         </SolutionCarousel>
-    )
+    );
 }

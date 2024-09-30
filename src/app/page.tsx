@@ -14,12 +14,14 @@ import PartnerTable from '@/components/PartnerTable';
 import RightNow from '@/components/RightNow';
 import SubscribeSection from '@/components/SubscribeSection';
 import CarouselSolutions from '@/components/CarouselSolutions';
-
+import { getAllSolutions } from '@/service/solutions';
 
 /**
  * @Todo: 스크롤 내릴 때 컴포넌트 스무스 생성
  * */
-export default function Home() {
+export default async function Home() {
+    const solutions = await getAllSolutions(); // 데이터를 비동기로 가져옴
+
     return (
         <section className='bd-gray-500'>
             {/*<ResponsiveSection/>*/}
@@ -30,7 +32,7 @@ export default function Home() {
             <Introduce/>
             <Intro/>
             <ThreeComponent />
-            <CarouselSolutions />
+            <CarouselSolutions solutions={solutions} />
             {/*<Solutions/>*/}
             {/*<FeaturedPosts />*/}
             {/*<CarouselPosts />*/}

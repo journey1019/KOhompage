@@ -1,3 +1,4 @@
+// service/cases.ts
 import path from 'path';
 import { readFile } from 'fs/promises';
 
@@ -10,6 +11,6 @@ export type Case = {
 
 export async function getAllCases() {
     const filePath = path.join(process.cwd(), 'data', 'cases.json');
-    return readFile(filePath, 'utf-8')
-        .then<Case[]>(JSON.parse)
+    const fileContents = await readFile(filePath, 'utf-8');
+    return JSON.parse(fileContents) as Case[];
 }
