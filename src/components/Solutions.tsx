@@ -29,7 +29,7 @@ export default function Solutions() {
                         <p className="mt-4 text-md leading-8 text-gray-600 dark:text-gray-300">
                             At the beginning at least, but then we realized we could make a lot more money if we kinda
                             stopped caring about that. Our new strategy is to write a bunch of things that look really
-                            good in the headlines, then clarify in the small print but hope people don&apos;t actually
+                            good in the headlines, then clarify in the small print but hope people don&#39;t actually
                             read it.
                         </p>
 
