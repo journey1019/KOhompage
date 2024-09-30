@@ -6,7 +6,7 @@ type Props = { case: Case };
 export default function CaseCard({case: { company, comment, url, index }}: Props) {
     return (
         <div className="max-w-lg bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 relative hover:transform hover-translate-x-2 hover:-translate-y-2 hover:shadow-lg hover:border-gray-200 transition-all duration-300 easy-out">
-            <img className="rounded-t-lg" src={`/images/cases/${index}.png`} alt='javascript-basic' />
+            <Image className="rounded-t-lg w-auto h-auto" src={`/images/cases/${index}.png`} alt='javascript-basic' width={300} height={300} unoptimized/>
             <div className="p-5">
                 <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">{company}</h5>
                 <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">{comment}</p>

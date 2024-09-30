@@ -1,3 +1,5 @@
+import Image from 'next/image';
+
 export default function Introduce() {
 
     return (
@@ -35,10 +37,13 @@ export default function Introduce() {
                 </section>
             </section>
             <section className='flex-1'>
-                <img
+                <Image
                     src='https://www.orbcomm.co.kr/resources/img/background/KOREA_ORBCOMM_reeferconnect_2.jpg'
                     className='w-full h-auto filter brightness-80'
                     alt='KOREA ORBCOMM'
+                    width={500}
+                    height={700}
+                    unoptimized
                 />
             </section>
 

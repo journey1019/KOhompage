@@ -10,7 +10,7 @@ import ResponsiveSection from '@/components/ResponsiveSection';
 import ThreeComponent from '@/components/ThreeComponenet';
 import Solutions from '@/components/Solutions';
 import Intro from '@/components/Intro';
-import AllPartner from '@/components/PartnerTable';
+import PartnerTable from '@/components/PartnerTable';
 import RightNow from '@/components/RightNow';
 import SubscribeSection from '@/components/SubscribeSection';
 import CarouselSolutions from '@/components/CarouselSolutions';
@@ -25,8 +25,8 @@ export default function Home() {
             {/*<ResponsiveSection/>*/}
             <Hero/>
             {/*<Partners/>*/}
-            <AllPartner/>
-            {/*<Partner/>*/}
+            <PartnerTable/>
+            <Partner/>
             <Introduce/>
             <Intro/>
             <ThreeComponent />

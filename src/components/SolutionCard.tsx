@@ -32,7 +32,14 @@ export default function SolutionCard({solution: {solution, title, subTitle, imag
                         {/*</div>*/}
                     </div>
                     <dl className="flex">
-                        <img src={image} alt='Solution Image' />
+                        <Image
+                            src={image}
+                            className='w-full h-auto filter brightness-80'
+                            alt='Solution Image'
+                            width={500}
+                            height={700}
+                            unoptimized
+                        />
                     </dl>
                 </div>
             </div>

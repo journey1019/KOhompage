@@ -2,12 +2,17 @@
 
 import Link from 'next/link';
 import Image from 'next/image';
-import Mode from '@/components/Mode';
+import Mode from '@/components/(Header)/Mode';
+import { useState } from 'react';
 
 export default function Navbar() {
+    const [openDropdown, setOpenDropdown] = useState<string | null>(null);
+
+    const handleMouseEnter = (menu: string) => setOpenDropdown(menu);
+    const handleMouseLeave = () => setOpenDropdown(null);
 
     return (
-        <header>
+        <header className='fixed top-0 left-0 w-full z-50'>
             <nav className="bg-white border-gray-200 dark:bg-gray-900">
                 <div className="flex flex-wrap justify-between items-center mx-auto max-w-screen-2xl p-4">
                     <Link href="/" className="flex items-center space-x-3 rtl:space-x-reverse">
@@ -28,15 +33,17 @@ export default function Navbar() {
                     </div>
                     <div id="mega-menu-full-image" className="items-center justify-between hidden w-full md:flex md:w-auto md:order-1">
                         <ul className="flex flex-col mt-4 font-medium md:flex-row md:mt-0 md:space-x-8 rtl:space-x-reverse">
-                            <li>
+                            <li onMouseEnter={() => handleMouseEnter('solutions')} onMouseLeave={handleMouseLeave}>
                                 <Link href="/solutions"
-                                      className="block py-2 px-3 text-gray-900 border-b border-gray-100 hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-blue-500 md:dark:hover:bg-transparent dark:border-gray-700"
-                                      aria-current="page">Solutions</Link>
+                                      className="block py-2 px-3 text-gray-900 border-b border-gray-100 hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-blue-500 md:dark:hover:bg-transparent dark:border-gray-700">
+                                    Solutions
+                                </Link>
                             </li>
-                            <li>
+                            <li onMouseEnter={() => handleMouseEnter('hardware')} onMouseLeave={handleMouseLeave}>
                                 <Link href="/hardware"
-                                      className="block py-2 px-3 text-gray-900 border-b border-gray-100 hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-blue-500 md:dark:hover:bg-transparent dark:border-gray-700"
-                                      aria-current="page">Hardware</Link>
+                                      className="block py-2 px-3 text-gray-900 border-b border-gray-100 hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-blue-500 md:dark:hover:bg-transparent dark:border-gray-700">
+                                    Hardware
+                                </Link>
                             </li>
                             <li>
                                 <button id="mega-menu-full-cta-image-button"
@@ -59,8 +66,8 @@ export default function Navbar() {
 
                 {/* Company Dropdown*/}
                 <div id="mega-menu-full-image-dropdown" className="mt-1 bg-white border-gray-200 shadow-sm border-y dark:bg-gray-800 dark:border-gray-600">
-                    <div
-                        className="grid max-w-screen-2xl px-4 py-5 mx-auto text-sm text-gray-500 dark:text-gray-400 md:grid-cols-3 md:px-6">
+                    <div className="grid max-w-screen-2xl px-4 py-5 mx-auto text-sm text-gray-500 dark:text-gray-400 md:grid-cols-3 md:px-6">
+
                         <ul className="hidden mb-4 space-y-4 md:mb-0 md:block"
                             aria-labelledby="mega-menu-full-image-button">
                             <li>
@@ -124,7 +131,6 @@ export default function Navbar() {
                     </div>
                 </div>
             </nav>
-
         </header>
     )
 }

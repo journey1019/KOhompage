@@ -27,7 +27,7 @@ export default function Solutions() {
                     <div className="max-w-xl lg:max-w-lg">
                         <h2 className="text-3xl font-bold tracking-tight dark:text-white sm:text-4xl">Solution1. We Built our business on great customer service</h2>
                         <p className="mt-4 text-md leading-8 text-gray-600 dark:text-gray-300">
-                            At the beginning at least, but then we realized we could make a lot more money if we kinda stopped caring about that. Our new strategy is to write a bunch of things that look really good in the headlines, then clarify in the small print but hope people don't actually read it.
+                            At the beginning at least, but then we realized we could make a lot more money if we kinda stopped caring about that. Our new strategy is to write a bunch of things that look really good in the headlines, then clarify in the small print but hope people don&apos;t actually read it.
                         </p>
                         {/*<div className="mt-20 flex max-w-md gap-x-4">*/}
                         {/*    <label htmlFor="email-address" className="sr-only">*/}
@@ -51,7 +51,14 @@ export default function Solutions() {
                         {/*</div>*/}
                     </div>
                     <dl className="flex">
-                        <img src={'https://tailwindui.com/img/ecommerce-images/incentives-07-hero.jpg'} alt='Solution1'/>
+                        <Image
+                            src='https://tailwindui.com/img/ecommerce-images/incentives-07-hero.jpg'
+                            className='w-full h-1/3 filter brightness-80'
+                            alt='Solution1'
+                            width={500}
+                            height={700}
+                            unoptimized
+                        />
                     </dl>
                 </div>
             </div>
