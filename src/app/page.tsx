@@ -15,6 +15,7 @@ import RightNow from '@/components/RightNow';
 import SubscribeSection from '@/components/SubscribeSection';
 import CarouselSolutions from '@/components/CarouselSolutions';
 import { getAllSolutions } from '@/service/solutions';
+import News from '@/components/News';
 
 /**
  * @Todo: 스크롤 내릴 때 컴포넌트 스무스 생성
@@ -37,9 +38,10 @@ export default async function Home() {
             {/*<FeaturedPosts />*/}
             {/*<CarouselPosts />*/}
             <CaseStudies />
-            <SubscribeSection/>
             {/*<StartNow />*/}
+            <News/>
             <RightNow/>
+            <SubscribeSection/>
         </section>
     );
 }

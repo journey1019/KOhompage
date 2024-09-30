@@ -3,65 +3,73 @@ import { ProductCard } from '@/components/ProductCard';
 const products = [
     {
         id: 1,
-        name: 'Earthen Bottle',
+        name: '분류',
         href: '#',
-        price: '$48',
+        price: 'Earthen Bottle',
         imageSrc: 'https://tailwindui.com/img/ecommerce-images/category-page-04-image-card-01.jpg',
         imageAlt: 'Tall slender porcelain bottle with natural clay textured body and cork stopper.',
     },
     {
         id: 2,
-        name: 'Nomad Tumbler',
+        name: 'General and Multi-Purpose Asset Tracking',
         href: '#',
-        price: '$35',
+        price: 'ST6000 Series',
         imageSrc: 'https://tailwindui.com/img/ecommerce-images/category-page-04-image-card-02.jpg',
         imageAlt: 'Olive drab green insulated bottle with flared screw lid and flat top.',
     },
     {
         id: 3,
-        name: 'Focus Paper Refill',
+        name: 'General and Multi-Purpose Asset Tracking',
         href: '#',
-        price: '$89',
+        price: 'ST-9100',
+        imageSrc: 'https://tailwindui.com/img/ecommerce-images/category-page-04-image-card-02.jpg',
+        imageAlt: 'Olive drab green insulated bottle with flared screw lid and flat top.',
+    },
+    {
+        id: 4,
+        name: 'Maritime',
+        href: '#',
+        price: 'Focus Paper Refill',
         imageSrc: 'https://tailwindui.com/img/ecommerce-images/category-page-04-image-card-03.jpg',
         imageAlt: 'Person using a pen to cross a task off a productivity paper card.',
     },
     {
-        id: 4,
-        name: 'Machined Mechanical Pencil',
+        id: 5,
+        name: 'General and Multi-Purpose Asset Tracking',
         href: '#',
-        price: '$35',
+        price: 'Machined Mechanical Pencil',
         imageSrc: 'https://tailwindui.com/img/ecommerce-images/category-page-04-image-card-04.jpg',
         imageAlt: 'Hand holding black machined steel mechanical pencil with brass tip and top.',
     },
     {
-        id: 5,
-        name: 'Focus Card Tray',
+        id: 6,
+        name: 'Modem',
         href: '#',
-        price: '$64',
+        price: 'Focus Card Tray',
         imageSrc: 'https://tailwindui.com/img/ecommerce-images/category-page-04-image-card-05.jpg',
         imageAlt: 'Person using a pen to cross a task off a productivity paper card.',
     },
     {
-        id: 6,
-        name: 'Focus Multi-Pack',
+        id: 7,
+        name: 'VSAT',
         href: '#',
-        price: '$35',
+        price: 'Focus Multi-Pack',
         imageSrc: 'https://tailwindui.com/img/ecommerce-images/category-page-04-image-card-06.jpg',
         imageAlt: 'Hand holding black machined steel mechanical pencil with brass tip and top.',
     },
     {
-        id: 7,
-        name: 'Brass Scissors',
+        id: 8,
+        name: 'Trailer Tracking',
         href: '#',
-        price: '$89',
+        price: 'Nomad Tumbler',
         imageSrc: 'https://tailwindui.com/img/ecommerce-images/category-page-04-image-card-07.jpg',
         imageAlt: 'Person using a pen to cross a task off a productivity paper card.',
     },
     {
-        id: 8,
+        id: 9,
         name: 'Focus Carry Pouch',
         href: '#',
-        price: '$35',
+        price: 'Nomad Tumbler',
         imageSrc: 'https://tailwindui.com/img/ecommerce-images/category-page-04-image-card-08.jpg',
         imageAlt: 'Hand holding black machined steel mechanical pencil with brass tip and top.',
     },
@@ -69,9 +77,9 @@ const products = [
 
 export default function ProductGrid() {
     return (
-        <div className="bg-white">
+        <div className="bg-white dark:bd-gray-500">
 
-            <form className="max-w-lg mx-auto py-16 sm:px-6 sm:py-24">
+            <form className="max-w-screen-lg mx-auto py-16 sm:px-6 sm:py-24">
                 <div className="flex">
                     <label htmlFor="search-dropdown"
                            className="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white">Your Email</label>
