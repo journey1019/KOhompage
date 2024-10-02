@@ -1,6 +1,6 @@
 'use client'
 
-import { FaMoon, FaRegMoon } from "react-icons/fa";
+import { FaMoon, FaRegMoon, FaSun } from "react-icons/fa";
 import { useState, useEffect } from 'react';
 
 export default function Mode() {
@@ -36,7 +36,7 @@ export default function Mode() {
             className='text-center justify-center items-center hover:bg-gray-100 dark:bg-gray-100 dark:hover:bg-gray-300 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:focus:ring-gray-700 rounded-full p-1'
             // className="px-4 py-2 bg-gray-200 dark:bg-gray-600 text-black dark:text-white rounded-lg"
         >
-            {darkMode ? <FaMoon/> : <FaRegMoon/>}
+            {darkMode ? <FaSun/> : <FaRegMoon/>}
         </button>
     )
 }
