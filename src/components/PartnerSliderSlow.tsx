@@ -75,8 +75,8 @@ export default function PartnerSlider() {
                         <Image
                             src={partner.imageUrl}
                             alt={partner.name}
-                            className="h-24 sm:h-16 md:h-20 lg:h-24 object-contain mx-auto " // 필요에 따라 width 조정
-                            width={500}
+                            className="h-24 sm:h-8 md:h-20 lg:h-24 object-contain mx-auto " // 필요에 따라 width 조정
+                            width={300}
                             height={700}
                             unoptimized
                         />
