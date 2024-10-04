@@ -1,4 +1,3 @@
-// components/VideoBackground.tsx
 'use client';
 
 import { useEffect, useState } from 'react';

@@ -1,16 +1,13 @@
 import './globals.css';
 import { Open_Sans } from 'next/font/google';
 import Header from '@/components/(Header)/Header';
-import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
-
-import { appWithTranslation } from 'next-i18next';
 
 const sans = Open_Sans({ subsets: ['latin'] });
 
 export const metadata = {
     title: {
-        default: 'KOREA ORBCOMM',
+        default: 'Global AIS 서비스를 선도하는 서비스 | 코리아오브컴',
         template: 'KOREA ORBCOMM | %s'
     },
     description: '전세계 M2M Service를 위한 통신 서비스와 하드웨어, 어플리케이션을 제공하는 Total SERVICE Provider',

@@ -64,15 +64,18 @@ export default function Intro() {
             <div className="absolute inset-0 bg-black bg-opacity-40 z-0 h-[60vh]" />
 
             {/* Scrollable content */}
-            <main className="relative flex flex-col justify-center items-start text-white z-10 h-[60vh] pl-20 pr-5">
+            <main className="relative flex flex-col justify-center items-start text-white z-10 h-[60vh] pl-5 sm:pl-10 md:pl-20 pr-5">
                 <div className="text-start">
-                    <h1 className="mb-5 text-4xl font-bold tracking-tight py-4">데이터 기반 의사 결정을 위한 통찰력으로 고객 지원</h1>
-                    <p className="text-xl mb-5 py-5">
+                    <h1 className="mb-5 text-lg sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-bold tracking-tight py-4">
+                        데이터 기반 의사 결정을 위한 통찰력으로 고객 지원
+                    </h1>
+                    <p className="text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl mb-5 py-5">
                         ORBCOMM의 선구적인 IoT 기술로 운영을 최적화하고, 수익성을 극대화하고, 보다 지속 가능한 미래를 구축하세요.<br />
                         30년의 경험을 바탕으로 ORBCOMM은 데이터의 힘을 통해 전 세계적으로 백만 개가 넘는 자산을 관리할 수 있도록 지원합니다.
                     </p>
-                    <button className="inline-flex items-center px-6 py-3 font-medium text-center rounded-full bg-white bg-opacity-90 hover:bg-gray-300 border border-red-700 focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-100">
-                        <p className="text-base text-sm font-semibold text-red-800">
+                    <button
+                        className="inline-flex items-center px-4 py-2 sm:px-6 sm:py-3 font-medium text-center rounded-full bg-white bg-opacity-90 hover:bg-gray-300 border border-red-700 focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-100">
+                        <p className="text-xs sm:text-base font-semibold text-red-800">
                             KOREA ORBCOMM에 대해 알아보세요
                         </p>
                     </button>

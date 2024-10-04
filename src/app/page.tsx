@@ -1,7 +1,8 @@
 import Hero from '@/components/Hero';
 import FeaturedPosts from '@/components/FeaturedPosts';
 import CarouselPosts from '@/components/CarouselPosts';
-import CaseStudies from '@/components/CaseStudies';
+// import CaseStudies from '@/components/CaseStudies';
+import CaseStudies from '@/components/(Home)/CaseStudies';
 import Partners from '@/components/Partners';
 import StartNow from '@/components/StartNow';
 import Partner from '@/components/Partner';
@@ -38,12 +39,12 @@ export default async function Home() {
             {/*<Solutions/>*/}
             {/*<FeaturedPosts />*/}
             {/*<CarouselPosts />*/}
-            {/*<CaseStudies />*/}
+            <CaseStudies />
             <BlogSection/>
+            <SubscribeSection/>
             {/*<StartNow />*/}
             {/*<News/>*/}
             <RightNow/>
-            <SubscribeSection/>
         </section>
     );
 }

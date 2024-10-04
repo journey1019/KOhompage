@@ -24,7 +24,7 @@ const contents = [
     },
 ];
 
-export function BlogSection() {
+export default function CaseStudy() {
     return (
         <section className='w-full dark:bg-gray-900'>
             <section className="container mx-auto px-8 py-10 lg:py-28">
@@ -54,5 +54,3 @@ export function BlogSection() {
         </section>
     );
 }
-
-export default BlogSection;

@@ -12,6 +12,7 @@ import Company from './Company';
 import LanguageSwitcher from '@/components/(Header)/LanguageSwitcher';
 import { GrLanguage } from 'react-icons/gr';
 // import { useTranslation } from 'next-i18next';
+import Services from '@/components/(Header)/Services';
 
 export default function Header() {
     // const { t } = useTranslation();
@@ -50,19 +51,20 @@ export default function Header() {
                         <Image src={`/images/KO_SmallLogo.png`} alt="KO Logo" width={180} height={130} unoptimized />
                     </Link>
                     <div className="flex items-center md:order-2 space-x-1 md:space-x-2 rtl:space-x-reverse">
-                        <Mode />
-                        <GrLanguage className="ml-2 cursor-pointer" />
                         {!isMenuOpen && (
-                            <a href="#"
-                               className="flex items-center text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-4 py-2 md:px-5 md:py-2.5 dark:bg-red-600 dark:hover:bg-red-700 focus:outline-none dark:focus:ring-red-800">
-                                Login
-                                <svg className="w-2.5 h-2.5 ms-2.5" aria-hidden="true"
-                                     xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
-                                    <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round"
-                                          strokeWidth="2" d="m1 1 4 4 4-4" />
-                                </svg>
-                            </a>
+                            <Services/>
+                            // <a href="#"
+                            //    className="hidden sm:flex items-center text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-4 py-2 md:px-5 md:py-2.5 dark:bg-red-600 dark:hover:bg-red-700 focus:outline-none dark:focus:ring-red-800">
+                            //     Services
+                            //     <svg className="w-2.5 h-2.5 ms-2.5" aria-hidden="true"
+                            //          xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
+                            //         <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round"
+                            //               strokeWidth="2" d="m1 1 4 4 4-4" />
+                            //     </svg>
+                            // </a>
                         )}
+                        <Mode />
+                        <GrLanguage className="ml-2 cursor-pointer dark:text-white" />
                         <button
                             onClick={toggleMenu} // Toggle menu on click
                             type="button"
@@ -91,6 +93,18 @@ export default function Header() {
                     <div id="mega-menu-full-image"
                          className={`items-center justify-between w-full md:flex md:w-auto md:order-1 ${isMenuOpen ? 'block h-screen' : 'hidden'}`}> {/* 메뉴 오픈 시 높이를 full로 설정 */}
                         <ul className="flex flex-col mt-4 font-medium md:flex-row md:mt-0 md:space-x-8 rtl:space-x-reverse">
+                            <li>{!isMenuOpen && (
+                                <Services/>
+                                // <a href="#"
+                                //    className="hidden sm:flex items-center text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-4 py-2 md:px-5 md:py-2.5 dark:bg-red-600 dark:hover:bg-red-700 focus:outline-none dark:focus:ring-red-800">
+                                //     Services
+                                //     <svg className="w-2.5 h-2.5 ms-2.5" aria-hidden="true"
+                                //          xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
+                                //         <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round"
+                                //               strokeWidth="2" d="m1 1 4 4 4-4" />
+                                //     </svg>
+                                // </a>
+                            )}</li>
                             <li>
                                 <button
                                     className="flex w-full justify-between items-center py-2 px-3 text-gray-900 border-b border-gray-100 hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:text-red-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-blue-500 md:dark:hover:bg-transparent dark:border-gray-700"
@@ -148,7 +162,7 @@ export default function Header() {
                             {/*    {openDropdown === 'company' && dropdownContent('company')}*/}
                             {/*</li>    */}
                         </ul>
-                        {/* 메뉴 오픈 시 Login 버튼을 맨 마지막에 추가 */}
+                        {/* 메뉴 오픈 시 Services 버튼을 맨 마지막에 추가 */}
                         {isMenuOpen && (
                             <div className="mt-4 md:hidden">
                                 <a href="#"

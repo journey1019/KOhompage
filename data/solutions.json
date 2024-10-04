@@ -1,12 +1,12 @@
 [
   {
     "solution" : 1,
-    "title": "Solution1. We Built our business on great customer service",
-    "subTitle": "At the beginning at least, but then we realized we could make a lot more money if we kinda stopped caring about that. Our new strategy is to write a bunch of things that look really good in the headlines, then clarify in the small print but hope people don't actually read it.",
-    "image": "https://flowbite.s3.amazonaws.com/blocks/marketing-ui/content/content-gallery-3.png",
+    "title": "Solution1. Receive data by providing industrial IoT solutions",
+    "subTitle": "Industrial IoT solutions provided by Korea ORBCOMM provide solutions suitable for various industries such as construction equipment monitoring, marine information monitoring, and climate information monitoring.",
+    "image": "https://images.pexels.com/photos/443416/pexels-photo-443416.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
     "advantage": [
       {
-        "image": "/images/icons/truck.png",
+        "image": "/images/icons/communication.png",
         "title": "Free Shipping",
         "subTitle": "It's not actually free we just price it into the products.Someone's paying for it, and it's not us"
       },
@@ -24,9 +24,9 @@
   },
   {
     "solution" : 2,
-    "title": "Solution2. Two-way communication is possible through real-time satellite communication",
-    "subTitle": "Due to two-way communication, it is possible to determine the state of the real-time satellite, the location of the ship, and whether it is normal or abnormal, such as data reception.",
-    "image": "https://flowbite.s3.amazonaws.com/blocks/marketing-ui/content/content-gallery-3.png",
+    "title": "Solution2. Delivering resilient and flexible solutions for remote monitoring of fixed and mobile assets.",
+    "subTitle": "Providing an integrated solution for real-time container tracking, fleet optimization, and ROI analysis.",
+    "image": "https://images.pexels.com/photos/577210/pexels-photo-577210.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
     "advantage": [
       {
         "image": "/images/icons/communication.png",
@@ -47,9 +47,32 @@
   },
   {
     "solution" : 3,
-    "title": "Solution3. Receive data by providing industrial IoT solutions",
-    "subTitle": "Industrial IoT solutions provided by Korea ofCom provide solutions suitable for various industries such as construction equipment monitoring, marine information monitoring, and climate information monitoring.",
-    "image": "https://flowbite.s3.amazonaws.com/blocks/marketing-ui/content/content-gallery-3.png",
+    "title": "Solution3. Providing valuable data communication services through a network of 41 low-earth orbit satellites.",
+    "subTitle": "Due to two-way communication, it is possible to determine the state of the real-time satellite, the location of the ship, and whether it is normal or abnormal, such as data reception.",
+    "image": "https://images.pexels.com/photos/586056/pexels-photo-586056.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+    "advantage": [
+      {
+        "image": "/images/icons/truck.png",
+        "title": "Free Shipping",
+        "subTitle": "It's not actually free we just price it into the products.Someone's paying for it, and it's not us"
+      },
+      {
+        "image": "/images/icons/trophy.png",
+        "title": "10-year warranty",
+        "subTitle": "If it breaks in the first 10 years we'll replace it. After that you're on your own though"
+      },
+      {
+        "image": "/images/icons/exchange.png",
+        "title": "Exchanges",
+        "subTitle": "If you don't like it, trade it to one of your friends for something of theirs. Don't send it here though."
+      }
+    ]
+  },
+  {
+    "solution" : 4,
+    "title": "Solution4. Collecting AIS information from all regions worldwide and delivering it to our customers.",
+    "subTitle": "It is a ship-borne system that transmits crucial data that supports the identification, location, and navigation of vessels, enhancing maritime safety. AIS data is used for maritime domain awareness, search and rescue operations, environmental monitoring, and maritime information analysis.",
+    "image": "https://images.pexels.com/photos/1095814/pexels-photo-1095814.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
     "advantage": [
       {
         "image": "/images/icons/communication.png",

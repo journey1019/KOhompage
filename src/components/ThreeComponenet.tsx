@@ -19,7 +19,7 @@ export default function ThreeComponent() {
         <section className="w-full dark:bg-gray-900">
             <div className="flex flex-col md:flex-row max-w-screen-2xl mx-auto py-20 px-5 overflow-hidden justify-center">
                 {[
-                    { value: '10억 +', label: '최종 사용자' },
+                    { value: '60억 +', label: '최종 사용자' },
                     { value: '50억 +', label: '월간 데이터' },
                     { value: '30만 +', label: '선박' },
                 ].map((item, index) => (
