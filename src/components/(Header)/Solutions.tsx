@@ -64,7 +64,7 @@ export default function Solutions() {
                 <div className="grid max-w-screen-xl px-4 py-3 mx-auto text-gray-900 dark:text-white grid-cols-1 sm:grid-cols-4 md:px-6">
                     <ul>
                         <li>
-                            <a href="#" className="block px-3 py-1 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700">
+                            <a href="/solutions/globalIoT" className="block px-3 py-1 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700">
                                 <div className="flex flex-col items-start">
                                     <div className="rounded-md bg-gray-200 dark:bg-white/5 p-1 ring-1 ring-gray-300 dark:ring-white/10">
                                         <HandRaisedIcon aria-hidden="true" className="h-5 w-5 text-black dark:text-white" />
@@ -77,7 +77,7 @@ export default function Solutions() {
                     </ul>
                     <ul>
                         <li>
-                            <a href="#" className="block px-3 py-1 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700">
+                            <a href="/solutions/containerIoT" className="block px-3 py-1 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700">
                                 <div className="flex flex-col items-start">
                                     <div
                                         className="rounded-md bg-gray-200 dark:bg-white/5 p-1 ring-1 ring-gray-300 dark:ring-white/10">
@@ -92,7 +92,7 @@ export default function Solutions() {
                     </ul>
                     <ul>
                         <li>
-                            <a href="#" className="block px-3 py-1 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700">
+                            <a href="/solutions/satellite" className="block px-3 py-1 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700">
                                 <div className="flex flex-col items-start">
                                     <div
                                         className="rounded-md bg-gray-200 dark:bg-white/5 p-1 ring-1 ring-gray-300 dark:ring-white/10">
@@ -107,7 +107,7 @@ export default function Solutions() {
                     </ul>
                     <ul>
                         <li>
-                            <a href="#" className="block px-3 py-1 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700">
+                            <a href="/solutions/ais" className="block px-3 py-1 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700">
                                 <div className="flex flex-col items-start">
                                     <div
                                         className="rounded-md bg-gray-200 dark:bg-white/5 p-1 ring-1 ring-gray-300 dark:ring-white/10">

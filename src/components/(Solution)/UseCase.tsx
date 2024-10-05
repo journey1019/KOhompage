@@ -1,192 +1,94 @@
-export default function UseCase() {
+import React from 'react';
+import Image from 'next/image';
+
+const Case: React.FC<{ direction: string; title1: string; title2:string; description: string; image: string; }> = ({ direction, title1, title2, description, image }) => {
     return (
-        <section className="py-24">
-            <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-                <div
-                    className="flex flex-col justify-center items-center gap-x-16 gap-y-5 xl:gap-28 lg:flex-row lg:justify-between max-lg:max-w-2xl mx-auto max-w-full"
-                >
-                    <div className="w-full lg:w-1/2">
-                        <img
-                            src="https://pagedone.io/asset/uploads/1696230182.png"
-                            alt="FAQ tailwind section"
-                            className="w-full rounded-xl object-cover"
-                        />
+        <div className="flex justify-center flex-wrap md:flex-wrap lg:flex-nowrap lg:flex-row lg:justify-between gap-8 pb-72">
+            {direction === 'left' ? (
+                <>
+                    <div className="w-full lg:w-2/5">
+                        <div className="block lg:text-left text-center">
+                            <h2 className="text-4xl font-bold text-gray-900 dark:text-gray-200 leading-[3.25rem] mb-5">
+                                {title1} <span className="text-indigo-600">{title2}</span>
+                            </h2>
+                            <p className="text-gray-500 mb-10 max-lg:max-w-xl max-lg:mx-auto">
+                                {description}
+                            </p>
+                        </div>
                     </div>
-                    <div className="w-full lg:w-1/2">
-                        <div className="lg:max-w-xl">
-                            <div className="mb-6 lg:mb-16">
-                                <h6
-                                    className="text-lg text-center font-medium text-indigo-600 mb-2 lg:text-left"
-                                >
-                                    faqs
-                                </h6>
-                                <h2
-                                    className="text-4xl text-center font-bold text-gray-900 leading-[3.25rem] mb-5 lg:text-left"
-                                >
-                                    Looking for answers?
-                                </h2>
-                            </div>
-                            <div className="accordion-group" data-accordion="default-accordion">
-                                <div
-                                    className="accordion pb-8 border-b border-solid border-gray-200 active"
-                                    id="basic-heading-one-with-arrow-always-open"
-                                >
-                                    <button
-                                        className="accordion-toggle group inline-flex items-center justify-between text-xl font-normal leading-8 text-gray-600 w-full transition duration-500 hover:text-indigo-600 accordion-active:text-indigo-600 accordion-active:font-medium always-open"
-                                        aria-controls="basic-collapse-one-with-arrow-always-open"
-                                    >
-                                        <h5>How to create an account?</h5>
-                                        <svg
-                                            className="text-gray-900 transition duration-500 group-hover:text-indigo-600 accordion-active:text-indigo-600 accordion-active:rotate-180"
-                                            width="22"
-                                            height="22"
-                                            viewBox="0 0 22 22"
-                                            fill="none"
-                                            xmlns="http://www.w3.org/2000/svg"
-                                        >
-                                            <path
-                                                d="M16.5 8.25L12.4142 12.3358C11.7475 13.0025 11.4142 13.3358 11 13.3358C10.5858 13.3358 10.2525 13.0025 9.58579 12.3358L5.5 8.25"
-                                                stroke="currentColor"
-                                                stroke-width="1.6"
-                                                stroke-linecap="round"
-                                                stroke-linejoin="round"
-                                            ></path>
-                                        </svg>
-                                    </button>
-                                    <div
-                                        id="basic-collapse-one-with-arrow-always-open"
-                                        className="accordion-content w-full px-0 overflow-hidden pr-4 active h-full"
-                                        aria-labelledby="basic-heading-one-with-arrow-always-open"
-                                    >
-                                        <p className="text-base font-normal text-gray-600 ">
-                                            To create an account, find the &apos;Sign up&apos; or &apos;Create
-                                            account&apos; button, fill out the registration form with your
-                                            personal information, and click &apos;Create account&apos; or &apos;Sign
-                                            up.&apos; Verify your email address if needed, and then log in
-                                            to start using the platform.
-                                        </p>
-                                    </div>
-                                </div>
-                                <div
-                                    className="accordion py-8 border-b border-solid border-gray-200 "
-                                    id="basic-heading-two-with-arrow-always-open"
-                                >
-                                    <button
-                                        className="accordion-toggle group inline-flex items-center justify-between font-normal text-xl leading-8 text-gray-600 w-full transition duration-500 hover:text-indigo-600 accordion-active:text-indigo-600 accordion-active:font-medium"
-                                        aria-controls="basic-collapse-two-with-arrow-always-open"
-                                    >
-                                        <h5>Have any trust issue?</h5>
-                                        <svg
-                                            className="text-gray-900 transition duration-500 group-hover:text-indigo-600 accordion-active:text-indigo-600 accordion-active:rotate-180"
-                                            width="22"
-                                            height="22"
-                                            viewBox="0 0 22 22"
-                                            fill="none"
-                                            xmlns="http://www.w3.org/2000/svg"
-                                        >
-                                            <path
-                                                d="M16.5 8.25L12.4142 12.3358C11.7475 13.0025 11.4142 13.3358 11 13.3358C10.5858 13.3358 10.2525 13.0025 9.58579 12.3358L5.5 8.25"
-                                                stroke="currentColor"
-                                                stroke-width="1.6"
-                                                stroke-linecap="round"
-                                                stroke-linejoin="round"
-                                            ></path>
-                                        </svg>
-                                    </button>
-                                    <div
-                                        id="basic-collapse-two-with-arrow-always-open"
-                                        className="accordion-content w-full px-0 overflow-hidden pr-4"
-                                        aria-labelledby="basic-heading-two-with-arrow-always-open"
-                                    >
-                                        <p className="text-base text-gray-500 font-normal">
-                                            Our focus on providing robust and user-friendly content
-                                            management capabilities ensures that you can manage your
-                                            content with confidence, and achieve your content
-                                            marketing goals with ease.
-                                        </p>
-                                    </div>
-                                </div>
-                                <div
-                                    className="accordion py-8 border-b border-solid border-gray-200"
-                                    id="basic-heading-three-with-arrow-always-open"
-                                >
-                                    <button
-                                        className="accordion-toggle group inline-flex items-center justify-between text-xl font-normal leading-8 text-gray-600 w-full transition duration-500 hover:text-indigo-600 accordion-active:font-medium accordion-active:text-indigo-600"
-                                        aria-controls="basic-collapse-three-with-arrow-always-open"
-                                    >
-                                        <h5>How can I reset my password?</h5>
-                                        <svg
-                                            className="text-gray-900 transition duration-500 group-hover:text-indigo-600 accordion-active:text-indigo-600 accordion-active:rotate-180"
-                                            width="22"
-                                            height="22"
-                                            viewBox="0 0 22 22"
-                                            fill="none"
-                                            xmlns="http://www.w3.org/2000/svg"
-                                        >
-                                            <path
-                                                d="M16.5 8.25L12.4142 12.3358C11.7475 13.0025 11.4142 13.3358 11 13.3358C10.5858 13.3358 10.2525 13.0025 9.58579 12.3358L5.5 8.25"
-                                                stroke="currentColor"
-                                                stroke-width="1.6"
-                                                stroke-linecap="round"
-                                                stroke-linejoin="round"
-                                            ></path>
-                                        </svg>
-                                    </button>
-                                    <div
-                                        id="basic-collapse-three-with-arrow-always-open"
-                                        className="accordion-content w-full px-0 overflow-hidden pr-4"
-                                        aria-labelledby="basic-heading-three-with-arrow-always-open"
-                                    >
-                                        <p className="text-base text-gray-500 font-normal">
-                                            Our focus on providing robust and user-friendly content
-                                            management capabilities ensures that you can manage your
-                                            content with confidence, and achieve your content
-                                            marketing goals with ease.
-                                        </p>
-                                    </div>
-                                </div>
-                                <div
-                                    className="accordion py-8 "
-                                    id="basic-heading-four-with-arrow-always-open"
-                                >
-                                    <button
-                                        className="accordion-toggle group inline-flex items-center justify-between text-xl font-normal leading-8 text-gray-600 w-full transition duration-500 hover:text-indigo-600 accordion-active:font-medium accordion-active:text-indigo-600"
-                                        aria-controls="basic-collapse-four-with-arrow-always-open"
-                                    >
-                                        <h5>What is the payment process?</h5>
-                                        <svg
-                                            className="text-gray-900 transition duration-500 group-hover:text-indigo-600 accordion-active:text-indigo-600 accordion-active:rotate-180"
-                                            width="22"
-                                            height="22"
-                                            viewBox="0 0 22 22"
-                                            fill="none"
-                                            xmlns="http://www.w3.org/2000/svg"
-                                        >
-                                            <path
-                                                d="M16.5 8.25L12.4142 12.3358C11.7475 13.0025 11.4142 13.3358 11 13.3358C10.5858 13.3358 10.2525 13.0025 9.58579 12.3358L5.5 8.25"
-                                                stroke="currentColor"
-                                                stroke-width="1.6"
-                                                stroke-linecap="round"
-                                                stroke-linejoin="round"
-                                            ></path>
-                                        </svg>
-                                    </button>
-                                    <div
-                                        id="basic-collapse-four-with-arrow-always-open"
-                                        className="accordion-content w-full px-0 overflow-hidden pr-4"
-                                        aria-labelledby="basic-heading-four-with-arrow-always-open"
-                                    >
-                                        <p className="text-base text-gray-500 font-normal">
-                                            Our focus on providing robust and user-friendly content
-                                            management capabilities ensures that you can manage your
-                                            content with confidence, and achieve your content
-                                            marketing goals with ease.
-                                        </p>
-                                    </div>
+                    <div className="w-full lg:w-3/5">
+                        <div
+                            className="flex justify-center gap-y-2 lg:gap-y-0 flex-wrap md:flex-wrap lg:flex-nowrap lg:flex-row lg:justify-between lg:gap-x-8">
+                            <div className="group w-full border border-gray-300 rounded-2xl">
+                                <div className="flex items-center">
+                                    <Image
+                                        src={image}
+                                        alt="blogs tailwind section" className="rounded-2xl w-full object-cover"
+                                        width={500} height={300} unoptimized
+                                    />
                                 </div>
                             </div>
                         </div>
                     </div>
+                </>
+            ) : (
+                <>
+                    <div className="w-full lg:w-3/5">
+                        <div
+                            className="flex justify-center gap-y-2 lg:gap-y-0 flex-wrap md:flex-wrap lg:flex-nowrap lg:flex-row lg:justify-between lg:gap-x-8">
+                            <div className="group w-full border border-gray-300 rounded-2xl">
+                                <div className="flex items-center">
+                                    <Image
+                                        src={image}
+                                        alt="blogs tailwind section" className="rounded-2xl w-full object-cover"
+                                        width={500} height={300} unoptimized
+                                    />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div className="w-full lg:w-2/5">
+                        <div className="block lg:text-right text-center">
+                            <h2 className="text-4xl font-bold text-gray-900 dark:text-gray-200 leading-[3.25rem] mb-5">
+                                {title1} <span className="text-indigo-600">{title2}</span>
+                            </h2>
+                            <p className="text-gray-500 mb-10 max-lg:max-w-xl max-lg:mx-auto">
+                                {description}
+                            </p>
+                        </div>
+                    </div>
+                </>
+            )}
+        </div>
+    );
+};
+
+export default function UseCase() {
+    return (
+        <section className="bg-white dark:bg-gray-900">
+            <div className="py-24">
+                <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+                    <Case
+                        direction="left"
+                        title1="Reefer"
+                        title2="Connect"
+                        description="You can monitor the location and status of all refrigerated container units and remotely adjust settings such as temperature. With automatic alarm notifications, you can quickly respond to critical situations such as equipment malfunctions or power outages in reefers. Installed on over 600,000 refrigerated containers worldwide, it helps transport lines, multimodal carriers, and shippers achieve verified ROI."
+                        image="https://www.orbcomm.co.kr/resources/img/solution/reeferconnect/reffer1.PNG"
+                    />
+                    <Case
+                        direction="right"
+                        title1="NMS"
+                        title2=""
+                        description="You can monitor the location and status of all refrigerated container units and remotely adjust settings such as temperature. With automatic alarm notifications, you can quickly respond to critical situations such as equipment malfunctions or power outages in reefers. Installed on over 600,000 refrigerated containers worldwide, it helps transport lines, multimodal carriers, and shippers achieve verified ROI."
+                        image="/images/solutions/nms_main.png"
+                    />
+                    <Case
+                        direction="left"
+                        title1=""
+                        title2="VMS"
+                        description="You can monitor the location and status of all refrigerated container units and remotely adjust settings such as temperature. With automatic alarm notifications, you can quickly respond to critical situations such as equipment malfunctions or power outages in reefers. Installed on over 600,000 refrigerated containers worldwide, it helps transport lines, multimodal carriers, and shippers achieve verified ROI."
+                        image="https://www.orbcomm.co.kr/resources/img/solution/orbcommplatform/orbcommplatform_2.jpg"
+                    />
                 </div>
             </div>
         </section>

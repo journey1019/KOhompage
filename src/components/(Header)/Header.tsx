@@ -134,9 +134,8 @@ export default function Header() {
                                 {openDropdown === 'caseStudies' && dropdownContent('caseStudies')}
                             </li>
                             <li>
-                                <button
+                                <a href='/hardware'
                                     className="flex w-full justify-between items-center py-2 px-3 text-gray-900 border-b border-gray-100 hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:text-red-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-blue-500 md:dark:hover:bg-transparent dark:border-gray-700"
-                                    onMouseEnter={() => handleMouseEnter('hardware')}
                                 >
                                     Hardware
                                     <svg className="w-2.5 h-2.5 ms-2.5" aria-hidden="true"
@@ -144,8 +143,19 @@ export default function Header() {
                                         <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round"
                                               strokeWidth="2" d="m1 1 4 4 4-4" />
                                     </svg>
-                                </button>
-                                {openDropdown === 'hardware' && dropdownContent('hardware')}
+                                </a>
+                                {/*<button*/}
+                                {/*    className="flex w-full justify-between items-center py-2 px-3 text-gray-900 border-b border-gray-100 hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:text-red-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-blue-500 md:dark:hover:bg-transparent dark:border-gray-700"*/}
+                                {/*    onMouseEnter={() => handleMouseEnter('hardware')}*/}
+                                {/*>*/}
+                                {/*    Hardware*/}
+                                {/*    <svg className="w-2.5 h-2.5 ms-2.5" aria-hidden="true"*/}
+                                {/*         xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">*/}
+                                {/*        <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round"*/}
+                                {/*              strokeWidth="2" d="m1 1 4 4 4-4" />*/}
+                                {/*    </svg>*/}
+                                {/*</button>*/}
+                                {/*{openDropdown === 'hardware' && dropdownContent('hardware')}*/}
                             </li>
                             {/*<li onMouseEnter={() => handleMouseEnter('support')}>*/}
                             {/*    <Link href="/support"*/}
@@ -167,7 +177,7 @@ export default function Header() {
                             <div className="mt-4 md:hidden">
                                 <a href="#"
                                    className="block text-center text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-4 py-2 md:px-5 md:py-2.5 dark:bg-red-600 dark:hover:bg-red-700 focus:outline-none dark:focus:ring-red-800">
-                                    Login
+                                    Services
                                 </a>
                             </div>
                         )}

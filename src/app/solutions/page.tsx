@@ -8,6 +8,7 @@ import Hardware from '@/components/(Solution)/Hardware';
 import ContentForm from '@/components/(Solution)/ContentForm';
 import FAQ from '@/components/(Solution)/FAQ';
 import UseCase from '@/components/(Solution)/UseCase';
+import Download from '@/components/(Solution)/Download';
 
 export const metadata: Metadata = {
     title: 'Solutions',
@@ -26,6 +27,7 @@ export default function SolutionsPage() {
             <UseCase/>
             <Hardware/>
             <FAQ/>
+            <Download/>
         </section>
     )
 }
