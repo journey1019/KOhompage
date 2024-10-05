@@ -1,3 +1,4 @@
+/*
 'use client';
 
 import { useRouter } from 'next/router';
@@ -9,7 +10,8 @@ export default function BlogDetail() {
     const router = useRouter();
     const { category, id } = router.query; // URL에서 category와 id 추출
 
-    const [post, setPost] = useState(null);
+    const [post, setPost] = useState<BlogPost | null>(null);
+
 
     useEffect(() => {
         if (category && id) {
@@ -32,4 +34,13 @@ export default function BlogDetail() {
             </div>
         </div>
     );
+}
+*/
+
+export default function BoardSection() {
+    return(
+        <section>
+
+        </section>
+    )
 }
