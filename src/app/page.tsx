@@ -1,8 +1,8 @@
 import Hero from '@/components/Hero';
 import FeaturedPosts from '@/components/FeaturedPosts';
 import CarouselPosts from '@/components/CarouselPosts';
-// import CaseStudies from '@/components/CaseStudies';
-import CaseStudies from '@/components/(Home)/CaseStudies';
+// import Board from '@/components/Board';
+import Board from '@/components/Board';
 import Partners from '@/components/Partners';
 import StartNow from '@/components/StartNow';
 import Partner from '@/components/Partner';
@@ -17,7 +17,7 @@ import SubscribeSection from '@/components/SubscribeSection';
 import CarouselSolutions from '@/components/CarouselSolutions';
 import { getAllSolutions } from '@/service/solutions';
 import News from '@/components/News';
-import BlogSection from '../components/BlogSection';
+import CaseStudies from '../components/(Home)/CaseStudies';
 
 /**
  * @Todo: 스크롤 내릴 때 컴포넌트 스무스 생성
@@ -39,9 +39,9 @@ export default async function Home() {
             {/*<Solutions/>*/}
             {/*<FeaturedPosts />*/}
             {/*<CarouselPosts />*/}
-            <CaseStudies />
-            <BlogSection/>
+            <Board />
             <SubscribeSection/>
+            <CaseStudies/>
             {/*<StartNow />*/}
             {/*<News/>*/}
             <RightNow/>

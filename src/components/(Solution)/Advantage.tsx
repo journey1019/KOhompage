@@ -26,7 +26,7 @@ const products = [
 
 export default function Advantage() {
     return (
-        <div className="bg-white">
+        <div className="bg-white dark:bg-gray-900">
             <div className="mx-auto max-w-2xl px-4 py-4 sm:px-6 sm:py-24 lg:max-w-7xl lg:px-8">
                 <div className="grid grid-cols-1 gap-x-6 gap-y-5 sm:grid-cols-2 lg:grid-cols-3 xl:gap-x-8">
                     {products.map((product) => (
@@ -48,7 +48,7 @@ export default function Advantage() {
                             </div>
                             <div className="mt-4 flex justify-between">
                                 <div>
-                                    <h3 className="text-md text-gray-700 font-semibold">
+                                    <h3 className="text-md text-gray-700 font-semibold dark:text-gray-200">
                                         <span aria-hidden="true" className="absolute inset-0" />
                                         {product.name}
                                     </h3>

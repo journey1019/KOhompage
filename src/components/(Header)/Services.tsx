@@ -8,13 +8,13 @@ import {
     SquaresPlusIcon,
 } from '@heroicons/react/24/outline'
 
-const solutions = [
-    { name: 'ORBCOMM Flatform', description: 'Fleet Management Solutions', href: '#', icon: ChartPieIcon },
-    { name: 'Maritime Flatform', description: 'Driving container tracking', href: '#', icon: CursorArrowRaysIcon },
-    { name: 'NMS', description: "Network Monitoring System", href: '#', icon: FingerPrintIcon },
-    { name: 'VMS', description: "Vessel Monitoring System", href: '#', icon: FingerPrintIcon },
-    { name: 'Windward', description: 'Decision Support Platform to Accelerate Global Trade', href: '#', icon: SquaresPlusIcon },
-    { name: "Lloyd's List", description: 'Real-time ship movement monitoring', href: '#', icon: ArrowPathIcon },
+const services = [
+    { name: 'ORBCOMM Flatform', description: 'Fleet Management Solutions', url: 'https://platform.orbcomm.com/', icon: ChartPieIcon },
+    { name: 'Maritime Flatform', description: 'Driving container tracking', url: 'https://platform.orbcommmaritime.com/', icon: CursorArrowRaysIcon },
+    { name: 'NMS', description: "Network Monitoring System", url: 'https://nms.commtrace.com/', icon: FingerPrintIcon },
+    { name: 'VMS', description: "Vessel Monitoring System", url: 'https://vms.commtrace.com/', icon: FingerPrintIcon },
+    { name: 'Windward', description: 'Decision Support Platform to Accelerate Global Trade', url: 'https://windward.ai/', icon: SquaresPlusIcon },
+    { name: "Lloyd's List", description: 'Real-time ship movement monitoring', url: 'https://www.lloydslist.com/', icon: ArrowPathIcon },
 ]
 const callsToAction = [
     // { name: 'Watch demo', href: '#', icon: PlayCircleIcon },
@@ -26,8 +26,8 @@ export default function Services() {
     return (
         <Popover className="relative">
             <PopoverButton className="inline-flex items-center gap-x-1 text-sm font-semibold leading-6 text-gray-900">
-                <span>Services</span>
-                <ChevronDownIcon aria-hidden="true" className="h-5 w-5" />
+                <span className='text-black dark:text-white'>Services</span>
+                <ChevronDownIcon aria-hidden="true" className="h-5 w-5 text-black dark:text-white" />
             </PopoverButton>
 
             <PopoverPanel
@@ -36,13 +36,13 @@ export default function Services() {
             >
                 <div className="w-screen max-w-md flex-auto overflow-hidden rounded-3xl bg-white text-sm leading-6 shadow-lg ring-1 ring-gray-900/5">
                     <div className="p-2">
-                        {solutions.map((item) => (
+                        {services.map((item) => (
                             <div key={item.name} className="group relative flex gap-x-6 rounded-lg p-4 hover:bg-gray-50">
                                 <div className="mt-1 flex h-11 w-11 flex-none items-center justify-center rounded-lg bg-gray-50 group-hover:bg-white">
                                     <item.icon aria-hidden="true" className="h-6 w-6 text-gray-600 group-hover:text-indigo-600" />
                                 </div>
                                 <div>
-                                    <a href={item.href} className="font-semibold text-gray-900">
+                                    <a href={item.url} target="_blank" rel="noopener noreferrer" className="font-semibold text-gray-900">
                                         {item.name}
                                         <span className="absolute inset-0" />
                                     </a>

@@ -6,7 +6,7 @@
     "date": "2023-12-01",
     "category": "notice",
     "tags": ["회사 소식", "업데이트", "바우처"],
-    "content": "<p>2023년 12월 01일 NMS Ver 1.0이 출시 되었습니다. 업데이트 내용은 ...</p>",
+    "content": "2023년 12월 01일 NMS Ver 1.0이 출시 되었습니다. 업데이트 내용은 ...",
     "thumbnail": "https://images.pexels.com/photos/669610/pexels-photo-669610.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
     "comments": [
       {
@@ -30,7 +30,7 @@
     "date": "2024-01-28",
     "category": "news",
     "tags": ["기업뉴스", "2024년", "매출", "상승", "하락"],
-    "content": "<p>코리아오브컴에서는 간단한 설정으로 매출을 높일 수 있는, 매출 상승 도구를 제공하고 있습니다.현재는 아래 두 가지 기능을 통해 추가 구매를 유도할 수 있으며 앞으로 더 ...</p>",
+    "content": "코리아오브컴에서는 간단한 설정으로 매출을 높일 수 있는, 매출 상승 도구를 제공하고 있습니다.현재는 아래 두 가지 기능을 통해 추가 구매를 유도할 수 있으며 앞으로 더 ...",
     "thumbnail": "https://images.pexels.com/photos/210607/pexels-photo-210607.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
     "comments": []
   },
@@ -41,7 +41,7 @@
     "date": "2024-06-09",
     "category": "news",
     "tags": ["기업뉴스", "연합", "독점", "협정"],
-    "content": "<p>동일 업종의 기업이 경쟁의 제한 또는 완화를 목적으로 가격, 생산량, 상품이 팔리는 방면 따위에 대하여 협정을 맺는 것으로 형성하는 독점 형태. 또는 그 협정.</p>",
+    "content": "동일 업종의 기업이 경쟁의 제한 또는 완화를 목적으로 가격, 생산량, 상품이 팔리는 방면 따위에 대하여 협정을 맺는 것으로 형성하는 독점 형태. 또는 그 협정.",
     "thumbnail": "https://images.pexels.com/photos/9489087/pexels-photo-9489087.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
     "comments": []
   },
@@ -52,7 +52,7 @@
     "date": "2024-10-20",
     "category": "blog",
     "tags": ["windward", "리뷰", "API"],
-    "content": "<p>Windward's AI-powered solution allows stakeholders to make real-time, predictive intelligence-driven decisions, providing a 360° view of the maritime ecosystem.</p>",
+    "content": "Windward's AI-powered solution allows stakeholders to make real-time, predictive intelligence-driven decisions, providing a 360° view of the maritime ecosystem.",
     "thumbnail": "https://images.pexels.com/photos/163726/belgium-antwerp-shipping-container-163726.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
     "comments": []
   }

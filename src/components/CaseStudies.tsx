@@ -1,4 +1,4 @@
-// components/CaseStudies.tsx
+// components/Board.tsx
 'use client';
 
 import { useEffect, useState } from 'react';

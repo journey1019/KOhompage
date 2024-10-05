@@ -70,6 +70,7 @@ export default function Solutions() {
                                         <HandRaisedIcon aria-hidden="true" className="h-5 w-5 text-black dark:text-white" />
                                     </div>
                                     <div className="font-semibold pt-5">Global IoT</div>
+                                    <div className="text-sm pt-2 text-gray-400">건설장비 모니터링, 해양정보 모니터링, 기후정보 모니터링 </div>
                                 </div>
                             </a>
                         </li>
@@ -77,12 +78,14 @@ export default function Solutions() {
                     <ul>
                         <li>
                             <a href="#" className="block px-3 py-1 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700">
-                                <div className="flex flex-row items-center">
+                                <div className="flex flex-col items-start">
                                     <div
                                         className="rounded-md bg-gray-200 dark:bg-white/5 p-1 ring-1 ring-gray-300 dark:ring-white/10">
-                                        <HandRaisedIcon aria-hidden="true" className="h-5 w-5 text-black dark:text-white" />
+                                        <HandRaisedIcon aria-hidden="true"
+                                                        className="h-5 w-5 text-black dark:text-white" />
                                     </div>
-                                    <div className="font-semibold pl-3">Container IoT</div>
+                                    <div className="font-semibold pt-5">Container IoT</div>
+                                    <div className="text-sm pt-2 text-gray-400">컨테이너 및 지능형 트레일러의 추적 및 물류를 위한 Telematics 솔루션</div>
                                 </div>
                             </a>
                         </li>
@@ -90,12 +93,14 @@ export default function Solutions() {
                     <ul>
                         <li>
                             <a href="#" className="block px-3 py-1 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700">
-                                <div className="flex flex-row items-center">
+                                <div className="flex flex-col items-start">
                                     <div
                                         className="rounded-md bg-gray-200 dark:bg-white/5 p-1 ring-1 ring-gray-300 dark:ring-white/10">
-                                        <HandRaisedIcon aria-hidden="true" className="h-5 w-5 text-black dark:text-white" />
+                                        <HandRaisedIcon aria-hidden="true"
+                                                        className="h-5 w-5 text-black dark:text-white" />
                                     </div>
-                                    <div className="font-semibold pl-3">Satellite</div>
+                                    <div className="font-semibold pt-5">Satellite</div>
+                                    <div className="text-sm pt-2 text-gray-400">전세계 모든 지역에서의 AIS 정보 수집 및 제공</div>
                                 </div>
                             </a>
                         </li>
@@ -103,12 +108,14 @@ export default function Solutions() {
                     <ul>
                         <li>
                             <a href="#" className="block px-3 py-1 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700">
-                                <div className="flex flex-row items-center">
+                                <div className="flex flex-col items-start">
                                     <div
                                         className="rounded-md bg-gray-200 dark:bg-white/5 p-1 ring-1 ring-gray-300 dark:ring-white/10">
-                                        <HandRaisedIcon aria-hidden="true" className="h-5 w-5 text-black dark:text-white" />
+                                        <HandRaisedIcon aria-hidden="true"
+                                                        className="h-5 w-5 text-black dark:text-white" />
                                     </div>
-                                    <div className="font-semibold pl-3">AIS</div>
+                                    <div className="font-semibold pt-5">AIS</div>
+                                    <div className="text-sm pt-2 text-gray-400">선박의 식별, 위치, 탐색을 지원하고 해양 안전을 향상</div>
                                 </div>
                             </a>
                         </li>

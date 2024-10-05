@@ -4,6 +4,10 @@ import Greet from '@/components/(Solution)/Greet';
 import Intro from '@/components/(Solution)/Intro';
 import Card from '@/components/(Solution)/Card';
 import Advantage from '@/components/(Solution)/Advantage';
+import Hardware from '@/components/(Solution)/Hardware';
+import ContentForm from '@/components/(Solution)/ContentForm';
+import FAQ from '@/components/(Solution)/FAQ';
+import UseCase from '@/components/(Solution)/UseCase';
 
 export const metadata: Metadata = {
     title: 'Solutions',
@@ -18,6 +22,10 @@ export default function SolutionsPage() {
             <Intro />
             <Card/>
             <Advantage/>
+            <ContentForm/>
+            <UseCase/>
+            <Hardware/>
+            <FAQ/>
         </section>
     )
 }

@@ -3,7 +3,7 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import Mode from '@/components/(Header)/Mode';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Solutions from './Solutions';
 import Hardware from './Hardware';
 import CaseStudies from './CaseStudies';
@@ -18,6 +18,12 @@ export default function Header() {
     // const { t } = useTranslation();
     const [openDropdown, setOpenDropdown] = useState<string | null>(null);
     const [isMenuOpen, setIsMenuOpen] = useState(false); // 메뉴 오픈 상태 추가
+    const [darkMode, setDarkMode] = useState(false);
+
+    useEffect(() => {
+        const storedTheme = localStorage.getItem('theme');
+        setDarkMode(storedTheme === 'dark');
+    }, []);
 
     const handleMouseEnter = (menu: string) => setOpenDropdown(menu);
     const handleMouseLeave = () => setOpenDropdown(null);
@@ -48,7 +54,13 @@ export default function Header() {
             <nav className="bg-white border-gray-200 dark:bg-gray-900">
                 <div className="flex flex-wrap justify-between items-center mx-auto max-w-screen-2xl p-4">
                     <Link href="/" className="flex items-center space-x-3 rtl:space-x-reverse">
-                        <Image src={`/images/KO_SmallLogo.png`} alt="KO Logo" width={180} height={130} unoptimized />
+                        <Image
+                            src={darkMode ? `/images/KO_SmallLogo_Dark.png` : `/images/KO_SmallLogo.png`}
+                            alt="KO Logo"
+                            width={180}
+                            height={130}
+                            unoptimized
+                        />
                     </Link>
                     <div className="flex items-center md:order-2 space-x-1 md:space-x-2 rtl:space-x-reverse">
                         {!isMenuOpen && (
@@ -63,7 +75,7 @@ export default function Header() {
                             //     </svg>
                             // </a>
                         )}
-                        <Mode />
+                        <Mode darkMode={darkMode} setDarkMode={setDarkMode} />
                         <GrLanguage className="ml-2 cursor-pointer dark:text-white" />
                         <button
                             onClick={toggleMenu} // Toggle menu on click
@@ -93,18 +105,6 @@ export default function Header() {
                     <div id="mega-menu-full-image"
                          className={`items-center justify-between w-full md:flex md:w-auto md:order-1 ${isMenuOpen ? 'block h-screen' : 'hidden'}`}> {/* 메뉴 오픈 시 높이를 full로 설정 */}
                         <ul className="flex flex-col mt-4 font-medium md:flex-row md:mt-0 md:space-x-8 rtl:space-x-reverse">
-                            <li>{!isMenuOpen && (
-                                <Services/>
-                                // <a href="#"
-                                //    className="hidden sm:flex items-center text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-4 py-2 md:px-5 md:py-2.5 dark:bg-red-600 dark:hover:bg-red-700 focus:outline-none dark:focus:ring-red-800">
-                                //     Services
-                                //     <svg className="w-2.5 h-2.5 ms-2.5" aria-hidden="true"
-                                //          xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
-                                //         <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round"
-                                //               strokeWidth="2" d="m1 1 4 4 4-4" />
-                                //     </svg>
-                                // </a>
-                            )}</li>
                             <li>
                                 <button
                                     className="flex w-full justify-between items-center py-2 px-3 text-gray-900 border-b border-gray-100 hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:text-red-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-blue-500 md:dark:hover:bg-transparent dark:border-gray-700"
