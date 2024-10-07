@@ -6,21 +6,21 @@ const contents = [
         title: "Search and Discovery",
         desc: "Website visitors today demand a frictionless user experience — especially when using search. Because of the high standards we tend to offer.",
         img: "https://www.material-tailwind.com/image/blog-11.jpeg",
-        category: "blog"
+        url: "/"
     },
     {
         index: 2,
         title: "Last visits in US",
         desc: "Wealth creation is an evolutionarily recent positive-sum game. Status is an old zero-sum game. Those attacking wealth creation are often just seeking status.",
         img: "https://www.material-tailwind.com/image/blog-10.jpeg",
-        category: "news"
+        url: "/"
     },
     {
         index: 3,
         title: "Grow in a beautiful area",
         desc: "Free people make free choices. Free choices mean you get unequal outcomes. You can have freedom, or you can have equal outcomes. You can't have both.",
         img: "https://demos.creative-tim.com/material-kit-pro/assets/img/examples/card-blog2.jpg",
-        category: "blog"
+        url: "/"
     },
 ];
 
@@ -36,8 +36,8 @@ export function CaseStudies() {
                 </p>
 
                 <div className="mt-10 grid grid-cols-1 gap-10 lg:grid-cols-3">
-                    {contents.map(({ index, title, desc, img, category }) => (
-                        <ContentCard key={title} img={img} title={title} desc={desc} index={index} category={category}/>
+                    {contents.map(({ index, title, desc, img, url }) => (
+                        <ContentCard key={title} img={img} title={title} desc={desc} index={index} url={url}/>
                     ))}
                 </div>
 

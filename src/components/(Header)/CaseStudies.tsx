@@ -70,7 +70,7 @@ export default function Hardware() {
                     className="grid max-w-screen-xl px-4 py-3 mx-auto text-gray-900 dark:text-white grid-cols-1 sm:grid-cols-4 md:px-6">
                     <ul>
                         <li>
-                            <a href="/solutions/globalIoT"
+                            <a href="/casestudies/case_1"
                                className="block px-3 py-1 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700">
                                 <div className="flex items-center">
                                     <div
@@ -78,14 +78,14 @@ export default function Hardware() {
                                         <HandRaisedIcon aria-hidden="true"
                                                         className="h-5 w-5 text-black dark:text-white" />
                                     </div>
-                                    <div className="font-semibold">Global IoT</div>
+                                    <div className="font-semibold">홍수통제소</div>
                                 </div>
                             </a>
                         </li>
                     </ul>
                     <ul>
                         <li>
-                            <a href="/solutions/globalIoT"
+                            <a href="/casestudies/case_2"
                                className="block px-3 py-1 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700">
                                 <div className="flex items-center">
                                     <div
@@ -93,14 +93,14 @@ export default function Hardware() {
                                         <HandRaisedIcon aria-hidden="true"
                                                         className="h-5 w-5 text-black dark:text-white" />
                                     </div>
-                                    <div className="font-semibold">Global IoT</div>
+                                    <div className="font-semibold">CASE_2</div>
                                 </div>
                             </a>
                         </li>
                     </ul>
                     <ul>
                         <li>
-                            <a href="/solutions/globalIoT"
+                            <a href="/casestudies/case_3"
                                className="block px-3 py-1 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700">
                                 <div className="flex items-center">
                                     <div
@@ -108,14 +108,14 @@ export default function Hardware() {
                                         <HandRaisedIcon aria-hidden="true"
                                                         className="h-5 w-5 text-black dark:text-white" />
                                     </div>
-                                    <div className="font-semibold">Global IoT</div>
+                                    <div className="font-semibold">CASE_3</div>
                                 </div>
                             </a>
                         </li>
                     </ul>
                     <ul>
                         <li>
-                            <a href="/solutions/globalIoT"
+                            <a href="/casestudies/case_4"
                                className="block px-3 py-1 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700">
                                 <div className="flex items-center">
                                     <div
@@ -123,7 +123,7 @@ export default function Hardware() {
                                         <HandRaisedIcon aria-hidden="true"
                                                         className="h-5 w-5 text-black dark:text-white" />
                                     </div>
-                                    <div className="font-semibold">Global IoT</div>
+                                    <div className="font-semibold">CASE_4</div>
                                 </div>
                             </a>
                         </li>

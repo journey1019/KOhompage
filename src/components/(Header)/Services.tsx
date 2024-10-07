@@ -19,7 +19,7 @@ const services = [
 const callsToAction = [
     // { name: 'Watch demo', href: '#', icon: PlayCircleIcon },
     { name: 'Admin', href: '#', icon: UserIcon },
-    { name: 'Contact sales', href: '/support', icon: PhoneIcon },
+    { name: 'Contact sales', href: '/contactus', icon: PhoneIcon },
 ]
 
 export default function Services() {

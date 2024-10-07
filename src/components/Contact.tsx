@@ -9,10 +9,10 @@ const LINKS = [
 
 export default function Contact() {
     return(
-        <section className='flex flex-col items-center'>
-            <h2 className='text-3xl font-bold my-2'>Contact Us</h2>
+        <section className='flex flex-col items-center dark:bg-gray-900'>
+            <h2 className='text-3xl font-bold my-2 dark:text-white'>Contact Us</h2>
             <p>info@orbcomm.co.kr</p>
-            <ul className='flex gap-4 my-2'>
+            <ul className='flex gap-4 my-2 dark:text-white'>
                 {LINKS.map((link, index) =>
                     <a
                         key={index}
@@ -25,7 +25,7 @@ export default function Contact() {
                     </a>)
                 }
             </ul>
-            <h2 className='text-3xl font-bold my-8'>Or Send me an email</h2>
+            <h2 className='text-3xl font-bold my-8 dark:text-gray-400'>Or Send me an email</h2>
             <ContactForm/>
         </section>
     )

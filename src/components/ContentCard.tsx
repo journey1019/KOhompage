@@ -5,12 +5,12 @@ interface ContentCardPropsType {
     title: string;
     desc: string;
     img: string;
-    category: string;
+    url: string;
 }
 
-export default function ContentCard({ index, title, desc, img, category }: ContentCardPropsType) {
+export default function ContentCard({ index, title, desc, img, url }: ContentCardPropsType) {
     return (
-        <a href={`/board/board_${index}`} className="block">
+        <a href={`/board/${url}`} className="block">
             <div className="relative min-h-[30rem] rounded-xl overflow-hidden grid items-end cursor-pointer transition-transform transform hover:scale-105 hover:border-2 hover:border-blue-500">
                 <img
                     src={img}

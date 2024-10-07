@@ -8,79 +8,156 @@ export default function Footer() {
         //     <p className='text-white'>{'06536 서울특별시 서초구 강남대로 525 세영제이타워 15층 Tel : 02-3444-7311 Fax : 02-3444-7312'}</p>
         //     <p className='text-red-700'>{'© 2024 KOREAORBCOMM, Inc. All rights reserved'}</p>
         // </section>
-        <section className="bg-white dark:bg-gray-900">
+        <section className="bg-gray-100 dark:bg-gray-800">
             <div className="mx-auto w-full">
-                <div className="grid grid-cols-2 gap-8 px-4 py-6 lg:py-8 md:grid-cols-4">
+                <div className="grid grid-cols-2 gap-8 px-4 py-6 lg:py-8 md:grid-cols-5">
                     <div>
                         <h2 className="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white">Solutions</h2>
                         <ul className="text-gray-500 dark:text-gray-400 font-medium">
-                            <li className="mb-4">
+                            <li className="mb-2">
                                 <a href="#solution/globalIoT" className="hover:underline">Global IoT</a>
                             </li>
-                            <li className="mb-4">
+                            <li className="mb-2"><a href="#solution/globalIoT"
+                                                    className="hover:underline text-gray-400 dark:text-gray-300 text-xs">OGx</a>
+                            </li>
+                            <li className="mb-2"><a href="#solution/globalIoT"
+                                                    className="hover:underline text-gray-400 dark:text-gray-300 text-xs">Quectel</a>
+                            </li>
+                            <li className="mb-4"><a href="#solution/globalIoT"
+                                                    className="hover:underline text-gray-400 dark:text-gray-300 text-xs">Sigfox</a>
+                            </li>
+                            <li className="mb-2">
                                 <a href="#solution/containerIoT" className="hover:underline">Container IoT</a>
                             </li>
-                            <li className="mb-4">
+                            <li className="mb-2"><a href="#solution/globalIoT"
+                                                    className="hover:underline text-gray-400 dark:text-gray-300 text-xs">Reefer</a>
+                            </li>
+                            <li className="mb-2"><a href="#solution/globalIoT"
+                                                    className="hover:underline text-gray-400 dark:text-gray-300 text-xs">Dry</a>
+                            </li>
+                            <li className="mb-2"><a href="#solution/globalIoT"
+                                                    className="hover:underline text-gray-400 dark:text-gray-300 text-xs">Data
+                                Loger</a></li>
+                            <li className="mb-4"><a href="#solution/globalIoT"
+                                                    className="hover:underline text-gray-400 dark:text-gray-300 text-xs">Terminal</a>
+                            </li>
+                            <li className="mb-2">
                                 <a href="#solution/satellite" className="hover:underline">Satellite</a>
                             </li>
-                            <li className="mb-4">
+                            <li className="mb-2"><a href="#solution/globalIoT"
+                                                    className="hover:underline text-gray-400 dark:text-gray-300 text-xs">VSAT</a>
+                            </li>
+                            <li className="mb-4"><a href="#solution/globalIoT"
+                                                    className="hover:underline text-gray-400 dark:text-gray-300 text-xs">Starlink</a>
+                            </li>
+                            <li className="mb-2">
                                 <a href="#solution/ais" className="hover:underline">AIS</a>
+                            </li>
+                            <li className="mb-2"><a href="#solution/globalIoT"
+                                                    className="hover:underline text-gray-400 dark:text-gray-300 text-xs">Satellite</a>
                             </li>
                         </ul>
                     </div>
                     <div>
                         <h2 className="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white">Hardware</h2>
                         <ul className="text-gray-500 dark:text-gray-400 font-medium">
+                            <li className="mb-2"><a href="#solution/globalIoT"
+                                                    className="hover:underline text-gray-400 dark:text-gray-300 text-xs">GT1200
+                                시리즈 (Satellite)</a></li>
+                            <li className="mb-2"><a href="#solution/globalIoT"
+                                                    className="hover:underline text-gray-400 dark:text-gray-300 text-xs">CT3500
+                                (Celluar)</a></li>
+                            <li className="mb-2"><a href="#solution/globalIoT"
+                                                    className="hover:underline text-gray-400 dark:text-gray-300 text-xs">ST2100
+                                시리즈 (Satellite)</a></li>
+                            <li className="mb-2"><a href="#solution/globalIoT"
+                                                    className="hover:underline text-gray-400 dark:text-gray-300 text-xs">ST6000
+                                시리즈 (Satellite)</a></li>
+                            <li className="mb-2"><a href="#solution/globalIoT"
+                                                    className="hover:underline text-gray-400 dark:text-gray-300 text-xs">IDP-800
+                                (Satellite)</a></li>
+                            <li className="mb-2"><a href="#solution/globalIoT"
+                                                    className="hover:underline text-gray-400 dark:text-gray-300 text-xs">ST6000
+                                시리즈 (Satellite)</a></li>
+                            <li className="mb-2"><a href="#solution/globalIoT"
+                                                    className="hover:underline text-gray-400 dark:text-gray-300 text-xs">ST-9100
+                                (Satellite and Dual mode)</a></li>
+                            <li className="mb-2"><a href="#solution/globalIoT"
+                                                    className="hover:underline text-gray-400 dark:text-gray-300 text-xs">QPRO
+                                (Satellite and Dual mode)</a></li>
+                            <li className="mb-2"><a href="#solution/globalIoT"
+                                                    className="hover:underline text-gray-400 dark:text-gray-300 text-xs">Q4000
+                                (Satellite and Dual mode)</a></li>
+                            <li className="mb-2"><a href="#solution/globalIoT"
+                                                    className="hover:underline text-gray-400 dark:text-gray-300 text-xs">OG2
+                                and OGi (Satellite)</a></li>
+                            <li className="mb-2"><a href="#solution/globalIoT"
+                                                    className="hover:underline text-gray-400 dark:text-gray-300 text-xs">VSAT
+                                Antenna</a></li>
+                            <li className="mb-2"><a href="#solution/globalIoT"
+                                                    className="hover:underline text-gray-400 dark:text-gray-300 text-xs">iDirect
+                                Modem</a></li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h2 className="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white">Case Studies</h2>
+                        <ul className="text-gray-500 dark:text-gray-400 font-medium">
                             <li className="mb-4">
-                                <a href="#hardware/st6000-series" className="hover:underline">ST Series</a>
+                                <a href="#" className="hover:underline">Case 1</a>
                             </li>
                             <li className="mb-4">
-                                <a href="#hardware/gt1200-series" className="hover:underline">GT Series</a>
+                                <a href="#" className="hover:underline">Case 2</a>
                             </li>
                             <li className="mb-4">
-                                <a href="#hardware/og-series" className="hover:underline">OG2 and OGi</a>
+                                <a href="#" className="hover:underline">Case 3</a>
                             </li>
                             <li className="mb-4">
-                                <a href="#hardware/vsat-antenna" className="hover:underline">VSAT Antenna</a>
+                                <a href="#" className="hover:underline">Case 4</a>
                             </li>
                         </ul>
                     </div>
                     <div>
                         <h2 className="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white">Support</h2>
                         <ul className="text-gray-500 dark:text-gray-400 font-medium">
-                            <li className="mb-4">
-                                <a href="#" className="hover:underline">Discord Server</a>
+                            <li className="mb-2">
+                                <a href="#" className=" hover:underline">To inquire</a>
                             </li>
-                            <li className="mb-4">
-                                <a href="#" className="hover:underline">Twitter</a>
+                            <li className="mb-2">
+                                <a href="#" className="hover:underline">Resources</a>
                             </li>
-                            <li className="mb-4">
-                                <a href="#" className="hover:underline">Facebook</a>
+                            <li className="mb-2">
+                                <a href="#" className="hover:underline">Support Policy</a>
                             </li>
-                            <li className="mb-4">
-                                <a href="#" className="hover:underline">Contact Us</a>
+                            <li className="mb-2">
+                                <a href="#" className="hover:underline">Brochure</a>
+                            </li>
+                            <li className="mb-2">
+                                <a href="#" className="hover:underline">News Room</a>
+                            </li>
+                            <li className="mb-2">
+                                <a href="#" className="hover:underline">Guides</a>
                             </li>
                         </ul>
                     </div>
                     <div>
                         <h2 className="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white">Company</h2>
                         <ul className="text-gray-500 dark:text-gray-400 font-medium">
-                            <li className="mb-4">
-                                <a href="#" className=" hover:underline">About</a>
+                            <li className="mb-2">
+                                <a href="#" className=" hover:underline">About us</a>
                             </li>
-                            <li className="mb-4">
+                            <li className="mb-2">
+                                <a href="#" className="hover:underline">Partners</a>
+                            </li>
+                            <li className="mb-2">
                                 <a href="#" className="hover:underline">Careers</a>
                             </li>
-                            <li className="mb-4">
-                                <a href="#" className="hover:underline">Brand Center</a>
-                            </li>
-                            <li className="mb-4">
-                                <a href="#" className="hover:underline">Blog</a>
+                            <li className="mb-2">
+                                <a href="#" className="hover:underline">Contact us</a>
                             </li>
                         </ul>
                     </div>
                 </div>
-                <div className="px-4 py-6 bg-gray-100 dark:bg-gray-700 md:flex md:items-center md:justify-between">
+                <div className="px-4 py-6 bg-gray-200 dark:bg-gray-700 md:flex md:items-center md:justify-between">
                     <span className="text-sm text-gray-500 dark:text-gray-300 sm:text-center">© 2024 <a
                         href="https://flowbite.com/">KOREA ORBCOMM™</a>. All Rights Reserved.
                     </span>

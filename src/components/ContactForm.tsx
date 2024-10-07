@@ -45,7 +45,7 @@ export default function ContactForm() {
     }
 
     return (
-        <div className="flex flex-col justify-center items-center min-h-screen bg-gray-100 p-4 w-full">
+        <div className="flex flex-col justify-center items-center min-h-screen bg-gray-100 dark:bg-gray-900 p-4 w-full">
             <div className='flex flex-col py-4'>{banner && <Banner banner={banner} />}</div>
             <form className="w-full max-w-lg bg-white p-8 rounded-lg shadow-md" onSubmit={onSubmit}>
                 <h2 className="text-2xl font-bold mb-6 text-gray-800 text-center">Contact Us</h2>
