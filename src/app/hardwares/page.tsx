@@ -15,7 +15,7 @@ export const metadata = {
 export default async function HardwarePage() {
     const posts = await getAllPosts();
     // @ts-ignore
-    const tags = [...new Set(posts.map((post) => post.category))]; // 중복 허용 X -> 고유한 tags
+    const tags = [...new Set(posts.map((post) => post.tag))]; // 중복 허용 X -> 고유한 tags
     return(
         <FilterableHardware posts={posts} tags={tags}/>
     )

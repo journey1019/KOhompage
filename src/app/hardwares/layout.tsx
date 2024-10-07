@@ -42,7 +42,7 @@ export default function HardwareLayout({ children }: Props) {
                         <div id="dropdown"
                              className="z-10 absolute bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700 mt-1 top-full left-0"> {/* mt-1 추가 */}
                             <ul className="py-2 text-sm text-gray-700 dark:text-gray-200 border border-white rounded-lg" aria-labelledby="dropdown-button">
-                                {['Mockups', 'Templates', 'Design', 'Logos'].map(category => (
+                                {['GT1200', 'CT3500', 'ST2100', 'ST6000', 'IDP-800', 'ST-9100', 'QPRO', 'Q4000', 'OG2OGi', 'VSAT', 'iDirect'].map(category => (
                                     <li key={category}>
                                         <button
                                             type="button"
@@ -62,7 +62,7 @@ export default function HardwareLayout({ children }: Props) {
                             value={searchValue} // 입력값을 상태로 관리
                             onChange={(e) => setSearchValue(e.target.value)} // 입력값 변경 시 상태 업데이트
                             className="block p-2.5 w-full z-20 text-sm text-gray-900 bg-gray-50 rounded-e-lg border-s-gray-50 border-s-2 border border-gray-300 focus:ring-red-500 focus:border-red-500 dark:bg-gray-700 dark:border-s-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:border-red-500"
-                            placeholder="Search Mockups, Logos, Design Templates..." required
+                            placeholder="Search GT1200, CT3500, ST2100 ... Tags" required
                         />
                         <button
                             type="submit"

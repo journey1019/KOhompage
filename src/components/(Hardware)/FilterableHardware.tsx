@@ -27,8 +27,8 @@ export default function FilterableHardware({ posts, tags }: Props) {
     const filtered =
         selected === ALL_HARDWARE
             ? posts
-            : posts.filter((post) => post.category === selected);
-            // : posts.filter((post) => post.tag.includes(selected));
+            // : posts.filter((post) => post.category === selected);
+            : posts.filter((post) => post.tag.includes(selected));
     return(
         <section>
             <Tags tags={[ALL_HARDWARE, ...tags]} selected={selected} onClick={setSelected}/>
