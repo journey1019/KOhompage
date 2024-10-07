@@ -1,0 +1,163 @@
+[
+  {
+    "title": "GT1200 Series (Satellite)",
+    "description": "차세대 GT1200 시리즈는 개선된 태양전지판, 무선 센서, 더 빠르고 안전한 현장 설치 및 더 많은 고급 기능을 지원하는 초소형 Dry Container 및 트레일러 추적 솔루션입니다. 독립형 또는 화물 센서가 장착된 올인원 장치로 제공됩니다.",
+    "brochure": "",
+    "devkit": "",
+    "category": "",
+    "tag": [
+      "gt1200",
+      "Trailer Tracking",
+      "Dry Van",
+      "Chassis and Dry Container"
+    ],
+    "path": "GT1200-series",
+    "featured": true
+  },
+  {
+    "title": "CT3500 (Celluar)",
+    "description": "CT 3500은 육지, 철도 또는 바다의 Supply Chain의 모든 지점에서 자산을 완벽하게 파악하고 제어할 수 있도록 하는 원격 냉동컨테이너 관리의 차세대 기술입니다. 최첨단의 텔레매틱스 장치는 화주 및 운송업자에게 포괄적인 보고서, 분석, 경고 및 원격 양방향 제어 기능을 제공하여 컨테이너 운영을 간소화하고 효율성을 높일 수 있도록 지원합니다. CT 3500은 타의 추종을 불허하는 글로벌 LTE 커버리지와 LoRa, Bluetooth 5, NFC 기술을 지원하며 위성 연결 옵션도 갖추고 있습니다.",
+    "brochure": "",
+    "devkit": "",
+    "category": "",
+    "tag": [
+      "CT3500",
+      "Intermodal Containers and Cargo Security",
+      "NMS",
+      "VMS",
+      "Reefer Connect"
+    ],
+    "path": "CT3500",
+    "featured": false
+  },
+  {
+    "title": "ST2100 시리즈 (Satellite)",
+    "description": "ORBCOM ST2100은 전 세계 대부분의 원격지에서 신뢰할 수 있는 글로벌 위성 연결을 제공합니다. 많은 기능과 방수환경의 ST2100은 소형·대형의 상용차, 레일카, 중장비 등과 같은 모바일 자산에 설치할 수 있습니다. 또한 석유화학용 산업 및 환경에서 사용되는 파이프라인, 펌프, 발전기 및 탱크와 같은 고정 자산을 모니터링하는 데 적합합니다.",
+    "brochure": "",
+    "devkit": "",
+    "category": "",
+    "tag": [
+      "Maritime",
+      "ORBCOMM Platform"
+    ],
+    "path": "ST2100-series",
+    "featured": false
+  },
+  {
+    "title": "ST6000 시리즈 (Satellite)",
+    "description": "ST6000 시리즈 위성 터미널은 선박과 부표 등을 위한 연근해 및 대양과 육상을 연결하는 완벽한 통신장비입니다. 안테나 일체형 안테나로 프로그램 내장이 가능한 위성 통신단말기로 Inmarsat IsatData Pro 네트워크를 연결하는 최적의 제품입니다. ST6000 시리즈 위성 터미널은 Inmarsat IsatData Pro 네트워크를 통한 글로벌 위성 연결을 통해 원격 지역에서 작동하는 산업 자산에 대한 완벽한 가시성 확보 및 제어 기능을 제공합니다. 고객의 요구에 맞는 프로그램을 개발하여 내장이 가능합니다.",
+    "brochure": "",
+    "devkit": "",
+    "category": "",
+    "tag": [
+      "Maritime",
+      "ORBCOMM Platform",
+      "Reefer Connect",
+      "General and Multi-Purpose Asset Tracking",
+      "Monitoring"
+    ],
+    "path": "ST6000-series",
+    "featured": true
+  },
+  {
+    "title": "IDP-800 (Satellite)",
+    "description": "IDP-800은 트레일러, 컨테이너, 선박 등을 거의 실시간으로 추적하기 위해 양방향 Inmarsat IsatData Pro 위성 네트워크를 사용하는 배터리가 내장되어 있는 로우 프로파일 프로그래밍이 가능한 위성 통신 장치입니다.",
+    "brochure": "",
+    "devkit": "",
+    "category": "",
+    "tag": [
+      "Maritime",
+      "Reefer Connect"
+    ],
+    "path": "IDP-800",
+    "featured": false
+  },
+  {
+    "title": "ST-9100 (Satellite and Dual mode)",
+    "description": "모든 기능을 프로그래밍이 가능한 ST9100은 셀룰러 네트워크 커버리지와 양방향 Isat Data Pro 위성 서비스를 결합한 듀얼 모드 위성/셀룰러 장치입니다. 이 다용도 장치를 통해 세계 오지의 육지와 해상에서의 다양한 애플리케이션에 대한 자산 추적 및 모니터링이 가능합니다.",
+    "brochure": "",
+    "devkit": "",
+    "category": "",
+    "tag": [
+      "General and Multi-Purpose Asset Tracking",
+      "Satellite",
+      "AIS",
+      "Monitoring"
+    ],
+    "path": "ST-9100",
+    "featured": false
+  },
+  {
+    "title": "QPRO (Satellite and Dual mode)",
+    "description": "ORBCOMM 위성 네트워크를 사용하는 QPRO는 글로벌 자산 추적 기능의 확장을 위한 통신장비입니다. 다양한 M2M 애플리케이션에서 입증된 견고하고 사용자 정의 프로그램이 내장 가능한 QPRO는 가장 열악한 환경의 여러 네트워크에서 동작합니다.",
+    "brochure": "",
+    "devkit": "QPRO",
+    "tag": [
+      "M2M",
+      "General and Multi-Purpose Asset Tracking",
+      "Finance"
+    ],
+    "path": "",
+    "featured": false
+  },
+  {
+    "title": "Q4000 (Satellite and Dual mode)",
+    "description": "Q4000은 QPRO의 내부에 들어있는 위성 통신 모듈로 ORBCOMM 위성 통신망 및International 이동통신망을 사용할 수 있는 단말기입니다. 사용자 정의 프로그램을 내장할 수 있는 M2M 어플리케이션에 많이 사용됩니다.",
+    "brochure": "",
+    "devkit": "",
+    "category": "",
+    "tag": [
+      "M2M",
+      "Satellite",
+      "Communication"
+    ],
+    "path": "Q4000",
+    "featured": false
+  },
+  {
+    "title": "OG2 and OGi (Satellite)",
+    "description": "ORBCOMM 통신망을 사용할 수 있는 OG2 모뎀과 Inmarsat IsatData Pro 네트워크를 이용할 수 있는 OGi 모뎀은 동일한 설치공간, 커넥터, 전원, 통신 인터페이스 및 프로그래밍 환경 및 프로토콜을 제공합니다. 경제성과 효율성을 모두 갖춘 제품으로 M2M의 어플리케이션에 많이 사용됩니다.",
+    "brochure": "",
+    "devkit": "",
+    "category": "",
+    "tag": [
+      "M2M",
+      "Economy",
+      "Connector",
+      "Power",
+      "Protocol"
+    ],
+    "path": "OG2&OGi",
+    "featured": false
+  },
+  {
+    "title": "VSAT Antenna",
+    "description": "2001년부터 30여개 이상의 국가에 선박용 위성안테나를 수출하는 KNS 위성 안테나는 고성능 고품질의 제품을 경쟁력 있는 가격에 제공합니다. 3축제어 플랫폼 사용으로 안정된 위성 추적이 가능하며, 유지보수가 용이한 단순한 구조로 네트워크에 대한 호환성이 뛰어나며, MIL-STD 규격을 통과한 제품입니다.",
+    "brochure": "",
+    "devkit": "",
+    "category": "",
+    "tag": [
+      "Antenna",
+      "Satellite",
+      "MIL-STD",
+      "80cm",
+      "100cm"
+    ],
+    "path": "VSAT-Antenna",
+    "featured": false
+  },
+  {
+    "title": "iDirect Modem",
+    "description": "iDirect Modem은 VSAT 위성용 라우터로 VSAT 산업에서 가장 범용성이 있는 제품입니다. 완전히 새로운 멀티 코어 하드웨어 시스템을 기반으로 하는 X7은 대역폭이 많은 애플리케이션 및 IP TV, 원격 교육, HD 방송 및 비디오와 같은 멀티 캐스트 서비스에 필요한 데이터 속도를 제공할 수 있습니다.",
+    "brochure": "",
+    "devkit": "",
+    "category": "",
+    "tag": [
+      "VSAT",
+      "Satellite",
+      "Multi-Core"
+    ],
+    "path": "iDirect",
+    "featured": false
+  }
+]
