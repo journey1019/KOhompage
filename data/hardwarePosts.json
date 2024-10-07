@@ -11,7 +11,7 @@
       "Dry Van",
       "Chassis and Dry Container"
     ],
-    "path": "GT1200-series",
+    "path": "GT-1200",
     "featured": true
   },
   {
@@ -27,7 +27,7 @@
       "VMS",
       "Reefer Connect"
     ],
-    "path": "CT3500",
+    "path": "CT-3500",
     "featured": false
   },
   {
@@ -40,7 +40,7 @@
       "Maritime",
       "ORBCOMM Platform"
     ],
-    "path": "ST2100-series",
+    "path": "ST-2100",
     "featured": false
   },
   {
@@ -56,7 +56,7 @@
       "General and Multi-Purpose Asset Tracking",
       "Monitoring"
     ],
-    "path": "ST6000-series",
+    "path": "ST-6000",
     "featured": true
   },
   {
@@ -97,7 +97,7 @@
       "General and Multi-Purpose Asset Tracking",
       "Finance"
     ],
-    "path": "",
+    "path": "QPRO",
     "featured": false
   },
   {
@@ -127,7 +127,7 @@
       "Power",
       "Protocol"
     ],
-    "path": "OG2&OGi",
+    "path": "OG2OGi",
     "featured": false
   },
   {
@@ -143,7 +143,7 @@
       "80cm",
       "100cm"
     ],
-    "path": "VSAT-Antenna",
+    "path": "VSAT_Antenna",
     "featured": false
   },
   {
@@ -157,7 +157,7 @@
       "Satellite",
       "Multi-Core"
     ],
-    "path": "iDirect",
+    "path": "idrectX7",
     "featured": false
   }
 ]

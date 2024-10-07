@@ -1,13 +1,5 @@
 export default function Footer() {
     return (
-        // <section className='bg-slate-900 text-white py-2 text-sm text-center flex justify-between'>
-        //     <p>{'06425 서울특별시 서초구 강남대로 525 세영제이타워 15층 Tel : 02-3444-7311 Fax : 02-3444-7312'}</p>
-        //     <p>{'Copyright 2024 KOREA ORBCOMM Itd.'}</p>
-        // </section>
-        // <section className='flex grid bg-slate-900 py-2 text-sm text-center'>
-        //     <p className='text-white'>{'06536 서울특별시 서초구 강남대로 525 세영제이타워 15층 Tel : 02-3444-7311 Fax : 02-3444-7312'}</p>
-        //     <p className='text-red-700'>{'© 2024 KOREAORBCOMM, Inc. All rights reserved'}</p>
-        // </section>
         <section className="bg-gray-100 dark:bg-gray-800">
             <div className="mx-auto w-full">
                 <div className="grid grid-cols-2 gap-8 px-4 py-6 lg:py-8 md:grid-cols-5">
@@ -103,16 +95,16 @@ export default function Footer() {
                         <h2 className="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white">Case Studies</h2>
                         <ul className="text-gray-500 dark:text-gray-400 font-medium">
                             <li className="mb-4">
-                                <a href="#" className="hover:underline">Case 1</a>
+                                <a href="casestudies/case_1" className="hover:underline">홍수통제소</a>
                             </li>
                             <li className="mb-4">
-                                <a href="#" className="hover:underline">Case 2</a>
+                                <a href="casestudies/case_2" className="hover:underline">Case 2</a>
                             </li>
                             <li className="mb-4">
-                                <a href="#" className="hover:underline">Case 3</a>
+                                <a href="casestudies/case_3" className="hover:underline">Case 3</a>
                             </li>
                             <li className="mb-4">
-                                <a href="#" className="hover:underline">Case 4</a>
+                                <a href="casestudies/case_4" className="hover:underline">Case 4</a>
                             </li>
                         </ul>
                     </div>
@@ -159,7 +151,7 @@ export default function Footer() {
                 </div>
                 <div className="px-4 py-6 bg-gray-200 dark:bg-gray-700 md:flex md:items-center md:justify-between">
                     <span className="text-sm text-gray-500 dark:text-gray-300 sm:text-center">© 2024 <a
-                        href="https://flowbite.com/">KOREA ORBCOMM™</a>. All Rights Reserved.
+                        href="https://ko-hompage.vercel.app/">KOREA ORBCOMM™</a>. All Rights Reserved.
                     </span>
                     <div className="flex mt-4 sm:justify-center md:mt-0 space-x-5 rtl:space-x-reverse">
                         <a href="#" className="text-gray-400 hover:text-gray-900 dark:hover:text-white">
@@ -210,6 +202,5 @@ export default function Footer() {
                 </div>
             </div>
         </section>
-
     )
 }

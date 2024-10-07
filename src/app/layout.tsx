@@ -22,7 +22,8 @@ type Props = {
 export default function RootLayout({ children }: Props) {
     return (
         <html lang="en" className={sans.className}>
-        <body className='flex flex-col w-full mx-auto vsc-initialized'>
+        {/*<body className='flex flex-col w-full mx-auto vsc-initialized'>*/}
+        <body className="flex flex-col min-h-screen w-full mx-auto">
         <Header />
         <main className='grow pt-[74px]'>{children}</main>
         <Footer />
