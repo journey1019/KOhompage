@@ -15,8 +15,6 @@ export const metadata = {
 
 export default function HardwarePage() {
     return(
-        <>
-            <ProductGrid/>
-        </>
+        <ProductGrid/>
     )
 }

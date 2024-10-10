@@ -8,7 +8,7 @@ import {
     SquaresPlusIcon,
 } from '@heroicons/react/24/outline'
 
-const services = [
+const login = [
     { name: 'ORBCOMM Flatform', description: 'Fleet Management Solutions', url: 'https://platform.orbcomm.com/', icon: ChartPieIcon },
     { name: 'Maritime Flatform', description: 'Driving container tracking', url: 'https://platform.orbcommmaritime.com/', icon: CursorArrowRaysIcon },
     { name: 'NMS', description: "Network Monitoring System", url: 'https://nms.commtrace.com/', icon: FingerPrintIcon },
@@ -22,21 +22,22 @@ const callsToAction = [
     { name: 'Contact sales', href: '/contactus', icon: PhoneIcon },
 ]
 
-export default function Services() {
+export default function Login() {
     return (
         <Popover className="relative">
             <PopoverButton className="inline-flex items-center gap-x-1 text-sm font-semibold leading-6 text-gray-900">
-                <span className='text-black dark:text-white'>Services</span>
+                <span className='text-black dark:text-white'>Login</span>
                 <ChevronDownIcon aria-hidden="true" className="h-5 w-5 text-black dark:text-white" />
             </PopoverButton>
 
             <PopoverPanel
                 transition
-                className="absolute left-1/2 z-10 mt-5 flex w-screen max-w-max -translate-x-1/2 px-4 transition data-[closed]:translate-y-1 data-[closed]:opacity-0 data-[enter]:duration-200 data-[leave]:duration-150 data-[enter]:ease-out data-[leave]:ease-in"
+                // className="absolute left-1/2 z-10 mt-5 flex w-screen max-w-max -translate-x-1/2 px-4 transition data-[closed]:translate-y-1 data-[closed]:opacity-0 data-[enter]:duration-200 data-[leave]:duration-150 data-[enter]:ease-out data-[leave]:ease-in"
+                className="absolute right-0 z-10 mt-5 flex w-screen max-w-max transition data-[closed]:translate-y-1 data-[closed]:opacity-0 data-[enter]:duration-200 data-[leave]:duration-150 data-[enter]:ease-out data-[leave]:ease-in"
             >
                 <div className="w-screen max-w-md flex-auto overflow-hidden rounded-3xl bg-white text-sm leading-6 shadow-lg ring-1 ring-gray-900/5">
                     <div className="p-2">
-                        {services.map((item) => (
+                        {login.map((item) => (
                             <div key={item.name} className="group relative flex gap-x-6 rounded-lg p-4 hover:bg-gray-50">
                                 <div className="mt-1 flex h-11 w-11 flex-none items-center justify-center rounded-lg bg-gray-50 group-hover:bg-white">
                                     <item.icon aria-hidden="true" className="h-6 w-6 text-gray-600 group-hover:text-indigo-600" />

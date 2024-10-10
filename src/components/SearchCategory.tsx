@@ -2,11 +2,7 @@
 
 import { useState } from 'react';
 
-type Props = {
-    children: React.ReactNode;
-}
-
-export default function HardwareLayout({ children }: Props) {
+export default function SerachCategory() {
     const [isDropdownOpen, setIsDropdownOpen] = useState(false); // 드롭다운의 열림 상태
     const [selectedCategory, setSelectedCategory] = useState('All categories'); // 선택된 카테고리
     const [searchValue, setSearchValue] = useState(''); // 입력값 상태
@@ -25,23 +21,25 @@ export default function HardwareLayout({ children }: Props) {
 
     return (
         <div className="bg-white dark:bg-gray-900">
-            <form className="max-w-screen-lg mx-auto py-16 sm:px-6 sm:py-24">
+            <form className="max-w-screen-lg mx-auto pt-8 pb-16 sm:px-6 sm:pt-12 sm:pb-24">
                 <div className="flex relative"> {/* relative 추가 */}
                     <label htmlFor="search-dropdown"
                            className="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white">Your Email</label>
                     <button id="dropdown-button" type="button" onClick={toggleDropdown}
                             className="flex-shrink-0 z-10 inline-flex items-center py-2.5 px-4 text-sm font-medium text-center text-gray-900 bg-gray-100 border border-gray-300 rounded-s-lg hover:bg-gray-200 focus:ring-2 focus:outline-none focus:ring-gray-100 dark:bg-gray-700 dark:hover:bg-gray-600 dark:focus:ring-gray-700 dark:text-white dark:border-gray-600">
-                        {selectedCategory} <svg className="w-2.5 h-2.5 ms-2.5" aria-hidden="true"
-                                                xmlns="http://www.w3.org/2000/svg" fill="none"
-                                                viewBox="0 0 10 6">
-                        <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2"
-                              d="m1 1 4 4 4-4" />
-                    </svg>
+                        {selectedCategory}
+                        <svg className="w-2.5 h-2.5 ms-2.5" aria-hidden="true"
+                             xmlns="http://www.w3.org/2000/svg" fill="none"
+                             viewBox="0 0 10 6">
+                            <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2"
+                                  d="m1 1 4 4 4-4" />
+                        </svg>
                     </button>
                     {isDropdownOpen && ( // 드롭다운이 열렸을 때만 리스트를 보여줌
                         <div id="dropdown"
                              className="z-10 absolute bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700 mt-1 top-full left-0"> {/* mt-1 추가 */}
-                            <ul className="py-2 text-sm text-gray-700 dark:text-gray-200 border border-white rounded-lg" aria-labelledby="dropdown-button">
+                            <ul className="py-2 text-sm text-gray-700 dark:text-gray-200 border border-white rounded-lg"
+                                aria-labelledby="dropdown-button">
                                 {['GT1200', 'CT3500', 'ST2100', 'ST6000', 'IDP-800', 'ST-9100', 'QPRO', 'Q4000', 'OG2OGi', 'VSAT', 'iDirect'].map(category => (
                                     <li key={category}>
                                         <button
@@ -76,8 +74,16 @@ export default function HardwareLayout({ children }: Props) {
                         </button>
                     </div>
                 </div>
+                <div className="flex relative justify-evenly text-gray-600 py-3">
+                    <p>#Satellite</p>
+                    <p>#ST6100</p>
+                    <p>#Maritime</p>
+                    <p>#VMS</p>
+                    <p>#NMS</p>
+                    <p>#AIS</p>
+                    <p>#Trail Tracking</p>
+                </div>
             </form>
-            {children}
         </div>
     );
 }

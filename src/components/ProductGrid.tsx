@@ -1,4 +1,6 @@
 import { ProductCard } from '@/components/ProductCard';
+import SerachCategory from '@/components/SearchCategory';
+import PageTopImage from '@/components/PageTopImage';
 
 const products = [
     {
@@ -78,7 +80,20 @@ const products = [
 export default function ProductGrid() {
     return (
         <div className="bg-white dark:bg-gray-900">
-
+            <PageTopImage
+                size="py-28"
+                url="/images/befo_ko/M2M_IoT.jpg"
+                title="KOREAORBCOMM FOR FINANCIAL SERVICES"
+                subtitle="글로벌 통신으로 경험을 향상시키세요"
+                description="이 섹션은 배경 이미지를 고정시키고, 스크롤할 때 안쪽 콘텐츠는 이동하는 구조입니다."
+                textPosition="center"
+            />
+            <div className="flex relative w-full flex-row ">
+                <h2 className="text-2xl sm:text-3xl lg:text-5xl xl:text-6xl text-white font-bold mt-2 text-center">
+                    제품정보, 증상을 찾아보세요
+                </h2>
+            </div>
+            <SerachCategory />
             <div className="mx-auto max-w-2xl px-4 py-16 sm:px-6 sm:py-24 lg:max-w-7xl lg:px-8">
                 <h2 className="sr-only">Products</h2>
                 <p className='w-full justify-center text-4xl dark:text-white'>ALL</p>

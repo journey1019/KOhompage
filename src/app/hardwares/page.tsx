@@ -16,6 +16,7 @@ export default async function HardwarePage() {
     const posts = await getAllPosts();
     // @ts-ignore
     const tags = [...new Set(posts.map((post) => post.tag))]; // 중복 허용 X -> 고유한 tags
+    console.log(tags)
     return(
         <FilterableHardware posts={posts} tags={tags}/>
     )
