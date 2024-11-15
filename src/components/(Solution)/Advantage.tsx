@@ -10,17 +10,17 @@ const products = [
     },
     {
         id: 1,
-        name: '환자 중심 커뮤니케이션 제공',
+        name: '고객 중심 커뮤니케이션 제공',
         imageSrc: 'https://sendbird.imgix.net/cms/healthcare-chat-patient-communication.png?auto=format,compress&crop=faces&w=900',
         imageAlt: 'Tall slender porcelain bottle with natural clay textured body and cork stopper.',
-        color: '대화 정보를 유지하여 환자가 개인화된 경험을 얻고, 말했던 내용을 되풀이할 필요 없게 만드세요.',
+        color: '대화 정보를 유지하여 고객이 개인화된 경험을 얻고, 말했던 내용을 되풀이할 필요 없게 만드세요.',
     },
     {
         id: 2,
-        name: '의료진 및 환자 참여도 향상',
+        name: '실시간 고객 만족도 조사',
         imageSrc: 'https://sendbird.imgix.net/cms/healthcare-chat-engage-providers-patients.png?auto=format,compress&crop=faces&w=900',
         imageAlt: 'Olive drab green insulated bottle with flared screw lid and flat top.',
-        color: '환자가 모든 여정 단계에서 필요한 정보를 알 수 있도록 푸시 알림과 메시지를 적극적으로 전송하세요.'
+        color: '고객이 모든 여정 단계에서 필요한 정보를 알 수 있도록 푸시 알림과 메시지를 적극적으로 전송하세요.'
     },
 ]
 

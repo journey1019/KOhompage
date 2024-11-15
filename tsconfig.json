@@ -26,7 +26,8 @@
         "./src/*"
       ]
     },
-    "forceConsistentCasingInFileNames": true
+    "forceConsistentCasingInFileNames": true,
+    "target": "ES2017"
   },
   "include": [
     "next-env.d.ts",
@@ -36,5 +37,16 @@
   ],
   "exclude": [
     "node_modules"
-  ]
+  ],
+  "strict": true, // 엄격한 타입 검사
+  "types": [
+    "next",
+    "next-intl"
+  ],
+  "baseUrl": ".",
+  "paths": {
+    "@/*": [
+      "src/*"
+    ]
+  }
 }

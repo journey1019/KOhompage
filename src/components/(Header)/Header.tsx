@@ -9,13 +9,17 @@ import Hardware from './Hardware';
 import CaseStudies from './CaseStudies';
 import Support from './Support';
 import Company from './Company';
+// import Language from './Language';
 import LanguageSwitcher from '@/components/(Header)/LanguageSwitcher';
 import { GrLanguage } from 'react-icons/gr';
 // import { useTranslation } from 'next-i18next';
 import Login from '@/components/(Header)/Login';
+import { useTranslation } from 'next-i18next';
+// import { useTranslations } from 'use-intl';
 
 export default function Header() {
     // const { t } = useTranslation();
+    // const t = useTranslations('header');
     const [openDropdown, setOpenDropdown] = useState<string | null>(null);
     const [isMenuOpen, setIsMenuOpen] = useState(false); // 메뉴 오픈 상태 추가
     const [darkMode, setDarkMode] = useState(false);
@@ -75,8 +79,9 @@ export default function Header() {
                             //     </svg>
                             // </a>
                         )}
-                        <Mode darkMode={darkMode} setDarkMode={setDarkMode} />
+                        {/*<Mode darkMode={darkMode} setDarkMode={setDarkMode} />*/}
                         <GrLanguage className="ml-2 cursor-pointer dark:text-white" />
+                        {/*<Language/>*/}
                         <button
                             onClick={toggleMenu} // Toggle menu on click
                             type="button"

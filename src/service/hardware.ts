@@ -18,7 +18,7 @@ export async function getFeaturedPosts(): Promise<Post[]> {
 }
 
 export async function getAllPosts(): Promise<Post[]> {
-    const filePath = path.join(process.cwd(), 'data', 'hardwarePosts.json');
+    const filePath = path.join(process.cwd(), 'data', 'hardware.json');
     return readFile(filePath, 'utf-8')
         .then<Post[]>(data => JSON.parse(data)) // .then(JSON.parse)
 }

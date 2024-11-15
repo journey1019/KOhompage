@@ -7,10 +7,10 @@ const BlogPost: React.FC<{ date: string; title: string; description: string; ima
                 <img src={image} alt="blogs tailwind section" className="rounded-t-2xl w-full object-cover" />
             </div>
             <div className="p-4 lg:p-6 transition-all duration-300 rounded-b-2xl group-hover:bg-gray-50">
-                <span className="text-indigo-600 font-medium mb-3 block">{date}</span>
+                <span className="text-red-700 font-medium mb-3 block">{date}</span>
                 <h4 className="text-xl text-gray-900 dark:text-white dark:hover:text-gray-900 font-medium leading-8 mb-5">{title}</h4>
                 <p className="text-gray-500 leading-6 mb-10">{description}</p>
-                <a href="javascript:;" className="cursor-pointer text-lg text-indigo-600 font-semibold">Read more..</a>
+                <a href="javascript:;" className="cursor-pointer text-lg text-red-700 font-semibold">Read more..</a>
             </div>
         </div>
     );
@@ -26,7 +26,7 @@ const ContactForm: React.FC = () => {
                         <div className="w-full lg:w-2/5">
                             <div className="block lg:text-left text-center">
                                 <h2 className="text-4xl font-bold text-gray-900 dark:text-gray-200 leading-[3.25rem] mb-5">
-                                    USE <span className="text-indigo-600">CASE</span>
+                                    USE <span className="text-red-700">CASE</span>
                                 </h2>
                                 <p className="text-gray-500 mb-10 max-lg:max-w-xl max-lg:mx-auto">
                                     Let me introduce KoreaORBCOMM&apos;s representative solution, the use case of Global

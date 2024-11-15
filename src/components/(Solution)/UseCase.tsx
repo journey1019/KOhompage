@@ -9,7 +9,7 @@ const Case: React.FC<{ direction: string; title1: string; title2:string; descrip
                     <div className="w-full lg:w-2/5">
                         <div className="block lg:text-left text-center">
                             <h2 className="text-4xl font-bold text-gray-900 dark:text-gray-200 leading-[3.25rem] mb-5">
-                                {title1} <span className="text-indigo-600">{title2}</span>
+                                {title1} <span className="text-red-700">{title2}</span>
                             </h2>
                             <p className="text-gray-500 mb-10 max-lg:max-w-xl max-lg:mx-auto">
                                 {description}
@@ -55,7 +55,7 @@ const Case: React.FC<{ direction: string; title1: string; title2:string; descrip
                     <div className="w-full lg:w-2/5">
                         <div className="block lg:text-right text-center">
                             <h2 className="text-4xl font-bold text-gray-900 dark:text-gray-200 leading-[3.25rem] mb-5">
-                                {title1} <span className="text-indigo-600">{title2}</span>
+                                {title1} <span className="text-red-700">{title2}</span>
                             </h2>
                             <p className="text-gray-500 mb-10 max-lg:max-w-xl max-lg:mx-auto">
                                 {description}

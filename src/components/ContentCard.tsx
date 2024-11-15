@@ -1,5 +1,7 @@
 'use client';
 
+import Image from 'next/image';
+
 interface ContentCardPropsType {
     index: number;
     title: string;
@@ -12,9 +14,9 @@ export default function ContentCard({ index, title, desc, img, url }: ContentCar
     return (
         <a href={`/board/${url}`} className="block">
             <div className="relative min-h-[30rem] rounded-xl overflow-hidden grid items-end cursor-pointer transition-transform transform hover:scale-105 hover:border-2 hover:border-blue-500">
-                <img
-                    src={img}
-                    alt={title}
+                <Image
+                    src={img} alt={title}
+                    width={500} height={300} unoptimized
                     className="absolute inset-0 h-full w-full object-cover object-center"
                 />
                 <div className="absolute inset-0 bg-black/70" />

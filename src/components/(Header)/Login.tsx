@@ -18,7 +18,7 @@ const login = [
 ]
 const callsToAction = [
     // { name: 'Watch demo', href: '#', icon: PlayCircleIcon },
-    { name: 'Admin', href: '#', icon: UserIcon },
+    { name: 'Admin', href: '/admin', icon: UserIcon },
     { name: 'Contact sales', href: '/contactus', icon: PhoneIcon },
 ]
 
