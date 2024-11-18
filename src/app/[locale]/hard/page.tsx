@@ -4,7 +4,7 @@
 import { useState } from 'react';
 import HardwareList from '@/components/HardwareList';
 import SearchBar from '@/components/SearchBar';
-import hardwareData from '../../../data/hardware.json'
+import hardwareData from '../../../../data/hardware.json'
 
 const HardPage = () => {
     const [filteredItems, setFilteredItems] = useState(hardwareData);

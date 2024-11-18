@@ -70,7 +70,7 @@ export default function Hardware() {
                     className="grid max-w-screen-xl px-4 py-3 mx-auto text-gray-900 dark:text-white grid-cols-1 sm:grid-cols-4 md:px-6">
                     <ul>
                         <li>
-                            <a href="/casestudies/case_1"
+                            <a href="/[locale]/casestudies/case_1"
                                className="block px-3 py-1 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700">
                                 <div className="flex items-center">
                                     <div
@@ -85,7 +85,7 @@ export default function Hardware() {
                     </ul>
                     <ul>
                         <li>
-                            <a href="/casestudies/case_2"
+                            <a href="/[locale]/casestudies/case_2"
                                className="block px-3 py-1 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700">
                                 <div className="flex items-center">
                                     <div
@@ -100,7 +100,7 @@ export default function Hardware() {
                     </ul>
                     <ul>
                         <li>
-                            <a href="/casestudies/case_3"
+                            <a href="/[locale]/casestudies/case_3"
                                className="block px-3 py-1 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700">
                                 <div className="flex items-center">
                                     <div
@@ -115,7 +115,7 @@ export default function Hardware() {
                     </ul>
                     <ul>
                         <li>
-                            <a href="/casestudies/case_4"
+                            <a href="/[locale]/casestudies/case_4"
                                className="block px-3 py-1 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700">
                                 <div className="flex items-center">
                                     <div

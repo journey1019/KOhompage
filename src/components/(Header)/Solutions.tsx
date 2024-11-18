@@ -65,7 +65,7 @@ export default function Solutions() {
                     className="grid max-w-screen-xl px-4 py-3 mx-auto text-gray-900 dark:text-white grid-cols-1 sm:grid-cols-4 md:px-6">
                     <ul>
                         <li>
-                            <a href="/solutions/containerIoT"
+                            <a href="/[locale]/solutions/containerIoT"
                                className="block px-3 py-1 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700">
                                 <div className="flex flex-col items-start">
                                     <div
@@ -83,7 +83,7 @@ export default function Solutions() {
                     </ul>
                     <ul>
                         <li>
-                            <a href="/solutions/globalIoT"
+                            <a href="/[locale]/solutions/globalIoT"
                                className="block px-3 py-1 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700">
                                 <div className="flex flex-col items-start">
                                     <div
@@ -99,7 +99,7 @@ export default function Solutions() {
                     </ul>
                     <ul>
                         <li>
-                            <a href="/solutions/satellite"
+                            <a href="/[locale]/solutions/satellite"
                                className="block px-3 py-1 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700">
                                 <div className="flex flex-col items-start">
                                     <div
@@ -115,7 +115,7 @@ export default function Solutions() {
                     </ul>
                     <ul>
                         <li>
-                            <a href="/solutions/ais"
+                            <a href="/[locale]/solutions/ais"
                                className="block px-3 py-1 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700">
                                 <div className="flex flex-col items-start">
                                     <div
