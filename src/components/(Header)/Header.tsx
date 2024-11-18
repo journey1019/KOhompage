@@ -15,11 +15,10 @@ import { GrLanguage } from 'react-icons/gr';
 // import { useTranslation } from 'next-i18next';
 import Login from '@/components/(Header)/Login';
 import { useTranslation } from 'next-i18next';
-// import { useTranslations } from 'use-intl';
+import { useTranslations } from 'next-intl';
 
 export default function Header() {
-    // const { t } = useTranslation();
-    // const t = useTranslations('header');
+    const t = useTranslations('header');
     const [openDropdown, setOpenDropdown] = useState<string | null>(null);
     const [isMenuOpen, setIsMenuOpen] = useState(false); // 메뉴 오픈 상태 추가
     const [darkMode, setDarkMode] = useState(false);
@@ -57,6 +56,7 @@ export default function Header() {
         <header className="fixed top-0 left-0 w-full z-50">
             <nav className="bg-white border-gray-200 dark:bg-gray-900">
                 <div className="flex flex-wrap justify-between items-center mx-auto max-w-screen-2xl p-4">
+                    {/*<h1>{t('Header')}</h1>*/}
                     <Link href="/" className="flex items-center space-x-3 rtl:space-x-reverse">
                         <Image
                             src={darkMode ? `/images/KO_SmallLogo_Dark.png` : `/images/KO_SmallLogo.png`}

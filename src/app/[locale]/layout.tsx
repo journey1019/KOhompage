@@ -4,9 +4,6 @@ import {NextIntlClientProvider} from 'next-intl';
 import {getMessages} from 'next-intl/server';
 import { notFound } from 'next/navigation';
 import { Open_Sans } from 'next/font/google';
-
-import {routing} from '@/i18n/routing';
-
 import Header from '@/components/(Header)/Header';
 import Footer from '@/components/Footer';
 
@@ -37,13 +34,6 @@ export default async function LocaleLayout({ children, params }: Props) {
         notFound();
     }
 
-    // Ensure that the incoming `locale` is valid
-    // if (!routing.locales.includes(locale as any)) {
-    //     notFound();
-    // }
-
-    // Providing all messages to the client
-    // side is the easiest way to get started
     // 메시지 데이터 가져오기
     const messages = await getMessages(locale);
 
