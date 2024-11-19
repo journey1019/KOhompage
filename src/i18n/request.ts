@@ -11,6 +11,7 @@ export default getRequestConfig(async ({requestLocale}) => {
     const messages = {
         header: (await import(`../../messages/${locale}/header.json`)).default,
         home: (await import(`../../messages/${locale}/home.json`)).default,
+        hardware: (await import(`../../messages/${locale}/hardware.json`)).default
     }
 
     return { locale, messages };

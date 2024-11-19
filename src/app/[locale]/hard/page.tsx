@@ -2,6 +2,8 @@
 
 import React, { useState } from 'react';
 import hardwareData from '../../../../data/hardware.json'
+import { GetStaticProps } from 'next';
+import { useTranslations } from 'next-intl';
 
 import PageTopImage from '@/components/PageTopImage';
 import SearchBar from '@/components/SearchBar';
@@ -9,6 +11,7 @@ import HardwareList from '@/components/HardwareList';
 
 
 const HardPage = () => {
+    const t = useTranslations('hardware');
     const [chips, setChips] = useState<string[]>([]); // Chip 상태 관리
     const [filteredItems, setFilteredItems] = useState(hardwareData);
 
@@ -45,14 +48,14 @@ const HardPage = () => {
             <PageTopImage
                 size="py-28"
                 url="/images/befo_ko/M2M_IoT.jpg"
-                title="KOREAORBCOMM FOR FINANCIAL SERVICES"
-                subtitle="글로벌 통신으로 경험을 향상시키세요"
-                description="이 섹션은 배경 이미지를 고정시키고, 스크롤할 때 안쪽 콘텐츠는 이동하는 구조입니다."
+                title={t('pageTop.title')}
+                subtitle={t('pageTop.subTitle')}
+                description={t('pageTop.description')}
                 textPosition="center"
             />
             <div className="mx-auto max-x-xl px-4 py-16 sm:px-6 sm:py-24 lg:max-w-screen-lg lg:px-8">
                 <h2 className="text-2xl sm:text-3xl font-bold mt-2 text-center text-black pb-8">
-                    제품정보, 증상을 찾아보세요
+                    {t('searchSection.title')}
                 </h2>
                 <SearchBar chips={chips} onAddChip={handleAddChip} onRemoveChip={handleRemoveChip} />
             </div>

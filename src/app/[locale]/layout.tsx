@@ -37,6 +37,9 @@ export default async function LocaleLayout({ children, params }: Props) {
     // 메시지 데이터 가져오기
     // @ts-ignore
     const messages = await getMessages(locale);
+    if (!messages) {
+        throw new Error(`Messages for locale ${locale} could not be loaded.`);
+    }
 
     return (
         <html lang={locale} className={sans.className}>
