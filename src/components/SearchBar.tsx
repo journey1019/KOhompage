@@ -1,17 +1,17 @@
 import React, { useState } from 'react';
 
 interface SearchBarProps {
-    onSearch: (searchTerm: string) => void;
+    chips: string[];
+    onAddChip: (chip: string) => void;
+    onRemoveChip: (chip: string) => void;
 }
 
-const SearchBar: React.FC<SearchBarProps> = ({ onSearch }) => {
+const SearchBar: React.FC<SearchBarProps> = ({ chips, onAddChip, onRemoveChip }) => {
     const [input, setInput] = useState('');
-    const [chips, setChips] = useState<string[]>([]);
 
     const handleSearch = () => {
-        if (input.trim()) {
-            onSearch(input.trim());
-            setChips((prevChips) => [...prevChips, input.trim()]);
+        if (input.trim()) { // 양 끝 공백 제거
+            onAddChip(input.trim().toLowerCase());
             setInput(''); // 입력 필드 초기화
         }
     };
@@ -21,16 +21,6 @@ const SearchBar: React.FC<SearchBarProps> = ({ onSearch }) => {
             handleSearch();
         }
     };
-
-    const addChip = (chip: string) => {
-        setInput(chip);
-        onSearch(chip); // 즉시 검색 실행
-    };
-
-    const removeChip = (index: number) => {
-        setChips((prevChips) => prevChips.filter((_, i) => i !== index));
-    };
-
 
     return (
         <div className="mb-4">
@@ -71,13 +61,12 @@ const SearchBar: React.FC<SearchBarProps> = ({ onSearch }) => {
                 {chips.map((chip, index) => (
                     <span
                         key={index}
-                        className="bg-blue-100 text-blue-500 px-3 py-1 rounded-full cursor-pointer hover:bg-blue-200"
-                        onClick={() => onSearch(chip)}
+                        className="bg-blue-100 text-blue-500 px-3 py-1 rounded-full flex items-center gap-2 cursor-pointer hover:bg-blue-200"
                     >
                         {chip}
                         <button
-                            onClick={() => removeChip(index)}
-                            className="ml-2 text-blue-700 hover:text-blue-900"
+                            onClick={() => onRemoveChip(chip)}
+                            className="text-blue-700 hover:text-blue-900"
                         >
                             ×
                         </button>
@@ -89,7 +78,7 @@ const SearchBar: React.FC<SearchBarProps> = ({ onSearch }) => {
             <div className="flex gap-2 justify-between">
                 {[
                     '#Satellite',
-                    '#ST6100',
+                    '#ST6000',
                     '#Maritime',
                     '#Container',
                     '#NMS',
@@ -98,7 +87,7 @@ const SearchBar: React.FC<SearchBarProps> = ({ onSearch }) => {
                 ].map((tag, index) => (
                     <button
                         key={index}
-                        onClick={() => addChip(tag.slice(1))} // "#" 제거 후 chip에 추가
+                        onClick={() => onAddChip(tag.slice(1).toLowerCase())} // "#" 제거 후 chip에 추가
                         className="bg-gray-200 text-gray-700 px-3 py-1 rounded-full hover:bg-gray-300"
                     >
                         {tag}
