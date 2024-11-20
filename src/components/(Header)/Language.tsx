@@ -1,20 +1,25 @@
 'use client';
 
-import { useRouter } from 'next/navigation';
+import { usePathname, useRouter } from 'next/navigation';
 import { useState } from 'react';
 import { GrLanguage } from 'react-icons/gr';
 import { ChevronDownIcon } from '@heroicons/react/20/solid';
 
 export default function Language() {
     const router = useRouter();
+    const pathname = usePathname(); // 현재 경로 가져오기
     const [menuOpen, setMenuOpen] = useState(false); // 드롭다운 열림 상태
-    const [currentLocale, setCurrentLocale] = useState('ko'); // 기본 언어 설정
+    const [currentLocale, setCurrentLocale] = useState(pathname.startsWith('/en') ? 'en' : 'ko'); // 초기 언어 설정
 
     // 언어 변경 함수
     const changeLanguage = (locale: string) => {
+        if (locale === currentLocale) return; // 동일한 언어 선택 시 아무 작업도 하지 않음
+
+        // 현재 경로에서 locale 부분만 변경
+        const pathWithoutLocale = pathname.replace(`/${currentLocale}`, `/${locale}`);
         setCurrentLocale(locale); // 현재 선택된 언어 업데이트
         setMenuOpen(false); // 드롭다운 닫기
-        router.push(`/${locale}`); // URL을 새로운 locale로 변경
+        router.push(pathWithoutLocale); // 변경된 URL로 이동
     };
 
     return (
