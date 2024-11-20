@@ -26,16 +26,16 @@ export default function Language() {
         <div className="relative inline-block">
             <button
                 onClick={() => setMenuOpen(!menuOpen)} // 드롭다운 열기/닫기 토글
-                className="flex items-center space-x-2 px-4 py-2 bg-gray-200 dark:bg-gray-800 text-gray-900 dark:text-white rounded-md"
+                className="flex items-center space-x-2 pl-4 py-2 text-gray-900 rounded-md"
             >
                 <GrLanguage className="ml-2 cursor-pointer dark:text-white" />
-                <span>{currentLocale.toUpperCase()}</span> {/* 현재 언어 표시 */}
+                {/*<span>{currentLocale.toUpperCase()}</span> /!* 현재 언어 표시 *!/*/}
                 <ChevronDownIcon aria-hidden="true" className="h-5 w-5 text-black dark:text-white" />
             </button>
 
             {/* 드롭다운 메뉴 */}
             {menuOpen && (
-                <div className="absolute right-0 mt-2 w-32 bg-white dark:bg-gray-700 shadow-lg rounded-md z-10">
+                <div className="absolute right-0 mt-2 w-24 bg-white dark:bg-gray-700 shadow-lg rounded-md z-10">
                     <ul>
                         <li
                             onClick={() => changeLanguage('ko')} // 한국어로 변경
