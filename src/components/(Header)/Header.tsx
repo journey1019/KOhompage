@@ -1,6 +1,5 @@
 'use client'
 
-
 import Link from 'next/link';
 import Image from 'next/image';
 import Mode from '@/components/(Header)/Mode';
@@ -15,10 +14,16 @@ import LanguageSwitcher from '@/components/(Header)/LanguageSwitcher';
 import { GrLanguage } from 'react-icons/gr';
 // import { useTranslation } from 'next-i18next';
 import Login from '@/components/(Header)/Login';
+import Language from '@/components/(Header)/Language';
 import { useTranslation } from 'next-i18next';
 import { useTranslations } from 'next-intl';
+import { ChevronDownIcon } from '@heroicons/react/20/solid';
 
-export default function Header() {
+
+interface HeaderProps {
+    locale: string; // locale을 props로 받음
+}
+export default function Header({locale}: HeaderProps) {
     const t = useTranslations('header');
     const [openDropdown, setOpenDropdown] = useState<string | null>(null);
     const [isMenuOpen, setIsMenuOpen] = useState(false); // 메뉴 오픈 상태 추가
@@ -35,7 +40,7 @@ export default function Header() {
     const toggleMenu = () => setIsMenuOpen(prev => !prev); // 메뉴 토글 함수
 
     const dropdownComponents: { [key: string]: JSX.Element | null } = {
-        solutions: <Solutions />,
+        solutions: <Solutions locale={locale}/>,
         caseStudies: <CaseStudies/>,
         hardware: <Hardware />,
         support: <Support />,
@@ -58,9 +63,9 @@ export default function Header() {
             <nav className="bg-white border-gray-200 dark:bg-gray-900">
                 <div className="flex flex-wrap justify-between items-center mx-auto max-w-screen-2xl p-4">
                     {/*<h1>{t('Header')}</h1>*/}
-                    <Link href="/" className="flex items-center space-x-3 rtl:space-x-reverse">
+                    <Link href="/" locale={locale} className="flex items-center space-x-3 rtl:space-x-reverse">
                         <Image
-                            src={darkMode ? `/images/KO_SmallLogo_Dark.png` : `/images/KO_SmallLogo.png`}
+                            src="/images/KO_SmallLogo.png"
                             alt="KO Logo"
                             width={180}
                             height={130}
@@ -81,8 +86,9 @@ export default function Header() {
                             // </a>
                         )}
                         {/*<Mode darkMode={darkMode} setDarkMode={setDarkMode} />*/}
-                        <GrLanguage className="ml-2 cursor-pointer dark:text-white" />
-                        {/*<Language/>*/}
+                        {/*<GrLanguage className="ml-2 cursor-pointer dark:text-white" />*/}
+                        {/*<ChevronDownIcon aria-hidden="true" className="h-5 w-5 text-black dark:text-white" />*/}
+                        <Language/>
                         <button
                             onClick={toggleMenu} // Toggle menu on click
                             type="button"
@@ -140,11 +146,11 @@ export default function Header() {
                                 {openDropdown === 'caseStudies' && dropdownContent('caseStudies')}
                             </li>
                             <li>
-                                <a href='/hardware'
+                                <Link href="hard/"
                                     className="flex w-full justify-between items-center py-2 px-3 text-gray-900 border-b border-gray-100 hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:text-red-700 md:p-0 dark:text-white md:dark:hover:text-red-500 dark:hover:bg-gray-700 dark:hover:text-red-500 md:dark:hover:bg-transparent dark:border-gray-700"
                                 >
                                     Hardware
-                                </a>
+                                </Link>
                                 {/*<button*/}
                                 {/*    className="flex w-full justify-between items-center py-2 px-3 text-gray-900 border-b border-gray-100 hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:text-red-700 md:p-0 dark:text-white md:dark:hover:text-red-500 dark:hover:bg-gray-700 dark:hover:text-red-500 md:dark:hover:bg-transparent dark:border-gray-700"*/}
                                 {/*    onMouseEnter={() => handleMouseEnter('hardware')}*/}

@@ -1,17 +1,21 @@
 import Image from 'next/image';
-import globalIoT from '../../../public/images/nav/global.jpg';
-import containerIoT from '../../../public/images/nav/container.jpg';
-import satellite from '../../../public/images/nav/satellite.jpg';
-import ais from '../../../public/images/nav/vessel.jpg';
+import globalIoT from '../../../../public/images/nav/global.jpg';
+import containeIoT from '../../../../public/images/nav/container.jpg';
+import satellite from '../../../../public/images/nav/satellite.jpg';
+import ais from '../../../../public/images/nav/vessel.jpg';
 import { CalendarDaysIcon, HandRaisedIcon } from '@heroicons/react/24/outline';
 
-export default function Solutions() {
+interface SolutionsProps {
+    locale: string; // locale을 props로 받음
+}
+
+export default function Solutions({ locale }: SolutionsProps) {
     return (
         // <div
         //     className="grid max-w-screen-2xl px-4 py-5 mx-auto text-sm text-gray-500 dark:text-gray-400 md:grid-cols-4 md:px-6">
         //     <ul className="hidden mb-4 space-y-4 md:mb-0 md:block">
         //         <Image
-        //             src={globalIoT}
+        //             src={global-iot}
         //             alt="global IoT"
         //             width={300}
         //             height={200}
@@ -24,7 +28,7 @@ export default function Solutions() {
         //     </ul>
         //     <ul className="mb-4 space-y-4 md:mb-0">
         //         <Image
-        //             src={containerIoT}
+        //             src={containe-iot}
         //             alt="Container IoT"
         //             width={300}
         //             height={200}
@@ -60,12 +64,13 @@ export default function Solutions() {
         //     </ul>
         // </div>
         <div className="grid max-w-screen-2xl px-4 py-5 mx-auto text-sm text-gray-500 dark:text-gray-400 md:px-6">
-            <div id="mega-menu-full-dropdown" className="mt-1 border-gray-200 shadow-sm bg-gray-50 md:bg-white border-y dark:bg-gray-800 dark:border-gray-600">
+            <div id="mega-menu-full-dropdown"
+                 className="mt-1 border-gray-200 shadow-sm bg-gray-50 md:bg-white border-y dark:bg-gray-800 dark:border-gray-600">
                 <div
                     className="grid max-w-screen-xl px-4 py-3 mx-auto text-gray-900 dark:text-white grid-cols-1 sm:grid-cols-4 md:px-6">
                     <ul>
                         <li>
-                            <a href="/[locale]/solutions/containerIoT"
+                            <a href={`/${locale}/solutions/containe-iot`}
                                className="block px-3 py-1 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700">
                                 <div className="flex flex-col items-start">
                                     <div
@@ -83,7 +88,7 @@ export default function Solutions() {
                     </ul>
                     <ul>
                         <li>
-                            <a href="/[locale]/solutions/globalIoT"
+                            <a href={`/${locale}/solutions/global-iot`}
                                className="block px-3 py-1 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700">
                                 <div className="flex flex-col items-start">
                                     <div
@@ -99,7 +104,7 @@ export default function Solutions() {
                     </ul>
                     <ul>
                         <li>
-                            <a href="/[locale]/solutions/satellite"
+                            <a href={`/${locale}/solutions/satellite`}
                                className="block px-3 py-1 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700">
                                 <div className="flex flex-col items-start">
                                     <div
@@ -108,14 +113,15 @@ export default function Solutions() {
                                                         className="h-5 w-5 text-black dark:text-white" />
                                     </div>
                                     <div className="font-semibold pt-5">Satellite Communication</div>
-                                    <div className="text-sm pt-2 text-gray-400">INMARSAT / ORBCOMM / STARLINK 위성통신 서비스</div>
+                                    <div className="text-sm pt-2 text-gray-400">INMARSAT / ORBCOMM / STARLINK 위성통신 서비스
+                                    </div>
                                 </div>
                             </a>
                         </li>
                     </ul>
                     <ul>
                         <li>
-                            <a href="/[locale]/solutions/ais"
+                            <a href={`/${locale}/solutions/ais`}
                                className="block px-3 py-1 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700">
                                 <div className="flex flex-col items-start">
                                     <div

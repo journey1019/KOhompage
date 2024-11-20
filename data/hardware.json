@@ -13,7 +13,7 @@
       "Dry Van",
       "Chassis and Dry Container"
     ],
-    "path": "GT-1200",
+    "path": "gt-1200",
     "featured": true
   },
   {
@@ -31,7 +31,7 @@
       "VMS",
       "Reefer Connect"
     ],
-    "path": "CT-3500",
+    "path": "ct-3500",
     "featured": false
   },
   {
@@ -46,7 +46,7 @@
       "Maritime",
       "ORBCOMM Platform"
     ],
-    "path": "ST-2100",
+    "path": "st-2100",
     "featured": false
   },
   {
@@ -64,7 +64,7 @@
       "General and Multi-Purpose Asset Tracking",
       "Monitoring"
     ],
-    "path": "ST-6000",
+    "path": "st-6000",
     "featured": true
   },
   {
@@ -79,7 +79,7 @@
       "Maritime",
       "Reefer Connect"
     ],
-    "path": "CT3600",
+    "path": "ct-3600",
     "featured": false
   },
   {
@@ -96,7 +96,7 @@
       "AIS",
       "Monitoring"
     ],
-    "path": "ST-9100",
+    "path": "st-9100",
     "featured": false
   },
   {
@@ -112,7 +112,7 @@
       "General and Multi-Purpose Asset Tracking",
       "Finance"
     ],
-    "path": "QPRO",
+    "path": "qpro",
     "featured": false
   },
   {
@@ -128,7 +128,7 @@
       "Satellite",
       "Communication"
     ],
-    "path": "Q4000",
+    "path": "q4000",
     "featured": false
   },
   {
@@ -146,7 +146,7 @@
       "Power",
       "Protocol"
     ],
-    "path": "OG2OGi",
+    "path": "og2-ogi",
     "featured": false
   },
   {
@@ -164,7 +164,7 @@
       "80cm",
       "100cm"
     ],
-    "path": "VSAT_Antenna",
+    "path": "vsat",
     "featured": false
   },
   {
@@ -180,7 +180,7 @@
       "Satellite",
       "Multi-Core"
     ],
-    "path": "iDirectX7",
+    "path": "idirect",
     "featured": false
   }
 ]

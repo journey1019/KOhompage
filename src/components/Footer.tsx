@@ -1,4 +1,7 @@
-export default function Footer() {
+interface FooterProps {
+    locale: string; // locale을 props로 받음
+}
+export default function Footer({locale}: FooterProps) {
     return (
         <section className="bg-gray-100 dark:bg-gray-800">
             <div className="mx-auto w-full">
@@ -7,45 +10,45 @@ export default function Footer() {
                         <h2 className="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white">Solutions</h2>
                         <ul className="text-gray-500 dark:text-gray-400 font-medium">
                             <li className="mb-2">
-                                <a href="#solution/globalIoT" className="hover:underline">Global IoT</a>
+                                <a href={`/${locale}/solutions/container-iot`} className="hover:underline">Container IoT</a>
                             </li>
-                            <li className="mb-2"><a href="#solution/globalIoT"
-                                                    className="hover:underline text-gray-400 dark:text-gray-300 text-xs">OGx</a>
-                            </li>
-                            <li className="mb-2"><a href="#solution/globalIoT"
-                                                    className="hover:underline text-gray-400 dark:text-gray-300 text-xs">Quectel</a>
-                            </li>
-                            <li className="mb-4"><a href="#solution/globalIoT"
-                                                    className="hover:underline text-gray-400 dark:text-gray-300 text-xs">Sigfox</a>
-                            </li>
-                            <li className="mb-2">
-                                <a href="#solution/containerIoT" className="hover:underline">Container IoT</a>
-                            </li>
-                            <li className="mb-2"><a href="#solution/globalIoT"
+                            <li className="mb-2"><a href={`/${locale}/solutions/container-iot/reefer`}
                                                     className="hover:underline text-gray-400 dark:text-gray-300 text-xs">Reefer</a>
                             </li>
-                            <li className="mb-2"><a href="#solution/globalIoT"
+                            <li className="mb-2"><a href={`/${locale}/solutions/container-iot/dry`}
                                                     className="hover:underline text-gray-400 dark:text-gray-300 text-xs">Dry</a>
                             </li>
-                            <li className="mb-2"><a href="#solution/globalIoT"
+                            <li className="mb-2"><a href={`/${locale}/solutions/container-iot/data`}
                                                     className="hover:underline text-gray-400 dark:text-gray-300 text-xs">Data
                                 Loger</a></li>
-                            <li className="mb-4"><a href="#solution/globalIoT"
+                            <li className="mb-4"><a href={`/${locale}/solutions/container-iot/terminal`}
                                                     className="hover:underline text-gray-400 dark:text-gray-300 text-xs">Terminal</a>
                             </li>
                             <li className="mb-2">
-                                <a href="#solution/satellite" className="hover:underline">Satellite</a>
+                                <a href={`/${locale}/solutions/global-iot`} className="hover:underline">Global IoT</a>
                             </li>
-                            <li className="mb-2"><a href="#solution/globalIoT"
+                            <li className="mb-2"><a href={`/${locale}/solutions/global-iot/ogx`}
+                                                    className="hover:underline text-gray-400 dark:text-gray-300 text-xs">OGx</a>
+                            </li>
+                            <li className="mb-2"><a href={`/${locale}/solutions/global-iot/quectel`}
+                                                    className="hover:underline text-gray-400 dark:text-gray-300 text-xs">Quectel</a>
+                            </li>
+                            <li className="mb-4"><a href={`/${locale}/solutions/global-iot/sigfox`}
+                                                    className="hover:underline text-gray-400 dark:text-gray-300 text-xs">Sigfox</a>
+                            </li>
+                            <li className="mb-2">
+                                <a href={`/${locale}/solutions/satellite`} className="hover:underline">Satellite</a>
+                            </li>
+                            <li className="mb-2"><a href={`/${locale}/solutions/satellite/vsat`}
                                                     className="hover:underline text-gray-400 dark:text-gray-300 text-xs">VSAT</a>
                             </li>
-                            <li className="mb-4"><a href="#solution/globalIoT"
+                            <li className="mb-4"><a href={`/${locale}/solutions/satellite/starlink`}
                                                     className="hover:underline text-gray-400 dark:text-gray-300 text-xs">Starlink</a>
                             </li>
                             <li className="mb-2">
-                                <a href="#solution/ais" className="hover:underline">AIS</a>
+                                <a href={`/${locale}/solutions/ais`} className="hover:underline">AIS</a>
                             </li>
-                            <li className="mb-2"><a href="#solution/globalIoT"
+                            <li className="mb-2"><a href={`/${locale}/solutions/ais/satellite`}
                                                     className="hover:underline text-gray-400 dark:text-gray-300 text-xs">Satellite</a>
                             </li>
                         </ul>
@@ -53,40 +56,40 @@ export default function Footer() {
                     <div>
                         <h2 className="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white">Hardware</h2>
                         <ul className="text-gray-500 dark:text-gray-400 font-medium">
-                            <li className="mb-2"><a href="#solution/globalIoT"
+                            <li className="mb-2"><a href={`/${locale}/hard/gt-1200`}
                                                     className="hover:underline text-gray-400 dark:text-gray-300 text-xs">GT1200
                                 시리즈 (Satellite)</a></li>
-                            <li className="mb-2"><a href="#solution/globalIoT"
+                            <li className="mb-2"><a href={`/${locale}/hard/ct-3500`}
                                                     className="hover:underline text-gray-400 dark:text-gray-300 text-xs">CT3500
                                 (Celluar)</a></li>
-                            <li className="mb-2"><a href="#solution/globalIoT"
+                            <li className="mb-2"><a href={`/${locale}/hard/st-2100`}
                                                     className="hover:underline text-gray-400 dark:text-gray-300 text-xs">ST2100
                                 시리즈 (Satellite)</a></li>
-                            <li className="mb-2"><a href="#solution/globalIoT"
+                            <li className="mb-2"><a href={`/${locale}/hard/st-6100`}
                                                     className="hover:underline text-gray-400 dark:text-gray-300 text-xs">ST6000
                                 시리즈 (Satellite)</a></li>
-                            <li className="mb-2"><a href="#solution/globalIoT"
+                            <li className="mb-2"><a href={`/${locale}/hard/idp-800`}
                                                     className="hover:underline text-gray-400 dark:text-gray-300 text-xs">IDP-800
                                 (Satellite)</a></li>
-                            <li className="mb-2"><a href="#solution/globalIoT"
+                            <li className="mb-2"><a href={`/${locale}/hard/st-6000`}
                                                     className="hover:underline text-gray-400 dark:text-gray-300 text-xs">ST6000
                                 시리즈 (Satellite)</a></li>
-                            <li className="mb-2"><a href="#solution/globalIoT"
+                            <li className="mb-2"><a href={`/${locale}/hard/st-9100`}
                                                     className="hover:underline text-gray-400 dark:text-gray-300 text-xs">ST-9100
                                 (Satellite and Dual mode)</a></li>
-                            <li className="mb-2"><a href="#solution/globalIoT"
+                            <li className="mb-2"><a href={`/${locale}/hard/qpro`}
                                                     className="hover:underline text-gray-400 dark:text-gray-300 text-xs">QPRO
                                 (Satellite and Dual mode)</a></li>
-                            <li className="mb-2"><a href="#solution/globalIoT"
+                            <li className="mb-2"><a href={`/${locale}/hard/q4000`}
                                                     className="hover:underline text-gray-400 dark:text-gray-300 text-xs">Q4000
                                 (Satellite and Dual mode)</a></li>
-                            <li className="mb-2"><a href="#solution/globalIoT"
+                            <li className="mb-2"><a href={`/${locale}/hard/og2-ogi`}
                                                     className="hover:underline text-gray-400 dark:text-gray-300 text-xs">OG2
                                 and OGi (Satellite)</a></li>
-                            <li className="mb-2"><a href="#solution/globalIoT"
+                            <li className="mb-2"><a href={`/${locale}/hard/vsat`}
                                                     className="hover:underline text-gray-400 dark:text-gray-300 text-xs">VSAT
                                 Antenna</a></li>
-                            <li className="mb-2"><a href="#solution/globalIoT"
+                            <li className="mb-2"><a href={`/${locale}/hard/idirect`}
                                                     className="hover:underline text-gray-400 dark:text-gray-300 text-xs">iDirect
                                 Modem</a></li>
                         </ul>
@@ -95,16 +98,16 @@ export default function Footer() {
                         <h2 className="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white">Case Studies</h2>
                         <ul className="text-gray-500 dark:text-gray-400 font-medium">
                             <li className="mb-4">
-                                <a href="casestudies/case_1" className="hover:underline">홍수통제소</a>
+                                <a href={`/${locale}/customer/`} className="hover:underline">홍수통제소</a>
                             </li>
                             <li className="mb-4">
-                                <a href="casestudies/case_2" className="hover:underline">Case 2</a>
+                                <a href={`/${locale}/customer/`} className="hover:underline">Case 2</a>
                             </li>
                             <li className="mb-4">
-                                <a href="casestudies/case_3" className="hover:underline">Case 3</a>
+                                <a href={`/${locale}/customer/`} className="hover:underline">Case 3</a>
                             </li>
                             <li className="mb-4">
-                                <a href="casestudies/case_4" className="hover:underline">Case 4</a>
+                                <a href={`/${locale}/customer/`} className="hover:underline">Case 4</a>
                             </li>
                         </ul>
                     </div>
@@ -112,22 +115,22 @@ export default function Footer() {
                         <h2 className="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white">Support</h2>
                         <ul className="text-gray-500 dark:text-gray-400 font-medium">
                             <li className="mb-2">
-                                <a href="#" className=" hover:underline">To inquire</a>
+                                <a href={`/${locale}/`} className=" hover:underline">To inquire</a>
                             </li>
                             <li className="mb-2">
-                                <a href="#" className="hover:underline">Resources</a>
+                                <a href={`/${locale}/`} className="hover:underline">Resources</a>
                             </li>
                             <li className="mb-2">
-                                <a href="#" className="hover:underline">Support Policy</a>
+                                <a href={`/${locale}/`} className="hover:underline">Support Policy</a>
                             </li>
                             <li className="mb-2">
-                                <a href="#" className="hover:underline">Brochure</a>
+                                <a href={`/${locale}/`} className="hover:underline">Brochure</a>
                             </li>
                             <li className="mb-2">
-                                <a href="#" className="hover:underline">News Room</a>
+                                <a href={`/${locale}/`} className="hover:underline">News Room</a>
                             </li>
                             <li className="mb-2">
-                                <a href="#" className="hover:underline">Guides</a>
+                                <a href={`/${locale}/`} className="hover:underline">Guides</a>
                             </li>
                         </ul>
                     </div>
@@ -135,16 +138,16 @@ export default function Footer() {
                         <h2 className="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white">Company</h2>
                         <ul className="text-gray-500 dark:text-gray-400 font-medium">
                             <li className="mb-2">
-                                <a href="#about" className=" hover:underline">About us</a>
+                                <a href={`/${locale}/about`} className=" hover:underline">About us</a>
                             </li>
                             <li className="mb-2">
-                                <a href="#" className="hover:underline">Partners</a>
+                                <a href={`/${locale}/customer`} className="hover:underline">Partners</a>
                             </li>
                             <li className="mb-2">
-                                <a href="#" className="hover:underline">Careers</a>
+                                <a href={`/${locale}/`} className="hover:underline">Careers</a>
                             </li>
                             <li className="mb-2">
-                                <a href="#" className="hover:underline">Contact us</a>
+                                <a href={`/${locale}/contact-us`} className="hover:underline">Contact us</a>
                             </li>
                         </ul>
                     </div>
@@ -154,7 +157,7 @@ export default function Footer() {
                         href="https://ko-hompage.vercel.app/">KOREA ORBCOMM™</a>. All Rights Reserved.
                     </span>
                     <div className="flex mt-4 sm:justify-center md:mt-0 space-x-5 rtl:space-x-reverse">
-                        <a href="#" className="text-gray-400 hover:text-gray-900 dark:hover:text-white">
+                        <a href={`/${locale}/`} className="text-gray-400 hover:text-gray-900 dark:hover:text-white">
                             <svg className="w-4 h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
                                  fill="currentColor" viewBox="0 0 8 19">
                                 <path fillRule="evenodd"
@@ -163,7 +166,7 @@ export default function Footer() {
                             </svg>
                             <span className="sr-only">Facebook page</span>
                         </a>
-                        <a href="#" className="text-gray-400 hover:text-gray-900 dark:hover:text-white">
+                        <a href={`/${locale}/`} className="text-gray-400 hover:text-gray-900 dark:hover:text-white">
                             <svg className="w-4 h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
                                  fill="currentColor" viewBox="0 0 21 16">
                                 <path
@@ -171,7 +174,7 @@ export default function Footer() {
                             </svg>
                             <span className="sr-only">Discord community</span>
                         </a>
-                        <a href="#" className="text-gray-400 hover:text-gray-900 dark:hover:text-white">
+                        <a href={`/${locale}/`} className="text-gray-400 hover:text-gray-900 dark:hover:text-white">
                             <svg className="w-4 h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
                                  fill="currentColor" viewBox="0 0 20 17">
                                 <path fillRule="evenodd"
@@ -180,7 +183,7 @@ export default function Footer() {
                             </svg>
                             <span className="sr-only">Twitter page</span>
                         </a>
-                        <a href="#" className="text-gray-400 hover:text-gray-900 dark:hover:text-white">
+                        <a href={`/${locale}/`} className="text-gray-400 hover:text-gray-900 dark:hover:text-white">
                             <svg className="w-4 h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
                                  fill="currentColor" viewBox="0 0 20 20">
                                 <path fillRule="evenodd"
@@ -189,7 +192,7 @@ export default function Footer() {
                             </svg>
                             <span className="sr-only">GitHub account</span>
                         </a>
-                        <a href="#" className="text-gray-400 hover:text-gray-900 dark:hover:text-white">
+                        <a href={`/${locale}/`} className="text-gray-400 hover:text-gray-900 dark:hover:text-white">
                             <svg className="w-4 h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
                                  fill="currentColor" viewBox="0 0 20 20">
                                 <path fillRule="evenodd"
