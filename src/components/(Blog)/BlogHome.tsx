@@ -1,4 +1,5 @@
 import Image from 'next/image';
+import Link from 'next/link';
 
 export default function BlogHome() {
     return(
@@ -23,6 +24,7 @@ export default function BlogHome() {
                         <p className="mt-4 text-md leading-8 text-gray-600 dark:text-gray-300 sm:text-lg md:text-xl lg:text-2xl">
                             우리는 위성통신을 기반으로 실시간으로 수집하는 데이터를 분석하고 통계합니다. 이를 통해 사용자에게 ...
                         </p>
+                        <Link href="javascript:;" className="mt-12 cursor-pointer text-lg text-indigo-600 font-semibold">Read more..</Link>
                     </div>
                 </div>
             </div>

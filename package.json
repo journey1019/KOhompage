@@ -12,6 +12,7 @@
     "@headlessui/react": "^2.1.9",
     "@heroicons/react": "^2.1.5",
     "framer-motion": "^11.7.0",
+    "gray-matter": "^4.0.3",
     "i18next": "^23.15.1",
     "jquery": "^3.7.1",
     "next": "^15.0.3",

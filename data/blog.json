@@ -1,0 +1,22 @@
+[
+  {
+    "index": 14,
+    "title": "2025년 기대 통신업 순위!",
+    "image": "/images/cases/case_01.png",
+    "date": "2024-12-10",
+    "category": ["Article", "Video"],
+    "tags": ["2025", "New Year", "Company"],
+    "path": "List-of-telecommunications-businesses-expected-in-2025",
+    "featured": false
+  },
+  {
+    "index": 13,
+    "title": "What is ST6000?",
+    "image": "/images/cases/case_02.png",
+    "date": "2024-10-31",
+    "category": ["News"],
+    "tags": ["hardware", "device", "reefer", "dry", "tracking service"],
+    "path": "What-is-ST6000",
+    "featured": false
+  }
+]
