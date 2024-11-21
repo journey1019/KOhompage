@@ -146,7 +146,7 @@ export default function Header({locale}: HeaderProps) {
                                 {openDropdown === 'caseStudies' && dropdownContent('caseStudies')}
                             </li>
                             <li>
-                                <Link href={`${locale}/hard`}
+                                <Link href={`/${locale}/hard`}
                                     className="flex w-full justify-between items-center py-2 px-3 text-gray-900 border-b border-gray-100 hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:text-red-700 md:p-0 dark:text-white md:dark:hover:text-red-500 dark:hover:bg-gray-700 dark:hover:text-red-500 md:dark:hover:bg-transparent dark:border-gray-700"
                                 >
                                     Hardware
