@@ -75,7 +75,7 @@ const SearchBar: React.FC<SearchBarProps> = ({ chips, onAddChip, onRemoveChip })
             </div>
 
             {/* Predefined tags */}
-            <div className="flex gap-2 justify-between">
+            <div className="flex flex-wrap gap-2 sm:justify-between">
                 {[
                     '#Satellite',
                     '#ST6000',

@@ -16,7 +16,7 @@ interface BlogPost {
     tags: string[];
     path: string;
     featured: boolean;
-    content?: string; // Markdown 콘텐츠 추가
+    content?: string | null;// Markdown 콘텐츠 추가
 }
 
 // JSON 데이터를 로드
@@ -47,6 +47,13 @@ export function getPostBySlug(slug: string): BlogPost | null {
     const post = posts.find((p) => p.path === slug);
     if (!post) return null;
 
-    const content = getBlogContent(slug);
+    // Markdown 파일 경로
+    const filePath = path.join(BLOG_CONTENT_PATH, `${slug}.md`);
+    if (!fs.existsSync(filePath)) return null;
+
+    const fileContent = fs.readFileSync(filePath, 'utf-8');
+    const { content } = matter(fileContent); // Markdown 파싱
+
+    // const content = getBlogContent(slug);
     return { ...post, content };
 }

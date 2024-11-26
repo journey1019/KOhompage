@@ -26,7 +26,7 @@ const HardwareList: React.FC<HardwareListProps> = ({ items }) => {
     return (
         <div className="grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 xl:gap-x-8 ">
             {items.map((item) => (
-                <a key={item.path} href={item.path} className="group border p-4 rounded-md shadow-md mb-4 hover:shadow-lg hover:border-blud-500 transition duration-300">
+                <a key={item.path} href={`hard/${item.path}`} className="group border p-4 rounded-md shadow-md mb-4 hover:shadow-lg hover:border-blud-500 transition duration-300">
                     <div
                         className="w-full h-60 overflow-hidden rounded-lg bg-gray-200 group-hover:bg-gray-300 transition duration-300"> {/* 고정된 크기 설정 */}
                         <Image

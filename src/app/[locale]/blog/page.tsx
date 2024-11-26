@@ -21,6 +21,8 @@ export default function BlogPage({ params }: { params: { locale: string } }) {
     const { locale } = params;
     const posts = getBlogMetadata();
     const categories = [...new Set(posts.flatMap((post) => post.category))];
+    console.log(posts)
+    console.log(categories)
 
     return (
         <section>

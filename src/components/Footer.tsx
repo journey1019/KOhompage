@@ -10,7 +10,8 @@ export default function Footer({locale}: FooterProps) {
                         <h2 className="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white">Solutions</h2>
                         <ul className="text-gray-500 dark:text-gray-400 font-medium">
                             <li className="mb-2">
-                                <a href={`/${locale}/solutions/container-iot`} className="hover:underline">Container IoT</a>
+                                <a href={`/${locale}/solutions/container-iot`} className="hover:underline">Container
+                                    IoT</a>
                             </li>
                             <li className="mb-2"><a href={`/${locale}/solutions/container-iot/reefer`}
                                                     className="hover:underline text-gray-400 dark:text-gray-300 text-xs">Reefer</a>
@@ -54,6 +55,24 @@ export default function Footer({locale}: FooterProps) {
                         </ul>
                     </div>
                     <div>
+                        <h2 className="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white">Case
+                            Studies</h2>
+                        <ul className="text-gray-500 dark:text-gray-400 font-medium">
+                            <li className="mb-4">
+                                <a href={`/${locale}/customer/`} className="hover:underline">홍수통제소</a>
+                            </li>
+                            <li className="mb-4">
+                                <a href={`/${locale}/customer/`} className="hover:underline">Case 2</a>
+                            </li>
+                            <li className="mb-4">
+                                <a href={`/${locale}/customer/`} className="hover:underline">Case 3</a>
+                            </li>
+                            <li className="mb-4">
+                                <a href={`/${locale}/customer/`} className="hover:underline">Case 4</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div>
                         <h2 className="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white">Hardware</h2>
                         <ul className="text-gray-500 dark:text-gray-400 font-medium">
                             <li className="mb-2"><a href={`/${locale}/hard/gt-1200`}
@@ -92,23 +111,6 @@ export default function Footer({locale}: FooterProps) {
                             <li className="mb-2"><a href={`/${locale}/hard/idirect`}
                                                     className="hover:underline text-gray-400 dark:text-gray-300 text-xs">iDirect
                                 Modem</a></li>
-                        </ul>
-                    </div>
-                    <div>
-                        <h2 className="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white">Case Studies</h2>
-                        <ul className="text-gray-500 dark:text-gray-400 font-medium">
-                            <li className="mb-4">
-                                <a href={`/${locale}/customer/`} className="hover:underline">홍수통제소</a>
-                            </li>
-                            <li className="mb-4">
-                                <a href={`/${locale}/customer/`} className="hover:underline">Case 2</a>
-                            </li>
-                            <li className="mb-4">
-                                <a href={`/${locale}/customer/`} className="hover:underline">Case 3</a>
-                            </li>
-                            <li className="mb-4">
-                                <a href={`/${locale}/customer/`} className="hover:underline">Case 4</a>
-                            </li>
                         </ul>
                     </div>
                     <div>
