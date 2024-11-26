@@ -10,133 +10,59 @@ interface SolutionsProps {
 }
 
 export default function Solutions({ locale }: SolutionsProps) {
+    const solutions = [
+        {
+            slug: "container-iot",
+            title: "Container IoT",
+            description: "냉동/냉장 컨테이너 실시간 추적, 상태 모니터링, 원격제어 솔루션",
+        },
+        {
+            slug: "global-iot",
+            title: "Global IoT",
+            description: "건설장비 / 기상정보 / 해양정보 상태 모니터링",
+        },
+        {
+            slug: "satellite",
+            title: "Satellite Communication",
+            description: "INMARSAT / ORBCOMM / STARLINK 위성통신 서비스",
+        },
+        {
+            slug: "ais",
+            title: "AIS",
+            description: "위성/육상망을 통한 AIS 정보 수집 및 정보제공 서비스",
+        },
+    ];
+
     return (
-        // <div
-        //     className="grid max-w-screen-2xl px-4 py-5 mx-auto text-sm text-gray-500 dark:text-gray-400 md:grid-cols-4 md:px-6">
-        //     <ul className="hidden mb-4 space-y-4 md:mb-0 md:block">
-        //         <Image
-        //             src={global-iot}
-        //             alt="global IoT"
-        //             width={300}
-        //             height={200}
-        //             unoptimized
-        //             className="object-cover h-48" />
-        //         <p className="text-black text-xl font-bold">Global IoT</p>
-        //         <li>Application of monitoring to various industrial fields such as construction equipment,
-        //             marine information, climate information, etc
-        //         </li>
-        //     </ul>
-        //     <ul className="mb-4 space-y-4 md:mb-0">
-        //         <Image
-        //             src={containe-iot}
-        //             alt="Container IoT"
-        //             width={300}
-        //             height={200}
-        //             unoptimized
-        //             className="object-cover h-48" />
-        //         <p className="text-black text-xl font-bold">Container IoT</p>
-        //         <li>Telematics solutions for tracking and logistics of containers and intelligent trailers
-        //         </li>
-        //     </ul>
-        //     <ul className="mb-4 space-y-4 md:mb-0">
-        //         <Image
-        //             src={satellite}
-        //             alt="Satellite"
-        //             width={300}
-        //             height={200}
-        //             unoptimized
-        //             className="object-cover h-48" />
-        //         <p className="text-black text-xl font-bold">Satellite</p>
-        //         <li>Customized & inexpensive satellite communication services enable high-speed broadband
-        //             Internet service
-        //         </li>
-        //     </ul>
-        //     <ul className="mb-4 space-y-4 md:mb-0">
-        //         <Image
-        //             src={ais}
-        //             alt="AIS"
-        //             width={300}
-        //             height={200}
-        //             unoptimized
-        //             className="object-cover h-48" />
-        //         <p className="text-black text-xl font-bold">AIS</p>
-        //         <li>Support ship identification, location, and navigation, and improve marine safety</li>
-        //     </ul>
-        // </div>
         <div className="grid max-w-screen-2xl px-4 py-5 mx-auto text-sm text-gray-500 dark:text-gray-400 md:px-6">
-            <div id="mega-menu-full-dropdown"
-                 className="mt-1 border-gray-200 shadow-sm bg-gray-50 md:bg-white border-y dark:bg-gray-800 dark:border-gray-600">
-                <div
-                    className="grid max-w-screen-xl px-4 py-3 mx-auto text-gray-900 dark:text-white grid-cols-1 sm:grid-cols-4 md:px-6">
-                    <ul>
-                        <li>
-                            <a href={`/${locale}/solutions/containe-iot`}
-                               className="block px-3 py-1 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700">
-                                <div className="flex flex-col items-start">
-                                    <div
-                                        className="rounded-md bg-gray-200 dark:bg-white/5 p-1 ring-1 ring-gray-300 dark:ring-white/10">
-                                        <HandRaisedIcon aria-hidden="true"
-                                                        className="h-5 w-5 text-black dark:text-white" />
+            <div
+                id="mega-menu-full-dropdown"
+                className="mt-1 border-gray-200 shadow-sm bg-gray-50 md:bg-white border-y dark:bg-gray-800 dark:border-gray-600"
+            >
+                <div className="grid max-w-screen-xl px-4 py-3 mx-auto text-gray-900 dark:text-white grid-cols-1 sm:grid-cols-4 md:px-6">
+                    {solutions.map((solution, index) => (
+                        <ul key={`${locale}-${solution.slug}-${index}`}> {/* 고유한 key 생성 */}
+                            <li key={`/${locale}/solutions/${solution.slug}`}>
+                                <a
+                                    href={`/${locale}/solutions/${solution.slug}`}
+                                    className="block px-3 py-1 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700"
+                                >
+                                    <div className="flex flex-col items-start">
+                                        <div className="rounded-md bg-gray-200 dark:bg-white/5 p-1 ring-1 ring-gray-300 dark:ring-white/10">
+                                            <HandRaisedIcon
+                                                aria-hidden="true"
+                                                className="h-5 w-5 text-black dark:text-white"
+                                            />
+                                        </div>
+                                        <div className="font-semibold pt-5">{solution.title}</div>
+                                        <div className="text-sm pt-2 text-gray-400">{solution.description}</div>
                                     </div>
-                                    <div className="font-semibold pt-5">Container IoT</div>
-                                    <div className="text-sm pt-2 text-gray-400">냉동/냉장 컨테이너 실시간 추적, 상태 모니터링, 원격제어 솔루션
-                                        솔루션
-                                    </div>
-                                </div>
-                            </a>
-                        </li>
-                    </ul>
-                    <ul>
-                        <li>
-                            <a href={`/${locale}/solutions/global-iot`}
-                               className="block px-3 py-1 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700">
-                                <div className="flex flex-col items-start">
-                                    <div
-                                        className="rounded-md bg-gray-200 dark:bg-white/5 p-1 ring-1 ring-gray-300 dark:ring-white/10">
-                                        <HandRaisedIcon aria-hidden="true"
-                                                        className="h-5 w-5 text-black dark:text-white" />
-                                    </div>
-                                    <div className="font-semibold pt-5">Global IoT</div>
-                                    <div className="text-sm pt-2 text-gray-400">건설장비 / 기상정보 / 해양정보 상태 모니터링</div>
-                                </div>
-                            </a>
-                        </li>
-                    </ul>
-                    <ul>
-                        <li>
-                            <a href={`/${locale}/solutions/satellite`}
-                               className="block px-3 py-1 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700">
-                                <div className="flex flex-col items-start">
-                                    <div
-                                        className="rounded-md bg-gray-200 dark:bg-white/5 p-1 ring-1 ring-gray-300 dark:ring-white/10">
-                                        <HandRaisedIcon aria-hidden="true"
-                                                        className="h-5 w-5 text-black dark:text-white" />
-                                    </div>
-                                    <div className="font-semibold pt-5">Satellite Communication</div>
-                                    <div className="text-sm pt-2 text-gray-400">INMARSAT / ORBCOMM / STARLINK 위성통신 서비스
-                                    </div>
-                                </div>
-                            </a>
-                        </li>
-                    </ul>
-                    <ul>
-                        <li>
-                            <a href={`/${locale}/solutions/ais`}
-                               className="block px-3 py-1 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700">
-                                <div className="flex flex-col items-start">
-                                    <div
-                                        className="rounded-md bg-gray-200 dark:bg-white/5 p-1 ring-1 ring-gray-300 dark:ring-white/10">
-                                        <HandRaisedIcon aria-hidden="true"
-                                                        className="h-5 w-5 text-black dark:text-white" />
-                                    </div>
-                                    <div className="font-semibold pt-5">AIS</div>
-                                    <div className="text-sm pt-2 text-gray-400">위성/육상망을 통한 AIS 정보 수집 및 정보제공 서비스</div>
-                                </div>
-                            </a>
-                        </li>
-                    </ul>
+                                </a>
+                            </li>
+                        </ul>
+                    ))}
                 </div>
             </div>
         </div>
-    )
+    );
 }

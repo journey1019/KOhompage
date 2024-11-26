@@ -1,3 +1,4 @@
+import solutionsData from '@/service/solutionsData';
 import Greet from '@/components/(Solution)/Greet';
 import Intro from '@/components/(Solution)/Intro';
 import Card from '@/components/(Solution)/Card';
@@ -10,6 +11,7 @@ import Download from '@/components/(Solution)/Download';
 import PageTopImage from '@/components/PageTopImage';
 
 export default function Satellite(){
+    const data = solutionsData["satellite"];
     return(
         <section>
             <PageTopImage
@@ -20,7 +22,12 @@ export default function Satellite(){
                 description="이 섹션은 배경 이미지를 고정시키고, 스크롤할 때 안쪽 콘텐츠는 이동하는 구조입니다."
                 textPosition="center"
             />
-            <Greet />
+            <Greet
+                solutionNumber={data.solutionNumber}
+                title={data.title}
+                solutionName={data.solutionName}
+                description={data.description}
+            />
             <Intro />
             <Card/>
             <Advantage/>

@@ -1,3 +1,4 @@
+import solutionsData from '@/service/solutionsData';
 import PageTopImage from '@/components/PageTopImage';
 import Greet from '@/components/(Solution)/Greet';
 import Intro from '@/components/(Solution)/Intro';
@@ -16,6 +17,7 @@ export const metadata: Metadata = {
 }
 
 export default function GlobalIoT(){
+    const data = solutionsData["global-iot"];
     return(
         <section>
             <PageTopImage
@@ -26,7 +28,12 @@ export default function GlobalIoT(){
                 description="이 섹션은 배경 이미지를 고정시키고, 스크롤할 때 안쪽 콘텐츠는 이동하는 구조입니다."
                 textPosition="center"
             />
-            <Greet />
+            <Greet
+                solutionNumber={data.solutionNumber}
+                title={data.title}
+                solutionName={data.solutionName}
+                description={data.description}
+            />
             <Intro />
             <Card/>
             <Advantage/>
