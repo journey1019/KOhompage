@@ -16,8 +16,11 @@ export const metadata: Metadata = {
     description: 'KOREA ORBCOMM 의 Solutions 소개'
 }
 
-export default function GlobalIoT(){
-    const data = solutionsData["global-iot"];
+interface PageProps {
+    params: {locale: string};
+}
+export default function GlobalIoT({params}: PageProps){
+    const data = solutionsData[params.locale]["global-iot"];
     return(
         <section>
             <PageTopImage
@@ -28,12 +31,13 @@ export default function GlobalIoT(){
                 description="이 섹션은 배경 이미지를 고정시키고, 스크롤할 때 안쪽 콘텐츠는 이동하는 구조입니다."
                 textPosition="center"
             />
-            <Greet
-                solutionNumber={data.solutionNumber}
-                title={data.title}
-                solutionName={data.solutionName}
-                description={data.description}
-            />
+            <Greet {...data} />
+            {/*<Greet*/}
+            {/*    solutionNumber={data.solutionNumber}*/}
+            {/*    title={data.title}*/}
+            {/*    solutionName={data.solutionName}*/}
+            {/*    description={data.description}*/}
+            {/*/>*/}
             <Intro />
             <Card/>
             <Advantage/>
