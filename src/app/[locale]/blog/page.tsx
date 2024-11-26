@@ -17,12 +17,22 @@ import { getBlogMetadata } from '@/service/blogUtils';
 import BlogPost from '@/components/(Blog)/BlogPost';
 import Link from 'next/link';
 
-export default function BlogPage({ params }: { params: { locale: string } }) {
-    const { locale } = params;
-    const posts = getBlogMetadata();
+function formatCategoryName(category: string): string {
+    return category.charAt(0).toUpperCase() + category.slice(1);
+}
+
+export default async function BlogPage({ params }: { params: { locale: string } }) {
+    const posts = await getBlogMetadata();
+
+    if (!posts || posts.length === 0) {
+        return (
+            <div className="text-center py-12">
+                <h2 className="text-2xl font-bold">No blog posts available.</h2>
+            </div>
+        );
+    }
+
     const categories = [...new Set(posts.flatMap((post) => post.category))];
-    console.log(posts)
-    console.log(categories)
 
     return (
         <section>
@@ -32,12 +42,12 @@ export default function BlogPage({ params }: { params: { locale: string } }) {
                 {categories.map((category) => (
                     <div key={category} className="pt-10 py-28">
                         <div className="mb-8 flex justify-between">
-                            <h2 className="font-semibold text-5xl">{category}</h2>
+                            <h2 className="font-semibold text-5xl">{formatCategoryName(category)}</h2>
                             <Link
                                 className="py-3 px-5 rounded-full border-2 border-red-700 text-red-700 bg-white hover:bg-gray-200"
-                                href={`/${locale}/blog/${category}`}
+                                href={`/${params.locale}/blog/${category}`} // params.locale 직접 사용
                             >
-                                더 많은 이야기 보기
+                                더보기
                             </Link>
                         </div>
                         <div className="grid grid-cols-1 gap-y-16 gap-x-8 lg:grid-cols-2 xl:grid-cols-3">
@@ -50,7 +60,8 @@ export default function BlogPage({ params }: { params: { locale: string } }) {
                                         image={post.image}
                                         category={category}
                                         date={post.date}
-                                        href={`/${locale}/blog/${category}/${post.path}`}
+                                        href={`/${params.locale}/blog/${category}/${post.path}`} // params.locale 직접 사용
+                                        dangerouslySetInnerHTML={{ __html: post.content || '' }} // HTML 렌더링
                                     />
                                 ))}
                         </div>
@@ -60,3 +71,5 @@ export default function BlogPage({ params }: { params: { locale: string } }) {
         </section>
     );
 }
+
+

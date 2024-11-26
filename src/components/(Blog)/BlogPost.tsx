@@ -6,9 +6,10 @@ interface BlogPostProps {
     category: string;
     date: string;
     href: string;
+    dangerouslySetInnerHTML: { __html: string };
 }
 
-export default function BlogPost({ title, image, category, date, href }: BlogPostProps) {
+export default function BlogPost({ title, image, category, date, href, dangerouslySetInnerHTML }: BlogPostProps) {
     return (
         <div className="group w-full border border-gray-300 rounded-2xl">
             <a href={href} className="block">
@@ -30,6 +31,7 @@ export default function BlogPost({ title, image, category, date, href }: BlogPos
                         {title}
                     </h4>
                     <p className="text-sm text-gray-600 mb-2">{date}</p>
+                    <div dangerouslySetInnerHTML={dangerouslySetInnerHTML}/>
                     <span className="cursor-pointer text-lg text-indigo-600 font-semibold">
                         Read more...
                     </span>

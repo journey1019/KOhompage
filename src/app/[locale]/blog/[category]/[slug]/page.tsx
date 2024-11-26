@@ -3,17 +3,18 @@ import { getPostBySlug } from '@/service/blogUtils';
 import { notFound } from 'next/navigation';
 
 type PostPageProps = {
-    params: { category: string; slug: string };
-}
+    params: { locale: string; category: string; slug: string };
+};
+
 export default async function PostPage({ params }: PostPageProps) {
     const post = await getPostBySlug(params.slug);
 
     if (!post) {
-        notFound(); // 글이 없으면 404 페이지 처리
+        notFound(); // 404 페이지 처리
     }
 
     return (
-        <div className="mx-auto max-w-6xl px-6 py-16">
+        <div className="mx-auto max-w-6xl px-6 py-16 bg-white antialiased">
             <h1 className="text-3xl font-bold mb-6">{post.title}</h1>
             <Image
                 src={post.image}
