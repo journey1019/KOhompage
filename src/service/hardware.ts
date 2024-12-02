@@ -8,7 +8,7 @@ export type Post = {
     devkit: string;
     category: string;
     tag: string[];
-    path: string;
+    slug: string;
     featured: boolean;
 }
 

@@ -18,5 +18,25 @@
     "tags": ["hardware", "device", "reefer", "dry", "tracking service"],
     "path": "What-is-ST6000",
     "featured": false
+  },
+  {
+    "index": 12,
+    "title": "Construction Telematics: 11 Questions You Need to Ask Your Provider",
+    "image": "/images/cases/case_02.png",
+    "date": "2024-10-31",
+    "category": ["eBook"],
+    "tags": ["Global IoT", "Construct", "reefer", "dry", "tracking service"],
+    "path": "What-is-ST6000",
+    "featured": false
+  },
+  {
+    "index": 13,
+    "title": "What is ST6000?",
+    "image": "/images/cases/case_02.png",
+    "date": "2024-10-31",
+    "category": ["Video"],
+    "tags": ["hardware", "device", "reefer", "dry", "tracking service"],
+    "path": "What-is-ST6000",
+    "featured": false
   }
 ]

@@ -5,10 +5,11 @@ interface ImageTopPageProps {
     subtitle: string;
     description: string;
     textPosition?: 'left' | 'center' | 'right'; // 텍스트 위치 조정 가능
+    opacity?: number;
 }
 
 
-export default function PageTopImage({size, url, title, subtitle, description, textPosition =  'left'}: ImageTopPageProps) {
+export default function PageTopImage({size, url, title, subtitle, description, textPosition = 'left', opacity = 30}: ImageTopPageProps) {
     const getTextPositionClass = () => {
         switch(textPosition) {
             case 'center':
@@ -31,7 +32,13 @@ export default function PageTopImage({size, url, title, subtitle, description, t
                     }}
                 />
                 {/* 어두운 오버레이 */}
-                <div className="absolute inset-0 bg-black bg-opacity-30" />
+                <div
+                    className="absolute inset-0 bg-black"
+                    style={{
+                        backgroundColor: `rgba(0, 0, 0, ${opacity / 100})`, // 동적 투명도 설정
+                    }}
+                />
+
             </div>
 
             {/* 안쪽 콘텐츠 */}

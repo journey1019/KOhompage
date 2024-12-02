@@ -13,7 +13,7 @@
       "Dry Van",
       "Chassis and Dry Container"
     ],
-    "path": "gt-1200",
+    "slug": "gt-1200",
     "featured": true
   },
   {
@@ -31,7 +31,7 @@
       "VMS",
       "Reefer Connect"
     ],
-    "path": "ct-3500",
+    "slug": "ct-3500",
     "featured": false
   },
   {
@@ -46,17 +46,17 @@
       "Maritime",
       "ORBCOMM Platform"
     ],
-    "path": "st-2100",
+    "slug": "st-2100",
     "featured": false
   },
   {
-    "title": "ST6000 시리즈 (Satellite)",
+    "title": "ST6100 시리즈 (Satellite)",
     "subTitle": "설명",
-    "description": "ST6000 시리즈 위성 터미널은 선박과 부표 등을 위한 연근해 및 대양과 육상을 연결하는 완벽한 통신장비입니다. 안테나 일체형 안테나로 프로그램 내장이 가능한 위성 통신단말기로 Inmarsat IsatData Pro 네트워크를 연결하는 최적의 제품입니다. ST6000 시리즈 위성 터미널은 Inmarsat IsatData Pro 네트워크를 통한 글로벌 위성 연결을 통해 원격 지역에서 작동하는 산업 자산에 대한 완벽한 가시성 확보 및 제어 기능을 제공합니다. 고객의 요구에 맞는 프로그램을 개발하여 내장이 가능합니다.",
+    "description": "ST6100 시리즈 위성 터미널은 선박과 부표 등을 위한 연근해 및 대양과 육상을 연결하는 완벽한 통신장비입니다. 안테나 일체형 안테나로 프로그램 내장이 가능한 위성 통신단말기로 Inmarsat IsatData Pro 네트워크를 연결하는 최적의 제품입니다. ST6000 시리즈 위성 터미널은 Inmarsat IsatData Pro 네트워크를 통한 글로벌 위성 연결을 통해 원격 지역에서 작동하는 산업 자산에 대한 완벽한 가시성 확보 및 제어 기능을 제공합니다. 고객의 요구에 맞는 프로그램을 개발하여 내장이 가능합니다.",
     "brochure": "",
     "devkit": "",
     "category": "",
-    "imageSrc": "/images/hardware/ST-6000.png",
+    "imageSrc": "/images/hardware/ST-6100.png",
     "tag": [
       "Maritime",
       "ORBCOMM Platform",
@@ -64,7 +64,7 @@
       "General and Multi-Purpose Asset Tracking",
       "Monitoring"
     ],
-    "path": "st-6000",
+    "slug": "st-6000",
     "featured": true
   },
   {
@@ -79,7 +79,7 @@
       "Maritime",
       "Reefer Connect"
     ],
-    "path": "ct-3600",
+    "slug": "ct-3600",
     "featured": false
   },
   {
@@ -96,7 +96,7 @@
       "AIS",
       "Monitoring"
     ],
-    "path": "st-9100",
+    "slug": "st-9100",
     "featured": false
   },
   {
@@ -112,7 +112,7 @@
       "General and Multi-Purpose Asset Tracking",
       "Finance"
     ],
-    "path": "qpro",
+    "slug": "qpro",
     "featured": false
   },
   {
@@ -128,7 +128,7 @@
       "Satellite",
       "Communication"
     ],
-    "path": "q4000",
+    "slug": "q4000",
     "featured": false
   },
   {
@@ -146,7 +146,7 @@
       "Power",
       "Protocol"
     ],
-    "path": "og2-ogi",
+    "slug": "og2-ogi",
     "featured": false
   },
   {
@@ -164,7 +164,7 @@
       "80cm",
       "100cm"
     ],
-    "path": "vsat",
+    "slug": "vsat",
     "featured": false
   },
   {
@@ -180,7 +180,58 @@
       "Satellite",
       "Multi-Core"
     ],
-    "path": "idirect",
+    "slug": "idirect",
+    "featured": false
+  },
+  {
+    "title": "ST-6000",
+    "subTitle": "설명",
+    "description": "Secure intelligent visibility and new growth opportunities with reasonably priced solar satellite trackers.",
+    "brochure": "",
+    "devkit": "",
+    "category": "",
+    "imageSrc": "/images/hardware/ST-6000.png",
+    "tag": [
+      "Simple",
+      "Powerful",
+      "Efficient",
+      "solar-powered"
+    ],
+    "slug": "sc-1000",
+    "featured": false
+  },
+  {
+    "title": "SC-1000",
+    "subTitle": "설명",
+    "description": "Secure intelligent visibility and new growth opportunities with reasonably priced solar satellite trackers.",
+    "brochure": "",
+    "devkit": "",
+    "category": "",
+    "imageSrc": "/images/hardware/SC-1000.png",
+    "tag": [
+      "Simple",
+      "Powerful",
+      "Efficient",
+      "solar-powered"
+    ],
+    "slug": "sc-1000",
+    "featured": false
+  },
+  {
+    "title": "MT-5000",
+    "subTitle": "설명",
+    "description": "",
+    "brochure": "",
+    "devkit": "",
+    "category": "",
+    "imageSrc": "/images/hardware/MT-5000.png",
+    "tag": [
+      "Simple",
+      "Powerful",
+      "Efficient",
+      "solar-powered"
+    ],
+    "slug": "",
     "featured": false
   }
 ]

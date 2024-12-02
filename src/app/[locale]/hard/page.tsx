@@ -22,6 +22,7 @@ const HardPage = () => {
             filterHardware(updatedChips);
         }
     }
+
     const handleRemoveChip = (chipToRemove: string) => {
         const updatedChips = chips.filter((chip) => chip !== chipToRemove.toLowerCase());
         setChips(updatedChips);
@@ -35,11 +36,10 @@ const HardPage = () => {
         }
 
         const filtered = hardwareData.filter((item) => {
-            const { title, subTitle, description, tag, path } = item;
-            const content = [title, subTitle, description, ...tag, path].join(' ').toLowerCase(); // 소문자 변환
+            const { title, subTitle, description, tag, slug } = item;
+            const content = [title, subTitle, description, ...tag, slug].join(' ').toLowerCase(); // 소문자 변환
             return chips.every((chip) => content.includes(chip.toLowerCase())); // 모든 Chip 포함 여부 확인
         });
-
         setFilteredItems(filtered);
     };
 
@@ -61,7 +61,6 @@ const HardPage = () => {
             </div>
 
             <div className="mx-auto max-w-2xl px-4 py-16 sm:px-6 sm:py-24 lg:max-w-7xl lg:px-8">
-                <h1 className="text-2xl font-bold mb-4">Hardware List</h1>
                 <HardwareList items={filteredItems} />
             </div>
         </div>

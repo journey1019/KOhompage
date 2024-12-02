@@ -28,12 +28,10 @@ export default function SolutionsPage() {
                 textPosition="center"
             />
             {/*<Header/>*/}
-            <Greet />
             <Intro />
             <Card/>
             <Advantage/>
             <ContentForm/>
-            <UseCase/>
             <Hardware/>
             <FAQ/>
             <Download/>

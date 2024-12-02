@@ -1,4 +1,5 @@
 import solutionsData from '@/service/solutionsData';
+import PageTopImage from '@/components/PageTopImage';
 import Greet from '@/components/(Solution)/Greet';
 import Intro from '@/components/(Solution)/Intro';
 import Card from '@/components/(Solution)/Card';
@@ -7,35 +8,66 @@ import ContentForm from '@/components/(Solution)/ContentForm';
 import UseCase from '@/components/(Solution)/UseCase';
 import Hardware from '@/components/(Solution)/Hardware';
 import FAQ from '@/components/(Solution)/FAQ';
+import { Metadata } from 'next';
 import Download from '@/components/(Solution)/Download';
-import PageTopImage from '@/components/PageTopImage';
+import CarouselSolutions from '@/components/(Solution)/CarouselSolutions';
+import References from '@/components/(Solution)/References';
 
-export default function AIS(){
-    const data = solutionsData["ais"];
+interface PageProps {
+    params: {locale: string};
+}
+export const metadata: Metadata = {
+    title: 'Solution | %s',
+    description: 'KOREA ORBCOMM 의 Solutions 소개'
+}
+export async function generateStaticParams() {
+    return [
+        { locale: 'en' },
+        { locale: 'ko' },
+    ];
+}
+
+export default async function GlobalIoT({params}: PageProps){
+    const { locale } = params; // 비동기적으로 처리
+    const data = solutionsData[locale]?.["ais"]; // 안전하게 데이터 접근
+
+    // 데이터 유효성 검증
+    if (!data) {
+        return (
+            <div className="text-center py-12">
+                <h2 className="text-2xl font-bold">Solution not found</h2>
+                <p>Please check the locale or solution slug.</p>
+            </div>
+        );
+    }
+
     return(
         <section>
             <PageTopImage
                 size="py-52"
-                url="https://www.orbcomm.co.kr/resources/img/background/KOREA_ORBCOMM_reeferconnect_2.jpg"
-                title="KOREAORBCOMM FOR RINANCIAL SERVICES"
-                subtitle="글로벌 통신으로 경험을 향상시키세요"
-                description="이 섹션은 배경 이미지를 고정시키고, 스크롤할 때 안쪽 콘텐츠는 이동하는 구조입니다."
+                url={data.imageUrl}
+                title={data.imageIntro}
+                subtitle={data.imageMain}
+                description={data.imageSub}
                 textPosition="center"
             />
-            <Greet
-                solutionNumber={data.solutionNumber}
-                title={data.title}
-                solutionName={data.solutionName}
-                description={data.description}
-            />
-            <Intro />
-            <Card/>
+            <Greet {...data} />
+            {/*<Greet*/}
+            {/*    solutionNumber={data.solutionNumber}*/}
+            {/*    title={data.title}*/}
+            {/*    solutionName={data.solutionName}*/}
+            {/*    description={data.description}*/}
+            {/*/>*/}
+            {/*<Intro />*/}
+            {/*<CarouselSolutions items={data.carousels || []}/>*/}
+            {/*<Card/>*/}
             <Advantage/>
             <ContentForm/>
-            <UseCase/>
+            <UseCase slug="ais" locale={locale} />
             <Hardware/>
             <FAQ/>
             <Download/>
+            <References/>
         </section>
     )
 }
