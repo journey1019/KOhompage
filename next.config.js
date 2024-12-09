@@ -22,3 +22,14 @@ module.exports = withNextIntl(nextConfig);
 //         defaultLocale: 'en',   // 기본 언어
 //     },
 //     reactStrictMode: true,
+
+
+// module.exports = {
+//     i18n: {
+//         locales: ['en', 'ko'],
+//         defaultLocale: 'ko',
+//     },
+//     experimental: {
+//         appDir: true,
+//     },
+// };

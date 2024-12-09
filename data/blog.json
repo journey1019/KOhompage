@@ -1,22 +1,72 @@
 [
   {
-    "index": 14,
-    "title": "2025년 기대 통신업 순위!",
+    "index": 1,
+    "title": "위성통신기업 코리아오브컴, 선박 IoT솔루션 출시로 국내사업 강화",
     "image": "/images/cases/case_01.png",
     "date": "2024-12-10",
-    "category": ["Article", "Video"],
+    "category": ["Article"],
     "tags": ["2025", "New Year", "Company"],
-    "path": "List-of-telecommunications-businesses-expected-in-2025",
+    "path": "https://www.etnews.com/20240401000282",
     "featured": false
   },
   {
-    "index": 13,
-    "title": "What is ST6000?",
+    "index": 2,
+    "title": "코리아오브컴, 고려해운에 컨테이너 IoT 제품 공급",
     "image": "/images/cases/case_02.png",
     "date": "2024-10-31",
-    "category": ["News"],
-    "tags": ["hardware", "device", "reefer", "dry", "tracking service"],
-    "path": "What-is-ST6000",
+    "category": ["Article"],
+    "tags": ["고려해운", "컨테이너 IoT", "공급", "dry", "tracking service"],
+    "path": "https://www.ksg.co.kr/news/main_newsView.jsp?pNum=141162",
+    "featured": false
+  },
+  {
+    "index": 11,
+    "title": "Reefer Container 감시 및 제어 시스템",
+    "image": "/images/cases/case_02.png",
+    "date": "2024-10-31",
+    "category": ["Video"],
+    "tags": ["ReeferConnect", "냉동", "냉장", "컨테이너"],
+    "path": "https://youtu.be/9ppHkaMbCRE",
+    "featured": false
+  },
+  {
+    "index": 30,
+    "title": "CT1200 Series (Satellite)",
+    "image": "/images/cases/case_02.png",
+    "date": "2024-10-31",
+    "category": ["Brochure"],
+    "tags": ["Trailer Tracking", "Dry Van", "Chassis and Dry Container"],
+    "path": "CT1200_Brochure",
+    "featured": false
+  },
+  {
+    "index": 31,
+    "title": "ST6000 시리즈 (Satellite)",
+    "image": "/images/cases/case_02.png",
+    "date": "2024-10-31",
+    "category": ["IDP DevKit"],
+    "tags": ["Trailer Tracking", "Dry Van", "Chassis and Dry Container"],
+    "path": "CT1200_Brochure",
+    "featured": false
+  },
+  {
+    "index": 32,
+    "title": "VSAT Antenna",
+    "image": "/images/cases/case_02.png",
+    "date": "2024-10-31",
+    "category": ["Resources"],
+    "tags": ["Trailer Tracking", "Dry Van", "Chassis and Dry Container"],
+    "path": "CT1200_Brochure",
+    "featured": false
+  },
+  {
+    "index": 33,
+    "title": "VSAT Antenna",
+    "image": "/images/cases/case_02.png",
+    "date": "2024-10-31",
+    "category": ["Resources"],
+    "tags": ["Trailer Tracking", "Dry Van", "Chassis and Dry Container"],
+    "path": "CT1200_Brochure",
     "featured": false
   },
   {

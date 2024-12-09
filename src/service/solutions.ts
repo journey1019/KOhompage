@@ -13,6 +13,7 @@ export type Solution = {
     title: string;
     subTitle: string;
     image: string;
+    slug: string;
     advantage: Advantage[];
 };
 

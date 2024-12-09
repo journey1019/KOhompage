@@ -1,0 +1,25 @@
+{
+  "pageTop": {
+    "title": "하드웨어 솔루션",
+    "subTitle": "혁신적이고 신뢰할 수 있는",
+    "description": "연결성과 추적을 가능하게 하는 우리의 하드웨어 제품을 발견하십시오."
+  },
+  "searchSection": {
+    "title": "하드웨어 검색"
+  },
+  "advantageSection": {
+    "title": "우리의 장점",
+    "items": [
+      {
+        "imageUrl": "/images/icon1.png",
+        "advantage": "신뢰성",
+        "description": "수천 명이 신뢰하는 우리의 솔루션."
+      },
+      {
+        "imageUrl": "/images/icon2.png",
+        "advantage": "합리적인 가격",
+        "description": "투자 대비 최고의 가치를 제공합니다."
+      }
+    ]
+  }
+}

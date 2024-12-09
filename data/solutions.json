@@ -1,9 +1,10 @@
 [
   {
     "solution" : 1,
-    "title": "Solution1. Container IoT",
-    "subTitle": "냉동/냉장 컨테이너 및 화물에 대한 실시간 추적, 상태 모니터링, 원격제어 솔루션\n글로벌 주요 선사가 선택한 ORBCOMM의 컨테이너 IoT 솔루션은 전세계 1,000,000개 이상의 컨테이너에 설치되어 운영하고 있습니다.\n컨테이너선사, 화주, 복합운송업체 등 다양한 사용자에게 해상/육상 전 지역에서 수집된 데이터를 제공하여 화물의 안전한 운송에 기여하고 있습니다.",
+    "title": "Solution1. Container IoT: Reefer Container, DRY Contianer",
+    "subTitle": "전세계 Top3 선사가 선택한 ORBCOMM은 현재 500,000개 이상의 제품이 냉동냉장 컨테이너에 설치되어 운영중이며, 육해상 전 지역에서의 실시간 컨테이너 관제 서비스를 제공합니다.",
     "image": "/images/befo_ko/Reffer1.png",
+    "slug": "container-iot",
     "advantage": [
       {
         "image": "/images/icons/communication.png",
@@ -24,70 +25,73 @@
   },
   {
     "solution" : 2,
-    "title": "Solution2. Global IoT",
-    "subTitle": "건설장비, 해양정보, 기후정보 모니터링 등 다양한 사업분야에 적용 가능한 산업용 IoT 솔루션",
+    "title": "Solution2. Global IoT: Heavy Equipment, Maritime Information, Publi/Social Safety Network",
+    "subTitle": "코리아오브컴에서 제공하는 산업용 IoT 솔루션은 건설장비 모니터링, 해양정보 모니터링, 기후정보 모니터링 등 다양한 산업분야에 적합한 솔루션을 제공합니다.",
     "image": "/images/befo_ko/M2M_IoT.jpg",
+    "slug": "global-iot",
     "advantage": [
       {
-        "image": "/images/icons/communication.png",
-        "title": "건설장비 모니터링",
-        "subTitle": "건설장비의 위치정보 및 가동정보 수집"
+        "image": "/images/icons/Construction.png",
+        "title": "Heavy Equipment Monitoring",
+        "subTitle": "전세계 열악한 통신 환경에서 운용되는 건설, 농업기계, 광산장비 등 중장비의 운용정보 및 위치정보를 모니터링하여 고객에 제공"
       },
       {
-        "image": "/images/icons/trophy.png",
-        "title": "해양정보 모니터링",
-        "subTitle": "해양을 부이를 통해 수집되는 센서 정보 수집"
+        "image": "/images/icons/Ocean.png",
+        "title": "Maritime Information Monitoring",
+        "subTitle": "해상안전, 해양산업, 학술정보 등을 위해 선박운항/파고/기온/기상정보 등을 센서로 수집하고 글로벌 통신망으로 전송/모니터링 "
       },
       {
-        "image": "/images/icons/exchange.png",
-        "title": "기후정보 모니터링",
-        "subTitle": "기상관측소 및 수자원 관측소에서 수집되는 센서 정보"
+        "image": "/images/icons/Social.png",
+        "title": "Public / Social Safety Network",
+        "subTitle": "공공망 통신망, 사회안전망 다중통신망이 필요한 곳에서 유/무선망과 함께 활용"
       }
     ]
   },
   {
     "solution" : 3,
     "title": "Solution3. Satellite Communication",
-    "subTitle": "ORBCOMM의 저궤도(LEO: Low Earth Orbit) 위성 네트워크는 소형 위성모듈과 Whip 형태의 무지향성 안테나를 적용하기 쉽고, 간단한 설치로 통신 인프라가 구축되어 있지 않은 산악/해상 등의 장소에서 유용한 데이터 통신 서비스를 제공합니다.",
+    "subTitle": "ORBCOMM의 저궤도위성 네트워크는 소형 위성모듈과 Whip 형태의 무지향성 안테나를 적용하기 쉽고, 간단한 설치로 산악/해상 등의 장소에서 유용한 데이터 통신 서비스를 제공합니다.",
     "image": "/images/befo_ko/InmarsatI4.jpg",
+    "slug": "satellite",
     "advantage": [
       {
-        "image": "/images/icons/truck.png",
-        "title": "Free Shipping",
-        "subTitle": "It's not actually free we just price it into the products.Someone's paying for it, and it's not us"
+        "image": "/images/icons/Global.png",
+        "title": "OGx : next generation of satellite",
+        "subTitle": "OGx 위성 서비스는 Inmarsat(인말셋) 4세대 및 6세대 위성의 L-Band 대역을 이용하여 전세계에 위성통신을 제공합니다."
       },
       {
-        "image": "/images/icons/trophy.png",
-        "title": "10-year warranty",
-        "subTitle": "If it breaks in the first 10 years we'll replace it. After that you're on your own though"
+        "image": "/images/icons/LowEarthOrbit.png",
+        "title": "ORBCOMMM : Low Earth Orbit",
+        "subTitle": "ORBCOMM의 저궤도위성 네트워크로 무지향성 안테나를 적용하여 쉽고 간단한 설치 및 데이터 통신 서비스가 가능합니다."
       },
       {
-        "image": "/images/icons/exchange.png",
-        "title": "Exchanges",
-        "subTitle": "If you don't like it, trade it to one of your friends for something of theirs. Don't send it here though."
+        "image": "/images/icons/Antenna.png",
+        "title": "SpaceX StarLink",
+        "subTitle": "스페이스 X의 스타링크 위성서비스 국내 공급."
       }
     ]
   },
   {
     "solution" : 4,
     "title": "Solution4. Collecting AIS information from all regions worldwide and delivering it to our customers.",
-    "subTitle": "It is a ship-borne system that transmits crucial data that supports the identification, location, and navigation of vessels, enhancing maritime safety. AIS data is used for maritime domain awareness, search and rescue operations, environmental monitoring, and maritime information analysis.",
-    "image": "/images/befo_ko/Soluiton_Tap.jpg",
+    "subTitle": "AIS(선박 자동 식별 장치, Automatic Identification System)는 식별, 위치, 탐색을 지원하고 해양 안전을 향상시키는데 사용할 수 있는 중요한 데이터를 전송하는 선박 발신 시스템입니다.",
+    "image": "/images/befo_ko/Solution_Tap.jpg",
+    "slug": "ais",
     "advantage": [
       {
-        "image": "/images/icons/communication.png",
-        "title": "Free Shipping",
-        "subTitle": "It's not actually free we just price it into the products.Someone's paying for it, and it's not us"
+        "image": "/images/icons/SaveTime.png",
+        "title": "Lower Latency",
+        "subTitle": "Korea ORBCOMM의 위성 AIS data는 최소 수신지연 시간을 1분 이하로 제공합니다."
       },
       {
-        "image": "/images/icons/trophy.png",
-        "title": "10-year warranty",
-        "subTitle": "If it breaks in the first 10 years we'll replace it. After that you're on your own though"
+        "image": "/images/icons/Signal.png",
+        "title": "Increased Detection Rate",
+        "subTitle": "저궤도 AIS 위성들은 전세계 해상 전역을 상시 모니터링 할 수 있도록 설계되어, 안정적인 AIS 신호 탐지에 최적화되어 있습니다."
       },
       {
-        "image": "/images/icons/exchange.png",
-        "title": "Exchanges",
-        "subTitle": "If you don't like it, trade it to one of your friends for something of theirs. Don't send it here though."
+        "image": "/images/icons/SaveMoney.png",
+        "title": "Cost-Effective",
+        "subTitle": "Korea ORBCOMM의 위성 AIS는 다른 제공 업체와 비교하여 계획과 서비스에 더 많은 유연성을 제공할 수 있습니다."
       }
     ]
   }

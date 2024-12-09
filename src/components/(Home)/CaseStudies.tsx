@@ -26,12 +26,12 @@ const contents = [
 
 export function CaseStudies() {
     return (
-        <section className='w-full dark:bg-gray-900'>
+        <section className='w-full bg-gray-900'>
             <section className="container mx-auto px-8 py-10 lg:py-28">
-                <h2 className="text-2xl lg:text-3xl font-bold leading-snug text-gray-800 dark:text-white">
+                <h2 className="text-2xl lg:text-3xl font-bold leading-snug text-white">
                     Case Studies
                 </h2>
-                <p className="mt-2 max-w-lg font-normal text-gray-500 dark:text-gray-400">
+                <p className="mt-2 max-w-lg font-normal text-gray-400">
                     KOREA ORBCOMM offers multiple ways for you to get professional services and support, to maximize your success.
                 </p>
 
@@ -44,8 +44,7 @@ export function CaseStudies() {
                 <div className="mt-10 flex justify-center w-full">
                     <button
                         type="button"
-                        className="text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-100 font-medium rounded-full text-sm lg:text-md px-5 py-2.5 me-2 mb-2
-            dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700"
+                        className="border focus:outline-none focus:ring-4 focus:ring-gray-100 font-medium rounded-full text-sm lg:text-md px-5 py-2.5 me-2 mb-2 bg-gray-800 text-white border-gray-600 hover:border-gray-600"
                     >
                         View All
                     </button>

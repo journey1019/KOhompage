@@ -34,3 +34,7 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# .env.local
+NODE_ENV=development
+NEXT_PUBLIC_API_URL=http://localhost:3000

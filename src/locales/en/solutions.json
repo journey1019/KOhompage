@@ -1,0 +1,18 @@
+{
+  "container-iot": {
+    "title": "Container IoT",
+    "description": "Real-time tracking, monitoring, and remote control for refrigerated containers."
+  },
+  "global-iot": {
+    "title": "Global IoT",
+    "description": "Monitoring construction equipment, weather data, and marine information."
+  },
+  "satellite": {
+    "title": "Satellite Communication",
+    "description": "INMARSAT / ORBCOMM / STARLINK satellite communication services."
+  },
+  "ais": {
+    "title": "AIS",
+    "description": "AIS data collection and provision through satellite/terrestrial networks."
+  }
+}

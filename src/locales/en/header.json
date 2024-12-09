@@ -1,0 +1,10 @@
+{
+  "menu": {
+    "solutions": "Solutions",
+    "caseStudies": "Case Studies",
+    "hardware": "Hardware",
+    "support": "Support",
+    "company": "Company"
+  },
+  "login": "Login"
+}

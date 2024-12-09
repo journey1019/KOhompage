@@ -19,7 +19,7 @@ const login = [
 const callsToAction = [
     // { name: 'Watch demo', href: '#', icon: PlayCircleIcon },
     { name: 'Admin', href: '/admin', icon: UserIcon },
-    { name: 'Contact sales', href: '/contactus', icon: PhoneIcon },
+    { name: 'Contact sales', href: '/contact-us', icon: PhoneIcon },
 ]
 
 export default function Login() {

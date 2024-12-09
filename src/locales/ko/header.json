@@ -1,0 +1,10 @@
+{
+  "menu": {
+    "solutions": "솔루션",
+    "caseStudies": "사례 연구",
+    "hardware": "하드웨어",
+    "support": "지원",
+    "company": "회사"
+  },
+  "login": "로그인"
+}

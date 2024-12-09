@@ -1,8 +1,8 @@
 export default function ContactUsPage() {
     return (
-        <div className="grid md:grid-cols-2 items-start gap-16 p-4 mx-auto max-w-full bg-white font-[sans-serif]">
+        <div className="grid md:grid-cols-2 lg:max-w-7xl lg:px-6 lg:py-28 items-start gap-16 p-4 mx-auto max-w-full bg-white font-[sans-serif]">
             <div>
-                <h1 className="text-gray-800 text-4xl lg:text-6xl font-extrabold text-center">Contact KOREAORBCOMM</h1>
+                <h1 className="text-gray-800 text-4xl lg:text-6xl font-extrabold text-start">Contact KOREAORBCOMM</h1>
                 <p className="text-sm text-gray-500 mt-4">Have some big idea or brand to develop and need help? Then
                     reach out we'd love to hear about your project and provide help.</p>
 
@@ -21,7 +21,7 @@ export default function ContactUsPage() {
                             </div>
                             <a href="javascript:void(0)" className="text-[#007bff] text-sm ml-4">
                                 <small className="block">Mail</small>
-                                <strong>info@example.com</strong>
+                                <strong>sales@orbcomm.co.kr</strong>
                             </a>
                         </li>
                     </ul>

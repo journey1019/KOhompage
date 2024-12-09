@@ -25,6 +25,9 @@ export function middleware(req: NextRequest) {
     return NextResponse.next();
 }
 
+// export const config = {
+//     matcher: ['/en/:path*', '/ko/:path*'], // 올바른 matcher 설정
+// };
 export const config = {
-    matcher: ['/en/:path*', '/ko/:path*'], // 올바른 matcher 설정
+    matcher: ['/((?!api|_next|.*\\..*).*)'], // 국제화 적용 경로
 };

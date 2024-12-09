@@ -64,7 +64,7 @@
       "General and Multi-Purpose Asset Tracking",
       "Monitoring"
     ],
-    "slug": "st-6000",
+    "slug": "st-6100",
     "featured": true
   },
   {
@@ -197,7 +197,7 @@
       "Efficient",
       "solar-powered"
     ],
-    "slug": "sc-1000",
+    "slug": "st-6000",
     "featured": false
   },
   {
@@ -231,7 +231,7 @@
       "Efficient",
       "solar-powered"
     ],
-    "slug": "",
+    "slug": "mt-5000",
     "featured": false
   }
 ]

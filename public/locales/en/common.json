@@ -1,0 +1,16 @@
+{
+  "advantageTitle": "Our Advantages",
+  "advantageDescription": "Explore the benefits of our solutions.",
+  "items": [
+    {
+      "imageUrl": "/images/icon1.png",
+      "advantage": "Reliable",
+      "description": "Our solutions are trusted by thousands."
+    },
+    {
+      "imageUrl": "/images/icon2.png",
+      "advantage": "Affordable",
+      "description": "Get the best value for your investment."
+    }
+  ]
+}

@@ -8,6 +8,8 @@ import rehypeRaw from 'rehype-raw';
 import PageTopImage from '@/components/PageTopImage';
 import Advantage from '@/components/(Hard)/Advantage';
 import Resources from '@/components/(Hard)/Resources';
+import BlogSlider from '@/components/(BlogSlider)/BlogSlider';
+import CaseStudies from '@/components/(Hard)/CaseStudies';
 
 interface PageProps {
     params: { locale: string; slug: string };
@@ -53,8 +55,9 @@ export default function HardwareDetail({ params }: PageProps) {
                 </ReactMarkdown>
             </div>
             <Advantage />
+            <CaseStudies/>
             <Resources />
-
+            {/*<BlogSlider />*/}
         </section>
     );
 }

@@ -76,14 +76,16 @@ export default async function HomePage() {
         <section className='bg-gray-500'>
             {/*<h1>{t('HomePage.title')}</h1>*/}
             {/*<Link href="/about">{t('HomePage.about')}</Link>*/}
-            <Introduce/>
-            <Partner/>
-            <Company/>
-            <Solutions solutions={solutions}/>
+            <Introduce />
+            <Partner />
+            <Company />
+            <Solutions solutions={solutions} />
+
+            {/*<Solutions solutions={solutions}/>*/}
             <Board />
-            <SubscribeSection/>
-            <CaseStudies/>
-            <RightNow/>
+            <SubscribeSection />
+            <CaseStudies />
+            <RightNow />
         </section>
     );
 }

@@ -1,5 +1,4 @@
 'use client';
-
 import React, { useState } from 'react';
 import hardwareData from '../../../../data/hardware.json'
 import { GetStaticProps } from 'next';
@@ -11,7 +10,7 @@ import HardwareList from '@/components/HardwareList';
 
 
 const HardPage = () => {
-    const t = useTranslations('hardware');
+    // const t = useTranslations('hardware');
     const [chips, setChips] = useState<string[]>([]); // Chip 상태 관리
     const [filteredItems, setFilteredItems] = useState(hardwareData);
 
@@ -48,14 +47,18 @@ const HardPage = () => {
             <PageTopImage
                 size="py-28"
                 url="/images/befo_ko/M2M_IoT.jpg"
-                title={t('pageTop.title')}
-                subtitle={t('pageTop.subTitle')}
-                description={t('pageTop.description')}
+                // title={t('pageTop.title')}
+                // subtitle={t('pageTop.subTitle')}
+                // description={t('pageTop.description')}
+                title={`혁신적이고 신뢰할 수 있는 장비`}
+                subtitle={`하드웨어 솔루션`}
+                description={`연결성과 추적을 가능하게 하는 우리의 하드웨어 제품을 발견하십시오.`}
                 textPosition="center"
             />
             <div className="mx-auto max-x-xl px-4 py-16 sm:px-6 sm:py-24 lg:max-w-screen-lg lg:px-8">
                 <h2 className="text-2xl sm:text-3xl font-bold mt-2 text-center text-black pb-8">
-                    {t('searchSection.title')}
+                    {/*{t('searchSection.title')}*/}
+                    하드웨어를 검색 해보세요
                 </h2>
                 <SearchBar chips={chips} onAddChip={handleAddChip} onRemoveChip={handleRemoveChip} />
             </div>

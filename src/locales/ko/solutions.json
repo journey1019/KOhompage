@@ -1,0 +1,18 @@
+{
+  "container-iot": {
+    "title": "컨테이너 IoT",
+    "description": "냉동/냉장 컨테이너 실시간 추적, 상태 모니터링, 원격제어 솔루션"
+  },
+  "global-iot": {
+    "title": "글로벌 IoT",
+    "description": "건설장비 / 기상정보 / 해양정보 상태 모니터링"
+  },
+  "satellite": {
+    "title": "위성 통신",
+    "description": "INMARSAT / ORBCOMM / STARLINK 위성통신 서비스"
+  },
+  "ais": {
+    "title": "AIS",
+    "description": "위성/육상망을 통한 AIS 정보 수집 및 정보제공 서비스"
+  }
+}

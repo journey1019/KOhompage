@@ -3,16 +3,16 @@
 import Image from 'next/image';
 
 const links = [
-    { name: 'Open roles', href: '#' },
-    { name: 'Internship program', href: '#' },
-    { name: 'Our values', href: '#' },
-    { name: 'Meet our leadership', href: '#' },
+    { name: 'Out Company', href: '/about' },
+    { name: 'Our Solutions', href: '/solutions/container-iot' },
+    { name: 'Our Blog', href: '/blog' },
+    { name: 'Our Connect', href: '/contact-us' },
 ];
 const stats = [
-    { name: 'Offices worldwide', value: '12' },
-    { name: 'Full-time colleagues', value: '300+' },
-    { name: 'Hours per week', value: '40' },
-    { name: 'Paid time off', value: 'Unlimited' },
+    { name: '1999년 9월 법인설립', value: 'Korea ORBCOMM' },
+    { name: 'ORBCOMM Inc.', value: '라이선스 체결' },
+    { name: '2000.02.~', value: '기간통신사업자' },
+    { name: '글로벌 저궤도 위성통신', value: '안정적·신속함' },
 ];
 const offices = [
     { location: '서울 본사(HQ)', tel: 'T. 02-3444-7311', address: 'A. 06536 서울특별시 서초구 강남대로 525 세영제이타워 15층', mail: 'M. support@orbcomm.co.kr'},

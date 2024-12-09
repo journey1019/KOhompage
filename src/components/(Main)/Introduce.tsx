@@ -15,10 +15,12 @@ export default function Introduce() {
                             앱 내외에서 새로운 메시징 경험을 구축하여 고객 도달범위, 참여율 및 만족도를 최고 수준으로 향상해보세요.
                         </p>
                         <div className="flex flex-col items-center space-y-4 lg:space-y-0 mt-6 lg:flex-row lg:gap-x-5">
-                            <button
-                                className="w-full max-w-xs lg:max-w-[12rem] bg-red-800 font-bold text-white rounded-full py-3 px-6 sm:px-8 lg:px-10">
+                            <a
+                                href="/contact-us"
+                                type="button"
+                                className="w-full max-w-xs lg:max-w-[12rem] bg-red-800 font-bold text-white rounded-full py-3 px-6 sm:px-8 lg:px-10 text-center border-2 border-gray-50">
                                 상담 요청하기
-                            </button>
+                            </a>
                             <button
                                 className="w-full max-w-xs lg:max-w-[12rem] bg-white font-bold text-red-800 rounded-full border-2 border-red-800 py-3 px-6 sm:px-8 lg:px-10">
                                 탐구하기

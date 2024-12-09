@@ -1,60 +1,72 @@
-import Image from 'next/image';
-import { Solution } from '@/service/solutions';
+import Image from "next/image";
+import { Solution } from "@/service/solutions";
 
-type Props = { solution: Solution }
-export default function SolutionsCard({ solution: { solution, title, subTitle, image, advantage } }: Props) {
+type Props = { solution: Solution };
+export default function SolutionsCard({
+                                          solution: { title, subTitle, image, advantage, slug },
+                                      }: Props) {
     return (
-        <div className="relative isolate overflow-hidden bg-gray-900 py-16 sm:py-24 lg:py-32">
-            <p className="w-full text-gray-400 font-semibold pb-16 text-center">Our Solutions</p>
+        <div className="relative isolate overflow-hidden bg-gray-900 py-10 sm:py-16 lg:py-20 min-h-[700px]">
+            {/* Header */}
+            <p className="w-full text-gray-400 font-semibold pb-16 text-center">
+                Our Solutions
+            </p>
+
+            {/* Main Content */}
             <div className="mx-auto max-w-7xl px-6 lg:px-8">
-                <div className="mx-auto grid max-w-2xl grid-cols-1 gap-x-8 gap-y-16 lg:max-w-none lg:grid-cols-2">
+                <div className="mx-auto grid max-w-2xl grid-cols-1 gap-x-8 gap-y-10 lg:max-w-none lg:grid-cols-2 items-center">
+                    {/* Text Section */}
                     <div className="max-w-xl lg:max-w-lg">
-                        <h2 className="text-3xl font-bold tracking-tight text-white dark:text-white sm:text-4xl">
+                        <h2 className="text-3xl font-bold tracking-tight text-white sm:text-4xl">
                             {title}
                         </h2>
-                        <p className="mt-4 text-md leading-8 text-gray-500 dark:text-gray-300 sm:text-lg md:text-xl lg:text-2xl">
+                        <p className="mt-4 text-sm leading-6 text-gray-500 sm:text-base md:text-lg lg:text-xl dark:text-gray-300 line-clamp-3">
                             {subTitle}
                         </p>
+                        <div className="mt-8 flex justify-start">
+                            <a
+                                href={`/solutions/${slug}`}
+                                type="button"
+                                className="px-5 py-3 bg-white text-red-700 font-semibold border-1 border-red-700 rounded-xl hover:bg-red-700 hover:text-white transition-all"
+                            >
+                                Read More
+                            </a>
+                        </div>
                     </div>
-                    <dl className="flex justify-center">
+
+                    {/* Image Section */}
+                    <div className="flex justify-center items-center">
                         <Image
                             src={image}
-                            className="w-full h-auto filter brightness-80 dark:brightness-75 object-cover rounded-lg"
                             alt="Solution Image"
-                            width={500}
-                            height={700}
+                            className="w-[700px] h-[400px] object-cover rounded-lg"
+                            width={400}
+                            height={400}
                             unoptimized
                         />
-                    </dl>
+                    </div>
                 </div>
             </div>
-            <div aria-hidden="true" className="absolute left-1/2 top-0 -z-10 -translate-x-1/2 blur-3xl xl:-top-6">
-                <div
-                    style={{
-                        clipPath:
-                            'polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)',
-                    }}
-                    className="aspect-[1155/678] w-[72.1875rem] bg-gradient-to-tr from-[#ff80b5] to-[#9089fc] opacity-30 dark:opacity-40"
-                />
-            </div>
-            <div className="grid grid-cols-1 gap-8 mx-auto mt-10 max-w-7xl sm:mt-20 sm:grid-cols-1 lg:grid-cols-3">
+
+            {/* Advantage Section */}
+            <div className="grid grid-cols-1 gap-8 mt-16 sm:grid-cols-2 lg:grid-cols-3 max-w-7xl mx-auto px-6">
                 {advantage.map((good) => (
                     <div
-                        className="flex flex-col p-5 relative hover:transform hover:-translate-x-2 hover:-translate-y-2 hover:shadow-lg transition-all duration-300 ease-out border-2 border-transparent hover:border-gray-200 hover:rounded-lg dark:hover:border-gray-600 dark:shadow-gray-700"
                         key={good.image}
+                        className="flex flex-col items-center p-5 bg-gray-800 rounded-lg hover:shadow-lg transition-shadow duration-300"
                     >
                         <Image
                             src={good.image}
                             alt="Advantage Icon"
-                            className="my-2 filter invert brightness-50"
-                            width={100}
-                            height={100}
+                            className="w-20 h-20 object-contain my-4 filter invert brightness-50"
+                            width={80}
+                            height={80}
                             unoptimized
                         />
-                        <h2 className="text-lg font-semibold text-gray-400 dark:text-white">
+                        <h2 className="text-base font-medium text-gray-400 dark:text-white text-center">
                             {good.title}
                         </h2>
-                        <p className="mt-2 text-base text-gray-500 dark:text-gray-400">
+                        <p className="mt-2 text-sm text-gray-500 dark:text-gray-400 text-center line-clamp-3">
                             {good.subTitle}
                         </p>
                     </div>

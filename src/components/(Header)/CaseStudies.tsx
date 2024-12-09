@@ -5,7 +5,7 @@ import satellite from '../../../public/images/nav/satellite.jpg';
 import ais from '../../../public/images/nav/vessel.jpg';
 import { HandRaisedIcon } from '@heroicons/react/24/outline';
 
-export default function Hardware() {
+export default function CaseStudies() {
     return (
         // <div className="grid max-w-screen-2xl px-4 py-5 mx-auto text-sm text-gray-500 dark:text-gray-400 md:grid-cols-3 md:px-6">
         //     <ul className="hidden mb-4 space-y-4 md:mb-0 md:block">

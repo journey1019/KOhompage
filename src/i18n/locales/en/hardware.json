@@ -1,0 +1,25 @@
+{
+  "pageTop": {
+    "title": "Hardware Solutions",
+    "subTitle": "Innovative & Reliable",
+    "description": "Discover our hardware products that empower connectivity and tracking."
+  },
+  "searchSection": {
+    "title": "Search for Hardware"
+  },
+  "advantageSection": {
+    "title": "Our Advantages",
+    "items": [
+      {
+        "imageUrl": "/images/icon1.png",
+        "advantage": "Reliable",
+        "description": "Our solutions are trusted by thousands."
+      },
+      {
+        "imageUrl": "/images/icon2.png",
+        "advantage": "Affordable",
+        "description": "Get the best value for your investment."
+      }
+    ]
+  }
+}
