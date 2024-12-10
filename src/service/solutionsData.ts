@@ -15,6 +15,7 @@ interface CaseData {
     direction: 'left' | 'right';
     title1: string;
     title2: string;
+    slug: string;
     description: string;
     image: string;
 }
@@ -24,7 +25,7 @@ interface SolutionData {
     imageSub: string;
     imageUrl: string;
     solutionNumber: string;
-    title: string;
+    title: string
     solutionName: string;
     description?: string;
     carousels?: CarouselData[];
@@ -67,6 +68,7 @@ const solutionsData: Record<string, Record<string, SolutionData>> = {
                     direction: "left",
                     title1: "Maritime",
                     title2: "Platform",
+                    slug: "maritime",
                     description: "You can monitor the location and status of all refrigerated container units and remotely adjust settings such as temperature. With automatic alarm notifications, you can quickly respond to critical situations such as equipment malfunctions or power outages in reefers. Installed on over 600,000 refrigerated containers worldwide, it helps transport lines, multimodal carriers, and shippers achieve verified ROI.",
                     image: "https://www.orbcomm.co.kr/resources/img/solution/reeferconnect/reffer1.PNG",
                 },
@@ -148,6 +150,7 @@ const solutionsData: Record<string, Record<string, SolutionData>> = {
                     direction: "left",
                     title1: "VMS",
                     title2: "Commtrace",
+                    slug: "vms",
                     description: "Real-Time Network Monitoring System",
                     image: "https://www.orbcomm.co.kr/resources/img/solution/reeferconnect/reffer1.PNG",
                 },
@@ -155,6 +158,7 @@ const solutionsData: Record<string, Record<string, SolutionData>> = {
                     direction: "right",
                     title1: "",
                     title2: "NMS",
+                    slug: "nms",
                     description: "Real-Time Network Monitoring System",
                     image: "/images/solutions/nms_main.png",
                 },
@@ -191,6 +195,7 @@ const solutionsData: Record<string, Record<string, SolutionData>> = {
                     direction: "left",
                     title1: "OGX : ",
                     title2: "next generation of satellite",
+                    slug: "ogx",
                     description: "OGx Satellite Service provides satellite communication around the world using the L-Band bands of the Inmarsat 4th and 6th generation satellites. Global L-Band Satellite Service provides a reliable communication network for remote monitoring of customers' assets with network availability that is not affected by weather conditions such as rain.",
                     image: "https://www.orbcomm.co.kr/resources/img/solution/reeferconnect/reffer1.PNG",
                 },
@@ -198,6 +203,7 @@ const solutionsData: Record<string, Record<string, SolutionData>> = {
                     direction: "right",
                     title1: "ORBCOMM: ",
                     title2: "Low Earth Orbit",
+                    slug: "low-earch-orbit",
                     description: "ORBCOM's Low Earth Orbit (LEO) satellite network, which uses a small satellite module and a whip-type omnidirectional antenna to provide useful data communication services in places such as mountain/sea where communication infrastructure is not established with easy and simple installation.",
                     image: "/images/solutions/nms_main.png",
                 },
@@ -205,6 +211,7 @@ const solutionsData: Record<string, Record<string, SolutionData>> = {
                     direction: "left",
                     title1: "SpaceX",
                     title2: "Starlink",
+                    slug: "star-link",
                     description:
                         "You can monitor the location and status of all refrigerated container units and remotely adjust settings such as temperature. With automatic alarm notifications, you can quickly respond to critical situations such as equipment malfunctions or power outages in reefers. Installed on over 600,000 refrigerated containers worldwide, it helps transport lines, multimodal carriers, and shippers achieve verified ROI.",
                     image: "https://www.orbcomm.co.kr/resources/img/solution/orbcommplatform/orbcommplatform_2.jpg",
@@ -242,6 +249,7 @@ const solutionsData: Record<string, Record<string, SolutionData>> = {
                     direction: "left",
                     title1: "Reefer",
                     title2: "Connect",
+                    slug: "reefer-connect",
                     description: "You can monitor the location and status of all refrigerated container units and remotely adjust settings such as temperature. With automatic alarm notifications, you can quickly respond to critical situations such as equipment malfunctions or power outages in reefers. Installed on over 600,000 refrigerated containers worldwide, it helps transport lines, multimodal carriers, and shippers achieve verified ROI.",
                     image: "https://www.orbcomm.co.kr/resources/img/solution/reeferconnect/reffer1.PNG",
                 },
@@ -249,6 +257,7 @@ const solutionsData: Record<string, Record<string, SolutionData>> = {
                     direction: "right",
                     title1: "NMS",
                     title2: "",
+                    slug: "nms",
                     description:
                         "You can monitor the location and status of all refrigerated container units and remotely adjust settings such as temperature. With automatic alarm notifications, you can quickly respond to critical situations such as equipment malfunctions or power outages in reefers. Installed on over 600,000 refrigerated containers worldwide, it helps transport lines, multimodal carriers, and shippers achieve verified ROI.",
                     image: "/images/solutions/nms_main.png",
@@ -257,6 +266,7 @@ const solutionsData: Record<string, Record<string, SolutionData>> = {
                     direction: "left",
                     title1: "",
                     title2: "VMS",
+                    slug: "vms",
                     description:
                         "You can monitor the location and status of all refrigerated container units and remotely adjust settings such as temperature. With automatic alarm notifications, you can quickly respond to critical situations such as equipment malfunctions or power outages in reefers. Installed on over 600,000 refrigerated containers worldwide, it helps transport lines, multimodal carriers, and shippers achieve verified ROI.",
                     image: "https://www.orbcomm.co.kr/resources/img/solution/orbcommplatform/orbcommplatform_2.jpg",
@@ -298,6 +308,7 @@ const solutionsData: Record<string, Record<string, SolutionData>> = {
                     direction: "left",
                     title1: "Maritime",
                     title2: "Platform",
+                    slug: "maritime",
                     description: "모든 냉장 컨테이너 유닛의 위치와 상태를 모니터링하고 온도와 같은 설정을 원격으로 조정할 수 있습니다. 자동 알람 알림을 통해 장비 오작동이나 암초 정전과 같은 중요한 상황에 신속하게 대응할 수 있습니다. 전 세계 60만 개 이상의 냉장 컨테이너에 설치되어 운송 라인, 복합 운송업체, 화주가 검증된 ROI를 달성하는 데 도움이 됩니다.",
                     image: "https://www.orbcomm.co.kr/resources/img/solution/reeferconnect/reffer1.PNG",
                 }
@@ -379,6 +390,7 @@ const solutionsData: Record<string, Record<string, SolutionData>> = {
                     direction: "left",
                     title1: "VMS",
                     title2: "Commtrace",
+                    slug: "vms",
                     description: "전세계 통신이 열악한 장소에서 운용되는 건설기계, 광산장비, 농업기계 등 중장비의 운용정보(가동시간, 상태/소모품 정보) 및 위치정보를 모니터링하여 고객에 제공",
                     image: "https://www.orbcomm.co.kr/resources/img/solution/reeferconnect/reffer1.PNG",
                 },
@@ -386,6 +398,7 @@ const solutionsData: Record<string, Record<string, SolutionData>> = {
                     direction: "right",
                     title1: "NMS",
                     title2: "",
+                    slug: "nms",
                     description: "실시간 네트워크 모니터링 시스템",
                     image: "/images/solutions/nms_main.png",
                 },
@@ -422,6 +435,7 @@ const solutionsData: Record<string, Record<string, SolutionData>> = {
                     direction: "left",
                     title1: "OGX : ",
                     title2: "next generation of satellite",
+                    slug: "ogx",
                     description: "OGx 위성 서비스는 Inmarsat(인말셋) 4세대 및 6세대 위성의 L-Band 대역을 이용하여 전세계에 위성통신을 제공합니다. Global L-Band 위성서비스는 우천 등 기상조건의 영향을 받지 않는 네트워크 가용성으로 고객의 자산을 원격 모니터링을 위한 신뢰성있는 통신망을 제공합니다.",
                     image: "https://www.orbcomm.co.kr/resources/img/solution/reeferconnect/reffer1.PNG",
                 },
@@ -429,6 +443,7 @@ const solutionsData: Record<string, Record<string, SolutionData>> = {
                     direction: "right",
                     title1: "ORBCOMM: ",
                     title2: "Low Earth Orbit",
+                    slug: "low-earth-orbit",
                     description: "ORBCOMM의 저궤도(LEO: Low Earth Orbit) 위성 네트워크. 소형 위성모듈과 Whip 형태의 무지향성 안테나를 적용하여 쉽고 간단한 설치로 통신 인프라가 구축되어 있지 않은 산악/해상 등의 장소에서 유용한 데이터 통신 서비스를 제공합니다.",
                     image: "/images/solutions/nms_main.png",
                 },
@@ -436,6 +451,7 @@ const solutionsData: Record<string, Record<string, SolutionData>> = {
                     direction: "left",
                     title1: "SpaceX",
                     title2: "Starlink",
+                    slug: "star-link",
                     description:
                         "You can monitor the location and status of all refrigerated container units and remotely adjust settings such as temperature. With automatic alarm notifications, you can quickly respond to critical situations such as equipment malfunctions or power outages in reefers. Installed on over 600,000 refrigerated containers worldwide, it helps transport lines, multimodal carriers, and shippers achieve verified ROI.",
                     image: "https://www.orbcomm.co.kr/resources/img/solution/orbcommplatform/orbcommplatform_2.jpg",
@@ -473,6 +489,7 @@ const solutionsData: Record<string, Record<string, SolutionData>> = {
                     direction: "left",
                     title1: "Reefer",
                     title2: "Connect",
+                    slug: "reefer-connect",
                     description: "You can monitor the location and status of all refrigerated container units and remotely adjust settings such as temperature. With automatic alarm notifications, you can quickly respond to critical situations such as equipment malfunctions or power outages in reefers. Installed on over 600,000 refrigerated containers worldwide, it helps transport lines, multimodal carriers, and shippers achieve verified ROI.",
                     image: "https://www.orbcomm.co.kr/resources/img/solution/reeferconnect/reffer1.PNG",
                 },
@@ -480,6 +497,7 @@ const solutionsData: Record<string, Record<string, SolutionData>> = {
                     direction: "right",
                     title1: "NMS",
                     title2: "",
+                    slug: "nms",
                     description:
                         "You can monitor the location and status of all refrigerated container units and remotely adjust settings such as temperature. With automatic alarm notifications, you can quickly respond to critical situations such as equipment malfunctions or power outages in reefers. Installed on over 600,000 refrigerated containers worldwide, it helps transport lines, multimodal carriers, and shippers achieve verified ROI.",
                     image: "/images/solutions/nms_main.png",
@@ -488,6 +506,7 @@ const solutionsData: Record<string, Record<string, SolutionData>> = {
                     direction: "left",
                     title1: "",
                     title2: "VMS",
+                    slug: "vms",
                     description:
                         "You can monitor the location and status of all refrigerated container units and remotely adjust settings such as temperature. With automatic alarm notifications, you can quickly respond to critical situations such as equipment malfunctions or power outages in reefers. Installed on over 600,000 refrigerated containers worldwide, it helps transport lines, multimodal carriers, and shippers achieve verified ROI.",
                     image: "https://www.orbcomm.co.kr/resources/img/solution/orbcommplatform/orbcommplatform_2.jpg",

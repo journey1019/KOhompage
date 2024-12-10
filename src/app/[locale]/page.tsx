@@ -66,6 +66,7 @@ import Board from '@/components/Board';
 import SubscribeSection from '@/components/SubscribeSection';
 import CaseStudies from '@/components/(Home)/CaseStudies';
 import RightNow from '@/components/RightNow';
+import React from 'react';
 
 
 export default async function HomePage() {
@@ -73,18 +74,22 @@ export default async function HomePage() {
     const solutions = await getAllSolutions(); // 데이터를 비동기로 가져옴
 
     return (
-        <section className='bg-gray-500'>
+        <section>
             {/*<h1>{t('HomePage.title')}</h1>*/}
             {/*<Link href="/about">{t('HomePage.about')}</Link>*/}
             <Introduce />
             <Partner />
+
             <Company />
+
             <Solutions solutions={solutions} />
 
             {/*<Solutions solutions={solutions}/>*/}
-            <Board />
-            <SubscribeSection />
             <CaseStudies />
+
+            <Board />
+
+            <SubscribeSection />
             <RightNow />
         </section>
     );

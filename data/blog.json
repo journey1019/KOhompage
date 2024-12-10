@@ -5,7 +5,7 @@
     "image": "/images/cases/case_01.png",
     "date": "2024-12-10",
     "category": ["Article"],
-    "tags": ["2025", "New Year", "Company"],
+    "tags": ["sc-1000", "global-IoT"],
     "path": "https://www.etnews.com/20240401000282",
     "featured": false
   },
@@ -15,7 +15,7 @@
     "image": "/images/cases/case_02.png",
     "date": "2024-10-31",
     "category": ["Article"],
-    "tags": ["고려해운", "컨테이너 IoT", "공급", "dry", "tracking service"],
+    "tags": ["HMM", "container-IoT", "maritime"],
     "path": "https://www.ksg.co.kr/news/main_newsView.jsp?pNum=141162",
     "featured": false
   },
@@ -25,7 +25,7 @@
     "image": "/images/cases/case_02.png",
     "date": "2024-10-31",
     "category": ["Video"],
-    "tags": ["ReeferConnect", "냉동", "냉장", "컨테이너"],
+    "tags": ["container-iot", "maritime", "st-6000"],
     "path": "https://youtu.be/9ppHkaMbCRE",
     "featured": false
   },

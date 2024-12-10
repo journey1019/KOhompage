@@ -44,7 +44,7 @@ export function CaseStudies() {
                 <div className="mt-10 flex justify-center w-full">
                     <button
                         type="button"
-                        className="border focus:outline-none focus:ring-4 focus:ring-gray-100 font-medium rounded-full text-sm lg:text-md px-5 py-2.5 me-2 mb-2 bg-gray-800 text-white border-gray-600 hover:border-gray-600"
+                        className="border focus:outline-none focus:ring-4 focus:ring-gray-100 font-medium rounded-full text-sm lg:text-md px-5 py-2.5 me-2 mb-2 bg-gray-800 text-white border-gray-600 hover:border-gray-600 hover:bg-gray-700"
                     >
                         View All
                     </button>

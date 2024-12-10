@@ -6,6 +6,7 @@ interface CaseData {
     direction: 'left' | 'right';
     title1: string;
     title2: string;
+    slug: string;
     description: string;
     image: string;
 }
@@ -13,7 +14,7 @@ interface UseCaseProps {
     locale: string; // 다국어 지원을 위해 locale 추가
     slug: string;
 }
-const Case: React.FC<CaseData> = ({ direction, title1, title2, description, image }) => (
+const Case: React.FC<CaseData> = ({ direction, title1, title2, slug, description, image }) => (
     <div
         className="flex justify-center flex-wrap md:flex-wrap lg:flex-nowrap lg:flex-row lg:justify-between gap-8 pb-72">
         {direction === 'left' ? (
@@ -27,10 +28,10 @@ const Case: React.FC<CaseData> = ({ direction, title1, title2, description, imag
                             {description}
                         </p>
                         <div>
-                            <button type="button"
+                            <a href={slug} type="button"
                                     className="text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-100 font-medium rounded-full text-sm px-5 py-2.5 me-2 mb-2 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700">
                                 View More
-                            </button>
+                            </a>
                         </div>
                     </div>
                 </div>
@@ -76,10 +77,10 @@ const Case: React.FC<CaseData> = ({ direction, title1, title2, description, imag
                             {description}
                         </p>
                         <div>
-                            <button type="button"
+                            <a href={slug} type="button"
                                     className="text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-100 font-medium rounded-full text-sm px-5 py-2.5 me-2 mb-2 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700">
                                 View More
-                            </button>
+                            </a>
                         </div>
                     </div>
                 </div>
@@ -107,6 +108,7 @@ export default function UseCase({ locale, slug }: UseCaseProps) {
                             direction={useCase.direction}
                             title1={useCase.title1}
                             title2={useCase.title2}
+                            slug={`${slug}/${useCase.slug}`}
                             description={useCase.description}
                             image={useCase.image}
                         />

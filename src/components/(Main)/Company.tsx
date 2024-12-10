@@ -7,10 +7,7 @@ export default function Company() {
             <div className="mx-auto max-x-7xl px-4 sm:px-6 lg:px-8 py-24 lg:py-24">
                 <div className="m-auto max-w-5xl pb-10">
                     <h2 className="text-center text-md font-semibold text-red-800 pb-6 sm:pb-10">OUR COMPANY</h2>
-                    <h2 className="text-center text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-900">전세계 M2M
-                        Service를 위한
-                        통신 서비스와 하드웨어, 어플리케이션을 제공하는
-                        Total SERVICE Provider</h2>
+                    <h2 className="text-center text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-900">전세계 M2M Service를 위한 통신 서비스와 하드웨어, 어플리케이션을 제공하는 Total SERVICE Provider</h2>
                 </div>
                 <div className="grid grid-cols-1 sm:grid-cols-1 lg:grid-cols-3 gap-8 mx-auto mt-20 max-w-7xl sm:mt-20">
                     <ImageCard

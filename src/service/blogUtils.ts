@@ -71,3 +71,10 @@ export async function getPostBySlug(slug: string): Promise<BlogPost | null> {
     const content = await getBlogContent(slug); // Markdown HTML로 변환
     return { ...post, content };
 }
+
+// 특정 태그의 글 목록 가져오기
+export async function getPostsByTag(tag: string): Promise<BlogPost[]> {
+    const posts = await getBlogMetadata();
+    return posts.filter((post) => post.tags.includes(tag));
+}
+

@@ -28,7 +28,7 @@ import { Faq } from "@/components/(About)/Faq";
 import { Cta } from "@/components/(About)/Cta";
 import { Footer } from "@/components/(About)/Footer";
 import { PopupWidget }  from "@/components/(About)/PopupWidget";
-import HeroSection from '@/components/(Templates)/HeroSection';
+import DownloadSection from '@/components/(Templates)/DownloadSection';
 import Blog from '@/components/(Templates)/Blog';
 
 import { benefitOne, benefitTwo } from "@/components/(About)/data";
@@ -36,7 +36,7 @@ export default function AboutPage() {
     return (
         <Container>
             <Hero />
-            <HeroSection/>
+            <DownloadSection/>
             <SectionTitle
                 preTitle="Nextly Benefits"
                 title=" Why should you use this landing page"

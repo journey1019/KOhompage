@@ -1,4 +1,4 @@
-export default function HeroSection() {
+export default function DownloadSection() {
     return (
         <div id="features">
             <div className="md:w-2/3 lg:w-1/2">
@@ -42,7 +42,7 @@ export default function HeroSection() {
                             </p>
                         </div>
                         <a href="#" className="flex items-center justify-between group-hover:text-secondary">
-                            <span className="text-sm">Read more</span>
+                            <span className="text-sm">Download</span>
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"
                                  className="w-5 h-5 -translate-x-4 text-2xl opacity-0 transition duration-300 group-hover:translate-x-0 group-hover:opacity-100">
                                 <path fill-rule="evenodd"
@@ -74,7 +74,7 @@ export default function HeroSection() {
                             </p>
                         </div>
                         <a href="#" className="flex items-center justify-between group-hover:text-secondary">
-                            <span className="text-sm">Read more</span>
+                            <span className="text-sm">Download</span>
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"
                                  className="w-5 h-5 -translate-x-4 text-2xl opacity-0 transition duration-300 group-hover:translate-x-0 group-hover:opacity-100">
                                 <path fill-rule="evenodd"
@@ -106,7 +106,7 @@ export default function HeroSection() {
                             </p>
                         </div>
                         <a href="#" className="flex items-center justify-between group-hover:text-secondary">
-                            <span className="text-sm">Read more</span>
+                            <span className="text-sm">Download</span>
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"
                                  className="w-5 h-5 -translate-x-4 text-2xl opacity-0 transition duration-300 group-hover:translate-x-0 group-hover:opacity-100">
                                 <path fill-rule="evenodd"
@@ -141,7 +141,7 @@ export default function HeroSection() {
                             </p>
                         </div>
                         <a href="#" className="flex items-center justify-between group-hover:text-secondary">
-                            <span className="text-sm">Read more</span>
+                            <span className="text-sm">Download</span>
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"
                                  className="w-5 h-5 -translate-x-4 text-2xl opacity-0 transition duration-300 group-hover:translate-x-0 group-hover:opacity-100">
                                 <path fill-rule="evenodd"

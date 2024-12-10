@@ -27,7 +27,7 @@ export default function SolutionsCard({
                             <a
                                 href={`/solutions/${slug}`}
                                 type="button"
-                                className="px-5 py-3 bg-white text-red-700 font-semibold border-1 border-red-700 rounded-xl hover:bg-red-700 hover:text-white transition-all"
+                                className="border focus:outline-none focus:ring-4 focus:ring-gray-100 font-medium rounded-full text-sm lg:text-md px-5 py-2.5 me-2 mb-2 bg-gray-800 text-white border-gray-600 hover:border-gray-600 hover:bg-gray-700"
                             >
                                 Read More
                             </a>

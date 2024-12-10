@@ -12,5 +12,5 @@ export default function Solutions({ solutions }: Props) {
                 <SolutionsCard key={solution.solution} solution={solution} />
             ))}
         </SolutionCarousel>
-    );
+);
 }

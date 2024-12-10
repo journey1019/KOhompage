@@ -17,6 +17,7 @@ import Image from 'next/image';
 import React from 'react';
 import Point from '@/components/(Solution)/Point';
 
+
 interface PageProps {
     params: {locale: string};
 }
@@ -71,9 +72,9 @@ export default async function GlobalIoT({params}: PageProps){
             <UseCase slug="container-iot" locale={locale} />
             <Strength items={data.advantages || []}/>
             <Hardware/>
-            <FAQ/>
+            {/*<FAQ/>*/}
             <Download/>
-            <References/>
+            <References locale={locale} tag="container-iot" />
         </section>
     )
 }

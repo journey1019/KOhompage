@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect, useState } from 'react';
+import Image from 'next/image';
 
 interface BlogPost {
     id: number;
@@ -11,6 +12,7 @@ interface BlogPost {
     tags: string[];
     content: string;
     thumbnail: string;
+    href: string;
     comments: {
         commentId: number;
         author: string;
@@ -59,15 +61,16 @@ export default function Board() {
                             className="bg-indigo-600 text-white rounded-full px-3 py-1 mb-3 w-max">{latestPost.category}</span>
                             <h4 className="text-xl text-gray-900 dark:text-white font-medium leading-8 mb-5">{latestPost.title}</h4>
                             <p className="text-gray-500 leading-6 mb-10">{latestPost.content}</p>
-                            <button type="button"
-                                    className="w-1/3 text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 font-medium rounded-lg text-sm px-5 py-2.5 mb-2 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:focus:ring-gray-700">
+                            <a href={latestPost.href} type="button" target="_blank"
+                               className="w-1/3 text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 font-medium rounded-lg text-sm px-5 py-2.5 mb-2 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:focus:ring-gray-700 text-center">
                                 Read More
-                            </button>
+                            </a>
                         </div>
-                        <img
-                            className="h-64 w-full lg:h-1/3 lg:w-1/2 rounded-lg mt-5 lg:mt-0"
+                        <Image
+                            className="h-full w-full lg:h-1/3 lg:w-1/2 rounded-lg mt-5 lg:mt-0 object-fill"
                             src={latestPost.thumbnail}
                             alt={latestPost.title}
+                            width={300} height={200} unoptimized
                         />
                     </div>
 
@@ -77,23 +80,36 @@ export default function Board() {
                         {otherPosts.map((post) => (
                             <div key={post.id}
                                  className="group w-full max-lg:max-w-xl lg:w-1/3 border border-gray-300 rounded-2xl">
-                                <div className="flex items-center">
-                                    <img src={post.thumbnail} alt={post.title}
-                                         className="rounded-t-2xl w-full object-cover" />
+                                {/* 이미지 */}
+                                <div className="flex items-center h-48 overflow-hidden">
+                                    <Image src={post.thumbnail} alt={post.title}
+                                           className="rounded-t-2xl w-full h-full object-cover"
+                                           width={300} height={200} unoptimized
+                                    />
                                 </div>
+                                {/* 내용 */}
                                 <div
                                     className="p-4 lg:p-6 transition-all duration-300 rounded-b-2xl group-hover:bg-gray-50">
-                                    {/*<span className={`bg-${post.category === 'BLOG' ? 'blue' : post.category === 'NOTICE' ? 'green' : 'red'}-500 text-gray-400 dark:text-white rounded-full px-3 py-1 mb-3 w-max`}>{post.category}</span>*/}
-                                    <span className="bg-indigo-600 text-white rounded-full px-3 py-1 mb-3 w-max">{post.category}</span>
-                                    <h4 className="text-xl text-gray-900 dark:text-white font-medium leading-8 mb-5">{post.title}</h4>
-                                    <p className="text-gray-500 leading-6 mb-10">{post.content}</p>
-                                    <a href="javascript:;"
-                                       className="cursor-pointer text-lg text-indigo-600 font-semibold">Read
-                                        more..</a>
+                                    <span
+                                        className="bg-indigo-600 text-white rounded-full px-3 py-1 mb-3 w-max">{post.category}</span>
+
+                                    {/* 제목 */}
+                                    <h4 className="text-xl text-gray-900 dark:text-white font-medium leading-8 mb-5 line-clamp-2">
+                                        {post.title}
+                                    </h4>
+
+                                    {/* 내용 */}
+                                    <p className="text-gray-500 leading-6 mb-10 line-clamp-3">
+                                        {post.content}
+                                    </p>
+
+                                    <a href={post.href} target="_blank"
+                                       className="cursor-pointer text-lg text-indigo-600 font-semibold">Read more..</a>
                                 </div>
                             </div>
                         ))}
                     </div>
+
                 </div>
             </div>
         </section>
