@@ -3,7 +3,7 @@ import { getPostBySlug } from '@/service/blogUtils';
 import { notFound } from 'next/navigation';
 
 type PostPageProps = {
-    params?: { locale: string; category: string; slug: string };
+    params?: { locale: string; slug: string };
 };
 
 export default async function PostPage({ params }: PostPageProps) {
@@ -13,7 +13,6 @@ export default async function PostPage({ params }: PostPageProps) {
     }
 
     const post = await getPostBySlug(params.slug);
-    console.log(post);
 
     if (!post) {
         notFound(); // 404 페이지 처리
