@@ -9,7 +9,7 @@ export default function Introduce() {
                 <div className="mx-auto grid max-w-2xl grid-cols-1 gap-x-8 gap-y-16 pt-12 lg:max-w-none lg:grid-cols-2 items-center">
                     <div className="max-w-xl lg:max-w-lg mx-auto text-center lg:text-start">
                         <h2 className="text-5xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-white">
-                            전세계 Total M2M Service를 제공하는 Provider
+                            전세계 Total IoT Service를 제공하는 Provider
                         </h2>
                         <p className="mt-4 text-md sm:text-lg lg:text-xl text-gray-500 leading-6 sm:leading-7 lg:leading-8">
                             앱 내외에서 새로운 메시징 경험을 구축하여 고객 도달범위, 참여율 및 만족도를 최고 수준으로 향상해보세요.

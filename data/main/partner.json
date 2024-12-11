@@ -1,0 +1,77 @@
+[
+  {
+    "index": 1,
+    "name": "해양경찰청",
+    "imageUrl": "images/customer/KoreaCoastGuard.png"
+  },
+  {
+    "index": 2,
+    "name": "고려해운",
+    "imageUrl": "images/customer/KMTC.png"
+  },
+  {
+    "index": 4,
+    "name": "장금마리타임",
+    "imageUrl": "images/customer/SINOKOR.png"
+  },
+  {
+    "index": 5,
+    "name": "해양진흥공사",
+    "imageUrl": "images/customer/KoreaOceanBusinessCorporation.png"
+  },
+  {
+    "index": 6,
+    "name": "동해어업관리단",
+    "imageUrl": "/images/customer/EastSeaFisheriesManagementTeam.png"
+  },
+  {
+    "index": 7,
+    "name": "세종대학교",
+    "imageUrl": "images/customer/SeJongUniv.png"
+  },
+  {
+    "index": 8,
+    "name": "인천대학교",
+    "imageUrl": "images/customer/IncheonUniv.png"
+  },
+  {
+    "index": 9,
+    "name": "서울대학교",
+    "imageUrl": "images/customer/SeoulUniv.png"
+  },
+  {
+    "index": 10,
+    "name": "한국해양수산개발원",
+    "imageUrl": "images/customer/KoreaMarineFisheriesDevelopmentInstitute.png"
+  },
+  {
+    "index": 11,
+    "name": "한국해양과학기술원",
+    "imageUrl": "images/customer/KoreaInstituteOfMarineScienceTechnology.png"
+  },
+  {
+    "index": 12,
+    "name": "현대 오토에버",
+    "imageUrl": "images/customer/HYUNDAIAUTOEVER.png"
+  },
+  {
+    "index": 13,
+    "name": "한화오션",
+    "imageUrl": "images/customer/HanhwaOcean.png"
+  },
+  {
+    "index": 14,
+    "name": "삼성 SDD",
+    "imageUrl": "images/customer/SAMSUNGSDS.png"
+  },
+  {
+    "index": 15,
+    "name": "현대상선",
+    "imageUrl": "images/customer/HMM.png"
+  },
+  {
+    "index": 16,
+    "name": "씨벤티지",
+    "imageUrl": "images/customer/Seavantage.png"
+  }
+]

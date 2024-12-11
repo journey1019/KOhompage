@@ -65,8 +65,8 @@ import Solutions from '@/components/Solutions';
 import Board from '@/components/Board';
 import SubscribeSection from '@/components/SubscribeSection';
 import CaseStudies from '@/components/(Home)/CaseStudies';
-import RightNow from '@/components/RightNow';
 import React from 'react';
+import WorkWithUs from '@/components/RightNow';
 
 
 export default async function HomePage() {
@@ -90,7 +90,7 @@ export default async function HomePage() {
             <Board />
 
             <SubscribeSection />
-            <RightNow />
+            <WorkWithUs />
         </section>
     );
 }

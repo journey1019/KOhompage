@@ -19,7 +19,7 @@ const offices = [
     { location: '위성 지구국(Gateway Earth Station)', tel: 'T. 031-642-9940', address: 'A. 17416 경기도 이천시 장호원읍 장여로 229-100'}
 ]
 
-export default function RightNow() {
+export default function WorkWithUs() {
     return (
         <div className="relative isolate overflow-hidden bg-gray-100 dark:bg-gray-900 py-24 sm:py-32">
             <Image

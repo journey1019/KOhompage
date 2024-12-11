@@ -5,7 +5,9 @@ import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 //import partnerData from '../../data/partner.json';
-import partnerData from '../../data/partner_compatibility.json'
+//import partnerData from '../../data/partner_compatibility.json'
+import partnerData from '../../data/main/partner.json'
+
 import Image from 'next/image';
 
 export default function PartnerSlider() {
@@ -23,6 +25,7 @@ export default function PartnerSlider() {
         variableWidth: true, // 슬라이드 너비를 동적으로 조정
         pauseOnHover: false,
         centerMode: true, // 슬라이드를 중앙에 배치 (옵션)
+        arrow: false, // 화살표 제거
         responsive: [
             {
                 breakpoint: 1280, // Large devices
@@ -69,13 +72,18 @@ export default function PartnerSlider() {
             onMouseEnter={() => setIsPaused(true)} // 마우스가 슬라이더에 들어가면 일시 정지
             onMouseLeave={() => setIsPaused(false)} // 마우스가 슬라이더를 벗어나면 재개
         >
+            <style jsx global>{`
+                .slick-prev, .slick-next {
+                    display: none !important;
+                }
+            `}</style>
             <Slider {...settings}>
                 {partnerData.map((partner, index) => (
-                    <div key={index} className="px-4 sm:px-1 py-4 cursor-pointer dark:text-white">
+                    <div key={index} className="px-4 sm:px-1 py-10 cursor-pointer dark:text-white items-center">
                         <Image
                             src={partner.imageUrl}
                             alt={partner.name}
-                            className="h-24 sm:h-8 md:h-20 lg:h-24 object-contain mx-auto " // 필요에 따라 width 조정
+                            className="h-24 sm:h-8 md:h-20 lg:h-14 object-contain mx-auto filter grayscale brightness-[3000%]" // 필요에 따라 width 조정
                             width={300}
                             height={700}
                             unoptimized
