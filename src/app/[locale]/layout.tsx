@@ -5,7 +5,8 @@ import {getMessages} from 'next-intl/server';
 import { notFound } from 'next/navigation';
 import { Open_Sans } from 'next/font/google';
 import Header from '@/components/(Header)/Header';
-import Footer from '@/components/Footer';
+import Footers from '@/components/Footer';
+import { Footer } from "@/components/(Header)/Footer";
 
 const sans = Open_Sans({ subsets: ['latin'] });
 
@@ -48,6 +49,7 @@ export default async function LocaleLayout({ children, params }: Props) {
             <Header locale={locale}/>
             <main className="grow pt-[74px]">{children}</main>
             <Footer locale={locale}/>
+            {/*<Footers locale={locale}/>*/}
         </NextIntlClientProvider>
         </body>
         </html>

@@ -1,7 +1,7 @@
 interface FooterProps {
     locale: string; // locale을 props로 받음
 }
-export default function Footer({locale}: FooterProps) {
+export default function Footers({locale}: FooterProps) {
     return (
         <section className="bg-gray-100 dark:bg-gray-800">
             <div className="mx-auto w-full">
