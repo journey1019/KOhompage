@@ -85,7 +85,7 @@ export default async function HomePage() {
             <Solutions solutions={solutions} />
 
             {/*<Solutions solutions={solutions}/>*/}
-            <CaseStudies />
+            {/*<CaseStudies />*/}
 
             <Board />
 

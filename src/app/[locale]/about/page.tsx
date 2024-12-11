@@ -17,6 +17,13 @@
 //         </section>
 //     )
 // }
+/**
+ * 현재 Next.js+Typescript+TailwindCSS+React를 활용하여 회사 홈페이지를 개발하고 있고, resources 구조를 생성하여 새롭게 구성하고자 한다.
+ * src/app/[locale]/resources/notice, src/app/[locale]/resources/blog, src/app/[locale]/resources/board 로 나눈다. ㅜ선 notice 부터 구성하려고 한다.
+ * notice에서는 관리자가 HTML5 Editor 같은 라이브러리를 활용하여 게시물을 작성할 수 있고, 사용자들을 그렇게 작성한 게시글들을 페이지별로 보거나, 전체 다 보거나 검색해서 볼 수 있도록 하고싶어.
+ * resources/notice에서는 계속 생성되는 게시글들에 대해서 볼 수 있는 게시판 형식을 만들고 싶고, (추후에 따로 만들거지만 관리자들을) 게시글을 생성하는 페이지도 따로 만들어뒀으면 좋겠어.
+ * 이 게시글들을 작성하고 저장하는 구조까지 디테일하게 설계해서 코드를 설계해줘
+ * */
 
 import { Container } from "@/components/(About)/Container";
 import { Hero } from "@/components/(About)/Hero";
