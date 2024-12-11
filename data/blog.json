@@ -7,7 +7,7 @@
     "kind": "blog",
     "category": ["Article"],
     "tags": ["sc-1000", "global-IoT"],
-    "path": "https://www.etnews.com/20240401000282",
+    "path": "article1",
     "featured": false
   },
   {
@@ -18,7 +18,7 @@
     "kind": "blog",
     "category": ["Article"],
     "tags": ["HMM", "container-IoT", "maritime"],
-    "path": "https://www.ksg.co.kr/news/main_newsView.jsp?pNum=141162",
+    "path": "article2",
     "featured": false
   },
   {
@@ -29,7 +29,7 @@
     "kind": "blog",
     "category": ["Video"],
     "tags": ["container-iot", "maritime", "st-6000"],
-    "path": "https://youtu.be/9ppHkaMbCRE",
+    "path": "article3",
     "featured": false
   },
   {
@@ -40,7 +40,7 @@
     "kind": "references",
     "category": ["Brochure"],
     "tags": ["Trailer Tracking", "Dry Van", "Chassis and Dry Container"],
-    "path": "CT1200_Brochure",
+    "path": "List-of-telecommunications-businesses-expected-in-2025",
     "featured": false
   },
   {
@@ -51,7 +51,7 @@
     "kind": "references",
     "category": ["IDP DevKit"],
     "tags": ["Trailer Tracking", "Dry Van", "Chassis and Dry Container"],
-    "path": "ST6000",
+    "path": "What-is-ST6000",
     "featured": false
   },
   {
@@ -62,7 +62,7 @@
     "kind": "blog",
     "category": ["Resources"],
     "tags": ["Trailer Tracking", "Dry Van", "Chassis and Dry Container"],
-    "path": "VSAT",
+    "path": "article4",
     "featured": false
   },
   {
@@ -73,7 +73,7 @@
     "kind": "references",
     "category": ["Resources"],
     "tags": ["Trailer Tracking", "Dry Van", "Chassis and Dry Container"],
-    "path": "VSAT Antenna",
+    "path": "article5",
     "featured": false
   },
   {
@@ -84,7 +84,7 @@
     "kind": "blog",
     "category": ["eBook"],
     "tags": ["Global IoT", "Construct", "reefer", "dry", "tracking service"],
-    "path": "What-is-ST6000",
+    "path": "article6",
     "featured": false
   },
   {
@@ -95,7 +95,7 @@
     "kind": "blog",
     "category": ["Video"],
     "tags": ["hardware", "device", "reefer", "dry", "tracking service"],
-    "path": "What-is-ST6000",
+    "path": "article7",
     "featured": false
   }
 ]
