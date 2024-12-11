@@ -1,17 +1,12 @@
 import Image from 'next/image';
-import { getPostBySlug } from '@/service/blogUtils';
+import { getPostBySlug, getBlogMetadata } from '@/service/blogUtils';
 import { notFound } from 'next/navigation';
 
 type PostPageProps = {
-    params?: { locale: string; slug: string };
+    params: { locale: string; category: string; slug: string };
 };
 
 export default async function PostPage({ params }: PostPageProps) {
-    if (!params) {
-        notFound(); // 404 페이지 처리
-        return;
-    }
-
     const post = await getPostBySlug(params.slug);
 
     if (!post) {
@@ -33,4 +28,14 @@ export default async function PostPage({ params }: PostPageProps) {
             <div className="prose dark:prose-dark" dangerouslySetInnerHTML={{ __html: post.content || '' }} />
         </div>
     );
+}
+
+export async function generateStaticParams() {
+    const posts = await getBlogMetadata();
+
+    return posts.map((post) => ({
+        locale: 'en', // 필요한 로케일
+        category: post.category[0], // 첫 번째 카테고리 사용
+        slug: post.path, // slug 값
+    }));
 }

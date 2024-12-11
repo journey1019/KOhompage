@@ -67,7 +67,6 @@ export default async function GlobalIoT({params}: PageProps){
             <Hardware/>
             <FAQ/>
             <Download/>
-            <References/>
         </section>
     )
 }
