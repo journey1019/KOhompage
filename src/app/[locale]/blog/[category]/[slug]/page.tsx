@@ -3,12 +3,12 @@ import { getPostBySlug } from '@/service/blogUtils';
 import { notFound } from 'next/navigation';
 
 type PostPageProps = {
-    params: Awaited<{ locale: string; category: string; slug: string }>;
+    params: { locale: string; category: string; slug: string };
 };
 
 export default async function PostPage({ params }: PostPageProps) {
-    const resolvedParams = await params; // Promise 해제
-    const post = await getPostBySlug(resolvedParams.slug);
+    const { slug } = params; // params에서 slug 추출
+    const post = await getPostBySlug(slug);
 
     if (!post) {
         notFound(); // 404 페이지 처리
