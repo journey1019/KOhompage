@@ -6,7 +6,7 @@ type PostPageProps = {
     params: { locale: string; category: string; slug: string };
 };
 
-export default async function PostPage({ params }: PostPageProps) {
+export default async function PostPage({ params }: { params: { locale: string; slug: string }; }) {
     const { slug } = params; // params에서 slug 추출
     const post = await getPostBySlug(slug);
 
