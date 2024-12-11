@@ -2,7 +2,6 @@
 
 import { useState } from 'react';
 import { useRouter } from 'next/navigation'; // Correct import for Next.js 13+
-import dynamic from 'next/dynamic';
 import { EditorContent, useEditor } from '@tiptap/react';
 import StarterKit from '@tiptap/starter-kit';
 
@@ -29,7 +28,10 @@ const NewNoticePage = () => {
             category,
             contents,
         };
-        console.log(newNotice);
+        const storedNotices = JSON.parse(localStorage.getItem('notices') || '[]');
+        storedNotices.push(newNotice);
+        localStorage.setItem('notices', JSON.stringify(storedNotices));
+
         router.push('/resources/notice');
     };
 
@@ -67,7 +69,10 @@ const NewNoticePage = () => {
                 <label className="block mb-2 font-semibold">Contents</label>
                 <EditorContent editor={editor} className="w-full border rounded p-2" />
             </div>
-            <button onClick={handleSave} className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600">
+            <button
+                onClick={handleSave}
+                className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 transition-colors"
+            >
                 Save Notice
             </button>
         </div>

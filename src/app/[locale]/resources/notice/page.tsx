@@ -2,6 +2,7 @@
 
 import React from 'react';
 import { useState, useEffect } from 'react';
+import { useRouter } from 'next/navigation';
 import PageTopImage from '@/components/PageTopImage';
 import { SectionTitle } from '@/components/SectionTitle';
 
@@ -22,27 +23,13 @@ interface Notice {
 const NoticePage = () => {
     const [notices, setNotices] = useState<Notice[]>([]);
     const [searchTerm, setSearchTerm] = useState('');
+    const router = useRouter();
 
     useEffect(() => {
         // Replace this with actual API call or data fetching logic
         const fetchData = async () => {
-            const mockNotices: Notice[] = [
-                {
-                    id: '1',
-                    title: 'First Notice',
-                    date: '2024-01-01',
-                    category: 'General',
-                    contents: 'This is the first notice.'
-                },
-                {
-                    id: '2',
-                    title: 'Second Notice',
-                    date: '2024-02-01',
-                    category: 'Updates',
-                    contents: 'This is the second notice.'
-                },
-            ];
-            setNotices(mockNotices);
+            const storedNotices = JSON.parse(localStorage.getItem('notices') || '[]');
+            setNotices(storedNotices);
         };
 
         fetchData();
@@ -51,6 +38,10 @@ const NoticePage = () => {
     const filteredNotices = notices.filter((notice) =>
         notice.title.toLowerCase().includes(searchTerm.toLowerCase())
     );
+
+    const handleViewNotice = (id: string) => {
+        router.push(`/resources/notice/${id}`)
+    }
 
     return (
         <section>
@@ -105,7 +96,10 @@ const NoticePage = () => {
                             <td className="border-t border-b border-gray-300 px-6 py-6 cursor-pointer">{notice.title}</td>
                             <td className="border-t border-b border-gray-300 px-6 py-6 cursor-pointer text-center">{new Date(notice.date).toLocaleDateString()}</td>
                             <td className="border-t border-b border-gray-300 px-1 py-6 cursor-pointer text-center">
-                                <button className="px-4 py-2 bg-red-700 text-white rounded hover:bg-red-500 transition-colors">
+                                <button
+                                    onClick={() => handleViewNotice(notice.id)}
+                                    className="px-4 py-2 bg-red-700 text-white rounded hover:bg-red-800 transition-colors"
+                                >
                                     더보기
                                 </button>
                             </td>
