@@ -2,12 +2,12 @@ import { getPostsByTag } from '@/service/blogUtils';
 import BlogPost from '@/components/(Blog)/BlogPost';
 
 interface ReferencesProps {
-    locale: string;
+    locale: string; // 사용 중인 로케일
     tag: string; // 필터링할 태그
 }
 
 export default async function References({ locale, tag }: ReferencesProps) {
-    const posts = await getPostsByTag(tag);
+    const posts = await getPostsByTag(tag); // 태그를 기반으로 BlogPost 데이터 가져오기
 
     if (!posts || posts.length === 0) {
         return (
@@ -19,7 +19,7 @@ export default async function References({ locale, tag }: ReferencesProps) {
 
     return (
         <section className="max-w-6xl mx-auto px-6 lg:px-8 py-12">
-            <h1 className="text-black text-4xl font-bold pb-8">References for: {tag}</h1>
+            <h1 className="text-black text-4xl font-bold pb-8">References for Tag: {tag}</h1>
             <div className="grid grid-cols-1 gap-y-16 gap-x-8 lg:grid-cols-2 xl:grid-cols-3">
                 {posts.map((post) => {
                     const primaryCategory = post.category[0]; // 첫 번째 카테고리 사용

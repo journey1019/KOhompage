@@ -22,6 +22,7 @@ function formatCategoryName(category: string): string {
 }
 
 export default async function BlogPage({ params }: { params: { locale: string } }) {
+    const { locale } = params; // 비동기 작업 후 안전하게 할당
     const posts = await getBlogMetadata();
 
     if (!posts || posts.length === 0) {
@@ -45,7 +46,7 @@ export default async function BlogPage({ params }: { params: { locale: string } 
                             <h2 className="font-semibold text-5xl">{formatCategoryName(category)}</h2>
                             <Link
                                 className="py-3 px-5 rounded-full border-2 border-red-700 text-red-700 bg-white hover:bg-gray-200"
-                                href={`/${params.locale}/blog/${category}`} // params.locale 직접 사용
+                                href={`/${locale}/blog/${category}`} // params.locale을 안전하게 사용
                             >
                                 더보기
                             </Link>
@@ -60,7 +61,7 @@ export default async function BlogPage({ params }: { params: { locale: string } 
                                         image={post.image}
                                         category={category}
                                         date={post.date}
-                                        href={`/${params.locale}/blog/${category}/${post.path}`} // params.locale 직접 사용
+                                        href={`/${locale}/blog/${category}/${post.path}`} // locale 사용
                                         dangerouslySetInnerHTML={{ __html: post.content || '' }} // HTML 렌더링
                                     />
                                 ))}
@@ -71,5 +72,3 @@ export default async function BlogPage({ params }: { params: { locale: string } 
         </section>
     );
 }
-
-

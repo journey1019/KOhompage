@@ -14,6 +14,7 @@ interface BlogPost {
     title: string;
     image: string;
     date: string;
+    king: string;
     category: string[];
     tags: string[];
     path: string;
@@ -47,22 +48,6 @@ export async function getPostsByCategory(category: string): Promise<BlogPost[]> 
     return posts.filter((post) => post.category.includes(category));
 }
 
-// 슬러그를 기반으로 글 정보와 콘텐츠 가져오기
-// export async function getPostBySlug(slug: string): Promise<BlogPost | null> {
-//     const posts = await getBlogMetadata();
-//     const post = posts.find((p) => p.path === slug);
-//     if (!post) return null;
-//
-//     // Markdown 파일 경로
-//     const filePath = path.join(BLOG_CONTENT_PATH, `${slug}.md`);
-//     if (!fs.existsSync(filePath)) return null;
-//
-//     const fileContent = fs.readFileSync(filePath, 'utf-8');
-//     const { content } = matter(fileContent); // Markdown 파싱
-//
-//     return { ...post, content };
-// }
-
 export async function getPostBySlug(slug: string): Promise<BlogPost | null> {
     const posts = await getBlogMetadata();
     const post = posts.find((p) => p.path === slug);
@@ -78,3 +63,19 @@ export async function getPostsByTag(tag: string): Promise<BlogPost[]> {
     return posts.filter((post) => post.tags.includes(tag));
 }
 
+
+// 슬러그를 기반으로 글 정보와 콘텐츠 가져오기
+// export async function getPostBySlug(slug: string): Promise<BlogPost | null> {
+//     const posts = await getBlogMetadata();
+//     const post = posts.find((p) => p.path === slug);
+//     if (!post) return null;
+//
+//     // Markdown 파일 경로
+//     const filePath = path.join(BLOG_CONTENT_PATH, `${slug}.md`);
+//     if (!fs.existsSync(filePath)) return null;
+//
+//     const fileContent = fs.readFileSync(filePath, 'utf-8');
+//     const { content } = matter(fileContent); // Markdown 파싱
+//
+//     return { ...post, content };
+// }

@@ -32,7 +32,7 @@ export async function generateStaticParams() {
     ];
 }
 
-export default async function GlobalIoT({params}: PageProps){
+export default async function ContainerIoT({ params }: PageProps){
     const { locale } = params; // 비동기적으로 처리
     const data = solutionsData[locale]?.["container-iot"]; // 안전하게 데이터 접근
 
