@@ -6,12 +6,12 @@ type PostPageProps = {
     params: { locale: string; category: string; slug: string };
 };
 
-export default async function PostPage({ params }: { params: { locale: string; slug: string }; }) {
-    const { slug } = params; // params에서 slug 추출
+export default async function PostPage({ params }: { params: { locale: string; category: string; slug: string } }) {
+    const { slug } = params;
     const post = await getPostBySlug(slug);
 
     if (!post) {
-        notFound(); // 404 페이지 처리
+        notFound();
     }
 
     return (

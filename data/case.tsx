@@ -19,8 +19,8 @@ export const blogPosts = [
         author: {
             name: "Jese Leos",
             avatar:
-                "https://flowbite.s3.amazonaws.com/blocks/marketing-ui/avatars/jese-leos.png",
-        },
+                "https://flowbite.s3.amazonaws.com/blocks/marketing-ui/avatars/jese-leos.png"
+        }
     },
     {
         id: 2,
@@ -47,7 +47,7 @@ export const blogPosts = [
         author: {
             name: "Bonnie Green",
             avatar:
-                "https://flowbite.s3.amazonaws.com/blocks/marketing-ui/avatars/bonnie-green.png",
-        },
-    },
+                "https://flowbite.s3.amazonaws.com/blocks/marketing-ui/avatars/bonnie-green.png"
+        }
+    }
 ];

@@ -8,6 +8,7 @@ import { Faq } from '@/components/Faq';
 import { Cta } from '@/components/Cta';
 import SubscribeSection from '@/components/SubscribeSection';
 import Blog from '@/components/Blog';
+import { SlugHardware } from '@/components/(Solution)/SlugHardware';
 
 interface PageProps {
     params: {locale: string};
@@ -44,6 +45,11 @@ export default async function MaritimePage({params}: PageProps) {
                 <div>하드웨어</div>
                 <div>솔루션 이동</div>
 
+
+                <SectionTitle preTitle="Hardware" title={data.qnaTitle}>
+                    {data.qnaLetter}
+                </SectionTitle>
+                <SlugHardware locale={locale}/>
 
                 <SectionTitle preTitle="FAQ" title={data.qnaTitle}>
                     {data.qnaLetter}

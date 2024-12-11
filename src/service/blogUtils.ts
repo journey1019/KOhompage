@@ -14,7 +14,7 @@ interface BlogPost {
     title: string;
     image: string;
     date: string;
-    king: string;
+    kind: string;
     category: string[];
     tags: string[];
     path: string;
