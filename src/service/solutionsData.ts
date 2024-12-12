@@ -40,11 +40,11 @@ const solutionsData: Record<string, Record<string, SolutionData>> = {
         "container-iot": {
             imageIntro: "KOREAORBCOMM FOR RINANCIAL SERVICES",
             imageMain: "Improve your experience with container solutions",
-            imageSub: "코리아오브컴에서 Container 모니터링 서비스를 통해 전세계 다양한 분야에 적합한 IoT 솔루션을 제공합니다.",
+            imageSub: "Korea ofCom provides IoT solutions suitable for various fields around the world through a container monitoring service",
             imageUrl: "/images/solutions/container-iot/Container_Header.jpg",
-            solutionNumber: "Solution 1",
+            solutionNumber: "Container IoT",
             title: "Streamline Container Operations",
-            solutionName: "Container IoT",
+            solutionName: "",
             description: "Enhance logistics efficiency and reduce costs with container tracking solutions.",
             carousels: [
                 {
@@ -124,7 +124,7 @@ const solutionsData: Record<string, Record<string, SolutionData>> = {
             imageMain: "글로벌 통신으로 경험을 향상시키세요.",
             imageSub: "코리아오브컴에서 제공하는 Global 통신망을 통해 전세계 다양한 분야에 적합한 IoT 솔루션을 제공합니다.",
             imageUrl: "/images/solutions/global-iot/M2M_IoT.jpg",
-            solutionNumber: "Solution 2",
+            solutionNumber: "Global IoT",
             title: "Industrial IoT Solutions",
             solutionName: "Industrial IoT solutions provided by KOREA ORBCOMM provide solutions suitable for various industries such as construction equipment monitoring, marine information monitoring, and climate information monitoring.",
             description: "Monitor and manage your assets globally with our IoT solutions.",
@@ -169,9 +169,9 @@ const solutionsData: Record<string, Record<string, SolutionData>> = {
             imageMain: "안정적 통신 서비스로 경험을 향상시키세요",
             imageSub: "KOREA ORBCOMM provides satellite communication services suitable for customers through cooperation with global satellite network operators.",
             imageUrl: "/images/solutions/satellite/Satellite_Header.jpg",
-            solutionNumber: "Solution 3",
+            solutionNumber: "Satellite",
             title: "Reliable Satellite Communication",
-            solutionName: "Satellite",
+            solutionName: "",
             description: "Stay connected with global satellite communication solutions.",
             carousels: [
                 {
@@ -223,9 +223,9 @@ const solutionsData: Record<string, Record<string, SolutionData>> = {
             imageMain: "안정적 통신 서비스로 경험을 향상시키세요",
             imageSub: "코리아오브컴에서 제공하는 Global 통신망을 통해 전세계 다양한 분야에 적합한 IoT 솔루션을 제공합니다.",
             imageUrl: "/images/solutions/ais/AIS_Header.jpg",
-            solutionNumber: "Solution 4",
+            solutionNumber: "AIS",
             title: "Enhanced Maritime Tracking",
-            solutionName: "AIS",
+            solutionName: "",
             description: "Accurate maritime tracking with AIS solutions.",
             carousels: [
                 {
@@ -282,7 +282,7 @@ const solutionsData: Record<string, Record<string, SolutionData>> = {
             imageMain: "컨테이너 솔루션으로 경험을 향상시키세요",
             imageSub: "코리아오브컴에서 Container 모니터링 서비스를 통해 전세계 다양한 분야에 적합한 IoT 솔루션을 제공합니다.",
             imageUrl: "/images/solutions/container-iot/Container_Header.jpg",
-            solutionNumber: "솔루션 1",
+            solutionNumber: "Container IoT",
             title: "컨테이너 IoT 솔루션",
             solutionName: "코리아오브컴에서 제공하는 컨테이너 IoT 솔루션은 냉동/냉장 컨테이너 및 화물에 대한 실시간 추적, 상태 모니터링, 원격제어 솔루션을 제공합니다.",
             description: "컨테이너 IoT 솔루션으로 자산을 관리하세요.",
@@ -364,7 +364,7 @@ const solutionsData: Record<string, Record<string, SolutionData>> = {
             imageMain: "글로벌 통신으로 경험을 향상시키세요.",
             imageSub: "코리아오브컴에서 제공하는 Global 통신망을 통해 전세계 다양한 분야에 적합한 IoT 솔루션을 제공합니다.",
             imageUrl: "/images/solutions/global-iot/M2M_IoT.jpg",
-            solutionNumber: "솔루션 2",
+            solutionNumber: "Global IoT",
             title: "산업용 IoT 솔루션",
             solutionName: "코리아오브컴에서 제공하는 산업용 IoT 솔루션은 건설장비 모니터링, 해양정보 모니터링, 기후정보 모니터링 등 다양한 산업분야에 적합한 솔루션을 제공합니다.",
             description: "글로벌 IoT 솔루션으로 자산을 관리하세요.",
@@ -409,9 +409,9 @@ const solutionsData: Record<string, Record<string, SolutionData>> = {
             imageMain: "안정적 통신 서비스로 경험을 향상시키세요",
             imageSub: "코리아오브컴은 글로벌위성망 사업자와 협력을 통해 고객에게 적합한 위성통신서비스를 제공합니다.",
             imageUrl: "/images/solutions/satellite/Satellite_Header.jpg",
-            solutionNumber: "Solution 3",
+            solutionNumber: "Satellite",
             title: "Reliable Satellite Communication",
-            solutionName: "Satellite",
+            solutionName: "",
             description: "Stay connected with global satellite communication solutions.",
             carousels: [
                 {
@@ -463,9 +463,9 @@ const solutionsData: Record<string, Record<string, SolutionData>> = {
             imageMain: "안정적 통신 서비스로 경험을 향상시키세요",
             imageSub: "코리아오브컴은 글로벌위성망 사업자와 협력을 통해 고객에게 적합한 위성통신서비스를 제공합니다.",
             imageUrl: "/images/solutions/ais/AIS_Header.jpg",
-            solutionNumber: "Solution 4",
+            solutionNumber: "AIS",
             title: "Enhanced Maritime Tracking",
-            solutionName: "AIS",
+            solutionName: "",
             description: "Accurate maritime tracking with AIS solutions.",
             carousels: [
                 {

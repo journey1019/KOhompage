@@ -4,6 +4,7 @@ import React from 'react';
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import PageTopImage from '@/components/PageTopImage';
+import Breadcrumbs from '@/components/BreadCrumbs';
 
 /**
  * @description:
@@ -39,6 +40,13 @@ const NoticeDetailPage = ({params}: { params: Promise<{ id: string }>}) => {
         return <div>Loading...</div>;
     }
 
+    const breadcrumbs = [
+        { label: 'Home', href: '/' },
+        { label: 'Resources', href: '/resources' },
+        { label: 'Notice', href: '/resources/notice' },
+        { label: `${notice.title}`, href: `/resources/notice/${notice.id}` },
+    ]
+
     return(
         <section>
             <PageTopImage
@@ -49,7 +57,8 @@ const NoticeDetailPage = ({params}: { params: Promise<{ id: string }>}) => {
                 description={notice.category}
                 textPosition="center"
             />
-            <div className="container mx-auto p-4">
+            <Breadcrumbs items={breadcrumbs}/>
+            <div className="container mx-auto px-4 py-12 max-w-7xl">
                 <h1 className="text-2xl font-bold mb-4">{notice.title}</h1>
                 <p className="text-gray-600 mb-2">{new Date(notice.date).toLocaleDateString()}</p>
                 <span className="inline-block bg-gray-200 text-gray-700 text-xs font-medium px-2 py-1 rounded-full mb-4">

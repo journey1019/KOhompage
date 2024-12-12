@@ -6,6 +6,7 @@ const withNextIntl = createNextIntlPlugin();
 const nextConfig = {
     typescript: {
         ignoreBuildErrors: true,
+        reactStrictMode: false, // 개발 중 React의 잠재적인 문제 발견을 위한 도구(프로덕트 환경에서 영향 X)
     }
 };
 

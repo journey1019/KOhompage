@@ -1,9 +1,8 @@
 "use client";
 
 import { useState } from 'react';
-import { useRouter } from 'next/navigation'; // Correct import for Next.js 13+
-import { EditorContent, useEditor } from '@tiptap/react';
-import StarterKit from '@tiptap/starter-kit';
+import { useRouter } from 'next/navigation';
+import { Editor } from '@tinymce/tinymce-react';
 
 const NewNoticePage = () => {
     const [title, setTitle] = useState('');
@@ -11,14 +10,6 @@ const NewNoticePage = () => {
     const [category, setCategory] = useState('');
     const [contents, setContents] = useState('');
     const router = useRouter();
-
-    const editor = useEditor({
-        extensions: [StarterKit],
-        content: '',
-        onUpdate: ({ editor }) => {
-            setContents(editor.getHTML());
-        },
-    });
 
     const handleSave = () => {
         const newNotice = {
@@ -67,7 +58,23 @@ const NewNoticePage = () => {
             </div>
             <div className="mb-4">
                 <label className="block mb-2 font-semibold">Contents</label>
-                <EditorContent editor={editor} className="w-full border rounded p-2" />
+                <Editor
+                    apiKey={process.env.NEXT_PUBLIC_TINYMCE_API_KEY} // Use environment variable for security
+                    value={contents}
+                    init={{
+                        height: 500,
+                        menubar: true,
+                        plugins: [
+                            'advlist autolink lists link image charmap print preview anchor',
+                            'searchreplace visualblocks code fullscreen',
+                            'insertdatetime media table paste code help wordcount',
+                        ],
+                        toolbar:
+                            'undo redo | formatselect | bold italic underline | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image | removeformat | help',
+                        content_style: 'body { font-family:Arial,sans-serif; font-size:14px }',
+                    }}
+                    onEditorChange={(content) => setContents(content)}
+                />
             </div>
             <button
                 onClick={handleSave}

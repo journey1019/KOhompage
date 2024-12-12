@@ -43,7 +43,7 @@ export default async function MaritimePage({params}: PageProps) {
 
                 <div>장,단점</div>
                 <div>하드웨어</div>
-                <div>솔루션 이동</div>
+                <div>Maritime(Solution) 이동</div>
 
 
                 <SectionTitle preTitle="Hardware" title={data.qnaTitle}>

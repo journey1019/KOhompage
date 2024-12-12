@@ -74,6 +74,7 @@ export default async function ContainerIoT({ params }: PageProps){
             <Hardware/>
             {/*<FAQ/>*/}
             <Download/>
+            Video, 등등
             <References locale={locale} tag="container-iot" />
         </section>
     )
