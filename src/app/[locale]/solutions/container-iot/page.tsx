@@ -16,6 +16,7 @@ import Strength from '@/components/(Solution)/Strength';
 import Image from 'next/image';
 import React from 'react';
 import Point from '@/components/(Solution)/Point';
+import TagFilter from "@/components/(Resources)/TagFilter"
 
 
 interface PageProps {
@@ -75,7 +76,8 @@ export default async function ContainerIoT({ params }: PageProps){
             {/*<FAQ/>*/}
             <Download/>
             Video, 등등
-            <References locale={locale} tag="container-iot" />
+            {/*<References locale={locale} tag="container-iot" />*/}
+            <TagFilter initialTags={['container-iot']} />
         </section>
     )
 }

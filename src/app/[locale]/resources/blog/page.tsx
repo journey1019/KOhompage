@@ -1,25 +1,19 @@
 'use client';
 
-import React, {useState} from 'react';
+import React from 'react';
 import BlogCard from "@/components/(Resources)/BlogCard"
-import TagFilter from "@/components/(Resources)/TagFilter"
-import blogData from "../../../../../data/resources/blog.json";
+import getBlogData from "@/service/blogData";
 import Link from 'next/link';
-
 
 /**
  * @description: PDF 자료 & Video & Brochures
  * @constructor: Datasheet & Brochure & Video
  * */
-const BlogPage = () => {
-    const [selectedTag, setSelectedTag] = useState<string | null>(null);
 
+const BlogPage = () => {
+    const blogData = getBlogData();
     const classifications = ["video", "brochure", "datasheet"];
     const tags = Array.from(new Set(blogData.flatMap((item) => item.tags)));
-
-    const filteredData = blogData.filter(
-        (item) => !selectedTag || item.tags.includes(selectedTag)
-    );
 
     const formatCategoryName = (classification: string) => {
         switch (classification) {
@@ -39,16 +33,11 @@ const BlogPage = () => {
             <div className="mx-auto max-w-7xl p-6">
                 <h1 className="text-5xl font-bold mb-4">Blog</h1>
 
-                {/* Tag Filtering */}
-                {/*<TagFilter initialTags={['container-iot']} />*/}
-
                 {/* Blog Categories */}
                 {classifications.map((classification) => (
                     <div key={classification} className="pt-10 py-28">
                         <div className="mb-8 flex justify-between">
-                            <h2 className="font-semibold text-5xl">
-                                {formatCategoryName(classification)}
-                            </h2>
+                            <h2 className="font-semibold text-5xl">{formatCategoryName(classification)}</h2>
                             <Link
                                 className="py-3 px-5 rounded-full border-2 border-red-700 text-red-700 bg-white hover:bg-gray-200"
                                 href={`/resources/blog/${classification}`}
@@ -58,8 +47,8 @@ const BlogPage = () => {
                         </div>
 
                         <div className="grid grid-cols-1 gap-y-16 gap-x-8 lg:grid-cols-2 xl:grid-cols-3">
-                            {filteredData
-                                .filter((post) => post.classification.includes(classification))
+                            {blogData
+                                .filter((post) => post.classification === classification)
                                 .map((post) => (
                                     <BlogCard key={post.path} {...post} />
                                 ))}

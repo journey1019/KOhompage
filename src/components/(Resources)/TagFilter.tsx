@@ -1,5 +1,7 @@
+"use client";
+
 import React, { useState } from "react";
-import blogData from "../../../data/resources/blog.json";
+import getBlogData from "@/service/blogData"
 import BlogCard from "@/components/(Resources)/BlogCard";
 
 interface TagFilterProps {
@@ -8,6 +10,7 @@ interface TagFilterProps {
 
 const TagFilter: React.FC<TagFilterProps> = ({ initialTags }) => {
     const [selectedTag, setSelectedTag] = useState<string | null>(null);
+    const blogData = getBlogData();
 
     const filteredData = blogData.filter((item) =>
         selectedTag ? item.tags.includes(selectedTag) : initialTags.some((tag) => item.tags.includes(tag))
@@ -24,9 +27,7 @@ const TagFilter: React.FC<TagFilterProps> = ({ initialTags }) => {
                         key={tag}
                         onClick={() => setSelectedTag(tag === selectedTag ? null : tag)}
                         className={`px-4 py-2 text-sm rounded ${
-                            selectedTag === tag
-                                ? "bg-red-500 text-white"
-                                : "bg-gray-200 hover:bg-gray-300"
+                            selectedTag === tag ? "bg-red-500 text-white" : "bg-gray-200 hover:bg-gray-300"
                         }`}
                     >
                         {tag}
