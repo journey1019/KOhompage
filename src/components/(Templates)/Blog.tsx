@@ -9,8 +9,7 @@ export default function Blog() {
                 </p>
             </div>
             <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
-                <div
-                    className="group p-6 sm:p-8 rounded-3xl bg-white border border-gray-100 dark:shadow-none dark:border-gray-700 dark:bg-gray-800 bg-opacity-50 shadow-2xl shadow-gray-600/10">
+                <div className="group p-6 sm:p-8 rounded-3xl bg-white border border-gray-100 dark:shadow-none dark:border-gray-700 dark:bg-gray-800 bg-opacity-50 shadow-2xl shadow-gray-600/10">
                     <div className="relative overflow-hidden rounded-xl">
                         <img
                             src="https://images.unsplash.com/photo-1661749711934-492cd19a25c3?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1674&q=80"
@@ -28,7 +27,6 @@ export default function Blog() {
                             <span className="text-info dark:text-blue-300">Read more</span>
                         </a>
                     </div>
-
                 </div>
                 <div
                     className="group p-6 sm:p-8 rounded-3xl bg-white border border-gray-100 dark:shadow-none dark:border-gray-700 dark:bg-gray-800 bg-opacity-50 shadow-2xl shadow-gray-600/10">

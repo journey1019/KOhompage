@@ -1,0 +1,42 @@
+[
+  {
+    "title": "MWC 2024: the power of satellite-cellular convergence",
+    "description": "Learn how satellite-celluar convergence is changing industries and what the future of satellite IoT",
+    "images": "/images/resources/video/Tessla.png",
+    "date": "2024-12-12",
+    "classification": "video",
+    "form": "link",
+    "path": "https://youtu.be/RskYBc3895g",
+    "tags": ["satellite", "cellular"]
+  },
+  {
+    "title": "OGx: expand your horizons",
+    "description": "Develop more flexible and customizable IoT offerings with OGx: our next-generation satellite IoT service.",
+    "images": "/images/resources/brochure/OGxBrochure.png",
+    "date": "2024-12-12",
+    "classification": "brochure",
+    "form": "pdf",
+    "path": "/pdf/brochure/OGx-Brochure.pdf",
+    "tags": ["maritime", "container-iot", "Platform", "NMS"]
+  },
+  {
+    "title": "SC-1000",
+    "description": "Solar-powered satellite tracker | SC 1000 | ORBCOMM",
+    "images": "/images/resources/datasheet/hardware/SC1000Datasheet.png",
+    "date": "2024-12-12",
+    "classification": "datasheet",
+    "form": "pdf",
+    "path": "/pdf/hardware/sc-1000.pdf",
+    "tags": ["maritime", "container-iot", "Intelligent"]
+  },
+  {
+    "title": "VesselConnect: Reefer container management at sea",
+    "description": "Stay connected to containers at sea with an onboard cellular network that facilitates ship-to-shore communications, enabling remote temperature monitoring and more.",
+    "images": "/images/resources/datasheet/application/VesselConnectDatasheet.png",
+    "date": "2024-12-12",
+    "classification": "datasheet",
+    "form": "pdf",
+    "path": "/pdf/application/vesselconnect.pdf",
+    "tags": ["maritime", "VMS"]
+  }
+]
