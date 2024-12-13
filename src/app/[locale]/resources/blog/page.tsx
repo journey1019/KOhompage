@@ -4,6 +4,8 @@ import React from 'react';
 import BlogCard from "@/components/(Resources)/BlogCard"
 import getBlogData from "@/service/blogData";
 import Link from 'next/link';
+import { breadcrumbs } from '@/service/resources';
+import SameBreadcrumbs from '@/components/SameBreadcrumbs';
 
 /**
  * @description: PDF 자료 & Video & Brochures
@@ -30,6 +32,7 @@ const BlogPage = () => {
 
     return (
         <section>
+            <SameBreadcrumbs items={breadcrumbs} current="blog" />
             <div className="mx-auto max-w-7xl p-6">
                 <h1 className="text-5xl font-bold mb-4">Blog</h1>
 

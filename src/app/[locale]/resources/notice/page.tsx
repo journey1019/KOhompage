@@ -5,6 +5,8 @@ import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import PageTopImage from '@/components/PageTopImage';
 import { SectionTitle } from '@/components/SectionTitle';
+import { breadcrumbs } from '@/service/resources';
+import SameBreadcrumbs from '@/components/SameBreadcrumbs';
 
 /**
  * @description: 공지사항 & 이용약관 & 버전 업데이트 등등(게시글||QnA 포맷)
@@ -45,6 +47,7 @@ const NoticePage = () => {
 
     return (
         <section>
+            <SameBreadcrumbs items={breadcrumbs} current="notice" />
             <PageTopImage
                 size="py-48"
                 url="/images/header/News.jpg"

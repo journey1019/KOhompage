@@ -13,7 +13,6 @@ interface HeaderProps {
 }
 
 export default function Header({ locale }: HeaderProps) {
-    console.log(locale)
     const t = useTranslations('header');
     const [openDropdown, setOpenDropdown] = useState<string | null>(null);
     const [isMenuOpen, setIsMenuOpen] = useState(false);
