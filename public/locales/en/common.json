@@ -1,4 +1,12 @@
 {
+  "solutions": "Solutions",
+  "hardware": "Hardware",
+  "company": "Company",
+  "iotSolutions": "IoT Solutions",
+  "aiSolutions": "AI Solutions",
+  "cloudSolutions": "Cloud Solutions",
+  "bigDataSolutions": "Big Data Solutions",
+
   "advantageTitle": "Our Advantages",
   "advantageDescription": "Explore the benefits of our solutions.",
   "items": [

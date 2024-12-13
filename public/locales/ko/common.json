@@ -1,4 +1,12 @@
 {
+  "solutions": "솔루션",
+  "hardware": "하드웨어",
+  "company": "회사 소개",
+  "iotSolutions": "IoT 솔루션",
+  "aiSolutions": "AI 솔루션",
+  "cloudSolutions": "클라우드 솔루션",
+  "bigDataSolutions": "빅데이터 솔루션",
+
   "advantageTitle": "우리의 장점",
   "advantageDescription": "솔루션의 이점을 탐색하십시오.",
   "items": [
