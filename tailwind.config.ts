@@ -11,7 +11,11 @@ const config: Config = {
   ],
   darkMode: 'class',
   theme: {
-    extend: {},
+    extend: {
+        spacing: {
+            18: '4.5red', // 1rem = 16px, 4.5rem = 72px // top-18
+        }
+    },
   },
   plugins: [
       require('@tailwindcss/typography'),

@@ -16,7 +16,7 @@ const SameBreadcrumbs: React.FC<BreadcrumbsProps> = ({ items, current }) => {
         <>
             {/* Fixed Breadcrumbs */}
             <nav
-                className="fixed top-16 left-0 w-full bg-gray-100 border-b z-50"
+                className="fixed top-18 left-0 w-full bg-gray-100 border-b z-10"
                 style={{ height: '48px' }}
                 aria-label="Breadcrumb"
             >
@@ -58,14 +58,14 @@ const SameBreadcrumbs: React.FC<BreadcrumbsProps> = ({ items, current }) => {
                                         href={item.href}
                                         className={`inline-flex items-center text-md font-medium pr-3 ${
                                             current === item.label.toLowerCase()
-                                                ? 'text-red-500'
+                                                ? 'text-red-700'
                                                 : 'text-gray-600 hover:text-red-600'
                                         }`}
                                     >
                                         {item.label}
                                     </Link>
                                 ) : (
-                                    <span className="text-sm font-medium text-red-500">
+                                    <span className="text-sm font-medium text-red-700">
                                         {item.label}
                                     </span>
                                 )}

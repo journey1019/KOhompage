@@ -33,7 +33,7 @@ const Dropdown = ({ menuKey, locale }: DropdownProps) => {
     const items = dropdownContent[menuKey];
 
     return (
-        <div className="fixed left-1/2 transform -translate-x-1/2 top-16 w-screen bg-white shadow-lg border-t z-50">
+        <div className="absolute top-full left-0 w-screen bg-white shadow-lg border-t z-60">
             <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 p-6 max-w-screen-2xl mx-auto">
                 {items.map((item) => (
                     <Link
