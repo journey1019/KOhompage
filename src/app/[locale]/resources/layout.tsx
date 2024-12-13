@@ -1,5 +1,5 @@
 import React from 'react';
-import SameBreadCrumbs from '@/components/SameBreadCrumbs';
+import SameBreadcrumbs from '@/components/SameBreadcrumbs';
 
 interface LayoutProps {
     children: React.ReactNode;
@@ -7,6 +7,8 @@ interface LayoutProps {
 }
 
 const classifications = {
+    Notice: '/[locale]/resources/notice',
+    New: '/[locale]/resources/notice/new',
     Video: '/[locale]/resources/blog/video',
     Datasheet: '/[locale]/resources/blog/datasheet',
     Brochure: '/[locale]/resources/blog/brochure',
@@ -16,15 +18,15 @@ const Layout: React.FC<LayoutProps> = ({ children, params }) => {
     const { locale, classification } = params;
 
     const breadcrumbs = [
+        { label: 'Resources', href: undefined }, // 항상 고정된 위치
+        { label: 'Notice', href: `/${locale}/resources/notice` },
         { label: 'Blog', href: `/${locale}/resources/blog` },
-        { label: 'Video', href: `/${locale}/resources/blog/video` },
-        { label: 'Brochure', href: `/${locale}/resources/blog/brochure` },
-        { label: 'Datasheet', href: `/${locale}/resources/blog/datasheet` },
+        { label: 'Board', href: `/${locale}/resources/board` },
     ];
 
     return (
         <div>
-            <SameBreadCrumbs items={breadcrumbs} />
+            <SameBreadcrumbs items={breadcrumbs} current={classification} />
             <main>{children}</main>
         </div>
     );
