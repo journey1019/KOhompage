@@ -22,34 +22,33 @@ export default function PageTopImage({size, url, title, subtitle, description, t
     }
 
     return (
-        <section className={`relative flex ${size}`}>
-            {/* 고정된 배경 이미지 */}
-            <div className="absolute inset-0 bg-fixed bg-cover bg-center">
-                <div
-                    className="h-full w-full bg-cover bg-center"
-                    style={{
-                        backgroundImage: `url(${url})`,
-                    }}
-                />
-                {/* 어두운 오버레이 */}
-                <div
-                    className="absolute inset-0 bg-black"
-                    style={{
-                        backgroundColor: `rgba(0, 0, 0, ${opacity / 100})`, // 동적 투명도 설정
-                    }}
-                />
-
-            </div>
-
-            {/* 안쪽 콘텐츠 */}
-            <main className="relative flex flex-col justify-center items-start text-white z-10 p-5 ml-32">
-                <h1 className="text-lg font-bold mb-5">{title}</h1>
-                <h1 className="text-6xl font-bold mb-5">{subtitle}</h1>
-                <p className="text-base mb-5">{description}</p>
-                <div className="inside">
-                    {/* 추가 콘텐츠 작성 가능 */}
+        <>
+            {/* md 해상도 이전 (모바일 및 작은 해상도) */}
+            <section className={`relative flex py-36 md:${size}`}>
+                {/* 고정된 배경 이미지 */}
+                <div className="absolute inset-0 bg-fixed bg-cover bg-center">
+                    <div
+                        className="h-full w-full bg-cover bg-center"
+                        style={{
+                            backgroundImage: `url(${url})`,
+                        }}
+                    />
+                    {/* 어두운 오버레이 */}
+                    <div
+                        className="absolute inset-0 bg-black"
+                        style={{
+                            backgroundColor: `rgba(0, 0, 0, ${opacity / 100})`,
+                        }}
+                    />
                 </div>
-            </main>
-        </section>
-    )
+
+                {/* 안쪽 콘텐츠 */}
+                <main className="relative flex flex-col justify-center items-center md:items-start text-white z-10 p-5 text-center md:text-start md:ml-16 lg:ml-32">
+                    <h1 className="text-lg font-bold mb-5">{title}</h1>
+                    <h1 className="text-4xl md:text-6xl font-bold mb-5">{subtitle}</h1>
+                    <p className="text-base mb-5">{description}</p>
+                </main>
+            </section>
+        </>
+    );
 }

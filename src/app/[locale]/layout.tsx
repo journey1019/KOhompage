@@ -47,8 +47,8 @@ export default async function LocaleLayout({ children, params }: Props) {
         <html lang={locale} className={sans.className}>
         <body className="flex flex-col min-h-screen w-full mx-auto vsc-initialized">
         <NextIntlClientProvider messages={messages}>
-            <Header locale={locale}/>
-            {/*<Navbar locale={locale}/>*/}
+            {/*<Header locale={locale}/>*/}
+            <Navbar locale={locale}/>
             <main className="grow pt-[74px]">{children}</main>
             <Footer locale={locale}/>
             {/*<Footers locale={locale}/>*/}

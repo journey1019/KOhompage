@@ -10,10 +10,10 @@ interface DropdownProps {
 
 const dropdownContent: Record<string, { label: string; href: string }[]> = {
     solutions: [
-        { label: 'IoT Solutions', href: '/solutions/iot' },
-        { label: 'AI Solutions', href: '/solutions/ai' },
-        { label: 'Cloud Solutions', href: '/solutions/cloud' },
-        { label: 'Big Data Solutions', href: '/solutions/big-data' },
+        { label: 'Container-IoT', href: '/solutions/container-iot' },
+        { label: 'Global-IoT', href: '/solutions/global-iot' },
+        { label: 'Satellite', href: '/solutions/satellite' },
+        { label: 'AIS', href: '/solutions/ais' },
     ],
     hardware: [
         { label: 'Laptops', href: '/hardware/laptops' },
