@@ -68,6 +68,7 @@ import CaseStudies from '@/components/(Home)/CaseStudies';
 import React from 'react';
 import WorkWithUs from '@/components/RightNow';
 import TagFilterBlog from '@/components/(Main)/TagFilterBlog';
+import TagFilterBoard from '@/components/(Main)/TagFilterBoard';
 import References from '@/components/(Main)/References';
 
 
@@ -89,11 +90,16 @@ export default async function HomePage() {
             {/*<Solutions solutions={solutions}/>*/}
             {/*<CaseStudies />*/}
 
-            <Board />
+            {/*<Board />*/}
 
-            <References/>
-
-            <TagFilterBlog initialTags={[]} />
+            <div className="mx-auto max-w-7xl py-32">
+                <div className="m-auto max-w-5xl">
+                    <h2 className="text-center text-md font-semibold text-red-800 pb-6 sm:pb-10">OUR RESOURCES</h2>
+                </div>
+                <TagFilterBlog initialTags={[]} />
+            </div>
+            {/*<References/>*/}
+            {/*<TagFilterBoard initialTags={[]} />*/}
 
             <SubscribeSection />
             <WorkWithUs />

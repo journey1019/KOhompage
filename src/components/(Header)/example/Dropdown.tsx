@@ -54,7 +54,7 @@ const Dropdown = ({ menuKey, locale }: DropdownProps) => {
                     <div className="grid max-w-screen-xl px-4 py-3 mx-auto text-gray-900 dark:text-white grid-cols-1 sm:grid-cols-4 md:px-6">
                         {items.map((item) => (
                             <ul key={item.href}>
-                                <li>
+                                <li key={item.href}>
                                     <a
                                         href={`/solutions/${item.href}`}
                                         className="block px-3 py-1 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700"

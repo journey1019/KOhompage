@@ -7,7 +7,7 @@
     "classification": "article",
     "form": "link",
     "path": "https://kr.aving.net/news/articleView.html?idxno=1367659",
-    "tags": []
+    "tags": ["article"]
   },
   {
     "title": "위성통신기업 코리아오브컴, 선박 IoT솔루션 출시로 국내사업 강화",
@@ -17,7 +17,7 @@
     "classification": "article",
     "form": "link",
     "path": "http://www.haesanews.com/news/articleView.html?idxno=116775",
-    "tags": []
+    "tags": ["article"]
   },
   {
     "index": 1,
@@ -28,6 +28,6 @@
     "classification": "news",
     "form": "page",
     "path": "/",
-    "tags": []
+    "tags": ["news"]
   }
 ]

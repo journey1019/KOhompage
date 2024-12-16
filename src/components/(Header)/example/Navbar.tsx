@@ -28,16 +28,25 @@ const Navbar = ({ locale }: { locale: string }) => {
             { label: 'AIS', href: '/solutions/ais' },
         ],
         hardware: [
-            { label: 'Laptops', href: '/hardware/laptops' },
-            { label: 'Desktops', href: '/hardware/desktops' },
-            { label: 'Accessories', href: '/hardware/accessories' },
-            { label: 'Networking', href: '/hardware/networking' },
+            { label: 'CT 1000', href: '/hardware/ct-1000' },
+            { label: 'CT 3500', href: '/hardware/ct-3500' },
+            { label: 'CT 3600', href: '/hardware/ct-3600' },
+            { label: 'GT 1200', href: '/hardware/gt-1200' },
+            { label: 'IDP 800', href: '/hardware/idp-800' },
+            { label: 'OG2', href: '/hardware/og-2' },
+            { label: 'SC 1000', href: '/hardware/sc-1000' },
+            { label: 'ST 2100', href: '/hardware/st-2100' },
+            { label: 'ST 6000', href: '/hardware/st-6000' },
+            { label: 'ST 9100', href: '/hardware/st-9100' },
+            { label: 'QPRO', href: '/hardware/qpro' },
+            { label: 'Q 4000', href: '/hardware/q-4000' }
         ],
         company: [
-            { label: 'About Us', href: '/company/about' },
-            { label: 'Careers', href: '/company/careers' },
-            { label: 'Contact', href: '/company/contact' },
-            { label: 'Blog', href: '/company/blog' },
+            { label: 'About Us', href: '/about' },
+            { label: 'Contact', href: '/contact-us' },
+            { label: 'Blog', href: '/resources/blog' },
+            { label: 'Notice', href: '/resources/notice' },
+            { label: 'Board', href: '/resources/board' }
         ],
     };
 
@@ -145,7 +154,7 @@ const Navbar = ({ locale }: { locale: string }) => {
                                 {openSubMenu === item.key && (
                                     <ul className="pl-6 pt-2">
                                         {dropdownContent[item.key].map((subItem) => (
-                                            <li key={subItem.href}>
+                                            <li key={subItem.href} className="hover:bg-gray-100 pl-3">
                                                 <Link
                                                     href={`/${locale}${subItem.href}`}
                                                     className="block py-1 text-gray-700 hover:text-red-600"
