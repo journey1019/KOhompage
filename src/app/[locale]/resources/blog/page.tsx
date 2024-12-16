@@ -13,7 +13,8 @@ import SameBreadcrumbs from '@/components/SameBreadcrumbs';
  * */
 
 const BlogPage = () => {
-    const blogData = getBlogData();
+    // const blogData = getBlogData();
+    const blogData = getBlogData().sort((a, b) => new Date(a.date).getTime() - new Date(b.date).getTime());
     const classifications = ["video", "brochure", "datasheet"];
     const tags = Array.from(new Set(blogData.flatMap((item) => item.tags)));
 
@@ -39,6 +40,7 @@ const BlogPage = () => {
                 {/* Blog Categories */}
                 {classifications.map((classification) => (
                     <div key={classification} className="pt-10 py-28">
+                        <div className="flex flex-row w-full border-t border-gray-200 border-1 mb-5" />
                         <div className="mb-8 flex justify-between">
                             <h2 className="font-semibold text-5xl">{formatCategoryName(classification)}</h2>
                             <Link

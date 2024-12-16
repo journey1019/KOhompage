@@ -31,10 +31,11 @@ const dropdownContent: Record<string, { label: string; href: string; title?: str
         { label: 'Q 4000', href: '/hardware/q-4000', image: '/images/hardware/Q-4000.png', description: 'Using satellite and international mobile networks' }
     ],
     company: [
-        { label: 'About Us', href: '/company/about' },
-        { label: 'Careers', href: '/company/careers' },
-        { label: 'Contact', href: '/company/contact' },
-        { label: 'Blog', href: '/company/blog' },
+        { label: 'About Us', href: '/about' },
+        { label: 'Contact', href: '/contact-us' },
+        { label: 'Blog', href: '/resources/blog' },
+        { label: 'Notice', href: '/resources/notice' },
+        { label: 'Board', href: '/resources/board' },
     ],
 };
 
@@ -161,27 +162,17 @@ const Dropdown = ({ menuKey, locale }: DropdownProps) => {
 
     // Default layout for other dropdowns
     return (
-        <div className="grid max-w-screen-2xl px-4 py-5 mx-auto text-sm text-gray-500 dark:text-gray-400 md:px-6">
-            <div
-                id="mega-menu-full-dropdown"
-                className="mt-1 border-gray-200 shadow-sm bg-gray-50 md:bg-white border-y dark:bg-gray-800 dark:border-gray-600"
-            >
-                <div
-                    className="grid max-w-screen-xl px-4 py-3 mx-auto text-gray-900 dark:text-white grid-cols-1 sm:grid-cols-4 md:px-6">
-                    {items.map((item) => (
-                        <ul key={item.href}>
-                            <li>
-                                <Link
-                                    key={item.href}
-                                    href={`/${locale}${item.href}`}
-                                    className="block p-4 bg-gray-50 hover:bg-gray-100 rounded-lg text-gray-700 hover:text-red-600"
-                                >
-                                    <h3 className="font-semibold">{item.label}</h3>
-                                </Link>
-                            </li>
-                        </ul>
-                    ))}
-                </div>
+        <div className="absolute top-full left-0 w-screen bg-white shadow-lg border-t z-60">
+            <div className="grid grid-cols-3 lg:grid-cols-5 gap-4 p-6 max-w-screen-xl mx-auto">
+                {items.map((item) => (
+                    <Link
+                        key={item.href}
+                        href={`/${locale}${item.href}`}
+                        className="block p-4 bg-gray-50 hover:bg-gray-100 rounded-lg text-gray-700 hover:text-red-600"
+                    >
+                        <h3 className="font-semibold">{item.label}</h3>
+                    </Link>
+                ))}
             </div>
         </div>
     );

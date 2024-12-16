@@ -67,6 +67,8 @@ import SubscribeSection from '@/components/SubscribeSection';
 import CaseStudies from '@/components/(Home)/CaseStudies';
 import React from 'react';
 import WorkWithUs from '@/components/RightNow';
+import TagFilterBlog from '@/components/(Main)/TagFilterBlog';
+import References from '@/components/(Main)/References';
 
 
 export default async function HomePage() {
@@ -88,6 +90,10 @@ export default async function HomePage() {
             {/*<CaseStudies />*/}
 
             <Board />
+
+            <References/>
+
+            <TagFilterBlog initialTags={[]} />
 
             <SubscribeSection />
             <WorkWithUs />
