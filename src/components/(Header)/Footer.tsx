@@ -15,12 +15,14 @@ export function Footer({locale}: {locale: string}) {
 
     const legal = [
         { title: "Hardware", href: "hardware" },
-        { title: "Case Studies", href: "case-studies" },
+        // { title: "Case Studies", href: "case-studies" },
     ];
 
     const etc = [
-        { title: "Company", href: "company" },
-        { title: "Support", href: "support" },
+        // { title: "Company", href: "company" },
+        { title: "About", href: "about" },
+        // { title: "Support", href: "support" },
+        { title: "Contact Us", href: "contact-us" },
         { title: "Resources", href: "resources" },
     ];
 
@@ -108,6 +110,7 @@ export function Footer({locale}: {locale: string}) {
                     </div>
                     <div>
                         <div className="flex flex-wrap w-full -mt-2 -ml-3 lg:ml-0">
+                            <span className="w-full px-4 py-2 text-gray-800 rounded-md">Company</span>
                             {etc.map((item, index) => (
                                 <Link
                                     key={index}

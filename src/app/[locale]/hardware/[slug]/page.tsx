@@ -10,6 +10,7 @@ import Advantage from '@/components/(Hard)/Advantage';
 import Resources from '@/components/(Hard)/Resources';
 import BlogSlider from '@/components/(BlogSlider)/BlogSlider';
 import CaseStudies from '@/components/(Hard)/CaseStudies';
+import TagFilter from '@/components/(Resources)/TagFilter';
 
 interface PageProps {
     params: { locale: string; slug: string };
@@ -39,7 +40,7 @@ export default function HardwareDetail({ params }: PageProps) {
                 size="py-36"
                 url="/images/header/Cargo.jpg"
                 title=""
-                subtitle="Satellite Tracking Device"
+                subtitle={slug.toUpperCase()}
                 description="Simple, Low-Cost, Reliable"
                 textPosition="center"
                 opacity={50}
@@ -55,9 +56,13 @@ export default function HardwareDetail({ params }: PageProps) {
                 </ReactMarkdown>
             </div>
             <Advantage />
-            <CaseStudies/>
-            <Resources />
+            {/*<CaseStudies/>*/}
+            {/*<Resources />*/}
             {/*<BlogSlider />*/}
+            <div className="p-6 mx-auto max-w-7xl">
+                <h1 className="text-3xl font-bold mb-4">Filter by {slug}</h1>
+                <TagFilter initialTags={[`${slug}`]} />
+            </div>
         </section>
-    );
+);
 }

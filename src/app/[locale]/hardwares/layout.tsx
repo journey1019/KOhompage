@@ -42,7 +42,7 @@ export default function HardwareLayout({ children }: Props) {
                         <div id="dropdown"
                              className="z-10 absolute bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700 mt-1 top-full left-0"> {/* mt-1 추가 */}
                             <ul className="py-2 text-sm text-gray-700 dark:text-gray-200 border border-white rounded-lg" aria-labelledby="dropdown-button">
-                                {['GT1200', 'CT3500', 'ST2100', 'ST6000', 'IDP-800', 'ST-9100', 'QPRO', 'Q4000', 'OG2OGi', 'VSAT', 'iDirect'].map(category => (
+                                {['GT1200', 'CT3500', 'ST2100', 'ST6000', 'IDP-800', 'ST-9100', 'QPRO', 'Q4000', 'OG2', 'VSAT', 'iDirect'].map(category => (
                                     <li key={category}>
                                         <button
                                             type="button"

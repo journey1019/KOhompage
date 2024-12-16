@@ -5,10 +5,13 @@ import { SectionTitle } from '@/components/SectionTitle';
 import { Container } from '@/components/Container';
 import { Video } from '@/components/Video';
 import { Faq } from '@/components/Faq';
-import { Cta } from '@/components/Cta';
+import { CtaSolution } from '@/components/(Solution)/CtaSolution';
 import SubscribeSection from '@/components/SubscribeSection';
 import Blog from '@/components/Blog';
 import { SlugHardware } from '@/components/(Solution)/SlugHardware';
+import FilterableHardwareList from '@/components/(Hardware)/FilterableHardwareList';
+import TagFilter from '@/components/(Resources)/TagFilter';
+import UseCaseAdvantage from '@/components/(Solution)/UseCaseAdvantage';
 
 interface PageProps {
     params: {locale: string};
@@ -16,6 +19,8 @@ interface PageProps {
 export default async function MaritimePage({params}: PageProps) {
     const { locale } = params; // 비동기 처리
     const data = maritimeData[locale];
+
+    const chips = ['maritime']
 
     return(
         <section>
@@ -35,32 +40,30 @@ export default async function MaritimePage({params}: PageProps) {
                 >
                     {data.introLetter}
                 </SectionTitle>
-                <Video videoUrl="https://www.youtube.com/watch?v=9ppHkaMbCRE" />
+                <Video videoUrl="https://www.youtube.com/embed/-QE6gJMhrgU" />
 
-                <SectionTitle preTitle="Nextly Benefits" title="Why should you use this solution">
-                    ORBCOMM은 IoT와 AIS 기반 솔루션 및 서비스를 독특하게 결합하여 전 세계 해역을 운항하는 해운 회사, 상업용 어선 및 상선 함대를 위한 컨테이너 및 기타 해양 자산에 대한 중요한 모니터링을 제공합니다.
+                <SectionTitle preTitle="Nextly Benefits" title={data.useCaseTitle}>
+                    {data.useCaseLetter}
                 </SectionTitle>
-
-                <div>장,단점</div>
-                <div>하드웨어</div>
-                <div>Maritime(Solution) 이동</div>
+                <UseCaseAdvantage solutionKey="maritime" locale={locale} />
 
 
-                <SectionTitle preTitle="Hardware" title={data.qnaTitle}>
-                    {data.qnaLetter}
-                </SectionTitle>
-                <SlugHardware locale={locale}/>
+                {/*<SectionTitle preTitle="Hardware" title={data.qnaTitle}>*/}
+                {/*    {data.qnaLetter}*/}
+                {/*</SectionTitle>*/}
+                <FilterableHardwareList chips={chips}/>
+                {/*<SlugHardware locale={locale}/>*/}
 
                 <SectionTitle preTitle="FAQ" title={data.qnaTitle}>
                     {data.qnaLetter}
                 </SectionTitle>
                 <Faq items={data.faqs || []} />
 
-                <Cta items={data.ctas}/>
+                <CtaSolution items={data.ctas}/>
 
                 <SectionTitle preTitle="Resources" title="자원" />
-                <Blog/>
-
+                {/*<Blog/>*/}
+                <TagFilter initialTags={['maritime']} />
             </Container>
         </section>
     )

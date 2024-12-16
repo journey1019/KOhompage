@@ -24,7 +24,7 @@
  * resources/notice에서는 계속 생성되는 게시글들에 대해서 볼 수 있는 게시판 형식을 만들고 싶고, (추후에 따로 만들거지만 관리자들을) 게시글을 생성하는 페이지도 따로 만들어뒀으면 좋겠어.
  * 이 게시글들을 작성하고 저장하는 구조까지 디테일하게 설계해서 코드를 설계해줘
  * */
-
+import aboutData from '@/service/aboutData';
 import { Container } from "@/components/(About)/Container";
 import { Hero } from "@/components/(About)/Hero";
 import { SectionTitle } from "@/components/(About)/SectionTitle";
@@ -32,61 +32,80 @@ import { Benefits } from "@/components/(About)/Benefits";
 import { Video } from "@/components/(About)/Video";
 import { Testimonials } from "@/components/(About)/Testimonials";
 import { Faq } from "@/components/(About)/Faq";
-import { Cta } from "@/components/(About)/Cta";
+import { Cta } from '@/components/Cta';
 import { Footer } from "@/components/(About)/Footer";
 import { PopupWidget }  from "@/components/(About)/PopupWidget";
 import DownloadSection from '@/components/(Templates)/DownloadSection';
 import Blog from '@/components/(Templates)/Blog';
 
 import { benefitOne, benefitTwo } from "@/components/(About)/data";
-export default function AboutPage() {
+import PageTopImage from '@/components/PageTopImage';
+import Partner from '@/components/Partner';
+import React from 'react';
+import WorkWithUs from '@/components/RightNow';
+import History from '@/components/(About)/History';
+
+interface PageProps {
+    params: {locale: string};
+}
+export default function AboutPage({params}: PageProps) {
+    const { locale } = params;
+    const data = aboutData[locale];
+
     return (
-        <Container>
-            <Hero />
-            <DownloadSection/>
-            <SectionTitle
-                preTitle="Nextly Benefits"
-                title=" Why should you use this landing page"
-            >
-                Nextly is a free landing page & marketing website template for startups
-                and indie projects. Its built with Next.js & TailwindCSS. And its
-                completely open-source.
-            </SectionTitle>
+        <>
+            <PageTopImage
+                size="py-32"
+                url={data.imageUrl}
+                title={data.imageIntro}
+                subtitle={data.imageMain}
+                description={data.imageSub}
+                textPosition="center"
+            />
+            <Container>
+                <Hero />
+                {/*<DownloadSection/>*/}
+                <SectionTitle
+                    preTitle="KOREA ORBCOMM"
+                    title={data.introTitle}
+                >
+                    {data.introLetter}
+                </SectionTitle>
 
-            <Benefits data={benefitOne} />
-            <Benefits imgPos="right" data={benefitTwo} />
+                <History/>
 
-            <SectionTitle
-                preTitle="Watch a video"
-                title="Learn how to fullfil your needs"
-            >
-                This section is to highlight a promo or demo video of your product.
-                Analysts says a landing page with video has 3% more conversion rate. So,
-                don&apos;t forget to add one. Just like this.
-            </SectionTitle>
+                {/*<Benefits data={benefitOne} />*/}
+                {/*<Benefits imgPos="right" data={benefitTwo} />*/}
 
-            <Video videoId="fZ0D0cnR88E" />
+                {/*<SectionTitle*/}
+                {/*    preTitle="Watch a video"*/}
+                {/*    title="Learn how to fullfil your needs"*/}
+                {/*>*/}
+                {/*    This section is to highlight a promo or demo video of your product.*/}
+                {/*    Analysts says a landing page with video has 3% more conversion rate. So,*/}
+                {/*    don&apos;t forget to add one. Just like this.*/}
+                {/*</SectionTitle>*/}
 
-            <SectionTitle
-                preTitle="Testimonials"
-                title="Here's what our customers said"
-            >
-                Testimonials is a great way to increase the brand trust and awareness.
-                Use this section to highlight your popular customers.
-            </SectionTitle>
+                {/*<Video videoId="fZ0D0cnR88E" />*/}
 
-            <Testimonials />
+                <SectionTitle
+                    preTitle="Testimonials"
+                    title="Here's what our customers said"
+                >
+                    Testimonials is a great way to increase the brand trust and awareness.
+                    Use this section to highlight your popular customers.
+                </SectionTitle>
 
-            <SectionTitle preTitle="FAQ" title="Frequently Asked Questions">
-                Answer your customers possible questions here, it will increase the
-                conversion rate as well as support or chat requests.
-            </SectionTitle>
+                <Testimonials />
 
-            <Faq />
-            <Cta />
-            <Blog/>
-            <Footer />
-            <PopupWidget />
-        </Container>
+                {/*<Faq />*/}
+                {/*<Cta />*/}
+                <Cta items={data.ctas}/>
+                {/*<Blog/>*/}
+                {/*<Footer />*/}
+                {/*<PopupWidget />*/}
+            </Container>
+            <WorkWithUs />
+        </>
     );
 }

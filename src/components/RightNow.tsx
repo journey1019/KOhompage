@@ -59,8 +59,7 @@ export default function WorkWithUs() {
                 <div className="mx-auto max-w-2xl lg:mx-0">
                     <h2 className="text-4xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-6xl">Work with us</h2>
                     <p className="mt-6 text-lg leading-8 text-gray-700 dark:text-gray-300">
-                        Anim aute id magna aliqua ad ad non deserunt sunt. Qui irure qui lorem cupidatat commodo. Elit sunt amet
-                        fugiat veniam occaecat fugiat aliqua.
+                        앞으로도 솔루션의 확장과 데이터의 정확도를 높이는데 주력하며, 물류산업 전반의 관계자분들께 신뢰할 수 있는 공급망 정보를 제공하고자 합니다.
                     </p>
                 </div>
                 <div className="mx-auto mt-10 max-w-2xl lg:mx-0 lg:max-w-none">

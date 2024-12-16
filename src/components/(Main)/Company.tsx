@@ -39,9 +39,9 @@ export default function Company() {
                 </div>
                 <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mx-auto mt-20 max-w-7xl sm:mt-40">
                     {[
-                        { value: '60억 +', label: '최종 사용자' },
-                        { value: '50억 +', label: '월간 데이터' },
-                        { value: '30만 +', label: '선박' },
+                        { value: '10,000 +', label: '최종 사용자' },
+                        { value: '7,000,000 +', label: '월간 데이터' },
+                        { value: '60,000 +', label: '선박' },
                     ].map((item, index) => (
                         <div key={index}
                              className="flex flex-col w-full m-5 text-center justify-center dark:text-white">

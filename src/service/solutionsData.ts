@@ -197,7 +197,7 @@ const solutionsData: Record<string, Record<string, SolutionData>> = {
                     title2: "next generation of satellite",
                     slug: "ogx",
                     description: "OGx Satellite Service provides satellite communication around the world using the L-Band bands of the Inmarsat 4th and 6th generation satellites. Global L-Band Satellite Service provides a reliable communication network for remote monitoring of customers' assets with network availability that is not affected by weather conditions such as rain.",
-                    image: "https://www.orbcomm.co.kr/resources/img/solution/reeferconnect/reffer1.PNG",
+                    image: "/images/solutions/satellite/Inmarsat.jpg",
                 },
                 {
                     direction: "right",
@@ -205,16 +205,15 @@ const solutionsData: Record<string, Record<string, SolutionData>> = {
                     title2: "Low Earth Orbit",
                     slug: "low-earch-orbit",
                     description: "ORBCOM's Low Earth Orbit (LEO) satellite network, which uses a small satellite module and a whip-type omnidirectional antenna to provide useful data communication services in places such as mountain/sea where communication infrastructure is not established with easy and simple installation.",
-                    image: "/images/solutions/nms_main.png",
+                    image: "/images/solutions/satellite/ORBCOMM_LOW.png",
                 },
                 {
                     direction: "left",
                     title1: "SpaceX",
                     title2: "Starlink",
                     slug: "star-link",
-                    description:
-                        "You can monitor the location and status of all refrigerated container units and remotely adjust settings such as temperature. With automatic alarm notifications, you can quickly respond to critical situations such as equipment malfunctions or power outages in reefers. Installed on over 600,000 refrigerated containers worldwide, it helps transport lines, multimodal carriers, and shippers achieve verified ROI.",
-                    image: "https://www.orbcomm.co.kr/resources/img/solution/orbcommplatform/orbcommplatform_2.jpg",
+                    description: "You can monitor the location and status of all refrigerated container units and remotely adjust settings such as temperature. With automatic alarm notifications, you can quickly respond to critical situations such as equipment malfunctions or power outages in reefers. Installed on over 600,000 refrigerated containers worldwide, it helps transport lines, multimodal carriers, and shippers achieve verified ROI.",
+                    image: "/images/solutions/satellite/Starlink.png",
                 },
             ]
         },

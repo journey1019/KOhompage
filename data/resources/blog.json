@@ -10,6 +10,16 @@
     "tags": ["satellite", "cellular"]
   },
   {
+    "title": "Reefer Container Management: Trip-Based Telematics Adds New Possibilities",
+    "description": "Operators cna quickly react to issues and remotely adjust temperature levels to ensure compliance.",
+    "images": "/images/resources/video/Reefer.png",
+    "date": "2024-12-12",
+    "classification": "video",
+    "form": "link",
+    "path": "https://www.youtube.com/watch?v=9ppHkaMbCRE",
+    "tags": ["container-iot", "reefer", "CT-3500"]
+  },
+  {
     "title": "OGx: expand your horizons",
     "description": "Develop more flexible and customizable IoT offerings with OGx: our next-generation satellite IoT service.",
     "images": "/images/resources/brochure/OGxBrochure.png",
@@ -17,6 +27,26 @@
     "classification": "brochure",
     "form": "pdf",
     "path": "/pdf/brochure/OGx-Brochure.pdf",
+    "tags": ["satellite", "Orbcomm", "row", "ogx", "og2"]
+  },
+  {
+    "title": "Heavy Equipment",
+    "description": "Global Heavy Equipment telematics Solutions: Company Visibility and Control",
+    "images": "/images/resources/brochure/ORBCOMM-Heavy-Equipment.png",
+    "date": "2024-12-12",
+    "classification": "brochure",
+    "form": "pdf",
+    "path": "/pdf/brochure/ORBCOMM-Heavy-Equipment.pdf",
+    "tags": ["maritime", "container-iot", "Platform", "NMS"]
+  },
+  {
+    "title": "Smart Dry Container",
+    "description": "Asset visibility, cargo security and data-driven planning",
+    "images": "/images/resources/brochure/Smart-Dry-Container.png",
+    "date": "2024-12-12",
+    "classification": "brochure",
+    "form": "pdf",
+    "path": "/pdf/brochure/Smart-Dry-Container.pdf",
     "tags": ["maritime", "container-iot", "Platform", "NMS"]
   },
   {
@@ -27,7 +57,67 @@
     "classification": "datasheet",
     "form": "pdf",
     "path": "/pdf/hardware/sc-1000.pdf",
+    "tags": ["maritime", "container-iot", "Intelligent", "sc-1000"]
+  },
+  {
+    "title": "Development-Kit",
+    "description": "Solar-powered satellite tracker | SC 1000 | ORBCOMM",
+    "images": "/images/resources/datasheet/hardware/DevelopmentKitDatasheet.png",
+    "date": "2024-12-16",
+    "classification": "datasheet",
+    "form": "pdf",
+    "path": "/pdf/hardware/development-kit.pdf",
     "tags": ["maritime", "container-iot", "Intelligent"]
+  },
+  {
+    "title": "GT-1200",
+    "description": "Gain control of dry trailers and containers virtually anywhere in the world, improving asset utilization and driver productivity, streamlining operations, protect cargo and boosting profitability.",
+    "images": "/images/resources/datasheet/hardware/GT1200Datasheet.png",
+    "date": "2024-12-16",
+    "classification": "datasheet",
+    "form": "pdf",
+    "path": "/pdf/hardware/gt-1200.pdf",
+    "tags": ["dry", "Trailer", "Smarter", "gt-1200"]
+  },
+  {
+    "title": "OG2",
+    "description": "ORBCOMM OG2 is the world’s first and only commercial satellite network 100% dedicated to IoT.",
+    "images": "/images/resources/datasheet/hardware/OG2Datasheet.png",
+    "date": "2024-12-16",
+    "classification": "datasheet",
+    "form": "pdf",
+    "path": "/pdf/hardware/og2-ogi-KR.pdf",
+    "tags": ["network", "satellite", "og2-ogi"]
+  },
+  {
+    "title": "ST-6100",
+    "description": "It is a perfect communication equipment that connects the coastal waters and oceans and land for ships and buoys.",
+    "images": "/images/resources/datasheet/hardware/ST6100Datasheet.png",
+    "date": "2024-12-16",
+    "classification": "datasheet",
+    "form": "pdf",
+    "path": "/pdf/hardware/st-6100.pdf",
+    "tags": ["st-6100", "satellite", "vessle"]
+  },
+  {
+    "title": "MT-5000",
+    "description": "Built for small-craft owners, fleet operators, maritime authorities and enforcement agencies, the MT 5000 smart small vessel telematics device delivers vessel location data for improved maritime safety, vessel security and environment compliance.",
+    "images": "/images/resources/datasheet/hardware/MT5000Datasheet.png",
+    "date": "2024-12-16",
+    "classification": "datasheet",
+    "form": "pdf",
+    "path": "/pdf/hardware/mt-5000.pdf",
+    "tags": ["safe", "vessel", "mt-5000"]
+  },
+  {
+    "title": "ST-2100",
+    "description": "Solar-powered satellite tracker | SC 1000 | ORBCOMM",
+    "images": "/images/resources/datasheet/hardware/ST2100Datasheet.png",
+    "date": "2024-12-12",
+    "classification": "datasheet",
+    "form": "pdf",
+    "path": "/pdf/hardware/st-2100.pdf",
+    "tags": ["st-2100", "satellite", "tracking", "dual-mode"]
   },
   {
     "title": "VesselConnect: Reefer container management at sea",

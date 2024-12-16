@@ -16,6 +16,9 @@ import Strength from '@/components/(Solution)/Strength';
 import Image from 'next/image';
 import React from 'react';
 import Point from '@/components/(Solution)/Point';
+import FilterableHardwareList from '@/components/(Hardware)/FilterableHardwareList';
+import TagFilter from '@/components/(Resources)/TagFilter';
+import TagFilterBoard from '@/components/(Main)/TagFilterBoard';
 
 interface PageProps {
     params: {locale: string};
@@ -45,6 +48,7 @@ export default async function GlobalIoT({params}: PageProps){
         );
     }
 
+    const chips = ['ogx', 'og2', 'sc-1000', 'st-8100', 'st-2100', 'st-6000', 'st-6100', 'st-9100', 'mt-500'];
     return(
         <section>
             <PageTopImage
@@ -67,13 +71,15 @@ export default async function GlobalIoT({params}: PageProps){
             {/*<Card/>*/}
             {/*<Advantage/>*/}
             {/*<Point items={data.points || []}/>*/}
-            <ContentForm/>
+            {/*<ContentForm/>*/}
             <UseCase slug="satellite" locale={locale} />
             <Strength items={data.advantages || []}/>
-            <Hardware/>
-            <FAQ/>
-            <Download/>
-            <References/>
+            <FilterableHardwareList chips={chips}/>
+            <TagFilter initialTags={['ogx']} />
+            {/*<TagFilterBoard initialTags={['']}/>*/}
+            {/*<FAQ/>*/}
+            {/*<Download/>*/}
+            {/*<References/>*/}
         </section>
     )
 }

@@ -1,4 +1,51 @@
+'use client';
+
+import React, { useState } from 'react';
+
 export default function ContactUsPage() {
+    const [formData, setFormData] = useState({
+        name: '',
+        email: '',
+        subject: '',
+        message: '',
+    });
+    const [isLoading, setIsLoading] = useState(false);
+    const [successMessage, setSuccessMessage] = useState('');
+    const [errorMessage, setErrorMessage] = useState('');
+
+    const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+        const { name, value } = e.target;
+        setFormData((prevData) => ({ ...prevData, [name]: value }));
+    };
+
+    const handleSubmit = async () => {
+        setIsLoading(true);
+        setSuccessMessage('');
+        setErrorMessage('');
+
+        try {
+            const response = await fetch('/api/send-email', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(formData),
+            });
+
+            if (!response.ok) {
+                // 명시적으로 타입 정의
+                const errorData: { message: string } = await response.json();
+                throw new Error(errorData.message || 'Failed to send email.');
+            }
+
+            const successData: { message: string } = await response.json();
+            setSuccessMessage(successData.message || 'Your email has been sent successfully!');
+            setFormData({ name: '', email: '', subject: '', message: '' });
+        } catch (error: any) {
+            setErrorMessage(error.message || 'Something went wrong. Please try again.');
+        } finally {
+            setIsLoading(false);
+        }
+    };
+
     return (
         <div className="grid md:grid-cols-2 lg:max-w-7xl lg:px-6 lg:py-28 items-start gap-16 p-4 mx-auto max-w-full bg-white font-[sans-serif]">
             <div>
@@ -65,19 +112,54 @@ export default function ContactUsPage() {
                 </div>
             </div>
 
-            <form className="ml-auto space-y-4">
-                <input type='text' placeholder='Name'
-                       className="w-full rounded-md py-3 px-4 bg-gray-100 text-gray-800 text-sm outline-blue-500 focus:bg-transparent" />
-                <input type='email' placeholder='Email'
-                       className="w-full rounded-md py-3 px-4 bg-gray-100 text-gray-800 text-sm outline-blue-500 focus:bg-transparent" />
-                <input type='text' placeholder='Subject'
-                       className="w-full rounded-md py-3 px-4 bg-gray-100 text-gray-800 text-sm outline-blue-500 focus:bg-transparent" />
-                <textarea placeholder='Message' rows={6}
-                          className="w-full rounded-md px-4 bg-gray-100 text-gray-800 text-sm pt-3 outline-blue-500 focus:bg-transparent"></textarea>
-                <button type='button'
-                        className="text-white bg-blue-500 hover:bg-blue-600 tracking-wide rounded-md text-sm px-4 py-3 w-full !mt-6">Send
+            <form className="ml-auto space-y-4" onSubmit={(e) => e.preventDefault()}>
+                <input
+                    type="text"
+                    name="name"
+                    value={formData.name}
+                    onChange={handleChange}
+                    placeholder="Name"
+                    className="w-full rounded-md py-3 px-4 bg-gray-100 text-gray-800 text-sm outline-blue-500 focus:bg-transparent"
+                    required
+                />
+                <input
+                    type="email"
+                    name="email"
+                    value={formData.email}
+                    onChange={handleChange}
+                    placeholder="Email"
+                    className="w-full rounded-md py-3 px-4 bg-gray-100 text-gray-800 text-sm outline-blue-500 focus:bg-transparent"
+                    required
+                />
+                <input
+                    type="text"
+                    name="subject"
+                    value={formData.subject}
+                    onChange={handleChange}
+                    placeholder="Subject"
+                    className="w-full rounded-md py-3 px-4 bg-gray-100 text-gray-800 text-sm outline-blue-500 focus:bg-transparent"
+                    required
+                />
+                <textarea
+                    name="message"
+                    value={formData.message}
+                    onChange={handleChange}
+                    placeholder="Message"
+                    rows={6}
+                    className="w-full rounded-md px-4 bg-gray-100 text-gray-800 text-sm pt-3 outline-blue-500 focus:bg-transparent"
+                    required
+                ></textarea>
+                <button
+                    type="button"
+                    onClick={handleSubmit}
+                    className="text-white bg-blue-500 hover:bg-blue-600 tracking-wide rounded-md text-sm px-4 py-3 w-full !mt-6"
+                    disabled={isLoading}
+                >
+                    {isLoading ? 'Sending...' : 'Send'}
                 </button>
+                {successMessage && <p className="text-green-600 mt-2">{successMessage}</p>}
+                {errorMessage && <p className="text-red-600 mt-2">{errorMessage}</p>}
             </form>
         </div>
-    )
+    );
 }

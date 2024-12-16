@@ -17,6 +17,7 @@ import Image from 'next/image';
 import React from 'react';
 import Point from '@/components/(Solution)/Point';
 import TagFilter from "@/components/(Resources)/TagFilter"
+import FilterableHardwareList from '@/components/(Hardware)/FilterableHardwareList';
 
 
 interface PageProps {
@@ -46,6 +47,7 @@ export default async function ContainerIoT({ params }: PageProps){
             </div>
         );
     }
+    const chips = ['container-iot', 'maritime'];
 
     return(
         <section>
@@ -69,13 +71,13 @@ export default async function ContainerIoT({ params }: PageProps){
             {/*<Card/>*/}
             {/*<Advantage/>*/}
             <Point items={data.points || []}/>
-            <ContentForm/>
+            {/*<ContentForm/>*/}
             <UseCase slug="container-iot" locale={locale} />
             <Strength items={data.advantages || []}/>
-            <Hardware/>
+            <FilterableHardwareList chips={chips}/>
+            {/*<Hardware/>*/}
             {/*<FAQ/>*/}
-            <Download/>
-            Video, 등등
+            {/*<Download/>*/}
             {/*<References locale={locale} tag="container-iot" />*/}
             <TagFilter initialTags={['container-iot']} />
         </section>
