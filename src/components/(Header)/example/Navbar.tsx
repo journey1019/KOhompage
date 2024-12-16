@@ -4,6 +4,8 @@ import React, { useState, useRef } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import Dropdown from './Dropdown';
+import Login from '../Login';
+import Language from '../Language';
 import { GlobeAltIcon, UserIcon, Bars3Icon, XMarkIcon, ChevronDownIcon, ChevronUpIcon } from '@heroicons/react/24/outline';
 
 const Navbar = ({ locale }: { locale: string }) => {
@@ -46,7 +48,6 @@ const Navbar = ({ locale }: { locale: string }) => {
         }
         setOpenDropdown(key);
     };
-
     const handleMouseLeave = () => {
         closeTimeout.current = setTimeout(() => {
             setOpenDropdown(null);
@@ -57,13 +58,13 @@ const Navbar = ({ locale }: { locale: string }) => {
     const toggleMobileMenu = () => {
         setIsMobileMenuOpen((prev) => !prev);
     };
-
     const toggleSubMenu = (key: string) => {
         setOpenSubMenu((prev) => (prev === key ? null : key));
     };
 
     return (
         <header className="fixed top-0 left-0 w-full z-50 bg-white shadow-md">
+            {/* Web Navbar */}
             <nav className="max-w-screen-2xl w-full mx-auto flex items-center justify-between px-6 py-4">
                 {/* Logo */}
                 <Link href="/" className="flex items-center">
@@ -95,12 +96,8 @@ const Navbar = ({ locale }: { locale: string }) => {
 
                 {/* Right Icons */}
                 <div className="flex items-center space-x-4">
-                    <button className="p-2 hover:bg-gray-100 rounded-full">
-                        <UserIcon className="w-6 h-6 text-gray-700" />
-                    </button>
-                    <button className="p-2 hover:bg-gray-100 rounded-full">
-                        <GlobeAltIcon className="w-6 h-6 text-gray-700" />
-                    </button>
+                    <Login/>
+                    <Language/>
 
                     {/* Hamburger Menu for Mobile */}
                     <button
@@ -128,7 +125,7 @@ const Navbar = ({ locale }: { locale: string }) => {
 
             {/* Mobile Menu */}
             {isMobileMenuOpen && (
-                <div className="fixed top-16 left-0 w-full bg-white shadow-md z-40">
+                <div className="fixed top-16 left-0 w-full bg-white shadow-md z-40 md:hidden">
                     <ul className="flex flex-col space-y-4 p-4">
                         {menuItems.map((item) => (
                             <li key={item.key}>
