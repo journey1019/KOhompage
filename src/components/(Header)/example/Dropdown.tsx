@@ -89,10 +89,10 @@ const Dropdown = ({ menuKey, locale }: DropdownProps) => {
     }
     else if (menuKey === 'hardware') {
         return (
-            <div className="absolute top-full left-0 w-screen bg-black shadow-lg border-t z-50">
-                <div className="grid max-w-screen-2xl mx-auto px-6 py-8 grid-cols-1 sm:grid-cols-3 gap-8">
+            <div className="absolute top-full left-0 w-screen bg-white shadow-lg border-t z-50">
+                <div className="grid max-w-screen-xl mx-auto px-6 py-8 grid-cols-1 sm:grid-cols-3 gap-8">
                     {/* Grid 1: First half of hardware items */}
-                    <div className="space-y-4 max-w-screen-xl">
+                    <div className="space-y-4 max-w-screen-xl border-r border-gray-200 pr-4">
                         {items.slice(0, Math.ceil(items.length / 2)).map((item) => (
                             <a href={item.href}
                                 key={item.href}
@@ -110,7 +110,7 @@ const Dropdown = ({ menuKey, locale }: DropdownProps) => {
                     </div>
 
                     {/* Grid 2: Second half of hardware items */}
-                    <div className="space-y-4">
+                    <div className="space-y-4 border-r border-gray-200 pr-4">
                         {items.slice(Math.ceil(items.length / 2)).map((item) => (
                             <button
                                 key={item.href}
@@ -128,7 +128,7 @@ const Dropdown = ({ menuKey, locale }: DropdownProps) => {
                     </div>
 
                     {/* Grid 3: Display hovered item's details */}
-                    <div className="flex flex-col items-center text-center space-y-4">
+                    <div className="flex flex-col items-center text-center space-y-4 pl-4">
                         {hoveredItem ? (
                             <>
                                 {hoveredItem.image && (
@@ -143,12 +143,12 @@ const Dropdown = ({ menuKey, locale }: DropdownProps) => {
                                 )}
                                 <h3 className="text-lg font-bold text-gray-900">{hoveredItem.label}</h3>
                                 <p className="text-gray-500">{hoveredItem.description}</p>
-                                <Link
-                                    href={`/${locale}${hoveredItem.href}`}
-                                    className="px-6 py-2 mt-4 bg-red-600 text-white rounded-lg hover:bg-red-700"
-                                >
-                                    Learn More
-                                </Link>
+                                {/*<Link*/}
+                                {/*    href={`/${locale}${hoveredItem.href}`}*/}
+                                {/*    className="px-6 py-2 mt-4 bg-red-600 text-white rounded-lg hover:bg-red-700"*/}
+                                {/*>*/}
+                                {/*    Learn More*/}
+                                {/*</Link>*/}
                             </>
                         ) : (
                             <p className="text-gray-400">Hover over an item to see details</p>
