@@ -3,13 +3,14 @@
 import React, { useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
+import { CloudArrowUpIcon, PhoneIcon, DocumentTextIcon, BellIcon, Squares2X2Icon } from '@heroicons/react/24/outline';
 
 interface DropdownProps {
     menuKey: string;
     locale: string;
 }
 
-const dropdownContent: Record<string, { label: string; href: string; title?: string; description?: string; image?: string }[]> = {
+const dropdownContent: Record<string, { label: string; href: string; title?: string; description?: string; image?: string; icon?: React.ReactNode; }[]> = {
     solutions: [
         { label: 'Container-IoT', href: 'container-iot', title: 'Container IoT', description: 'Real-time tracking, monitoring, and remote control for refrigerated containers.' },
         { label: 'Global-IoT', href: 'global-iot', title: 'Global IoT', description: 'Monitoring construction equipment, weather data, and marine information.' },
@@ -31,11 +32,11 @@ const dropdownContent: Record<string, { label: string; href: string; title?: str
         { label: 'Q 4000', href: '/hardware/q-4000', image: '/images/hardware/Q-4000.png', description: 'Using satellite and international mobile networks' }
     ],
     company: [
-        { label: 'About Us', href: '/about' },
-        { label: 'Contact', href: '/contact-us' },
-        { label: 'Blog', href: '/resources/blog' },
-        { label: 'Notice', href: '/resources/notice' },
-        { label: 'Board', href: '/resources/board' },
+        { label: 'About Us', href: '/about', icon: <DocumentTextIcon className="mt-1 h-5 w-5 flex-none text-black" /> },
+        { label: 'Contact', href: '/contact-us', icon: <PhoneIcon className="mt-1 h-5 w-5 flex-none text-black" /> },
+        { label: 'Blog', href: '/resources/blog', icon: <BellIcon className="mt-1 h-5 w-5 flex-none text-black" /> },
+        { label: 'Notice', href: '/resources/notice', icon: <CloudArrowUpIcon className="mt-1 h-5 w-5 flex-none text-black" /> },
+        { label: 'Board', href: '/resources/board', icon: <Squares2X2Icon className="mt-1 h-5 w-5 flex-none text-black" /> },
     ],
 };
 
@@ -168,9 +169,12 @@ const Dropdown = ({ menuKey, locale }: DropdownProps) => {
                     <Link
                         key={item.href}
                         href={`/${locale}${item.href}`}
-                        className="block p-4 bg-gray-50 hover:bg-gray-100 rounded-lg text-gray-700 hover:text-red-600"
+                        className="flex flex-row p-4 bg-gray-50 hover:bg-gray-100 rounded-lg text-gray-700 hover:text-red-600 items-center"
                     >
-                        <h3 className="font-semibold">{item.label}</h3>
+                        <div className="p-1 rounded-md border border-1 border-gray-200 bg-indigo-50 items-center">
+                            {item.icon}
+                        </div>
+                        <h3 className="font-semibold pl-3">{item.label}</h3>
                     </Link>
                 ))}
             </div>

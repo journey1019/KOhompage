@@ -88,6 +88,20 @@ const Navbar = ({ locale }: { locale: string }) => {
                 </Link>
 
                 {/* Center Menu (Hidden in Mobile) */}
+                {/*<ul className="hidden md:flex space-x-8">*/}
+                {/*    {menuItems.map((item) => (*/}
+                {/*        <li*/}
+                {/*            key={item.key}*/}
+                {/*            className="relative group"*/}
+                {/*            onMouseEnter={() => handleMouseEnter(item.key)}*/}
+                {/*            onMouseLeave={handleMouseLeave}*/}
+                {/*        >*/}
+                {/*            <button className="text-gray-700 hover:text-red-600 px-4">*/}
+                {/*                {item.label}*/}
+                {/*            </button>*/}
+                {/*        </li>*/}
+                {/*    ))}*/}
+                {/*</ul>*/}
                 <ul className="hidden md:flex space-x-8">
                     {menuItems.map((item) => (
                         <li
@@ -96,17 +110,28 @@ const Navbar = ({ locale }: { locale: string }) => {
                             onMouseEnter={() => handleMouseEnter(item.key)}
                             onMouseLeave={handleMouseLeave}
                         >
-                            <button className="text-gray-700 hover:text-red-600 px-4">
-                                {item.label}
-                            </button>
+                            {item.key === 'hardware' ? (
+                                <Link
+                                    href="/hardware"
+                                    className="text-gray-700 hover:text-red-600 px-4"
+                                    onClick={() => setOpenDropdown(null)}
+                                >
+                                    {item.label}
+                                </Link>
+                            ) : (
+                                <button className="text-gray-700 hover:text-red-600 px-4">
+                                    {item.label}
+                                </button>
+                            )}
                         </li>
                     ))}
                 </ul>
 
+
                 {/* Right Icons */}
                 <div className="flex items-center space-x-4">
-                    <Login/>
-                    <Language/>
+                    <Login />
+                    <Language />
 
                     {/* Hamburger Menu for Mobile */}
                     <button

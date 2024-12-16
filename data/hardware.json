@@ -122,13 +122,13 @@
     "brochure": "",
     "devkit": "",
     "category": "",
-    "imageSrc": "/images/hardware/Q4000.png",
+    "imageSrc": "/images/hardware/Q-4000.png",
     "tag": [
       "M2M",
       "Satellite",
       "Communication"
     ],
-    "slug": "q4000",
+    "slug": "q-4000",
     "featured": false
   },
   {
