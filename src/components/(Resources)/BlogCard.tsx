@@ -9,11 +9,13 @@ interface BlogCardProps {
     description: string;
     images: string;
     path: string;
+    date: string;
+    classification: string;
     form: "link" | "pdf";
     tags: string[];
 }
 
-const BlogCard: React.FC<BlogCardProps> = ({ title, description, images, path, form, tags }) => {
+const BlogCard: React.FC<BlogCardProps> = ({ title, description, images, path, classification, date, form, tags }) => {
     const handleOpenPDF = () => {
         if (form === "pdf") {
             window.open(path, "_blank", "noopener,noreferrer");
@@ -32,12 +34,19 @@ const BlogCard: React.FC<BlogCardProps> = ({ title, description, images, path, f
                     height={300}
                     unoptimized
                 />
+                {/* Classification */}
+                <div className="absolute top-2 right-2 bg-gray-900 text-white border border-gray-200 text-xs px-3 py-1 rounded-full shadow-md">
+                    {classification}
+                </div>
             </div>
 
             {/* 콘텐츠 섹션 */}
             <div className="flex-grow">
+                {/* Date */}
+                {/*<p className="text-sm text-gray-500 mt-2 text-right">{date}</p>*/}
+
                 {/* Title */}
-                <h3 className="mt-4 text-lg font-semibold">{title}</h3>
+                <h3 className="mt-3 text-lg font-semibold">{title}</h3>
 
                 {/* Description */}
                 <p className="mt-2 text-sm text-gray-600">{description}</p>
@@ -54,7 +63,7 @@ const BlogCard: React.FC<BlogCardProps> = ({ title, description, images, path, f
 
             {/* 버튼 섹션 */}
             <div className="mt-4">
-                {form === "link" ? (
+            {form === 'link' ? (
                     <a
                         href={path}
                         target="_blank"

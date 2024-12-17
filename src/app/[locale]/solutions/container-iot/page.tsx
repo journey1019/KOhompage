@@ -18,6 +18,8 @@ import React from 'react';
 import Point from '@/components/(Solution)/Point';
 import TagFilter from "@/components/(Resources)/TagFilter"
 import FilterableHardwareList from '@/components/(Hardware)/FilterableHardwareList';
+import { SectionTitle } from '@/components/(About)/SectionTitle';
+import TagFilterCarousel from '@/components/(Resources)/TagFilterCarousel';
 
 
 interface PageProps {
@@ -74,12 +76,21 @@ export default async function ContainerIoT({ params }: PageProps){
             {/*<ContentForm/>*/}
             <UseCase slug="container-iot" locale={locale} />
             <Strength items={data.advantages || []}/>
+
             <FilterableHardwareList chips={chips}/>
             {/*<Hardware/>*/}
             {/*<FAQ/>*/}
             {/*<Download/>*/}
             {/*<References locale={locale} tag="container-iot" />*/}
-            <TagFilter initialTags={['container-iot']} />
+
+            <SectionTitle
+                preTitle="REFERENCES"
+                title="ALL REFERNCES"
+            >
+
+            </SectionTitle>
+            {/*<TagFilter initialTags={['container-iot']} />*/}
+            <TagFilterCarousel initialTags={['container-iot']} />
         </section>
     )
 }

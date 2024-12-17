@@ -54,6 +54,7 @@ const BlogPage = () => {
                         <div className="grid grid-cols-1 gap-y-16 gap-x-8 lg:grid-cols-2 xl:grid-cols-3">
                             {blogData
                                 .filter((post) => post.classification === classification)
+                                .slice(0, 3) // Card 최대 세 개까지 보여줌
                                 .map((post) => (
                                     <BlogCard key={post.path} {...post} />
                                 ))}
@@ -66,9 +67,6 @@ const BlogPage = () => {
 };
 
 export default BlogPage;
-
-
-
 
 
 // <section>

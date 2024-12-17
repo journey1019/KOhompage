@@ -20,6 +20,26 @@
     "tags": ["container-iot", "reefer", "CT-3500"]
   },
   {
+    "title": "MSUA Game Changers LIVE with Dave Roscoe",
+    "description": "Dave Roscoe, ORBCOMM’s Executive Vice President of Satellite Communications and Products, discusses how ORBCOMM satellite IoT technology is helping businesses optimize operations and drive results.",
+    "images": "/images/resources/video/Resources-MSUA-Games-Changers-Dave-Roscoe.png",
+    "date": "2024-12-17",
+    "classification": "video",
+    "form": "link",
+    "path": "https://www.youtube.com/watch?v=-EPkLyHnTDw",
+    "tags": ["container-iot", "reefer", "CT-3500"]
+  },
+  {
+    "title": "MWC 2024: how satellite innovations are changing the game",
+    "description": "ORBCOMM’s Dave Roscoe shares how satellite IoT is changing with technological developments during this MWC 2024 panel discussion.",
+    "images": "/images/resources/video/Resources-DaveRoscoePanel.png",
+    "date": "2024-12-17",
+    "classification": "video",
+    "form": "link",
+    "path": "https://www.youtube.com/watch?v=BRGKKEuuq2I",
+    "tags": ["container-iot", "reefer", "CT-3500"]
+  },
+  {
     "title": "OGx: expand your horizons",
     "description": "Develop more flexible and customizable IoT offerings with OGx: our next-generation satellite IoT service.",
     "images": "/images/resources/brochure/OGxBrochure.png",
