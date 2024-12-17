@@ -120,6 +120,16 @@
     "tags": ["st-2100", "satellite", "tracking", "dual-mode"]
   },
   {
+    "title": "ST-9100",
+    "description": "Versatility is Valuable",
+    "images": "/images/resources/datasheet/hardware/ST9100Datasheet.png",
+    "date": "2024-12-12",
+    "classification": "datasheet",
+    "form": "pdf",
+    "path": "/pdf/hardware/st-9100.pdf",
+    "tags": ["st-9100", "satellite", "tracking", "dual-mode"]
+  },
+  {
     "title": "VesselConnect: Reefer container management at sea",
     "description": "Stay connected to containers at sea with an onboard cellular network that facilitates ship-to-shore communications, enabling remote temperature monitoring and more.",
     "images": "/images/resources/datasheet/application/VesselConnectDatasheet.png",
