@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
-import getBoardData from "@/service/boardData"
+import { getBoardData } from "@/service/boardData"
 import BoardCard from "@/components/(Resources)/BoardCard";
 
 interface TagFilterProps {

@@ -2,7 +2,7 @@
 
 import React from 'react';
 import BlogCard from "@/components/(Resources)/BlogCard"
-import getBlogData from "@/service/blogData";
+import { getBlogData } from "@/service/blogData";
 import Link from 'next/link';
 import { breadcrumbs } from '@/service/resources';
 import SameBreadcrumbs from '@/components/SameBreadcrumbs';

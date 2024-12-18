@@ -20,6 +20,7 @@ import TagFilter from "@/components/(Resources)/TagFilter"
 import FilterableHardwareList from '@/components/(Hardware)/FilterableHardwareList';
 import { SectionTitle } from '@/components/(About)/SectionTitle';
 import TagFilterCarousel from '@/components/(Resources)/TagFilterCarousel';
+import TagFilterBlog from '@/components/(Main)/TagFilterBlog';
 
 
 interface PageProps {
@@ -49,7 +50,7 @@ export default async function ContainerIoT({ params }: PageProps){
             </div>
         );
     }
-    const chips = ['container-iot', 'maritime'];
+    const chips = ['container-iot'];
 
     return(
         <section>
@@ -77,20 +78,21 @@ export default async function ContainerIoT({ params }: PageProps){
             <UseCase slug="container-iot" locale={locale} />
             <Strength items={data.advantages || []}/>
 
-            <FilterableHardwareList chips={chips}/>
+            <FilterableHardwareList chips={['ct-3500']}/>
             {/*<Hardware/>*/}
             {/*<FAQ/>*/}
             {/*<Download/>*/}
             {/*<References locale={locale} tag="container-iot" />*/}
 
+            {/*<TagFilterBlog initialTags={chips}/>*/}
+
             <SectionTitle
                 preTitle="REFERENCES"
                 title="ALL REFERNCES"
             >
-
             </SectionTitle>
             {/*<TagFilter initialTags={['container-iot']} />*/}
-            <TagFilterCarousel initialTags={['container-iot']} />
+            <TagFilterCarousel initialTags={chips} />
         </section>
     )
 }

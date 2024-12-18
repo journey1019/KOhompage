@@ -1,8 +1,8 @@
 [
   {
     "title": "GT1200 Series (Satellite)",
-    "subTitle": "설명",
-    "description": "차세대 GT1200 시리즈는 개선된 태양전지판, 무선 센서, 더 빠르고 안전한 현장 설치 및 더 많은 고급 기능을 지원하는 초소형 Dry Container 및 트레일러 추적 솔루션입니다. 독립형 또는 화물 센서가 장착된 올인원 장치로 제공됩니다.",
+    "subTitle": "Tracking Device",
+    "description": "Solar-powered trailer and container tracking solution with two-way commands, wireless sensor support and more.",
     "brochure": "",
     "devkit": "",
     "category": "",
@@ -17,7 +17,7 @@
     "featured": true
   },
   {
-    "title": "CT3500 (Celluar)",
+    "title": "CT 3500 (Celluar)",
     "subTitle": "설명",
     "description": "CT 3500은 육지, 철도 또는 바다의 Supply Chain의 모든 지점에서 자산을 완벽하게 파악하고 제어할 수 있도록 하는 원격 냉동컨테이너 관리의 차세대 기술입니다. 최첨단의 텔레매틱스 장치는 화주 및 운송업자에게 포괄적인 보고서, 분석, 경고 및 원격 양방향 제어 기능을 제공하여 컨테이너 운영을 간소화하고 효율성을 높일 수 있도록 지원합니다. CT 3500은 타의 추종을 불허하는 글로벌 LTE 커버리지와 LoRa, Bluetooth 5, NFC 기술을 지원하며 위성 연결 옵션도 갖추고 있습니다.",
     "brochure": "",
@@ -35,8 +35,8 @@
     "featured": false
   },
   {
-    "title": "ST2100 시리즈 (Satellite)",
-    "subTitle": "설명",
+    "title": "ST 2100 시리즈 (Satellite)",
+    "subTitle": "Satellite-As-An-Accessory",
     "description": "ORBCOM ST2100은 전 세계 대부분의 원격지에서 신뢰할 수 있는 글로벌 위성 연결을 제공합니다. 많은 기능과 방수환경의 ST2100은 소형·대형의 상용차, 레일카, 중장비 등과 같은 모바일 자산에 설치할 수 있습니다. 또한 석유화학용 산업 및 환경에서 사용되는 파이프라인, 펌프, 발전기 및 탱크와 같은 고정 자산을 모니터링하는 데 적합합니다.",
     "brochure": "",
     "devkit": "",
@@ -50,8 +50,8 @@
     "featured": false
   },
   {
-    "title": "ST6100 시리즈 (Satellite)",
-    "subTitle": "설명",
+    "title": "ST 6100 시리즈 (Satellite)",
+    "subTitle": "Satellite Terminal",
     "description": "ST6100 시리즈 위성 터미널은 선박과 부표 등을 위한 연근해 및 대양과 육상을 연결하는 완벽한 통신장비입니다. 안테나 일체형 안테나로 프로그램 내장이 가능한 위성 통신단말기로 Inmarsat IsatData Pro 네트워크를 연결하는 최적의 제품입니다. ST6000 시리즈 위성 터미널은 Inmarsat IsatData Pro 네트워크를 통한 글로벌 위성 연결을 통해 원격 지역에서 작동하는 산업 자산에 대한 완벽한 가시성 확보 및 제어 기능을 제공합니다. 고객의 요구에 맞는 프로그램을 개발하여 내장이 가능합니다.",
     "brochure": "",
     "devkit": "",
@@ -68,7 +68,24 @@
     "featured": true
   },
   {
-    "title": "CT3600 (Celluar)",
+    "title": "ST 6000",
+    "subTitle": "Satellite Terminal",
+    "description": "Provides visibility and control of industrial assets operating in remote areas with global satellite connectivity.",
+    "brochure": "",
+    "devkit": "",
+    "category": "",
+    "imageSrc": "/images/hardware/ST-6000.png",
+    "tag": [
+      "Simple",
+      "Powerful",
+      "Efficient",
+      "solar-powered"
+    ],
+    "slug": "st-6000",
+    "featured": true
+  },
+  {
+    "title": "CT 3600 (Celluar)",
     "subTitle": "리퍼컨테이너 관제 전용 솔루션",
     "description": "IDP-800은 트레일러, 컨테이너, 선박 등을 거의 실시간으로 추적하기 위해 양방향 Inmarsat IsatData Pro 위성 네트워크를 사용하는 배터리가 내장되어 있는 로우 프로파일 프로그래밍이 가능한 위성 통신 장치입니다.",
     "brochure": "",
@@ -83,8 +100,8 @@
     "featured": false
   },
   {
-    "title": "ST-9100 (Satellite and Dual mode)",
-    "subTitle": "설명",
+    "title": "ST 9100 (Satellite and Dual mode)",
+    "subTitle": "Dual-Mode Terminal",
     "description": "모든 기능을 프로그래밍이 가능한 ST9100은 셀룰러 네트워크 커버리지와 양방향 Isat Data Pro 위성 서비스를 결합한 듀얼 모드 위성/셀룰러 장치입니다. 이 다용도 장치를 통해 세계 오지의 육지와 해상에서의 다양한 애플리케이션에 대한 자산 추적 및 모니터링이 가능합니다.",
     "brochure": "",
     "devkit": "",
@@ -116,7 +133,7 @@
     "featured": false
   },
   {
-    "title": "Q4000 (Satellite and Dual mode)",
+    "title": "Q 4000 (Satellite and Dual mode)",
     "subTitle": "설명",
     "description": "Q4000은 QPRO의 내부에 들어있는 위성 통신 모듈로 ORBCOMM 위성 통신망 및International 이동통신망을 사용할 수 있는 단말기입니다. 사용자 정의 프로그램을 내장할 수 있는 M2M 어플리케이션에 많이 사용됩니다.",
     "brochure": "",
@@ -133,7 +150,7 @@
   },
   {
     "title": "OG2 and OGi (Satellite)",
-    "subTitle": "설명",
+    "subTitle": "Satellite Modems",
     "description": "ORBCOMM 통신망을 사용할 수 있는 OG2 모뎀과 Inmarsat IsatData Pro 네트워크를 이용할 수 있는 OGi 모뎀은 동일한 설치공간, 커넥터, 전원, 통신 인터페이스 및 프로그래밍 환경 및 프로토콜을 제공합니다. 경제성과 효율성을 모두 갖춘 제품으로 M2M의 어플리케이션에 많이 사용됩니다.",
     "brochure": "",
     "devkit": "",
@@ -184,24 +201,7 @@
     "featured": false
   },
   {
-    "title": "ST-6000",
-    "subTitle": "설명",
-    "description": "Secure intelligent visibility and new growth opportunities with reasonably priced solar satellite trackers.",
-    "brochure": "",
-    "devkit": "",
-    "category": "",
-    "imageSrc": "/images/hardware/ST-6000.png",
-    "tag": [
-      "Simple",
-      "Powerful",
-      "Efficient",
-      "solar-powered"
-    ],
-    "slug": "st-6000",
-    "featured": false
-  },
-  {
-    "title": "SC-1000",
+    "title": "SC 1000",
     "subTitle": "설명",
     "description": "Secure intelligent visibility and new growth opportunities with reasonably priced solar satellite trackers.",
     "brochure": "",
@@ -218,7 +218,7 @@
     "featured": false
   },
   {
-    "title": "MT-5000",
+    "title": "MT 5000",
     "subTitle": "설명",
     "description": "",
     "brochure": "",
@@ -232,6 +232,91 @@
       "solar-powered"
     ],
     "slug": "mt-5000",
+    "featured": false
+  },
+  {
+    "title": "IS 400",
+    "subTitle": "Tractor ID sensor",
+    "description": "",
+    "brochure": "",
+    "devkit": "",
+    "category": "",
+    "imageSrc": "/images/hardware/IS-400.webp",
+    "tag": [
+      "Tractor",
+      "Trail",
+      "Efficient",
+      "solar-powered"
+    ],
+    "slug": "if-4000",
+    "featured": false
+  },
+  {
+    "title": "PT 7000",
+    "subTitle": "Tractor Device",
+    "description": "Featuring 3-wire and CANbus primary interfaces, multiple digital and analog inputs and outputs, Bluetooth and troubleshooting.",
+    "brochure": "",
+    "devkit": "",
+    "category": "",
+    "imageSrc": "/images/hardware/PT-7000.webp",
+    "tag": [
+      "Tractor",
+      "Trail",
+      "Efficient",
+      "solar-powered"
+    ],
+    "slug": "pt-7000",
+    "featured": false
+  },
+  {
+    "title": "GT 1030",
+    "subTitle": "Tractor Device",
+    "description": "Global connectivity, cost-efficient SIM management, analog/digital interfaces and the latest in wireless technologies.",
+    "brochure": "",
+    "devkit": "",
+    "category": "",
+    "imageSrc": "/images/hardware/GT-1030.webp",
+    "tag": [
+      "Tractor",
+      "Trail",
+      "Efficient",
+      "solar-powered"
+    ],
+    "slug": "gt-1030",
+    "featured": false
+  },
+  {
+    "title": "IC 500",
+    "subTitle": "In-cab Cameras",
+    "description": "Captures near real-time video of incidents to keep drivers safe while minimizing risk.",
+    "brochure": "",
+    "devkit": "",
+    "category": "",
+    "imageSrc": "/images/hardware/IC-500.webp",
+    "tag": [
+      "Tractor",
+      "Trail",
+      "Efficient",
+      "solar-powered"
+    ],
+    "slug": "ic-500",
+    "featured": false
+  },
+  {
+    "title": "BT 500",
+    "subTitle": "E-Logs Device(ELD)",
+    "description": "GPS fleet tracking, CANbus data collection, flexible communication options to connect to third-party apps and devices.",
+    "brochure": "",
+    "devkit": "",
+    "category": "",
+    "imageSrc": "/images/hardware/BT-500.webp",
+    "tag": [
+      "Tractor",
+      "Trail",
+      "Efficient",
+      "solar-powered"
+    ],
+    "slug": "bt-500",
     "featured": false
   }
 ]

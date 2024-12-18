@@ -17,7 +17,7 @@ interface BoardCardProps {
     tags: string[];
 }
 
-const BoardCard: React.FC<BoardCardProps> = ({ index, title, description, images, path, form, tags }) => {
+const BoardCard: React.FC<BoardCardProps> = ({ index, title, description, classification, images, path, form, tags }) => {
     const router = useRouter();
 
     const handleNavigation = () => {
@@ -43,6 +43,10 @@ const BoardCard: React.FC<BoardCardProps> = ({ index, title, description, images
                     height={300}
                     unoptimized
                 />
+                {/* Classification */}
+                <div className="absolute top-2 right-2 bg-gray-900 bg-opacity-50 text-white border border-gray-200 text-xs px-3 py-1 rounded-full shadow-md">
+                    {classification}
+                </div>
             </div>
 
             {/* 콘텐츠 섹션 */}

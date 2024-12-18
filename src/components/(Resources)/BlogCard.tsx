@@ -35,7 +35,7 @@ const BlogCard: React.FC<BlogCardProps> = ({ title, description, images, path, c
                     unoptimized
                 />
                 {/* Classification */}
-                <div className="absolute top-2 right-2 bg-gray-900 text-white border border-gray-200 text-xs px-3 py-1 rounded-full shadow-md">
+                <div className="absolute top-2 right-2 bg-gray-900 bg-opacity-50 text-white border border-gray-200 text-xs px-3 py-1 rounded-full shadow-md">
                     {classification}
                 </div>
             </div>
@@ -44,6 +44,7 @@ const BlogCard: React.FC<BlogCardProps> = ({ title, description, images, path, c
             <div className="flex-grow">
                 {/* Date */}
                 {/*<p className="text-sm text-gray-500 mt-2 text-right">{date}</p>*/}
+                {/*<p className="text-sm text-gray-500 mt-4 font-semibold text-left">{classification}</p>*/}
 
                 {/* Title */}
                 <h3 className="mt-3 text-lg font-semibold">{title}</h3>

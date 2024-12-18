@@ -1,6 +1,6 @@
 import React from "react";
 import BoardCard from "@/components/(Resources)/BoardCard";
-import getBoardData from "@/service/boardData";
+import { getBoardData } from "@/service/boardData";
 import { breadcrumbs } from '@/service/resources';
 import SameBreadcrumbs from '@/components/SameBreadcrumbs';
 

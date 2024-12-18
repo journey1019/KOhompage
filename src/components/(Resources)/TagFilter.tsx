@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
-import getBlogData from "@/service/blogData"
+import { getBlogData } from "@/service/blogData"
 import BlogCard from "@/components/(Resources)/BlogCard";
 
 interface TagFilterProps {

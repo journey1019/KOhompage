@@ -2,7 +2,7 @@
 
 import React from 'react';
 import BoardCard from "@/components/(Resources)/BoardCard";
-import getBoardData from "@/service/boardData";
+import { getBoardData } from "@/service/boardData";
 import SameBreadcrumbs from '@/components/SameBreadcrumbs';
 import { breadcrumbs } from '@/service/resources';
 import Link from 'next/link';

@@ -1,5 +1,35 @@
 [
   {
+    "title": "How ORBCOMM and Inmarsat’s partnership benefits construction",
+    "description": "ORBCOMM and Inmarsat CEOs talk about the OGx global IoT satellite service.",
+    "images": "/images/resources/video/Resources-2-InmarsatVideo.webp",
+    "date": "2024-12-18",
+    "classification": "video",
+    "form": "link",
+    "path": "https://www.youtube.com/watch?v=C5wLDjiHSY0",
+    "tags": ["container-iot" ,"reefer", "cellular", "starlink"]
+  },
+  {
+    "title": "Hapag-Lloyd and ORBCOMM",
+    "description": "See why Hapag-Lloyd chose ORBCOMM’s innovative technology to outfit its vast fleet of dry containers.",
+    "images": "/images/resources/video/Maritime-Resources-3-1532x880.webp",
+    "date": "2024-12-18",
+    "classification": "video",
+    "form": "link",
+    "path": "https://www.youtube.com/watch?v=-QE6gJMhrgU&t=760s",
+    "tags": ["container-iot" ,"reefer", "cellular", "starlink"]
+  },
+  {
+    "title": "Remote Reefer Commands",
+    "description": "A quick snapshot of how easy it is to use the remote reefer controls available with ORBCOMM’s reefer solution.",
+    "images": "/images/resources/video/Resources-RemoteReeferCommands.webp",
+    "date": "2024-12-18",
+    "classification": "video",
+    "form": "link",
+    "path": "https://www.youtube.com/watch?v=XF7fW1gW4xs",
+    "tags": ["container-iot" ,"reefer", "cellular", "starlink"]
+  },
+  {
     "title": "MWC 2024: the power of satellite-cellular convergence",
     "description": "Learn how satellite-celluar convergence is changing industries and what the future of satellite IoT",
     "images": "/images/resources/video/Tessla.png",
@@ -7,7 +37,7 @@
     "classification": "video",
     "form": "link",
     "path": "https://youtu.be/RskYBc3895g",
-    "tags": ["satellite", "cellular"]
+    "tags": ["satellite", "cellular", "starlink"]
   },
   {
     "title": "Reefer Container Management: Trip-Based Telematics Adds New Possibilities",
@@ -40,18 +70,58 @@
     "tags": ["container-iot", "reefer", "CT-3500"]
   },
   {
+    "title": "The Smart Reefer Container",
+    "description": "The challenge of moving refrigerated food and pharmaceuticals calls for advanced IoT reefer container technologies.",
+    "images": "/images/resources/brochure/Smart-Reefer-Container.png",
+    "date": "2024-12-18",
+    "classification": "brochure",
+    "form": "pdf",
+    "path": "/pdf/brochure/Smart-Reefer-Container.pdf",
+    "tags": ["reefer", "container-iot"]
+  },
+  {
+    "title": "Protected. At every mile.",
+    "description": "Learn more about the smart dashcam that can protect your drivers, your vehicles and your reputation.",
+    "images": "/images/resources/brochure/Resources-FM6510Brochure.webp",
+    "date": "2024-12-18",
+    "classification": "brochure",
+    "form": "pdf",
+    "path": "/pdf/brochure/FM-6510-NA-Letter.pdf",
+    "tags": ["reefer", "container-iot"]
+  },
+  {
+    "title": "Satellite backup for complete coverage",
+    "description": "Mission-critical cargo? Our satellite backup options keep you connected.",
+    "images": "/images/resources/brochure/Transportation-Containers-resources_5_satellite-IoT.webp",
+    "date": "2024-12-18",
+    "classification": "brochure",
+    "form": "pdf",
+    "path": "/pdf/brochure/Power-Dual-Mode-Connectivity.pdf",
+    "tags": ["reefer", "container-iot"]
+  },
+  {
+    "title": "The Smart Gold Chain",
+    "description": "Real-time connectivity, visibility and traceability for refrigerated transportation.",
+    "images": "/images/resources/brochure/Resources-SmartColdChain.webp",
+    "date": "2024-12-18",
+    "classification": "brochure",
+    "form": "pdf",
+    "path": "/pdf/brochure/Smart-Cold-Chain-EN.pdf",
+    "tags": ["reefer", "container-iot"]
+  },
+  {
     "title": "OGx: expand your horizons",
     "description": "Develop more flexible and customizable IoT offerings with OGx: our next-generation satellite IoT service.",
     "images": "/images/resources/brochure/OGxBrochure.png",
-    "date": "2024-12-12",
+    "date": "2024-12-17",
     "classification": "brochure",
     "form": "pdf",
     "path": "/pdf/brochure/OGx-Brochure.pdf",
-    "tags": ["satellite", "Orbcomm", "row", "ogx", "og2"]
+    "tags": ["satellite", "Orbcomm", "row"]
   },
   {
-    "title": "Heavy Equipment",
-    "description": "Global Heavy Equipment telematics Solutions: Company Visibility and Control",
+    "title": "Asset tracking and control for construction fleets",
+    "description": "Learn about award-winning heavy equipment solutions for OEMs.",
     "images": "/images/resources/brochure/ORBCOMM-Heavy-Equipment.png",
     "date": "2024-12-12",
     "classification": "brochure",
@@ -67,6 +137,16 @@
     "classification": "brochure",
     "form": "pdf",
     "path": "/pdf/brochure/Smart-Dry-Container.pdf",
+    "tags": ["maritime", "container-iot", "Platform", "NMS"]
+  },
+  {
+    "title": "Smart telematics for growing fleets",
+    "description": "Complete visibility. No Money down.",
+    "images": "/images/resources/brochure/Resources-SmartTrailer.png",
+    "date": "2024-12-17",
+    "classification": "brochure",
+    "form": "pdf",
+    "path": "/pdf/brochure/Smart-Trailer.pdf",
     "tags": ["maritime", "container-iot", "Platform", "NMS"]
   },
   {
@@ -158,5 +238,25 @@
     "form": "pdf",
     "path": "/pdf/application/vesselconnect.pdf",
     "tags": ["maritime", "VMS"]
+  },
+  {
+    "title": "FM 6510",
+    "description": "Protect your drivers, protect your vehicles and protect your reputation with our smart telematics-enabled dashcam.",
+    "images": "/images/resources/datasheet/hardware/FM6510Datasheet.webp",
+    "date": "2024-12-18",
+    "classification": "datasheet",
+    "form": "pdf",
+    "path": "/pdf/hardware/FM-6510-Letter_eng.pdf",
+    "tags": ["transportation", "VMS"]
+  },
+  {
+    "title": "ST 9100: Dual-mode satellite-cellular terminal",
+    "description": "Cost effectively track, monitor, and control remote assets with multi-network connectivity.",
+    "images": "/images/resources/datasheet/hardware/Agri-resources-ST-9100.webp",
+    "date": "2024-12-18",
+    "classification": "datasheet",
+    "form": "pdf",
+    "path": "/pdf/hardware/st-9100_2.pdf",
+    "tags": ["transportation", "VMS"]
   }
 ]

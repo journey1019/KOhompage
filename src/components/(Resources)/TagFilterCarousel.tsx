@@ -1,7 +1,8 @@
+/** TagFilterCarousel.tsx */
 "use client";
 
 import React, { useState } from "react";
-import getBlogData from "@/service/blogData";
+import { getFilteredByKeywords } from '@/service/blogData';
 import BlogCard from "@/components/(Resources)/BlogCard";
 import { ArrowRightIcon, ArrowLeftIcon } from '@heroicons/react/24/outline';
 
@@ -10,15 +11,30 @@ interface TagFilterProps {
 }
 
 const TagFilterCarousel: React.FC<TagFilterProps> = ({ initialTags }) => {
-    const [selectedTag, setSelectedTag] = useState<string | null>(null);
     const [currentIndex, setCurrentIndex] = useState(0);
 
-    const blogData = getBlogData();
-    const filteredData = blogData.filter((item) =>
-        selectedTag ? item.tags.includes(selectedTag) : initialTags.some((tag) => item.tags.includes(tag))
-    );
+    // 필터링된 데이터 가져오기
+    const filteredData = getFilteredByKeywords(initialTags);
 
-    const cardsToShow = 3; // 한 번에 보여줄 카드 개수
+    // 반응형 카드 개수 설정
+    const getCardsToShow = () => {
+        if (typeof window !== "undefined") {
+            const width = window.innerWidth;
+            if (width < 640) return 1; // 모바일
+            if (width < 1024) return 2; // 태블릿
+        }
+        return 3; // 데스크톱
+    };
+
+    const [cardsToShow, setCardsToShow] = useState(getCardsToShow());
+
+    // 화면 크기 변경 감지 (반응형 업데이트)
+    React.useEffect(() => {
+        const handleResize = () => setCardsToShow(getCardsToShow());
+        window.addEventListener("resize", handleResize);
+        return () => window.removeEventListener("resize", handleResize);
+    }, []);
+
     const maxIndex = Math.max(filteredData.length - cardsToShow, 0);
 
     const goPrev = () => setCurrentIndex((prev) => Math.max(prev - 1, 0));
@@ -43,7 +59,7 @@ const TagFilterCarousel: React.FC<TagFilterProps> = ({ initialTags }) => {
             </div>
 
             {/* Buttons at the Bottom */}
-            <div className="flex justify-center gap-4">
+            <div className="flex justify-center gap-4 mt-4">
                 <button
                     onClick={goPrev}
                     className="flex flex-row items-center bg-gray-800 text-white p-3 rounded-md hover:bg-gray-700 disabled:opacity-50"

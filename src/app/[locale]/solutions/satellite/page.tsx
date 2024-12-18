@@ -76,7 +76,7 @@ export default async function GlobalIoT({params}: PageProps){
             <Strength items={data.advantages || []}/>
             <FilterableHardwareList chips={chips}/>
             <TagFilter initialTags={['ogx']} />
-            {/*<TagFilterBoard initialTags={['']}/>*/}
+            <TagFilterBoard initialTags={['']}/>
             {/*<FAQ/>*/}
             {/*<Download/>*/}
             {/*<References/>*/}
