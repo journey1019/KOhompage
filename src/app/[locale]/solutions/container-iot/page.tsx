@@ -78,7 +78,7 @@ export default async function ContainerIoT({ params }: PageProps){
             <UseCase slug="container-iot" locale={locale} />
             <Strength items={data.advantages || []}/>
 
-            <FilterableHardwareList chips={['ct-3500']}/>
+            <FilterableHardwareList chips={['st2100']}/>
             {/*<Hardware/>*/}
             {/*<FAQ/>*/}
             {/*<Download/>*/}
