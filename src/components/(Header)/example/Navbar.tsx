@@ -144,7 +144,7 @@ const Navbar = ({ locale }: { locale: string }) => {
                             <Bars3Icon className="w-6 h-6 text-gray-700" />
                         )}
                     </button>
-                </div>
+                </div>ㅣ
             </nav>
 
             {/* Dropdown for Desktop */}

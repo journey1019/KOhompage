@@ -18,7 +18,7 @@ export function middleware(req: NextRequest) {
 
     const locale = locales.find((locale) => pathname.startsWith(`/${locale}`));
     if (!locale) {
-        const defaultLocale = 'en';
+        const defaultLocale = 'ko';
         return NextResponse.redirect(new URL(`/${defaultLocale}${pathname}`, req.url));
     }
 
