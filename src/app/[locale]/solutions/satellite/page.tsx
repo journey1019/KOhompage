@@ -17,7 +17,7 @@ import Image from 'next/image';
 import React from 'react';
 import Point from '@/components/(Solution)/Point';
 import FilterableHardwareList from '@/components/(Hardware)/FilterableHardwareList';
-import TagFilter from '@/components/(Resources)/TagFilter';
+import TagFilterBlog from '@/components/(Resources)/TagFilterBlog';
 import TagFilterBoard from '@/components/(Main)/TagFilterBoard';
 
 interface PageProps {
@@ -75,7 +75,7 @@ export default async function GlobalIoT({params}: PageProps){
             <UseCase slug="satellite" locale={locale} />
             <Strength items={data.advantages || []}/>
             <FilterableHardwareList chips={chips}/>
-            <TagFilter initialTags={['ogx']} />
+            <TagFilterBlog initialTags={['ogx']} />
             <TagFilterBoard initialTags={['']}/>
             {/*<FAQ/>*/}
             {/*<Download/>*/}

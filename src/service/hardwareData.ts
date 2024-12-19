@@ -21,7 +21,9 @@ const normalizeString = (str: string): string => {
     return str.toLowerCase().replace(/[^a-z0-9]/g, ""); // 소문자로 변환 후 특수문자 제거
 };
 
-// chips를 기준으로 데이터를 필터링하는 함수
+
+// 모든 검색어가 포함된 데이터를 필터링
+// ex) maritime: Only maritime
 export const getFilterHardwareByChips = (chips: string[]): HardwareItem[] => {
     if (chips.length === 0) {
         return getHardwareData(); // chips가 없으면 전체 데이터 반환
@@ -44,5 +46,34 @@ export const getFilterHardwareByChips = (chips: string[]): HardwareItem[] => {
 
         // 모든 chips가 normalizedContent에 포함되어 있는지 확인
         return normalizedChips.every((chip) => normalizedContent.includes(chip));
+    });
+};
+
+
+// 하나 이상의 검색어가 포함된 데이터를 필터링
+// ex) container-iot: container-iot, maritime
+export const getFilteredByKeywords = (chips: string[]): HardwareItem[] => {
+    if (chips.length === 0) {
+        return getHardwareData(); // Chips가 없으면 전체 데이터를 반환
+    }
+
+    const normalizedChips = chips.map(normalizeString);
+
+    return getHardwareData().filter((item) => {
+        const { title, subTitle, description, tag, slug } = item;
+
+        // title, subTitle, description, tag, slug를 하나로 합쳐 정규화
+        const normalizedContent = [
+            title,
+            subTitle,
+            description,
+            ...tag,
+            slug,
+        ]
+            .map(normalizeString) // 각 문자열 정규화
+            .join(" ") // 모든 필드를 하나의 문자열로 합침
+
+        // 하나의 chip이라도 포함되면 true 반환
+        return normalizedChips.some((chip) => normalizedContent.includes(chip));
     });
 };

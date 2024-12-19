@@ -9,14 +9,14 @@ const products = [
         color: '친구와 메시지를 주고받는 듯한 느낌으로 HIPAA를 준수하는 인앱 대화 기능을 사용하여 환자에게 심리스한 의료 서비스를 제공하세요.',
     },
     {
-        id: 1,
+        id: 2,
         name: '고객 중심 커뮤니케이션 제공',
         imageSrc: 'https://sendbird.imgix.net/cms/healthcare-chat-patient-communication.png?auto=format,compress&crop=faces&w=900',
         imageAlt: 'Tall slender porcelain bottle with natural clay textured body and cork stopper.',
         color: '대화 정보를 유지하여 고객이 개인화된 경험을 얻고, 말했던 내용을 되풀이할 필요 없게 만드세요.',
     },
     {
-        id: 2,
+        id: 3,
         name: '실시간 고객 만족도 조사',
         imageSrc: 'https://sendbird.imgix.net/cms/healthcare-chat-engage-providers-patients.png?auto=format,compress&crop=faces&w=900',
         imageAlt: 'Olive drab green insulated bottle with flared screw lid and flat top.',

@@ -1,5 +1,5 @@
 import React from 'react';
-import maritimeData from '@/service/solutions/container-iot/maritime';
+import nmsData from '@/service/solutions/global-iot/nms';
 import PageTopImage from '@/components/PageTopImage';
 import { SectionTitle } from '@/components/SectionTitle';
 import { Container } from '@/components/Container';
@@ -11,7 +11,6 @@ import Blog from '@/components/Blog';
 import { SlugHardware } from '@/components/(Solution)/SlugHardware';
 import FilterableHardwareList from '@/components/(Hardware)/FilterableHardwareList';
 import TagFilterBlog from '@/components/(Resources)/TagFilterBlog';
-import UseCaseAdvantage from '@/components/(Solution)/UseCaseAdvantage';
 import ChipFilterHardwareCarousel from '@/components/(Hardware)/ChipFilterHardwareCarousel';
 import SolutionAdvantage from '@/components/(Solution)/SolutionAdvantage';
 
@@ -20,9 +19,10 @@ interface PageProps {
 }
 export default async function MaritimePage({params}: PageProps) {
     const { locale } = params; // 비동기 처리
-    const data = maritimeData[locale];
+    const data = nmsData[locale];
 
-    const chips = ['maritime']
+    const site = 'NMS'
+    const chips = ['nms']
 
     return(
         <section>
@@ -37,7 +37,7 @@ export default async function MaritimePage({params}: PageProps) {
             <Container>
 
                 <SectionTitle
-                    preTitle="Maritime Platform"
+                    preTitle="NMS"
                     title={data.introTitle}
                 >
                     {data.introLetter}
@@ -47,8 +47,8 @@ export default async function MaritimePage({params}: PageProps) {
                 <SectionTitle preTitle="Nextly Benefits" title={data.useCaseTitle}>
                     {data.useCaseLetter}
                 </SectionTitle>
-                {/*<UseCaseAdvantage solutionKey="maritime" locale={locale} />*/}
                 <SolutionAdvantage advantages={data.advantage} />
+
 
                 {/*<SectionTitle preTitle="Hardware" title={data.qnaTitle}>*/}
                 {/*    {data.qnaLetter}*/}
@@ -60,7 +60,7 @@ export default async function MaritimePage({params}: PageProps) {
                     title="HARDWARE LIST"
                 >
                 </SectionTitle>
-                <ChipFilterHardwareCarousel chips={['maritime']} />
+                <ChipFilterHardwareCarousel chips={chips} />
                 {/*<FilterableHardwareList chips={chips}/>*/}
                 {/*<SlugHardware locale={locale}/>*/}
 
@@ -71,9 +71,9 @@ export default async function MaritimePage({params}: PageProps) {
 
                 <CtaSolution items={data.ctas}/>
 
-                <SectionTitle preTitle="Resources" title="Maritime Platform: Resources" />
+                <SectionTitle preTitle="Resources" title={`${site}: Resources`} />
                 {/*<Blog/>*/}
-                <TagFilterBlog initialTags={['maritime']} />
+                <TagFilterBlog initialTags={chips} />
             </Container>
         </section>
     )

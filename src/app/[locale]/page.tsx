@@ -70,6 +70,7 @@ import WorkWithUs from '@/components/RightNow';
 import TagFilterBlog from '@/components/(Main)/TagFilterBlog';
 import TagFilterBoard from '@/components/(Main)/TagFilterBoard';
 import References from '@/components/(Main)/References';
+import TagFilterBlogCarousel from '@/components/(Resources)/TagFilterBlogCarousel';
 
 
 export default async function HomePage() {

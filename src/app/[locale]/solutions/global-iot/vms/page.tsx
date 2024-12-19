@@ -13,7 +13,6 @@ import FilterableHardwareList from '@/components/(Hardware)/FilterableHardwareLi
 import TagFilterBlog from '@/components/(Resources)/TagFilterBlog';
 import UseCaseAdvantage from '@/components/(Solution)/UseCaseAdvantage';
 import ChipFilterHardwareCarousel from '@/components/(Hardware)/ChipFilterHardwareCarousel';
-import SolutionAdvantage from '@/components/(Solution)/SolutionAdvantage';
 
 interface PageProps {
     params: {locale: string};
@@ -22,7 +21,8 @@ export default async function MaritimePage({params}: PageProps) {
     const { locale } = params; // 비동기 처리
     const data = maritimeData[locale];
 
-    const chips = ['maritime']
+    const site = 'VMS'
+    const chips = ['vms']
 
     return(
         <section>
@@ -47,8 +47,8 @@ export default async function MaritimePage({params}: PageProps) {
                 <SectionTitle preTitle="Nextly Benefits" title={data.useCaseTitle}>
                     {data.useCaseLetter}
                 </SectionTitle>
-                {/*<UseCaseAdvantage solutionKey="maritime" locale={locale} />*/}
-                <SolutionAdvantage advantages={data.advantage} />
+                <UseCaseAdvantage solutionKey="maritime" locale={locale} />
+
 
                 {/*<SectionTitle preTitle="Hardware" title={data.qnaTitle}>*/}
                 {/*    {data.qnaLetter}*/}
@@ -60,7 +60,7 @@ export default async function MaritimePage({params}: PageProps) {
                     title="HARDWARE LIST"
                 >
                 </SectionTitle>
-                <ChipFilterHardwareCarousel chips={['maritime']} />
+                <ChipFilterHardwareCarousel chips={chips} />
                 {/*<FilterableHardwareList chips={chips}/>*/}
                 {/*<SlugHardware locale={locale}/>*/}
 
@@ -71,9 +71,9 @@ export default async function MaritimePage({params}: PageProps) {
 
                 <CtaSolution items={data.ctas}/>
 
-                <SectionTitle preTitle="Resources" title="Maritime Platform: Resources" />
+                <SectionTitle preTitle="Resources" title={`${site}: Resources`} />
                 {/*<Blog/>*/}
-                <TagFilterBlog initialTags={['maritime']} />
+                <TagFilterBlog initialTags={chips} />
             </Container>
         </section>
     )

@@ -10,7 +10,7 @@ import Advantage from '@/components/(Hard)/Advantage';
 import Resources from '@/components/(Hard)/Resources';
 import BlogSlider from '@/components/(BlogSlider)/BlogSlider';
 import CaseStudies from '@/components/(Hard)/CaseStudies';
-import TagFilter from '@/components/(Resources)/TagFilter';
+import TagFilterBlog from '@/components/(Resources)/TagFilterBlog';
 
 interface PageProps {
     params: { locale: string; slug: string };
@@ -61,7 +61,7 @@ export default function HardwareDetail({ params }: PageProps) {
             {/*<BlogSlider />*/}
             <div className="p-6 mx-auto max-w-7xl">
                 <h1 className="text-3xl font-bold mb-4">Filter by {slug}</h1>
-                <TagFilter initialTags={[`${slug}`]} />
+                <TagFilterBlog initialTags={[`${slug}`]} />
             </div>
         </section>
 );

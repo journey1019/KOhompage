@@ -14,11 +14,11 @@ export default function FAQ() {
         <section className="bg-white dark:bg-gray-900">
             <div className="py-24">
                 <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-                    <div className="flex flex-col mb-16">
-                        <h2 className="text-4xl font-manrope text-center font-bold text-gray-900 dark:text-white leading-[3.25rem]">
-                            Frequently asked questions
-                        </h2>
-                    </div>
+                    {/*<div className="flex flex-col mb-16">*/}
+                    {/*    <h2 className="text-4xl font-manrope text-center font-bold text-gray-900 dark:text-white leading-[3.25rem]">*/}
+                    {/*        Why Customers Love Us*/}
+                    {/*    </h2>*/}
+                    {/*</div>*/}
                     <div className="flex flex-col justify-center items-center gap-x-16 gap-y-5 xl:gap-28 lg:flex-row lg:justify-between max-lg:max-w-2xl mx-auto max-w-full">
                         <div className="w-full lg:w-1/2">
                             <Image

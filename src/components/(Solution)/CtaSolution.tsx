@@ -2,15 +2,25 @@ import React from "react";
 import { Container } from "@/components/Container";
 
 interface CtaProps {
-    items: { title: string; subTitle: string; button: string; button2: string; }
+    items: { title: string; subTitle: string; button: string; solutionButton: string; solutionUrl: string; };
 }
 
-export const CtaSolution:React.FC<CtaProps> = ({ items }) => {
+export const CtaSolution: React.FC<CtaProps> = ({ items }) => {
     return (
         <Container>
             <div
-                className="flex flex-wrap items-center justify-between w-full max-w-7xl gap-5 mx-auto text-white bg-gray-900 p-7 lg:p-12 lg:flex-nowrap rounded-xl">
-                <div className="flex-grow text-center lg:text-left">
+                className="relative flex flex-wrap items-center justify-between w-full max-w-7xl gap-5 mx-auto text-white p-7 lg:p-12 lg:flex-nowrap rounded-xl"
+                style={{
+                    backgroundImage: "url('/images/solutions/container-iot/maritime/maritime.png')",
+                    backgroundSize: "cover",
+                    backgroundPosition: "center",
+                }}
+            >
+                {/* Overlay */}
+                <div className="absolute inset-0 bg-gray-900 opacity-50 rounded-xl"></div>
+
+                {/* Content */}
+                <div className="relative flex-grow text-center lg:text-left">
                     <h2 className="text-2xl font-medium lg:text-3xl">
                         {items.title}
                     </h2>
@@ -18,7 +28,9 @@ export const CtaSolution:React.FC<CtaProps> = ({ items }) => {
                         {items.subTitle}
                     </p>
                 </div>
-                <div className="flex-shrink-0 w-full text-center lg:w-auto">
+
+                {/* Button 1 */}
+                <div className="relative flex-shrink-0 w-full text-center lg:w-auto">
                     <a
                         href="/contact-us"
                         target="_blank"
@@ -28,14 +40,16 @@ export const CtaSolution:React.FC<CtaProps> = ({ items }) => {
                         {items.button}
                     </a>
                 </div>
-                <div className="flex-shrink-0 w-full text-center lg:w-auto">
+
+                {/* Button 2 */}
+                <div className="relative flex-shrink-0 w-full text-center lg:w-auto">
                     <a
-                        href="https://reeferconnect.tms-orbcomm.com/"
+                        href={items.solutionUrl}
                         target="_blank"
                         rel="noopener"
                         className="inline-block py-3 mx-auto text-lg font-medium text-center text-white bg-red-700 rounded-md px-7 lg:px-10 lg:py-5 hover:bg-white hover:text-red-800 hover:border-2 hover:border-red-700"
                     >
-                        {items.button2}
+                        {items.solutionButton}
                     </a>
                 </div>
             </div>

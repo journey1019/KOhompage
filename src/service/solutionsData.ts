@@ -121,8 +121,8 @@ const solutionsData: Record<string, Record<string, SolutionData>> = {
         },
         "global-iot": {
             imageIntro: "KOREAORBCOMM FOR RINANCIAL SERVICES",
-            imageMain: "글로벌 통신으로 경험을 향상시키세요.",
-            imageSub: "코리아오브컴에서 제공하는 Global 통신망을 통해 전세계 다양한 분야에 적합한 IoT 솔루션을 제공합니다.",
+            imageMain: "Improve your experience with global communication.",
+            imageSub: "Through the Global Communication Network provided by Korea ofCom, we provide IoT solutions suitable for various fields around the world.",
             imageUrl: "/images/solutions/global-iot/M2M_IoT.jpg",
             solutionNumber: "Global IoT",
             title: "Industrial IoT Solutions",
@@ -152,7 +152,7 @@ const solutionsData: Record<string, Record<string, SolutionData>> = {
                     title2: "Commtrace",
                     slug: "vms",
                     description: "Real-Time Network Monitoring System",
-                    image: "https://www.orbcomm.co.kr/resources/img/solution/reeferconnect/reffer1.PNG",
+                    image: "/images/solutions/global-iot/VMS.png",
                 },
                 {
                     direction: "right",
@@ -160,7 +160,7 @@ const solutionsData: Record<string, Record<string, SolutionData>> = {
                     title2: "NMS",
                     slug: "nms",
                     description: "Real-Time Network Monitoring System",
-                    image: "/images/solutions/nms_main.png",
+                    image: "/images/solutions/global-iot/nms_main.png",
                 },
             ],
         },
@@ -259,7 +259,7 @@ const solutionsData: Record<string, Record<string, SolutionData>> = {
                     slug: "nms",
                     description:
                         "You can monitor the location and status of all refrigerated container units and remotely adjust settings such as temperature. With automatic alarm notifications, you can quickly respond to critical situations such as equipment malfunctions or power outages in reefers. Installed on over 600,000 refrigerated containers worldwide, it helps transport lines, multimodal carriers, and shippers achieve verified ROI.",
-                    image: "/images/solutions/nms_main.png",
+                    image: "/images/solutions/global-iot/nms_main.png",
                 },
                 {
                     direction: "left",
@@ -399,7 +399,7 @@ const solutionsData: Record<string, Record<string, SolutionData>> = {
                     title2: "",
                     slug: "nms",
                     description: "실시간 네트워크 모니터링 시스템",
-                    image: "/images/solutions/nms_main.png",
+                    image: "/images/solutions/global-iot/nms_main.png",
                 },
             ]
         },
@@ -444,7 +444,7 @@ const solutionsData: Record<string, Record<string, SolutionData>> = {
                     title2: "Low Earth Orbit",
                     slug: "low-earth-orbit",
                     description: "ORBCOMM의 저궤도(LEO: Low Earth Orbit) 위성 네트워크. 소형 위성모듈과 Whip 형태의 무지향성 안테나를 적용하여 쉽고 간단한 설치로 통신 인프라가 구축되어 있지 않은 산악/해상 등의 장소에서 유용한 데이터 통신 서비스를 제공합니다.",
-                    image: "/images/solutions/nms_main.png",
+                    image: "/images/solutions/global-iot/nms_main.png",
                 },
                 {
                     direction: "left",
@@ -499,7 +499,7 @@ const solutionsData: Record<string, Record<string, SolutionData>> = {
                     slug: "nms",
                     description:
                         "You can monitor the location and status of all refrigerated container units and remotely adjust settings such as temperature. With automatic alarm notifications, you can quickly respond to critical situations such as equipment malfunctions or power outages in reefers. Installed on over 600,000 refrigerated containers worldwide, it helps transport lines, multimodal carriers, and shippers achieve verified ROI.",
-                    image: "/images/solutions/nms_main.png",
+                    image: "/images/solutions/global-iot/nms_main.png",
                 },
                 {
                     direction: "left",

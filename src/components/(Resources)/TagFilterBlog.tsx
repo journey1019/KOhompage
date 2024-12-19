@@ -1,20 +1,21 @@
 "use client";
 
 import React, { useState } from "react";
-import { getBlogData } from "@/service/blogData"
+import { getBlogData, getFilteredByKeywords } from "@/service/blogData"
 import BlogCard from "@/components/(Resources)/BlogCard";
 
 interface TagFilterProps {
     initialTags: string[];
 }
 
-const TagFilter: React.FC<TagFilterProps> = ({ initialTags }) => {
+const TagFilterBlog: React.FC<TagFilterProps> = ({ initialTags }) => {
     const [selectedTag, setSelectedTag] = useState<string | null>(null);
-    const blogData = getBlogData();
+    // const blogData = getBlogData();
+    const filteredData = getFilteredByKeywords(initialTags);
 
-    const filteredData = blogData.filter((item) =>
-        selectedTag ? item.tags.includes(selectedTag) : initialTags.some((tag) => item.tags.includes(tag))
-    );
+    // const filteredData = blogData.filter((item) =>
+    //     selectedTag ? item.tags.includes(selectedTag) : initialTags.some((tag) => item.tags.includes(tag))
+    // );
     // 세 개까지만 표시
     // const filteredData = blogData
     //     .filter((item) => {
@@ -60,4 +61,4 @@ const TagFilter: React.FC<TagFilterProps> = ({ initialTags }) => {
     );
 };
 
-export default TagFilter;
+export default TagFilterBlog;

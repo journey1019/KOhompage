@@ -20,7 +20,6 @@
     "category": "device",
     "imageSrc": "/images/hardware/CT-3500.png",
     "tag": [
-      "Intermodal Containers and Cargo Security",
       "NMS",
       "VMS",
       "Reefer Connect"
@@ -36,7 +35,8 @@
     "imageSrc": "/images/hardware/ST-2100.png",
     "tag": [
       "Maritime",
-      "ORBCOMM Platform"
+      "ORBCOMM Platform",
+      "Global-IoT"
     ],
     "slug": "st-2100",
     "featured": false
@@ -50,9 +50,9 @@
     "tag": [
       "Maritime",
       "ORBCOMM Platform",
-      "Reefer Connect",
-      "General and Multi-Purpose Asset Tracking",
-      "Monitoring"
+      "Reefer",
+      "Global-IoT",
+      "NMS"
     ],
     "slug": "st-6100",
     "featured": true
@@ -92,10 +92,10 @@
     "category": "device",
     "imageSrc": "/images/hardware/ST-9100.png",
     "tag": [
-      "General and Multi-Purpose Asset Tracking",
       "Satellite",
       "AIS",
-      "Monitoring"
+      "Monitoring",
+      "Global-IoT"
     ],
     "slug": "st-9100",
     "featured": false
@@ -141,7 +141,8 @@
       "Economy",
       "Connector",
       "Power",
-      "Protocol"
+      "Protocol",
+      "Global-IoT"
     ],
     "slug": "og2-ogi",
     "featured": false

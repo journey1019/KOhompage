@@ -12,6 +12,10 @@ import { Metadata } from 'next';
 import Download from '@/components/(Solution)/Download';
 import CarouselSolutions from '@/components/(Solution)/CarouselSolutions';
 import References from '@/components/(Solution)/References';
+import { SectionTitle } from '@/components/(About)/SectionTitle';
+import ChipFilterHardwareCarousel from '@/components/(Hardware)/ChipFilterHardwareCarousel';
+import React from 'react';
+import TagFilterBlogCarousel from '@/components/(Resources)/TagFilterBlogCarousel';
 
 interface PageProps {
     params: {locale: string};
@@ -40,6 +44,7 @@ export default async function GlobalIoT({params}: PageProps){
             </div>
         );
     }
+    const chips = ['global-iot', 'st2100', 'st6100', 'st9100', 'og2', 'ogi'];
 
     return(
         <section>
@@ -62,11 +67,31 @@ export default async function GlobalIoT({params}: PageProps){
             <CarouselSolutions items={data.carousels || []}/>
             {/*<Card/>*/}
             <Advantage/>
-            <ContentForm/>
-            <UseCase slug="satellite" locale={locale} />
-            <Hardware/>
+            {/*<ContentForm/>*/}
+            <UseCase slug="global-iot" locale={locale} />
+            {/*<Hardware/>*/}
+
+            <SectionTitle
+                preTitle="HARDWARES"
+                title="Container-IoT Hardware Lists"
+            >
+            </SectionTitle>
+            <ChipFilterHardwareCarousel chips={['global-iot']} />
+
+            <SectionTitle
+                preTitle="Q n A"
+                title="Why Customers Love Us"
+            />
             <FAQ/>
-            <Download/>
+
+            {/*<Download/>*/}
+            <SectionTitle
+                preTitle="REFERENCES"
+                title="ALL REFERNCES"
+            >
+            </SectionTitle>
+            {/*<TagFilterBlog initialTags={['container-iot']} />*/}
+            <TagFilterBlogCarousel initialTags={chips} />
         </section>
     )
 }

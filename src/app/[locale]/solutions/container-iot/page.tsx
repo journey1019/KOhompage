@@ -16,11 +16,12 @@ import Strength from '@/components/(Solution)/Strength';
 import Image from 'next/image';
 import React from 'react';
 import Point from '@/components/(Solution)/Point';
-import TagFilter from "@/components/(Resources)/TagFilter"
+// import TagFilterBlog from "@/components/(Resources)/TagFilterBlog"
 import FilterableHardwareList from '@/components/(Hardware)/FilterableHardwareList';
 import { SectionTitle } from '@/components/(About)/SectionTitle';
-import TagFilterCarousel from '@/components/(Resources)/TagFilterCarousel';
-import TagFilterBlog from '@/components/(Main)/TagFilterBlog';
+import TagFilterBlogCarousel from '@/components/(Resources)/TagFilterBlogCarousel';
+// import TagFilterBlog from '@/components/(Main)/TagFilterBlog';
+import ChipFilterHardwareCarousel from '@/components/(Hardware)/ChipFilterHardwareCarousel';
 
 
 interface PageProps {
@@ -78,7 +79,13 @@ export default async function ContainerIoT({ params }: PageProps){
             <UseCase slug="container-iot" locale={locale} />
             <Strength items={data.advantages || []}/>
 
-            <FilterableHardwareList chips={['st2100']}/>
+            <SectionTitle
+                preTitle="HARDWARES"
+                title="Container-IoT Hardware Lists"
+            >
+            </SectionTitle>
+            {/*<FilterableHardwareList chips={['container', 'maritime']}/>*/}
+            <ChipFilterHardwareCarousel chips={['container', 'maritime']} />
             {/*<Hardware/>*/}
             {/*<FAQ/>*/}
             {/*<Download/>*/}
@@ -91,8 +98,8 @@ export default async function ContainerIoT({ params }: PageProps){
                 title="ALL REFERNCES"
             >
             </SectionTitle>
-            {/*<TagFilter initialTags={['container-iot']} />*/}
-            <TagFilterCarousel initialTags={chips} />
+            {/*<TagFilterBlog initialTags={['container-iot']} />*/}
+            <TagFilterBlogCarousel initialTags={chips} />
         </section>
     )
 }

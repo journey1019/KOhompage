@@ -22,7 +22,7 @@ const useCaseData: Record<string, CaseData[]> = {
             title2: "",
             description:
                 "You can monitor the location and status of all refrigerated container units and remotely adjust settings such as temperature. With automatic alarm notifications, you can quickly respond to critical situations such as equipment malfunctions or power outages in reefers. Installed on over 600,000 refrigerated containers worldwide, it helps transport lines, multimodal carriers, and shippers achieve verified ROI.",
-            image: "/images/solutions/nms_main.png",
+            image: "/images/solutions/global-iot/nms_main.png",
         },
         {
             direction: "left",
@@ -48,7 +48,7 @@ const useCaseData: Record<string, CaseData[]> = {
             title2: "",
             description:
                 "You can monitor the location and status of all refrigerated container units and remotely adjust settings such as temperature. With automatic alarm notifications, you can quickly respond to critical situations such as equipment malfunctions or power outages in reefers. Installed on over 600,000 refrigerated containers worldwide, it helps transport lines, multimodal carriers, and shippers achieve verified ROI.",
-            image: "/images/solutions/nms_main.png",
+            image: "/images/solutions/global-iot/nms_main.png",
         },
         {
             direction: "left",
@@ -74,7 +74,7 @@ const useCaseData: Record<string, CaseData[]> = {
             title2: "",
             description:
                 "You can monitor the location and status of all refrigerated container units and remotely adjust settings such as temperature. With automatic alarm notifications, you can quickly respond to critical situations such as equipment malfunctions or power outages in reefers. Installed on over 600,000 refrigerated containers worldwide, it helps transport lines, multimodal carriers, and shippers achieve verified ROI.",
-            image: "/images/solutions/nms_main.png",
+            image: "/images/solutions/global-iot/nms_main.png",
         },
         {
             direction: "left",
@@ -100,7 +100,7 @@ const useCaseData: Record<string, CaseData[]> = {
             title2: "",
             description:
                 "You can monitor the location and status of all refrigerated container units and remotely adjust settings such as temperature. With automatic alarm notifications, you can quickly respond to critical situations such as equipment malfunctions or power outages in reefers. Installed on over 600,000 refrigerated containers worldwide, it helps transport lines, multimodal carriers, and shippers achieve verified ROI.",
-            image: "/images/solutions/nms_main.png",
+            image: "/images/solutions/global-iot/nms_main.png",
         },
         {
             direction: "left",

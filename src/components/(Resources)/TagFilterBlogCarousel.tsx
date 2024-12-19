@@ -1,4 +1,3 @@
-/** TagFilterCarousel.tsx */
 "use client";
 
 import React, { useState } from "react";
@@ -10,7 +9,7 @@ interface TagFilterProps {
     initialTags: string[];
 }
 
-const TagFilterCarousel: React.FC<TagFilterProps> = ({ initialTags }) => {
+const TagFilterBlogCarousel: React.FC<TagFilterProps> = ({ initialTags }) => {
     const [currentIndex, setCurrentIndex] = useState(0);
 
     // 필터링된 데이터 가져오기
@@ -81,4 +80,4 @@ const TagFilterCarousel: React.FC<TagFilterProps> = ({ initialTags }) => {
     );
 };
 
-export default TagFilterCarousel;
+export default TagFilterBlogCarousel;
