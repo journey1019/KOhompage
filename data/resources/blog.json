@@ -588,5 +588,25 @@
     "form": "pdf",
     "path": "/pdf/datasheet/hardware/z10mk2.pdf",
     "tags": []
+  },
+  {
+    "title": "Starlink Standard",
+    "description": "",
+    "images": "/images/resources/datasheet/hardware/Gray.png",
+    "date": "2024-12-23",
+    "classification": "datasheet",
+    "form": "pdf",
+    "path": "/pdf/datasheet/hardware/Starlink-Product-Specifications_Standard.pdf",
+    "tags": ["starlink"]
+  },
+  {
+    "title": "Starlink HighPerfomance",
+    "description": "",
+    "images": "/images/resources/datasheet/hardware/Gray.png",
+    "date": "2024-12-23",
+    "classification": "datasheet",
+    "form": "pdf",
+    "path": "/pdf/datasheet/hardware/Starlink-Product-Specifications_HighPerformance.pdf",
+    "tags": ["starlink"]
   }
 ]

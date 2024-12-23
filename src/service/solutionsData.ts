@@ -1,3 +1,12 @@
+interface CharacterData {
+    title: string;
+    subtitle: string;
+    icon: string;
+}
+interface KindData {
+    title: string;
+    image: string;
+}
 interface PointData {
     text: string;
 }
@@ -29,9 +38,11 @@ interface SolutionData {
     solutionName: string;
     description?: string;
     carousels?: CarouselData[];
-    useCases: CaseData[];
+    useCases?: CaseData[];
     advantages?: AdvantageData[];
     points?: PointData[];
+    kind?: KindData[];
+    character?: CharacterData[];
 }
 
 
@@ -170,8 +181,8 @@ const solutionsData: Record<string, Record<string, SolutionData>> = {
             imageSub: "KOREA ORBCOMM provides satellite communication services suitable for customers through cooperation with global satellite network operators.",
             imageUrl: "/images/solutions/satellite/Satellite_Header.jpg",
             solutionNumber: "Satellite",
-            title: "Reliable Satellite Communication",
-            solutionName: "",
+            title: "Communication Network",
+            solutionName: "It provides optimal devices and communication networks for a wide range of industries for your customers.",
             description: "Stay connected with global satellite communication solutions.",
             carousels: [
                 {
@@ -211,7 +222,7 @@ const solutionsData: Record<string, Record<string, SolutionData>> = {
                     direction: "left",
                     title1: "SpaceX",
                     title2: "Starlink",
-                    slug: "star-link",
+                    slug: "starlink",
                     description: "You can monitor the location and status of all refrigerated container units and remotely adjust settings such as temperature. With automatic alarm notifications, you can quickly respond to critical situations such as equipment malfunctions or power outages in reefers. Installed on over 600,000 refrigerated containers worldwide, it helps transport lines, multimodal carriers, and shippers achieve verified ROI.",
                     image: "/images/solutions/satellite/Starlink.png",
                 },
@@ -219,7 +230,7 @@ const solutionsData: Record<string, Record<string, SolutionData>> = {
         },
         "ais": {
             imageIntro: "KOREAORBCOMM FOR RINANCIAL SERVICES",
-            imageMain: "안정적 통신 서비스로 경험을 향상시키세요",
+            imageMain: "AIS: Automatic identification system",
             imageSub: "코리아오브컴에서 제공하는 Global 통신망을 통해 전세계 다양한 분야에 적합한 IoT 솔루션을 제공합니다.",
             imageUrl: "/images/solutions/ais/AIS_Header.jpg",
             solutionNumber: "AIS",
@@ -305,8 +316,8 @@ const solutionsData: Record<string, Record<string, SolutionData>> = {
             useCases: [
                 {
                     direction: "left",
-                    title1: "웹 서비스",
-                    title2: "Maritime Platform",
+                    title1: "Maritime Platform",
+                    title2: "",
                     slug: "maritime",
                     description: "IoT가 설치된 컨테이너의 위치와 상태를 실시간 모니터링하고, Reefer Container의 컨트롤러를 원격으로 조정하여 화물에 적합한 온도 및 습도를 설정할 수 있습니다. 또한 자동 알람을 통해 Reefer Container의 오동작, 전원 off 정보는 물론 컨테이너의 각종 알람을 모니터링하고 신속하게 대응할 수 있습니다.\n" +
                         "코리아오브컴의 컨테이너 IoT 장비는 전세계 100만대 이상 설치되어 운영중이며 선사, 화주, 복합운송업체 등 다양한 사용자에게 해상/육상 전 지역에서 수집된 데이터를 제공하여 화물의 안전한 운송에 기여하고 있습니다.  \n",
@@ -405,13 +416,13 @@ const solutionsData: Record<string, Record<string, SolutionData>> = {
             ]
         },
         "satellite": {
-            imageIntro: "KOREAORBCOMM FOR RINANCIAL SERVICES",
-            imageMain: "안정적 통신 서비스로 경험을 향상시키세요",
+            imageIntro: "",
+            imageMain: "KOREA ORBCOMM 위성기반 통신 서비스",
             imageSub: "코리아오브컴은 글로벌위성망 사업자와 협력을 통해 고객에게 적합한 위성통신서비스를 제공합니다.",
             imageUrl: "/images/solutions/satellite/Satellite_Header.jpg",
             solutionNumber: "Satellite",
-            title: "Reliable Satellite Communication",
-            solutionName: "",
+            title: "통신망 서비스",
+            solutionName: "고객의 다양한 산업 분야에 적합한 최적의 디바이스 및 통신망을 제공합니다.",
             description: "Stay connected with global satellite communication solutions.",
             carousels: [
                 {
@@ -434,38 +445,52 @@ const solutionsData: Record<string, Record<string, SolutionData>> = {
                 {
                     direction: "left",
                     title1: "OGX : ",
-                    title2: "next generation of satellite",
+                    title2: "차세대 위성",
                     slug: "ogx",
                     description: "OGx 위성 서비스는 Inmarsat(인말셋) 4세대 및 6세대 위성의 L-Band 대역을 이용하여 전세계에 위성통신을 제공합니다. Global L-Band 위성서비스는 우천 등 기상조건의 영향을 받지 않는 네트워크 가용성으로 고객의 자산을 원격 모니터링을 위한 신뢰성있는 통신망을 제공합니다.",
-                    image: "https://www.orbcomm.co.kr/resources/img/solution/reeferconnect/reffer1.PNG",
+                    image: "/images/solutions/satellite/Inmarsat.jpg",
                 },
                 {
                     direction: "right",
                     title1: "ORBCOMM: ",
-                    title2: "Low Earth Orbit",
+                    title2: "저궤도 위성",
                     slug: "low-earth-orbit",
                     description: "ORBCOMM의 저궤도(LEO: Low Earth Orbit) 위성 네트워크. 소형 위성모듈과 Whip 형태의 무지향성 안테나를 적용하여 쉽고 간단한 설치로 통신 인프라가 구축되어 있지 않은 산악/해상 등의 장소에서 유용한 데이터 통신 서비스를 제공합니다.",
-                    image: "/images/solutions/global-iot/nms_main.png",
+                    image: "/images/solutions/satellite/Remote.png",
                 },
                 {
                     direction: "left",
                     title1: "SpaceX",
                     title2: "Starlink",
-                    slug: "star-link",
+                    slug: "starlink",
                     description:
                         "You can monitor the location and status of all refrigerated container units and remotely adjust settings such as temperature. With automatic alarm notifications, you can quickly respond to critical situations such as equipment malfunctions or power outages in reefers. Installed on over 600,000 refrigerated containers worldwide, it helps transport lines, multimodal carriers, and shippers achieve verified ROI.",
-                    image: "https://www.orbcomm.co.kr/resources/img/solution/orbcommplatform/orbcommplatform_2.jpg",
+                    image: "/images/solutions/satellite/Starlink.png",
+                },
+            ],
+            kind: [
+                {
+                    title: "OGx : next generation of satellite",
+                    image: "/images/solutions/satellite/OrbcommInmarsat.webp"
+                },
+                {
+                    title: "ORBCOMM : Low Earth Orbit",
+                    image: "/images/solutions/satellite/LowEarthOrbit.png"
+                },
+                {
+                    title: "SpaceX StarLink",
+                    image: "/images/solutions/satellite/SpaceX.png"
                 },
             ]
         },
         "ais": {
-            imageIntro: "KOREAORBCOMM FOR RINANCIAL SERVICES",
-            imageMain: "안정적 통신 서비스로 경험을 향상시키세요",
-            imageSub: "코리아오브컴은 글로벌위성망 사업자와 협력을 통해 고객에게 적합한 위성통신서비스를 제공합니다.",
+            imageIntro: "",
+            imageMain: "AIS: 자동 식별 시스템",
+            imageSub: "선박의 식별, 위치, 탐색을 지원하고 해양 안전을 향상시키는데 사용할 수 있는 중요한 데이터 선박 발신 시스템",
             imageUrl: "/images/solutions/ais/AIS_Header.jpg",
             solutionNumber: "AIS",
-            title: "Enhanced Maritime Tracking",
-            solutionName: "",
+            title: "Automatic identification system",
+            solutionName: "AIS(선박 자동 식별 시스템)는 선박의 식별, 위치, 탐색을 지원하고 해양 안전을 위해 사용할 수 있는 중요한 데이터를 전송하는 선박 발신 시스템 입니다. 코리아오브컴의 AIS 서비스는 위성과 물론 10,000개 이상의 육상AIS 수신국을 통해  전세계 모든 지역의 AIS 정보를 수집하여 해상 정보 분석, 수색 및 구조, 환경 모니터링 등 다양한 분야에 활용되고 있습니다.",
             description: "Accurate maritime tracking with AIS solutions.",
             carousels: [
                 {
@@ -484,33 +509,22 @@ const solutionsData: Record<string, Record<string, SolutionData>> = {
                     imageUrl: "/images/solutions/global-iot/SafetyNetwork.png",
                 },
             ],
-            useCases: [
+            character: [
                 {
-                    direction: "left",
-                    title1: "Reefer",
-                    title2: "Connect",
-                    slug: "reefer-connect",
-                    description: "You can monitor the location and status of all refrigerated container units and remotely adjust settings such as temperature. With automatic alarm notifications, you can quickly respond to critical situations such as equipment malfunctions or power outages in reefers. Installed on over 600,000 refrigerated containers worldwide, it helps transport lines, multimodal carriers, and shippers achieve verified ROI.",
-                    image: "https://www.orbcomm.co.kr/resources/img/solution/reeferconnect/reffer1.PNG",
+                    title: "Lower Latency",
+                    subtitle: "Korea ORBCOMM의 위성 AIS data는 최소 수신지연 시간을 1분 이내로 제공합니다.",
+                    icon: "/images/icons/Satellite.png"
                 },
                 {
-                    direction: "right",
-                    title1: "NMS",
-                    title2: "",
-                    slug: "nms",
-                    description:
-                        "You can monitor the location and status of all refrigerated container units and remotely adjust settings such as temperature. With automatic alarm notifications, you can quickly respond to critical situations such as equipment malfunctions or power outages in reefers. Installed on over 600,000 refrigerated containers worldwide, it helps transport lines, multimodal carriers, and shippers achieve verified ROI.",
-                    image: "/images/solutions/global-iot/nms_main.png",
+                    title: "Increased Detection Rate",
+                    subtitle: "orea ORBCOMM의 전세계 해상 전역을 상시 모니터링 할 수 있도록 설계되어, 보다 효과적이고 안정적인 AIS 신호 탐지에 최적화되어 있습니다.",
+                    icon: "/images/icons/HighSpeed.png"
                 },
                 {
-                    direction: "left",
-                    title1: "",
-                    title2: "VMS",
-                    slug: "vms",
-                    description:
-                        "You can monitor the location and status of all refrigerated container units and remotely adjust settings such as temperature. With automatic alarm notifications, you can quickly respond to critical situations such as equipment malfunctions or power outages in reefers. Installed on over 600,000 refrigerated containers worldwide, it helps transport lines, multimodal carriers, and shippers achieve verified ROI.",
-                    image: "https://www.orbcomm.co.kr/resources/img/solution/orbcommplatform/orbcommplatform_2.jpg",
-                },
+                    title: "Cost-Effective",
+                    subtitle: "Korea ORBCOMM의 위성 AIS는 더 유연한 요금제와 고객의 요구에 적합한 서비스를 제공합니다.",
+                    icon: "/images/icons/LowLatencyTech.png"
+                }
             ]
         }
     }

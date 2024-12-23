@@ -77,7 +77,7 @@ export default async function ContainerIoT({ params }: PageProps){
             <Point items={data.points || []}/>
             {/*<ContentForm/>*/}
             <UseCase slug="container-iot" locale={locale} />
-            <Strength items={data.advantages || []}/>
+            <Strength items={data.advantages || []} gridCols={4}/>
 
             <SectionTitle
                 preTitle="HARDWARES"

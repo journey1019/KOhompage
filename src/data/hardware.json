@@ -273,5 +273,17 @@
     ],
     "slug": "ds-300",
     "featured": false
+  },
+  {
+    "title": "Starlink",
+    "subTitle": "",
+    "description": "",
+    "category": "device",
+    "imageSrc": "/images/hardware/Starlink.png",
+    "tag": [
+      "Internet"
+    ],
+    "slug": "starlink",
+    "featured": false
   }
 ]

@@ -19,6 +19,10 @@ import Point from '@/components/(Solution)/Point';
 import FilterableHardwareList from '@/components/(Hardware)/FilterableHardwareList';
 import TagFilterBlog from '@/components/(Resources)/TagFilterBlog';
 import TagFilterBoard from '@/components/(Main)/TagFilterBoard';
+import { SectionTitle } from '@/components/(About)/SectionTitle';
+import Kind from '@/components/(Solution)/Kind';
+import ChipFilterHardwareCarousel from '@/components/(Hardware)/ChipFilterHardwareCarousel';
+import TagFilterBlogCarousel from '@/components/(Resources)/TagFilterBlogCarousel';
 
 interface PageProps {
     params: {locale: string};
@@ -72,11 +76,27 @@ export default async function GlobalIoT({params}: PageProps){
             {/*<Advantage/>*/}
             {/*<Point items={data.points || []}/>*/}
             {/*<ContentForm/>*/}
+            <Kind items={data.kind || []}/>
+
             <UseCase slug="satellite" locale={locale} />
-            <Strength items={data.advantages || []}/>
-            <FilterableHardwareList chips={chips}/>
-            <TagFilterBlog initialTags={['ogx']} />
-            <TagFilterBoard initialTags={['']}/>
+
+            <SectionTitle
+                preTitle="HARDWARES"
+                title="Satellite Hardware Lists"
+            >
+            </SectionTitle>
+            <ChipFilterHardwareCarousel chips={['ogx', 'ogi', 'og2']} />
+
+
+            <SectionTitle
+                preTitle="RESOURCES"
+                title="ALL RESOURCES"
+            >
+            </SectionTitle>
+            <TagFilterBlogCarousel initialTags={chips} />
+            {/*<FilterableHardwareList chips={chips}/>*/}
+            {/*<TagFilterBlog initialTags={['ogx']} />*/}
+            {/*<TagFilterBoard initialTags={['']}/>*/}
             {/*<FAQ/>*/}
             {/*<Download/>*/}
             {/*<References/>*/}

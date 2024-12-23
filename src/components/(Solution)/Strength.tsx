@@ -8,13 +8,14 @@ interface AdvantageItem {
 }
 interface AdvantageProps {
     items: AdvantageItem[];
+    gridCols?: number;
 }
 
-const Strength: React.FC<AdvantageProps> = ({ items }) => {
+const Strength: React.FC<AdvantageProps> = ({ items, gridCols = 4 }) => {
     return (
-        <div className="bg-white dark:bg-gray-900">
+        <div className="bg-white dark:bg-gray-900 lg:pb-10">
             <div className="mx-auto max-w-7xl px-4 py-4 sm:px-6 sm:pt-0 sm:pb-24 lg:px-8">
-                <div className="grid grid-cols-1 gap-x-6 gap-y-20 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:gap-x-8">
+                <div className={`grid grid-cols-1 gap-x-6 gap-y-20 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-${gridCols} xl:gap-x-8`}>
                     {items.map((item, index) => (
                         <div key={index} className="group relative">
                             <div className="flex-shrink-0 w-20 h-20 rounded-md bg-gray-200 lg:aspect-none group-hover:opacity-75">

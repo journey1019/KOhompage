@@ -16,6 +16,7 @@ import { SectionTitle } from '@/components/(About)/SectionTitle';
 import ChipFilterHardwareCarousel from '@/components/(Hardware)/ChipFilterHardwareCarousel';
 import React from 'react';
 import TagFilterBlogCarousel from '@/components/(Resources)/TagFilterBlogCarousel';
+import Image from 'next/image';
 
 interface PageProps {
     params: {locale: string};
@@ -72,6 +73,17 @@ export default async function GlobalIoT({params}: PageProps){
             {/*<Hardware/>*/}
 
             <SectionTitle
+                preTitle="Network"
+                title="Communication network"
+            >
+                고객의 다양한 산업 분야에 적합한 최적의 디바이스 및 통신망을 제공합니다.
+            </SectionTitle>
+            <Image src="/images/solutions/global-iot/global-iot.png" alt="/images/solutions/global-iot/global-iot.png"
+                   className="mx-auto items-center max-w-7xl justify-center pb-24"
+                   width={800} height={300} unoptimized
+            />
+
+            <SectionTitle
                 preTitle="HARDWARES"
                 title="Container-IoT Hardware Lists"
             >
@@ -86,8 +98,8 @@ export default async function GlobalIoT({params}: PageProps){
 
             {/*<Download/>*/}
             <SectionTitle
-                preTitle="REFERENCES"
-                title="ALL REFERNCES"
+                preTitle="RESOURCES"
+                title="ALL RESOURCES"
             >
             </SectionTitle>
             {/*<TagFilterBlog initialTags={['container-iot']} />*/}
