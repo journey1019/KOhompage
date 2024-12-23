@@ -29,7 +29,8 @@ const HardwareList: React.FC<HardwareListProps> = ({ items }) => {
                     href={`/hardware/${item.slug}`}
                     className="group border p-4 rounded-md shadow-md mb-4 hover:shadow-lg hover:border-blud-500 transition duration-300"
                 >
-                    <div className="relative w-full h-60 overflow-hidden rounded-lg bg-gray-200 group-hover:bg-gray-300 transition duration-300">
+                    <div
+                        className="relative w-full h-60 overflow-hidden rounded-lg bg-gray-200 group-hover:bg-gray-300 transition duration-300">
                         {/* 이미지 컴포넌트 */}
                         <Image
                             alt={item.slug}
@@ -44,9 +45,22 @@ const HardwareList: React.FC<HardwareListProps> = ({ items }) => {
                         {item.title}
                     </h2>
                     <p className="group-hover:text-gray-700 transition duration-300">{item.subTitle}</p>
+                    {/*<div className="mt-2">*/}
+                    {/*    <span className="text-xs text-gray-600">Tags: </span>*/}
+                    {/*    {item.tag.map((tag) => (*/}
+                    {/*        <span*/}
+                    {/*            key={tag}*/}
+                    {/*            className="text-blue-500 mr-2 text-xs group-hover:underline transition duration-300"*/}
+                    {/*        >*/}
+                    {/*            {tag}*/}
+                    {/*        </span>*/}
+                    {/*    ))}*/}
+                    {/*</div>*/}
+
+                    {/* 태그 개수 제한 */}
                     <div className="mt-2">
                         <span className="text-xs text-gray-600">Tags: </span>
-                        {item.tag.map((tag) => (
+                        {item.tag.slice(0, 3).map((tag) => (
                             <span
                                 key={tag}
                                 className="text-blue-500 mr-2 text-xs group-hover:underline transition duration-300"
@@ -54,7 +68,24 @@ const HardwareList: React.FC<HardwareListProps> = ({ items }) => {
                                 {tag}
                             </span>
                         ))}
+                        {item.tag.length > 3 && (
+                            <span className="text-gray-500 text-xs">
+                                +{item.tag.length - 3} more</span>
+                        )}
                     </div>
+
+                    {/* 스크롤 가능 영역 */}
+                    {/*<div className="mt-2 overflow-x-auto whitespace-nowrap">*/}
+                    {/*    <span className="text-xs text-gray-600">Tags: </span>*/}
+                    {/*    {item.tag.map((tag) => (*/}
+                    {/*        <span*/}
+                    {/*            key={tag}*/}
+                    {/*            className="text-blue-500 mr-2 text-xs group-hover:underline transition duration-300 inline-block"*/}
+                    {/*        >*/}
+                    {/*            {tag}*/}
+                    {/*        </span>*/}
+                    {/*    ))}*/}
+                    {/*</div>*/}
                 </a>
             ))}
         </div>

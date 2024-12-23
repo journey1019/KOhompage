@@ -150,13 +150,53 @@
     "tags": ["maritime", "container-iot", "Platform", "NMS"]
   },
   {
+    "title": "Satellite AIS",
+    "description": "",
+    "images": "/images/resources/datasheet/hardware/Gray.png",
+    "date": "2024-12-20",
+    "classification": "brochure",
+    "form": "pdf",
+    "path": "/pdf/brochure/Satellite-AIS.pdf",
+    "tags": ["reefer", "container-iot"]
+  },
+  {
+    "title": "ORBCOMM Platform",
+    "description": "",
+    "images": "/images/resources/datasheet/hardware/Gray.png",
+    "date": "2024-12-20",
+    "classification": "brochure",
+    "form": "pdf",
+    "path": "/pdf/brochure/ORBCOMM-Platform.pdf",
+    "tags": ["reefer", "container-iot"]
+  },
+  {
+    "title": "ORBCOMM Maritime",
+    "description": "",
+    "images": "/images/resources/datasheet/hardware/Gray.png",
+    "date": "2024-12-20",
+    "classification": "brochure",
+    "form": "pdf",
+    "path": "/pdf/brochure/ORBCOMM-Maritime-Platform-A4-eng.pdf",
+    "tags": ["Maritime"]
+  },
+  {
+    "title": "Smart Container Shipping",
+    "description": "",
+    "images": "/images/resources/datasheet/hardware/Gray.png",
+    "date": "2024-12-20",
+    "classification": "brochure",
+    "form": "pdf",
+    "path": "/pdf/brochure/Smart-Container-Shipping.pdf",
+    "tags": ["maritime", "container-iot", "Platform", "NMS"]
+  },
+  {
     "title": "SC-1000",
     "description": "Solar-powered satellite tracker | SC 1000 | ORBCOMM",
     "images": "/images/resources/datasheet/hardware/SC1000Datasheet.png",
     "date": "2024-12-12",
     "classification": "datasheet",
     "form": "pdf",
-    "path": "/pdf/hardware/sc-1000.pdf",
+    "path": "/pdf/datasheet/hardware/sc-1000.pdf",
     "tags": ["maritime", "container-iot", "Intelligent", "sc-1000"]
   },
   {
@@ -166,7 +206,7 @@
     "date": "2024-12-16",
     "classification": "datasheet",
     "form": "pdf",
-    "path": "/pdf/hardware/development-kit.pdf",
+    "path": "/pdf/datasheet/hardware/development-kit.pdf",
     "tags": ["maritime", "container-iot", "Intelligent"]
   },
   {
@@ -176,7 +216,7 @@
     "date": "2024-12-16",
     "classification": "datasheet",
     "form": "pdf",
-    "path": "/pdf/hardware/gt-1200.pdf",
+    "path": "/pdf/datasheet/hardware/gt-1200.pdf",
     "tags": ["dry", "Trailer", "Smarter", "gt-1200"]
   },
   {
@@ -186,7 +226,7 @@
     "date": "2024-12-16",
     "classification": "datasheet",
     "form": "pdf",
-    "path": "/pdf/hardware/og2-ogi-KR.pdf",
+    "path": "/pdf/datasheet/hardware/og2-ogi-KR.pdf",
     "tags": ["network", "satellite", "og2-ogi"]
   },
   {
@@ -196,7 +236,7 @@
     "date": "2024-12-16",
     "classification": "datasheet",
     "form": "pdf",
-    "path": "/pdf/hardware/st-6100.pdf",
+    "path": "/pdf/datasheet/hardware/st-6100.pdf",
     "tags": ["st-6100", "satellite", "vessle"]
   },
   {
@@ -206,7 +246,7 @@
     "date": "2024-12-16",
     "classification": "datasheet",
     "form": "pdf",
-    "path": "/pdf/hardware/mt-5000.pdf",
+    "path": "/pdf/datasheet/hardware/mt-5000.pdf",
     "tags": ["safe", "vessel", "mt-5000"]
   },
   {
@@ -216,7 +256,7 @@
     "date": "2024-12-12",
     "classification": "datasheet",
     "form": "pdf",
-    "path": "/pdf/hardware/st-2100.pdf",
+    "path": "/pdf/datasheet/hardware/st-2100.pdf",
     "tags": ["st-2100", "satellite", "tracking", "dual-mode"]
   },
   {
@@ -226,7 +266,7 @@
     "date": "2024-12-12",
     "classification": "datasheet",
     "form": "pdf",
-    "path": "/pdf/hardware/st-9100.pdf",
+    "path": "/pdf/datasheet/hardware/st-9100.pdf",
     "tags": ["st-9100", "satellite", "tracking", "dual-mode"]
   },
   {
@@ -236,8 +276,48 @@
     "date": "2024-12-12",
     "classification": "datasheet",
     "form": "pdf",
-    "path": "/pdf/application/vesselconnect.pdf",
+    "path": "/pdf/datasheet/application/vesselconnect.pdf",
     "tags": ["maritime", "VMS"]
+  },
+  {
+    "title": "ReeferConnect",
+    "description": "",
+    "images": "/images/resources/datasheet/hardware/Gray.png",
+    "date": "2024-12-20",
+    "classification": "datasheet",
+    "form": "pdf",
+    "path": "/pdf/datasheet/application/ReeferConnect_KR.pdf",
+    "tags": ["Reefer"]
+  },
+  {
+    "title": "ORBCOMM Platform",
+    "description": "",
+    "images": "/images/resources/datasheet/hardware/Gray.png",
+    "date": "2024-12-20",
+    "classification": "datasheet",
+    "form": "pdf",
+    "path": "/pdf/datasheet/application/orbcomm-platform.pdf",
+    "tags": ["ORBCOMM"]
+  },
+  {
+    "title": "1Sat Datasheet",
+    "description": "",
+    "images": "/images/resources/datasheet/hardware/Gray.png",
+    "date": "2024-12-20",
+    "classification": "datasheet",
+    "form": "pdf",
+    "path": "/pdf/datasheet/application/1SAT-Datasheet.pdf",
+    "tags": ["1Sat", "Satellite"]
+  },
+  {
+    "title": "Multi Path Communication System",
+    "description": "",
+    "images": "/images/resources/datasheet/hardware/Gray.png",
+    "date": "2024-12-20",
+    "classification": "datasheet",
+    "form": "pdf",
+    "path": "/pdf/datasheet/application/Multi-Path-Communication-System.pdf",
+    "tags": ["Reefer"]
   },
   {
     "title": "FM 6510",
@@ -246,7 +326,7 @@
     "date": "2024-12-18",
     "classification": "datasheet",
     "form": "pdf",
-    "path": "/pdf/hardware/FM-6510-Letter_eng.pdf",
+    "path": "/pdf/datasheet/hardware/FM-6510-Letter_eng.pdf",
     "tags": ["transportation", "VMS"]
   },
   {
@@ -256,7 +336,257 @@
     "date": "2024-12-18",
     "classification": "datasheet",
     "form": "pdf",
-    "path": "/pdf/hardware/st-9100_2.pdf",
+    "path": "/pdf/datasheet/hardware/st-9100_2.pdf",
     "tags": ["transportation", "VMS"]
+  },
+  {
+    "title": "IS-400",
+    "description": "",
+    "images": "/images/resources/datasheet/hardware/IS-400-remote-datatsheet.webp",
+    "date": "2024-12-19",
+    "classification": "datasheet",
+    "form": "pdf",
+    "path": "/pdf/datasheet/hardware/is-400.pdf",
+    "tags": []
+  },
+  {
+    "title": "PT-6000",
+    "description": "",
+    "images": "/images/resources/datasheet/hardware/PT6000Datasheet.webp",
+    "date": "2024-12-19",
+    "classification": "datasheet",
+    "form": "pdf",
+    "path": "/pdf/datasheet/hardware/pt-6000.pdf",
+    "tags": []
+  },
+  {
+    "title": "BT-500",
+    "description": "",
+    "images": "/images/resources/datasheet/hardware/Resources-BT500Datasheet.webp",
+    "date": "2024-12-19",
+    "classification": "datasheet",
+    "form": "pdf",
+    "path": "/pdf/datasheet/hardware/bt-500.pdf",
+    "tags": []
+  },
+  {
+    "title": "IC-500",
+    "description": "",
+    "images": "/images/resources/datasheet/hardware/Resources-IC500Datasheet.webp",
+    "date": "2024-12-19",
+    "classification": "datasheet",
+    "form": "pdf",
+    "path": "/pdf/datasheet/hardware/ic-500.pdf",
+    "tags": []
+  },
+  {
+    "title": "CT-1000",
+    "description": "",
+    "images": "/images/resources/datasheet/hardware/CT1000Datasheet.webp",
+    "date": "2024-12-19",
+    "classification": "datasheet",
+    "form": "pdf",
+    "path": "/pdf/datasheet/hardware/ct-1000.pdf",
+    "tags": []
+  },
+  {
+    "title": "CT-3500",
+    "description": "",
+    "images": "/images/resources/datasheet/hardware/CT-3500.png",
+    "date": "2024-12-19",
+    "classification": "datasheet",
+    "form": "pdf",
+    "path": "/pdf/datasheet/hardware/ct-3500.pdf",
+    "tags": []
+  },
+  {
+    "title": "CT-3600",
+    "description": "",
+    "images": "/images/resources/datasheet/hardware/CT3600Datasheet.webp",
+    "date": "2024-12-19",
+    "classification": "datasheet",
+    "form": "pdf",
+    "path": "/pdf/datasheet/hardware/ct-3600.pdf",
+    "tags": []
+  },
+  {
+    "title": "DS-100",
+    "description": "",
+    "images": "/images/resources/datasheet/hardware/Gray.png",
+    "date": "2024-12-19",
+    "classification": "datasheet",
+    "form": "pdf",
+    "path": "/pdf/datasheet/hardware/ds-100-door-sensor.pdf",
+    "tags": []
+  },
+  {
+    "title": "DS-300",
+    "description": "",
+    "images": "/images/resources/datasheet/hardware/Gray.png",
+    "date": "2024-12-19",
+    "classification": "datasheet",
+    "form": "pdf",
+    "path": "/pdf/datasheet/hardware/ds-300-wireless-door-sensor.pdf",
+    "tags": []
+  },
+  {
+    "title": "FS-210",
+    "description": "",
+    "images": "/images/resources/datasheet/hardware/Gray.png",
+    "date": "2024-12-19",
+    "classification": "datasheet",
+    "form": "pdf",
+    "path": "/pdf/datasheet/hardware/fs-210.pdf",
+    "tags": []
+  },
+  {
+    "title": "GT-1030",
+    "description": "",
+    "images": "/images/resources/datasheet/hardware/Gray.png",
+    "date": "2024-12-19",
+    "classification": "datasheet",
+    "form": "pdf",
+    "path": "/pdf/datasheet/hardware/gt-1030-transportation-containers.pdf",
+    "tags": []
+  },
+  {
+    "title": "GT-1210",
+    "description": "",
+    "images": "/images/resources/datasheet/hardware/Gray.png",
+    "date": "2024-12-19",
+    "classification": "datasheet",
+    "form": "pdf",
+    "path": "/pdf/datasheet/hardware/gt-1210.pdf",
+    "tags": []
+  },
+  {
+    "title": "GT-1220",
+    "description": "",
+    "images": "/images/resources/datasheet/hardware/Gray.png",
+    "date": "2024-12-19",
+    "classification": "datasheet",
+    "form": "pdf",
+    "path": "/pdf/datasheet/hardware/gt-1220.pdf",
+    "tags": []
+  },
+  {
+    "title": "GT-1230",
+    "description": "",
+    "images": "/images/resources/datasheet/hardware/Gray.png",
+    "date": "2024-12-19",
+    "classification": "datasheet",
+    "form": "pdf",
+    "path": "/pdf/datasheet/hardware/gt-1230.pdf",
+    "tags": []
+  },
+  {
+    "title": "iDirect X7",
+    "description": "",
+    "images": "/images/resources/datasheet/hardware/Gray.png",
+    "date": "2024-12-19",
+    "classification": "datasheet",
+    "form": "pdf",
+    "path": "/pdf/datasheet/hardware/i-direct-Spec-Sheet-X7.pdf",
+    "tags": []
+  },
+  {
+    "title": "IDP-800",
+    "description": "",
+    "images": "/images/resources/datasheet/hardware/Gray.png",
+    "date": "2024-12-19",
+    "classification": "datasheet",
+    "form": "pdf",
+    "path": "/pdf/datasheet/hardware/idp-800.pdf",
+    "tags": []
+  },
+  {
+    "title": "PT-7000",
+    "description": "",
+    "images": "/images/resources/datasheet/hardware/Gray.png",
+    "date": "2024-12-19",
+    "classification": "datasheet",
+    "form": "pdf",
+    "path": "/pdf/datasheet/hardware/pt-7000.pdf",
+    "tags": []
+  },
+  {
+    "title": "Q 4000",
+    "description": "",
+    "images": "/images/resources/datasheet/hardware/Gray.png",
+    "date": "2024-12-19",
+    "classification": "datasheet",
+    "form": "pdf",
+    "path": "/pdf/datasheet/hardware/q-4000.pdf",
+    "tags": []
+  },
+  {
+    "title": "QPRO",
+    "description": "",
+    "images": "/images/resources/datasheet/hardware/Gray.png",
+    "date": "2024-12-19",
+    "classification": "datasheet",
+    "form": "pdf",
+    "path": "/pdf/datasheet/hardware/qpro.pdf",
+    "tags": []
+  },
+  {
+    "title": "ST-6000",
+    "description": "",
+    "images": "/images/resources/datasheet/hardware/Gray.png",
+    "date": "2024-12-19",
+    "classification": "datasheet",
+    "form": "pdf",
+    "path": "/pdf/datasheet/hardware/st-6000.pdf",
+    "tags": []
+  },
+  {
+    "title": "Development Kit",
+    "description": "",
+    "images": "/images/resources/datasheet/hardware/Gray.png",
+    "date": "2024-12-19",
+    "classification": "datasheet",
+    "form": "pdf",
+    "path": "/pdf/datasheet/hardware/st-6100-development-kit.pdf",
+    "tags": []
+  },
+  {
+    "title": "TS-300",
+    "description": "",
+    "images": "/images/resources/datasheet/hardware/Gray.png",
+    "date": "2024-12-19",
+    "classification": "datasheet",
+    "form": "pdf",
+    "path": "/pdf/datasheet/hardware/ts-300.pdf",
+    "tags": []
+  },
+  {
+    "title": "TS-310",
+    "description": "",
+    "images": "/images/resources/datasheet/hardware/Gray.png",
+    "date": "2024-12-19",
+    "classification": "datasheet",
+    "form": "pdf",
+    "path": "/pdf/datasheet/hardware/ts-310.pdf",
+    "tags": []
+  },
+  {
+    "title": "Z8MK2",
+    "description": "",
+    "images": "/images/resources/datasheet/hardware/Gray.png",
+    "date": "2024-12-19",
+    "classification": "datasheet",
+    "form": "pdf",
+    "path": "/pdf/datasheet/hardware/z8mk2.pdf",
+    "tags": []
+  },
+  {
+    "title": "Z10MK2",
+    "description": "",
+    "images": "/images/resources/datasheet/hardware/Gray.png",
+    "date": "2024-12-19",
+    "classification": "datasheet",
+    "form": "pdf",
+    "path": "/pdf/datasheet/hardware/z10mk2.pdf",
+    "tags": []
   }
 ]

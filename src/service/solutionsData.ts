@@ -278,12 +278,12 @@ const solutionsData: Record<string, Record<string, SolutionData>> = {
     "ko": {
         "container-iot": {
             imageIntro: "KOREAORBCOMM FOR RINANCIAL SERVICES",
-            imageMain: "컨테이너 솔루션으로 경험을 향상시키세요",
-            imageSub: "코리아오브컴에서 Container 모니터링 서비스를 통해 전세계 다양한 분야에 적합한 IoT 솔루션을 제공합니다.",
+            imageMain: "컨테이너 IoT 통합 솔루션",
+            imageSub: "코리아오브컴의 컨테이너 솔루션은 통해 다양한 컨테이너(Reefer, Dry, Open, Flat 등) 적합한 IoT 서비스를 제공합니다.",
             imageUrl: "/images/solutions/container-iot/Container_Header.jpg",
             solutionNumber: "Container IoT",
             title: "컨테이너 IoT 솔루션",
-            solutionName: "코리아오브컴에서 제공하는 컨테이너 IoT 솔루션은 냉동/냉장 컨테이너 및 화물에 대한 실시간 추적, 상태 모니터링, 원격제어 솔루션을 제공합니다.",
+            solutionName: "코리아오브컴의 Container IoT Solution은 화물에 대한 실시간 추적, 화물 및 컨테이너의 상태 모니터링, Reefer Container의 원격제어 기능을 제공합니다. ",
             description: "컨테이너 IoT 솔루션으로 자산을 관리하세요.",
             carousels: [
                 {
@@ -305,10 +305,11 @@ const solutionsData: Record<string, Record<string, SolutionData>> = {
             useCases: [
                 {
                     direction: "left",
-                    title1: "Maritime",
-                    title2: "Platform",
+                    title1: "웹 서비스",
+                    title2: "Maritime Platform",
                     slug: "maritime",
-                    description: "모든 냉장 컨테이너 유닛의 위치와 상태를 모니터링하고 온도와 같은 설정을 원격으로 조정할 수 있습니다. 자동 알람 알림을 통해 장비 오작동이나 암초 정전과 같은 중요한 상황에 신속하게 대응할 수 있습니다. 전 세계 60만 개 이상의 냉장 컨테이너에 설치되어 운송 라인, 복합 운송업체, 화주가 검증된 ROI를 달성하는 데 도움이 됩니다.",
+                    description: "IoT가 설치된 컨테이너의 위치와 상태를 실시간 모니터링하고, Reefer Container의 컨트롤러를 원격으로 조정하여 화물에 적합한 온도 및 습도를 설정할 수 있습니다. 또한 자동 알람을 통해 Reefer Container의 오동작, 전원 off 정보는 물론 컨테이너의 각종 알람을 모니터링하고 신속하게 대응할 수 있습니다.\n" +
+                        "코리아오브컴의 컨테이너 IoT 장비는 전세계 100만대 이상 설치되어 운영중이며 선사, 화주, 복합운송업체 등 다양한 사용자에게 해상/육상 전 지역에서 수집된 데이터를 제공하여 화물의 안전한 운송에 기여하고 있습니다.  \n",
                     image: "https://www.orbcomm.co.kr/resources/img/solution/reeferconnect/reffer1.PNG",
                 }
             ],
@@ -359,9 +360,9 @@ const solutionsData: Record<string, Record<string, SolutionData>> = {
             ]
         },
         "global-iot": {
-            imageIntro: "KOREAORBCOMM FOR RINANCIAL SERVICES",
-            imageMain: "글로벌 통신으로 경험을 향상시키세요.",
-            imageSub: "코리아오브컴에서 제공하는 Global 통신망을 통해 전세계 다양한 분야에 적합한 IoT 솔루션을 제공합니다.",
+            imageIntro: "",
+            imageMain: "글로벌 IoT 솔루션",
+            imageSub: "코리아오브컴에서 제공하는 Global 통신망(Global Cellular, 저궤도/정지궤도 위성망, IoT 망 등)을 통해 전세계 다양한 분야에 적합한 솔루션을 제공합니다.",
             imageUrl: "/images/solutions/global-iot/M2M_IoT.jpg",
             solutionNumber: "Global IoT",
             title: "산업용 IoT 솔루션",
@@ -398,7 +399,7 @@ const solutionsData: Record<string, Record<string, SolutionData>> = {
                     title1: "NMS",
                     title2: "",
                     slug: "nms",
-                    description: "실시간 네트워크 모니터링 시스템",
+                    description: "고객에게 제공되는 웹플랫폼(Commtrace, NMS)를 통해 산업별로 적합한 데이터를 제공하고 실시간 모니터링 및 제어 기능을 제공합니다.",
                     image: "/images/solutions/global-iot/nms_main.png",
                 },
             ]

@@ -56,7 +56,7 @@ const ChipFilterHardwareCarousel: React.FC<FilterableHardwareCarouselProps> = ({
                         <div
                             key={index}
                             className="w-full px-2 py-5 flex-shrink-0"
-                            style={{ flex: `0 0 ${100 / cardsToShow}%` }}
+                            style={{ flex: `0 0 ${100 / cardsToShow}%` }} // Fixed width for each card
                         >
                             <HardwareCard {...item} />
                         </div>
@@ -84,6 +84,47 @@ const ChipFilterHardwareCarousel: React.FC<FilterableHardwareCarouselProps> = ({
                 </button>
             </div>
         </div>
+        // <div className="relative p-6 mx-auto max-w-7xl bg-white">
+        //     {/* Carousel Container */}
+        //     <div className="overflow-hidden mb-6">
+        //         <div
+        //             className="flex transition-transform duration-300"
+        //             style={{
+        //                 transform: `translateX(-${currentIndex * (100 / cardsToShow)}%)`,
+        //             }}
+        //         >
+        //             {filteredItems.map((item, index) => (
+        //                 <div
+        //                     key={index}
+        //                     className="w-full px-2 py-5 flex-shrink-0"
+        //                     style={{ flex: `0 0 ${100 / cardsToShow}%` }}
+        //                 >
+        //                     <HardwareCard {...item} />
+        //                 </div>
+        //             ))}
+        //         </div>
+        //     </div>
+        //
+        //     {/* Navigation Buttons */}
+        //     <div className="flex justify-center gap-4 mt-4">
+        //         <button
+        //             onClick={goPrev}
+        //             className="flex items-center bg-gray-800 text-white p-3 rounded-md hover:bg-gray-700 disabled:opacity-50"
+        //             disabled={currentIndex === 0}
+        //         >
+        //             <ArrowLeftIcon aria-hidden="true" className="h-5 w-5 text-white mr-2" />
+        //             Prev
+        //         </button>
+        //         <button
+        //             onClick={goNext}
+        //             className="flex items-center bg-gray-800 text-white p-3 rounded-md hover:bg-gray-700 disabled:opacity-50"
+        //             disabled={currentIndex === maxIndex}
+        //         >
+        //             Next
+        //             <ArrowRightIcon aria-hidden="true" className="h-5 w-5 text-white ml-2" />
+        //         </button>
+        //     </div>
+        // </div>
     );
 };
 

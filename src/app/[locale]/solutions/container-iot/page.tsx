@@ -51,7 +51,7 @@ export default async function ContainerIoT({ params }: PageProps){
             </div>
         );
     }
-    const chips = ['container-iot'];
+    const chips = ['Container-IoT'];
 
     return(
         <section>
@@ -85,7 +85,7 @@ export default async function ContainerIoT({ params }: PageProps){
             >
             </SectionTitle>
             {/*<FilterableHardwareList chips={['container', 'maritime']}/>*/}
-            <ChipFilterHardwareCarousel chips={['container', 'maritime']} />
+            <ChipFilterHardwareCarousel chips={['container-iot', 'maritime']} />
             {/*<Hardware/>*/}
             {/*<FAQ/>*/}
             {/*<Download/>*/}
@@ -94,8 +94,8 @@ export default async function ContainerIoT({ params }: PageProps){
             {/*<TagFilterBlog initialTags={chips}/>*/}
 
             <SectionTitle
-                preTitle="REFERENCES"
-                title="ALL REFERNCES"
+                preTitle="RESOURCES"
+                title={`${chips} : All Resources`}
             >
             </SectionTitle>
             {/*<TagFilterBlog initialTags={['container-iot']} />*/}

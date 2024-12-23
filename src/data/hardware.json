@@ -6,9 +6,15 @@
     "category": "device",
     "imageSrc": "/images/hardware/GT-1200.png",
     "tag": [
-      "Trailer Tracking",
-      "Dry Van",
-      "Chassis and Dry Container"
+      "Tracking",
+      "Container",
+      "Trailer",
+      "VAN",
+      "Chassis",
+      "Dry",
+      "Reefer",
+      "Asset",
+      "Global-IoT"
     ],
     "slug": "gt-1200",
     "featured": true
@@ -20,9 +26,15 @@
     "category": "device",
     "imageSrc": "/images/hardware/CT-3500.png",
     "tag": [
-      "NMS",
-      "VMS",
-      "Reefer Connect"
+      "Tracking",
+      "Container",
+      "Trailer",
+      "VAN",
+      "Chassis",
+      "Dry",
+      "Reefer",
+      "Asset",
+      "Global-IoT"
     ],
     "slug": "ct-3500",
     "featured": false
@@ -34,9 +46,11 @@
     "category": "device",
     "imageSrc": "/images/hardware/ST-2100.png",
     "tag": [
+      "Tracking",
       "Maritime",
-      "ORBCOMM Platform",
-      "Global-IoT"
+      "Asset",
+      "Global-IoT",
+      "Program"
     ],
     "slug": "st-2100",
     "featured": false
@@ -48,11 +62,11 @@
     "category": "device",
     "imageSrc": "/images/hardware/ST-6100.png",
     "tag": [
+      "Tracking",
       "Maritime",
-      "ORBCOMM Platform",
-      "Reefer",
+      "Asset",
       "Global-IoT",
-      "NMS"
+      "Program"
     ],
     "slug": "st-6100",
     "featured": true
@@ -64,10 +78,11 @@
     "category": "device",
     "imageSrc": "/images/hardware/ST-6000.png",
     "tag": [
-      "Simple",
-      "Powerful",
-      "Efficient",
-      "solar-powered"
+      "Tracking",
+      "Maritime",
+      "Asset",
+      "Global-IoT",
+      "Program"
     ],
     "slug": "st-6000",
     "featured": true
@@ -79,8 +94,15 @@
     "category": "device",
     "imageSrc": "/images/hardware/CT-3600.png",
     "tag": [
-      "Maritime",
-      "Reefer Connect"
+      "Tracking",
+      "Container",
+      "Trailer",
+      "VAN",
+      "Chassis",
+      "Dry",
+      "Reefer",
+      "Asset",
+      "Global-IoT"
     ],
     "slug": "ct-3600",
     "featured": false
@@ -92,10 +114,11 @@
     "category": "device",
     "imageSrc": "/images/hardware/ST-9100.png",
     "tag": [
-      "Satellite",
-      "AIS",
-      "Monitoring",
-      "Global-IoT"
+      "Tracking",
+      "Maritime",
+      "Asset",
+      "Global-IoT",
+      "Program"
     ],
     "slug": "st-9100",
     "featured": false
@@ -109,9 +132,10 @@
     "category": "device",
     "imageSrc": "/images/hardware/QPRO.png",
     "tag": [
-      "M2M",
-      "General and Multi-Purpose Asset Tracking",
-      "Finance"
+      "Maritime",
+      "Asset",
+      "Global-IoT",
+      "Program"
     ],
     "slug": "qpro",
     "featured": false
@@ -123,9 +147,10 @@
     "category": "device",
     "imageSrc": "/images/hardware/Q-4000.png",
     "tag": [
-      "M2M",
-      "Satellite",
-      "Communication"
+      "Maritime",
+      "Asset",
+      "Global-IoT",
+      "Program"
     ],
     "slug": "q-4000",
     "featured": false
@@ -137,11 +162,7 @@
     "category": "modem",
     "imageSrc": "/images/hardware/OG-2.png",
     "tag": [
-      "M2M",
-      "Economy",
-      "Connector",
-      "Power",
-      "Protocol",
+      "Asset",
       "Global-IoT"
     ],
     "slug": "og2-ogi",
@@ -154,11 +175,7 @@
     "category": "antenna",
     "imageSrc": "/images/hardware/VSAT_Antenna.png",
     "tag": [
-      "Antenna",
-      "Satellite",
-      "MIL-STD",
-      "80cm",
-      "100cm"
+      "Internet"
     ],
     "slug": "vsat",
     "featured": false
@@ -170,9 +187,7 @@
     "category": "modem",
     "imageSrc": "/images/hardware/iDirectX7.png",
     "tag": [
-      "VSAT",
-      "Satellite",
-      "Multi-Core"
+      "Internet"
     ],
     "slug": "idirect",
     "featured": false
@@ -184,10 +199,11 @@
     "category": "device",
     "imageSrc": "/images/hardware/SC-1000.png",
     "tag": [
-      "Simple",
-      "Powerful",
-      "Efficient",
-      "solar-powered"
+      "Tracking",
+      "Maritime",
+      "Asset",
+      "Global-IoT",
+      "Program"
     ],
     "slug": "sc-1000",
     "featured": false
@@ -199,100 +215,10 @@
     "category": "device",
     "imageSrc": "/images/hardware/MT-5000.png",
     "tag": [
-      "Simple",
-      "Powerful",
-      "Efficient",
-      "solar-powered"
+      "AIS",
+      "Ocean"
     ],
     "slug": "mt-5000",
-    "featured": false
-  },
-  {
-    "title": "IS 400",
-    "subTitle": "Tractor ID sensor",
-    "description": "",
-    "category": "device",
-    "imageSrc": "/images/hardware/IS-400.webp",
-    "tag": [
-      "Tractor",
-      "Trail",
-      "Efficient",
-      "solar-powered"
-    ],
-    "slug": "if-4000",
-    "featured": false
-  },
-  {
-    "title": "PT 7000",
-    "subTitle": "Tractor Device",
-    "description": "Featuring 3-wire and CANbus primary interfaces, multiple digital and analog inputs and outputs, Bluetooth and troubleshooting.",
-    "category": "device",
-    "imageSrc": "/images/hardware/PT-7000.webp",
-    "tag": [
-      "Tractor",
-      "Trail",
-      "Efficient",
-      "solar-powered"
-    ],
-    "slug": "pt-7000",
-    "featured": false
-  },
-  {
-    "title": "GT 1030",
-    "subTitle": "Tractor Device",
-    "description": "Global connectivity, cost-efficient SIM management, analog/digital interfaces and the latest in wireless technologies.",
-    "category": "device",
-    "imageSrc": "/images/hardware/GT-1030.webp",
-    "tag": [
-      "Tractor",
-      "Trail",
-      "Efficient",
-      "solar-powered"
-    ],
-    "slug": "gt-1030",
-    "featured": false
-  },
-  {
-    "title": "IC 500",
-    "subTitle": "In-cab Cameras",
-    "description": "Captures near real-time video of incidents to keep drivers safe while minimizing risk.",
-    "category": "device",
-    "imageSrc": "/images/hardware/IC-500.webp",
-    "tag": [
-      "Tractor",
-      "Trail",
-      "Efficient",
-      "solar-powered"
-    ],
-    "slug": "ic-500",
-    "featured": false
-  },
-  {
-    "title": "BT 500",
-    "subTitle": "E-Logs Device(ELD)",
-    "description": "GPS fleet tracking, CANbus data collection, flexible communication options to connect to third-party apps and devices.",
-    "category": "device",
-    "imageSrc": "/images/hardware/BT-500.webp",
-    "tag": [
-      "Tractor",
-      "Trail",
-      "Efficient",
-      "solar-powered"
-    ],
-    "slug": "bt-500",
-    "featured": false
-  },
-
-  {
-    "title": "CS 500",
-    "subTitle": "",
-    "description": "",
-    "category": "device",
-    "imageSrc": "/images/hardware/CS-500.webp",
-    "tag": [
-
-    ],
-    "slug": "cs-500",
     "featured": false
   },
   {
@@ -302,7 +228,15 @@
     "category": "device",
     "imageSrc": "/images/hardware/CT-1000.webp",
     "tag": [
-
+      "Tracking",
+      "Container",
+      "Trailer",
+      "VAN",
+      "Chassis",
+      "Dry",
+      "Reefer",
+      "Asset",
+      "Global-IoT"
     ],
     "slug": "ct-1000",
     "featured": false
@@ -314,7 +248,15 @@
     "category": "device",
     "imageSrc": "/images/hardware/CT-1010.png",
     "tag": [
-
+      "Tracking",
+      "Container",
+      "Trailer",
+      "VAN",
+      "Chassis",
+      "Dry",
+      "Reefer",
+      "Asset",
+      "Global-IoT"
     ],
     "slug": "ct-1010",
     "featured": false
@@ -326,69 +268,10 @@
     "category": "sensor",
     "imageSrc": "/images/hardware/DS-300.webp",
     "tag": [
-
+      "Reefer",
+      "Sensor"
     ],
     "slug": "ds-300",
-    "featured": false
-  },
-  {
-    "title": "DS 310",
-    "subTitle": "",
-    "description": "",
-    "category": "sensor",
-    "imageSrc": "/images/hardware/DS-310.webp",
-    "tag": [
-
-    ],
-    "slug": "ds-310",
-    "featured": false
-  },
-  {
-    "title": "FM 6510",
-    "subTitle": "",
-    "description": "",
-    "category": "device",
-    "imageSrc": "/images/hardware/FM-6510.webp",
-    "tag": [
-
-    ],
-    "slug": "fm-6510",
-    "featured": false
-  },
-  {
-    "title": "GT 1210",
-    "subTitle": "",
-    "description": "",
-    "category": "device",
-    "imageSrc": "/images/hardware/GT-1210.webp",
-    "tag": [
-
-    ],
-    "slug": "gt-1210",
-    "featured": false
-  },
-  {
-    "title": "iDirect X7",
-    "subTitle": "",
-    "description": "",
-    "category": "modem",
-    "imageSrc": "/images/hardware/iDirectX7.png",
-    "tag": [
-
-    ],
-    "slug": "iDirect-x7",
-    "featured": false
-  },
-  {
-    "title": "PT 6000",
-    "subTitle": "",
-    "description": "",
-    "category": "device",
-    "imageSrc": "/images/hardware/PT-6000.webp",
-    "tag": [
-
-    ],
-    "slug": "pt-6000",
     "featured": false
   }
 ]
