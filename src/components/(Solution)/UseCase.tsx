@@ -1,4 +1,4 @@
-import solutionsData from '@/service/solutionsData';
+import solutionsData from '@/service/solutions/solutionsData';
 import React from 'react';
 import Image from 'next/image';
 

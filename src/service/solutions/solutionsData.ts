@@ -290,7 +290,7 @@ const solutionsData: Record<string, Record<string, SolutionData>> = {
         "container-iot": {
             imageIntro: "KOREAORBCOMM FOR RINANCIAL SERVICES",
             imageMain: "컨테이너 IoT 통합 솔루션",
-            imageSub: "코리아오브컴의 컨테이너 솔루션은 통해 다양한 컨테이너(Reefer, Dry, Open, Flat 등) 적합한 IoT 서비스를 제공합니다.",
+            imageSub: "코리아오브컴의 컨테이너 솔루션은 통해 다양한 컨테이너(Reefer, Dry, Open, Flat 등)에 적합한 IoT 서비스를 제공합니다.",
             imageUrl: "/images/solutions/container-iot/Container_Header.jpg",
             solutionNumber: "Container IoT",
             title: "컨테이너 IoT 솔루션",
@@ -512,18 +512,18 @@ const solutionsData: Record<string, Record<string, SolutionData>> = {
             character: [
                 {
                     title: "Lower Latency",
-                    subtitle: "Korea ORBCOMM의 위성 AIS data는 최소 수신지연 시간을 1분 이내로 제공합니다.",
-                    icon: "/images/icons/Satellite.png"
+                    subtitle: "Korea Orbcomm의 위성 AIS 데이터는 수신 지연 시간이 1분 이내로 제공됩니다.",
+                    icon: "/images/icons/HighSpeed.png"
                 },
                 {
                     title: "Increased Detection Rate",
-                    subtitle: "orea ORBCOMM의 전세계 해상 전역을 상시 모니터링 할 수 있도록 설계되어, 보다 효과적이고 안정적인 AIS 신호 탐지에 최적화되어 있습니다.",
-                    icon: "/images/icons/HighSpeed.png"
+                    subtitle: "Korea Orbcomm의 전세계 해상 전역을 상시 모니터링 할 수 있도록 설계되어, 보다 효과적이고 안정적인 AIS 신호 탐지에 최적화되어 있습니다.",
+                    icon: "/images/icons/Monitoring.png"
                 },
                 {
                     title: "Cost-Effective",
                     subtitle: "Korea ORBCOMM의 위성 AIS는 더 유연한 요금제와 고객의 요구에 적합한 서비스를 제공합니다.",
-                    icon: "/images/icons/LowLatencyTech.png"
+                    icon: "/images/icons/Service.png"
                 }
             ]
         }

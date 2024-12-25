@@ -1,4 +1,4 @@
-import solutionsData from '@/service/solutionsData';
+import solutionsData from '@/service/solutions/solutionsData';
 import PageTopImage from '@/components/PageTopImage';
 import Greet from '@/components/(Solution)/Greet';
 import Intro from '@/components/(Solution)/Intro';

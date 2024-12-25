@@ -11,7 +11,8 @@ export default function Greet({ solutionNumber, title, solutionName, description
             <div className='pt-36 py-12 px-24 text-center'>
                 <h1 className='text-xl text-red-800 font-semibold py-1'>{solutionNumber}</h1>
                 <h1 className='text-6xl text-black font-bold py-3 dark:text-white'>{title}</h1>
-                <h1 className='text-2xl text-gray-400 font-semibold py-4'>{solutionName}</h1>
+                <h1 className='text-xl text-gray-400 font-semibold py-4'>{solutionName}</h1>
+                {/*<h1 className='text-xl text-gray-400 font-semibold py-4'>{description}</h1>*/}
             </div>
         </section>
     )

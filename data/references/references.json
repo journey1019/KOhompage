@@ -1,0 +1,90 @@
+[
+  {
+    "date": "2024-12-23",
+    "contentType": "Video",
+    "title": "How ORBCOMM and Inmarsat’s partnership benefits construction",
+    "subtitle": "ORBCOMM and Inmarsat CEOs talk about the OGx global IoT satellite service.",
+    "tags": ["Satellite", "Global-IoT"],
+    "form": "link",
+    "image": "/images/resources/video/Resources-2-InmarsatVideo.webp",
+    "path": "https://www.youtube.com/watch?v=C5wLDjiHSY0",
+    "use": false
+  },
+  {
+    "date": "2024-12-23",
+    "contentType": "Video",
+    "title": "Hapag-Lloyd and ORBCOMM",
+    "subtitle": "See why Hapag-Lloyd chose ORBCOMM’s innovative technology to outfit its vast fleet of dry containers.",
+    "tags": ["Container-IoT", "DRY"],
+    "form": "link",
+    "image": "/images/resources/video/Maritime-Resources-3-1532x880.webp",
+    "path": "https://www.youtube.com/watch?v=-QE6gJMhrgU&t=760s",
+    "use": true
+  },
+  {
+    "date": "2024-12-23",
+    "contentType": "Video",
+    "title": "Remote Reefer Commands",
+    "subtitle": "A quick snapshot of how easy it is to use the remote reefer controls available with ORBCOMM’s reefer solution.",
+    "tags": ["Container-IoT", "Reefer"],
+    "form": "link",
+    "image": "/images/resources/video/Resources-RemoteReeferCommands.webp",
+    "path": "https://www.youtube.com/watch?v=XF7fW1gW4xs",
+    "use": true
+  },
+  {
+    "date": "2024-12-25",
+    "contentType": "Brochure",
+    "title": "The Smart Reefer Container",
+    "subtitle": "The challenge of moving refrigerated food and pharmaceuticals calls for advanced IoT reefer container technologies.",
+    "tags": ["Reefer", "Container-IoT"],
+    "form": "pdf",
+    "image": "/images/resources/brochure/Smart-Reefer-Container.png",
+    "path": "/pdf/brochure/Smart-Reefer-Container.pdf",
+    "use": true
+  },
+  {
+    "date": "2024-12-25",
+    "contentType": "Brochure",
+    "title": "Protected. At every mile.",
+    "subtitle": "Learn more about the smart dashcam that can protect your drivers, your vehicles and your reputation.",
+    "tags": ["FM-6510"],
+    "form": "pdf",
+    "image": "/images/resources/brochure/Resources-FM6510Brochure.webp",
+    "path": "/pdf/brochure/FM-6510-NA-Letter.pdf",
+    "use": true
+  },
+  {
+    "date": "2024-12-25",
+    "contentType": "Datasheet",
+    "title": "Satellite AIS",
+    "subtitle": "Satellite AIS - Category",
+    "tags": ["Satellite", "AIS"],
+    "form": "pdf",
+    "image": "/images/resources/datasheet/hardware/Gray.png",
+    "path": "/pdf/brochure/Satellite-AIS.pdf",
+    "use": true
+  },
+  {
+    "date": "2024-12-25",
+    "contentType": "Datasheet",
+    "title": "ORBCOMM Platform",
+    "subtitle": "ORBCOMM Platform - Admin Monitoring Page",
+    "tags": ["ORBCOMM", "Management"],
+    "form": "pdf",
+    "image": "/images/resources/datasheet/hardware/Gray.png",
+    "path": "/pdf/brochure/ORBCOMM-Platform.pdf",
+    "use": false
+  },
+  {
+    "date": "2024-12-25",
+    "contentType": "Datasheet",
+    "title": "SC-1000",
+    "subtitle": "Solar-powered satellite tracker | SC 1000 | ORBCOMM",
+    "tags": ["SC-1000", "Solar"],
+    "form": "pdf",
+    "image": "/images/resources/datasheet/hardware/SC1000Datasheet.png",
+    "path": "/pdf/datasheet/hardware/sc-1000.pdf",
+    "use": true
+  }
+]
