@@ -5,9 +5,10 @@ import { FilterOptions } from "@/service/references/referencesData";
 
 interface FiltersResourcesProps {
     onFilterChange: (filters: FilterOptions) => void;
+    totalResourcesCount: number; // 전체 게시글 개수
 }
 
-const FiltersResources: React.FC<FiltersResourcesProps> = ({ onFilterChange }) => {
+const FiltersResources: React.FC<FiltersResourcesProps> = ({ onFilterChange, totalResourcesCount }) => {
     const [contentType, setContentType] = useState<string[]>([]);
     const [form, setForm] = useState<string[]>([]);
     const [solutions, setSolutions] = useState<string[]>([]);
@@ -40,6 +41,7 @@ const FiltersResources: React.FC<FiltersResourcesProps> = ({ onFilterChange }) =
     return (
         <div className="mb-4">
             <h2 className="text-xl font-semibold mb-2">Filters</h2>
+            <p className="text-gray-600 mb-4"> : {totalResourcesCount} resources found</p> {/* 게시글 개수 표시 */}
             {/* Content Type */}
             <div className="mb-4">
                 <h3 className="font-semibold">Content Type</h3>

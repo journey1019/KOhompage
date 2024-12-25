@@ -39,7 +39,7 @@ const SearchBar: React.FC<SearchBarProps> = ({ onSearch }) => {
                     type="text"
                     value={input}
                     onChange={handleInputChange} // 입력 변경 시 바로 검색
-                    placeholder="Search resources..."
+                    placeholder="Search by keyword"
                     className="py-3 px-12 rounded-md w-full border-gray-300 border-2"
                 />
             </div>
