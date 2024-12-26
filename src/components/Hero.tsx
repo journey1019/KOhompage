@@ -18,18 +18,20 @@ export default function Hero() {
                     unoptimized
                     className="items-center justify-center mx-auto"
                 />
-                <h2 className="text-lg sm:text-xl lg:text-2xl xl:text-3xl text-white font-semibold text-center mt-2">
-                    Satellite communication service provider
+                <h2 className="text-lg sm:text-xl lg:text-2xl xl:text-3xl text-white font-normal text-center mt-2">
+                    전세계 Total IoT Service를 제공하는 Provider
                 </h2>
-                <p className="text-gray-100 text-sm sm:text-base lg:text-lg mt-2">
-                    Korea ORBCOMM
-                </p>
-                <Link href="/contact">
-                    <button
-                        className="bg-red-800 font-bold text-white rounded-xl py-1 px-4 mt-4 sm:mt-6 lg:mt-8 sm:py-2 sm:px-6 lg:py-3 lg:px-8 transition-transform transform hover:scale-105">
-                        Contact Us!
-                    </button>
-                </Link>
+                {/*<p className="text-gray-100 text-sm sm:text-base lg:text-lg mt-2">*/}
+                {/*    Korea ORBCOMM*/}
+                {/*</p>*/}
+                <div className="flex flex-col items-center space-y-4 lg:space-y-0 mt-6 lg:flex-row lg:gap-x-5">
+                    <a
+                        href="/contact-us"
+                        type="button"
+                        className="w-full max-w-xs lg:max-w-[12rem] bg-gray-300 bg-opacity-10 font-bold text-gray-300 rounded-full border-2 border-gray-800 py-3 px-6 sm:px-8 lg:px-10 text-center hover:bg-gray-700 hover:bg-opacity-10">
+                        상담 요청하기
+                    </a>
+                </div>
             </div>
         </section>
         // <section className='bg-white dark:bg-gray-900'>
