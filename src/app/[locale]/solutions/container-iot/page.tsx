@@ -22,7 +22,7 @@ import { SectionTitle } from '@/components/(About)/SectionTitle';
 import TagFilterBlogCarousel from '@/components/(Resources)/TagFilterBlogCarousel';
 // import TagFilterBlog from '@/components/(Main)/TagFilterBlog';
 import ChipFilterHardwareCarousel from '@/components/(Hardware)/ChipFilterHardwareCarousel';
-import FilterReferenceCarousel from '@/components/(Resources)/TagFilterResourceCarousel';
+import FilterReferenceCarousel from '@/components/(Resources)/FilterResourceCarousel';
 
 interface PageProps {
     params: {locale: string};
