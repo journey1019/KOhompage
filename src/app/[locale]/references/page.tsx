@@ -9,6 +9,7 @@ import {
 import ResourceCard from "@/components/(Resources)/ResourceCard";
 import SearchBar from "@/components/(Resources)/SearchBar";
 import FiltersResources from "@/components/(Resources)/FiltersResources";
+import Pagination from "@/components/(Resources)/Pagination";
 
 const ReferencesPage = () => {
     const [searchQuery, setSearchQuery] = useState(""); // 검색어 상태
@@ -17,15 +18,24 @@ const ReferencesPage = () => {
     const [totalResourcesCount, setTotalResourcesCount] = useState(resources.length); // 전체 게시글 개수
     const [isDrawerOpen, setIsDrawerOpen] = useState(false); // 드로어 상태
 
+    const [currentPage, setCurrentPage] = useState(1); // 현재 페이지
+    const itemsPerPage = 18; // 페이지당 항목 수
+
     useEffect(() => {
         const filteredResources = getFilteredResourcesByQueryAndFilters(searchQuery, filters);
         setResources(filteredResources); // 필터링된 게시글 업데이트
         setTotalResourcesCount(filteredResources.length); // 게시글 개수 업데이트
+        setCurrentPage(1); // 필터링 시 첫 번째 페이지로 이동
     }, [searchQuery, filters]);
 
     const toggleDrawer = () => {
         setIsDrawerOpen(!isDrawerOpen); // 드로어 상태 토글
     };
+
+    // 현재 페이지에 표시할 리소스 계산
+    const startIndex = (currentPage - 1) * itemsPerPage;
+    const currentResources = resources.slice(startIndex, startIndex + itemsPerPage);
+
 
     return (
         <div className="mx-auto max-w-7xl px-6 py-12 lg:px-8">
@@ -59,12 +69,22 @@ const ReferencesPage = () => {
                 {/* Right Section: Resource List */}
                 <div className="lg:col-span-3">
                     <div className="grid grid-cols-1 gap-2 md:grid-cols-2 lg:grid-cols-3">
-                        {resources.length > 0 ? (
-                            resources.map((post) => <ResourceCard key={post.path} {...post} />)
+                        {currentResources.length > 0 ? (
+                            currentResources.map((post) => (
+                                <ResourceCard key={post.path} {...post} />
+                            ))
                         ) : (
                             <p className="text-gray-500">No resources match your criteria.</p>
                         )}
                     </div>
+
+                    {/* Pagination */}
+                    <Pagination
+                        currentPage={currentPage}
+                        totalItems={totalResourcesCount}
+                        itemsPerPage={itemsPerPage}
+                        onPageChange={setCurrentPage}
+                    />
                 </div>
             </div>
 

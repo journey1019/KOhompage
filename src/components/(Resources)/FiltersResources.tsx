@@ -45,7 +45,7 @@ const FiltersResources: React.FC<FiltersResourcesProps> = ({ onFilterChange, tot
             {/* Content Type */}
             <div className="mb-4">
                 <h3 className="font-semibold">Content Type</h3>
-                {["Video", "Brochure", "Datasheet"].map((type) => (
+                {["Article", "Brochure", "Datasheet", "Video"].map((type) => (
                     <label key={type} className="block">
                         <input
                             type="checkbox"
@@ -61,7 +61,7 @@ const FiltersResources: React.FC<FiltersResourcesProps> = ({ onFilterChange, tot
             {/* Form */}
             <div className="mb-4">
                 <h3 className="font-semibold">Form</h3>
-                {["link", "pdf"].map((type) => (
+                {["link", "pdf", "page"].map((type) => (
                     <label key={type} className="block">
                         <input
                             type="checkbox"

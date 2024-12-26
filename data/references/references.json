@@ -1,5 +1,41 @@
 [
   {
+    "date": "2016-04-27",
+    "contentType": "Article",
+    "title": "[대한민국해양안전엑스포] 코리아오브컴, 전세계 선박정보 담은 위성데이터 서비스",
+    "subtitle": "코리아오브컴 (KOREA ORBCOMM)은 M2M(Machine-to-Machine) 에 특화된 통신 서비스를 제공하는 기업으로 선박안전 운행정보와 관련된 통신 서비스를 제공한다.",
+    "tags": ["Satellite", "Global-IoT"],
+    "form": "link",
+    "image": "/images/resources/article/2016-04-27.png",
+    "path": "https://kr.aving.net/news/articleView.html?idxno=1367659",
+    "use": false
+  },
+  {
+    "date": "2024-03-27",
+    "contentType": "Article",
+    "title": "위성통신기업 코리아오브컴, 선박 IoT솔루션 출시로 국내사업 강화",
+    "subtitle": "글로벌 위성통신기업 오브컴이 한국시장에서 닫기\n사물인터넷 (IoT : Internet of Things)\n: 여러 사물(thing)이 만든 정보를 공유하는 컴퓨터 통신망\n상세보기▶\n사물인터넷(IoT) 사업을 강화하고 있다. 자산추적에 특화된 위성통신 기술력과 서비스경험에 IoT를 접목하며 국내 시장 입지를 확대한다는 목표다.",
+    "tags": ["Satellite", "Global-IoT"],
+    "form": "link",
+    "image": "/images/resources/article/2024-03-27.png",
+    "path": "http://www.haesanews.com/news/articleView.html?idxno=116775",
+    "use": false
+  },
+  {
+    "date": "2024-12-26",
+    "contentType": "Newsletter",
+    "title": "[NEWS #1] KOREA ORBCOMM 첫 뉴스레터",
+    "subtitle": "코리아오브컴 뉴스레터를 구독해주셔서 감사합니다.",
+    "tags": ["Satellite", "Global-IoT"],
+    "form": "page",
+    "image": "/images/resources/newsletter/2024-12-10.png",
+    "path": "http://www.haesanews.com/news/articleView.html?idxno=116775",
+    "use": false
+  },
+
+
+
+  {
     "date": "2024-12-23",
     "contentType": "Video",
     "title": "How ORBCOMM and Inmarsat’s partnership benefits construction",
@@ -33,58 +69,589 @@
     "use": true
   },
   {
-    "date": "2024-12-25",
-    "contentType": "Brochure",
-    "title": "The Smart Reefer Container",
-    "subtitle": "The challenge of moving refrigerated food and pharmaceuticals calls for advanced IoT reefer container technologies.",
-    "tags": ["Reefer", "Container-IoT"],
-    "form": "pdf",
-    "image": "/images/resources/brochure/Smart-Reefer-Container.png",
-    "path": "/pdf/brochure/Smart-Reefer-Container.pdf",
-    "use": true
+    "date": "2024-12-26",
+    "contentType": "Video",
+    "title": "MWC 2024: the power of satellite-cellular convergence",
+    "subtitle": "Learn how satellite-celluar convergence is changing industries and what the future of satellite IoT",
+    "tags": [],
+    "form": "link",
+    "image": "/images/resources/video/Tessla.png",
+    "path": "https://youtu.be/RskYBc3895g",
+    "use": false
   },
   {
-    "date": "2024-12-25",
+    "date": "2024-12-26",
+    "contentType": "Video",
+    "title": "Reefer Container Management: Trip-Based Telematics Adds New Possibilities",
+    "subtitle": "Operators cna quickly react to issues and remotely adjust temperature levels to ensure compliance.",
+    "tags": [],
+    "form": "link",
+    "image": "/images/resources/video/Reefer.png",
+    "path": "https://www.youtube.com/watch?v=9ppHkaMbCRE",
+    "use": false
+  },
+  {
+    "date": "2024-12-26",
+    "contentType": "Video",
+    "title": "MSUA Game Changers LIVE with Dave Roscoe",
+    "subtitle": "Dave Roscoe, ORBCOMM’s Executive Vice President of Satellite Communications and Products, discusses how ORBCOMM satellite IoT technology is helping businesses optimize operations and drive results.",
+    "tags": [],
+    "form": "link",
+    "image": "images/resources/video/Resources-MSUA-Games-Changers-Dave-Roscoe.png",
+    "path": "https://www.youtube.com/watch?v=-EPkLyHnTDw",
+    "use": false
+  },
+  {
+    "date": "2024-12-26",
+    "contentType": "Video",
+    "title": "MWC 2024: how satellite innovations are changing the game",
+    "subtitle": "ORBCOMM’s Dave Roscoe shares how satellite IoT is changing with technological developments during this MWC 2024 panel discussion.",
+    "tags": [],
+    "form": "link",
+    "image": "/images/resources/video/Resources-DaveRoscoePanel.png",
+    "path": "https://www.youtube.com/watch?v=BRGKKEuuq2I",
+    "use": false
+  },
+
+
+  {
+    "date": "2024-12-26",
     "contentType": "Brochure",
     "title": "Protected. At every mile.",
     "subtitle": "Learn more about the smart dashcam that can protect your drivers, your vehicles and your reputation.",
-    "tags": ["FM-6510"],
+    "tags": ["Camera"],
     "form": "pdf",
     "image": "/images/resources/brochure/Resources-FM6510Brochure.webp",
     "path": "/pdf/brochure/FM-6510-NA-Letter.pdf",
-    "use": true
+    "use": false
   },
   {
-    "date": "2024-12-25",
-    "contentType": "Datasheet",
-    "title": "Satellite AIS",
-    "subtitle": "Satellite AIS - Category",
-    "tags": ["Satellite", "AIS"],
-    "form": "pdf",
-    "image": "/images/resources/datasheet/hardware/Gray.png",
-    "path": "/pdf/brochure/Satellite-AIS.pdf",
-    "use": true
-  },
-  {
-    "date": "2024-12-25",
-    "contentType": "Datasheet",
+    "date": "2024-12-26",
+    "contentType": "Brochure",
     "title": "ORBCOMM Platform",
-    "subtitle": "ORBCOMM Platform - Admin Monitoring Page",
-    "tags": ["ORBCOMM", "Management"],
+    "subtitle": "",
+    "tags": [],
     "form": "pdf",
     "image": "/images/resources/datasheet/hardware/Gray.png",
     "path": "/pdf/brochure/ORBCOMM-Platform.pdf",
     "use": false
   },
   {
-    "date": "2024-12-25",
-    "contentType": "Datasheet",
-    "title": "SC-1000",
-    "subtitle": "Solar-powered satellite tracker | SC 1000 | ORBCOMM",
-    "tags": ["SC-1000", "Solar"],
+    "date": "2024-12-26",
+    "contentType": "Brochure",
+    "title": "The Smart Reefer Container",
+    "subtitle": "The challenge of moving refrigerated food and pharmaceuticals calls for advanced IoT reefer container technologies.",
+    "tags": ["Container-IoT", "DRY"],
     "form": "pdf",
-    "image": "/images/resources/datasheet/hardware/SC1000Datasheet.png",
-    "path": "/pdf/datasheet/hardware/sc-1000.pdf",
+    "image": "/images/resources/brochure/Smart-Reefer-Container.png",
+    "path": "/pdf/brochure/Smart-Reefer-Container.pdf",
     "use": true
+  },
+
+  {
+    "date": "2024-12-26",
+    "contentType": "Brochure",
+    "title": "Satellite backup for complete coverage",
+    "subtitle": "Mission-critical cargo? Our satellite backup options keep you connected.",
+    "tags": ["Global-IoT", "OGx/IDP", "Satellite", "Cellular"],
+    "form": "pdf",
+    "image": "/images/resources/brochure/Transportation-Containers-resources_5_satellite-IoT.webp",
+    "path": "/pdf/brochure/Power-Dual-Mode-Connectivity.pdf",
+    "use": true
+  },
+  {
+    "date": "2024-12-26",
+    "contentType": "Brochure",
+    "title": "OGx: expand your horizons",
+    "subtitle": "Develop more flexible and customizable IoT offerings with OGx: our next-generation satellite IoT service.",
+    "tags": ["Global-IoT", "OGx/IDP", "Satellite", "Cellular"],
+    "form": "pdf",
+    "image": "/images/resources/brochure/OGxBrochure.png",
+    "path": "/pdf/brochure/OGx-Brochure.pdf",
+    "use": true
+  },
+  {
+    "date": "2024-12-26",
+    "contentType": "Brochure",
+    "title": "Asset tracking and control for construction fleets",
+    "subtitle": "Learn about award-winning heavy equipment solutions for OEMs.",
+    "tags": ["Global-IoT", "OGx/IDP", "Satellite", "Cellular"],
+    "form": "pdf",
+    "image": "/images/resources/brochure/ORBCOMM-Heavy-Equipment.png",
+    "path": "/pdf/brochure/ORBCOMM-Heavy-Equipment.pdf",
+    "use": true
+  },
+
+
+
+  {
+    "date": "2024-12-26",
+    "contentType": "Brochure",
+    "title": "The Smart Gold Chain",
+    "subtitle": "Real-time connectivity, visibility and traceability for refrigerated transportation.",
+    "tags": ["Container-IoT", "Reefer"],
+    "form": "pdf",
+    "image": "/images/resources/brochure/Resources-SmartColdChain.webp",
+    "path": "/pdf/brochure/Smart-Cold-Chain-EN.pdf",
+    "use": true
+  },
+  {
+    "date": "2024-12-26",
+    "contentType": "Brochure",
+    "title": "Smart Dry Container",
+    "subtitle": "Asset visibility, cargo security and data-driven planning",
+    "tags": ["Container-IoT", "DRY"],
+    "form": "pdf",
+    "image": "/images/resources/brochure/Smart-Dry-Container.png",
+    "path": "/pdf/brochure/Smart-Dry-Container.pdf",
+    "use": true
+  },
+  {
+    "date": "2024-12-26",
+    "contentType": "Brochure",
+    "title": "Smart telematics for growing fleets",
+    "subtitle": "Complete visibility. No Money down.",
+    "tags": ["Container-IoT", "Reefer"],
+    "form": "pdf",
+    "image": "/images/resources/brochure/Resources-SmartTrailer.png",
+    "path": "/pdf/brochure/Smart-Trailer.pdf",
+    "use": true
+  },
+  {
+    "date": "2024-12-26",
+    "contentType": "Brochure",
+    "title": "ORBCOMM Maritime",
+    "subtitle": "",
+    "tags": ["Container-IoT", "Reefer", "DRY"],
+    "form": "pdf",
+    "image": "/images/resources/datasheet/hardware/Gray.png",
+    "path": "/pdf/brochure/ORBCOMM-Maritime-Platform-A4-eng.pdf",
+    "use": true
+  },
+  {
+    "date": "2024-12-26",
+    "contentType": "Brochure",
+    "title": "Smart Container Shipping",
+    "subtitle": "",
+    "tags": ["Container-IoT", "Reefer"],
+    "form": "pdf",
+    "image": "/images/resources/datasheet/hardware/Gray.png",
+    "path": "/pdf/brochure/Smart-Container-Shipping.pdf",
+    "use": true
+  },
+  {
+    "date": "2024-12-26",
+    "contentType": "Brochure",
+    "title": "Satellite AIS",
+    "subtitle": "",
+    "tags": ["AIS", "Satellite"],
+    "form": "pdf",
+    "image": "/images/resources/datasheet/hardware/Gray.png",
+    "path": "/pdf/brochure/Satellite-AIS.pdf",
+    "use": true
+  },
+
+
+
+
+  {
+    "date": "2024-12-26",
+    "contentType": "Datasheet",
+    "title": "Starlink Standard",
+    "subtitle": "",
+    "tags": ["Starlink"],
+    "form": "pdf",
+    "image": "/images/resources/datasheet/hardware/Gray.png",
+    "path": "/pdf/datasheet/hardware/Starlink-Product-Specifications_Standard.pdf",
+    "use": true
+  },
+  {
+    "date": "2024-12-26",
+    "contentType": "Datasheet",
+    "title": "Starlink HighPerfomance",
+    "subtitle": "",
+    "tags": ["Starlink"],
+    "form": "pdf",
+    "image": "/images/resources/datasheet/hardware/Gray.png",
+    "path": "/pdf/datasheet/hardware/Starlink-Product-Specifications_HighPerformance.pdf",
+    "use": true
+  },
+  {
+    "date": "2024-12-26",
+    "contentType": "Datasheet",
+    "title": "VesselConnect: Reefer container management at sea",
+    "subtitle": "Stay connected to containers at sea with an onboard cellular network that facilitates ship-to-shore communications, enabling remote temperature monitoring and more.",
+    "tags": ["Container-IoT", "Reefer"],
+    "form": "pdf",
+    "image": "/images/resources/datasheet/application/VesselConnectDatasheet.png",
+    "path": "/pdf/datasheet/application/vesselconnect.pdf",
+    "use": true
+  },
+  {
+    "date": "2024-12-26",
+    "contentType": "Datasheet",
+    "title": "ReeferConnect",
+    "subtitle": "",
+    "tags": ["Container-IoT", "Reefer"],
+    "form": "pdf",
+    "image": "/images/resources/datasheet/hardware/Gray.png",
+    "path": "/pdf/datasheet/application/ReeferConnect_KR.pdf",
+    "use": true
+  },
+  {
+    "date": "2024-12-26",
+    "contentType": "Datasheet",
+    "title": "ST 6100",
+    "subtitle": "It is a perfect communication equipment that connects the coastal waters and oceans and land for ships and buoys.",
+    "tags": ["Global-IoT", "OGx/IDP", "Satellite"],
+    "form": "pdf",
+    "image": "/images/resources/datasheet/hardware/ST6100Datasheet.png",
+    "path": "/pdf/datasheet/hardware/st-6100.pdf",
+    "use": true
+  },
+  {
+    "date": "2024-12-26",
+    "contentType": "Datasheet",
+    "title": "MT 5000",
+    "subtitle": "Built for small-craft owners, fleet operators, maritime authorities and enforcement agencies, the MT 5000 smart small vessel telematics device delivers vessel location data for improved maritime safety, vessel security and environment compliance.",
+    "tags": ["AIS"],
+    "form": "pdf",
+    "image": "/images/resources/datasheet/hardware/MT5000Datasheet.png",
+    "path": "/pdf/datasheet/hardware/mt-5000.pdf",
+    "use": true
+  },
+  {
+    "date": "2024-12-26",
+    "contentType": "Datasheet",
+    "title": "ST-2100",
+    "subtitle": "Leverage satellite connectivity to develop solutions designed for any use case with our ST 2100 satellite terminal.",
+    "tags": ["Global-IoT", "OGx/IDP", "Satellite"],
+    "form": "pdf",
+    "image": "/images/resources/datasheet/hardware/ST2100Datasheet.png",
+    "path": "/pdf/datasheet/hardware/st-2100.pdf",
+    "use": true
+  },
+  {
+    "date": "2024-12-26",
+    "contentType": "Datasheet",
+    "title": "ST 9100",
+    "subtitle": "Multi-network connectivity powered by ORBCOMM technology and designed to support virtually any IoT use case.",
+    "tags": ["Global-IoT", "OGx/IDP", "Satellite", "Cellular"],
+    "form": "pdf",
+    "image": "/images/resources/datasheet/hardware/ST9100Datasheet.png",
+    "path": "/pdf/datasheet/hardware/st-9100.pdf",
+    "use": true
+  },
+  {
+    "date": "2024-12-26",
+    "contentType": "Datasheet",
+    "title": "ST 9100: Dual-mode satellite-cellular terminal",
+    "subtitle": "Cost effectively track, monitor, and control remote assets with multi-network connectivity.",
+    "tags": ["Global-IoT", "OGx/IDP", "Satellite", "Cellular"],
+    "form": "pdf",
+    "image": "/images/resources/datasheet/hardware/Agri-resources-ST-9100.webp",
+    "path": "/pdf/datasheet/hardware/st-9100_2.pdf",
+    "use": true
+  },
+  {
+    "date": "2024-12-26",
+    "contentType": "Datasheet",
+    "title": "CT 1000",
+    "subtitle": "Affordable asset tracking that improves operations and simplifies fleet management.",
+    "tags": ["Container-IoT", "DRY"],
+    "form": "pdf",
+    "image": "/images/resources/datasheet/hardware/CT1000Datasheet.webp",
+    "path": "/pdf/datasheet/hardware/ct-1000.pdf",
+    "use": true
+  },
+  {
+    "date": "2024-12-26",
+    "contentType": "Datasheet",
+    "title": "CT 3500",
+    "subtitle": "",
+    "tags": ["Container-IoT", "Reefer"],
+    "form": "pdf",
+    "image": "/images/resources/datasheet/hardware/CT3500Datasheet.png",
+    "path": "/pdf/datasheet/hardware/ct-3500.pdf",
+    "use": true
+  },
+  {
+    "date": "2024-12-26",
+    "contentType": "Datasheet",
+    "title": "CT 3600",
+    "subtitle": "Simplify reefer management with the next generation of reefer container monitoring technology.\n                            Gain complete visibility and control of assets at every point in the supply chain on land, rail or sea.",
+    "tags": ["Container-IoT", "Reefer"],
+    "form": "pdf",
+    "image": "/images/resources/datasheet/hardware/CT3600Datasheet.webp",
+    "path": "/pdf/datasheet/hardware/ct-3600.pdf",
+    "use": true
+  },
+  {
+    "date": "2024-12-26",
+    "contentType": "Datasheet",
+    "title": "DS 300",
+    "subtitle": "",
+    "tags": ["Container-IoT", "Reefer", "DRY"],
+    "form": "pdf",
+    "image": "/images/resources/datasheet/hardware/DS300Datasheet.png",
+    "path": "/pdf/datasheet/hardware/ds-300-wireless-door-sensor.pdf",
+    "use": true
+  },
+  {
+    "date": "2024-12-26",
+    "contentType": "Datasheet",
+    "title": "IDP 800",
+    "subtitle": "",
+    "tags": ["Global IoT", "OGx/IDP", "Satellite", "Cellular"],
+    "form": "pdf",
+    "image": "/images/resources/datasheet/hardware/IDP800Datasheet.png",
+    "path": "/pdf/datasheet/hardware/idp-800.pdf",
+    "use": true
+  },
+  {
+    "date": "2024-12-26",
+    "contentType": "Datasheet",
+    "title": "Q 4000",
+    "subtitle": "",
+    "tags": ["Global IoT", "Satellite"],
+    "form": "pdf",
+    "image": "/images/resources/datasheet/hardware/Q4000Datasheet.png",
+    "path": "/pdf/datasheet/hardware/q-4000.pdf",
+    "use": true
+  },
+
+
+
+
+  {
+    "date": "2024-12-26",
+    "contentType": "Datasheet",
+    "title": "ORBCOMM Platform",
+    "subtitle": "",
+    "tags": [],
+    "form": "pdf",
+    "image": "/images/resources/datasheet/hardware/Gray.png",
+    "path": "/pdf/datasheet/application/orbcomm-platform.pdf",
+    "use": false
+  },
+  {
+    "date": "2024-12-26",
+    "contentType": "Datasheet",
+    "title": "1Sat Datasheet",
+    "subtitle": "",
+    "tags": [],
+    "form": "pdf",
+    "image": "/images/resources/datasheet/hardware/Gray.png",
+    "path": "/pdf/datasheet/application/1SAT-Datasheet.pdf",
+    "use": false
+  },
+  {
+    "date": "2024-12-26",
+    "contentType": "Datasheet",
+    "title": "Multi Path Communication System",
+    "subtitle": "",
+    "tags": [],
+    "form": "pdf",
+    "image": "/images/resources/datasheet/hardware/Gray.png",
+    "path": "/pdf/datasheet/application/Multi-Path-Communication-System.pdf",
+    "use": false
+  },
+  {
+    "date": "2024-12-26",
+    "contentType": "Datasheet",
+    "title": "Development Kit",
+    "subtitle": "",
+    "tags": [],
+    "form": "pdf",
+    "image": "/images/resources/datasheet/hardware/Gray.png",
+    "path": "/pdf/datasheet/hardware/st-6100-development-kit.pdf",
+    "use": false
+  },
+  {
+    "date": "2024-12-26",
+    "contentType": "Datasheet",
+    "title": "FM 6510",
+    "subtitle": "Protect your drivers, protect your vehicles and protect your reputation with our smart telematics-enabled dashcam.",
+    "tags": [],
+    "form": "pdf",
+    "image": "/images/resources/datasheet/hardware/FM6510Datasheet.webp",
+    "path": "/pdf/datasheet/hardware/FM-6510-Letter_eng.pdf",
+    "use": false
+  },
+  {
+    "date": "2024-12-26",
+    "contentType": "Datasheet",
+    "title": "IS-400",
+    "subtitle": "",
+    "tags": ["Container-IoT"],
+    "form": "pdf",
+    "image": "/images/resources/datasheet/hardware/IS-400-remote-datatsheet.webp",
+    "path": "/pdf/datasheet/hardware/is-400.pdf",
+    "use": false
+  },
+  {
+    "date": "2024-12-26",
+    "contentType": "Datasheet",
+    "title": "PT-6000",
+    "subtitle": "",
+    "tags": ["Container-IoT"],
+    "form": "pdf",
+    "image": "/images/resources/datasheet/hardware/PT6000Datasheet.webp",
+    "path": "/pdf/datasheet/hardware/pt-6000.pdf",
+    "use": false
+  },
+  {
+    "date": "2024-12-26",
+    "contentType": "Datasheet",
+    "title": "BT-500",
+    "subtitle": "",
+    "tags": ["Container-IoT"],
+    "form": "pdf",
+    "image": "/images/resources/datasheet/hardware/Resources-BT500Datasheet.webp",
+    "path": "/pdf/datasheet/hardware/bt-500.pdf",
+    "use": false
+  },
+  {
+    "date": "2024-12-26",
+    "contentType": "Datasheet",
+    "title": "IC-500",
+    "subtitle": "",
+    "tags": ["Truck"],
+    "form": "pdf",
+    "image": "/images/resources/datasheet/hardware/Resources-IC500Datasheet.webp",
+    "path": "/pdf/datasheet/hardware/ic-500.pdf",
+    "use": false
+  },
+  {
+    "date": "2024-12-26",
+    "contentType": "Datasheet",
+    "title": "DS-100",
+    "subtitle": "",
+    "tags": ["Container-IoT"],
+    "form": "pdf",
+    "image": "/images/resources/datasheet/hardware/Gray.png",
+    "path": "/pdf/datasheet/hardware/ds-100-door-sensor.pdf",
+    "use": false
+  },
+  {
+    "date": "2024-12-26",
+    "contentType": "Datasheet",
+    "title": "FS-210",
+    "subtitle": "",
+    "tags": ["Genset"],
+    "form": "pdf",
+    "image": "/images/resources/datasheet/hardware/Gray.png",
+    "path": "/pdf/datasheet/hardware/fs-210.pdf",
+    "use": false
+  },
+  {
+    "date": "2024-12-26",
+    "contentType": "Datasheet",
+    "title": "GT-1030",
+    "subtitle": "",
+    "tags": ["Container-IoT"],
+    "form": "pdf",
+    "image": "/images/resources/datasheet/hardware/Gray.png",
+    "path": "/pdf/datasheet/hardware/gt-1030-transportation-containers.pdf",
+    "use": false
+  },
+  {
+    "date": "2024-12-26",
+    "contentType": "Datasheet",
+    "title": "GT-1210",
+    "subtitle": "",
+    "tags": ["Container-IoT"],
+    "form": "pdf",
+    "image": "/images/resources/datasheet/hardware/Gray.png",
+    "path": "/pdf/datasheet/hardware/gt-1210.pdf",
+    "use": false
+  },
+  {
+    "date": "2024-12-26",
+    "contentType": "Datasheet",
+    "title": "GT-1220",
+    "subtitle": "",
+    "tags": ["Container-IoT"],
+    "form": "pdf",
+    "image": "/images/resources/datasheet/hardware/Gray.png",
+    "path": "/pdf/datasheet/hardware/gt-1220.pdf",
+    "use": false
+  },
+  {
+    "date": "2024-12-26",
+    "contentType": "Datasheet",
+    "title": "GT-1230",
+    "subtitle": "",
+    "tags": ["Container-IoT"],
+    "form": "pdf",
+    "image": "/images/resources/datasheet/hardware/Gray.png",
+    "path": "/pdf/datasheet/hardware/gt-1230.pdf",
+    "use": false
+  },
+  {
+    "date": "2024-12-26",
+    "contentType": "Datasheet",
+    "title": "iDirect X7",
+    "subtitle": "",
+    "tags": [],
+    "form": "pdf",
+    "image": "/images/resources/datasheet/hardware/Gray.png",
+    "path": "/pdf/datasheet/hardware/i-direct-Spec-Sheet-X7.pdf",
+    "use": false
+  },
+  {
+    "date": "2024-12-26",
+    "contentType": "Datasheet",
+    "title": "QPRO",
+    "subtitle": "",
+    "tags": ["Global-IoT", "Satellite"],
+    "form": "pdf",
+    "image": "/images/resources/datasheet/hardware/Gray.png",
+    "path": "/pdf/datasheet/hardware/qpro.pdf",
+    "use": false
+  },
+  {
+    "date": "2024-12-26",
+    "contentType": "Datasheet",
+    "title": "TS-300",
+    "subtitle": "",
+    "tags": [],
+    "form": "pdf",
+    "image": "/images/resources/datasheet/hardware/Gray.png",
+    "path": "/pdf/datasheet/hardware/ts-300.pdf",
+    "use": false
+  },
+  {
+    "date": "2024-12-26",
+    "contentType": "Datasheet",
+    "title": "TS-310",
+    "subtitle": "",
+    "tags": [],
+    "form": "pdf",
+    "image": "/images/resources/datasheet/hardware/Gray.png",
+    "path": "/pdf/datasheet/hardware/ts-310.pdf",
+    "use": false
+  },
+  {
+    "date": "2024-12-26",
+    "contentType": "Datasheet",
+    "title": "Z8MK2",
+    "subtitle": "",
+    "tags": [],
+    "form": "pdf",
+    "image": "/images/resources/datasheet/hardware/Gray.png",
+    "path": "/pdf/datasheet/hardware/z8mk2.pdf",
+    "use": false
+  },
+  {
+    "date": "2024-12-26",
+    "contentType": "Datasheet",
+    "title": "Z10MK2",
+    "subtitle": "",
+    "tags": [],
+    "form": "pdf",
+    "image": "/images/resources/datasheet/hardware/Gray.png",
+    "path": "/pdf/datasheet/hardware/z10mk2.pdf",
+    "use": false
   }
 ]

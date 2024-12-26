@@ -69,16 +69,8 @@
     "path": "https://www.youtube.com/watch?v=BRGKKEuuq2I",
     "tags": ["container-iot", "reefer", "CT-3500"]
   },
-  {
-    "title": "The Smart Reefer Container",
-    "description": "The challenge of moving refrigerated food and pharmaceuticals calls for advanced IoT reefer container technologies.",
-    "images": "/images/resources/brochure/Smart-Reefer-Container.png",
-    "date": "2024-12-18",
-    "classification": "brochure",
-    "form": "pdf",
-    "path": "/pdf/brochure/Smart-Reefer-Container.pdf",
-    "tags": ["reefer", "container-iot"]
-  },
+
+
   {
     "title": "Protected. At every mile.",
     "description": "Learn more about the smart dashcam that can protect your drivers, your vehicles and your reputation.",
@@ -87,6 +79,16 @@
     "classification": "brochure",
     "form": "pdf",
     "path": "/pdf/brochure/FM-6510-NA-Letter.pdf",
+    "tags": ["reefer", "container-iot"]
+  },
+  {
+    "title": "The Smart Reefer Container",
+    "description": "The challenge of moving refrigerated food and pharmaceuticals calls for advanced IoT reefer container technologies.",
+    "images": "/images/resources/brochure/Smart-Reefer-Container.png",
+    "date": "2024-12-18",
+    "classification": "brochure",
+    "form": "pdf",
+    "path": "/pdf/brochure/Smart-Reefer-Container.pdf",
     "tags": ["reefer", "container-iot"]
   },
   {
@@ -189,6 +191,11 @@
     "path": "/pdf/brochure/Smart-Container-Shipping.pdf",
     "tags": ["maritime", "container-iot", "Platform", "NMS"]
   },
+
+
+
+
+
   {
     "title": "SC-1000",
     "description": "Solar-powered satellite tracker | SC 1000 | ORBCOMM",

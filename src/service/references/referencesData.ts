@@ -53,6 +53,9 @@ export const getFilteredResourcesByQueryAndFilters = (
     const normalizedQuery = query.trim().toLowerCase();
 
     return resourcesData.filter((resource) => {
+        // use 필드가 true인지 확인
+        if (!resource.use) return false;
+
         // 검색어 필터링
         const searchableContent = [
             resource.contentType,
@@ -83,47 +86,4 @@ export const getFilteredResourcesByQueryAndFilters = (
         // 모든 조건에 부합하면 true
         return matchesQuery && matchesContentType && matchesForm && matchesSolutions;
     });
-};
-
-
-
-
-
-// 전체 데이터 반환
-export const getResourcesData = (): ResourcesProps[] => {
-    return resourcesData as ResourcesProps[];
-};
-
-// 소문자 변환 및 특수 문자 제거
-const normalizeString = (str: string) =>
-    str.toLowerCase().replace(/[^a-zA-Z0-9]/g, "");
-
-// 데이터 정제 함수
-const normalizeForm = (form: string): "link" | "pdf" => {
-    if (form === "link" || form === "pdf") {
-        return form; // 유효한 값 반환
-    }
-    throw new Error(`Invalid form value: ${form}`); // 잘못된 값 처리
-};
-
-// Tags+Title 문자열 내 특정 문자열 필터링된 데이터 반환 함수
-export const getFilteredByKeywords = (keywords: string[]): ResourcesProps[] => {
-    const normalizedKeywords = keywords.map(normalizeString);
-
-    return resourcesData
-        .map((item) => ({
-            ...item,
-            form: normalizeForm(item.form),
-        }))
-        .filter((item) => {
-            const normalizedTitle = normalizeString(item.title);
-            const normalizedTags = item.tags.map(normalizeString);
-
-            // 키워드가 title이나 tags에 하나라도 포함되는지 확인
-            return normalizedKeywords.some(
-                (keyword) =>
-                    normalizedTitle.includes(keyword) || normalizedTags.includes(keyword)
-            );
-        })
-        .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()); // date 내림차순 정렬
 };
