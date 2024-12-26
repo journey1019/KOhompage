@@ -10,9 +10,14 @@ export default function Hero() {
 
             {/* 비디오 위에 표시되는 콘텐츠 */}
             <div className="relative z-10 flex flex-col items-center justify-center h-full px-5 dark:bg-black/50">
-                <h2 className="text-2xl sm:text-3xl lg:text-5xl xl:text-6xl text-white font-bold mt-2 text-center">
-                    {'Hello, Here is Korea Orbcomm'}
-                </h2>
+                <Image
+                    src="/images/main/KoreaORBCOMMLogo.png"
+                    alt="Main Hero Korea Orbcomm Logo"
+                    width={700} // 기존 크기보다 더 크게 설정
+                    height={500}
+                    unoptimized
+                    className="items-center justify-center mx-auto"
+                />
                 <h2 className="text-lg sm:text-xl lg:text-2xl xl:text-3xl text-white font-semibold text-center mt-2">
                     Satellite communication service provider
                 </h2>

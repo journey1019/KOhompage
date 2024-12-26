@@ -3,15 +3,8 @@ interface CharacterData {
     icon: string;
 }
 
-interface AdvantageData{
-    direction: 'left' | 'right';
-    title1: string;
-    title2: string;
-    description: string;
-    image: string;
-}
-
 interface CtaData{
+    imageUrl: string;
     title: string;
     subTitle: string;
     button: string;
@@ -36,7 +29,6 @@ interface StarlinkData{
     useCaseLetter: string;
     faqs?: FaqData[];
     ctas: CtaData;
-    advantage: AdvantageData[];
     character?: CharacterData[];
 }
 
@@ -44,7 +36,7 @@ const starlinkData: Record<string, StarlinkData> = {
     "en": {
         imageIntro: "See more. Know more. Do more: The industry’s single source for complete maritime asset visibility and control.",
         imageMain: "Marine Solutions for the Smart, Connected Supply Chain",
-        imageUrl: "/images/header/Port.jpg",
+        imageUrl: "/images/header/Starlink.webp",
         imageSub: "",
         introTitle: "Reefer Container Monitoring and Control System",
         introLetter: "KOREA ORBCOMM's ReeferContainer, selected by top three shipping companies worldwide, is currently operating with more than 500,000 products installed in cold-refrigerated containers, providing container carriers, multimodal carriers, shippers and other users with real-time container control services across the land and sea.",
@@ -75,42 +67,13 @@ const starlinkData: Record<string, StarlinkData> = {
             },
         ],
         ctas: {
-            title: "Master Maritime Visibility with ORBCOMM",
-            subTitle: "Gain remote vessel tracking, monitoring and control capabilities for your commercial fishing boats, merchant marine fleets and more.",
+            imageUrl: "/images/solutions/satellite/StarlinkLink.png",
+            title: "HIGH-SPEED INTERNET AROUND THE WORLD",
+            subTitle: "Connect at home or on the go.",
             button: "Get a tailored quote",
             solutionButton: "Give It a Try!",
-            solutionUrl: "https://reeferconnect.tms-orbcomm.com/"
+            solutionUrl: "https://www.starlink.com/specifications?spec=1"
         },
-        advantage: [
-            {
-                direction: "left",
-                title1: "",
-                title2: "Visibility",
-                description: "Stay connected to your containers on land and sea with reliable monitoring for dry and refrigerated containers and their cargo.",
-                image: "/images/solutions/container-iot/maritime/Maritime-Benefits-1-visibility-1440x776.png",
-            },
-            {
-                direction: "right",
-                title1: "",
-                title2: "Optimization",
-                description: "Maximize fuel consumption, asset utilization and more by driving operational decisions with container telematics data.",
-                image: "/images/solutions/container-iot/maritime/Maritime-Benefits-2-Optimization.png",
-            },
-            {
-                direction: "left",
-                title1: "",
-                title2: "Utilization",
-                description: "Ensure containers are always working at peak efficiency through continuous monitoring of location and cargo status data.",
-                image: "/images/solutions/container-iot/maritime/Maritime-Benefits-3-utilization.png",
-            },
-            {
-                direction: "right",
-                title1: "Cargo Security and",
-                title2: "Integrity",
-                description: "Real-time cargo position and condition data allows you to provide value-added services to customers such as shipment status, current location and accurate ETAs.",
-                image: "/images/solutions/container-iot/maritime/Maritime-Benefits-4-cargo-security-and-integrity.png",
-            }
-        ],
         character: [
             {
                 title: "LEO satellite connectivity",
@@ -139,8 +102,8 @@ const starlinkData: Record<string, StarlinkData> = {
 
     "ko": {
         imageIntro: "",
-        imageMain: "ORBCOMM: Low Earth Orbit",
-        imageUrl: "/images/header/Satellite.jpg",
+        imageMain: "Space X: Starlink Satellite",
+        imageUrl: "/images/header/Starlink.webp",
         imageSub: "",
         introTitle: "Reefer Container 감시 및 제어 시스템",
         introLetter: "전세계 Top3 선사가 선택한 ORBCOMM의 ReeferContainer는 현재 500,000개 이상의 제품이 냉동냉장 컨테이너에 설치되어 운영 중이며, 컨테이너선사, 복합운송업체, 화주 및 기타 사용자에게 육해상 전 지역에서의 실시간 컨테이너관제 서비스를 제공합니다.",
@@ -171,42 +134,13 @@ const starlinkData: Record<string, StarlinkData> = {
             },
         ],
         ctas: {
-            title: "ORBCOMM으로 해상 가시성 마스터하기",
-            subTitle: "상업용 어선, 상선 함대 등에 대한 원격 선박 추적, 모니터링 및 제어 기능을 확보하세요.",
+            imageUrl: "/images/solutions/satellite/StarlinkLink.png",
+            title: "전 세계 고속 인터넷",
+            subTitle: "집에서나 이동 중에도 연결하세요.",
             button: "맞춤형 견적을 받아보세요",
-            solutionButton: "솔루션을 경험해봐!",
-            solutionUrl: "https://reeferconnect.tms-orbcomm.com/"
+            solutionButton: "솔루션을 경험해보세요",
+            solutionUrl: "https://www.starlink.com/specifications?spec=1"
         },
-        advantage: [
-            {
-                direction: "left",
-                title1: "가시성",
-                title2: "",
-                description: "건조 및 냉장 컨테이너와 화물에 대한 신뢰할 수 있는 모니터링을 통해 육상 및 해상 컨테이너에 계속 연결하세요.",
-                image: "/images/solutions/container-iot/maritime/Maritime-Benefits-1-visibility-1440x776.png",
-            },
-            {
-                direction: "right",
-                title1: "",
-                title2: "최적화",
-                description: "컨테이너 텔레매틱스 데이터를 통해 운영 결정을 유도하여 연료 소비, 자산 활용 등을 극대화하십시오.",
-                image: "/images/solutions/container-iot/maritime/Maritime-Benefits-2-Optimization.png",
-            },
-            {
-                direction: "left",
-                title1: "활용",
-                title2: "",
-                description: "위치 및 화물 상태 데이터를 지속적으로 모니터링하여 컨테이너가 항상 최고 효율로 작동하도록 보장합니다.",
-                image: "/images/solutions/container-iot/maritime/Maritime-Benefits-3-utilization.png",
-            },
-            {
-                direction: "right",
-                title1: "",
-                title2: "화물 보안 및 무결성",
-                description: "실시간 화물 위치 및 상태 데이터를 통해 고객에게 배송 상태, 현재 위치, 정확한 도착 예정 시간 등 부가가치 서비스를 제공할 수 있습니다.",
-                image: "/images/solutions/container-iot/maritime/Maritime-Benefits-4-cargo-security-and-integrity.png",
-            }
-        ],
         character: [
             {
                 title: "LEO 위성 연결",

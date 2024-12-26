@@ -94,7 +94,7 @@ const maritimeData: Record<string, MaritimeData> = {
             title: "ORBCOMM으로 해상 가시성 마스터하기",
             subTitle: "상업용 어선, 상선 함대 등에 대한 원격 선박 추적, 모니터링 및 제어 기능을 확보하세요.",
             button: "맞춤형 견적을 받아보세요",
-            button2: "솔루션을 경험해봐!"
+            button2: "솔루션을 경험해보세요"
         }
     }
 }

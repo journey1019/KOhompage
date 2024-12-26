@@ -2,7 +2,7 @@ import React from "react";
 import { Container } from "@/components/Container";
 
 interface CtaProps {
-    items: { title: string; subTitle: string; button: string; solutionButton: string; solutionUrl: string; };
+    items: { imageUrl: string; title: string; subTitle: string; button: string; solutionButton: string; solutionUrl: string; };
 }
 
 export const CtaSolution: React.FC<CtaProps> = ({ items }) => {
@@ -11,7 +11,7 @@ export const CtaSolution: React.FC<CtaProps> = ({ items }) => {
             <div
                 className="relative flex flex-wrap items-center justify-between w-full max-w-7xl gap-5 mx-auto text-white p-7 lg:p-12 lg:flex-nowrap rounded-xl"
                 style={{
-                    backgroundImage: "url('/images/solutions/container-iot/maritime/maritime.png')",
+                    backgroundImage: `url(${items.imageUrl})`, // Fixed closing brace
                     backgroundSize: "cover",
                     backgroundPosition: "center",
                 }}

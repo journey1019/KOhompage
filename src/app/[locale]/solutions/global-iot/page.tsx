@@ -13,6 +13,7 @@ import Download from '@/components/(Solution)/Download';
 import CarouselSolutions from '@/components/(Solution)/CarouselSolutions';
 import References from '@/components/(Solution)/References';
 import { SectionTitle } from '@/components/(About)/SectionTitle';
+import { SectionTitle2 } from '@/components/(About)/SectionTitle2';
 import ChipFilterHardwareCarousel from '@/components/(Hardware)/ChipFilterHardwareCarousel';
 import React from 'react';
 import TagFilterBlogCarousel from '@/components/(Resources)/TagFilterBlogCarousel';
@@ -69,7 +70,15 @@ export default async function GlobalIoT({params}: PageProps){
             {/*<Card/>*/}
             {/*<Advantage/>*/}
             {/*<ContentForm/>*/}
+
+            <SectionTitle2
+                preTitle="Use Case"
+                title="실시간 모니터링 시스템을 경험해보세요"
+            >
+                고객에게 제공되는 웹플랫폼(Commtrace, NMS)를 통해 산업별로 적합한 데이터를 제공하고 실시간 모니터링 및 제어 기능을 제공합니다.
+            </SectionTitle2>
             <UseCase slug="global-iot" locale={locale} />
+
             {/*<Hardware/>*/}
 
             <SectionTitle

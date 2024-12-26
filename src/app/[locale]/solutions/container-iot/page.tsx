@@ -22,7 +22,7 @@ import { SectionTitle } from '@/components/(About)/SectionTitle';
 import TagFilterBlogCarousel from '@/components/(Resources)/TagFilterBlogCarousel';
 // import TagFilterBlog from '@/components/(Main)/TagFilterBlog';
 import ChipFilterHardwareCarousel from '@/components/(Hardware)/ChipFilterHardwareCarousel';
-
+import FilterReferenceCarousel from '@/components/(Resources)/TagFilterResourceCarousel';
 
 interface PageProps {
     params: {locale: string};
@@ -74,10 +74,10 @@ export default async function ContainerIoT({ params }: PageProps){
             {/*<CarouselSolutions items={data.carousels}/>*/}
             {/*<Card/>*/}
             {/*<Advantage/>*/}
-            <Point items={data.points || []}/>
+            <Point items={data.points || []} />
             {/*<ContentForm/>*/}
             <UseCase slug="container-iot" locale={locale} />
-            <Strength items={data.advantages || []} gridCols={4}/>
+            <Strength items={data.advantages || []} gridCols={4} />
 
             <SectionTitle
                 preTitle="HARDWARES"
@@ -100,6 +100,7 @@ export default async function ContainerIoT({ params }: PageProps){
             </SectionTitle>
             {/*<TagFilterBlog initialTags={['container-iot']} />*/}
             <TagFilterBlogCarousel initialTags={chips} />
+            <FilterReferenceCarousel keywords={['Container-IoT']} />
         </section>
     )
 }

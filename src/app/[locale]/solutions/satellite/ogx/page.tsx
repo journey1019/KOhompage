@@ -28,6 +28,7 @@ export default function OGxPage({params}: PageProps) {
             <SectionTitle
                 preTitle="OGx"
                 title={data.introTitle}
+                length={3}
             >
                 {data.introLetter}
             </SectionTitle>

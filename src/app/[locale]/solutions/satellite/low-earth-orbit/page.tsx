@@ -37,6 +37,7 @@ export default function LowEarthOrbitPage({params}: PageProps) {
             <SectionTitle
                 preTitle="Low Earth Orbit"
                 title="ORBCOMM 저궤도위성"
+                length={3}
             >
                 ORBCOMM 위성 데이터통신 서비스는 단말기에서 생성된 자료를 인터넷이나 전용회선을 통하여 E-Mail(SMTP) 또는 XML Gate-way 형식으로 데이터를 송수신합니다. 각 분야에 맞는 솔루션을 제공하고 있어, 추가 설비나 비용의 투자 없이 바로 이용할 수 있습니다. 현재 건설장비, 해양, 환경, 기상 등 다양한 분야의 고정 및 이동자산의 상태감시, 위치추적, 원격관리 등을 제공하고 있습니다.
             </SectionTitle>
