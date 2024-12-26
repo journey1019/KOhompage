@@ -122,7 +122,7 @@
     "subTitle": "Global Satellite Terminal",
     "description": "ST6100 시리즈 위성 터미널은 선박과 부표 등을 위한 연근해 및 대양과 육상을 연결하는 완벽한 통신장비입니다. 안테나 일체형 안테나로 프로그램 내장이 가능한 위성 통신단말기로 Inmarsat IsatData Pro 네트워크를 연결하는 최적의 제품입니다. ST6000 시리즈 위성 터미널은 Inmarsat IsatData Pro 네트워크를 통한 글로벌 위성 연결을 통해 원격 지역에서 작동하는 산업 자산에 대한 완벽한 가시성 확보 및 제어 기능을 제공합니다. 고객의 요구에 맞는 프로그램을 개발하여 내장이 가능합니다.",
     "category": "Device",
-    "imageSrc": "/images/hardware/ST-6100.png",
+    "imageSrc": "/images/hardware/ST-6100(p).png",
     "tag": [
       "Global-IoT",
       "Satellite",
@@ -270,21 +270,6 @@
     "featured": true
   },
   {
-    "title": "Starlink",
-    "subTitle": "",
-    "description": "",
-    "category": "Device",
-    "imageSrc": "/images/hardware/Starlink.png",
-    "tag": [
-      "Global-IoT",
-      "Satellite",
-      "Starlink",
-      "Internet"
-    ],
-    "slug": "starlink",
-    "featured": true
-  },
-  {
     "title": "MT 5000",
     "subTitle": "Intelligent small vessel monitoring",
     "description": "",
@@ -339,6 +324,32 @@
       "NTN"
     ],
     "slug": "YETN001L1A",
+    "featured": true
+  },
+  {
+    "title": "Flat High Performance",
+    "subTitle": "",
+    "description": "",
+    "category": "Antenna",
+    "imageSrc": "/images/hardware/Starlink_Flat-High-Performance.png",
+    "tag": [
+      "Starlink",
+      "Internet"
+    ],
+    "slug": "flat-high-performance",
+    "featured": true
+  },
+  {
+    "title": "Enterprise",
+    "subTitle": "",
+    "description": "",
+    "category": "Antenna",
+    "imageSrc": "/images/hardware/Starlink_Enterprise.png",
+    "tag": [
+      "Starlink",
+      "Internet"
+    ],
+    "slug": "enterprise",
     "featured": true
   }
 ]
