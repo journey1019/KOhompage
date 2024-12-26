@@ -45,9 +45,16 @@ export default function Language() {
                         >
                             KO
                         </li>
+                        {/*<li*/}
+                        {/*    onClick={() => changeLanguage('en')} // 영어로 변경*/}
+                        {/*    className={`px-4 py-2 cursor-pointer hover:bg-gray-100 hover:rounded-md ${*/}
+                        {/*        currentLocale === 'en' ? 'font-bold' : ''*/}
+                        {/*    }`}*/}
+                        {/*>*/}
+                        {/*    EN*/}
+                        {/*</li>*/}
                         <li
-                            onClick={() => changeLanguage('en')} // 영어로 변경
-                            className={`px-4 py-2 cursor-pointer hover:bg-gray-100 hover:rounded-md ${
+                            className={`px-4 py-2 cursor-pointer bg-gray-100 rounded-md text-gray-400 ${
                                 currentLocale === 'en' ? 'font-bold' : ''
                             }`}
                         >
