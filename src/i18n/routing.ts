@@ -1,7 +1,7 @@
 import {createNavigation} from 'next-intl/navigation';
 
 const locales = ['en', 'ko']; // 지원하는 언어 목록
-const defaultLocale = 'en'; // 기본 언어
+const defaultLocale = 'ko'; // 기본 언어
 
 // Export routing configuration (useful for other files if needed)
 export const routing = {
