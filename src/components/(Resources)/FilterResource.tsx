@@ -1,55 +1,52 @@
 'use client';
 
-import React, { useState } from 'react';
+import React from 'react';
 import { FilterOptions } from "@/service/references/referencesData";
 
 interface FiltersResourcesProps {
+    filters: FilterOptions,
     onFilterChange: (filters: FilterOptions) => void;
     totalResourcesCount: number; // 전체 게시글 개수
 }
 
-const FiltersResources: React.FC<FiltersResourcesProps> = ({ onFilterChange, totalResourcesCount }) => {
-    const [contentType, setContentType] = useState<string[]>([]);
-    const [form, setForm] = useState<string[]>([]);
-    const [solutions, setSolutions] = useState<string[]>([]);
-
+const FilterResource: React.FC<FiltersResourcesProps> = ({ filters, onFilterChange, totalResourcesCount }) => {
     const handleCheckboxChange = (
         category: "contentType" | "form" | "solutions",
         value: string
     ) => {
-        const updateValues = (currentValues: string[], newValue: string) => {
+        const updateValues = (currentValues: string[] = [], newValue: string) => {
             return currentValues.includes(newValue)
                 ? currentValues.filter((item) => item !== newValue)
                 : [...currentValues, newValue];
         };
 
+        const updatedFilters: FilterOptions = { ...filters };
+
+        // 필터 항목 업데이트
         if (category === "contentType") {
-            const updatedContentType = updateValues(contentType, value);
-            setContentType(updatedContentType);
-            onFilterChange({ contentType: updatedContentType, form, solutions });
+            updatedFilters.contentType = updateValues(filters.contentType, value);
         } else if (category === "form") {
-            const updatedForm = updateValues(form, value);
-            setForm(updatedForm);
-            onFilterChange({ contentType, form: updatedForm, solutions });
+            updatedFilters.form = updateValues(filters.form, value);
         } else if (category === "solutions") {
-            const updatedSolutions = updateValues(solutions, value);
-            setSolutions(updatedSolutions);
-            onFilterChange({ contentType, form, solutions: updatedSolutions });
+            updatedFilters.solutions = updateValues(filters.solutions, value);
         }
+
+        onFilterChange(updatedFilters); // 상위 컴포넌트로 업데이트된 필터 전달
     };
 
     return (
         <div className="mb-4">
             <h2 className="text-xl font-semibold mb-2">Filters</h2>
-            <p className="text-gray-600 mb-4"> : {totalResourcesCount} resources found</p> {/* 게시글 개수 표시 */}
-            {/* Content Type */}
+            <p className="text-gray-600 mb-4">{totalResourcesCount} resources found</p>
+
+            {/* Content Type 필터 */}
             <div className="mb-4">
                 <h3 className="font-semibold">Content Type</h3>
                 {["Article", "Brochure", "Datasheet", "Video"].map((type) => (
                     <label key={type} className="block">
                         <input
                             type="checkbox"
-                            checked={contentType.includes(type)}
+                            checked={filters.contentType?.includes(type) || false}
                             onChange={() => handleCheckboxChange("contentType", type)}
                             className="mr-2"
                         />
@@ -58,14 +55,14 @@ const FiltersResources: React.FC<FiltersResourcesProps> = ({ onFilterChange, tot
                 ))}
             </div>
 
-            {/* Form */}
+            {/* Form 필터 */}
             <div className="mb-4">
                 <h3 className="font-semibold">Form</h3>
                 {["link", "pdf", "page"].map((type) => (
                     <label key={type} className="block">
                         <input
                             type="checkbox"
-                            checked={form.includes(type)}
+                            checked={filters.form?.includes(type) || false}
                             onChange={() => handleCheckboxChange("form", type)}
                             className="mr-2"
                         />
@@ -74,14 +71,14 @@ const FiltersResources: React.FC<FiltersResourcesProps> = ({ onFilterChange, tot
                 ))}
             </div>
 
-            {/* Solutions */}
+            {/* Solutions 필터 */}
             <div className="mb-4">
                 <h3 className="font-semibold">Solutions</h3>
                 {["Container-IoT", "Global-IoT", "Satellite", "AIS"].map((solution) => (
                     <label key={solution} className="block">
                         <input
                             type="checkbox"
-                            checked={solutions.includes(solution)}
+                            checked={filters.solutions?.includes(solution) || false}
                             onChange={() => handleCheckboxChange("solutions", solution)}
                             className="mr-2"
                         />
@@ -93,4 +90,4 @@ const FiltersResources: React.FC<FiltersResourcesProps> = ({ onFilterChange, tot
     );
 };
 
-export default FiltersResources;
+export default FilterResource;

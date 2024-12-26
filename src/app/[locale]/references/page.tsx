@@ -8,7 +8,7 @@ import {
 } from "@/service/references/referencesData";
 import ResourceCard from "@/components/(Resources)/ResourceCard";
 import SearchBar from "@/components/(Resources)/SearchBar";
-import FiltersResources from "@/components/(Resources)/FiltersResources";
+import FilterResource from "@/components/(Resources)/FilterResource";
 import Pagination from "@/components/(Resources)/Pagination";
 
 const ReferencesPage = () => {
@@ -57,9 +57,10 @@ const ReferencesPage = () => {
                         </button>
                     </div>
 
-                    {/* 웹: FiltersResources */}
+                    {/* 웹: FilterResource */}
                     <div className="hidden lg:block">
-                        <FiltersResources
+                        <FilterResource
+                            filters={filters}
                             onFilterChange={setFilters}
                             totalResourcesCount={totalResourcesCount} // 게시글 개수 전달
                         />
@@ -98,7 +99,8 @@ const ReferencesPage = () => {
                         >
                             Close
                         </button>
-                        <FiltersResources
+                        <FilterResource
+                            filters={filters}
                             onFilterChange={setFilters}
                             totalResourcesCount={totalResourcesCount}
                         />

@@ -75,7 +75,7 @@ const HardwarePage = () => {
                             </button>
                         </div>
 
-                        {/* 웹: FiltersResources */}
+                        {/* 웹: FilterResource */}
                         <div className="hidden lg:block">
                             <FiltersHardware
                                 filters={filters}
