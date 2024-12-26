@@ -4,6 +4,7 @@ import starlinkData from '@/service/solutions/satellite/starlink';
 import { SectionTitle } from '@/components/(About)/SectionTitle';
 import CharacteristicsBackImage from '@/components/(Solution)/CharacteristicsBackImage';
 import { CtaSolution } from '@/components/(Solution)/CtaSolution';
+import FilterReferenceCarousel from '@/components/(Resources)/FilterResourceCarousel';
 
 interface PageProps {
     params: {locale: string};
@@ -33,6 +34,8 @@ export default function StarlinkPage({params}: PageProps) {
             <CharacteristicsBackImage items={data.character || []} gridCols={3}/>
 
             <CtaSolution items={data.ctas}/>
+
+            <FilterReferenceCarousel keywords={['Starlink']} />
         </section>
     )
 }

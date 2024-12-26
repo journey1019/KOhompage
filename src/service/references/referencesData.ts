@@ -1,4 +1,4 @@
-import resourcesData from "../../../data/references/references.json";
+import resourcesData from "@/data/resource.json";
 
 export interface ResourcesProps {
     date: string;

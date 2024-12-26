@@ -23,6 +23,7 @@ import TagFilterBlogCarousel from '@/components/(Resources)/TagFilterBlogCarouse
 // import TagFilterBlog from '@/components/(Main)/TagFilterBlog';
 import ChipFilterHardwareCarousel from '@/components/(Hardware)/ChipFilterHardwareCarousel';
 import FilterReferenceCarousel from '@/components/(Resources)/FilterResourceCarousel';
+import FilterHardwareCarousel from '@/components/(Hardware)/FilterHardwareCarousel';
 
 interface PageProps {
     params: {locale: string};
@@ -101,6 +102,7 @@ export default async function ContainerIoT({ params }: PageProps){
             {/*<TagFilterBlog initialTags={['container-iot']} />*/}
             <TagFilterBlogCarousel initialTags={chips} />
             <FilterReferenceCarousel keywords={['Container-IoT']} />
+            <FilterHardwareCarousel keywords={['Container-IoT']} />
         </section>
     )
 }

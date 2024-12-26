@@ -87,7 +87,6 @@ export default async function HomePage() {
             <Partner />
 
             <Company />
-
             <Solutions solutions={solutions} />
 
             {/*<Solutions solutions={solutions}/>*/}

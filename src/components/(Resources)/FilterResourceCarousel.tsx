@@ -15,7 +15,7 @@ const FilterReferenceCarousel: React.FC<FilterReferenceCarouselProps> = ({ keywo
     return (
         <div className="mx-auto max-w-7xl px-6 py-8">
             <h2 className="text-2xl font-bold text-gray-800 mb-6">
-                References Matching Keywords
+                Resources
             </h2>
             {filteredResources.length > 0 ? (
                 <Carousel itemsCount={filteredResources.length}>
