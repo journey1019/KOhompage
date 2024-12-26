@@ -39,7 +39,7 @@ export default function Language() {
                     <ul>
                         <li
                             onClick={() => changeLanguage('ko')} // 한국어로 변경
-                            className={`px-4 py-2 cursor-pointer hover:bg-gray-100 dark:hover:bg-gray-600 ${
+                            className={`px-4 py-2 cursor-pointer hover:bg-gray-100 hover:rounded-md ${
                                 currentLocale === 'ko' ? 'font-bold' : ''
                             }`}
                         >
@@ -47,7 +47,7 @@ export default function Language() {
                         </li>
                         <li
                             onClick={() => changeLanguage('en')} // 영어로 변경
-                            className={`px-4 py-2 cursor-pointer hover:bg-gray-100 dark:hover:bg-gray-600 ${
+                            className={`px-4 py-2 cursor-pointer hover:bg-gray-100 hover:rounded-md ${
                                 currentLocale === 'en' ? 'font-bold' : ''
                             }`}
                         >

@@ -17,11 +17,12 @@ const NETWORK_OPTIONS = [
 const TAG_OPTIONS = ["Tracking", "Container", "Chassis", "Dry", "Reefer", "Maritime", "Asset", "Sensor"];
 
 interface FiltersHardwareProps {
+    filters: FilterOptions;
     onFilterChange: (filters: FilterOptions) => void;
     totalResourcesCount: number; // 전체 게시글 개수
 }
 
-const FiltersHardware: React.FC<FiltersHardwareProps> = ({ onFilterChange, totalResourcesCount }) => {
+const FiltersHardware: React.FC<FiltersHardwareProps> = ({ filters, onFilterChange, totalResourcesCount }) => {
     const [types, setTypes] = useState<string[]>([]);
     const [category, setCategory] = useState<string[]>([]);
     const [networks, setNetworks] = useState<string[]>([]);
@@ -38,20 +39,16 @@ const FiltersHardware: React.FC<FiltersHardwareProps> = ({ onFilterChange, total
                 : [...currentValues, newValue];
         };
 
-        // 필터 업데이트
+        const updatedFilters = { ...filters };
         if (type === "types") {
-            const updatedTypes = updateValues(types, value);
-            setTypes(updatedTypes);
-            onFilterChange({ types: updatedTypes, networks, tags});
+            updatedFilters.types = updateValues(filters.types || [], value);
         } else if (type === "networks") {
-            const updatedNetworks = updateValues(networks, value);
-            setNetworks(updatedNetworks);
-            onFilterChange({ types, networks: updatedNetworks, tags });
+            updatedFilters.networks = updateValues(filters.networks || [], value);
         } else if (type === "tags") {
-            const updatedTags = updateValues(tags, value);
-            setTags(updatedTags);
-            onFilterChange({ types, networks, tags: updatedTags });
+            updatedFilters.tags = updateValues(filters.tags || [], value);
         }
+
+        onFilterChange(updatedFilters);
     };
 
     return (
@@ -66,7 +63,7 @@ const FiltersHardware: React.FC<FiltersHardwareProps> = ({ onFilterChange, total
                     <label key={type} className="block">
                         <input
                             type="checkbox"
-                            checked={types.includes(type)}
+                            checked={filters.types?.includes(type) || false}
                             onChange={() => handleCheckboxChange("types", type)}
                             className="mr-2"
                         />
@@ -82,7 +79,7 @@ const FiltersHardware: React.FC<FiltersHardwareProps> = ({ onFilterChange, total
                     <label key={type} className="block">
                         <input
                             type="checkbox"
-                            checked={networks.includes(type)}
+                            checked={filters.networks?.includes(type) || false}
                             onChange={() => handleCheckboxChange("networks", type)}
                             className="mr-2"
                         />
@@ -98,7 +95,7 @@ const FiltersHardware: React.FC<FiltersHardwareProps> = ({ onFilterChange, total
                     <label key={tag} className="block">
                         <input
                             type="checkbox"
-                            checked={tags.includes(tag)}
+                            checked={filters.tags?.includes(tag) || false}
                             onChange={() => handleCheckboxChange("tags", tag)}
                             className="mr-2"
                         />

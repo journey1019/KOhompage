@@ -43,9 +43,9 @@ export default function PageTopImage({size, url, title, subtitle, description, t
                 </div>
 
                 {/* 안쪽 콘텐츠 */}
-                <main className="relative flex flex-col justify-center items-center md:items-start text-white z-10 p-5 text-center md:text-start md:ml-16 lg:ml-32">
+                <main className="relative flex flex-col justify-center items-start text-white z-10 p-5 text-center md:text-start md:ml-16 lg:ml-32">
                     <h1 className="text-lg font-bold mb-5">{title}</h1>
-                    <h1 className="text-4xl md:text-6xl font-bold mb-5">{subtitle}</h1>
+                    <h1 className="text-5xl md:text-6xl font-bold mb-5">{subtitle}</h1>
                     <p className="text-base mb-5">{description}</p>
                 </main>
             </section>
