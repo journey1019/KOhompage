@@ -10,8 +10,8 @@ export default function NotFound() {
 
             {/* Main Content */}
             <div className="relative z-10 flex flex-col items-center justify-center h-[calc(100vh-74px)] pt-[74px] px-5">
-                <h1 className="text-6xl font-bold text-gray-800">PAGE NOT FOUND</h1>
-                <p className="mt-4 text-lg text-gray-600 text-center">
+                <h1 className="text-5xl md:text-6xl font-bold text-gray-800">PAGE NOT FOUND</h1>
+                <p className="mt-4 text-base md:text-lg text-gray-600 text-center">
                     KOREA ORBCOMM couldn&apos;t find the page you&apos;re looking for.
                     <br />
                     Try starting over from Home.
