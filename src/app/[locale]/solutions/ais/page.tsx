@@ -82,7 +82,7 @@ export default async function AISPage({params}: PageProps){
             {/*<Hardware/>*/}
 
             <SectionTitle
-                preTitle="Low Earth Orbit"
+                preTitle="Characteristics"
                 title="ORBCOMM 위성 데이터 통신 서비스 특징"
             >
                 AIS 서비스는 전세계 모든 지역에서의 AIS 정보를 수집하여 고객에게 제공합니다. AIS(선박 자동 식별 장치, Automatic Identification System)는 선박의 식별, 위치, 탐색을 지원하고 해양 안전을 향상시키는데 사용할 수 있는 중요한 데이터를 전송하는 선박 발신 시스템입니다. AIS 데이터는 해상 영역 인식, 수색 및 구조, 환경 모니터링, 해상 정보 분석 등에 사용됩니다.

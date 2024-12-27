@@ -1,5 +1,5 @@
 import React from 'react';
-import maritimeData from '@/service/solutions/container-iot/maritime';
+import vmsData from '@/service/solutions/global-iot/vms';
 import PageTopImage from '@/components/PageTopImage';
 import { SectionTitle } from '@/components/SectionTitle';
 import { Container } from '@/components/Container';
@@ -13,16 +13,20 @@ import FilterableHardwareList from '@/components/(Hardware)/FilterableHardwareLi
 import TagFilterBlog from '@/components/(Resources)/TagFilterBlog';
 import UseCaseAdvantage from '@/components/(Solution)/UseCaseAdvantage';
 import ChipFilterHardwareCarousel from '@/components/(Hardware)/ChipFilterHardwareCarousel';
+import Characteristics from '@/components/(Solution)/Characteristics';
+import OneImage from '@/components/(Solution)/OneImage';
+import FilterHardwareCarousel from '@/components/(Hardware)/FilterHardwareCarousel';
+import FilterResourceCarousel from '@/components/(Resources)/FilterResourceCarousel';
 
 interface PageProps {
     params: {locale: string};
 }
 export default async function MaritimePage({params}: PageProps) {
     const { locale } = params; // 비동기 처리
-    const data = maritimeData[locale];
+    const data = vmsData[locale];
 
     const site = 'VMS'
-    const chips = ['vms']
+    const chips = ['VMS']
 
     return(
         <section>
@@ -37,43 +41,47 @@ export default async function MaritimePage({params}: PageProps) {
             <Container>
 
                 <SectionTitle
-                    preTitle="Maritime Platform"
+                    preTitle="Network Monitoring System"
+                    title={data.characteristicsTitle}
+                >
+                    {data.characteristicsLetter}
+                </SectionTitle>
+                <Characteristics items={data.character || []} gridCols={4}/>
+
+
+                <SectionTitle
+                    preTitle="NMS"
                     title={data.introTitle}
                 >
                     {data.introLetter}
                 </SectionTitle>
-                <Video videoUrl="https://www.youtube.com/embed/-QE6gJMhrgU" />
-
-                <SectionTitle preTitle="Nextly Benefits" title={data.useCaseTitle}>
-                    {data.useCaseLetter}
-                </SectionTitle>
-                <UseCaseAdvantage solutionKey="maritime" locale={locale} />
-
-
-                {/*<SectionTitle preTitle="Hardware" title={data.qnaTitle}>*/}
-                {/*    {data.qnaLetter}*/}
-                {/*</SectionTitle>*/}
+                <OneImage item="/images/solutions/global-iot/VMSCommtrace.png"/>
 
 
                 <SectionTitle
                     preTitle="HARDWARES"
-                    title="HARDWARE LIST"
+                    title="Satellite Hardware Lists"
                 >
                 </SectionTitle>
-                <ChipFilterHardwareCarousel chips={chips} />
-                {/*<FilterableHardwareList chips={chips}/>*/}
-                {/*<SlugHardware locale={locale}/>*/}
+                <FilterHardwareCarousel keywords={['AIS', 'Modem']} />
+
 
                 <SectionTitle preTitle="FAQ" title={data.qnaTitle}>
                     {data.qnaLetter}
                 </SectionTitle>
                 <Faq items={data.faqs || []} />
 
+
                 <CtaSolution items={data.ctas}/>
 
-                <SectionTitle preTitle="Resources" title={`${site}: Resources`} />
-                {/*<Blog/>*/}
-                <TagFilterBlog initialTags={chips} />
+
+                <SectionTitle
+                    preTitle="RESOURCES"
+                    title={`${chips} : All Resources`}
+                >
+                </SectionTitle>
+                <FilterResourceCarousel keywords={['Global-IoT']} />
+
             </Container>
         </section>
     )

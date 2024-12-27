@@ -19,7 +19,7 @@ const ReferencesPage = () => {
     const [isDrawerOpen, setIsDrawerOpen] = useState(false); // 드로어 상태
 
     const [currentPage, setCurrentPage] = useState(1); // 현재 페이지
-    const itemsPerPage = 18; // 페이지당 항목 수
+    const itemsPerPage = 9; // 페이지당 항목 수
 
     useEffect(() => {
         const filteredResources = getFilteredResourcesByQueryAndFilters(searchQuery, filters);

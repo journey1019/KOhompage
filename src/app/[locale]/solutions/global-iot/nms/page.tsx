@@ -3,7 +3,6 @@ import nmsData from '@/service/solutions/global-iot/nms';
 import PageTopImage from '@/components/PageTopImage';
 import { SectionTitle } from '@/components/SectionTitle';
 import { Container } from '@/components/Container';
-import { Video } from '@/components/Video';
 import { Faq } from '@/components/Faq';
 import { CtaSolution } from '@/components/(Solution)/CtaSolution';
 import SubscribeSection from '@/components/SubscribeSection';
@@ -13,6 +12,10 @@ import FilterableHardwareList from '@/components/(Hardware)/FilterableHardwareLi
 import TagFilterBlog from '@/components/(Resources)/TagFilterBlog';
 import ChipFilterHardwareCarousel from '@/components/(Hardware)/ChipFilterHardwareCarousel';
 import SolutionAdvantage from '@/components/(Solution)/SolutionAdvantage';
+import Characteristics from '@/components/(Solution)/Characteristics';
+import OneImage from '@/components/(Solution)/OneImage';
+import FilterHardwareCarousel from '@/components/(Hardware)/FilterHardwareCarousel';
+import FilterResourceCarousel from '@/components/(Resources)/FilterResourceCarousel';
 
 interface PageProps {
     params: {locale: string};
@@ -22,7 +25,7 @@ export default async function MaritimePage({params}: PageProps) {
     const data = nmsData[locale];
 
     const site = 'NMS'
-    const chips = ['nms']
+    const chips = ['NMS']
 
     return(
         <section>
@@ -37,17 +40,25 @@ export default async function MaritimePage({params}: PageProps) {
             <Container>
 
                 <SectionTitle
+                    preTitle="Network Monitoring System"
+                    title={data.characteristicsTitle}
+                >
+                    {data.characteristicsLetter}
+                </SectionTitle>
+                <Characteristics items={data.character || []} gridCols={4}/>
+
+                <SectionTitle
                     preTitle="NMS"
                     title={data.introTitle}
                 >
                     {data.introLetter}
                 </SectionTitle>
-                <Video videoUrl="https://www.youtube.com/embed/-QE6gJMhrgU" />
+                <OneImage item="/images/solutions/global-iot/nms_main.png"/>
 
-                <SectionTitle preTitle="Nextly Benefits" title={data.useCaseTitle}>
-                    {data.useCaseLetter}
-                </SectionTitle>
-                <SolutionAdvantage advantages={data.advantage} />
+                {/*<SectionTitle preTitle="Nextly Benefits" title={data.useCaseTitle}>*/}
+                {/*    {data.useCaseLetter}*/}
+                {/*</SectionTitle>*/}
+                {/*<SolutionAdvantage advantages={data.advantage} />*/}
 
 
                 {/*<SectionTitle preTitle="Hardware" title={data.qnaTitle}>*/}
@@ -55,14 +66,21 @@ export default async function MaritimePage({params}: PageProps) {
                 {/*</SectionTitle>*/}
 
 
-                <SectionTitle
-                    preTitle="HARDWARES"
-                    title="HARDWARE LIST"
-                >
-                </SectionTitle>
-                <ChipFilterHardwareCarousel chips={chips} />
+                {/*<SectionTitle*/}
+                {/*    preTitle="HARDWARES"*/}
+                {/*    title="HARDWARE LIST"*/}
+                {/*>*/}
+                {/*</SectionTitle>*/}
+                {/*<ChipFilterHardwareCarousel chips={chips} />*/}
                 {/*<FilterableHardwareList chips={chips}/>*/}
                 {/*<SlugHardware locale={locale}/>*/}
+                <SectionTitle
+                    preTitle="HARDWARES"
+                    title="Satellite Hardware Lists"
+                >
+                </SectionTitle>
+                <FilterHardwareCarousel keywords={['AIS', 'Modem']} />
+
 
                 <SectionTitle preTitle="FAQ" title={data.qnaTitle}>
                     {data.qnaLetter}
@@ -71,9 +89,15 @@ export default async function MaritimePage({params}: PageProps) {
 
                 <CtaSolution items={data.ctas}/>
 
-                <SectionTitle preTitle="Resources" title={`${site}: Resources`} />
+                {/*<SectionTitle preTitle="Resources" title={`${site}: Resources`} />*/}
                 {/*<Blog/>*/}
-                <TagFilterBlog initialTags={chips} />
+                {/*<TagFilterBlog initialTags={chips} />*/}
+                <SectionTitle
+                    preTitle="RESOURCES"
+                    title={`${chips} : All Resources`}
+                >
+                </SectionTitle>
+                <FilterResourceCarousel keywords={['Global-IoT']} />
             </Container>
         </section>
     )

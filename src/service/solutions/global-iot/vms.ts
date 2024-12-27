@@ -16,7 +16,7 @@ interface FaqData{
     answer: string;
 }
 
-interface NMSData{
+interface VMSData{
     imageIntro: string;
     imageMain: string;
     imageUrl: string;
@@ -32,7 +32,7 @@ interface NMSData{
     character?: CharacterData[];
 }
 
-const nmsData: Record<string, NMSData> = {
+const vmsData: Record<string, VMSData> = {
     "en": {
         imageIntro: "Real-time Network Monitoring System",
         imageMain: "Real-time data analytics dashboards and notifications",
@@ -154,4 +154,4 @@ const nmsData: Record<string, NMSData> = {
         ]
     }
 }
-export default nmsData;
+export default vmsData;
