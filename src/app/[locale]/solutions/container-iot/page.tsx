@@ -46,14 +46,13 @@ export default async function ContainerIoT({ params }: PageProps){
 
     // 데이터 유효성 검증
     if (!data) {
-        // return (
-        //     <div className="text-center py-12">
-        //         <h2 className="text-2xl font-bold">Solution not found</h2>
-        //         <p>Please check the locale or solution slug.</p>
-        //     </div>
-        // );
+        return (
+            <div className="text-center py-12">
+                <h2 className="text-2xl font-bold">Solution not found</h2>
+                <p>Please check the locale or solution slug.</p>
+            </div>
+        );
         // Redirect to 404 if the hardware is not found
-        notFound();
     }
     const chips = ['Container-IoT'];
 
