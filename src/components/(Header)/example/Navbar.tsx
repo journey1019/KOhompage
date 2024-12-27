@@ -44,6 +44,7 @@ const Navbar = ({ locale }: { locale: string }) => {
         company: [
             { label: 'About Us', href: '/about' },
             { label: 'Contact', href: '/contact-us' },
+            { label: 'Resources', href: '/resources' },
             // { label: 'Blog', href: '/resources/blog' },
             // { label: 'Notice', href: '/resources/notice' },
             // { label: 'Board', href: '/resources/board' }

@@ -34,9 +34,10 @@ const dropdownContent: Record<string, { label: string; href: string; title?: str
     company: [
         { label: 'About Us', href: '/about', icon: <DocumentTextIcon className="mt-1 h-5 w-5 flex-none text-black" /> },
         { label: 'Contact', href: '/contact-us', icon: <PhoneIcon className="mt-1 h-5 w-5 flex-none text-black" /> },
-        { label: 'Blog', href: '/resources/blog', icon: <BellIcon className="mt-1 h-5 w-5 flex-none text-black" /> },
-        { label: 'Notice', href: '/resources/notice', icon: <CloudArrowUpIcon className="mt-1 h-5 w-5 flex-none text-black" /> },
-        { label: 'Board', href: '/resources/board', icon: <Squares2X2Icon className="mt-1 h-5 w-5 flex-none text-black" /> },
+        { label: 'Resources', href: '/resources', icon: <Squares2X2Icon className="mt-1 h-5 w-5 flex-none text-black" /> },
+        // { label: 'Blog', href: '/resources/blog', icon: <BellIcon className="mt-1 h-5 w-5 flex-none text-black" /> },
+        // { label: 'Notice', href: '/resources/notice', icon: <CloudArrowUpIcon className="mt-1 h-5 w-5 flex-none text-black" /> },
+        // { label: 'Board', href: '/resources/board', icon: <Squares2X2Icon className="mt-1 h-5 w-5 flex-none text-black" /> },
     ],
 };
 
