@@ -51,7 +51,7 @@ const ResourceCard: React.FC<ResourceCardProps> = ({ date, contentType, title, s
                 <h3 className="mt-3 text-lg font-semibold">{title}</h3>
 
                 {/* Description */}
-                <p className="mt-2 text-sm text-gray-600">{subtitle}</p>
+                <p className="mt-2 text-sm text-gray-600 line-clamp-3">{subtitle}</p>
 
                 {/* Tags */}
                 <div className="mt-4 flex flex-wrap gap-2">

@@ -107,28 +107,30 @@ export const getResourcesByKeywords = (keywords: string[]): ResourcesProps[] => 
         return normalizedKeywords.some((keyword) => normalizedTags.includes(keyword));
     });
 };
+
+
+
+// Normalize text by converting to lowercase and removing special characters
+const normalizeText = (text: string): string =>
+    text.toLowerCase().replace(/[^a-z0-9]/g, "");
+
 // Filter resources by keywords (title, subtitle, tags)
-// export const getResourcesByKeywords = (keywords: string[]): ResourcesProps[] => {
-//     // Normalize keywords (lowercase, remove special characters)
-//     const normalizedKeywords = keywords.map((keyword) =>
-//         keyword.toLowerCase().replace(/[^a-z0-9]/g, "")
-//     );
-//
-//     return resourcesData.filter((resource) => {
-//         // Ensure the resource is usable
-//         if (!resource.use) return false;
-//
-//         // Combine title, subtitle, and tags for matching
-//         const searchableContent = [
-//             resource.title,
-//             resource.subtitle || "", // If subtitle exists, include it
-//             ...resource.tags,
-//         ]
-//             .join(" ") // Combine into a single string
-//             .toLowerCase()
-//             .replace(/[^a-z0-9\s]/g, ""); // Normalize by removing special characters
-//
-//         // Check if any normalized keyword is found in the searchable content
-//         return normalizedKeywords.some((keyword) => searchableContent.includes(keyword));
-//     });
-// };
+export const getResourcesByAllKeywords = (keywords: string[]): ResourcesProps[] => {
+    const normalizedKeywords = keywords.map(normalizeText);
+
+    return resourcesData.filter((resource) => {
+        if (!resource.use) return false;
+
+        // Aggregate searchable fields and normalize them
+        const searchableContent = [
+            resource.title,
+            resource.subtitle || "",
+            ...resource.tags,
+        ]
+            .map(normalizeText)
+            .join(" ");
+
+        // Check if any keyword matches
+        return normalizedKeywords.some((keyword) => searchableContent.includes(keyword));
+    });
+};

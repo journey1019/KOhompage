@@ -8,6 +8,7 @@ export interface HardwareProps {
     imageSrc: string;
     tag: string[];
     slug: string;
+    path: string;
     featured: boolean;
 }
 
@@ -103,6 +104,11 @@ export const getFilteredHardwaresByQueryAndFilters = (
 }
 
 export const getHardwareByKeywords = (keywords: string[]): HardwareProps[] => {
+    // Return all hardware if no keywords are provided
+    if (!keywords || keywords.length === 0) {
+        return getAllHardware(); // 모든 데이터를 반환
+    }
+
     // Normalize keywords (lowercase, remove special characters)
     const normalizedKeywords = keywords.map((keyword) =>
         keyword.toLowerCase().replace(/[^a-z0-9]/g, "")

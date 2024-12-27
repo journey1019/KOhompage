@@ -19,6 +19,52 @@
       "Asset"
     ],
     "slug": "gt-1200",
+    "path": "",
+    "featured": false
+  },
+  {
+    "title": "GT 1220",
+    "subTitle": "",
+    "description": "",
+    "category": "Device",
+    "imageSrc": "/images/hardware/GT-1220.jpeg",
+    "tag": [
+      "Container-IoT",
+      "Global-IoT",
+      "Tracking",
+      "OGx/IDP",
+      "Cellular",
+      "Container",
+      "Chassis",
+      "Dry",
+      "Asset",
+      "Door"
+    ],
+    "slug": "gt-1220",
+    "path": "/pdf/datasheet/hardware/gt-1220.pdf",
+    "featured": true
+  },
+  {
+    "title": "GT 1230",
+    "subTitle": "",
+    "description": "",
+    "category": "Device",
+    "imageSrc": "/images/hardware/GT-1230.png",
+    "tag": [
+      "Container-IoT",
+      "Global-IoT",
+      "Tracking",
+      "OGx/IDP",
+      "Cellular",
+      "Container",
+      "Chassis",
+      "Dry",
+      "Asset",
+      "Door",
+      "Cargo"
+    ],
+    "slug": "gt-1230",
+    "path": "/pdf/datasheet/hardware/gt-1230.pdf",
     "featured": true
   },
   {
@@ -30,14 +76,14 @@
     "tag": [
       "Container-IoT",
       "Global-IoT",
-      "Satellite",
-      "Cellular",
       "Tracking",
+      "Cellular",
       "Container",
       "Reefer",
       "Asset"
     ],
     "slug": "ct-3500",
+    "path": "/pdf/datasheet/hardware/ct-3500.pdf",
     "featured": true
   },
   {
@@ -49,14 +95,14 @@
     "tag": [
       "Container-IoT",
       "Global-IoT",
-      "Satellite",
-      "Cellular",
       "Tracking",
+      "Cellular",
       "Container",
       "Reefer",
       "Asset"
     ],
     "slug": "ct-3600",
+    "path": "/pdf/datasheet/hardware/ct-3600.pdf",
     "featured": true
   },
   {
@@ -68,15 +114,15 @@
     "tag": [
       "Container-IoT",
       "Global-IoT",
-      "Satellite",
-      "Cellular",
       "Tracking",
+      "Cellular",
       "Container",
       "Chassis",
       "Dry",
       "Asset"
     ],
     "slug": "ct-1000",
+    "path": "/pdf/datasheet/hardware/ct-1000.pdf",
     "featured": true
   },
   {
@@ -88,15 +134,16 @@
     "tag": [
       "Container-IoT",
       "Global-IoT",
-      "Satellite",
-      "Cellular",
       "Tracking",
+      "Cellular",
       "Container",
       "Chassis",
       "Dry",
-      "Asset"
+      "Asset",
+      "Cargo"
     ],
     "slug": "ct-1010",
+    "path": "/pdf/datasheet/hardware/ct-1010.pdf",
     "featured": true
   },
   {
@@ -107,14 +154,15 @@
     "imageSrc": "/images/hardware/ST-6000.png",
     "tag": [
       "Global-IoT",
-      "Satellite",
-      "OGx/IDP",
+      "Satellite-IoT",
       "Tracking",
+      "OGx/IDP",
       "Maritime",
       "Asset",
-      "Programable"
+      "Programmable"
     ],
     "slug": "st-6000",
+    "path": "",
     "featured": true
   },
   {
@@ -122,17 +170,18 @@
     "subTitle": "Global Satellite Terminal",
     "description": "ST6100 시리즈 위성 터미널은 선박과 부표 등을 위한 연근해 및 대양과 육상을 연결하는 완벽한 통신장비입니다. 안테나 일체형 안테나로 프로그램 내장이 가능한 위성 통신단말기로 Inmarsat IsatData Pro 네트워크를 연결하는 최적의 제품입니다. ST6000 시리즈 위성 터미널은 Inmarsat IsatData Pro 네트워크를 통한 글로벌 위성 연결을 통해 원격 지역에서 작동하는 산업 자산에 대한 완벽한 가시성 확보 및 제어 기능을 제공합니다. 고객의 요구에 맞는 프로그램을 개발하여 내장이 가능합니다.",
     "category": "Device",
-    "imageSrc": "/images/hardware/ST-6100(p).png",
+    "imageSrc": "/images/hardware/ST-6100.png",
     "tag": [
       "Global-IoT",
-      "Satellite",
-      "OGx/IDP",
+      "Satellite-IoT",
       "Tracking",
+      "OGx/IDP",
       "Maritime",
       "Asset",
-      "Program"
+      "Programmable"
     ],
     "slug": "st-6100",
+    "path": "/pdf/datasheet/hardware/st-6100.pdf",
     "featured": true
   },
   {
@@ -143,13 +192,14 @@
     "imageSrc": "/images/hardware/ST-2100.png",
     "tag": [
       "Global-IoT",
-      "Satellite",
-      "OGx/IDP",
+      "Satellite-IoT",
       "Tracking",
+      "OGx/IDP",
       "Maritime",
       "Asset"
     ],
     "slug": "st-2100",
+    "path": "/pdf/datasheet/hardware/st-2100.pdf",
     "featured": true
   },
   {
@@ -160,15 +210,16 @@
     "imageSrc": "/images/hardware/ST-9100.png",
     "tag": [
       "Global-IoT",
-      "Satellite",
+      "Satellite-IoT",
+      "Tracking",
       "OGx/IDP",
       "Cellular",
-      "Tracking",
       "Maritime",
       "Asset",
-      "Programable"
+      "Programmable"
     ],
     "slug": "st-9100",
+    "path": "/pdf/datasheet/hardware/st-9100.pdf",
     "featured": true
   },
   {
@@ -179,13 +230,15 @@
     "imageSrc": "/images/hardware/SC-1000.png",
     "tag": [
       "Global-IoT",
-      "Satellite",
-      "Cellular",
+      "Satellite-IoT",
       "Tracking",
+      "OGx/IDP",
+      "Cellular",
       "Maritime",
       "Asset"
     ],
     "slug": "sc-1000",
+    "path": "/pdf/datasheet/hardware/sc-1000.pdf",
     "featured": true
   },
 
@@ -199,14 +252,15 @@
     "imageSrc": "/images/hardware/QPRO.png",
     "tag": [
       "Global-IoT",
-      "Satellite",
-      "ORBCOMM",
-      "Cellular",
+      "Satellite-IoT",
       "Tracking",
+      "ORBCOMM",
       "Maritime",
-      "Asset"
+      "Asset",
+      "Programmable"
     ],
     "slug": "qpro",
+    "path": "/pdf/datasheet/hardware/qpro.pdf",
     "featured": true
   },
   {
@@ -217,30 +271,112 @@
     "imageSrc": "/images/hardware/Q-4000.png",
     "tag": [
       "Global-IoT",
-      "Satellite",
-      "ORBCOMM",
-      "Cellular",
+      "Satellite-IoT",
       "Tracking",
+      "ORBCOMM",
       "Maritime",
-      "Asset"
+      "Asset",
+      "Programmable"
     ],
     "slug": "q-4000",
+    "path": "/pdf/datasheet/hardware/q-4000.pdf",
+    "featured": true
+  },
+  {
+    "title": "MT 5000",
+    "subTitle": "Intelligent small vessel monitoring",
+    "description": "",
+    "category": "Device",
+    "imageSrc": "/images/hardware/MT-5000.png",
+    "tag": [
+      "AIS",
+      "Tracking",
+      "ORBCOMM",
+      "Maritime"
+    ],
+    "slug": "mt-5000",
+    "path": "/pdf/datasheet/hardware/mt-5000.pdf",
+    "featured": true
+  },
+  {
+    "title": "AT-1",
+    "subTitle": "",
+    "description": "",
+    "category": "Device",
+    "imageSrc": "/images/hardware/Sigfox-AT1.png",
+    "tag": [
+      "Global-IoT",
+      "Tracking",
+      "Sigfox"
+    ],
+    "slug": "at-1",
+    "path": "",
+    "featured": true
+  },
+  {
+    "title": "GEN 3 Router",
+    "subTitle": "",
+    "description": "",
+    "category": "Device",
+    "imageSrc": "/images/hardware/GEN3-Router.png",
+    "tag": [
+      "Starlink",
+      "Internet"
+    ],
+    "slug": "gen3-router",
+    "path": "",
+    "featured": true
+  },
+  {
+    "title": "KSV 1001",
+    "subTitle": "",
+    "description": "",
+    "category": "Device",
+    "imageSrc": "/images/hardware/KSV-1001.png",
+    "tag": [
+      "Global-IoT",
+      "Satellite-IoT",
+      "Tracking",
+      "OGx/IDP"
+    ],
+    "slug": "ksv-1001",
+    "path": "/pdf/brochure/KSV-1001.pdf",
     "featured": true
   },
   {
     "title": "OG2 and OGi",
     "subTitle": "Satellite Modems",
     "description": "ORBCOMM 통신망을 사용할 수 있는 OG2 모뎀과 Inmarsat IsatData Pro 네트워크를 이용할 수 있는 OGi 모뎀은 동일한 설치공간, 커넥터, 전원, 통신 인터페이스 및 프로그래밍 환경 및 프로토콜을 제공합니다. 경제성과 효율성을 모두 갖춘 제품으로 M2M의 어플리케이션에 많이 사용됩니다.",
-    "category": "Modem",
+    "category": "Module",
     "imageSrc": "/images/hardware/OG2.png",
     "tag": [
       "Global-IoT",
-      "Satellite",
+      "Satellite-IoT",
       "ORBCOMM",
       "OGx/IDP",
       "Asset"
     ],
     "slug": "og2-ogi",
+    "path": "/pdf/datasheet/hardware/OG2-OG-ISAT-Satellite-Modems.pdf",
+    "featured": true
+  },
+  {
+    "title": "BG95-S5",
+    "subTitle": "BG95-S5 satellite communication module",
+    "description": "",
+    "category": "Module",
+    "imageSrc": "/images/hardware/BG95-S5.webp",
+    "tag": [
+      "Global-IoT",
+      "Satellite-IoT",
+      "OGx/IDP",
+      "NTN",
+      "Cellular",
+      "Maritime",
+      "Asset"
+    ],
+    "slug": "bg95-s5",
+    "path": "/pdf/datasheet/hardware/Quectel-BG95.pdf",
     "featured": true
   },
   {
@@ -254,7 +390,8 @@
       "Sensor"
     ],
     "slug": "ds-100",
-    "featured": true
+    "path": "/pdf/datasheet/hardware/ds-100-door-sensor.pdf",
+    "featured": false
   },
   {
     "title": "DS 300",
@@ -263,54 +400,25 @@
     "category": "Sensor",
     "imageSrc": "/images/hardware/DS-300.webp",
     "tag": [
-      "Dry",
-      "Sensor"
+      "Container-IoT",
+      "Dry"
     ],
     "slug": "ds-300",
+    "path": "/pdf/datasheet/hardware/ds-300-wireless-door-sensor.pdf",
     "featured": true
   },
   {
-    "title": "MT 5000",
-    "subTitle": "Intelligent small vessel monitoring",
-    "description": "",
-    "category": "Device",
-    "imageSrc": "/images/hardware/MT-5000.png",
-    "tag": [
-      "AIS",
-      "ORBCOMM",
-      "Tracking",
-      "Maritime"
-    ],
-    "slug": "mt-5000",
-    "featured": true
-  },
-  {
-    "title": "BG95-S5",
-    "subTitle": "BG95-S5 satellite communication module",
-    "description": "",
-    "category": "Device",
-    "imageSrc": "/images/hardware/BG95-S5.webp",
-    "tag": [
-      "AIS",
-      "ORBCOMM",
-      "Tracking",
-      "Maritime"
-    ],
-    "slug": "bg95-s5",
-    "featured": true
-  },
-  {
-    "title": "AT-1",
+    "title": "TS 310",
     "subTitle": "",
     "description": "",
-    "category": "Device",
-    "imageSrc": "/images/hardware/MT-5000.png",
+    "category": "Sensor",
+    "imageSrc": "/images/hardware/TS-310.webp",
     "tag": [
-      "Global-IoT",
-      "Sigfox",
-      "Tracking"
+      "Container",
+      "Dry"
     ],
-    "slug": "at-1",
+    "slug": "ts-310",
+    "path": "/pdf/datasheet/hardware/ts-310.pdf",
     "featured": true
   },
   {
@@ -320,10 +428,12 @@
     "category": "Antenna",
     "imageSrc": "/images/hardware/YETN001L1A.png",
     "tag": [
-      "OGx/IDP",
-      "NTN"
+      "Global-IoT",
+      "Satellite-IoT",
+      "OGx/IDP"
     ],
     "slug": "YETN001L1A",
+    "path": "/pdf/datasheet/hardware/Quectel-YETN001L1A.pdf.pdf",
     "featured": true
   },
   {
@@ -337,6 +447,7 @@
       "Internet"
     ],
     "slug": "flat-high-performance",
+    "path": "/pdf/datasheet/hardware/Starlink-FlatHighPerformance.pdf",
     "featured": true
   },
   {
@@ -350,6 +461,7 @@
       "Internet"
     ],
     "slug": "enterprise",
+    "path": "/pdf/datasheet/hardware/Starlink_Enterprise.pdf",
     "featured": true
   }
 ]

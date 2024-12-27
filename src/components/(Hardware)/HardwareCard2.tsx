@@ -15,7 +15,7 @@ interface HardwareItem {
 const HardwareCard2: React.FC<HardwareItem> = ({ title, subTitle, description, imageSrc, tag, slug }) => (
     <a
         className="group"
-        href={`/hardware/${slug}`}
+        href={`/hard/${slug}`}
     >
         <div className="pb-4">
             <div className="relative w-full h-60 overflow-hidden rounded-lg border-2 border-gray-200">

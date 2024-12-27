@@ -7,7 +7,8 @@ import {
     getFilteredHardwaresByQueryAndFilters,
     FilterOptions
 } from '@/service/hardware/hardware';
-import HardwareCard2 from '@/components/(Hardware)/HardwareCard2';
+import HardwareCard2 from '@/components/(Hardware)/HardwareCard2'; // Page 이동
+import HardwareCardPDF from '@/components/(Hardware)/HardwareCardPDF'; // PDF 다운
 import SearchBar from '@/components/(Hardware)/SearchBar';
 import FiltersHardware from '@/components/(Hardware)/FilterHardware';
 import PageTopImage from '@/components/PageTopImage';
@@ -90,7 +91,7 @@ const HardwarePage = () => {
                         <div className="grid grid-cols-1 gap-2 md:grid-cols-2 lg:grid-cols-3">
                             {hardware.length > 0 ? (
                                 hardware.map((post) => (
-                                    <HardwareCard2 key={post.slug} {...post} />
+                                    <HardwareCardPDF key={post.slug} {...post} />
                                 ))
                             ) : (
                                 <p className="text-gray-500">No hardware match your criteria.</p>

@@ -7,9 +7,6 @@ import remarkGfm from 'remark-gfm';
 import rehypeRaw from 'rehype-raw';
 import PageTopImage from '@/components/PageTopImage';
 import Advantage from '@/components/(Hard)/Advantage';
-import Resources from '@/components/(Hard)/Resources';
-import BlogSlider from '@/components/(BlogSlider)/BlogSlider';
-import CaseStudies from '@/components/(Hard)/CaseStudies';
 import TagFilterBlog from '@/components/(Resources)/TagFilterBlog';
 
 interface PageProps {
@@ -45,16 +42,16 @@ export default function HardwareDetail({ params }: PageProps) {
                 textPosition="center"
                 opacity={50}
             />
-            <div className="mx-auto max-w-7xl px-6 py-16">
-                {/*<h1 className="text-3xl font-bold mb-6">{data.title || slug}</h1>*/}
-                <ReactMarkdown
-                    remarkPlugins={[remarkGfm]} // 타입 캐스팅
-                    rehypePlugins={[rehypeRaw]}
-                    className="prose prose-lg max-w-none"
-                >
-                    {content}
-                </ReactMarkdown>
-            </div>
+            {/*<div className="mx-auto max-w-7xl px-6 py-16">*/}
+            {/*    /!*<h1 className="text-3xl font-bold mb-6">{data.title || slug}</h1>*!/*/}
+            {/*    <ReactMarkdown*/}
+            {/*        remarkPlugins={[remarkGfm]} // 타입 캐스팅*/}
+            {/*        rehypePlugins={[rehypeRaw]}*/}
+            {/*        className="prose prose-lg max-w-none"*/}
+            {/*    >*/}
+            {/*        {content}*/}
+            {/*    </ReactMarkdown>*/}
+            {/*</div>*/}
             <Advantage />
             {/*<CaseStudies/>*/}
             {/*<Resources />*/}
