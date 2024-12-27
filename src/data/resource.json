@@ -280,6 +280,17 @@
     "path": "/pdf/brochure/Satellite-AIS.pdf",
     "use": true
   },
+  {
+    "date": "2024-12-27",
+    "contentType": "Brochure",
+    "title": "Satellite AIS (KO)",
+    "subtitle": "Combine terrestrial and satellite AIS data for the most complete picture of global vessel activity",
+    "tags": ["AIS", "Satellite"],
+    "form": "pdf",
+    "image": "/images/resources/brochure/SatelliteAISKO.png",
+    "path": "/pdf/brochure/Satellite_AIS_KO.pdf",
+    "use": true
+  },
 
 
 
@@ -633,7 +644,7 @@
     "contentType": "Datasheet",
     "title": "GT 1220",
     "subtitle": "Next-generation solarpowered tracking for dry trailers, containers and other transport assets.",
-    "tags": ["Container-IoT", "Global-IoT", "OGx/IDP", "Door"],
+    "tags": ["Container-IoT", "Global-IoT", "Cellular", "Door"],
     "form": "pdf",
     "image": "/images/resources/datasheet/hardware/GT-1220.jpeg",
     "path": "/pdf/datasheet/hardware/gt-1220.pdf",
@@ -644,7 +655,7 @@
     "contentType": "Datasheet",
     "title": "GT 1230",
     "subtitle": "Next-generation, all-in-one solar-powered tracking device with integrated cargo sensor.",
-    "tags": ["Container-IoT", "Global-IoT", "OGx/IDP", "Door", "Cargo"],
+    "tags": ["Container-IoT", "Global-IoT", "Cellular", "Door", "Cargo"],
     "form": "pdf",
     "image": "/images/resources/datasheet/hardware/GT-1230.png",
     "path": "/pdf/datasheet/hardware/gt-1230.pdf",

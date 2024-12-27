@@ -1,4 +1,4 @@
-import Hero from '@/components/Hero';
+
 import FeaturedPosts from '@/components/FeaturedPosts';
 import CarouselPosts from '@/components/CarouselPosts';
 // import Board from '@/components/Board';
@@ -8,7 +8,7 @@ import StartNow from '@/components/StartNow';
 // import Partner from '@/components/Partner';
 // import Introduce from '@/components/(Main)/Introduce';
 import ResponsiveSection from '@/components/ResponsiveSection';
-import ThreeComponent from '@/components/ThreeComponenet';
+
 // import Solutions from '@/components/Solutions';
 import Intro from '@/components/Intro';
 import PartnerTable from '@/components/PartnerTable';
@@ -62,6 +62,8 @@ import Partner from '@/components/Partner';
 import PartnerManyLines from '@/components/PartnerManyLines';
 import Company from '@/components/(Main)/Company';
 import { getAllSolutions } from '@/service/solutions';
+import Hero from '@/components/Hero';
+import ThreeComponent from '@/components/ThreeComponenet';
 import Solutions from '@/components/Solutions';
 import Board from '@/components/Board';
 import SubscribeSection from '@/components/SubscribeSection';
@@ -87,6 +89,8 @@ export default async function HomePage() {
             {/*<Introduce />*/}
             {/*<Partner />*/}
             <PartnerManyLines/>
+            <ThreeComponent/>
+
 
             {/*<Company />*/}
             {/*<Solutions solutions={solutions} />*/}

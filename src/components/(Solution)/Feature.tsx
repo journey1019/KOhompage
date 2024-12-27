@@ -2,7 +2,7 @@ import Image from 'next/image';
 
 export default function Feature() {
     return (
-        <div className="mx-auto max-w-7xl px-6 lg:px-8">
+        <div className="mx-auto max-w-7xl px-6 lg:px-8 lg:py-14">
             {/* Section 1 */}
             <div className="mx-auto grid max-w-2xl grid-cols-1 gap-x-8 gap-y-16 pt-12 lg:max-w-none lg:grid-cols-2 items-center">
                 <div className="flex justify-center order-1 lg:order-none">

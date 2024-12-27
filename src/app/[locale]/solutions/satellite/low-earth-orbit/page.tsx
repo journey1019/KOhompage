@@ -5,6 +5,8 @@ import { SectionTitle } from '@/components/(About)/SectionTitle';
 import Characteristics from '@/components/(Solution)/Characteristics';
 import OneImage from '@/components/(Solution)/OneImage';
 import ChipFilterHardwareCarousel from '@/components/(Hardware)/ChipFilterHardwareCarousel';
+import FilterHardwareCarousel from '@/components/(Hardware)/FilterHardwareCarousel';
+import FilterResourceCarousel from '@/components/(Resources)/FilterResourceCarousel';
 
 interface PageProps {
     params: {locale: string};
@@ -14,7 +16,7 @@ export default function LowEarthOrbitPage({params}: PageProps) {
     const data = lowEarthOrbitData[locale];
 
 
-    const chip = "Low Earth Orbit"
+    const chips = ["Low Earth Orbit"]
     return(
         <section>
             <PageTopImage
@@ -45,10 +47,17 @@ export default function LowEarthOrbitPage({params}: PageProps) {
 
             <SectionTitle
                 preTitle="HARDWARES"
-                title={`${chip}: Hardware Lists`}
+                title="Satellite Hardware Lists"
             >
             </SectionTitle>
-            <ChipFilterHardwareCarousel chips={['maritime']} />
+            <FilterHardwareCarousel keywords={['AIS', 'Modem']} />
+
+            <SectionTitle
+                preTitle="RESOURCES"
+                title={`${chips} : All Resources`}
+            >
+            </SectionTitle>
+            <FilterResourceCarousel keywords={['OGx/IDP']} />
         </section>
     )
 }

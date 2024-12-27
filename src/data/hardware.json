@@ -354,7 +354,8 @@
       "Satellite-IoT",
       "ORBCOMM",
       "OGx/IDP",
-      "Asset"
+      "Asset",
+      "Modem"
     ],
     "slug": "og2-ogi",
     "path": "/pdf/datasheet/hardware/OG2-OG-ISAT-Satellite-Modems.pdf",

@@ -17,6 +17,8 @@ import CharacteristicsDetail from '@/components/(Solution)/CharacteristicsDetail
 import React from 'react';
 import Feature from '@/components/(Solution)/Feature';
 import { notFound } from 'next/navigation';
+import FilterHardwareCarousel from '@/components/(Hardware)/FilterHardwareCarousel';
+import FilterResourceCarousel from '@/components/(Resources)/FilterResourceCarousel';
 
 interface PageProps {
     params: {locale: string};
@@ -50,6 +52,7 @@ export default async function AISPage({params}: PageProps){
             </div>
         );
     }
+    const chips = ['AIS']
 
     return(
         <section>
@@ -82,14 +85,27 @@ export default async function AISPage({params}: PageProps){
                 preTitle="Low Earth Orbit"
                 title="ORBCOMM 위성 데이터 통신 서비스 특징"
             >
-                ORBCOMM의 저궤도(LEO: Low Earth Orbit) 위성 네트워크. 소형 위성모듈과 Whip 형태의 무지향성 안테나를 적용하여 쉽고 간단한 설치로 통신 인프라가 구축되어 있지 않은 산악/해상 등의 장소에서 유용한 데이터 통신 서비스를 제공합니다.
+                AIS 서비스는 전세계 모든 지역에서의 AIS 정보를 수집하여 고객에게 제공합니다. AIS(선박 자동 식별 장치, Automatic Identification System)는 선박의 식별, 위치, 탐색을 지원하고 해양 안전을 향상시키는데 사용할 수 있는 중요한 데이터를 전송하는 선박 발신 시스템입니다. AIS 데이터는 해상 영역 인식, 수색 및 구조, 환경 모니터링, 해상 정보 분석 등에 사용됩니다.
             </SectionTitle>
             <CharacteristicsDetail items={data.character || []} gridCols={3}/>
 
             <Feature/>
 
-            <FAQ/>
-            <Download/>
+            {/*<FAQ/>*/}
+            {/*<Download/>*/}
+            <SectionTitle
+                preTitle="HARDWARES"
+                title="Satellite Hardware Lists"
+            >
+            </SectionTitle>
+            <FilterHardwareCarousel keywords={['AIS']} />
+
+            <SectionTitle
+                preTitle="RESOURCES"
+                title={`${chips} : All Resources`}
+            >
+            </SectionTitle>
+            <FilterResourceCarousel keywords={['AIS']} />
             {/*<References/>*/}
         </section>
     )
