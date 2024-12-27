@@ -3,7 +3,8 @@
 import React, { useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import { CloudArrowUpIcon, PhoneIcon, DocumentTextIcon, BellIcon, Squares2X2Icon } from '@heroicons/react/24/outline';
+import { GlobeAltIcon, RocketLaunchIcon, MapIcon, CloudArrowUpIcon, PhoneIcon, DocumentTextIcon, BellIcon, Squares2X2Icon } from '@heroicons/react/24/outline';
+import { GoContainer } from "react-icons/go";
 
 interface DropdownProps {
     menuKey: string;
@@ -12,10 +13,10 @@ interface DropdownProps {
 
 const dropdownContent: Record<string, { label: string; href: string; title?: string; description?: string; image?: string; icon?: React.ReactNode; }[]> = {
     solutions: [
-        { label: 'Container-IoT', href: 'container-iot', title: 'Container IoT', description: 'Real-time tracking, monitoring, and remote control for refrigerated containers.' },
-        { label: 'Global-IoT', href: 'global-iot', title: 'Global IoT', description: 'Monitoring construction equipment, weather data, and marine information.' },
-        { label: 'Satellite', href: 'satellite', title: 'Satellite', description: 'INMARSAT / ORBCOMM / STARLINK satellite communication services.' },
-        { label: 'AIS', href: 'ais', title: 'AIS', description: 'AIS data collection and provision through satellite/terrestrial networks.' },
+        { label: 'Container-IoT', href: 'container-iot', title: 'Container IoT', description: 'Real-time tracking, monitoring, and remote control for refrigerated containers.', icon: <GoContainer className="h-6 w-6" /> },
+        { label: 'Global-IoT', href: 'global-iot', title: 'Global IoT', description: 'Monitoring construction equipment, weather data, and marine information.', icon: <GlobeAltIcon className="h-6 w-6" />, },
+        { label: 'Satellite', href: 'satellite', title: 'Satellite', description: 'INMARSAT / ORBCOMM / STARLINK satellite communication services.', icon: <RocketLaunchIcon className="h-6 w-6" />, },
+        { label: 'AIS', href: 'ais', title: 'AIS', description: 'AIS data collection and provision through satellite/terrestrial networks.', icon: <MapIcon className="h-6 w-6" />, }
     ],
     hardware: [
         { label: 'CT 1000', href: '/hardware/ct-1000', image: '/images/hardware/CT-1000.png', description: 'Trailer and composite container' },
@@ -56,27 +57,15 @@ const Dropdown = ({ menuKey, locale }: DropdownProps) => {
                     <div className="grid max-w-screen-xl px-4 py-3 mx-auto text-gray-900 dark:text-white grid-cols-1 sm:grid-cols-4 md:px-6">
                         {items.map((item) => (
                             <ul key={item.href}>
-                                <li key={item.href}>
+                                <li>
                                     <a
                                         href={`/solutions/${item.href}`}
                                         className="block px-3 py-1 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700"
                                     >
                                         <div className="flex flex-col items-start">
                                             <div className="rounded-md bg-gray-200 dark:bg-white/5 p-1 ring-1 ring-gray-300 dark:ring-white/10">
-                                                <svg
-                                                    xmlns="http://www.w3.org/2000/svg"
-                                                    viewBox="0 0 24 24"
-                                                    fill="none"
-                                                    stroke="currentColor"
-                                                    strokeWidth={2}
-                                                    strokeLinecap="round"
-                                                    strokeLinejoin="round"
-                                                    className="h-5 w-5 text-black dark:text-white"
-                                                >
-                                                    <circle cx="12" cy="12" r="10" />
-                                                    <line x1="12" y1="8" x2="12" y2="12" />
-                                                    <line x1="12" y1="16" x2="12" y2="16" />
-                                                </svg>
+                                                {/* Icon Rendering */}
+                                                {item.icon}
                                             </div>
                                             <div className="font-semibold pt-5">{item.title}</div>
                                             <div className="text-sm pt-2 text-gray-400">{item.description}</div>
@@ -165,7 +154,7 @@ const Dropdown = ({ menuKey, locale }: DropdownProps) => {
     // Default layout for other dropdowns
     return (
         <div className="absolute top-full left-0 w-screen bg-white shadow-lg border-t z-60">
-            <div className="grid grid-cols-3 lg:grid-cols-5 gap-4 p-6 max-w-screen-xl mx-auto">
+            <div className="grid grid-cols-3 gap-4 p-6 max-w-screen-xl mx-auto">
                 {items.map((item) => (
                     <Link
                         key={item.href}
