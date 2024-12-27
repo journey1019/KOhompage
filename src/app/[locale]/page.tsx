@@ -59,6 +59,7 @@ import News from '@/components/News';
 import {Link} from '@/i18n/routing';
 import Introduce from '@/components/(Main)/Introduce';
 import Partner from '@/components/Partner';
+import PartnerManyLines from '@/components/PartnerManyLines';
 import Company from '@/components/(Main)/Company';
 import { getAllSolutions } from '@/service/solutions';
 import Solutions from '@/components/Solutions';
@@ -83,27 +84,28 @@ export default async function HomePage() {
             {/*<Link href="/about">{t('HomePage.about')}</Link>*/}
             <Hero/>
             
-            <Introduce />
-            <Partner />
+            {/*<Introduce />*/}
+            {/*<Partner />*/}
+            <PartnerManyLines/>
 
-            <Company />
-            <Solutions solutions={solutions} />
+            {/*<Company />*/}
+            {/*<Solutions solutions={solutions} />*/}
 
             {/*<Solutions solutions={solutions}/>*/}
             {/*<CaseStudies />*/}
 
             {/*<Board />*/}
 
-            <div className="mx-auto max-w-7xl py-32">
-                <div className="m-auto max-w-5xl">
-                    <h2 className="text-center text-md font-semibold text-red-800 pb-6 sm:pb-10">OUR RESOURCES</h2>
-                </div>
-                <TagFilterBlog initialTags={[]} />
-            </div>
+            {/*<div className="mx-auto max-w-7xl py-32">*/}
+            {/*    <div className="m-auto max-w-5xl">*/}
+            {/*        <h2 className="text-center text-md font-semibold text-red-800 pb-6 sm:pb-10">OUR RESOURCES</h2>*/}
+            {/*    </div>*/}
+            {/*    <TagFilterBlog initialTags={[]} />*/}
+            {/*</div>*/}
             {/*<References/>*/}
             {/*<TagFilterBoard initialTags={[]} />*/}
 
-            <SubscribeSection />
+            {/*<SubscribeSection />*/}
             <WorkWithUs />
         </section>
     );
