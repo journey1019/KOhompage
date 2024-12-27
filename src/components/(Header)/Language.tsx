@@ -26,9 +26,9 @@ export default function Language() {
         <div className="relative inline-block">
             <button
                 onClick={() => setMenuOpen(!menuOpen)} // 드롭다운 열기/닫기 토글
-                className="flex items-center space-x-2 pl-4 py-2 text-gray-900 rounded-md"
+                className="flex items-center space-x-2 sm:pl-4 py-2 text-gray-900 rounded-md"
             >
-                <GrLanguage className="ml-2 cursor-pointer dark:text-white" />
+                <GrLanguage className="sm:ml-2 cursor-pointer dark:text-white" />
                 {/*<span>{currentLocale.toUpperCase()}</span> /!* 현재 언어 표시 *!/*/}
                 <ChevronDownIcon aria-hidden="true" className="h-5 w-5 text-black dark:text-white" />
             </button>

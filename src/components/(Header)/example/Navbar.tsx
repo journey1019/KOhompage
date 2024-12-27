@@ -22,10 +22,10 @@ const Navbar = ({ locale }: { locale: string }) => {
 
     const dropdownContent: Record<string, { label: string; href: string }[]> = {
         solutions: [
-            { label: 'Container-IoT', href: `{${locale}/solutions/container-iot}` },
-            { label: 'Global-IoT', href: `{${locale}/solutions/global-iot}` },
-            { label: 'Satellite', href: `{${locale}/solutions/satellite}` },
-            { label: 'AIS', href: `{${locale}/solutions/ais}` },
+            { label: 'Container-IoT', href: '/solutions/container-iot' },
+            { label: 'Global-IoT', href: '/solutions/global-iot' },
+            { label: 'Satellite', href: '/solutions/satellite' },
+            { label: 'AIS', href: '/solutions/ais' },
         ],
         hardware: [
             { label: 'CT 1000', href: '/hardware/ct-1000' },
@@ -135,7 +135,7 @@ const Navbar = ({ locale }: { locale: string }) => {
 
                     {/* Hamburger Menu for Mobile */}
                     <button
-                        className="p-2 hover:bg-gray-100 rounded-full md:hidden"
+                        className="sm:p-2 py-2 hover:bg-gray-100 rounded-full md:hidden"
                         onClick={toggleMobileMenu}
                     >
                         {isMobileMenuOpen ? (
@@ -160,7 +160,7 @@ const Navbar = ({ locale }: { locale: string }) => {
             {/* Mobile Menu */}
             {isMobileMenuOpen && (
                 <div className="fixed top-16 left-0 w-full bg-white shadow-md z-40 md:hidden">
-                    <ul className="flex flex-col space-y-4 p-4">
+                    <ul className="flex flex-col space-y-4 py-2 sm:p-4">
                         {menuItems.map((item) => (
                             <li key={item.key}>
                                 <button
