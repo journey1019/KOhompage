@@ -23,6 +23,7 @@ import { SectionTitle } from '@/components/(About)/SectionTitle';
 import Kind from '@/components/(Solution)/Kind';
 import ChipFilterHardwareCarousel from '@/components/(Hardware)/ChipFilterHardwareCarousel';
 import TagFilterBlogCarousel from '@/components/(Resources)/TagFilterBlogCarousel';
+import { notFound } from 'next/navigation';
 
 interface PageProps {
     params: {locale: string};
@@ -44,12 +45,13 @@ export default async function GlobalIoT({params}: PageProps){
 
     // 데이터 유효성 검증
     if (!data) {
-        return (
-            <div className="text-center py-12">
-                <h2 className="text-2xl font-bold">Solution not found</h2>
-                <p>Please check the locale or solution slug.</p>
-            </div>
-        );
+        // return (
+        //     <div className="text-center py-12">
+        //         <h2 className="text-2xl font-bold">Solution not found</h2>
+        //         <p>Please check the locale or solution slug.</p>
+        //     </div>
+        // );
+        notFound();
     }
 
     const chips = ['ogx', 'og2', 'sc-1000', 'st-8100', 'st-2100', 'st-6000', 'st-6100', 'st-9100', 'mt-500'];

@@ -16,6 +16,7 @@ import { SectionTitle } from '@/components/(About)/SectionTitle';
 import CharacteristicsDetail from '@/components/(Solution)/CharacteristicsDetail';
 import React from 'react';
 import Feature from '@/components/(Solution)/Feature';
+import { notFound } from 'next/navigation';
 
 interface PageProps {
     params: {locale: string};
@@ -34,6 +35,11 @@ export async function generateStaticParams() {
 export default async function AISPage({params}: PageProps){
     const { locale } = params; // 비동기적으로 처리
     const data = solutionsData[locale]?.["ais"]; // 안전하게 데이터 접근
+
+    if (!data) {
+        // Redirect to 404 if the hardware is not found
+        notFound();
+    }
 
     // 데이터 유효성 검증
     if (!data) {

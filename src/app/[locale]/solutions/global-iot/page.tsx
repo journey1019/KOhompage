@@ -18,6 +18,7 @@ import ChipFilterHardwareCarousel from '@/components/(Hardware)/ChipFilterHardwa
 import React from 'react';
 import TagFilterBlogCarousel from '@/components/(Resources)/TagFilterBlogCarousel';
 import Image from 'next/image';
+import { notFound } from 'next/navigation';
 
 interface PageProps {
     params: {locale: string};
@@ -37,14 +38,17 @@ export default async function GlobalIoT({params}: PageProps){
     const { locale } = params; // 비동기적으로 처리
     const data = solutionsData[locale]?.["global-iot"]; // 안전하게 데이터 접근
 
+
+
     // 데이터 유효성 검증
     if (!data) {
-        return (
-            <div className="text-center py-12">
-                <h2 className="text-2xl font-bold">Solution not found</h2>
-                <p>Please check the locale or solution slug.</p>
-            </div>
-        );
+        // return (
+        //     <div className="text-center py-12">
+        //         <h2 className="text-2xl font-bold">Solution not found</h2>
+        //         <p>Please check the locale or solution slug.</p>
+        //     </div>
+        // );
+        notFound();
     }
     const chips = ['global-iot', 'st2100', 'st6100', 'st9100', 'og2', 'ogi'];
 
