@@ -15,6 +15,8 @@ import UseCaseAdvantage from '@/components/(Solution)/UseCaseAdvantage';
 import ChipFilterHardwareCarousel from '@/components/(Hardware)/ChipFilterHardwareCarousel';
 import SolutionAdvantage from '@/components/(Solution)/SolutionAdvantage';
 import { notFound } from 'next/navigation';
+import FilterResourceCarousel from '@/components/(Resources)/FilterResourceCarousel';
+import FilterHardwareCarousel from '@/components/(Hardware)/FilterHardwareCarousel';
 
 interface PageProps {
     params: {locale: string};
@@ -60,14 +62,22 @@ export default async function MaritimePage({params}: PageProps) {
                 {/*</SectionTitle>*/}
 
 
+                {/*<ChipFilterHardwareCarousel chips={['maritime']} />*/}
                 <SectionTitle
                     preTitle="HARDWARES"
-                    title="HARDWARE LIST"
+                    title="Maritime Hardware Lists"
                 >
                 </SectionTitle>
-                <ChipFilterHardwareCarousel chips={['maritime']} />
+                <FilterHardwareCarousel keywords={['Maritime']} />
                 {/*<FilterableHardwareList chips={chips}/>*/}
                 {/*<SlugHardware locale={locale}/>*/}
+
+                <SectionTitle
+                    preTitle="RESOURCES"
+                    title={`${chips} : All Resources`}
+                >
+                </SectionTitle>
+                <FilterResourceCarousel keywords={[ 'Maritime']} />
 
                 <SectionTitle preTitle="FAQ" title={data.qnaTitle}>
                     {data.qnaLetter}
@@ -76,9 +86,9 @@ export default async function MaritimePage({params}: PageProps) {
 
                 <CtaSolution items={data.ctas}/>
 
-                <SectionTitle preTitle="Resources" title="Maritime Platform: Resources" />
+                {/*<SectionTitle preTitle="Resources" title="Maritime Platform: Resources" />*/}
                 {/*<Blog/>*/}
-                <TagFilterBlog initialTags={['maritime']} />
+                {/*<TagFilterBlog initialTags={['maritime']} />*/}
             </Container>
         </section>
     )

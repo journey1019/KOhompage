@@ -19,6 +19,8 @@ import React from 'react';
 import TagFilterBlogCarousel from '@/components/(Resources)/TagFilterBlogCarousel';
 import Image from 'next/image';
 import { notFound } from 'next/navigation';
+import FilterHardwareCarousel from '@/components/(Hardware)/FilterHardwareCarousel';
+import FilterResourceCarousel from '@/components/(Resources)/FilterResourceCarousel';
 
 interface PageProps {
     params: {locale: string};
@@ -50,7 +52,7 @@ export default async function GlobalIoT({params}: PageProps){
         // );
         notFound();
     }
-    const chips = ['global-iot', 'st2100', 'st6100', 'st9100', 'og2', 'ogi'];
+    const chips = ['Global-IoT'];
 
     return(
         <section>
@@ -96,12 +98,18 @@ export default async function GlobalIoT({params}: PageProps){
                    width={800} height={300} unoptimized
             />
 
+            {/*<SectionTitle*/}
+            {/*    preTitle="HARDWARES"*/}
+            {/*    title="Container-IoT Hardware Lists"*/}
+            {/*>*/}
+            {/*</SectionTitle>*/}
+            {/*<ChipFilterHardwareCarousel chips={['global-iot']} />*/}
             <SectionTitle
                 preTitle="HARDWARES"
-                title="Container-IoT Hardware Lists"
+                title="Global-IoT Hardware Lists"
             >
             </SectionTitle>
-            <ChipFilterHardwareCarousel chips={['global-iot']} />
+            <FilterHardwareCarousel keywords={['Global-IoT']} />
 
             <SectionTitle
                 preTitle="Q n A"
@@ -110,13 +118,19 @@ export default async function GlobalIoT({params}: PageProps){
             <FAQ/>
 
             {/*<Download/>*/}
+            {/*<SectionTitle*/}
+            {/*    preTitle="RESOURCES"*/}
+            {/*    title="ALL RESOURCES"*/}
+            {/*>*/}
+            {/*</SectionTitle>*/}
+            {/*<TagFilterBlog initialTags={['container-iot']} />*/}
+            {/*<TagFilterBlogCarousel initialTags={chips} />*/}
             <SectionTitle
                 preTitle="RESOURCES"
-                title="ALL RESOURCES"
+                title={`${chips} : All Resources`}
             >
             </SectionTitle>
-            {/*<TagFilterBlog initialTags={['container-iot']} />*/}
-            <TagFilterBlogCarousel initialTags={chips} />
+            <FilterResourceCarousel keywords={['Container-IoT']} />
         </section>
     )
 }

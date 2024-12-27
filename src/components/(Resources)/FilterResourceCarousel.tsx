@@ -5,13 +5,14 @@ import { getResourcesByKeywords, ResourcesProps } from "@/service/references/ref
 import ResourceCard from "@/components/(Resources)/ResourceCard";
 import Carousel from "@/components/Carousel";
 
-interface FilterReferenceCarouselProps {
+interface FilterResourceCarouselProps {
     keywords: string[]; // Keywords to filter resources by
 }
 
-const FilterReferenceCarousel: React.FC<FilterReferenceCarouselProps> = ({ keywords }) => {
+const FilterResourceCarousel: React.FC<FilterResourceCarouselProps> = ({ keywords }) => {
     const filteredResources: ResourcesProps[] = getResourcesByKeywords(keywords);
 
+    console.log('hihi hihiiojij')
     return (
         <div className="mx-auto max-w-7xl px-6 py-8">
             <h2 className="text-2xl font-bold text-gray-800 mb-6">
@@ -30,4 +31,4 @@ const FilterReferenceCarousel: React.FC<FilterReferenceCarouselProps> = ({ keywo
     );
 };
 
-export default FilterReferenceCarousel;
+export default FilterResourceCarousel;

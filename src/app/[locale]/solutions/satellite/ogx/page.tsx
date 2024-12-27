@@ -5,6 +5,8 @@ import { SectionTitle } from '@/components/(About)/SectionTitle';
 import ChipFilterHardwareCarousel from '@/components/(Hardware)/ChipFilterHardwareCarousel';
 import TableAdvantage from "@/components/(Solution)/TableAdvantage";
 import Strength from '@/components/(Solution)/Strength';
+import FilterHardwareCarousel from '@/components/(Hardware)/FilterHardwareCarousel';
+import FilterResourceCarousel from '@/components/(Resources)/FilterResourceCarousel';
 
 
 interface PageProps {
@@ -14,6 +16,7 @@ export default function OGxPage({params}: PageProps) {
     const { locale } = params; // 비동기 처리
     const data = ogxData[locale];
 
+    const chips = ['OGx']
     return(
         <section>
             <PageTopImage
@@ -43,13 +46,26 @@ export default function OGxPage({params}: PageProps) {
             <Strength items={data.advantages || []} gridCols={3}/>
 
 
+            {/*<SectionTitle*/}
+            {/*    preTitle="HARDWARES"*/}
+            {/*    title="Satellite Hardware Lists"*/}
+            {/*>*/}
+            {/*</SectionTitle>*/}
+            {/*<ChipFilterHardwareCarousel chips={['ogx', 'ogi', 'og2']} />*/}
+
             <SectionTitle
                 preTitle="HARDWARES"
                 title="Satellite Hardware Lists"
             >
             </SectionTitle>
-            <ChipFilterHardwareCarousel chips={['ogx', 'ogi', 'og2']} />
+            <FilterHardwareCarousel keywords={['OGx/IDP']} />
 
+            <SectionTitle
+                preTitle="RESOURCES"
+                title={`${chips} : All Resources`}
+            >
+            </SectionTitle>
+            <FilterResourceCarousel keywords={['OGx/IDP']} />
         </section>
     )
 }

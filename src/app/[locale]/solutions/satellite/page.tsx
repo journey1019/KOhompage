@@ -24,6 +24,8 @@ import Kind from '@/components/(Solution)/Kind';
 import ChipFilterHardwareCarousel from '@/components/(Hardware)/ChipFilterHardwareCarousel';
 import TagFilterBlogCarousel from '@/components/(Resources)/TagFilterBlogCarousel';
 import { notFound } from 'next/navigation';
+import FilterHardwareCarousel from '@/components/(Hardware)/FilterHardwareCarousel';
+import FilterResourceCarousel from '@/components/(Resources)/FilterResourceCarousel';
 
 interface PageProps {
     params: {locale: string};
@@ -54,7 +56,7 @@ export default async function GlobalIoT({params}: PageProps){
         notFound();
     }
 
-    const chips = ['ogx', 'og2', 'sc-1000', 'st-8100', 'st-2100', 'st-6000', 'st-6100', 'st-9100', 'mt-500'];
+    const chips = ["Satellite"];
     return(
         <section>
             <PageTopImage
@@ -82,20 +84,31 @@ export default async function GlobalIoT({params}: PageProps){
 
             <UseCase slug="satellite" locale={locale} />
 
+            {/*<SectionTitle*/}
+            {/*    preTitle="HARDWARES"*/}
+            {/*    title="Satellite Hardware Lists"*/}
+            {/*>*/}
+            {/*</SectionTitle>*/}
+            {/*<ChipFilterHardwareCarousel chips={['ogx', 'ogi', 'og2']} />*/}
             <SectionTitle
                 preTitle="HARDWARES"
                 title="Satellite Hardware Lists"
             >
             </SectionTitle>
-            <ChipFilterHardwareCarousel chips={['ogx', 'ogi', 'og2']} />
-
+            <FilterHardwareCarousel keywords={['Satellite', 'Starlink','OGx/IDP']} />
 
             <SectionTitle
                 preTitle="RESOURCES"
-                title="ALL RESOURCES"
+                title={`${chips} : All Resources`}
             >
             </SectionTitle>
-            <TagFilterBlogCarousel initialTags={chips} />
+            <FilterResourceCarousel keywords={['Satellite', 'Starlink','OGx/IDP']} />
+            {/*<SectionTitle*/}
+            {/*    preTitle="RESOURCES"*/}
+            {/*    title="ALL RESOURCES"*/}
+            {/*>*/}
+            {/*</SectionTitle>*/}
+            {/*<TagFilterBlogCarousel initialTags={chips} />*/}
             {/*<FilterableHardwareList chips={chips}/>*/}
             {/*<TagFilterBlog initialTags={['ogx']} />*/}
             {/*<TagFilterBoard initialTags={['']}/>*/}

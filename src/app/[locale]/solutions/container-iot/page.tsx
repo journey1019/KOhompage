@@ -22,9 +22,9 @@ import { SectionTitle } from '@/components/(About)/SectionTitle';
 import TagFilterBlogCarousel from '@/components/(Resources)/TagFilterBlogCarousel';
 // import TagFilterBlog from '@/components/(Main)/TagFilterBlog';
 import ChipFilterHardwareCarousel from '@/components/(Hardware)/ChipFilterHardwareCarousel';
-import FilterReferenceCarousel from '@/components/(Resources)/FilterResourceCarousel';
 import FilterHardwareCarousel from '@/components/(Hardware)/FilterHardwareCarousel';
 import { notFound } from 'next/navigation';
+import FilterResourceCarousel from '@/components/(Resources)/FilterResourceCarousel';
 
 interface PageProps {
     params: {locale: string};
@@ -87,8 +87,9 @@ export default async function ContainerIoT({ params }: PageProps){
                 title="Container-IoT Hardware Lists"
             >
             </SectionTitle>
+            <FilterHardwareCarousel keywords={['Container-IoT']} />
             {/*<FilterableHardwareList chips={['container', 'maritime']}/>*/}
-            <ChipFilterHardwareCarousel chips={['container-iot', 'maritime']} />
+            {/*<ChipFilterHardwareCarousel chips={['container-iot', 'maritime']} />*/}
             {/*<Hardware/>*/}
             {/*<FAQ/>*/}
             {/*<Download/>*/}
@@ -101,10 +102,11 @@ export default async function ContainerIoT({ params }: PageProps){
                 title={`${chips} : All Resources`}
             >
             </SectionTitle>
+            <FilterResourceCarousel keywords={['Container-IoT']} />
             {/*<TagFilterBlog initialTags={['container-iot']} />*/}
-            <TagFilterBlogCarousel initialTags={chips} />
-            <FilterReferenceCarousel keywords={['Container-IoT']} />
-            <FilterHardwareCarousel keywords={['Container-IoT']} />
+            {/*<TagFilterBlogCarousel initialTags={chips} />*/}
+
+
         </section>
     )
 }

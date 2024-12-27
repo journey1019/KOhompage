@@ -152,8 +152,8 @@ const maritimeData: Record<string, MaritimeData> = {
         advantage: [
             {
                 direction: "left",
-                title1: "가시성",
-                title2: "",
+                title1: "",
+                title2: "가시성",
                 description: "건조 및 냉장 컨테이너와 화물에 대한 신뢰할 수 있는 모니터링을 통해 육상 및 해상 컨테이너에 계속 연결하세요.",
                 image: "/images/solutions/container-iot/maritime/Maritime-Benefits-1-visibility-1440x776.png",
             },
@@ -166,8 +166,8 @@ const maritimeData: Record<string, MaritimeData> = {
             },
             {
                 direction: "left",
-                title1: "활용",
-                title2: "",
+                title1: "",
+                title2: "활용",
                 description: "위치 및 화물 상태 데이터를 지속적으로 모니터링하여 컨테이너가 항상 최고 효율로 작동하도록 보장합니다.",
                 image: "/images/solutions/container-iot/maritime/Maritime-Benefits-3-utilization.png",
             },
