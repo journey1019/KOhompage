@@ -12,6 +12,7 @@ export interface HardwareProps {
     featured: boolean;
 }
 
+
 // 하나의 키워드 매칭
 // export const NETWORK_MAPPING: Record<string, string> = {
 //     "Satellite(ORBCOMM)": "ORBCOMM",
@@ -31,6 +32,7 @@ export const NETWORK_MAPPING: Record<string, string[]> = {
 }
 
 export interface FilterOptions {
+    categories?: string[];
     types?: string[];
     networks?: string[];
     tags?: string[];
@@ -99,15 +101,21 @@ export const getFilteredHardwaresByQueryAndFilters = (
                 hardware.tag.map((tag) => tag.toLowerCase()).includes(ta.toLowerCase())
             );
 
-        return matchesQuery && matchesTypes && matchesNetwork && matchesTag;
+        // categories 필터: hardware.tag에서 categories와 매칭
+        const matchesCategory =
+            !filters.categories ||
+            filters.categories.length === 0 ||
+            filters.categories.some((category) =>
+                hardware.tag.map((hwTag) => hwTag.toLowerCase()).includes(category.toLowerCase())
+            );
+
+        return matchesQuery && matchesTypes && matchesNetwork && matchesTag && matchesCategory;
     })
 }
 
 export const getHardwareByKeywords = (keywords: string[]): HardwareProps[] => {
     // Return all hardware if no keywords are provided
-    if (!keywords || keywords.length === 0) {
-        return getAllHardware(); // 모든 데이터를 반환
-    }
+    if (!keywords || keywords.length === 0) return getAllHardware(); // 모든 데이터를 반환
 
     // Normalize keywords (lowercase, remove special characters)
     const normalizedKeywords = keywords.map((keyword) =>

@@ -6,7 +6,7 @@ export default function NotFound() {
     return (
         <section className="relative w-full h-screen bg-gray-100">
             {/* Navbar */}
-            <Navbar locale="en" />
+            <Navbar locale="ko" />
 
             {/* Main Content */}
             <div className="relative z-10 flex flex-col items-center justify-center h-[calc(100vh-74px)] pt-[74px] px-5">
@@ -25,7 +25,7 @@ export default function NotFound() {
             </div>
 
             {/* Footer */}
-            <Footer locale="en" />
+            <Footer locale="ko" />
         </section>
     );
 }

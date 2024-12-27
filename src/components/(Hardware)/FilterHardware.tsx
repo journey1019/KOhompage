@@ -4,8 +4,8 @@ import React, { useState } from 'react';
 import { FilterOptions } from "@/service/hardware/hardware";
 
 // 필터 옵션 상수
-const TYPE_OPTIONS = ["Device", "Modem", "Antenna", "Sensor"]
-const CATEGORY_OPTIONS = ["Container-IoT", "Global-IoT", "Satellite", "AIS"];
+const CATEGORY_OPTIONS = ["Container-IoT", "Global-IoT", "Satellite-IoT", "AIS", "Starlink", "Tracking"];
+const TYPE_OPTIONS = ["Device", "Module", "Antenna", "Sensor"]
 const NETWORK_OPTIONS = [
     "Satellite(ORBCOMM)",
     "Satellite(OGx/IDP)",
@@ -23,14 +23,10 @@ interface FiltersHardwareProps {
 }
 
 const FiltersHardware: React.FC<FiltersHardwareProps> = ({ filters, onFilterChange, totalResourcesCount }) => {
-    const [types, setTypes] = useState<string[]>([]);
-    const [category, setCategory] = useState<string[]>([]);
-    const [networks, setNetworks] = useState<string[]>([]);
-    const [tags, setTags] = useState<string[]>([]);
 
     // 상태 업데이트 함수
     const handleCheckboxChange = (
-        type: "types" | "category" | "networks" | "tags",
+        type: "types" | "categories" | "networks" | "tags",
         value: string
     ) => {
         const updateValues = (currentValues: string[], newValue: string) => {
@@ -46,6 +42,8 @@ const FiltersHardware: React.FC<FiltersHardwareProps> = ({ filters, onFilterChan
             updatedFilters.networks = updateValues(filters.networks || [], value);
         } else if (type === "tags") {
             updatedFilters.tags = updateValues(filters.tags || [], value);
+        } else if (type === "categories") {
+            updatedFilters.categories = updateValues(filters.categories || [], value);
         }
 
         onFilterChange(updatedFilters);
@@ -55,6 +53,22 @@ const FiltersHardware: React.FC<FiltersHardwareProps> = ({ filters, onFilterChan
         <div className="mb-4">
             <h2 className="text-xl font-semibold mb-2">Filters</h2>
             <p className="text-gray-600 mb-4">: {totalResourcesCount} hardware found</p>
+
+            {/* Categories 필터 */}
+            <div className="mb-4">
+                <h3 className="font-semibold">Category</h3>
+                {CATEGORY_OPTIONS.map((category) => (
+                    <label key={category} className="block">
+                        <input
+                            type="checkbox"
+                            checked={filters.categories?.includes(category) || false}
+                            onChange={() => handleCheckboxChange("categories", category)}
+                            className="mr-2"
+                        />
+                        {category}
+                    </label>
+                ))}
+            </div>
 
             {/* Types 필터 */}
             <div className="mb-4">
