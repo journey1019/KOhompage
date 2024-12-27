@@ -7,6 +7,7 @@ interface AdvantageData{
 }
 
 interface CtaData{
+    imageUrl: string;
     title: string;
     subTitle: string;
     button: string;
@@ -69,6 +70,7 @@ const maritimeData: Record<string, MaritimeData> = {
             },
         ],
         ctas: {
+            imageUrl: "/images/solutions/global-iot/Monitoring.webp",
             title: "Master Maritime Visibility with ORBCOMM",
             subTitle: "Gain remote vessel tracking, monitoring and control capabilities for your commercial fishing boats, merchant marine fleets and more.",
             button: "Get a tailored quote",
@@ -140,6 +142,7 @@ const maritimeData: Record<string, MaritimeData> = {
             },
         ],
         ctas: {
+            imageUrl: "/images/solutions/global-iot/Monitoring.webp",
             title: "ORBCOMM으로 해상 가시성 마스터하기",
             subTitle: "상업용 어선, 상선 함대 등에 대한 원격 선박 추적, 모니터링 및 제어 기능을 확보하세요.",
             button: "맞춤형 견적을 받아보세요",

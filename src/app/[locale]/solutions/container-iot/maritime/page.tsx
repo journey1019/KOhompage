@@ -14,6 +14,7 @@ import TagFilterBlog from '@/components/(Resources)/TagFilterBlog';
 import UseCaseAdvantage from '@/components/(Solution)/UseCaseAdvantage';
 import ChipFilterHardwareCarousel from '@/components/(Hardware)/ChipFilterHardwareCarousel';
 import SolutionAdvantage from '@/components/(Solution)/SolutionAdvantage';
+import { notFound } from 'next/navigation';
 
 interface PageProps {
     params: {locale: string};
@@ -21,6 +22,10 @@ interface PageProps {
 export default async function MaritimePage({params}: PageProps) {
     const { locale } = params; // 비동기 처리
     const data = maritimeData[locale];
+
+    if (!data) {
+        notFound();
+    }
 
     const chips = ['maritime']
 

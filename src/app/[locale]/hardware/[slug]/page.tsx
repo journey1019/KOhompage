@@ -1,65 +1,96 @@
-import fs from 'fs';
-import path from 'path';
-import matter from 'gray-matter';
+/** src/app/[locale]/hard/[slug]/page.tsx */
+'use client';
+
 import React from 'react';
-import ReactMarkdown from 'react-markdown';
-import remarkGfm from 'remark-gfm';
-import rehypeRaw from 'rehype-raw';
+import { useParams } from 'next/navigation';
+import hardwareData from '@/data/hardware.json';
 import PageTopImage from '@/components/PageTopImage';
-import Advantage from '@/components/(Hard)/Advantage';
-import TagFilterBlog from '@/components/(Resources)/TagFilterBlog';
+import { HardwareProps } from '@/service/hardware/hardware';
+import { notFound } from 'next/navigation';
+import AllFilterReferenceCarousel from '@/components/(Resources)/AllFilterResourceCarousel';
+import AllFilterHardwareCarousel from '@/components/(Hardware)/AllFilterHardwareCarousel';
 
-interface PageProps {
-    params: { locale: string; slug: string };
-}
+const categoryStyles: Record<string, string> = {
+    Device: "text-blue-600 bg-blue-100 border-blue-400",
+    Antenna: "text-green-600 bg-green-100 border-green-400",
+    Sensor: "text-orange-600 bg-orange-100 border-orange-400",
+    Modem: "text-purple-600 bg-purple-100 border-purple-400",
+    default: "text-gray-600 bg-gray-100 border-gray-400",
+};
 
-export default function HardwareDetail({ params }: PageProps) {
-    const { slug } = params;
 
-    // Markdown 파일 경로 설정
-    const markdownPath = path.join(process.cwd(), 'data', 'hardware', `${slug}.md`);
-    const fileContent = fs.readFileSync(markdownPath, 'utf-8');
-    const { content, data } = matter(fileContent);
+const HardwareDetailPage = () => {
+    const params = useParams();
+    const { locale, slug } = params;
 
-    // 데이터 유효성 검증
-    if (!content) {
-        return (
-            <div className="text-center py-12">
-                <h2 className="text-2xl font-bold">Markdown Not Found</h2>
-                <p>Could not find the requested content.</p>
-            </div>
-        );
+    // Find the hardware matching the slug
+    const hardware = hardwareData.find((item) => item.slug === slug) as HardwareProps | undefined;
+
+    if (!hardware) {
+        // Redirect to 404 if the hardware is not found
+        notFound();
     }
 
+    // Determine the category style
+    const categoryStyle = categoryStyles[hardware.category] || categoryStyles.default;
+
     return (
-        <section className="bg-white">
+        <div className="bg-white">
+            {/* Page Top Image */}
             <PageTopImage
-                size="py-36"
-                url="/images/header/Cargo.jpg"
-                title=""
-                subtitle={slug.toUpperCase()}
-                description="Simple, Low-Cost, Reliable"
+                size="py-28"
+                url={hardware.imageSrc || '/images/DefaultImage.png'}
+                title={hardware.title}
+                subtitle={hardware.subTitle}
+                description=""
                 textPosition="center"
-                opacity={50}
             />
-            {/*<div className="mx-auto max-w-7xl px-6 py-16">*/}
-            {/*    /!*<h1 className="text-3xl font-bold mb-6">{data.title || slug}</h1>*!/*/}
-            {/*    <ReactMarkdown*/}
-            {/*        remarkPlugins={[remarkGfm]} // 타입 캐스팅*/}
-            {/*        rehypePlugins={[rehypeRaw]}*/}
-            {/*        className="prose prose-lg max-w-none"*/}
-            {/*    >*/}
-            {/*        {content}*/}
-            {/*    </ReactMarkdown>*/}
-            {/*</div>*/}
-            <Advantage />
-            {/*<CaseStudies/>*/}
-            {/*<Resources />*/}
-            {/*<BlogSlider />*/}
-            <div className="p-6 mx-auto max-w-7xl">
-                <h1 className="text-3xl font-bold mb-4">Filter by {slug}</h1>
-                <TagFilterBlog initialTags={[`${slug}`]} />
+
+            <div className="mx-auto max-w-7xl px-6 py-12">
+                {/* Hardware Title and Description */}
+                <h1 className="text-4xl font-bold text-gray-800 mb-4">{hardware.title}</h1>
+                <h2 className="text-2xl text-gray-600 mb-8">{hardware.subTitle}</h2>
+                <p className="text-lg text-gray-700 mb-12">{hardware.description}</p>
+
+                <div className="flex justify-between">
+                    {/* Tags */}
+                    {hardware.tag && hardware.tag.length > 0 && (
+                        <div className="mb-12">
+                            <h3 className="text-xl font-semibold text-gray-800 mb-4">Tags</h3>
+                            <div className="flex flex-wrap gap-2">
+                                {hardware.tag.map((tag, index) => (
+                                    <span
+                                        key={index}
+                                        className="bg-gray-200 text-gray-700 px-3 py-1 rounded-full text-sm"
+                                    >
+                                    {tag}
+                                </span>
+                                ))}
+                            </div>
+                        </div>
+                    )}
+
+                    {/* Additional Content */}
+                    <div className="space-y-8 text-right">
+                        <div className="mb-12">
+                            <h3 className="text-xl font-semibold text-gray-800 mb-4">Category</h3>
+                            <p
+                                className={`inline-block px-4 py-2 text-sm font-medium rounded-full border ${categoryStyle}`}
+                            >
+                                {hardware.category}
+                            </p>
+                        </div>
+                    </div>
+                </div>
             </div>
-        </section>
-);
-}
+
+            {/* Resources */}
+            <AllFilterReferenceCarousel keywords={[`${hardware.slug}` ]} />
+
+            {/* MultiCarousel */}
+            {/*<AllFilterHardwareCarousel keywords={[]} />*/}
+        </div>
+    );
+};
+
+export default HardwareDetailPage;

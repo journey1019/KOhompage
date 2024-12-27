@@ -22,10 +22,10 @@ const Navbar = ({ locale }: { locale: string }) => {
 
     const dropdownContent: Record<string, { label: string; href: string }[]> = {
         solutions: [
-            { label: 'Container-IoT', href: '/solutions/container-iot' },
-            { label: 'Global-IoT', href: '/solutions/global-iot' },
-            { label: 'Satellite', href: '/solutions/satellite' },
-            { label: 'AIS', href: '/solutions/ais' },
+            { label: 'Container-IoT', href: `{${locale}/solutions/container-iot}` },
+            { label: 'Global-IoT', href: `{${locale}/solutions/global-iot}` },
+            { label: 'Satellite', href: `{${locale}/solutions/satellite}` },
+            { label: 'AIS', href: `{${locale}/solutions/ais}` },
         ],
         hardware: [
             { label: 'CT 1000', href: '/hardware/ct-1000' },
@@ -44,9 +44,9 @@ const Navbar = ({ locale }: { locale: string }) => {
         company: [
             { label: 'About Us', href: '/about' },
             { label: 'Contact', href: '/contact-us' },
-            { label: 'Blog', href: '/resources/blog' },
-            { label: 'Notice', href: '/resources/notice' },
-            { label: 'Board', href: '/resources/board' }
+            // { label: 'Blog', href: '/resources/blog' },
+            // { label: 'Notice', href: '/resources/notice' },
+            // { label: 'Board', href: '/resources/board' }
         ],
     };
 
