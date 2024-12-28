@@ -38,7 +38,7 @@ const dropdownContent: Record<string, { label: string; href: string; title?: str
     ],
 };
 
-const Dropdown = ({ menuKey, locale }: DropdownProps) => {
+const NewDropdown = ({ menuKey, locale }: DropdownProps) => {
     const items = dropdownContent[menuKey];
     const [hoveredItem, setHoveredItem] = useState<{ label: string; href: string; description: string; image?: string } | null>(null);
 
@@ -83,14 +83,14 @@ const Dropdown = ({ menuKey, locale }: DropdownProps) => {
                     <div className="space-y-3 max-w-screen-xl border-r border-gray-200 pr-4">
                         {items.slice(0, Math.ceil(items.length / 2)).map((item) => (
                             <a href={item.href}
-                                key={item.href}
+                               key={item.href}
                                 // onMouseEnter={() => setHoveredItem(item)} // description 이 무조건 string 이라고 선언될 때
-                                onMouseEnter={() => setHoveredItem(({
-                                    ...item,
-                                    description: item.description ?? 'No description available',
-                                }))}
-                                onMouseLeave={() => setHoveredItem(null)}
-                                className="w-full block text-left px-4 py-1 rounded-lg hover:bg-gray-100 hover:text-red-700 text-gray-700"
+                               onMouseEnter={() => setHoveredItem(({
+                                   ...item,
+                                   description: item.description ?? 'No description available',
+                               }))}
+                               onMouseLeave={() => setHoveredItem(null)}
+                               className="w-full block text-left px-4 py-1 rounded-lg hover:bg-gray-100 hover:text-red-700 text-gray-700"
                             >
                                 {item.label}
                             </a>
@@ -168,4 +168,4 @@ const Dropdown = ({ menuKey, locale }: DropdownProps) => {
     );
 };
 
-export default Dropdown;
+export default NewDropdown;

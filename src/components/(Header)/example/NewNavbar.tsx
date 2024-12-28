@@ -4,10 +4,10 @@
 import React, { useState, useRef } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import Dropdown from './Dropdown';
+import NewDropdown from './NewDropdown';
 import Login from '../Login';
 import Language from '../Language';
-import { GlobeAltIcon, UserIcon, Bars3Icon, XMarkIcon, ChevronDownIcon, ChevronUpIcon } from '@heroicons/react/24/outline';
+import { Bars3Icon, XMarkIcon, ChevronDownIcon, ChevronUpIcon } from '@heroicons/react/24/outline';
 import hardwareData from '@/data/hardware.json';
 
 /** Hardware.json에서 가져오는 데이터 */
@@ -18,7 +18,7 @@ const hardwareDropdownData = hardwareData
         href: `/hardware/${item.slug}`,
     }));
 
-const Navbar = ({ locale }: { locale: string }) => {
+const NewNavbar = ({ locale }: { locale: string }) => {
     const [openDropdown, setOpenDropdown] = useState<string | null>(null);
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
     const [openSubMenu, setOpenSubMenu] = useState<string | null>(null);
@@ -37,7 +37,7 @@ const Navbar = ({ locale }: { locale: string }) => {
             { label: 'Satellite', href: '/solutions/satellite' },
             { label: 'AIS', href: '/solutions/ais' },
         ],
-        hardware: hardwareDropdownData,
+        hardware: hardwareDropdownData, // Dynamically populated hardware data
         company: [
             { label: 'About Us', href: '/about' },
             { label: 'Contact', href: '/contact-us' },
@@ -133,7 +133,7 @@ const Navbar = ({ locale }: { locale: string }) => {
                     onMouseEnter={() => handleMouseEnter(openDropdown)}
                     onMouseLeave={handleMouseLeave}
                 >
-                    <Dropdown menuKey={openDropdown} locale={locale} />
+                    <NewDropdown menuKey={openDropdown} locale={locale} />
                 </div>
             )}
 
@@ -180,4 +180,4 @@ const Navbar = ({ locale }: { locale: string }) => {
     );
 };
 
-export default Navbar;
+export default NewNavbar;
