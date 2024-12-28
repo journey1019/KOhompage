@@ -41,7 +41,7 @@ export default async function MaritimePage({params}: PageProps) {
             <Container>
 
                 <SectionTitle
-                    preTitle="Network Monitoring System"
+                    preTitle="VMS"
                     title={data.characteristicsTitle}
                 >
                     {data.characteristicsLetter}
@@ -50,17 +50,17 @@ export default async function MaritimePage({params}: PageProps) {
 
 
                 <SectionTitle
-                    preTitle="NMS"
+                    preTitle="VMS"
                     title={data.introTitle}
                 >
                     {data.introLetter}
                 </SectionTitle>
-                <OneImage item="/images/solutions/global-iot/VMSCommtrace.png"/>
+                <OneImage item="/images/solutions/global-iot/VMS.png"/>
 
 
                 <SectionTitle
                     preTitle="HARDWARES"
-                    title="Satellite Hardware Lists"
+                    title={`${chips} Hardware Lists`}
                 >
                 </SectionTitle>
                 <FilterHardwareCarousel keywords={['AIS', 'Modem']} />

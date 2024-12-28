@@ -117,7 +117,7 @@ const maritimeData: Record<string, MaritimeData> = {
         imageMain: "스마트하고 연결된 공급망을 위한 해양 솔루션",
         imageUrl: "/images/header/Port.jpg",
         imageSub: "",
-        solutionButton: "데모 요청",
+        solutionButton: "데모 신청",
         solutionUrl: "https://reeferconnect.tms-orbcomm.com/",
         introTitle: "Reefer Container 감시 및 제어 시스템",
         introLetter: "전세계 Top3 선사가 선택한 ORBCOMM의 ReeferContainer는 현재 500,000개 이상의 제품이 냉동냉장 컨테이너에 설치되어 운영 중이며, 컨테이너선사, 복합운송업체, 화주 및 기타 사용자에게 육해상 전 지역에서의 실시간 컨테이너관제 서비스를 제공합니다.",
@@ -139,11 +139,7 @@ const maritimeData: Record<string, MaritimeData> = {
                 answer: "네, 할 수 있습니다."
             },
             {
-                question: "환불 정책은 무엇인가요?",
-                answer: "어떤 이유로든 구매가 만족스럽지 않다면 90일 이내에 이메일을 보내주시면 question 없이 전액 환불해드리겠습니다.",
-            },
-            {
-                question: "기술 지원을 제공하시나요?",
+                question: "무료 기술 지원을 제공하시나요?",
                 answer: "아니요, 무료 다운로드에 대한 기술 지원은 제공하지 않습니다. 6개월 지원을 받으려면 지원 플랜을 구매하세요.",
             },
         ],

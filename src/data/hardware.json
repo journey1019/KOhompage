@@ -26,7 +26,7 @@
   {
     "use": true,
     "title": "GT 1220",
-    "subTitle": "",
+    "subTitle": "Next generation tracking devices(Door)",
     "description": "",
     "category": "Device",
     "imageSrc": "/images/hardware/GT-1220.jpeg",
@@ -48,7 +48,7 @@
   {
     "use": true,
     "title": "GT 1230",
-    "subTitle": "",
+    "subTitle": "Next generation tracking devices(Door+Cargo)",
     "description": "",
     "category": "Device",
     "imageSrc": "/images/hardware/GT-1230.png",
@@ -71,7 +71,7 @@
   {
     "use": true,
     "title": "CT 3500",
-    "subTitle": "설명",
+    "subTitle": "Remote management and control of reefers.",
     "description": "CT 3500은 육지, 철도 또는 바다의 Supply Chain의 모든 지점에서 자산을 완벽하게 파악하고 제어할 수 있도록 하는 원격 냉동컨테이너 관리의 차세대 기술입니다. 최첨단의 텔레매틱스 장치는 화주 및 운송업자에게 포괄적인 보고서, 분석, 경고 및 원격 양방향 제어 기능을 제공하여 컨테이너 운영을 간소화하고 효율성을 높일 수 있도록 지원합니다. CT 3500은 타의 추종을 불허하는 글로벌 LTE 커버리지와 LoRa, Bluetooth 5, NFC 기술을 지원하며 위성 연결 옵션도 갖추고 있습니다.",
     "category": "Device",
     "imageSrc": "/images/hardware/CT-3500.png",

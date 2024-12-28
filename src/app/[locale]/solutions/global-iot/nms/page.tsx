@@ -26,6 +26,7 @@ export default async function MaritimePage({params}: PageProps) {
 
     const site = 'NMS'
     const chips = ['NMS']
+    const filteringTags = ['nms']
 
     return(
         <section>
@@ -76,10 +77,10 @@ export default async function MaritimePage({params}: PageProps) {
                 {/*<SlugHardware locale={locale}/>*/}
                 <SectionTitle
                     preTitle="HARDWARES"
-                    title="Satellite Hardware Lists"
+                    title={`${chips} Hardware Lists`}
                 >
                 </SectionTitle>
-                <FilterHardwareCarousel keywords={['AIS', 'Modem']} />
+                <FilterHardwareCarousel keywords={filteringTags} />
 
 
                 <SectionTitle preTitle="FAQ" title={data.qnaTitle}>

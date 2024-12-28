@@ -21,6 +21,7 @@ import Image from 'next/image';
 import { notFound } from 'next/navigation';
 import FilterHardwareCarousel from '@/components/(Hardware)/FilterHardwareCarousel';
 import FilterResourceCarousel from '@/components/(Resources)/FilterResourceCarousel';
+import CarouselSolutionBlock from '@/components/(Solution)/CarouselSolutionBlock';
 
 interface PageProps {
     params: {locale: string};
@@ -72,17 +73,26 @@ export default async function GlobalIoT({params}: PageProps){
             {/*    description={data.description}*/}
             {/*/>*/}
             {/*<Intro />*/}
-            <CarouselSolutions items={data.carousels || []}/>
+            <CarouselSolutionBlock items={data.carousels || []}/>
             {/*<Card/>*/}
             {/*<Advantage/>*/}
             {/*<ContentForm/>*/}
 
-            <SectionTitle2
+            {/*<SectionTitle2*/}
+            {/*    preTitle="Use Case"*/}
+            {/*    title="실시간 모니터링 시스템을 경험해보세요"*/}
+            {/*>*/}
+            {/*    고객에게 제공되는 웹플랫폼(Commtrace, NMS)를 통해 산업별로 적합한 데이터를 제공하고 실시간 모니터링 및 제어 기능을 제공합니다.*/}
+            {/*</SectionTitle2>*/}
+
+            <div className="py-14" />
+            <SectionTitle
                 preTitle="Use Case"
                 title="실시간 모니터링 시스템을 경험해보세요"
+                length={3}
             >
-                고객에게 제공되는 웹플랫폼(Commtrace, NMS)를 통해 산업별로 적합한 데이터를 제공하고 실시간 모니터링 및 제어 기능을 제공합니다.
-            </SectionTitle2>
+                고객에게 제공되는 웹플랫폼(VMS Commtrace, NMS)를 통해 산업별로 적합한 데이터를 제공하고 실시간 모니터링 및 제어 기능을 제공합니다.
+            </SectionTitle>
             <UseCase slug="global-iot" locale={locale} />
 
             {/*<Hardware/>*/}
@@ -113,11 +123,10 @@ export default async function GlobalIoT({params}: PageProps){
 
             <SectionTitle
                 preTitle="Q n A"
-                title="Why Customers Love Us"
+                title="Global-IoT 관련 문의와 답변 리스트"
             />
-            <FAQ/>
+            <FAQ items={data.faq || []}/>
 
-            {/*<Download/>*/}
             {/*<SectionTitle*/}
             {/*    preTitle="RESOURCES"*/}
             {/*    title="ALL RESOURCES"*/}

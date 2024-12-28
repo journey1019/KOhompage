@@ -63,6 +63,12 @@ export default async function MaritimePage({params}: PageProps) {
                 {/*    {data.qnaLetter}*/}
                 {/*</SectionTitle>*/}
 
+                <CtaSolution items={data.ctas}/>
+
+                <SectionTitle preTitle="FAQ" title={data.qnaTitle}>
+                    {data.qnaLetter}
+                </SectionTitle>
+                <Faq items={data.faqs || []} />
 
                 {/*<ChipFilterHardwareCarousel chips={['maritime']} />*/}
                 <SectionTitle
@@ -80,13 +86,6 @@ export default async function MaritimePage({params}: PageProps) {
                 >
                 </SectionTitle>
                 <FilterResourceCarousel keywords={[ 'Maritime']} />
-
-                <SectionTitle preTitle="FAQ" title={data.qnaTitle}>
-                    {data.qnaLetter}
-                </SectionTitle>
-                <Faq items={data.faqs || []} />
-
-                <CtaSolution items={data.ctas}/>
 
                 {/*<SectionTitle preTitle="Resources" title="Maritime Platform: Resources" />*/}
                 {/*<Blog/>*/}

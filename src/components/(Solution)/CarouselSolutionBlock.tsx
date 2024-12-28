@@ -1,4 +1,4 @@
-/** CarouselSolutions */
+
 'use client';
 import React, { useState } from "react";
 import Image from 'next/image';
@@ -18,7 +18,7 @@ interface CarouselProps {
     items: CarouselItem[];
 }
 
-const CarouselSolutions: React.FC<CarouselProps> = ({ items }) => {
+const CarouselSolutionBlock: React.FC<CarouselProps> = ({ items }) => {
     const [currentIndex, setCurrentIndex] = useState(0);
 
     const handlePrev = () => {
@@ -30,7 +30,7 @@ const CarouselSolutions: React.FC<CarouselProps> = ({ items }) => {
     };
 
     return (
-        <div className="relative w-full max-w-2xl lg:max-w-7xl mx-auto h-screen overflow-hidden">
+        <div className="relative w-full max-w-2xl md:max-w-7xl mx-auto h-screen overflow-hidden">
             {/* Carousel Items */}
             <div
                 className="flex transition-transform duration-700"
@@ -39,31 +39,36 @@ const CarouselSolutions: React.FC<CarouselProps> = ({ items }) => {
                 {items.map((item, index) => (
                     <div
                         key={index}
-                        className="flex flex-col md:flex-row items-center justify-center w-full h-screen md:h-[70vh] p-4 md:p-8 flex-shrink-0"
+                        className="flex flex-col items-center justify-between w-full h-screen h-[70vh] p-4 md:p-8 flex-shrink-0"
                     >
-                        {/* Left Section: Text */}
-                        <div className="text-left w-full md:w-1/3 p-4">
-                            <h1 className="text-2xl md:text-4xl font-bold mb-10">{item.title}</h1>
-                            <p className="text-md md:text-lg text-gray-600">{item.subtitle}</p>
+                        {/* Top Section: Text */}
+                        <div className="text-start w-full py-4">
+                            <h1 className="text-3xl md:text-4xl font-bold mb-4 text-gray-800">
+                                {item.title}
+                            </h1>
+                            <p className="md:max-w-5xl text-md md:text-xl text-gray-500">
+                                {item.subtitle}
+                            </p>
                         </div>
-                        {/* Right Section: Image */}
-                        {/* Right Section: Images */}
-                        <div className="w-full md:w-2/3 p-4 grid grid-cols-1 md:grid-cols-3 gap-4">
+
+                        {/* Bottom Section: Images */}
+                        <div className="w-full px-16 md:py-4 md:px-16 grid grid-cols-1 md:grid-cols-3 gap-4">
                             {/* 이미지 1 */}
                             <section className="block">
                                 <div
-                                    className="relative min-h-[30rem] rounded-xl overflow-hidden grid items-end transition-transform transform hover:scale-105 hover:border-2 hover:border-blue-500">
+                                    className="relative min-h-[10rem] md:min-h-[30rem] rounded-xl overflow-hidden grid items-end transition-transform transform hover:scale-105 hover:border-2 hover:border-blue-500">
                                     <Image
                                         src={item.imageUrl1}
                                         alt={item.imageTitle1}
-                                        width={500}
-                                        height={300}
-                                        unoptimized
+                                        fill
                                         className="absolute inset-0 h-full w-full object-cover object-center"
+                                        unoptimized
                                     />
                                     <div className="absolute inset-0 bg-black/30" />
-                                    <div className="relative p-6 flex flex-col justify-end">
-                                        <h3 className="text-3xl font-bold text-white">{item.imageTitle1}</h3>
+                                    <div className="relative p-4 flex flex-col justify-end">
+                                        <h3 className="text-sm md:text-xl font-bold text-white text-center">
+                                            {item.imageTitle1}
+                                        </h3>
                                     </div>
                                 </div>
                             </section>
@@ -71,18 +76,19 @@ const CarouselSolutions: React.FC<CarouselProps> = ({ items }) => {
                             {/* 이미지 2 */}
                             <section className="block">
                                 <div
-                                    className="relative min-h-[30rem] rounded-xl overflow-hidden grid items-end transition-transform transform hover:scale-105 hover:border-2 hover:border-blue-500">
+                                    className="relative min-h-[10rem] md:min-h-[30rem] rounded-xl overflow-hidden grid items-end transition-transform transform hover:scale-105 hover:border-2 hover:border-blue-500">
                                     <Image
                                         src={item.imageUrl2}
                                         alt={item.imageTitle2}
-                                        width={500}
-                                        height={300}
-                                        unoptimized
+                                        fill
                                         className="absolute inset-0 h-full w-full object-cover object-center"
+                                        unoptimized
                                     />
                                     <div className="absolute inset-0 bg-black/30" />
-                                    <div className="relative p-6 flex flex-col justify-end">
-                                        <h3 className="text-3xl font-bold text-white">{item.imageTitle2}</h3>
+                                    <div className="relative p-4 flex flex-col justify-end">
+                                        <h3 className="text-sm md:text-xl font-bold text-white text-center">
+                                            {item.imageTitle2}
+                                        </h3>
                                     </div>
                                 </div>
                             </section>
@@ -90,24 +96,23 @@ const CarouselSolutions: React.FC<CarouselProps> = ({ items }) => {
                             {/* 이미지 3 */}
                             <section className="block">
                                 <div
-                                    className="relative min-h-[30rem] rounded-xl overflow-hidden grid items-end transition-transform transform hover:scale-105 hover:border-2 hover:border-blue-500">
+                                    className="relative min-h-[10rem] md:min-h-[30rem] rounded-xl overflow-hidden grid items-end transition-transform transform hover:scale-105 hover:border-2 hover:border-blue-500">
                                     <Image
                                         src={item.imageUrl3}
                                         alt={item.imageTitle3}
-                                        width={500}
-                                        height={300}
-                                        unoptimized
+                                        fill
                                         className="absolute inset-0 h-full w-full object-cover object-center"
+                                        unoptimized
                                     />
                                     <div className="absolute inset-0 bg-black/30" />
-                                    <div className="relative p-6 flex flex-col justify-end">
-                                        <h3 className="text-3xl font-bold text-white">{item.imageTitle3}</h3>
+                                    <div className="relative p-4 flex flex-col justify-end">
+                                        <h3 className="text-sm md:text-xl font-bold text-white text-center">
+                                            {item.imageTitle3}
+                                        </h3>
                                     </div>
                                 </div>
                             </section>
                         </div>
-
-
                     </div>
                 ))}
             </div>
@@ -127,13 +132,13 @@ const CarouselSolutions: React.FC<CarouselProps> = ({ items }) => {
             </button>
 
             {/* Carousel Indicators */}
-            <div className="absolute left-0 w-full flex items-center">
+            <div className="absolute bottom-4 left-0 w-full flex items-center justify-center gap-2">
                 {items.map((_, index) => (
                     <button
                         key={index}
                         onClick={() => setCurrentIndex(index)}
-                        className={`h-1 flex-1 mx-1 rounded-full transition-all duration-300 ${
-                            currentIndex === index ? "bg-gray-800" : "bg-gray-300"
+                        className={`h-1 flex-1 w-2 mx-2 rounded-full transition-all duration-300 ${
+                            currentIndex === index ? 'bg-gray-800' : 'bg-gray-300'
                         }`}
                     ></button>
                 ))}
@@ -142,4 +147,4 @@ const CarouselSolutions: React.FC<CarouselProps> = ({ items }) => {
     );
 };
 
-export default CarouselSolutions;
+export default CarouselSolutionBlock;

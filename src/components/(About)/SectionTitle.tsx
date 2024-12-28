@@ -6,7 +6,7 @@ interface SectionTitleProps {
   title?: string;
   align?: "left" | "center";
   children?: React.ReactNode;
-  length?: number; // Optional length prop to control styles
+  length?: number; // Optional length prop to control styles (2/3)
 }
 
 export const SectionTitle = (props: Readonly<SectionTitleProps>) => {

@@ -1,3 +1,7 @@
+interface FAQData {
+    question: string;
+    answer: string;
+}
 interface CharacterData {
     title: string;
     subtitle: string;
@@ -18,7 +22,12 @@ interface AdvantageData {
 interface CarouselData {
     title: string;
     subtitle:string;
-    imageUrl: string;
+    imageTitle1: string;
+    imageTitle2: string;
+    imageTitle3: string;
+    imageUrl1: string;
+    imageUrl2: string;
+    imageUrl3: string;
 }
 interface CaseData {
     direction: 'left' | 'right';
@@ -43,6 +52,7 @@ interface SolutionData {
     points?: PointData[];
     kind?: KindData[];
     character?: CharacterData[];
+    faq?: FAQData[];
 }
 
 
@@ -57,23 +67,6 @@ const solutionsData: Record<string, Record<string, SolutionData>> = {
             title: "Streamline Container Operations",
             solutionName: "",
             description: "Enhance logistics efficiency and reduce costs with container tracking solutions.",
-            carousels: [
-                {
-                    title: "Heavy Equipment Monitoring",
-                    subtitle: "Monitor operational and location data of heavy equipment...",
-                    imageUrl: "/images/solutions/global-iot/HeavyEquipmentMonitoring.png",
-                },
-                {
-                    title: "Maritime Information Monitoring",
-                    subtitle: "Collect and monitor maritime data such as vessel operations...",
-                    imageUrl: "/images/solutions/global-iot/MaritimeInformationMonitoring.png",
-                },
-                {
-                    title: "Public / Social Safety Network",
-                    subtitle: "Used for public communication networks...",
-                    imageUrl: "/images/solutions/global-iot/SafetyNetwork.png",
-                },
-            ],
             useCases: [
                 {
                     direction: "left",
@@ -143,17 +136,32 @@ const solutionsData: Record<string, Record<string, SolutionData>> = {
                 {
                     title: "Heavy Equipment Monitoring",
                     subtitle: "Monitor the operation information (operating time, condition/consumables information) and location information of heavy equipment such as construction machinery, mining equipment, and agricultural machinery operated in places with poor global communication",
-                    imageUrl: "/images/solutions/global-iot/HeavyEquipmentMonitoring.png",
+                    imageTitle1: "Construction",
+                    imageTitle2: "Mining",
+                    imageTitle3: "Agriculture",
+                    imageUrl1: "/images/solutions/global-iot/Construct.webp",
+                    imageUrl2: "/images/solutions/global-iot/Mining.webp",
+                    imageUrl3: "/images/solutions/global-iot/Agricluture.webp",
                 },
                 {
                     title: "Maritime Information Monitoring",
                     subtitle: "For marine safety, marine industry, academic information, etc., ship operation/sea wave/temperature/weather information is collected by sensors and transmitted/monitored through global communication networks",
-                    imageUrl: "/images/solutions/global-iot/MaritimeInformationMonitoring.png",
+                    imageTitle1: "Vessel Monitoring",
+                    imageTitle2: "Buoy/Floating LiDAR",
+                    imageTitle3: "Weather Ship",
+                    imageUrl1: "/images/solutions/global-iot/Vessel.webp",
+                    imageUrl2: "/images/solutions/global-iot/Buoy-FloatingLiDAR.jpg",
+                    imageUrl3: "/images/solutions/global-iot/WeatherObservation.jpg",
                 },
                 {
                     title: "Public / Social Safety Network",
                     subtitle: "Public network communication network and social safety net multi-communication network are used together with wired/wireless network where multi-communication network is required",
-                    imageUrl: "/images/solutions/global-iot/SafetyNetwork.png",
+                    imageTitle1: "Water level Measurement",
+                    imageTitle2: "Electronic Voting",
+                    imageTitle3: "Marine Distress Safety",
+                    imageUrl1: "/images/solutions/global-iot/WaterLevelMeasurement.jpeg",
+                    imageUrl2: "/images/solutions/global-iot/ElectronicVoting.png",
+                    imageUrl3: "/images/solutions/global-iot/MarineDistressSafety.png",
                 },
             ],
             useCases: [
@@ -174,6 +182,28 @@ const solutionsData: Record<string, Record<string, SolutionData>> = {
                     image: "/images/solutions/global-iot/nms_main.png",
                 },
             ],
+            faq: [
+                {
+                    question: "What is Global-IoT?",
+                    answer: "Global-IoT is a service that utilizes the global communication network (cellular, low-orbit and geostationary satellite networks, IoT networks, etc.) provided by KOREA ORBCOMM to provide solutions suitable for various industries around the world."
+                },
+                {
+                    question: "In what industries is Global-IoT used?",
+                    answer: "It is mainly used in areas such as 'heavy equipment monitoring', 'marine information monitoring', and 'public and social safety nets'."
+                },
+                {
+                    question: "How is security guaranteed during data transfer?",
+                    answer: "All data transfers are encrypted and carried out, and authentication and access control prevent illegal access."
+                },
+                {
+                    question: "How much does it cost to introduce a Global-IoT service?",
+                    answer: "The cost depends on the communication network you want to use, the equipment you need, and the size of the service. Through consultation, we can provide customized quotes."
+                },
+                {
+                    question: "Do I have to pay extra if I need to expand my service?",
+                    answer: "Yes, additional equipment and network usage may incur additional costs, but it provides flexible pricing plan considering scalability."
+                }
+            ]
         },
         "satellite": {
             imageIntro: "KOREAORBCOMM FOR RINANCIAL SERVICES",
@@ -184,23 +214,6 @@ const solutionsData: Record<string, Record<string, SolutionData>> = {
             title: "Communication Network",
             solutionName: "It provides optimal devices and communication networks for a wide range of industries for your customers.",
             description: "Stay connected with global satellite communication solutions.",
-            carousels: [
-                {
-                    title: "Heavy Equipment Monitoring",
-                    subtitle: "Monitor operational and location data of heavy equipment...",
-                    imageUrl: "/images/solutions/global-iot/HeavyEquipmentMonitoring.png",
-                },
-                {
-                    title: "Maritime Information Monitoring",
-                    subtitle: "Collect and monitor maritime data such as vessel operations...",
-                    imageUrl: "/images/solutions/global-iot/MaritimeInformationMonitoring.png",
-                },
-                {
-                    title: "Public / Social Safety Network",
-                    subtitle: "Used for public communication networks...",
-                    imageUrl: "/images/solutions/global-iot/SafetyNetwork.png",
-                },
-            ],
             useCases: [
                 {
                     direction: "left",
@@ -237,23 +250,6 @@ const solutionsData: Record<string, Record<string, SolutionData>> = {
             title: "Enhanced Maritime Tracking",
             solutionName: "",
             description: "Accurate maritime tracking with AIS solutions.",
-            carousels: [
-                {
-                    title: "Heavy Equipment Monitoring",
-                    subtitle: "Monitor operational and location data of heavy equipment...",
-                    imageUrl: "/images/solutions/global-iot/HeavyEquipmentMonitoring.png",
-                },
-                {
-                    title: "Maritime Information Monitoring",
-                    subtitle: "Collect and monitor maritime data such as vessel operations...",
-                    imageUrl: "/images/solutions/global-iot/MaritimeInformationMonitoring.png",
-                },
-                {
-                    title: "Public / Social Safety Network",
-                    subtitle: "Used for public communication networks...",
-                    imageUrl: "/images/solutions/global-iot/SafetyNetwork.png",
-                },
-            ],
             useCases: [
                 {
                     direction: "left",
@@ -296,23 +292,6 @@ const solutionsData: Record<string, Record<string, SolutionData>> = {
             title: "컨테이너 IoT 솔루션",
             solutionName: "코리아오브컴의 Container IoT Solution은 화물에 대한 실시간 추적, 화물 및 컨테이너의 상태 모니터링, Reefer Container의 원격제어 기능을 제공합니다. ",
             description: "컨테이너 IoT 솔루션으로 자산을 관리하세요.",
-            carousels: [
-                {
-                    title: "중장비 모니터링",
-                    subtitle: "전세계 통신이 열악한 장소에서 운용되는 건설기계, 광산장비, 농업기계 등 중장비의 운용정보(가동시간, 상태/소모품 정보) 및 위치정보를 모니터링하여 고객에 제공",
-                    imageUrl: "/images/solutions/global-iot/HeavyEquipmentMonitoring.png",
-                },
-                {
-                    title: "해양 정보 모니터링",
-                    subtitle: "해상안전, 해양산업, 학술정보 등을 위해 선박운항/파고/기온/기상정보 등을 센서로 수집하고 글로벌 통신망을 통해 전송/모니터링",
-                    imageUrl: "/images/solutions/global-iot/MaritimeInformationMonitoring.png",
-                },
-                {
-                    title: "공공 / 사회 안전망",
-                    subtitle: "공공망 통신망, 사회안전망 다중통신망이 필요한 곳에서...",
-                    imageUrl: "/images/solutions/global-iot/SafetyNetwork.png",
-                },
-            ],
             useCases: [
                 {
                     direction: "left",
@@ -377,24 +356,39 @@ const solutionsData: Record<string, Record<string, SolutionData>> = {
             imageUrl: "/images/solutions/global-iot/M2M_IoT.jpg",
             solutionNumber: "Global IoT",
             title: "산업용 IoT 솔루션",
-            solutionName: "코리아오브컴에서 제공하는 산업용 IoT 솔루션은 건설장비 모니터링, 해양정보 모니터링, 기후정보 모니터링 등 다양한 산업분야에 적합한 솔루션을 제공합니다.",
+            solutionName: "산업용 IoT 솔루션은 건설장비 모니터링, 해양정보 모니터링, 기후정보 모니터링 등 다양한 산업분야에 적합한 솔루션을 제공합니다.",
             description: "글로벌 IoT 솔루션으로 자산을 관리하세요.",
             carousels: [
                 {
                     title: "중장비 모니터링",
-                    subtitle: "전세계 통신이 열악한 장소에서 운용되는 건설기계, 광산장비, 농업기계 등 중장비의 운용정보(가동시간, 상태/소모품 정보) 및 위치정보를 모니터링하여 고객에 제공",
-                    imageUrl: "/images/solutions/global-iot/HeavyEquipmentMonitoring.png",
+                    subtitle: "전세계 통신이 열악한 장소에서 운용되는 건설기계, 광산장비, 농업기계 등 중장비의 운용정보(가동시간, 상태/소모품 정보) 및 위치정보를 모니터링하여 고객에 제공합니다.",
+                    imageTitle1: "건설",
+                    imageTitle2: "광업",
+                    imageTitle3: "농업",
+                    imageUrl1: "/images/solutions/global-iot/Construct.webp",
+                    imageUrl2: "/images/solutions/global-iot/Mining.webp",
+                    imageUrl3: "/images/solutions/global-iot/Agricluture.webp",
                 },
                 {
                     title: "해양 정보 모니터링",
                     subtitle: "해상안전, 해양산업, 학술정보 등을 위해 선박운항/파고/기온/기상정보 등을 센서로 수집하고 글로벌 통신망을 통해 전송/모니터링",
-                    imageUrl: "/images/solutions/global-iot/MaritimeInformationMonitoring.png",
+                    imageTitle1: "선박 모니터링",
+                    imageTitle2: "부이/부표 LiDAR",
+                    imageTitle3: "기상 관측선",
+                    imageUrl1: "/images/solutions/global-iot/Vessel.webp",
+                    imageUrl2: "/images/solutions/global-iot/Buoy-FloatingLiDAR.jpg",
+                    imageUrl3: "/images/solutions/global-iot/WeatherObservation.jpg",
                 },
                 {
                     title: "공공 / 사회 안전망",
                     subtitle: "공공망 통신망, 사회안전망 다중통신망이 필요한 곳에서 유/무선망과 함께 활용",
-                    imageUrl: "/images/solutions/global-iot/SafetyNetwork.png",
-                },
+                    imageTitle1: "수위 측정",
+                    imageTitle2: "전자 투표",
+                    imageTitle3: "해양 조난 안전",
+                    imageUrl1: "/images/solutions/global-iot/WaterLevelMeasurement.png",
+                    imageUrl2: "/images/solutions/global-iot/ElectronicVoting.png",
+                    imageUrl3: "/images/solutions/global-iot/MarineDistressSafety.png",
+                }
             ],
             useCases: [
                 {
@@ -402,8 +396,8 @@ const solutionsData: Record<string, Record<string, SolutionData>> = {
                     title1: "VMS",
                     title2: "Commtrace",
                     slug: "vms",
-                    description: "전세계 통신이 열악한 장소에서 운용되는 건설기계, 광산장비, 농업기계 등 중장비의 운용정보(가동시간, 상태/소모품 정보) 및 위치정보를 모니터링하여 고객에 제공",
-                    image: "https://www.orbcomm.co.kr/resources/img/solution/reeferconnect/reffer1.PNG",
+                    description: "VMS 위성 및 이동통신, SIGFOX 등 다양한 통신장비를 통해 수집되는 위치정보를 실시간 모니터링 및 Tracking을 서비스하며 Device의 Sensor 데이터 와 Geofence 등의 정보를 통해 종합적인 위치정보 포탈 서비스를 제공합니다.",
+                    image: "/images/solutions/global-iot/VMS.png",
                 },
                 {
                     direction: "right",
@@ -413,6 +407,28 @@ const solutionsData: Record<string, Record<string, SolutionData>> = {
                     description: "고객에게 제공되는 웹플랫폼(Commtrace, NMS)를 통해 산업별로 적합한 데이터를 제공하고 실시간 모니터링 및 제어 기능을 제공합니다.",
                     image: "/images/solutions/global-iot/nms_main.png",
                 },
+            ],
+            faq: [
+                {
+                    question: "Global-IoT란 무엇인가요?",
+                    answer: "Global-IoT는 코리아오브컴이 제공하는 글로벌 통신망(셀룰러, 저궤도 및 정지궤도 위성망, IoT 망 등)을 활용하여 전 세계 다양한 산업 분야에 적합한 솔루션을 제공하는 서비스입니다."
+                },
+                {
+                    question: "Global-IoT는 어떤 산업 분야에서 활용되나요?",
+                    answer: "주로 '중장비 모니터링', '해양 정보 모니터링', '공공 및 사회 안전망' 같은 분야에서 활용됩니다."
+                },
+                {
+                    question: "데이터 전송 중 보안은 어떻게 보장되나요?",
+                    answer: "모든 데이터 전송은 암호화되어 진행되며, 인증 및 접근 제어를 통해 불법적인 접근을 방지합니다."
+                },
+                {
+                    question: "Global-IoT 서비스를 도입하는 데 비용이 얼마나 드나요?",
+                    answer: "비용은 사용하려는 통신망, 필요한 장비, 서비스 규모에 따라 달라집니다. 상담을 통해 고객 맞춤형 견적을 제공해드립니다."
+                },
+                {
+                    question: "서비스 확장이 필요한 경우 추가 비용이 발생하나요?",
+                    answer: "네, 추가 장비 및 통신망 사용에 따라 추가 비용이 발생할 수 있지만, 확장성을 고려한 유연한 요금제를 제공합니다."
+                }
             ]
         },
         "satellite": {
@@ -424,23 +440,6 @@ const solutionsData: Record<string, Record<string, SolutionData>> = {
             title: "통신망 서비스",
             solutionName: "고객의 다양한 산업 분야에 적합한 최적의 디바이스 및 통신망을 제공합니다.",
             description: "Stay connected with global satellite communication solutions.",
-            carousels: [
-                {
-                    title: "중장비 모니터링",
-                    subtitle: "전세계 통신이 열악한 장소에서 운용되는 건설기계...",
-                    imageUrl: "/images/solutions/global-iot/HeavyEquipmentMonitoring.png",
-                },
-                {
-                    title: "해양 정보 모니터링",
-                    subtitle: "해상안전, 해양산업, 학술정보 등을 위해...",
-                    imageUrl: "/images/solutions/global-iot/MaritimeInformationMonitoring.png",
-                },
-                {
-                    title: "공공 / 사회 안전망",
-                    subtitle: "공공망 통신망, 사회안전망 다중통신망이 필요한 곳에서...",
-                    imageUrl: "/images/solutions/global-iot/SafetyNetwork.png",
-                },
-            ],
             useCases: [
                 {
                     direction: "left",
@@ -492,23 +491,6 @@ const solutionsData: Record<string, Record<string, SolutionData>> = {
             title: "Automatic identification system",
             solutionName: "AIS(선박 자동 식별 시스템)는 선박의 식별, 위치, 탐색을 지원하고 해양 안전을 위해 사용할 수 있는 중요한 데이터를 전송하는 선박 발신 시스템 입니다. 코리아오브컴의 AIS 서비스는 위성과 물론 10,000개 이상의 육상AIS 수신국을 통해  전세계 모든 지역의 AIS 정보를 수집하여 해상 정보 분석, 수색 및 구조, 환경 모니터링 등 다양한 분야에 활용되고 있습니다.",
             description: "Accurate maritime tracking with AIS solutions.",
-            carousels: [
-                {
-                    title: "중장비 모니터링",
-                    subtitle: "전세계 통신이 열악한 장소에서 운용되는 건설기계...",
-                    imageUrl: "/images/solutions/global-iot/HeavyEquipmentMonitoring.png",
-                },
-                {
-                    title: "해양 정보 모니터링",
-                    subtitle: "해상안전, 해양산업, 학술정보 등을 위해...",
-                    imageUrl: "/images/solutions/global-iot/MaritimeInformationMonitoring.png",
-                },
-                {
-                    title: "공공 / 사회 안전망",
-                    subtitle: "공공망 통신망, 사회안전망 다중통신망이 필요한 곳에서...",
-                    imageUrl: "/images/solutions/global-iot/SafetyNetwork.png",
-                },
-            ],
             character: [
                 {
                     title: "Lower Latency",

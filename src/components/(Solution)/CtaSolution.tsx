@@ -47,7 +47,7 @@ export const CtaSolution: React.FC<CtaProps> = ({ items }) => {
                         href={items.solutionUrl}
                         target="_blank"
                         rel="noopener"
-                        className="inline-block py-3 mx-auto text-lg font-medium text-center text-white bg-red-700 rounded-md px-7 lg:px-10 lg:py-5 hover:bg-white hover:text-red-800 hover:border-2 hover:border-red-700"
+                        className="inline-block py-3 mx-auto text-lg font-medium text-center text-white bg-red-700 border-2 border-red-700 rounded-md px-7 lg:px-10 lg:py-5 hover:bg-white hover:text-red-800 hover:border-2 hover:border-red-700"
                     >
                         {items.solutionButton}
                     </a>

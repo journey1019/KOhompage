@@ -17,9 +17,9 @@ interface FaqData{
 }
 
 interface VMSData{
+    imageUrl: string;
     imageIntro: string;
     imageMain: string;
-    imageUrl: string;
     imageSub: string;
     introTitle: string;
     introLetter: string;
@@ -34,14 +34,14 @@ interface VMSData{
 
 const vmsData: Record<string, VMSData> = {
     "en": {
+        imageUrl: "/images/header/Port.jpg",
         imageIntro: "Real-time Network Monitoring System",
         imageMain: "Real-time data analytics dashboards and notifications",
-        imageUrl: "/images/header/Port.jpg",
         imageSub: "",
         introTitle: "Network Monitoring System",
         introLetter: "Network Monitoring System (NMS) is a system that monitors all equipment and terminals connected to the network in real time and analyzes data to help proactively detect failures or quickly identify causes. It is an innovative solution that focuses on utilizing the latest technologies to increase the stability of network operations and maximize management efficiency",
         characteristicsTitle: "NMS 서비스 특징",
-        characteristicsLetter: "통신망 상태를 한눈에, Network Monitoring System(NMS) NMS는 위성, 이동통신, Sigfox 등 다양한 통신망 데이터를 통합하여 수집, 분석, 그리고 실시간 모니터링을 제공합니다.",
+        characteristicsLetter: "전세계 통신이 열악한 장소에서 운용되는 건설기계, 광산장비, 농업기계 등 중장비의 운용정보(가동시간, 상태/소모품 정보) 및 위치정보를 모니터링하여 고객에 제공합니다.",
         qnaTitle: "Frequently Asked Questions",
         qnaLetter: "Check out our customers' frequently asked questions",
         faqs: [
@@ -68,88 +68,88 @@ const vmsData: Record<string, VMSData> = {
         ],
         ctas: {
             imageUrl: "/images/solutions/global-iot/Monitoring.webp",
-            title: "Master Maritime Visibility with ORBCOMM",
-            subTitle: "Gain remote vessel tracking, monitoring and control capabilities for your commercial fishing boats, merchant marine fleets and more.",
+            title: "Choice for the Future of the Marine Industry, VMS",
+            subTitle: "GAutomate everything about ship management with BMS, and create better performance",
             button: "Get a tailored quote",
             solutionButton: "Give It a Try!",
-            solutionUrl: "https://nms.commtrace.com/",
+            solutionUrl: "https://vms.commtrace.com/",
         },
         character: [
             {
-                title: "다양한 통신망 적용",
-                icon: "/images/icons/CommunicationNetwork.png"
+                title: "Optimized for various communication services such as satellite and mobile communications, SIGFOX",
+                icon: "/images/icons/Optimization.png"
             },
             {
-                title: "정교한 데이터 분석",
-                icon: "/images/icons/DataAnalysis.png"
+                title: "Provide real-time location information monitoring services",
+                icon: "/images/icons/DataSend.png"
             },
             {
-                title: "고장 예측 및 실시간 모니터링",
-                icon: "/images/icons/NMSMonitoring.png"
+                title: "Device's Sensor, Geofence Information",
+                icon: "/images/icons/VMSMonitoring.png"
             },
             {
-                title: "알람 서비스 제공",
-                icon: "/images/icons/Alarm.png"
+                title: "Easy service application of New Device",
+                icon: "/images/icons/ServiceProvision.png"
             },
         ]
     },
     "ko": {
-        imageIntro: "시스템 네트워크 모니터링 시스템",
-        imageMain: "실시간 데이터 분석 대시보드 및 알림 기능",
         imageUrl: "/images/header/Port.jpg",
+        imageIntro: "선박 모니터링 시스템",
+        imageMain: "VMS Commtrace",
         imageSub: "",
-        introTitle: "네트워크 모니터링 시스템",
-        introLetter: "NMS(Network Monitoring System)는 네트워크에 연결된 모든 장비와 단말기를 실시간으로 모니터링하고, 데이터를 분석하여 장애를 사전에 감지하거나 발생 원인을 신속히 파악할 수 있도록 지원하는 시스템입니다. 최신 기술을 활용하여 네트워크 운영의 안정성을 높이고, 관리의 효율성을 극대화하는 데 초점을 맞춘 혁신적인 솔루션입니다.",
-        characteristicsTitle: "NMS 서비스 특징",
-        characteristicsLetter: "통신망 상태를 한눈에, Network Monitoring System(NMS) NMS는 위성, 이동통신, Sigfox 등 다양한 통신망 데이터를 통합하여 수집, 분석, 그리고 실시간 모니터링을 제공합니다.",
+        introTitle: "선박 모니터링 시스템",
+        introLetter: "Commtrace는 실시간 위치정보, 이동 이력 추적, 디바이스별 Geofence, 센서 데이터 제공, 그리고 이를 기반으로 한 알림 서비스를 통해 상선 및 어선 운영의 효율성을 높이고 안전을 보장하는 스마트 해양 물류 관리 솔루션입니다. 데이터 기반의 통찰력과 정교한 기술로 해양 산업의 미래를 함께 만들어갑니다.",
+        characteristicsTitle: "Vessel Monitoring System",
+        characteristicsLetter: "VMS는 위성 및 이동통신, SIGFOX 등 다양한 통신장비를 통해 수집되는 위치정보를 실시간 모니터링 및 Tracking을 서비스하며 Device의 Sensor 데이터 와 Geofence 등의 정보를 통해 종합적인 위치정보 포탈 서비스를 제공합니다.",
         qnaTitle: "자주 묻는 질문",
         qnaLetter: "고객들이 자주 묻는 질문을 확인해보세요",
         faqs: [
             {
-                question: "NMS이 무엇인가요?",
-                answer: "스마트하고 연결된 공급망을 위한 해양 솔루션입니다."
+                question: "VMS란 무엇인가요?",
+                answer: "VMS(Vessel Monitoring System)는 선박의 위치, 상태, 운항 기록 등을 실시간으로 모니터링하고 데이터를 분석하여 해양 안전과 선박 관리를 지원하는 시스템입니다."
             },
             {
-                question: "NMS Platform에서 새로운 아이디를 생성하려면 어떻게 해야 하나요?",
-                answer: "관리자에게 문의 혹은 '문의하기' 페이지에서 문의를 남겨주세요."
+                question: "VMS는 어떤 기능을 제공하나요?",
+                answer: "주요 기능은 다음과 같습니다. '실시간 선박 위치 추적', '항로 계획 및 이탈 알림', '운항 상태 모니터링', '어업 활동 데이터 수집 및 보고', '해양 안전 경고 제공'"
             },
             {
-                question: "상업용 프로젝트에 사용할 수 있나요?",
-                answer: "네, 할 수 있습니다."
+                question: "어떤 선박에 VMS를 적용할 수 있나요?",
+                answer: "어선, 화물선, 여객선, 연구선 등 모든 유형의 선박에 적용할 수 있습니다."
             },
             {
-                question: "환불 정책은 무엇인가요?",
-                answer: "어떤 이유로든 구매가 만족스럽지 않다면 90일 이내에 이메일을 보내주시면 question 없이 전액 환불해드리겠습니다.",
+                question: "VMS는 선박의 위치를 얼마나 정확하게 추적하나요?",
+                answer: "VMS는 GPS 기반으로 위치를 10~15미터 이내의 정확도로 추적하며, 통신이 가능한 범위 내에서 실시간으로 데이터를 업데이트합니다.",
             },
             {
-                question: "기술 지원을 제공하시나요?",
-                answer: "아니요, 무료 다운로드에 대한 기술 지원은 제공하지 않습니다. 6개월 지원을 받으려면 지원 플랜을 구매하세요.",
+                question: "VMS 서비스의 비용은 얼마나 되나요?",
+                answer: "비용은 선박 크기, 적용 기능, 통신 방식 등에 따라 달라지며, 고객 맞춤형 견적을 제공합니다.",
             },
         ],
         ctas: {
-            imageUrl: "/images/solutions/global-iot/Monitoring.webp",
-            title: "ORBCOMM으로 해상 가시성 마스터하기",
-            subTitle: "상업용 어선, 상선 함대 등에 대한 원격 선박 추적, 모니터링 및 제어 기능을 확보하세요.",
+            imageUrl: "/images/solutions/global-iot/VMS_CTA.webp",
+            title: "해양 산업의 미래를 위한 선택, VMS",
+            subTitle: "VMS를 통해 선박 관리의 모든 것을 자동화하고, 더 나은 성과를 만들어보세요.",
             button: "맞춤형 견적을 받아보세요",
             solutionButton: "솔루션을 경험해보세요",
-            solutionUrl: "https://nms.commtrace.com/",
+            solutionUrl: "https://vms.commtrace.com/",
         },
         character: [
             {
-                title: "다양한 통신망 적용",
-                icon: "/images/icons/CommunicationNetwork.png"
+                title: "위성 및 이동통신, SIGFOX 등 다양한 통신 서비스에 최적화",
+                icon: "/images/icons/Optimization.png"
             },
             {
-                title: "정교한 데이터 분석",
-                icon: "/images/icons/DataAnalysis.png"
+                title: "실시간 위치정보 모니터링 서비스 제공",
+                icon: "/images/icons/DataSend.png"
             },
             {
-                title: "고장 예측 및 실시간 모니터링",
-                icon: "/images/icons/NMSMonitoring.png"
+                title: "Device의 Sensor, Geofence 정보 제공",
+                icon: "/images/icons/VMSMonitoring.png"
             },
             {
-                title: "알람 서비스 제공",
-                icon: "/images/icons/Alarm.png"
+                title: "New Device의 쉬운 서비스 적용",
+                icon: "/images/icons/ServiceProvision.png"
             },
         ]
     }
