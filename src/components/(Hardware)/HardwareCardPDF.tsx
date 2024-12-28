@@ -1,3 +1,4 @@
+/** HardwarePage 에서 각 하드웨어 컴포넌트로, 선택하면 해당 브로셔 새 창 열림 */
 'use client';
 
 import React from "react";
@@ -7,13 +8,14 @@ interface HardwareItem {
     title: string;
     subTitle: string;
     description: string;
+    category: string;
     imageSrc: string;
     tag: string[];
     slug: string;
     path: string;
 }
 
-const HardwareCardPDF: React.FC<HardwareItem> = ({ title, subTitle, description, imageSrc, tag, slug, path }) => (
+const HardwareCardPDF: React.FC<HardwareItem> = ({ title, subTitle, description, category, imageSrc, tag, slug, path }) => (
     <a
         className="group"
         href={path} // PDF 파일 경로로 설정
@@ -30,6 +32,11 @@ const HardwareCardPDF: React.FC<HardwareItem> = ({ title, subTitle, description,
                     className="bg-white transform group-hover:scale-105 transition-transform duration-300 ease-in-out"
                     unoptimized
                 />
+                {/* Category */}
+                <div
+                    className="absolute top-2 right-2 bg-gray-900 bg-opacity-50 text-white border border-gray-200 text-xs px-3 py-1 rounded-full shadow-md">
+                    {category}
+                </div>
             </div>
             <h2 className="group-hover:text-blue-500 transition duration-300 text-2xl font-bold mt-4">{title}</h2>
             {/*<p className="text-sm text-gray-600 mt-2">{subTitle}</p>*/}

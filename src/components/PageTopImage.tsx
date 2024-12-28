@@ -1,15 +1,19 @@
+import React from 'react';
+
 interface ImageTopPageProps {
     size: string;
     url: string;
     title: string;
     subtitle: string;
     description: string;
+    solutionButton?: string;
+    solutionUrl?: string;
     textPosition?: 'left' | 'center' | 'right'; // 텍스트 위치 조정 가능
     opacity?: number;
 }
 
 
-export default function PageTopImage({size, url, title, subtitle, description, textPosition = 'left', opacity = 30}: ImageTopPageProps) {
+export default function PageTopImage({size, url, title, subtitle, description, solutionButton, solutionUrl, textPosition = 'left', opacity = 30}: ImageTopPageProps) {
     const getTextPositionClass = () => {
         switch(textPosition) {
             case 'center':
@@ -43,10 +47,21 @@ export default function PageTopImage({size, url, title, subtitle, description, t
                 </div>
 
                 {/* 안쪽 콘텐츠 */}
-                <main className="relative flex flex-col justify-center items-start text-white z-10 p-5 text-center md:text-start md:ml-16 lg:ml-32">
+                <main
+                    className="relative flex flex-col justify-center items-start text-white z-10 p-5 text-center md:text-start md:ml-16 lg:ml-32">
                     <h1 className="text-lg font-bold mb-5">{title}</h1>
                     <h1 className="text-5xl md:text-6xl font-bold mb-5">{subtitle}</h1>
                     <p className="text-base mb-5">{description}</p>
+                    {solutionUrl && (
+                        <a
+                            href={solutionUrl}
+                            target="_blank"
+                            rel="noopener"
+                            className="py-3 text-lg font-medium items-start text-start text-white bg-red-700 border-2 border-red-700 rounded-md px-7 lg:px-10 hover:bg-red-800 hover:text-white hover:border-2 hover:border-red-700"
+                        >
+                            {solutionButton}
+                        </a>
+                    )}
                 </main>
             </section>
         </>

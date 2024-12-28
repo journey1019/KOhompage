@@ -24,6 +24,8 @@ interface MaritimeData{
     imageMain: string;
     imageUrl: string;
     imageSub: string;
+    solutionButton: string;
+    solutionUrl: string;
     introTitle: string;
     introLetter: string;
     qnaTitle: string;
@@ -41,6 +43,8 @@ const maritimeData: Record<string, MaritimeData> = {
         imageMain: "Marine Solutions for the Smart, Connected Supply Chain",
         imageUrl: "/images/header/Port.jpg",
         imageSub: "",
+        solutionButton: "Request a Demo",
+        solutionUrl: "https://reeferconnect.tms-orbcomm.com/",
         introTitle: "Reefer Container Monitoring and Control System",
         introLetter: "KOREA ORBCOMM's ReeferContainer, selected by top three shipping companies worldwide, is currently operating with more than 500,000 products installed in cold-refrigerated containers, providing container carriers, multimodal carriers, shippers and other users with real-time container control services across the land and sea.",
         qnaTitle: "Frequently Asked Questions",
@@ -113,6 +117,8 @@ const maritimeData: Record<string, MaritimeData> = {
         imageMain: "스마트하고 연결된 공급망을 위한 해양 솔루션",
         imageUrl: "/images/header/Port.jpg",
         imageSub: "",
+        solutionButton: "데모 요청",
+        solutionUrl: "https://reeferconnect.tms-orbcomm.com/",
         introTitle: "Reefer Container 감시 및 제어 시스템",
         introLetter: "전세계 Top3 선사가 선택한 ORBCOMM의 ReeferContainer는 현재 500,000개 이상의 제품이 냉동냉장 컨테이너에 설치되어 운영 중이며, 컨테이너선사, 복합운송업체, 화주 및 기타 사용자에게 육해상 전 지역에서의 실시간 컨테이너관제 서비스를 제공합니다.",
         qnaTitle: "자주 묻는 질문",

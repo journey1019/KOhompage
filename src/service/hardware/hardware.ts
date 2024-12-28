@@ -1,15 +1,17 @@
 import hardwareData from "@/data/hardware.json";
 
 export interface HardwareProps {
+    use: boolean; // 사용 유무
     title: string;
     subTitle: string;
     description: string;
     category: string;
     imageSrc: string;
-    tag: string[];
+    tag: string[]; // 보여줄 태그
+    hideTag: string[]; // 숨겨진 모든 태그
+    //solutionsTags?: string[]; // 각 페이지 필터링을 위한 태그 (hideTag를 사용하게 되면 굳이 필요없긴 함)
     slug: string;
     path: string;
-    featured: boolean;
 }
 
 
@@ -39,8 +41,8 @@ export interface FilterOptions {
 }
 
 export const getAllHardware = (): HardwareProps[] => {
-    // 'featured' 필드가 true 인 게시글만 가져오기
-    return hardwareData.filter((hardware) => hardware.featured);
+    // 'use' 필드가 true 인 게시글만 가져오기
+    return hardwareData.filter((hardware) => hardware.use);
 };
 
 // 검색 필터링 함수
@@ -51,8 +53,8 @@ export const getFilteredHardwaresByQueryAndFilters = (
     const normalizedQuery = query.trim().toLowerCase();
 
     return hardwareData.filter((hardware) => {
-        // featured 필드가 true 인지 확인
-        if (!hardware.featured) return false;
+        // use 필드가 true 인지 확인
+        if (!hardware.use) return false;
 
         // 검색어 필터링
         const searchableContent = [
@@ -60,7 +62,7 @@ export const getFilteredHardwaresByQueryAndFilters = (
             hardware.subTitle || "",
             hardware.description || "",
             hardware.category,
-            ...hardware.tag,
+            ...hardware.hideTag,
         ]
             .join(" ")
             .toLowerCase();
@@ -75,7 +77,7 @@ export const getFilteredHardwaresByQueryAndFilters = (
             !filters.networks ||
             filters.networks.length === 0 ||
             filters.networks.some((network) =>
-                hardware.tag.map((tag) => tag.toLowerCase()).includes(network.toLowerCase())
+                hardware.hideTag.map((tag) => tag.toLowerCase()).includes(network.toLowerCase())
             );
 
         const matchesNetwork =
@@ -84,13 +86,13 @@ export const getFilteredHardwaresByQueryAndFilters = (
             // Cellular(LTE/3G/2G) = LTE/3G/2G 로 설정하고 싶을 때
             // filters.networks.some((network) => {
             //     const mappedTag = NETWORK_MAPPING[network];
-            //     return mappedTag && hardware.tag.map((tag) => tag.toLowerCase()).includes(mappedTag.toLowerCase());
+            //     return mappedTag && hardware.hideTag.map((tag) => tag.toLowerCase()).includes(mappedTag.toLowerCase());
             // });
             // Cellular(LTE/3G/2G) = Cellular || LTE/3G/2G 로 설정하고 싶을 때
             filters.networks.some((network) => {
                 const mappedTags = NETWORK_MAPPING[network]; // 배열로 가져옴
                 return mappedTags?.some((mappedTag) =>
-                    hardware.tag.map((tag) => tag.toLowerCase()).includes(mappedTag.toLowerCase())
+                    hardware.hideTag.map((tag) => tag.toLowerCase()).includes(mappedTag.toLowerCase())
                 );
             });
 
@@ -98,7 +100,7 @@ export const getFilteredHardwaresByQueryAndFilters = (
             !filters.tags ||
             filters.tags.length === 0 ||
             filters.tags.some((ta) =>
-                hardware.tag.map((tag) => tag.toLowerCase()).includes(ta.toLowerCase())
+                hardware.hideTag.map((tag) => tag.toLowerCase()).includes(ta.toLowerCase())
             );
 
         // categories 필터: hardware.tag에서 categories와 매칭
@@ -106,7 +108,7 @@ export const getFilteredHardwaresByQueryAndFilters = (
             !filters.categories ||
             filters.categories.length === 0 ||
             filters.categories.some((category) =>
-                hardware.tag.map((hwTag) => hwTag.toLowerCase()).includes(category.toLowerCase())
+                hardware.hideTag.map((hwTag) => hwTag.toLowerCase()).includes(category.toLowerCase())
             );
 
         return matchesQuery && matchesTypes && matchesNetwork && matchesTag && matchesCategory;
@@ -124,10 +126,10 @@ export const getHardwareByKeywords = (keywords: string[]): HardwareProps[] => {
 
     return hardwareData.filter((hardware) => {
         // Ensure the resource is usable
-        if (!hardware.featured) return false;
+        if (!hardware.use) return false;
 
         // Check if any normalized keyword matches the tags
-        const normalizedTags = hardware.tag.map((tag) =>
+        const normalizedTags = hardware.hideTag.map((tag) =>
             tag.toLowerCase().replace(/[^a-z0-9]/g, "")
         );
 

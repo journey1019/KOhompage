@@ -12,7 +12,6 @@ interface FilterResourceCarouselProps {
 const FilterResourceCarousel: React.FC<FilterResourceCarouselProps> = ({ keywords }) => {
     const filteredResources: ResourcesProps[] = getResourcesByKeywords(keywords);
 
-    console.log('hihi hihiiojij')
     return (
         <div className="mx-auto max-w-7xl px-6 py-8">
             <h2 className="text-2xl font-bold text-gray-800 mb-6">

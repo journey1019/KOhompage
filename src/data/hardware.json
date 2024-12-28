@@ -1,11 +1,13 @@
 [
   {
+    "use": false,
     "title": "GT 1200",
     "subTitle": "Tracking Device",
     "description": "Solar-powered trailer and container tracking solution with two-way commands, wireless sensor support and more.",
     "category": "Device",
     "imageSrc": "/images/hardware/GT-1200.png",
-    "tag": [
+    "tag": ["Container-IoT", "Global-IoT"],
+    "hideTag": [
       "Container-IoT",
       "Global-IoT",
       "Satellite",
@@ -19,16 +21,17 @@
       "Asset"
     ],
     "slug": "gt-1200",
-    "path": "",
-    "featured": false
+    "path": ""
   },
   {
+    "use": true,
     "title": "GT 1220",
     "subTitle": "",
     "description": "",
     "category": "Device",
     "imageSrc": "/images/hardware/GT-1220.jpeg",
-    "tag": [
+    "tag": ["Container-IoT", "Global-IoT", "Dry"],
+    "hideTag": [
       "Container-IoT",
       "Global-IoT",
       "Tracking",
@@ -40,16 +43,17 @@
       "Door"
     ],
     "slug": "gt-1220",
-    "path": "/pdf/datasheet/hardware/gt-1220.pdf",
-    "featured": true
+    "path": "/pdf/datasheet/hardware/gt-1220.pdf"
   },
   {
+    "use": true,
     "title": "GT 1230",
     "subTitle": "",
     "description": "",
     "category": "Device",
     "imageSrc": "/images/hardware/GT-1230.png",
-    "tag": [
+    "tag": ["Container-IoT", "Global-IoT", "Dry"],
+    "hideTag": [
       "Container-IoT",
       "Global-IoT",
       "Tracking",
@@ -62,16 +66,17 @@
       "Cargo"
     ],
     "slug": "gt-1230",
-    "path": "/pdf/datasheet/hardware/gt-1230.pdf",
-    "featured": true
+    "path": "/pdf/datasheet/hardware/gt-1230.pdf"
   },
   {
+    "use": true,
     "title": "CT 3500",
     "subTitle": "설명",
     "description": "CT 3500은 육지, 철도 또는 바다의 Supply Chain의 모든 지점에서 자산을 완벽하게 파악하고 제어할 수 있도록 하는 원격 냉동컨테이너 관리의 차세대 기술입니다. 최첨단의 텔레매틱스 장치는 화주 및 운송업자에게 포괄적인 보고서, 분석, 경고 및 원격 양방향 제어 기능을 제공하여 컨테이너 운영을 간소화하고 효율성을 높일 수 있도록 지원합니다. CT 3500은 타의 추종을 불허하는 글로벌 LTE 커버리지와 LoRa, Bluetooth 5, NFC 기술을 지원하며 위성 연결 옵션도 갖추고 있습니다.",
     "category": "Device",
     "imageSrc": "/images/hardware/CT-3500.png",
-    "tag": [
+    "tag": ["Container-IoT", "Global-IoT", "Reefer"],
+    "hideTag": [
       "Container-IoT",
       "Global-IoT",
       "Tracking",
@@ -81,16 +86,17 @@
       "Asset"
     ],
     "slug": "ct-3500",
-    "path": "/pdf/datasheet/hardware/ct-3500.pdf",
-    "featured": true
+    "path": "/pdf/datasheet/hardware/ct-3500.pdf"
   },
   {
+    "use": true,
     "title": "CT 3600",
     "subTitle": "Reefer container monitoring Device",
     "description": "IDP-800은 트레일러, 컨테이너, 선박 등을 거의 실시간으로 추적하기 위해 양방향 Inmarsat IsatData Pro 위성 네트워크를 사용하는 배터리가 내장되어 있는 로우 프로파일 프로그래밍이 가능한 위성 통신 장치입니다.",
     "category": "Device",
     "imageSrc": "/images/hardware/CT-3600.png",
-    "tag": [
+    "tag": ["Container-IoT", "Global-IoT", "Reefer"],
+    "hideTag": [
       "Container-IoT",
       "Global-IoT",
       "Tracking",
@@ -100,16 +106,17 @@
       "Asset"
     ],
     "slug": "ct-3600",
-    "path": "/pdf/datasheet/hardware/ct-3600.pdf",
-    "featured": true
+    "path": "/pdf/datasheet/hardware/ct-3600.pdf"
   },
   {
+    "use": true,
     "title": "CT 1000",
     "subTitle": "Smart dry container telematics",
     "description": "",
     "category": "Device",
     "imageSrc": "/images/hardware/CT-1000.webp",
-    "tag": [
+    "tag": ["Container-IoT", "Global-IoT", "Dry"],
+    "hideTag": [
       "Container-IoT",
       "Global-IoT",
       "Tracking",
@@ -120,16 +127,17 @@
       "Asset"
     ],
     "slug": "ct-1000",
-    "path": "/pdf/datasheet/hardware/ct-1000.pdf",
-    "featured": true
+    "path": "/pdf/datasheet/hardware/ct-1000.pdf"
   },
   {
+    "use": true,
     "title": "CT 1010",
     "subTitle": "Smarter dry container fleet",
     "description": "",
     "category": "Device",
     "imageSrc": "/images/hardware/CT-1010.png",
-    "tag": [
+    "tag": ["Container-IoT", "Global-IoT", "Dry"],
+    "hideTag": [
       "Container-IoT",
       "Global-IoT",
       "Tracking",
@@ -141,16 +149,17 @@
       "Cargo"
     ],
     "slug": "ct-1010",
-    "path": "/pdf/datasheet/hardware/ct-1010.pdf",
-    "featured": true
+    "path": "/pdf/datasheet/hardware/ct-1010.pdf"
   },
   {
+    "use": true,
     "title": "ST 6000",
     "subTitle": "Satellite Terminal",
     "description": "Provides visibility and control of industrial assets operating in remote areas with global satellite connectivity.",
     "category": "Device",
     "imageSrc": "/images/hardware/ST-6000.png",
-    "tag": [
+    "tag": ["Global-IoT", "Satellite"],
+    "hideTag": [
       "Global-IoT",
       "Satellite-IoT",
       "Tracking",
@@ -160,16 +169,17 @@
       "Programmable"
     ],
     "slug": "st-6000",
-    "path": "",
-    "featured": true
+    "path": ""
   },
   {
+    "use": true,
     "title": "ST 6100",
     "subTitle": "Global Satellite Terminal",
     "description": "ST6100 시리즈 위성 터미널은 선박과 부표 등을 위한 연근해 및 대양과 육상을 연결하는 완벽한 통신장비입니다. 안테나 일체형 안테나로 프로그램 내장이 가능한 위성 통신단말기로 Inmarsat IsatData Pro 네트워크를 연결하는 최적의 제품입니다. ST6000 시리즈 위성 터미널은 Inmarsat IsatData Pro 네트워크를 통한 글로벌 위성 연결을 통해 원격 지역에서 작동하는 산업 자산에 대한 완벽한 가시성 확보 및 제어 기능을 제공합니다. 고객의 요구에 맞는 프로그램을 개발하여 내장이 가능합니다.",
     "category": "Device",
     "imageSrc": "/images/hardware/ST-6100.png",
-    "tag": [
+    "tag": ["Global-IoT", "Satellite"],
+    "hideTag": [
       "Global-IoT",
       "Satellite-IoT",
       "Tracking",
@@ -179,16 +189,17 @@
       "Programmable"
     ],
     "slug": "st-6100",
-    "path": "/pdf/datasheet/hardware/st-6100.pdf",
-    "featured": true
+    "path": "/pdf/datasheet/hardware/st-6100.pdf"
   },
   {
+    "use": true,
     "title": "ST 2100",
     "subTitle": "Satellite-As-An-Accessory",
     "description": "ORBCOM ST2100은 전 세계 대부분의 원격지에서 신뢰할 수 있는 글로벌 위성 연결을 제공합니다. 많은 기능과 방수환경의 ST2100은 소형·대형의 상용차, 레일카, 중장비 등과 같은 모바일 자산에 설치할 수 있습니다. 또한 석유화학용 산업 및 환경에서 사용되는 파이프라인, 펌프, 발전기 및 탱크와 같은 고정 자산을 모니터링하는 데 적합합니다.",
     "category": "Device",
     "imageSrc": "/images/hardware/ST-2100.png",
-    "tag": [
+    "tag": ["Global-IoT", "Satellite"],
+    "hideTag": [
       "Global-IoT",
       "Satellite-IoT",
       "Tracking",
@@ -197,16 +208,17 @@
       "Asset"
     ],
     "slug": "st-2100",
-    "path": "/pdf/datasheet/hardware/st-2100.pdf",
-    "featured": true
+    "path": "/pdf/datasheet/hardware/st-2100.pdf"
   },
   {
+    "use": true,
     "title": "ST 9100",
     "subTitle": "Satellite-Cellular IoT Connectivity",
     "description": "모든 기능을 프로그래밍이 가능한 ST9100은 셀룰러 네트워크 커버리지와 양방향 Isat Data Pro 위성 서비스를 결합한 듀얼 모드 위성/셀룰러 장치입니다. 이 다용도 장치를 통해 세계 오지의 육지와 해상에서의 다양한 애플리케이션에 대한 자산 추적 및 모니터링이 가능합니다.",
     "category": "Device",
     "imageSrc": "/images/hardware/ST-9100.png",
-    "tag": [
+    "tag": ["Global-IoT", "Satellite"],
+    "hideTag": [
       "Global-IoT",
       "Satellite-IoT",
       "Tracking",
@@ -217,16 +229,17 @@
       "Programmable"
     ],
     "slug": "st-9100",
-    "path": "/pdf/datasheet/hardware/st-9100.pdf",
-    "featured": true
+    "path": "/pdf/datasheet/hardware/st-9100.pdf"
   },
   {
+    "use": true,
     "title": "SC 1000",
     "subTitle": "",
     "description": "Secure intelligent visibility and new growth opportunities with reasonably priced solar satellite trackers.",
     "category": "Device",
     "imageSrc": "/images/hardware/SC-1000.png",
-    "tag": [
+    "tag": ["Global-IoT", "Satellite"],
+    "hideTag": [
       "Global-IoT",
       "Satellite-IoT",
       "Tracking",
@@ -236,11 +249,10 @@
       "Asset"
     ],
     "slug": "sc-1000",
-    "path": "/pdf/datasheet/hardware/sc-1000.pdf",
-    "featured": true
+    "path": "/pdf/datasheet/hardware/sc-1000.pdf"
   },
-
   {
+    "use": true,
     "title": "QPRO",
     "subTitle": "",
     "description": "ORBCOMM 위성 네트워크를 사용하는 QPRO는 글로벌 자산 추적 기능의 확장을 위한 통신장비입니다. 다양한 M2M 애플리케이션에서 입증된 견고하고 사용자 정의 프로그램이 내장 가능한 QPRO는 가장 열악한 환경의 여러 네트워크에서 동작합니다.",
@@ -248,7 +260,8 @@
     "devkit": "QPRO",
     "category": "Device",
     "imageSrc": "/images/hardware/QPRO.png",
-    "tag": [
+    "tag": ["Global-IoT", "Satellite"],
+    "hideTag": [
       "Global-IoT",
       "Satellite-IoT",
       "Tracking",
@@ -258,16 +271,17 @@
       "Programmable"
     ],
     "slug": "qpro",
-    "path": "/pdf/datasheet/hardware/qpro.pdf",
-    "featured": true
+    "path": "/pdf/datasheet/hardware/qpro.pdf"
   },
   {
+    "use": true,
     "title": "Q 4000",
     "subTitle": "",
     "description": "Q4000은 QPRO의 내부에 들어있는 위성 통신 모듈로 ORBCOMM 위성 통신망 및International 이동통신망을 사용할 수 있는 단말기입니다. 사용자 정의 프로그램을 내장할 수 있는 M2M 어플리케이션에 많이 사용됩니다.",
     "category": "Device",
     "imageSrc": "/images/hardware/Q-4000.png",
-    "tag": [
+    "tag": ["Global-IoT", "Satellite"],
+    "hideTag": [
       "Global-IoT",
       "Satellite-IoT",
       "Tracking",
@@ -277,77 +291,82 @@
       "Programmable"
     ],
     "slug": "q-4000",
-    "path": "/pdf/datasheet/hardware/q-4000.pdf",
-    "featured": true
+    "path": "/pdf/datasheet/hardware/q-4000.pdf"
   },
   {
+    "use": true,
     "title": "MT 5000",
     "subTitle": "Intelligent small vessel monitoring",
     "description": "",
     "category": "Device",
     "imageSrc": "/images/hardware/MT-5000.png",
-    "tag": [
+    "tag": ["AIS", "Satellite"],
+    "hideTag": [
       "AIS",
       "Tracking",
       "ORBCOMM",
       "Maritime"
     ],
     "slug": "mt-5000",
-    "path": "/pdf/datasheet/hardware/mt-5000.pdf",
-    "featured": true
+    "path": "/pdf/datasheet/hardware/mt-5000.pdf"
   },
   {
+    "use": true,
     "title": "AT-1",
     "subTitle": "",
     "description": "",
     "category": "Device",
     "imageSrc": "/images/hardware/Sigfox-AT1.png",
-    "tag": [
+    "tag": ["Global-IoT", "Satellite"],
+    "hideTag": [
       "Global-IoT",
       "Tracking",
       "Sigfox"
     ],
     "slug": "at-1",
-    "path": "",
-    "featured": true
+    "path": ""
   },
   {
+    "use": true,
     "title": "GEN 3 Router",
     "subTitle": "",
     "description": "",
     "category": "Device",
     "imageSrc": "/images/hardware/GEN3-Router.png",
-    "tag": [
+    "tag": ["Satellite"],
+    "hideTag": [
       "Starlink",
       "Internet"
     ],
     "slug": "gen3-router",
-    "path": "",
-    "featured": true
+    "path": ""
   },
   {
+    "use": true,
     "title": "KSV 1001",
     "subTitle": "",
     "description": "",
     "category": "Device",
     "imageSrc": "/images/hardware/KSV-1001.png",
-    "tag": [
+    "tag": ["Global-IoT", "Satellite"],
+    "hideTag": [
       "Global-IoT",
       "Satellite-IoT",
       "Tracking",
       "OGx/IDP"
     ],
     "slug": "ksv-1001",
-    "path": "/pdf/brochure/KSV-1001.pdf",
-    "featured": true
+    "path": "/pdf/brochure/KSV-1001.pdf"
   },
   {
+    "use": true,
     "title": "OG2 and OGi",
     "subTitle": "Satellite Modems",
     "description": "ORBCOMM 통신망을 사용할 수 있는 OG2 모뎀과 Inmarsat IsatData Pro 네트워크를 이용할 수 있는 OGi 모뎀은 동일한 설치공간, 커넥터, 전원, 통신 인터페이스 및 프로그래밍 환경 및 프로토콜을 제공합니다. 경제성과 효율성을 모두 갖춘 제품으로 M2M의 어플리케이션에 많이 사용됩니다.",
     "category": "Module",
     "imageSrc": "/images/hardware/OG2.png",
-    "tag": [
+    "tag": ["Global-IoT", "Satellite"],
+    "hideTag": [
       "Global-IoT",
       "Satellite-IoT",
       "ORBCOMM",
@@ -356,16 +375,17 @@
       "Modem"
     ],
     "slug": "og2-ogi",
-    "path": "/pdf/datasheet/hardware/OG2-OG-ISAT-Satellite-Modems.pdf",
-    "featured": true
+    "path": "/pdf/datasheet/hardware/OG2-OG-ISAT-Satellite-Modems.pdf"
   },
   {
+    "use": true,
     "title": "BG95-S5",
     "subTitle": "BG95-S5 satellite communication module",
     "description": "",
     "category": "Module",
     "imageSrc": "/images/hardware/BG95-S5.webp",
-    "tag": [
+    "tag": ["Global-IoT", "Satellite"],
+    "hideTag": [
       "Global-IoT",
       "Satellite-IoT",
       "OGx/IDP",
@@ -375,92 +395,97 @@
       "Asset"
     ],
     "slug": "bg95-s5",
-    "path": "/pdf/datasheet/hardware/Quectel-BG95.pdf",
-    "featured": true
+    "path": "/pdf/datasheet/hardware/Quectel-BG95.pdf"
   },
   {
+    "use": false,
     "title": "DS 100",
     "subTitle": "",
     "description": "",
     "category": "Sensor",
     "imageSrc": "/images/hardware/DS-100.webp",
-    "tag": [
+    "tag": ["Container-IoT", "Sensor"],
+    "hideTag": [
       "Reefer",
       "Sensor"
     ],
     "slug": "ds-100",
-    "path": "/pdf/datasheet/hardware/ds-100-door-sensor.pdf",
-    "featured": false
+    "path": "/pdf/datasheet/hardware/ds-100-door-sensor.pdf"
   },
   {
+    "use": true,
     "title": "DS 300",
     "subTitle": "",
     "description": "",
     "category": "Sensor",
     "imageSrc": "/images/hardware/DS-300.webp",
-    "tag": [
+    "tag": ["Container-IoT", "Dry"],
+    "hideTag": [
       "Container-IoT",
       "Dry"
     ],
     "slug": "ds-300",
-    "path": "/pdf/datasheet/hardware/ds-300-wireless-door-sensor.pdf",
-    "featured": true
+    "path": "/pdf/datasheet/hardware/ds-300-wireless-door-sensor.pdf"
   },
   {
+    "use": true,
     "title": "TS 310",
     "subTitle": "",
     "description": "",
     "category": "Sensor",
     "imageSrc": "/images/hardware/TS-310.webp",
-    "tag": [
+    "tag": ["Container-IoT", "Dry"],
+    "hideTag": [
       "Container",
       "Dry"
     ],
     "slug": "ts-310",
-    "path": "/pdf/datasheet/hardware/ts-310.pdf",
-    "featured": true
+    "path": "/pdf/datasheet/hardware/ts-310.pdf"
   },
   {
+    "use": true,
     "title": "YETN001L1A",
     "subTitle": "",
     "description": "",
     "category": "Antenna",
     "imageSrc": "/images/hardware/YETN001L1A.png",
-    "tag": [
+    "tag": [],
+    "hideTag": [
       "Global-IoT",
       "Satellite-IoT",
       "OGx/IDP"
     ],
     "slug": "YETN001L1A",
-    "path": "/pdf/datasheet/hardware/Quectel-YETN001L1A.pdf.pdf",
-    "featured": true
+    "path": "/pdf/datasheet/hardware/Quectel-YETN001L1A.pdf.pdf"
   },
   {
+    "use": true,
     "title": "Flat High Performance",
     "subTitle": "",
     "description": "",
     "category": "Antenna",
     "imageSrc": "/images/hardware/Starlink_Flat-High-Performance.png",
-    "tag": [
+    "tag": ["Satellite"],
+    "hideTag": [
       "Starlink",
       "Internet"
     ],
     "slug": "flat-high-performance",
-    "path": "/pdf/datasheet/hardware/Starlink-FlatHighPerformance.pdf",
-    "featured": true
+    "path": "/pdf/datasheet/hardware/Starlink-FlatHighPerformance.pdf"
   },
   {
+    "use": true,
     "title": "Enterprise",
     "subTitle": "",
     "description": "",
     "category": "Antenna",
     "imageSrc": "/images/hardware/Starlink_Enterprise.png",
-    "tag": [
+    "tag": ["Satellite"],
+    "hideTag": [
       "Starlink",
       "Internet"
     ],
     "slug": "enterprise",
-    "path": "/pdf/datasheet/hardware/Starlink_Enterprise.pdf",
-    "featured": true
+    "path": "/pdf/datasheet/hardware/Starlink_Enterprise.pdf"
   }
 ]

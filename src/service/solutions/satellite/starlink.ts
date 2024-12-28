@@ -102,7 +102,7 @@ const starlinkData: Record<string, StarlinkData> = {
 
     "ko": {
         imageIntro: "",
-        imageMain: "Space X: Starlink Satellite",
+        imageMain: "SpaceX: Starlink Satellite",
         imageUrl: "/images/header/Starlink.webp",
         imageSub: "",
         introTitle: "Reefer Container 감시 및 제어 시스템",

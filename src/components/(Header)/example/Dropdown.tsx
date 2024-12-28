@@ -60,14 +60,14 @@ const Dropdown = ({ menuKey, locale }: DropdownProps) => {
                                 <li>
                                     <a
                                         href={`/solutions/${item.href}`}
-                                        className="block px-3 py-1 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700"
+                                        className="group block px-3 py-1 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700"
                                     >
                                         <div className="flex flex-col items-start">
-                                            <div className="rounded-md bg-gray-200 dark:bg-white/5 p-1 ring-1 ring-gray-300 dark:ring-white/10">
+                                            <div className="group-hover:text-red-700 rounded-md bg-gray-200 dark:bg-white/5 p-1 ring-1 ring-gray-300 dark:ring-white/10">
                                                 {/* Icon Rendering */}
                                                 {item.icon}
                                             </div>
-                                            <div className="font-semibold pt-5">{item.title}</div>
+                                            <div className="group-hover:text-red-700 font-semibold pt-5">{item.title}</div>
                                             <div className="text-sm pt-2 text-gray-400">{item.description}</div>
                                         </div>
                                     </a>
@@ -94,7 +94,7 @@ const Dropdown = ({ menuKey, locale }: DropdownProps) => {
                                     description: item.description ?? 'No description available',
                                 }))}
                                 onMouseLeave={() => setHoveredItem(null)}
-                                className="w-full block text-left px-4 py-1 rounded-lg hover:bg-gray-100 text-gray-700"
+                                className="w-full block text-left px-4 py-1 rounded-lg hover:bg-gray-100 hover:text-red-700 text-gray-700"
                             >
                                 {item.label}
                             </a>
@@ -112,7 +112,7 @@ const Dropdown = ({ menuKey, locale }: DropdownProps) => {
                                     description: item.description ?? 'No description available',
                                 }))}
                                 onMouseLeave={() => setHoveredItem(null)}
-                                className="w-full block text-left px-4 py-1 rounded-lg hover:bg-gray-100 text-gray-700"
+                                className="w-full block text-left px-4 py-1 rounded-lg hover:bg-gray-100 hover:text-red-700 text-gray-700"
                             >
                                 {item.label}
                             </button>

@@ -39,6 +39,8 @@ export default async function MaritimePage({params}: PageProps) {
                 title={data.imageIntro}
                 subtitle={data.imageMain}
                 description={data.imageSub}
+                solutionButton={data.solutionButton}
+                solutionUrl={data.solutionUrl}
                 textPosition="center"
             />
             <Container>
