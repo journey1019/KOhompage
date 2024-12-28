@@ -1,15 +1,61 @@
-import Contact from '@/components/Contact';
 import { Metadata } from 'next';
+import PageHero from '@/components/PageHero';
+import { Container } from '@/components/Container';
 
 export const metadata: Metadata = {
     title: 'Support',
     description: 'KOREA ORBCOMM Support'
-}
+};
 
 export default function SupportPage() {
-    return(
-        <>
-            <Contact />
-        </>
-    )
+    return (
+        <section>
+            <PageHero
+                size=""
+                url="/images/Header/KOREA_ORBCOMM_notify.jpg"
+                intro=""
+                title="약관"
+                subtitle="법적고지"
+                textPosition="center"
+            />
+            <Container>
+                <div className="container mx-auto my-8 p-4 text-gray-800 space-y-8">
+                    <p>고객님, 코리아오브컴㈜ 홈페이지 (이하 ‘홈페이지’라고 합니다.) 방문을 환영합니다.</p>
+
+                    <p>홈페이지 이용과 관련하여 고객님께서 꼭 알아두셔야 할 몇 가지 법적인 제한과 금지 사항이 있음을 알려드립니다. 이를 잘 숙지하시고 홈페이지를 이용해 주시기 바랍니다.</p>
+
+                    <p>1. 홈페이지는 코리아오브컴 주식회사(이하 ‘회사’라고 합니다.)의 소중한 자산이며, 모든 자료의 저작권은 회사에 있습니다.</p>
+
+                    <p>
+                        홈페이지에서 제공하는 문자, 그림, 음성, 동영상, 다운로드 파일, 링크, 소스코드 등의 모든 서비스, 자료 정보들(이하 &quot;정보&quot;라 합니다.)은 자료의 저작권은 회사에
+                        있으며,
+                        상기의 자료들은 저작권법에 의해 보호를 받고 있으며, 회사의 동의 없이 무단으로 복제, 배포, 게시를 하는 행위는 저작권법에 위배됩니다. 따라서 홈페이지에서 제공한 정보를
+                        회사에 동의 없이 상업적이거나 공공의 목적으로 다운로드, 수정, 유통하는 등 어떠한 방식으로도 사용할 수 없습니다.
+                    </p>
+
+                    <p>또한, 어떠한 경우에도 회사는 이용자가 회사의 서면 동의 없이 수집한 자료와 관련하여 직접, 간접, 부수적, 징벌적, 파생적인 손해에 대해서도 책임을 지지 않습니다.</p>
+
+                    <p>2. 회사는 ORBCOMM의 로고 및 CI 무단사용에 대해 엄격히 규제합니다.</p>
+
+                    <p>
+                        온/오프라인상에 표현된 ORBCOMM의 로고 및 CI 관련 저작물은 미국 ORBCOMM Inc. 또는 회사가 경영권을 소유한 법인에서만 사용이 가능하며, 소유 법인이라
+                        하더라도
+                        사전에 사용에 대한 허가를 받아야 합니다. 또한, 회사는 이런 저작물에 대해 무단으로 도용하는 업체에 대해서 관련 법에 의해 제재할 수 있으므로, 어떠한 경우라도
+                        온/오프라인
+                        상에서의 ORBCOMM의 로고 또는 CI를 무단으로 사용하시면 안됩니다.
+                    </p>
+
+                    <p>
+                        본 내용이 고지된 후에 홈페이지에서 제공하는 정보를 이용하시는 모든 고객님은 본 고지내용에 대해 동의한 것으로 간주됩니다. 또한, 회사는 본 고지내용 중 변경사항을
+                        홈페이지에
+                        적절한 시간 여유를 가지고 고지하거나, 관례상 적절한 방법으로 사전 통지 없이 수시로 변경할 권리와 권한을 가지고 있음을 알려드립니다.
+                    </p>
+
+                    <p>이상의 법적 고지는 2012년 11월 25일부터 시행됩니다.</p>
+
+                    <p>약관 및 개인정보 취급 방침에 대한 문의는 아래의 파일 및 고객센터로 문의하여 주시기를 바랍니다.</p>
+                </div>
+            </Container>
+        </section>
+    );
 }

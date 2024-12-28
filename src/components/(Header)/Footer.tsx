@@ -2,6 +2,7 @@ import Link from "next/link";
 import Image from "next/image";
 import React from "react";
 import { Container } from "@/components/(About)/Container";
+import PDFButton from '@/components/(Header)/PDFButton';
 
 
 
@@ -58,27 +59,27 @@ export function Footer({locale}: {locale: string}) {
                             </Link>
                         </div>
 
-                        <div className="max-w-md mt-4 text-gray-500 dark:text-gray-400">
-                            Nextly is a free landing page & marketing website template for
-                            startups and indie projects. Its built with Next.js & TailwindCSS.
-                            And its completely open-source.
+                        <div className="flex flex-col max-w-md mt-4 text-gray-500 dark:text-gray-400">
+                            <span>서울특별시 서초구 강남대로 525 세영제이타워 15층 [06536]</span>
+                            <span>02-3444-7311</span>
+                            <span>sales@orbcomm.co.kr</span>
                         </div>
 
-                        <div className="mt-5">
-                            <a
-                                href="https://ko-hompage-4i450xcr4-jihyeons-projects-55215b2b.vercel.app/en"
-                                target="_blank"
-                                rel="noopener"
-                                className="relative block w-44"
-                            >
-                                <Image
-                                    src="/images/about/vercel.svg"
-                                    alt="Powered by Vercel"
-                                    width="212"
-                                    height="44"
-                                />
-                            </a>
-                        </div>
+                        {/*<div className="mt-5">*/}
+                        {/*    <a*/}
+                        {/*        href="https://ko-hompage-4i450xcr4-jihyeons-projects-55215b2b.vercel.app/en"*/}
+                        {/*        target="_blank"*/}
+                        {/*        rel="noopener"*/}
+                        {/*        className="relative block w-44"*/}
+                        {/*    >*/}
+                        {/*        <Image*/}
+                        {/*            src="/images/about/vercel.svg"*/}
+                        {/*            alt="Powered by Vercel"*/}
+                        {/*            width="212"*/}
+                        {/*            height="44"*/}
+                        {/*        />*/}
+                        {/*    </a>*/}
+                        {/*</div>*/}
                     </div>
 
                     <div>
@@ -124,19 +125,39 @@ export function Footer({locale}: {locale: string}) {
                     </div>
                 </div>
 
-                <div className="my-10 text-sm text-center text-gray-600 dark:text-gray-400">
-                    Copyright © {new Date().getFullYear()}. {' '}
-                    <a href="https://www.orbcomm.co.kr/" target="_blank" rel="noopener">
-                        KOREA ORBCOMM™
-                    </a>{' '}
-                    All Rights{' '}
-                    <a href="https://www.orbcomm.co.kr/" target="_blank" rel="noopener ">
-                        Reserved.
-                    </a>
+                <div className="flex flex-col md:flex-row justify-between my-10 text-center">
+                    {/* 상단: 모바일에서는 저작권 정보 */}
+                    <div className="order-2 md:order-1 text-sm text-gray-600 dark:text-gray-400">
+                        Copyright © {new Date().getFullYear()}.{' '}
+                        <a href="https://www.orbcomm.co.kr/" target="_blank" rel="noopener">
+                            KOREA ORBCOMM™
+                        </a>{' '}
+                        All Rights{' '}
+                        <a href="https://www.orbcomm.co.kr/" target="_blank" rel="noopener ">
+                            Reserved.
+                        </a>
+                    </div>
+
+                    {/* 하단: 모바일에서는 개인정보처리방침, 서비스이용약관 */}
+                    <div className="order-1 md:order-2 text-sm text-gray-600 dark:text-gray-400 mb-4 md:mb-0">
+                        <span className="pr-5">법적고지</span>
+                        {/* 개인위치정보처리방침 버튼 */}
+                        <PDFButton
+                            path="/images/support/PrivacyPolicy.pdf"
+                            label="개인위치정보처리방침"
+                            className="pr-5"
+                        />
+                        {/* 서비스이용약관 버튼 */}
+                        <PDFButton
+                            path="/images/support/TermsOfUse.pdf"
+                            label="서비스이용약관"
+                        />
+                    </div>
                 </div>
+
             </Container>
             {/* Do not remove this */}
-            <Backlink />
+            {/*<Backlink />*/}
         </div>
     );
 }
