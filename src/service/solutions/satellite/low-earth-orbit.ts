@@ -42,7 +42,7 @@ interface MaritimeData{
 
 const lowEarthOrbitData: Record<string, MaritimeData> = {
     "en": {
-        imageIntro: "See more. Know more. Do more: The industry’s single source for complete maritime asset visibility and control.",
+        imageIntro: "It provides real-time data transmission and efficient remote monitoring solutions through low-orbit satellites.",
         imageMain: "Marine Solutions for the Smart, Connected Supply Chain",
         imageUrl: "/images/header/Port.jpg",
         imageSub: "",
@@ -134,7 +134,7 @@ const lowEarthOrbitData: Record<string, MaritimeData> = {
 
 
     "ko": {
-        imageIntro: "",
+        imageIntro: "저궤도 위성을 통해 실시간 데이터 전송과 효율적인 원격 모니터링 솔루션을 제공합니다.",
         imageMain: "ORBCOMM: Low Earth Orbit",
         imageUrl: "/images/header/Satellite.jpg",
         imageSub: "",

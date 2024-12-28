@@ -7,6 +7,8 @@ import OneImage from '@/components/(Solution)/OneImage';
 import ChipFilterHardwareCarousel from '@/components/(Hardware)/ChipFilterHardwareCarousel';
 import FilterHardwareCarousel from '@/components/(Hardware)/FilterHardwareCarousel';
 import FilterResourceCarousel from '@/components/(Resources)/FilterResourceCarousel';
+import FilterHardwareCarouselBySolutionTags from '@/components/(Hardware)/FilterHardwareCarouselBySolutionTags';
+import FilterResourceCarouselBySolutionTags from '@/components/(Resources)/FilterResourceCarouselBySolutionTags';
 
 interface PageProps {
     params: {locale: string};
@@ -16,7 +18,9 @@ export default function LowEarthOrbitPage({params}: PageProps) {
     const data = lowEarthOrbitData[locale];
 
 
-    const chips = ["Low Earth Orbit"]
+    const pageName = ['Low Earth Orbit']
+    const filteredKeyword = ["low-earth-orbit"]
+
     return(
         <section>
             <PageHero
@@ -47,17 +51,17 @@ export default function LowEarthOrbitPage({params}: PageProps) {
 
             <SectionTitle
                 preTitle="HARDWARES"
-                title="Satellite Hardware Lists"
+                title={`${pageName} Hardware Lists`}
             >
             </SectionTitle>
-            <FilterHardwareCarousel keywords={['AIS', 'Modem']} />
+            <FilterHardwareCarouselBySolutionTags keywords={filteredKeyword} />
 
             <SectionTitle
                 preTitle="RESOURCES"
-                title={`${chips} : All Resources`}
+                title={`${pageName} Resource Lists`}
             >
             </SectionTitle>
-            <FilterResourceCarousel keywords={['OGx/IDP']} />
+            <FilterResourceCarouselBySolutionTags keywords={filteredKeyword} />
         </section>
     )
 }

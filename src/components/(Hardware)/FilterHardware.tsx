@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
-import { FilterOptions } from "@/service/hardware/hardware";
+import { FilterOptions } from "@/service/hardware/hardwareData";
 
 // 필터 옵션 상수
 const CATEGORY_OPTIONS = ["Container-IoT", "Global-IoT", "Satellite-IoT", "AIS", "Starlink", "Tracking"];

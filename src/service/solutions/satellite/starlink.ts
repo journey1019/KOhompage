@@ -34,7 +34,7 @@ interface StarlinkData{
 
 const starlinkData: Record<string, StarlinkData> = {
     "en": {
-        imageIntro: "See more. Know more. Do more: The industry’s single source for complete maritime asset visibility and control.",
+        imageIntro: "It is an ultra-fast, low-latency satellite Internet solution that provides stable Internet connections anywhere on the planet.",
         imageMain: "Marine Solutions for the Smart, Connected Supply Chain",
         imageUrl: "/images/header/Starlink.webp",
         imageSub: "",
@@ -69,7 +69,7 @@ const starlinkData: Record<string, StarlinkData> = {
         ctas: {
             imageUrl: "/images/solutions/satellite/StarlinkLink.png",
             title: "HIGH-SPEED INTERNET AROUND THE WORLD",
-            subTitle: "Connect at home or on the go.",
+            subTitle: "It provides a reliable Internet connection anytime, anywhere.",
             button: "Get a tailored quote",
             solutionButton: "Give It a Try!",
             solutionUrl: "https://www.starlink.com/specifications?spec=1"
@@ -101,7 +101,7 @@ const starlinkData: Record<string, StarlinkData> = {
 
 
     "ko": {
-        imageIntro: "",
+        imageIntro: "초고속 저지연 위성 인터넷 솔루션으로, 지구 어디에서나 안정적인 인터넷 연결을 제공합니다.",
         imageMain: "SpaceX: Starlink Satellite",
         imageUrl: "/images/header/Starlink.webp",
         imageSub: "",
@@ -136,7 +136,7 @@ const starlinkData: Record<string, StarlinkData> = {
         ctas: {
             imageUrl: "/images/solutions/satellite/StarlinkLink.png",
             title: "전 세계 고속 인터넷",
-            subTitle: "집에서나 이동 중에도 연결하세요.",
+            subTitle: "언제 어디에서나 안정적인 인터넷 연결을 제공합니다.",
             button: "맞춤형 견적을 받아보세요",
             solutionButton: "솔루션을 경험해보세요",
             solutionUrl: "https://www.starlink.com/specifications?spec=1"

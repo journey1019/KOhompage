@@ -26,6 +26,8 @@ import TagFilterBlogCarousel from '@/components/(Resources)/TagFilterBlogCarouse
 import { notFound } from 'next/navigation';
 import FilterHardwareCarousel from '@/components/(Hardware)/FilterHardwareCarousel';
 import FilterResourceCarousel from '@/components/(Resources)/FilterResourceCarousel';
+import FilterHardwareCarouselBySolutionTags from '@/components/(Hardware)/FilterHardwareCarouselBySolutionTags';
+import FilterResourceCarouselBySolutionTags from '@/components/(Resources)/FilterResourceCarouselBySolutionTags';
 
 interface PageProps {
     params: {locale: string};
@@ -56,7 +58,9 @@ export default async function GlobalIoT({params}: PageProps){
         notFound();
     }
 
-    const chips = ["Satellite"];
+    const pageName = ['Satellite']
+    const filteredKeyword = ["satellite"]
+
     return(
         <section>
             <PageHero
@@ -99,17 +103,17 @@ export default async function GlobalIoT({params}: PageProps){
             {/*<ChipFilterHardwareCarousel chips={['ogx', 'ogi', 'og2']} />*/}
             <SectionTitle
                 preTitle="HARDWARES"
-                title="Satellite Hardware Lists"
+                title={`${pageName} Hardware Lists`}
             >
             </SectionTitle>
-            <FilterHardwareCarousel keywords={['Satellite', 'Starlink','OGx/IDP']} />
+            <FilterHardwareCarouselBySolutionTags keywords={filteredKeyword} />
 
             <SectionTitle
                 preTitle="RESOURCES"
-                title={`${chips} : All Resources`}
+                title={`${pageName} Resource Lists`}
             >
             </SectionTitle>
-            <FilterResourceCarousel keywords={['Satellite', 'Starlink','OGx/IDP']} />
+            <FilterResourceCarouselBySolutionTags keywords={filteredKeyword} />
             {/*<SectionTitle*/}
             {/*    preTitle="RESOURCES"*/}
             {/*    title="ALL RESOURCES"*/}

@@ -20,6 +20,7 @@
       "Reefer",
       "Asset"
     ],
+    "solutionTag": ["Container-IoT", "Maritime", "Global-IoT", "VMS", "NMS"],
     "slug": "gt-1200",
     "path": ""
   },
@@ -42,6 +43,7 @@
       "Asset",
       "Door"
     ],
+    "solutionTag": ["Container-IoT", "Maritime", "Global-IoT", "VMS", "NMS"],
     "slug": "gt-1220",
     "path": "/pdf/datasheet/hardware/gt-1220.pdf"
   },
@@ -65,13 +67,14 @@
       "Door",
       "Cargo"
     ],
+    "solutionTag": ["Container-IoT", "Maritime", "Global-IoT", "VMS", "NMS"],
     "slug": "gt-1230",
     "path": "/pdf/datasheet/hardware/gt-1230.pdf"
   },
   {
     "use": true,
     "title": "CT 3500",
-    "subTitle": "Remote management and control of reefers.",
+    "subTitle": "Remote management and control of reefers",
     "description": "CT 3500은 육지, 철도 또는 바다의 Supply Chain의 모든 지점에서 자산을 완벽하게 파악하고 제어할 수 있도록 하는 원격 냉동컨테이너 관리의 차세대 기술입니다. 최첨단의 텔레매틱스 장치는 화주 및 운송업자에게 포괄적인 보고서, 분석, 경고 및 원격 양방향 제어 기능을 제공하여 컨테이너 운영을 간소화하고 효율성을 높일 수 있도록 지원합니다. CT 3500은 타의 추종을 불허하는 글로벌 LTE 커버리지와 LoRa, Bluetooth 5, NFC 기술을 지원하며 위성 연결 옵션도 갖추고 있습니다.",
     "category": "Device",
     "imageSrc": "/images/hardware/CT-3500.png",
@@ -85,6 +88,7 @@
       "Reefer",
       "Asset"
     ],
+    "solutionTag": ["Container-IoT", "Maritime", "Global-IoT", "VMS", "NMS"],
     "slug": "ct-3500",
     "path": "/pdf/datasheet/hardware/ct-3500.pdf"
   },
@@ -105,6 +109,7 @@
       "Reefer",
       "Asset"
     ],
+    "solutionTag": ["Container-IoT", "Maritime", "Global-IoT", "VMS", "NMS"],
     "slug": "ct-3600",
     "path": "/pdf/datasheet/hardware/ct-3600.pdf"
   },
@@ -126,6 +131,7 @@
       "Dry",
       "Asset"
     ],
+    "solutionTag": ["Container-IoT", "Maritime", "Global-IoT", "VMS", "NMS"],
     "slug": "ct-1000",
     "path": "/pdf/datasheet/hardware/ct-1000.pdf"
   },
@@ -148,6 +154,7 @@
       "Asset",
       "Cargo"
     ],
+    "solutionTag": ["Container-IoT", "Maritime", "Global-IoT", "VMS", "NMS"],
     "slug": "ct-1010",
     "path": "/pdf/datasheet/hardware/ct-1010.pdf"
   },
@@ -168,6 +175,7 @@
       "Asset",
       "Programmable"
     ],
+    "solutionTag": ["Global-IoT", "VMS", "NMS", "Satellite", "OGx/IDP"],
     "slug": "st-6000",
     "path": ""
   },
@@ -188,6 +196,7 @@
       "Asset",
       "Programmable"
     ],
+    "solutionTag": ["Global-IoT", "VMS", "NMS", "Satellite", "OGx/IDP"],
     "slug": "st-6100",
     "path": "/pdf/datasheet/hardware/st-6100.pdf"
   },
@@ -207,6 +216,7 @@
       "Maritime",
       "Asset"
     ],
+    "solutionTag": ["Global-IoT", "VMS", "NMS", "Satellite", "OGx/IDP"],
     "slug": "st-2100",
     "path": "/pdf/datasheet/hardware/st-2100.pdf"
   },
@@ -228,13 +238,14 @@
       "Asset",
       "Programmable"
     ],
+    "solutionTag": ["Global-IoT", "VMS", "NMS", "Satellite", "OGx/IDP"],
     "slug": "st-9100",
     "path": "/pdf/datasheet/hardware/st-9100.pdf"
   },
   {
     "use": true,
     "title": "SC 1000",
-    "subTitle": "",
+    "subTitle": "Affordable solar-powered satellite tracker",
     "description": "Secure intelligent visibility and new growth opportunities with reasonably priced solar satellite trackers.",
     "category": "Device",
     "imageSrc": "/images/hardware/SC-1000.png",
@@ -248,13 +259,14 @@
       "Maritime",
       "Asset"
     ],
+    "solutionTag": ["Global-IoT", "VMS", "NMS", "Satellite", "OGx/IDP"],
     "slug": "sc-1000",
     "path": "/pdf/datasheet/hardware/sc-1000.pdf"
   },
   {
     "use": true,
     "title": "QPRO",
-    "subTitle": "",
+    "subTitle": "Custom Network",
     "description": "ORBCOMM 위성 네트워크를 사용하는 QPRO는 글로벌 자산 추적 기능의 확장을 위한 통신장비입니다. 다양한 M2M 애플리케이션에서 입증된 견고하고 사용자 정의 프로그램이 내장 가능한 QPRO는 가장 열악한 환경의 여러 네트워크에서 동작합니다.",
     "brochure": "",
     "devkit": "QPRO",
@@ -270,13 +282,14 @@
       "Asset",
       "Programmable"
     ],
+    "solutionTag": ["Global-IoT", "VMS", "NMS", "Satellite", "LowEarthOrbit"],
     "slug": "qpro",
     "path": "/pdf/datasheet/hardware/qpro.pdf"
   },
   {
     "use": true,
     "title": "Q 4000",
-    "subTitle": "",
+    "subTitle": "Custom M2M Application",
     "description": "Q4000은 QPRO의 내부에 들어있는 위성 통신 모듈로 ORBCOMM 위성 통신망 및International 이동통신망을 사용할 수 있는 단말기입니다. 사용자 정의 프로그램을 내장할 수 있는 M2M 어플리케이션에 많이 사용됩니다.",
     "category": "Device",
     "imageSrc": "/images/hardware/Q-4000.png",
@@ -290,6 +303,7 @@
       "Asset",
       "Programmable"
     ],
+    "solutionTag": ["Global-IoT", "VMS", "NMS", "Satellite", "LowEarthOrbit"],
     "slug": "q-4000",
     "path": "/pdf/datasheet/hardware/q-4000.pdf"
   },
@@ -307,6 +321,7 @@
       "ORBCOMM",
       "Maritime"
     ],
+    "solutionTag": ["Satellite", "LowEarthOrbit", "AIS"],
     "slug": "mt-5000",
     "path": "/pdf/datasheet/hardware/mt-5000.pdf"
   },
@@ -317,19 +332,20 @@
     "description": "",
     "category": "Device",
     "imageSrc": "/images/hardware/Sigfox-AT1.png",
-    "tag": ["Global-IoT", "Satellite"],
+    "tag": ["Global-IoT", "Sigfox"],
     "hideTag": [
       "Global-IoT",
       "Tracking",
       "Sigfox"
     ],
+    "solutionTag": ["Global-IoT", "VMS", "NMS"],
     "slug": "at-1",
     "path": ""
   },
   {
     "use": true,
     "title": "GEN 3 Router",
-    "subTitle": "",
+    "subTitle": "All-in-One Networking Solutions",
     "description": "",
     "category": "Device",
     "imageSrc": "/images/hardware/GEN3-Router.png",
@@ -338,13 +354,14 @@
       "Starlink",
       "Internet"
     ],
+    "solutionTag": ["Satellite", "Starlink"],
     "slug": "gen3-router",
     "path": ""
   },
   {
     "use": true,
     "title": "KSV 1001",
-    "subTitle": "",
+    "subTitle": "Remote Asset Management and Tracking",
     "description": "",
     "category": "Device",
     "imageSrc": "/images/hardware/KSV-1001.png",
@@ -355,6 +372,7 @@
       "Tracking",
       "OGx/IDP"
     ],
+    "solutionTag": ["Global-IoT", "VMS", "NMS", "Satellite", "OGx/IDP"],
     "slug": "ksv-1001",
     "path": "/pdf/brochure/KSV-1001.pdf"
   },
@@ -374,6 +392,7 @@
       "Asset",
       "Modem"
     ],
+    "solutionTag": ["Global-IoT", "VMS", "NMS", "Satellite", "LowEarthOrbit", "OGx/IDP"],
     "slug": "og2-ogi",
     "path": "/pdf/datasheet/hardware/OG2-OG-ISAT-Satellite-Modems.pdf"
   },
@@ -394,6 +413,7 @@
       "Maritime",
       "Asset"
     ],
+    "solutionTag": ["Global-IoT", "VMS", "NMS", "Satellite", "OGx/IDP"],
     "slug": "bg95-s5",
     "path": "/pdf/datasheet/hardware/Quectel-BG95.pdf"
   },
@@ -409,13 +429,14 @@
       "Reefer",
       "Sensor"
     ],
+    "solutionTag": ["Container-IoT", "Maritime"],
     "slug": "ds-100",
     "path": "/pdf/datasheet/hardware/ds-100-door-sensor.pdf"
   },
   {
     "use": true,
     "title": "DS 300",
-    "subTitle": "",
+    "subTitle": "Door Sensor",
     "description": "",
     "category": "Sensor",
     "imageSrc": "/images/hardware/DS-300.webp",
@@ -424,13 +445,14 @@
       "Container-IoT",
       "Dry"
     ],
+    "solutionTag": ["Container-IoT", "Maritime"],
     "slug": "ds-300",
     "path": "/pdf/datasheet/hardware/ds-300-wireless-door-sensor.pdf"
   },
   {
     "use": true,
     "title": "TS 310",
-    "subTitle": "",
+    "subTitle": "Temperature Sensor",
     "description": "",
     "category": "Sensor",
     "imageSrc": "/images/hardware/TS-310.webp",
@@ -439,13 +461,14 @@
       "Container",
       "Dry"
     ],
+    "solutionTag": ["Container-IoT", "Maritime"],
     "slug": "ts-310",
     "path": "/pdf/datasheet/hardware/ts-310.pdf"
   },
   {
     "use": true,
     "title": "YETN001L1A",
-    "subTitle": "",
+    "subTitle": "Next Generation IoT Module",
     "description": "",
     "category": "Antenna",
     "imageSrc": "/images/hardware/YETN001L1A.png",
@@ -455,14 +478,15 @@
       "Satellite-IoT",
       "OGx/IDP"
     ],
+    "solutionTag": ["Global-IoT", "VMS", "NMS", "Satellite", "OGx/IDP"],
     "slug": "YETN001L1A",
     "path": "/pdf/datasheet/hardware/Quectel-YETN001L1A.pdf.pdf"
   },
   {
     "use": true,
     "title": "Flat High Performance",
-    "subTitle": "",
-    "description": "",
+    "subTitle": "Provides extensive satellite coverage",
+    "description": "모바일 애플리케이션과 극한 환경에서 안정적인 연결을 제공하는 내구성이 뛰어난 고성능 장비.",
     "category": "Antenna",
     "imageSrc": "/images/hardware/Starlink_Flat-High-Performance.png",
     "tag": ["Satellite"],
@@ -470,14 +494,15 @@
       "Starlink",
       "Internet"
     ],
+    "solutionTag": ["Satellite", "Starlink"],
     "slug": "flat-high-performance",
     "path": "/pdf/datasheet/hardware/Starlink-FlatHighPerformance.pdf"
   },
   {
     "use": true,
     "title": "Enterprise",
-    "subTitle": "",
-    "description": "",
+    "subTitle": "Supports third-party router connectivity",
+    "description": "최고의 성능을 제공하는 고급 사용자 및 고정 사이트 비즈니스 솔루션, 유연한 설치와 다양한 맞춤형 설정을 지원합니다.",
     "category": "Antenna",
     "imageSrc": "/images/hardware/Starlink_Enterprise.png",
     "tag": ["Satellite"],
@@ -485,6 +510,7 @@
       "Starlink",
       "Internet"
     ],
+    "solutionTag": ["Satellite", "Starlink"],
     "slug": "enterprise",
     "path": "/pdf/datasheet/hardware/Starlink_Enterprise.pdf"
   }

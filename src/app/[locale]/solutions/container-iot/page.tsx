@@ -25,6 +25,8 @@ import ChipFilterHardwareCarousel from '@/components/(Hardware)/ChipFilterHardwa
 import FilterHardwareCarousel from '@/components/(Hardware)/FilterHardwareCarousel';
 import { notFound } from 'next/navigation';
 import FilterResourceCarousel from '@/components/(Resources)/FilterResourceCarousel';
+import FilterHardwareCarouselBySolutionTags from '@/components/(Hardware)/FilterHardwareCarouselBySolutionTags';
+import FilterResourceCarouselBySolutionTags from '@/components/(Resources)/FilterResourceCarouselBySolutionTags';
 
 interface PageProps {
     params: {locale: string};
@@ -54,7 +56,8 @@ export default async function ContainerIoT({ params }: PageProps){
         );
         // Redirect to 404 if the hardware is not found
     }
-    const chips = ['Container-IoT'];
+    const pageName = ['Container-IoT'];
+    const filteredKeyword = ["container-iot"]
 
     return(
         <section>
@@ -84,10 +87,10 @@ export default async function ContainerIoT({ params }: PageProps){
 
             <SectionTitle
                 preTitle="HARDWARES"
-                title="Container-IoT Hardware Lists"
+                title={`${pageName} Hardware Lists`}
             >
             </SectionTitle>
-            <FilterHardwareCarousel keywords={['Container-IoT']} />
+            <FilterHardwareCarouselBySolutionTags keywords={filteredKeyword} />
             {/*<FilterableHardwareList chips={['container', 'maritime']}/>*/}
             {/*<ChipFilterHardwareCarousel chips={['container-iot', 'maritime']} />*/}
             {/*<Hardware/>*/}
@@ -99,10 +102,10 @@ export default async function ContainerIoT({ params }: PageProps){
 
             <SectionTitle
                 preTitle="RESOURCES"
-                title={`${chips} : All Resources`}
+                title={`${pageName} Resource Lists`}
             >
             </SectionTitle>
-            <FilterResourceCarousel keywords={['Container-IoT']} />
+            <FilterResourceCarouselBySolutionTags keywords={filteredKeyword} />
             {/*<TagFilterBlog initialTags={['container-iot']} />*/}
             {/*<TagFilterBlogCarousel initialTags={chips} />*/}
 

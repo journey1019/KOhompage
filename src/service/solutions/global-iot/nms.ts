@@ -21,6 +21,8 @@ interface NMSData{
     imageMain: string;
     imageUrl: string;
     imageSub: string;
+    solutionButton: string;
+    solutionUrl: string;
     introTitle: string;
     introLetter: string;
     characteristicsTitle: string;
@@ -36,8 +38,10 @@ const nmsData: Record<string, NMSData> = {
     "en": {
         imageIntro: "Real-time Network Monitoring System",
         imageMain: "Real-time data analytics dashboards and notifications",
-        imageUrl: "/images/header/Port.jpg",
+        imageUrl: "/images/header/NMS.jpg",
         imageSub: "",
+        solutionButton: "Request a Demo",
+        solutionUrl: "https://nms.commtrace.com/",
         introTitle: "Network Monitoring System",
         introLetter: "Network Monitoring System (NMS) is a system that monitors all equipment and terminals connected to the network in real time and analyzes data to help proactively detect failures or quickly identify causes. It is an innovative solution that focuses on utilizing the latest technologies to increase the stability of network operations and maximize management efficiency",
         characteristicsTitle: "NMS 서비스 특징",
@@ -96,8 +100,10 @@ const nmsData: Record<string, NMSData> = {
     "ko": {
         imageIntro: "시스템 네트워크 모니터링 시스템",
         imageMain: "실시간 데이터 분석 대시보드 및 알림 기능",
-        imageUrl: "/images/header/Port.jpg",
+        imageUrl: "/images/header/NMS.jpg",
         imageSub: "",
+        solutionButton: "Request a Demo",
+        solutionUrl: "https://nms.commtrace.com/",
         introTitle: "네트워크 모니터링 시스템",
         introLetter: "NMS(Network Monitoring System)는 네트워크에 연결된 모든 장비와 단말기를 실시간으로 모니터링하고, 데이터를 분석하여 장애를 사전에 감지하거나 발생 원인을 신속히 파악할 수 있도록 지원하는 시스템입니다. 최신 기술을 활용하여 네트워크 운영의 안정성을 높이고, 관리의 효율성을 극대화하는 데 초점을 맞춘 혁신적인 솔루션입니다.",
         characteristicsTitle: "NMS 서비스 특징",

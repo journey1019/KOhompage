@@ -19,6 +19,8 @@ import Feature from '@/components/(Solution)/Feature';
 import { notFound } from 'next/navigation';
 import FilterHardwareCarousel from '@/components/(Hardware)/FilterHardwareCarousel';
 import FilterResourceCarousel from '@/components/(Resources)/FilterResourceCarousel';
+import FilterHardwareCarouselBySolutionTags from '@/components/(Hardware)/FilterHardwareCarouselBySolutionTags';
+import FilterResourceCarouselBySolutionTags from '@/components/(Resources)/FilterResourceCarouselBySolutionTags';
 
 interface PageProps {
     params: {locale: string};
@@ -52,7 +54,9 @@ export default async function AISPage({params}: PageProps){
             </div>
         );
     }
-    const chips = ['AIS']
+
+    const pageName = ['AIS']
+    const filteredKeyword = ["ais"]
 
     return(
         <section>
@@ -95,17 +99,17 @@ export default async function AISPage({params}: PageProps){
             {/*<Download/>*/}
             <SectionTitle
                 preTitle="HARDWARES"
-                title="Satellite Hardware Lists"
+                title={`${pageName} Hardware Lists`}
             >
             </SectionTitle>
-            <FilterHardwareCarousel keywords={['AIS']} />
+            <FilterHardwareCarouselBySolutionTags keywords={filteredKeyword} />
 
             <SectionTitle
                 preTitle="RESOURCES"
-                title={`${chips} : All Resources`}
+                title={`${pageName} Resource Lists`}
             >
             </SectionTitle>
-            <FilterResourceCarousel keywords={['AIS']} />
+            <FilterResourceCarouselBySolutionTags keywords={filteredKeyword} />
             {/*<References/>*/}
         </section>
     )

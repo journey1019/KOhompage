@@ -22,6 +22,8 @@ import { notFound } from 'next/navigation';
 import FilterHardwareCarousel from '@/components/(Hardware)/FilterHardwareCarousel';
 import FilterResourceCarousel from '@/components/(Resources)/FilterResourceCarousel';
 import CarouselSolutionBlock from '@/components/(Solution)/CarouselSolutionBlock';
+import FilterHardwareCarouselBySolutionTags from '@/components/(Hardware)/FilterHardwareCarouselBySolutionTags';
+import FilterResourceCarouselBySolutionTags from '@/components/(Resources)/FilterResourceCarouselBySolutionTags';
 
 interface PageProps {
     params: {locale: string};
@@ -53,7 +55,8 @@ export default async function GlobalIoT({params}: PageProps){
         // );
         notFound();
     }
-    const chips = ['Global-IoT'];
+    const pageName = ['Global-IoT']
+    const filteredKeyword = ["global-iot"]
 
     return(
         <section>
@@ -116,10 +119,10 @@ export default async function GlobalIoT({params}: PageProps){
             {/*<ChipFilterHardwareCarousel chips={['global-iot']} />*/}
             <SectionTitle
                 preTitle="HARDWARES"
-                title="Global-IoT Hardware Lists"
+                title={`${pageName} Hardware Lists`}
             >
             </SectionTitle>
-            <FilterHardwareCarousel keywords={['Global-IoT']} />
+            <FilterHardwareCarouselBySolutionTags keywords={filteredKeyword} />
 
             <SectionTitle
                 preTitle="Q n A"
@@ -136,10 +139,10 @@ export default async function GlobalIoT({params}: PageProps){
             {/*<TagFilterBlogCarousel initialTags={chips} />*/}
             <SectionTitle
                 preTitle="RESOURCES"
-                title={`${chips} : All Resources`}
+                title={`${pageName} Resource Lists`}
             >
             </SectionTitle>
-            <FilterResourceCarousel keywords={['Container-IoT']} />
+            <FilterResourceCarouselBySolutionTags keywords={filteredKeyword} />
         </section>
     )
 }

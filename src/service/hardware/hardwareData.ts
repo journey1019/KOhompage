@@ -9,7 +9,7 @@ export interface HardwareProps {
     imageSrc: string;
     tag: string[]; // 보여줄 태그
     hideTag: string[]; // 숨겨진 모든 태그
-    //solutionsTags?: string[]; // 각 페이지 필터링을 위한 태그 (hideTag를 사용하게 되면 굳이 필요없긴 함)
+    solutionTag: string[]; // 각 페이지 필터링을 위한 태그 (hideTag를 사용하게 되면 굳이 필요없긴 함)
     slug: string;
     path: string;
 }
@@ -62,23 +62,49 @@ export const getFilteredHardwaresByQueryAndFilters = (
             hardware.subTitle || "",
             hardware.description || "",
             hardware.category,
+            ...hardware.tag,
             ...hardware.hideTag,
+            ...hardware.solutionTag,
         ]
             .join(" ")
             .toLowerCase();
 
-        const matchesQuery = normalizedQuery === "" || searchableContent.includes(normalizedQuery);
 
         // 필터링 조건
-        const matchesTypes =
-            !filters.types || filters.types.length === 0 || filters.types.includes(hardware.category);
+        const matchesQuery = normalizedQuery === "" || searchableContent.includes(normalizedQuery);
 
-        const matchesNetwork1 =
+        // 필터 조건
+        const matchesFilters = [
+            // types 필터
+            !filters.types || filters.types.length === 0 || filters.types.includes(hardware.category),
+
+            // networks 필터
             !filters.networks ||
             filters.networks.length === 0 ||
             filters.networks.some((network) =>
-                hardware.hideTag.map((tag) => tag.toLowerCase()).includes(network.toLowerCase())
-            );
+                NETWORK_MAPPING[network]?.some((tag) =>
+                    hardware.hideTag.map((t) => t.toLowerCase()).includes(tag.toLowerCase())
+                )
+            ),
+
+            // tags 필터
+            !filters.tags ||
+            filters.tags.length === 0 ||
+            filters.tags.some((tag) =>
+                hardware.hideTag.map((t) => t.toLowerCase()).includes(tag.toLowerCase())
+            ),
+
+            // categories 필터
+            !filters.categories ||
+            filters.categories.length === 0 ||
+            filters.categories.some((category) =>
+                hardware.hideTag.map((tag) => tag.toLowerCase()).includes(category.toLowerCase())
+            ),
+        ].every((condition) => condition); // 모든 조건이 만족해야 true
+
+
+        const matchesTypes =
+            !filters.types || filters.types.length === 0 || filters.types.includes(hardware.category);
 
         const matchesNetwork =
             !filters.networks ||
@@ -111,7 +137,10 @@ export const getFilteredHardwaresByQueryAndFilters = (
                 hardware.hideTag.map((hwTag) => hwTag.toLowerCase()).includes(category.toLowerCase())
             );
 
-        return matchesQuery && matchesTypes && matchesNetwork && matchesTag && matchesCategory;
+        // return matchesQuery && matchesTypes && matchesNetwork && matchesTag && matchesCategory;
+
+        // Query와 Filters 모두 충족하는 데이터만 반환
+        return matchesQuery && matchesFilters;
     })
 }
 
@@ -134,5 +163,34 @@ export const getHardwareByKeywords = (keywords: string[]): HardwareProps[] => {
         );
 
         return normalizedKeywords.some((keyword) => normalizedTags.includes(keyword));
+    });
+};
+
+/** solutionTag 에 의해 Filtering - [Page 에서 키워드 필터링] */
+export const getHardwareByKeywordsInPage = (keywords: string[]): HardwareProps[] => {
+    if (!keywords || keywords.length === 0) return getAllHardware();
+
+    // Normalize keywords (lowercase, remove special characters)
+    const normalizedKeywords = keywords.map((keyword) =>
+        keyword.toLowerCase().replace(/[^a-z0-9]/g, "")
+    );
+
+    return hardwareData.filter((hardware) => {
+        if (!hardware.use) return false;
+
+        // Normalize tags and solutionTag
+        // const normalizedHideTags = hardware.hideTag.map((tag) =>
+        //     tag.toLowerCase().replace(/[^a-z0-9]/g, "")
+        // );
+        const normalizedSolutionTag = hardware.solutionTag.map((tag) =>
+            tag.toLowerCase().replace(/[^a-z0-9]/g, "")
+        );
+
+        // Match against hideTag or solutionTag
+        return normalizedKeywords.some(
+            (keyword) =>
+                // normalizedHideTags.includes(keyword) ||
+                normalizedSolutionTag.includes(keyword)
+        );
     });
 };

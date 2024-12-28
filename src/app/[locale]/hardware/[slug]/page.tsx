@@ -5,7 +5,7 @@ import React from 'react';
 import { useParams } from 'next/navigation';
 import hardwareData from '@/data/hardware.json';
 import PageHero from '@/components/PageHero';
-import { HardwareProps } from '@/service/hardware/hardware';
+import { HardwareProps } from '@/service/hardware/hardwareData';
 import { notFound } from 'next/navigation';
 import AllFilterReferenceCarousel from '@/components/(Resources)/AllFilterResourceCarousel';
 import AllFilterHardwareCarousel from '@/components/(Hardware)/AllFilterHardwareCarousel';

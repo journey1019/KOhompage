@@ -17,6 +17,8 @@ import SolutionAdvantage from '@/components/(Solution)/SolutionAdvantage';
 import { notFound } from 'next/navigation';
 import FilterResourceCarousel from '@/components/(Resources)/FilterResourceCarousel';
 import FilterHardwareCarousel from '@/components/(Hardware)/FilterHardwareCarousel';
+import FilterHardwareCarouselBySolutionTags from '@/components/(Hardware)/FilterHardwareCarouselBySolutionTags';
+import FilterResourceCarouselBySolutionTags from '@/components/(Resources)/FilterResourceCarouselBySolutionTags';
 
 interface PageProps {
     params: {locale: string};
@@ -29,7 +31,8 @@ export default async function MaritimePage({params}: PageProps) {
         notFound();
     }
 
-    const chips = ['maritime']
+    const pageName = ['Maritime']
+    const filteredKeyword = ["maritime"]
 
     return(
         <section>
@@ -73,19 +76,19 @@ export default async function MaritimePage({params}: PageProps) {
                 {/*<ChipFilterHardwareCarousel chips={['maritime']} />*/}
                 <SectionTitle
                     preTitle="HARDWARES"
-                    title="Maritime Hardware Lists"
+                    title={`${pageName} Hardware Lists`}
                 >
                 </SectionTitle>
-                <FilterHardwareCarousel keywords={['Maritime']} />
+                <FilterHardwareCarouselBySolutionTags keywords={filteredKeyword} />
                 {/*<FilterableHardwareList chips={chips}/>*/}
                 {/*<SlugHardware locale={locale}/>*/}
 
                 <SectionTitle
                     preTitle="RESOURCES"
-                    title={`${chips} : All Resources`}
+                    title={`${pageName} Resource Lists`}
                 >
                 </SectionTitle>
-                <FilterResourceCarousel keywords={[ 'Maritime']} />
+                <FilterResourceCarouselBySolutionTags keywords={filteredKeyword} />
 
                 {/*<SectionTitle preTitle="Resources" title="Maritime Platform: Resources" />*/}
                 {/*<Blog/>*/}

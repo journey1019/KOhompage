@@ -6,6 +6,7 @@ export interface ResourcesProps {
     title: string;
     subtitle?: string;
     tags: string[];
+    solutionTag: string[];
     form: string; // "link" / "pdf" / "datasheet"
     image: string; // 대표 이미지 경로
     path: string; // 링크 및 페이지
@@ -36,6 +37,7 @@ export const getFilteredResources = (query: string): ResourcesProps[] => {
             resource.title,
             resource.subtitle || "",
             ...resource.tags,
+            ...resource.solutionTag,
             resource.form,
         ]
             .join(" ") // 문자열 합치기
@@ -62,6 +64,7 @@ export const getFilteredResourcesByQueryAndFilters = (
             resource.title,
             resource.subtitle || "",
             ...resource.tags,
+            ...resource.solutionTag,
             resource.form,
         ]
             .join(" ")
@@ -126,11 +129,41 @@ export const getResourcesByAllKeywords = (keywords: string[]): ResourcesProps[] 
             resource.title,
             resource.subtitle || "",
             ...resource.tags,
+            ...resource.solutionTag,
         ]
             .map(normalizeText)
             .join(" ");
 
         // Check if any keyword matches
         return normalizedKeywords.some((keyword) => searchableContent.includes(keyword));
+    });
+};
+
+/** solutionTag 에 의해 Filtering - [Page 에서 키워드 필터링] */
+export const getResourceByKeywordsInPage = (keywords: string[]): ResourcesProps[] => {
+    if (!keywords || keywords.length === 0) return getAllResources();
+
+    // Normalize keywords (lowercase, remove special characters)
+    const normalizedKeywords = keywords.map((keyword) =>
+        keyword.toLowerCase().replace(/[^a-z0-9]/g, "")
+    );
+
+    return resourcesData.filter((resource) => {
+        if (!resource.use) return false;
+
+        // Normalize tags and solutionTag
+        // const normalizedHideTags = hardware.hideTag.map((tag) =>
+        //     tag.toLowerCase().replace(/[^a-z0-9]/g, "")
+        // );
+        const normalizedSolutionTag = resource.solutionTag.map((tag) =>
+            tag.toLowerCase().replace(/[^a-z0-9]/g, "")
+        );
+
+        // Match against hideTag or solutionTag
+        return normalizedKeywords.some(
+            (keyword) =>
+                // normalizedHideTags.includes(keyword) ||
+                normalizedSolutionTag.includes(keyword)
+        );
     });
 };

@@ -232,7 +232,7 @@ const solutionsData: Record<string, Record<string, SolutionData>> = {
                     title1: "SpaceX",
                     title2: "Starlink",
                     slug: "starlink",
-                    description: "You can monitor the location and status of all refrigerated container units and remotely adjust settings such as temperature. With automatic alarm notifications, you can quickly respond to critical situations such as equipment malfunctions or power outages in reefers. Installed on over 600,000 refrigerated containers worldwide, it helps transport lines, multimodal carriers, and shippers achieve verified ROI.",
+                    description: "Starlink equipment, developed by SpaceX, is an ultra-fast, low-latency satellite internet solution that provides stable internet connectivity anywhere on Earth. With its compact design, Starlink equipment includes a satellite dish, router, and power supply, offering easy installation and exceptional performance. Connecting the world, SpaceX's Starlink equipment is an advanced internet solution suitable for various purposes such as smart work, streaming, and online gaming.",
                     image: "/images/solutions/satellite/Starlink.png",
                 },
             ]
@@ -454,8 +454,7 @@ const solutionsData: Record<string, Record<string, SolutionData>> = {
                     title1: "SpaceX",
                     title2: "Starlink",
                     slug: "starlink",
-                    description:
-                        "You can monitor the location and status of all refrigerated container units and remotely adjust settings such as temperature. With automatic alarm notifications, you can quickly respond to critical situations such as equipment malfunctions or power outages in reefers. Installed on over 600,000 refrigerated containers worldwide, it helps transport lines, multimodal carriers, and shippers achieve verified ROI.",
+                    description: "Starlink 장비는 SpaceX가 개발한 초고속 저지연 위성 인터넷 솔루션으로, 지구 어디에서나 안정적인 인터넷 연결을 제공합니다. 컴팩트한 디자인의 Starlink 장비는 위성 접시, 라우터, 전원 공급 장치를 포함하여 간편한 설치와 뛰어난 성능을 제공합니다. 전 세계를 연결하는 SpaceX의 Starlink 장비는 스마트 워크, 스트리밍, 온라인 게임 등 다양한 용도에 적합한 최첨단 인터넷 솔루션입니다.",
                     image: "/images/solutions/satellite/Starlink.png",
                 },
             ],

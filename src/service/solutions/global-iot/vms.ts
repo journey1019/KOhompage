@@ -21,6 +21,8 @@ interface VMSData{
     imageIntro: string;
     imageMain: string;
     imageSub: string;
+    solutionButton: string;
+    solutionUrl: string;
     introTitle: string;
     introLetter: string;
     characteristicsTitle: string;
@@ -34,10 +36,12 @@ interface VMSData{
 
 const vmsData: Record<string, VMSData> = {
     "en": {
-        imageUrl: "/images/header/Port.jpg",
+        imageUrl: "/images/header/VMS.jpg",
         imageIntro: "Real-time Network Monitoring System",
         imageMain: "Real-time data analytics dashboards and notifications",
         imageSub: "",
+        solutionButton: "Request a Demo",
+        solutionUrl: "https://vms.commtrace.com/",
         introTitle: "Network Monitoring System",
         introLetter: "Network Monitoring System (NMS) is a system that monitors all equipment and terminals connected to the network in real time and analyzes data to help proactively detect failures or quickly identify causes. It is an innovative solution that focuses on utilizing the latest technologies to increase the stability of network operations and maximize management efficiency",
         characteristicsTitle: "NMS 서비스 특징",
@@ -94,10 +98,12 @@ const vmsData: Record<string, VMSData> = {
         ]
     },
     "ko": {
-        imageUrl: "/images/header/Port.jpg",
+        imageUrl: "/images/header/VMS.jpg",
         imageIntro: "선박 모니터링 시스템",
         imageMain: "VMS Commtrace",
         imageSub: "",
+        solutionButton: "Request a Demo",
+        solutionUrl: "https://vms.commtrace.com/",
         introTitle: "선박 모니터링 시스템",
         introLetter: "Commtrace는 실시간 위치정보, 이동 이력 추적, 디바이스별 Geofence, 센서 데이터 제공, 그리고 이를 기반으로 한 알림 서비스를 통해 상선 및 어선 운영의 효율성을 높이고 안전을 보장하는 스마트 해양 물류 관리 솔루션입니다. 데이터 기반의 통찰력과 정교한 기술로 해양 산업의 미래를 함께 만들어갑니다.",
         characteristicsTitle: "Vessel Monitoring System",

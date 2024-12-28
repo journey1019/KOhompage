@@ -5,6 +5,9 @@ import { SectionTitle } from '@/components/(About)/SectionTitle';
 import CharacteristicsBackImage from '@/components/(Solution)/CharacteristicsBackImage';
 import { CtaSolution } from '@/components/(Solution)/CtaSolution';
 import FilterReferenceCarousel from '@/components/(Resources)/FilterResourceCarousel';
+import FilterHardwareCarousel from '@/components/(Hardware)/FilterHardwareCarousel';
+import FilterHardwareCarouselBySolutionTags from '@/components/(Hardware)/FilterHardwareCarouselBySolutionTags';
+import FilterResourceCarouselBySolutionTags from '@/components/(Resources)/FilterResourceCarouselBySolutionTags';
 
 interface PageProps {
     params: {locale: string};
@@ -13,6 +16,8 @@ export default function StarlinkPage({params}: PageProps) {
     const { locale } = params; // 비동기 처리
     const data = starlinkData[locale];
 
+    const pageName = ['Starlink']
+    const filteredKeyword = ["starlink"]
 
     return(
         <section>
@@ -35,7 +40,19 @@ export default function StarlinkPage({params}: PageProps) {
 
             <CtaSolution items={data.ctas}/>
 
-            <FilterReferenceCarousel keywords={['Starlink']} />
+            <SectionTitle
+                preTitle="HARDWARES"
+                title={`${pageName} Hardware Lists`}
+            >
+            </SectionTitle>
+            <FilterHardwareCarouselBySolutionTags keywords={filteredKeyword} />
+
+            <SectionTitle
+                preTitle="RESOURCES"
+                title={`${pageName} Resource Lists`}
+            >
+            </SectionTitle>
+            <FilterResourceCarouselBySolutionTags keywords={filteredKeyword} />
         </section>
     )
 }

@@ -2,7 +2,7 @@
 'use client';
 
 import React from "react";
-import { getHardwareByKeywords, HardwareProps } from "@/service/hardware/hardware";
+import { getHardwareByKeywords, HardwareProps } from "@/service/hardware/hardwareData";
 import HardwareCard2 from '@/components/(Hardware)/HardwareCard2';
 import Carousel from "@/components/Carousel";
 

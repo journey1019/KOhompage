@@ -17,6 +17,8 @@ import Characteristics from '@/components/(Solution)/Characteristics';
 import OneImage from '@/components/(Solution)/OneImage';
 import FilterHardwareCarousel from '@/components/(Hardware)/FilterHardwareCarousel';
 import FilterResourceCarousel from '@/components/(Resources)/FilterResourceCarousel';
+import FilterHardwareCarouselBySolutionTags from '@/components/(Hardware)/FilterHardwareCarouselBySolutionTags';
+import FilterResourceCarouselBySolutionTags from '@/components/(Resources)/FilterResourceCarouselBySolutionTags';
 
 interface PageProps {
     params: {locale: string};
@@ -25,8 +27,9 @@ export default async function MaritimePage({params}: PageProps) {
     const { locale } = params; // 비동기 처리
     const data = vmsData[locale];
 
-    const site = 'VMS'
-    const chips = ['VMS']
+
+    const pageName = ['VMS']
+    const filteredKeyword = ["vms"]
 
     return(
         <section>
@@ -36,6 +39,8 @@ export default async function MaritimePage({params}: PageProps) {
                 intro={data.imageIntro}
                 title={data.imageMain}
                 subtitle={data.imageSub}
+                solutionButton={data.solutionButton}
+                solutionUrl={data.solutionUrl}
                 textPosition="center"
             />
             <Container>
@@ -60,10 +65,10 @@ export default async function MaritimePage({params}: PageProps) {
 
                 <SectionTitle
                     preTitle="HARDWARES"
-                    title={`${chips} Hardware Lists`}
+                    title={`${pageName} Hardware Lists`}
                 >
                 </SectionTitle>
-                <FilterHardwareCarousel keywords={['AIS', 'Modem']} />
+                <FilterHardwareCarouselBySolutionTags keywords={filteredKeyword} />
 
 
                 <SectionTitle preTitle="FAQ" title={data.qnaTitle}>
@@ -77,10 +82,10 @@ export default async function MaritimePage({params}: PageProps) {
 
                 <SectionTitle
                     preTitle="RESOURCES"
-                    title={`${chips} : All Resources`}
+                    title={`${pageName} Resource Lists`}
                 >
                 </SectionTitle>
-                <FilterResourceCarousel keywords={['Global-IoT']} />
+                <FilterResourceCarouselBySolutionTags keywords={filteredKeyword} />
 
             </Container>
         </section>

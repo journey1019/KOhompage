@@ -24,7 +24,7 @@ interface MaritimeData{
 
 const maritimeData: Record<string, MaritimeData> = {
     "en": {
-        imageIntro: "See more. Know more. Do more: The industry’s single source for complete maritime asset visibility and control.",
+        imageIntro: "Next-generation satellite IoT services with innovative network capabilities and flexible prices",
         imageMain: "Marine Solutions for the Smart, Connected Supply Chain",
         imageUrl: "/images/header/Port.jpg",
         imageSub: "",
@@ -84,8 +84,8 @@ const maritimeData: Record<string, MaritimeData> = {
 
 
     "ko": {
-        imageIntro: "",
-        imageMain: "OGx: next generation of satellite ",
+        imageIntro: "혁신적인 네트워크 기능과 유연한 가격의 차세대 위성 IoT 서비스",
+        imageMain: "OGx: Next Generation Of Satellite ",
         imageUrl: "/images/header/ogx.webp",
         imageSub: "",
         introTitle: "차세대 위성",

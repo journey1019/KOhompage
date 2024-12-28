@@ -5,8 +5,9 @@ import React, { useState, useEffect } from "react";
 import {
     getAllHardware,
     getFilteredHardwaresByQueryAndFilters,
-    FilterOptions
-} from '@/service/hardware/hardware';
+    FilterOptions,
+    HardwareProps
+} from '@/service/hardware/hardwareData';
 import HardwareCard2 from '@/components/(Hardware)/HardwareCard2'; // Page 이동
 import HardwareCardPDF from '@/components/(Hardware)/HardwareCardPDF'; // PDF 다운
 import SearchBar from '@/components/(Hardware)/SearchBar';
@@ -22,24 +23,24 @@ const HardwarePage = () => {
 
     const [searchQuery, setSearchQuery] = useState(""); // 검색어 상태
     const [filters, setFilters] = useState<FilterOptions>({}); // 필터 상태
-    const [hardware, setHardware] = useState(getAllHardware()); // 초기 데이터
-    const [totalResourcesCount, setTotalResourcesCount] = useState(hardware.length); // 전체 게시글 개수
-    const [isDrawerOpen, setIsDrawerOpen] = useState(false); // 드로어 상태
+    const [hardware, setHardware] = useState<HardwareProps[]>(getAllHardware()); // 필터링된 하드웨어 목록
+    const [totalResourcesCount, setTotalResourcesCount] = useState<number>(hardware.length); // 하드웨어 총 개수
+    const [isDrawerOpen, setIsDrawerOpen] = useState<boolean>(false); // 모바일 필터 Drawer 상태
 
-    // Local Page 설정
+    // URL params 기반으로 언어 설정
     useEffect(() => {
         if (params && params.locale) {
             const newLocale = params.locale as string; // locale 값을 가져옴
             setLocale(newLocale);
-            setData(hardwareData[newLocale] || hardwareData['en']); // 해당 언어 데이터 로드
+            setData(hardwareData[newLocale] || hardwareData['ko']); // 해당 언어 데이터 로드
         }
     }, [params]);
 
-
+    // 검색 및 필터링 동작
     useEffect(() => {
         const filteredResources = getFilteredHardwaresByQueryAndFilters(searchQuery, filters);
-        setHardware(filteredResources); // 필터링된 게시글 업데이트
-        setTotalResourcesCount(filteredResources.length); // 게시글 개수 업데이트
+        setHardware(filteredResources); // 필터링된 하드웨어 목록 업데이트
+        setTotalResourcesCount(filteredResources.length); // 총 개수 업데이트
     }, [searchQuery, filters]);
 
     const toggleDrawer = () => {
@@ -86,21 +87,21 @@ const HardwarePage = () => {
                         </div>
                     </div>
 
-                    {/* Right Section: Resource List */}
+                    {/* Right Section: Hardware List */}
                     <div className="lg:col-span-3">
-                        <div className="grid grid-cols-1 gap-2 md:grid-cols-2 lg:grid-cols-3">
+                        <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
                             {hardware.length > 0 ? (
                                 hardware.map((post) => (
                                     <HardwareCardPDF key={post.slug} {...post} />
                                 ))
                             ) : (
-                                <p className="text-gray-500">No hardware match your criteria.</p>
+                                <p className="text-gray-500">No hardware matches your criteria.</p>
                             )}
                         </div>
                     </div>
                 </div>
 
-                {/* Filters Drawer */}
+                {/* Mobile Filters Drawer */}
                 {isDrawerOpen && (
                     <div className="fixed inset-0 bg-black bg-opacity-50 z-50 flex">
                         <div className="bg-white w-3/4 max-w-md p-6 overflow-y-auto">
@@ -116,10 +117,7 @@ const HardwarePage = () => {
                                 totalResourcesCount={totalResourcesCount}
                             />
                         </div>
-                        <div
-                            className="flex-1"
-                            onClick={toggleDrawer} // 배경 클릭 시 드로어 닫기
-                        ></div>
+                        <div className="flex-1" onClick={toggleDrawer}></div>
                     </div>
                 )}
             </div>

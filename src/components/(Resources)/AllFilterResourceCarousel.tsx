@@ -1,9 +1,9 @@
-/** title, subtitle, tags 모든 value에 매칭되는 키워드 데이터 가져옴 */
+/** SolutionTags 와 매칭한 Resource List Carousel */
 
 'use client';
 
 import React from "react";
-import { getResourcesByAllKeywords, ResourcesProps } from "@/service/references/referencesData";
+import { getResourcesByAllKeywords, ResourcesProps } from "@/service/references/resourceData";
 import ResourceCard from "@/components/(Resources)/ResourceCard";
 import Carousel from "@/components/Carousel";
 
