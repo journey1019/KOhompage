@@ -3,7 +3,7 @@
 import React from 'react';
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
-import PageTopImage from '@/components/PageTopImage';
+import PageHero from '@/components/PageHero';
 import Breadcrumbs from '@/components/BreadCrumbs';
 
 /**
@@ -49,12 +49,12 @@ const NoticeDetailPage = ({params}: { params: Promise<{ id: string }>}) => {
 
     return(
         <section>
-            <PageTopImage
+            <PageHero
                 size="py-28"
                 url="/images/header/News.jpg"
-                title="Notice"
-                subtitle={notice.title}
-                description={notice.category}
+                intro="Notice"
+                title={notice.title}
+                subtitle={notice.category}
                 textPosition="center"
             />
             <Breadcrumbs items={breadcrumbs}/>

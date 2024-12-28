@@ -39,7 +39,7 @@ import DownloadSection from '@/components/(Templates)/DownloadSection';
 import Blog from '@/components/(Templates)/Blog';
 
 import { benefitOne, benefitTwo } from "@/components/(About)/data";
-import PageTopImage from '@/components/PageTopImage';
+import PageHero from '@/components/PageHero';
 import Partner from '@/components/Partner';
 import React from 'react';
 import WorkWithUs from '@/components/RightNow';
@@ -54,12 +54,12 @@ export default function AboutPage({params}: PageProps) {
 
     return (
         <>
-            <PageTopImage
+            <PageHero
                 size="py-32"
                 url={data.imageUrl}
-                title={data.imageIntro}
-                subtitle={data.imageMain}
-                description={data.imageSub}
+                intro={data.imageIntro}
+                title={data.imageMain}
+                subtitle={data.imageSub}
                 textPosition="center"
             />
             <Container>

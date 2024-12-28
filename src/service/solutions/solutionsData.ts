@@ -45,7 +45,6 @@ interface SolutionData {
     solutionNumber: string;
     title: string
     solutionName: string;
-    description?: string;
     carousels?: CarouselData[];
     useCases?: CaseData[];
     advantages?: AdvantageData[];
@@ -66,7 +65,6 @@ const solutionsData: Record<string, Record<string, SolutionData>> = {
             solutionNumber: "Container IoT",
             title: "Streamline Container Operations",
             solutionName: "",
-            description: "Enhance logistics efficiency and reduce costs with container tracking solutions.",
             useCases: [
                 {
                     direction: "left",
@@ -131,7 +129,6 @@ const solutionsData: Record<string, Record<string, SolutionData>> = {
             solutionNumber: "Global IoT",
             title: "Industrial IoT Solutions",
             solutionName: "Industrial IoT solutions provided by KOREA ORBCOMM provide solutions suitable for various industries such as construction equipment monitoring, marine information monitoring, and climate information monitoring.",
-            description: "Monitor and manage your assets globally with our IoT solutions.",
             carousels: [
                 {
                     title: "Heavy Equipment Monitoring",
@@ -213,7 +210,6 @@ const solutionsData: Record<string, Record<string, SolutionData>> = {
             solutionNumber: "Satellite",
             title: "Communication Network",
             solutionName: "It provides optimal devices and communication networks for a wide range of industries for your customers.",
-            description: "Stay connected with global satellite communication solutions.",
             useCases: [
                 {
                     direction: "left",
@@ -249,7 +245,6 @@ const solutionsData: Record<string, Record<string, SolutionData>> = {
             solutionNumber: "AIS",
             title: "Enhanced Maritime Tracking",
             solutionName: "",
-            description: "Accurate maritime tracking with AIS solutions.",
             useCases: [
                 {
                     direction: "left",
@@ -291,7 +286,6 @@ const solutionsData: Record<string, Record<string, SolutionData>> = {
             solutionNumber: "Container IoT",
             title: "컨테이너 IoT 솔루션",
             solutionName: "코리아오브컴의 Container IoT Solution은 화물에 대한 실시간 추적, 화물 및 컨테이너의 상태 모니터링, Reefer Container의 원격제어 기능을 제공합니다. ",
-            description: "컨테이너 IoT 솔루션으로 자산을 관리하세요.",
             useCases: [
                 {
                     direction: "left",
@@ -357,7 +351,6 @@ const solutionsData: Record<string, Record<string, SolutionData>> = {
             solutionNumber: "Global IoT",
             title: "산업용 IoT 솔루션",
             solutionName: "산업용 IoT 솔루션은 건설장비 모니터링, 해양정보 모니터링, 기후정보 모니터링 등 다양한 산업분야에 적합한 솔루션을 제공합니다.",
-            description: "글로벌 IoT 솔루션으로 자산을 관리하세요.",
             carousels: [
                 {
                     title: "중장비 모니터링",
@@ -439,7 +432,6 @@ const solutionsData: Record<string, Record<string, SolutionData>> = {
             solutionNumber: "Satellite",
             title: "통신망 서비스",
             solutionName: "고객의 다양한 산업 분야에 적합한 최적의 디바이스 및 통신망을 제공합니다.",
-            description: "Stay connected with global satellite communication solutions.",
             useCases: [
                 {
                     direction: "left",
@@ -490,7 +482,6 @@ const solutionsData: Record<string, Record<string, SolutionData>> = {
             solutionNumber: "AIS",
             title: "Automatic identification system",
             solutionName: "AIS(선박 자동 식별 시스템)는 선박의 식별, 위치, 탐색을 지원하고 해양 안전을 위해 사용할 수 있는 중요한 데이터를 전송하는 선박 발신 시스템 입니다. 코리아오브컴의 AIS 서비스는 위성과 물론 10,000개 이상의 육상AIS 수신국을 통해  전세계 모든 지역의 AIS 정보를 수집하여 해상 정보 분석, 수색 및 구조, 환경 모니터링 등 다양한 분야에 활용되고 있습니다.",
-            description: "Accurate maritime tracking with AIS solutions.",
             character: [
                 {
                     title: "Lower Latency",

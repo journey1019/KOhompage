@@ -3,7 +3,7 @@
 import React from 'react';
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
-import PageTopImage from '@/components/PageTopImage';
+import PageHero from '@/components/PageHero';
 import { SectionTitle } from '@/components/SectionTitle';
 import { breadcrumbs } from '@/service/resources';
 import SameBreadcrumbs from '@/components/SameBreadcrumbs';
@@ -48,12 +48,12 @@ const NoticePage = () => {
     return (
         <section>
             <SameBreadcrumbs items={breadcrumbs} current="notice" />
-            <PageTopImage
+            <PageHero
                 size="py-48"
                 url="/images/header/News.jpg"
-                title=""
-                subtitle="Notice"
-                description="공지사항 및 이용약관 등 정보를 전해드립니다."
+                intro=""
+                title="Notice"
+                subtitle="공지사항 및 이용약관 등 정보를 전해드립니다."
                 textPosition="center"
             />
             <SectionTitle preTitle="FAQ" title="공지사항">

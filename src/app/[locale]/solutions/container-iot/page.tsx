@@ -1,5 +1,5 @@
 import solutionsData from '@/service/solutions/solutionsData';
-import PageTopImage from '@/components/PageTopImage';
+import PageHero from '@/components/PageHero';
 import Greet from '@/components/(Solution)/Greet';
 import Intro from '@/components/(Solution)/Intro';
 import Card from '@/components/(Solution)/Card';
@@ -58,12 +58,12 @@ export default async function ContainerIoT({ params }: PageProps){
 
     return(
         <section>
-            <PageTopImage
+            <PageHero
                 size="py-52"
                 url={data.imageUrl}
-                title={data.imageIntro}
-                subtitle={data.imageMain}
-                description={data.imageSub}
+                intro={data.imageIntro}
+                title={data.imageMain}
+                subtitle={data.imageSub}
                 textPosition="center"
             />
             <Greet {...data} />

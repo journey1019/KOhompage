@@ -3,9 +3,9 @@ import React from 'react';
 interface ImageTopPageProps {
     size: string;
     url: string;
+    intro: string;
     title: string;
     subtitle: string;
-    description: string;
     solutionButton?: string;
     solutionUrl?: string;
     textPosition?: 'left' | 'center' | 'right'; // 텍스트 위치 조정 가능
@@ -13,7 +13,7 @@ interface ImageTopPageProps {
 }
 
 
-export default function PageTopImage({size, url, title, subtitle, description, solutionButton, solutionUrl, textPosition = 'left', opacity = 30}: ImageTopPageProps) {
+export default function PageHero({size, url, intro, title, subtitle, solutionButton, solutionUrl, textPosition = 'left', opacity = 30}: ImageTopPageProps) {
     const getTextPositionClass = () => {
         switch(textPosition) {
             case 'center':
@@ -49,9 +49,9 @@ export default function PageTopImage({size, url, title, subtitle, description, s
                 {/* 안쪽 콘텐츠 */}
                 <main
                     className="relative flex flex-col justify-center items-start text-white z-10 p-5 text-center md:text-start md:ml-16 lg:ml-32">
-                    <h1 className="text-lg font-bold mb-5">{title}</h1>
-                    <h1 className="text-5xl md:text-6xl font-bold mb-5">{subtitle}</h1>
-                    <p className="text-base mb-5">{description}</p>
+                    <h1 className="text-lg font-bold mb-5">{intro}</h1>
+                    <h1 className="text-5xl md:text-6xl font-bold mb-5">{title}</h1>
+                    <p className="text-base mb-5">{subtitle}</p>
                     {solutionUrl && (
                         <a
                             href={solutionUrl}

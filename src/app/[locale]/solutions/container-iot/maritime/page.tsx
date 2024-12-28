@@ -1,6 +1,6 @@
 import React from 'react';
 import maritimeData from '@/service/solutions/container-iot/maritime';
-import PageTopImage from '@/components/PageTopImage';
+import PageHero from '@/components/PageHero';
 import { SectionTitle } from '@/components/SectionTitle';
 import { Container } from '@/components/Container';
 import { Video } from '@/components/Video';
@@ -33,12 +33,12 @@ export default async function MaritimePage({params}: PageProps) {
 
     return(
         <section>
-            <PageTopImage
+            <PageHero
                 size="py-52"
                 url={data.imageUrl}
-                title={data.imageIntro}
-                subtitle={data.imageMain}
-                description={data.imageSub}
+                intro={data.imageIntro}
+                title={data.imageMain}
+                subtitle={data.imageSub}
                 solutionButton={data.solutionButton}
                 solutionUrl={data.solutionUrl}
                 textPosition="center"

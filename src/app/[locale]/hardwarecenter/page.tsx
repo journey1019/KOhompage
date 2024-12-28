@@ -4,7 +4,7 @@ import React, { useEffect, useState } from 'react';
 import { useParams } from 'next/navigation'; // useParams를 사용하여 params를 처리
 import hardwareData from '@/service/hardwarePageData';
 import { getHardwareData, getFilterHardwareByChips } from '@/service/hardwareData';
-import PageTopImage from '@/components/PageTopImage';
+import PageHero from '@/components/PageHero';
 import SearchBar from '@/components/SearchBar';
 import HardwareList from '@/components/HardwareList';
 
@@ -39,12 +39,12 @@ const HardwarePage = () => {
 
     return (
         <div className="bg-white">
-            <PageTopImage
+            <PageHero
                 size="py-28"
                 url="/images/befo_ko/M2M_IoT.jpg"
+                intro={data.pageTopImageIntro}
                 title={data.pageTopImageTitle}
                 subtitle={data.pageTopImageSubtitle}
-                description={data.pageTopImageDescription}
                 textPosition="center"
             />
             <div className="mx-auto max-x-xl px-4 py-16 sm:px-6 sm:py-24 lg:max-w-screen-lg lg:px-8">

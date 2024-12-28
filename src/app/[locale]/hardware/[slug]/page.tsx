@@ -4,7 +4,7 @@
 import React from 'react';
 import { useParams } from 'next/navigation';
 import hardwareData from '@/data/hardware.json';
-import PageTopImage from '@/components/PageTopImage';
+import PageHero from '@/components/PageHero';
 import { HardwareProps } from '@/service/hardware/hardware';
 import { notFound } from 'next/navigation';
 import AllFilterReferenceCarousel from '@/components/(Resources)/AllFilterResourceCarousel';
@@ -37,12 +37,12 @@ const HardwareDetailPage = () => {
     return (
         <div className="bg-white">
             {/* Page Top Image */}
-            <PageTopImage
+            <PageHero
                 size="py-28"
                 url={hardware.imageSrc || '/images/DefaultImage.png'}
-                title={hardware.title}
-                subtitle={hardware.subTitle}
-                description=""
+                intro={hardware.title}
+                title={hardware.subTitle}
+                subtitle=""
                 textPosition="center"
             />
 

@@ -1,4 +1,4 @@
-import PageTopImage from '@/components/PageTopImage';
+import PageHero from '@/components/PageHero';
 import React from 'react';
 import ogxData from '@/service/solutions/satellite/ogxData';
 import { SectionTitle } from '@/components/(About)/SectionTitle';
@@ -19,12 +19,12 @@ export default function OGxPage({params}: PageProps) {
     const chips = ['OGx']
     return(
         <section>
-            <PageTopImage
+            <PageHero
                 size="py-52"
                 url={data.imageUrl}
-                title={data.imageIntro}
-                subtitle={data.imageMain}
-                description={data.imageSub}
+                intro={data.imageIntro}
+                title={data.imageMain}
+                subtitle={data.imageSub}
                 textPosition="center"
             />
 

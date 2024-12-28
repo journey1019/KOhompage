@@ -1,15 +1,15 @@
-import PageTopImage from '@/components/PageTopImage';
+import PageHero from '@/components/PageHero';
 import React from 'react';
 
 export default function Notice() {
     return(
         <section>
-            <PageTopImage
+            <PageHero
                 size="py-52"
                 url="images/404page/container.jpg"
+                intro="blabla"
                 title="blabla"
                 subtitle="blabla"
-                description="blabla"
                 textPosition="center"
             />
 

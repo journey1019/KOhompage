@@ -11,7 +11,7 @@ import HardwareCard2 from '@/components/(Hardware)/HardwareCard2'; // Page 이�
 import HardwareCardPDF from '@/components/(Hardware)/HardwareCardPDF'; // PDF 다운
 import SearchBar from '@/components/(Hardware)/SearchBar';
 import FiltersHardware from '@/components/(Hardware)/FilterHardware';
-import PageTopImage from '@/components/PageTopImage';
+import PageHero from '@/components/PageHero';
 import { useParams } from 'next/navigation';
 
 
@@ -48,12 +48,12 @@ const HardwarePage = () => {
 
     return (
         <div className="bg-white">
-            <PageTopImage
+            <PageHero
                 size="py-28"
                 url="/images/befo_ko/M2M_IoT.jpg"
+                intro={data.pageTopImageIntro}
                 title={data.pageTopImageTitle}
                 subtitle={data.pageTopImageSubtitle}
-                description={data.pageTopImageDescription}
                 textPosition="center"
             />
 

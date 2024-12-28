@@ -1,6 +1,6 @@
 import { ProductCard } from '@/components/ProductCard';
 import SerachCategory from '@/components/SearchCategory';
-import PageTopImage from '@/components/PageTopImage';
+import PageHero from '@/components/PageHero';
 
 const products = [
     {
@@ -80,12 +80,12 @@ const products = [
 export default function ProductGrid() {
     return (
         <div className="bg-white dark:bg-gray-900">
-            <PageTopImage
+            <PageHero
                 size="py-28"
                 url="/images/befo_ko/M2M_IoT.jpg"
-                title="KOREAORBCOMM FOR FINANCIAL SERVICES"
-                subtitle="글로벌 통신으로 경험을 향상시키세요"
-                description="이 섹션은 배경 이미지를 고정시키고, 스크롤할 때 안쪽 콘텐츠는 이동하는 구조입니다."
+                intro="KOREAORBCOMM FOR FINANCIAL SERVICES"
+                title="글로벌 통신으로 경험을 향상시키세요"
+                subtitle="이 섹션은 배경 이미지를 고정시키고, 스크롤할 때 안쪽 콘텐츠는 이동하는 구조입니다."
                 textPosition="center"
             />
             <div className="flex relative w-full flex-row ">

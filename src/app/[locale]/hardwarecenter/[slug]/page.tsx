@@ -5,7 +5,7 @@ import React from 'react';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 import rehypeRaw from 'rehype-raw';
-import PageTopImage from '@/components/PageTopImage';
+import PageHero from '@/components/PageHero';
 import Advantage from '@/components/(Hard)/Advantage';
 import TagFilterBlog from '@/components/(Resources)/TagFilterBlog';
 
@@ -33,12 +33,12 @@ export default function HardwareDetail({ params }: PageProps) {
 
     return (
         <section className="bg-white">
-            <PageTopImage
+            <PageHero
                 size="py-36"
                 url="/images/header/Cargo.jpg"
-                title=""
-                subtitle={slug.toUpperCase()}
-                description="Simple, Low-Cost, Reliable"
+                intro=""
+                title={slug.toUpperCase()}
+                subtitle="Simple, Low-Cost, Reliable"
                 textPosition="center"
                 opacity={50}
             />
