@@ -12,13 +12,13 @@ import FilterResource from "@/components/(Resources)/FilterResource";
 import Pagination from "@/components/(Resources)/Pagination";
 
 const ReferencesPage = () => {
-    const [searchQuery, setSearchQuery] = useState(""); // 검색어 상태
+    const [searchQuery, setSearchQuery] = useState<string>(""); // 검색어 상태
     const [filters, setFilters] = useState<FilterOptions>({}); // 필터 상태
     const [resources, setResources] = useState(getAllResources()); // 초기 데이터
-    const [totalResourcesCount, setTotalResourcesCount] = useState(resources.length); // 전체 게시글 개수
-    const [isDrawerOpen, setIsDrawerOpen] = useState(false); // 드로어 상태
+    const [totalResourcesCount, setTotalResourcesCount] = useState<number>(resources.length); // 전체 게시글 개수
+    const [isDrawerOpen, setIsDrawerOpen] = useState<boolean>(false); // 드로어 상태
 
-    const [currentPage, setCurrentPage] = useState(1); // 현재 페이지
+    const [currentPage, setCurrentPage] = useState<number>(1); // 현재 페이지
     const itemsPerPage = 9; // 페이지당 항목 수
 
     useEffect(() => {
@@ -69,7 +69,7 @@ const ReferencesPage = () => {
 
                 {/* Right Section: Resource List */}
                 <div className="lg:col-span-3">
-                    <div className="grid grid-cols-1 gap-2 md:grid-cols-2 lg:grid-cols-3">
+                    <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
                         {currentResources.length > 0 ? (
                             currentResources.map((post) => (
                                 <ResourceCard key={post.path} {...post} />
@@ -88,6 +88,7 @@ const ReferencesPage = () => {
                     />
                 </div>
             </div>
+
 
             {/* Filters Drawer */}
             {isDrawerOpen && (

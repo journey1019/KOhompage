@@ -146,30 +146,7 @@
     "path": "/pdf/brochure/ORBCOMM-Heavy-Equipment.pdf",
     "use": true
   },
-  {
-    "date": "2024-12-26",
-    "contentType": "Brochure",
-    "title": "The Smart Reefer Container",
-    "subtitle": "The challenge of moving refrigerated food and pharmaceuticals calls for advanced IoT reefer container technologies.",
-    "tags": ["Container-IoT", "Reefer"],
-    "solutionTag": ["Container-IoT", "Maritime"],
-    "form": "pdf",
-    "image": "/images/resources/brochure/Smart-Reefer-Container.png",
-    "path": "/pdf/brochure/Smart-Reefer-Container.pdf",
-    "use": true
-  },
-  {
-    "date": "2024-12-26",
-    "contentType": "Brochure",
-    "title": "The Smart Gold Chain",
-    "subtitle": "Real-time connectivity, visibility and traceability for refrigerated transportation.",
-    "tags": ["Container-IoT", "Reefer"],
-    "solutionTag": ["Container-IoT", "Maritime"],
-    "form": "pdf",
-    "image": "/images/resources/brochure/Resources-SmartColdChain.webp",
-    "path": "/pdf/brochure/Smart-Cold-Chain-EN.pdf",
-    "use": true
-  },
+
   {
     "date": "2024-12-26",
     "contentType": "Brochure",

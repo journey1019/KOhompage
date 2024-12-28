@@ -72,6 +72,24 @@ export const getFilteredResourcesByQueryAndFilters = (
 
         const matchesQuery = normalizedQuery === "" || searchableContent.includes(normalizedQuery);
 
+        // 필터 조건
+        const matchesFilters = [
+            // contentType 필터
+            !filters.contentType ||
+            filters.contentType.length === 0 ||
+            filters.contentType.includes(resource.contentType),
+
+            // form 필터
+            !filters.form || filters.form.length === 0 || filters.form.includes(resource.form),
+
+            // solutions 필터
+            !filters.solutions ||
+            filters.solutions.length === 0 ||
+            filters.solutions.some((solution) =>
+                resource.tags.map((tag) => tag.toLowerCase()).includes(solution.toLowerCase())
+            ),
+        ].every((condition) => condition);
+
         // 필터링 조건
         const matchesContentType =
             !filters.contentType || filters.contentType.length === 0 || filters.contentType.includes(resource.contentType);
@@ -87,7 +105,10 @@ export const getFilteredResourcesByQueryAndFilters = (
             );
 
         // 모든 조건에 부합하면 true
-        return matchesQuery && matchesContentType && matchesForm && matchesSolutions;
+        // return matchesQuery && matchesContentType && matchesForm && matchesSolutions;
+
+        // Query와 Filters 조건을 모두 만족하는 데이터 반환
+        return matchesQuery && matchesFilters;
     });
 };
 
