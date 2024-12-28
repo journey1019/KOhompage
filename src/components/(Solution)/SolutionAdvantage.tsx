@@ -15,20 +15,21 @@ interface SolutionAdvantageProps {
 
 // Case 컴포넌트: 각각의 장점 케이스를 렌더링
 const Case: React.FC<AdvantageData> = ({ direction, title1, title2, description, image }) => (
-    <div className="flex justify-center flex-wrap md:flex-wrap lg:flex-nowrap lg:flex-row lg:justify-between gap-8 pb-20">
+    <div className="flex justify-center flex-wrap md:flex-wrap lg:flex-nowrap lg:flex-row lg:justify-between gap-8 pb-20 items-center">
         {direction === "left" ? (
             <>
                 {/* 텍스트 영역 */}
-                <div className="w-full lg:w-2/5">
+                <div className="w-full lg:w-2/5 flex items-center">
                     <div className="block lg:text-left text-center">
                         <h2 className="text-4xl font-bold text-gray-900 dark:text-gray-200 leading-[3.25rem] mb-5">
-                            <span className="text-red-700">{title1}</span> {title2}
+                            <span className="text-red-700">{title1}</span>
+                            {title2}
                         </h2>
                         <p className="text-gray-500 mb-10 max-lg:max-w-xl max-lg:mx-auto">{description}</p>
                     </div>
                 </div>
                 {/* 이미지 영역 */}
-                <div className="w-full lg:w-3/5">
+                <div className="w-full lg:w-3/5 flex items-center">
                     <div className="group w-full border border-gray-300 rounded-2xl">
                         <div className="flex items-center">
                             <Image
@@ -46,7 +47,7 @@ const Case: React.FC<AdvantageData> = ({ direction, title1, title2, description,
         ) : (
             <>
                 {/* 이미지 영역 */}
-                <div className="w-full lg:w-3/5">
+                <div className="w-full lg:w-3/5 flex items-center">
                     <div className="group w-full border border-gray-300 rounded-2xl">
                         <div className="flex items-center">
                             <Image
@@ -61,10 +62,11 @@ const Case: React.FC<AdvantageData> = ({ direction, title1, title2, description,
                     </div>
                 </div>
                 {/* 텍스트 영역 */}
-                <div className="w-full lg:w-2/5">
+                <div className="w-full lg:w-2/5 flex items-center">
                     <div className="block lg:text-right text-center">
                         <h2 className="text-4xl font-bold text-gray-900 dark:text-gray-200 leading-[3.25rem] mb-5">
-                            {title1} <span className="text-red-700">{title2}</span>
+                            {title1}
+                            <span className="text-red-700">{title2}</span>
                         </h2>
                         <p className="text-gray-500 mb-10 max-lg:max-w-xl max-lg:mx-auto">{description}</p>
                     </div>
@@ -73,6 +75,7 @@ const Case: React.FC<AdvantageData> = ({ direction, title1, title2, description,
         )}
     </div>
 );
+
 
 // SolutionAdvantage 컴포넌트: 전체 장점 섹션을 렌더링
 const SolutionAdvantage: React.FC<SolutionAdvantageProps> = ({ advantages }) => {

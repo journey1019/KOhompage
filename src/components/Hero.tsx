@@ -1,6 +1,4 @@
 import Image from 'next/image';
-import profileImage from '../../public/images/profile.png';
-import Link from 'next/link';
 import VideoBackground from '@/components/VideoBackground';
 
 export default function Hero() {

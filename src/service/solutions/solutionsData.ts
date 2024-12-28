@@ -49,7 +49,7 @@ interface SolutionData {
 const solutionsData: Record<string, Record<string, SolutionData>> = {
     "en": {
         "container-iot": {
-            imageIntro: "KOREAORBCOMM FOR RINANCIAL SERVICES",
+            imageIntro: "",
             imageMain: "Improve your experience with container solutions",
             imageSub: "Korea ofCom provides IoT solutions suitable for various fields around the world through a container monitoring service",
             imageUrl: "/images/solutions/container-iot/Container_Header.jpg",
@@ -288,7 +288,7 @@ const solutionsData: Record<string, Record<string, SolutionData>> = {
 
     "ko": {
         "container-iot": {
-            imageIntro: "KOREAORBCOMM FOR RINANCIAL SERVICES",
+            imageIntro: "",
             imageMain: "컨테이너 IoT 통합 솔루션",
             imageSub: "코리아오브컴의 컨테이너 솔루션은 통해 다양한 컨테이너(Reefer, Dry, Open, Flat 등)에 적합한 IoT 서비스를 제공합니다.",
             imageUrl: "/images/solutions/container-iot/Container_Header.jpg",
