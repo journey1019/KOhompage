@@ -84,12 +84,13 @@ export default async function HomePage() {
         <section>
             {/*<h1>{t('HomePage.title')}</h1>*/}
             {/*<Link href="/about">{t('HomePage.about')}</Link>*/}
-            <Hero/>
-            
+            <Hero />
+
             {/*<Introduce />*/}
             {/*<Partner />*/}
-            <PartnerManyLines/>
-            <ThreeComponent/>
+
+            <PartnerManyLines />
+            <ThreeComponent />
 
 
             {/*<Company />*/}

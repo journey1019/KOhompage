@@ -2,7 +2,7 @@ import React from "react";
 import { Container } from "@/components/Container";
 
 interface CtaProps {
-    items: { imageUrl: string; title: string; subTitle: string; button: string; solutionButton: string; solutionUrl: string; };
+    items: { imageUrl: string; title: string; subTitle: string; button: string; solutionButton?: string; solutionUrl?: string; };
 }
 
 export const CtaSolution: React.FC<CtaProps> = ({ items }) => {
@@ -42,16 +42,18 @@ export const CtaSolution: React.FC<CtaProps> = ({ items }) => {
                 </div>
 
                 {/* Button 2 */}
-                <div className="relative flex-shrink-0 w-full text-center lg:w-auto">
-                    <a
-                        href={items.solutionUrl}
-                        target="_blank"
-                        rel="noopener"
-                        className="inline-block py-3 mx-auto text-lg font-medium text-center text-white bg-red-700 border-2 border-red-700 rounded-md px-7 lg:px-10 lg:py-5 hover:bg-white hover:text-red-800 hover:border-2 hover:border-red-700"
-                    >
-                        {items.solutionButton}
-                    </a>
-                </div>
+                {items.solutionButton && (
+                    <div className="relative flex-shrink-0 w-full text-center lg:w-auto">
+                        <a
+                            href={items.solutionUrl}
+                            target="_blank"
+                            rel="noopener"
+                            className="inline-block py-3 mx-auto text-lg font-medium text-center text-white bg-red-700 border-2 border-red-700 rounded-md px-7 lg:px-10 lg:py-5 hover:bg-white hover:text-red-800 hover:border-2 hover:border-red-700"
+                        >
+                            {items.solutionButton}
+                        </a>
+                    </div>
+                )}
             </div>
         </Container>
     );

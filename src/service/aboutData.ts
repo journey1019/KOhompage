@@ -1,8 +1,9 @@
+
 interface CtaData{
     title: string;
     subTitle: string;
     button: string;
-    button2: string;
+    imageUrl: string;
 }
 interface FaqData{
     question: string;
@@ -14,6 +15,7 @@ interface MaritimeData{
     imageMain: string;
     imageUrl: string;
     imageSub: string;
+    imageThird: string;
     introTitle: string;
     introLetter: string;
     qnaTitle: string;
@@ -28,7 +30,8 @@ const maritimeData: Record<string, MaritimeData> = {
     "en": {
         imageIntro: "About",
         imageMain: "Korea ORBCOMM",
-        imageUrl: "/images/header/KOREA_ORBCOMM_company.jpg",
+        imageUrl: "/images/header/Company.jpg",
+        imageThird: "",
         imageSub: "Global IoT Connecting the World's Assets",
         introTitle: "글로벌 저궤도 위성통신 사업의 선두주자",
         introLetter: "1999년 9월 법인을 설립하여, 미국 ORBCOMM Inc.와 위성사용에 관한 라이선스 계약을 체결하였고, 2000년 2월 12일 정보통신부(현 과학기술정보통신부)로부터 위성 휴대용 무선통신 사업자(Global Mobil Personal Communication Service: GMPCS)로써 기간통신서비스 사업 면허를 취득 하였습니다.",
@@ -58,14 +61,15 @@ const maritimeData: Record<string, MaritimeData> = {
             title: "Master Maritime Visibility with ORBCOMM",
             subTitle: "Gain remote vessel tracking, monitoring and control capabilities for your commercial fishing boats, merchant marine fleets and more.",
             button: "Get a tailored quote",
-            button2: "Give It a Try!"
+            imageUrl: "/images/befo_ko/Meeting.jpg"
         }
     },
     "ko": {
-        imageIntro: "더 많이 보고, 더 깊이 알고, 더 능숙하게 행동하십시오: 업계에서 유일하게 완전한 해양 자산 가시성과 제어를 제공하는 단일 솔루션.",
-        imageMain: "스마트하고 연결된 공급망을 위한 해양 솔루션",
-        imageUrl: "/images/header/Port.jpg",
-        imageSub: "",
+        imageIntro: "KOREA ORBCOMM",
+        imageMain: "코리아오브컴은",
+        imageUrl: "/images/header/Company.jpg",
+        imageSub: "고객의 모든 자산/인프라에",
+        imageThird: "Connectivity를 제공합니다.",
         introTitle: "Reefer Container 감시 및 제어 시스템",
         introLetter: "전세계 Top3 선사가 선택한 ORBCOMM의 ReeferContainer는 현재 500,000개 이상의 제품이 냉동냉장 컨테이너에 설치되어 운영 중이며, 컨테이너선사, 복합운송업체, 화주 및 기타 사용자에게 육해상 전 지역에서의 실시간 컨테이너관제 서비스를 제공합니다.",
         qnaTitle: "자주 묻는 질문",
@@ -94,7 +98,7 @@ const maritimeData: Record<string, MaritimeData> = {
             title: "ORBCOMM으로 해상 가시성 마스터하기",
             subTitle: "상업용 어선, 상선 함대 등에 대한 원격 선박 추적, 모니터링 및 제어 기능을 확보하세요.",
             button: "맞춤형 견적을 받아보세요",
-            button2: "솔루션을 경험해보세요"
+            imageUrl: "/images/befo_ko/Meeting.jpg"
         }
     }
 }

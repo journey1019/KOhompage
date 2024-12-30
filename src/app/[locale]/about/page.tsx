@@ -44,6 +44,9 @@ import Partner from '@/components/Partner';
 import React from 'react';
 import WorkWithUs from '@/components/RightNow';
 import History from '@/components/(About)/History';
+import PartnerManyLines from '@/components/PartnerManyLines';
+import PageHeroCenter from '@/components/PageHeroCenter';
+import { CtaSolution } from '@/components/(Solution)/CtaSolution';
 
 interface PageProps {
     params: {locale: string};
@@ -54,16 +57,19 @@ export default function AboutPage({params}: PageProps) {
 
     return (
         <>
-            <PageHero
+            <PageHeroCenter
                 size="py-32"
                 url={data.imageUrl}
                 intro={data.imageIntro}
                 title={data.imageMain}
                 subtitle={data.imageSub}
-                textPosition="center"
+                thirdtitle={data.imageThird}
             />
+
             <Container>
-                <Hero />
+                <PartnerManyLines />
+
+                {/*<Hero />*/}
                 {/*<DownloadSection/>*/}
                 <SectionTitle
                     preTitle="KOREA ORBCOMM"
@@ -72,7 +78,7 @@ export default function AboutPage({params}: PageProps) {
                     {data.introLetter}
                 </SectionTitle>
 
-                <History/>
+                <History />
 
                 {/*<Benefits data={benefitOne} />*/}
                 {/*<Benefits imgPos="right" data={benefitTwo} />*/}
@@ -100,7 +106,7 @@ export default function AboutPage({params}: PageProps) {
 
                 {/*<Faq />*/}
                 {/*<Cta />*/}
-                <Cta items={data.ctas}/>
+                <CtaSolution items={data.ctas} />
                 {/*<Blog/>*/}
                 {/*<Footer />*/}
                 {/*<PopupWidget />*/}

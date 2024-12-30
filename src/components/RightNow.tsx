@@ -5,7 +5,7 @@ import Image from 'next/image';
 const links = [
     { name: 'Out Company', href: '/about' },
     { name: 'Our Solutions', href: '/solutions/container-iot' },
-    { name: 'Our Blog', href: '/blog' },
+    { name: 'Our Resources', href: '/resources' },
     { name: 'Our Connect', href: '/contact-us' },
 ];
 const stats = [

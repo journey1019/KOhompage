@@ -19,7 +19,7 @@ export default function OGxPage({params}: PageProps) {
     const data = ogxData[locale];
 
     const pageName = ['OGx/IDP']
-    const filteredKeyword = ["ogx"]
+    const filteredKeyword = ["ogx/idp"]
 
     return(
         <section>

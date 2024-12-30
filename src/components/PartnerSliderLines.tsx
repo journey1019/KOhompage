@@ -80,7 +80,7 @@ export default function PartnerSliderLines({ line }: { line: number }) {
                             alt={partner.name}
                             className="h-20 sm:h-16 md:h-14 lg:h-12 object-contain mx-auto filter grayscale brightness-1100" // 크기 조정
                             width={200}
-                            height={400}
+                            height={200}
                             unoptimized
                         />
                     </div>

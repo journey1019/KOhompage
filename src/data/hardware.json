@@ -472,7 +472,7 @@
     "description": "",
     "category": "Antenna",
     "imageSrc": "/images/hardware/YETN001L1A.png",
-    "tag": [],
+    "tag": ["Global-IoT", "Satellite-IoT", "OGx/IDP"],
     "hideTag": [
       "Global-IoT",
       "Satellite-IoT",

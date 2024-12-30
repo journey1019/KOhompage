@@ -8,15 +8,7 @@ import NewDropdown from './NewDropdown';
 import Login from '../Login';
 import Language from '../Language';
 import { Bars3Icon, XMarkIcon, ChevronDownIcon, ChevronUpIcon } from '@heroicons/react/24/outline';
-import hardwareData from '@/data/hardware.json';
 
-/** Hardware.json에서 가져오는 데이터 */
-const hardwareDropdownData = hardwareData
-    .filter((item) => item.use) // Only include items where 'use' is true
-    .map((item) => ({
-        label: item.title,
-        href: `/hardware/${item.slug}`,
-    }));
 
 const NewNavbar = ({ locale }: { locale: string }) => {
     const [openDropdown, setOpenDropdown] = useState<string | null>(null);
@@ -37,11 +29,13 @@ const NewNavbar = ({ locale }: { locale: string }) => {
             { label: 'Satellite', href: '/solutions/satellite' },
             { label: 'AIS', href: '/solutions/ais' },
         ],
-        hardware: hardwareDropdownData, // Dynamically populated hardware data
+        hardware: [
+
+        ],
         company: [
             { label: 'About Us', href: '/about' },
             { label: 'Contact', href: '/contact-us' },
-            { label: 'Resources', href: '/resources' },
+            { label: 'Resources', href: '/resources' }
         ],
     };
 
