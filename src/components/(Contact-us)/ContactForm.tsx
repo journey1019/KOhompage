@@ -124,7 +124,7 @@ export default function ContactForm({ locale }: ContactFormProps) {
                             value={formData.firstName}
                             onChange={handleChange}
                             placeholder="First Name"
-                            className="w-full rounded-md py-3 px-4 bg-gray-100 text-gray-800"
+                            className="w-full rounded-md py-3 px-4 bg-gray-100 text-gray-800 h-[52px]" // 높이를 input과 동일하게 설정
                         />
                         {errors.firstName && (
                             <p className="text-red-500 text-xs mt-1">{errors.firstName}</p>
@@ -142,7 +142,7 @@ export default function ContactForm({ locale }: ContactFormProps) {
                             value={formData.lastName}
                             onChange={handleChange}
                             placeholder="Last Name"
-                            className="w-full rounded-md py-3 px-4 bg-gray-100 text-gray-800"
+                            className="w-full rounded-md py-3 px-4 bg-gray-100 text-gray-800 h-[52px]" // 높이를 input과 동일하게 설정
                         />
                         {errors.lastName && (
                             <p className="text-red-500 text-xs mt-1">{errors.lastName}</p>
@@ -161,7 +161,7 @@ export default function ContactForm({ locale }: ContactFormProps) {
                             name="country"
                             value={formData.country}
                             onChange={handleChange}
-                            className="w-full rounded-md py-3 px-4 bg-gray-100 text-gray-800"
+                            className="w-full rounded-md py-3 px-4 bg-gray-100 text-gray-800 h-[52px]" // 높이를 input과 동일하게 설정
                         >
                             <option value="" disabled>
                                 Select Country
@@ -186,11 +186,12 @@ export default function ContactForm({ locale }: ContactFormProps) {
                             value={formData.phone}
                             onChange={handleChange}
                             placeholder="e.g., 010-0000-0000"
-                            className="w-full rounded-md py-3 px-4 bg-gray-100 text-gray-800"
+                            className="w-full rounded-md py-3 px-4 bg-gray-100 text-gray-800 h-[52px]" // 높이를 동일하게 설정
                         />
                         {errors.phone && <p className="text-red-500 text-xs mt-1">{errors.phone}</p>}
                     </div>
                 </div>
+
 
                 {/* Company */}
                 <div className="col-span-1">
@@ -203,49 +204,12 @@ export default function ContactForm({ locale }: ContactFormProps) {
                         value={formData.company}
                         onChange={handleChange}
                         placeholder="Company"
-                        className="w-full rounded-md py-3 px-4 bg-gray-100 text-gray-800"
+                        className="w-full rounded-md py-3 px-4 bg-gray-100 text-gray-800 h-[52px]" // 높이를 input과 동일하게 설정
                     />
                     {errors.company && (
                         <p className="text-red-500 text-xs mt-1">{errors.company}</p>
                     )}
                 </div>
-
-                {/* Company Email */}
-                {/* Company Email */}
-                <div className="col-span-1">
-                    <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
-                        Company Email <span className="text-red-500">*</span>
-                    </label>
-                    <input
-                        type="email"
-                        name="companyEmail"
-                        value={formData.companyEmail}
-                        onChange={(e) => {
-                            handleChange(e);
-
-                            const emailValue = e.target.value;
-                            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/; // 간단한 이메일 형식 검증
-
-                            if (!emailRegex.test(emailValue)) {
-                                setErrors((prevErrors) => ({
-                                    ...prevErrors,
-                                    companyEmail: 'Please enter a valid email address.',
-                                }));
-                            } else {
-                                setErrors((prevErrors) => ({
-                                    ...prevErrors,
-                                    companyEmail: '', // 에러 제거
-                                }));
-                            }
-                        }}
-                        placeholder="example@company.com"
-                        className="w-full rounded-md py-3 px-4 bg-gray-100 text-gray-800"
-                    />
-                    {errors.companyEmail && (
-                        <p className="text-red-500 text-xs mt-1">{errors.companyEmail}</p>
-                    )}
-                </div>
-
 
                 {/* Position */}
                 <div className="col-span-1">
@@ -258,35 +222,70 @@ export default function ContactForm({ locale }: ContactFormProps) {
                         value={formData.position}
                         onChange={handleChange}
                         placeholder="Position"
-                        className="w-full rounded-md py-3 px-4 bg-gray-100 text-gray-800"
+                        className="w-full rounded-md py-3 px-4 bg-gray-100 text-gray-800 h-[52px]" // 높이를 input과 동일하게 설정
                     />
                     {errors.position && (
                         <p className="text-red-500 text-xs mt-1">{errors.position}</p>
                     )}
                 </div>
+            </div>
 
-                {/* Inquiry Type */}
-                <div className="col-span-1">
-                    <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
-                        Inquiry Type <span className="text-red-500">*</span>
-                    </label>
-                    <select
-                        name="inquiryType"
-                        value={formData.inquiryType}
-                        onChange={handleChange}
-                        className="w-full rounded-md py-3 px-4 bg-gray-100 text-gray-800"
-                    >
-                        <option value="" disabled>
-                            Select Inquiry Type
-                        </option>
-                        <option value="Product Inquiry">Product Inquiry</option>
-                        <option value="Demo Request">Demo Request</option>
-                        <option value="Quotation Request">Quotation Request</option>
-                        <option value="Information Request">Information Request</option>
-                        <option value="Other">Other</option>
-                    </select>
-                    {errors.inquiryType && <p className="text-red-500 text-xs mt-1">{errors.inquiryType}</p>}
-                </div>
+            {/* Company Email */}
+            <div className="col-span-1">
+                <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+                    Company Email <span className="text-red-500">*</span>
+                </label>
+                <input
+                    type="email"
+                    name="companyEmail"
+                    value={formData.companyEmail}
+                    onChange={(e) => {
+                        handleChange(e);
+
+                        const emailValue = e.target.value;
+                        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/; // 간단한 이메일 형식 검증
+
+                        if (!emailRegex.test(emailValue)) {
+                            setErrors((prevErrors) => ({
+                                ...prevErrors,
+                                companyEmail: 'Please enter a valid email address.',
+                            }));
+                        } else {
+                            setErrors((prevErrors) => ({
+                                ...prevErrors,
+                                companyEmail: '', // 에러 제거
+                            }));
+                        }
+                    }}
+                    placeholder="example@company.com"
+                    className="w-full rounded-md py-3 px-4 bg-gray-100 text-gray-800 h-[52px]" // 높이를 input과 동일하게 설정
+                />
+                {errors.companyEmail && (
+                    <p className="text-red-500 text-xs mt-1">{errors.companyEmail}</p>
+                )}
+            </div>
+
+            {/* Inquiry Type */}
+            <div>
+                <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+                    Inquiry Type <span className="text-red-500">*</span>
+                </label>
+                <select
+                    name="inquiryType"
+                    value={formData.inquiryType}
+                    onChange={handleChange}
+                    className="w-auto rounded-md py-3 px-4 bg-gray-100 text-gray-800"
+                >
+                    <option value="" disabled>
+                        Select Inquiry Type
+                    </option>
+                    <option value="Product Inquiry">Product Inquiry</option>
+                    <option value="Demo Request">Demo Request</option>
+                    <option value="Quotation Request">Quotation Request</option>
+                    <option value="Information Request">Information Request</option>
+                    <option value="Other">Other</option>
+                </select>
+                {errors.inquiryType && <p className="text-red-500 text-xs mt-1">{errors.inquiryType}</p>}
             </div>
 
             {/* Additional Comments */}
