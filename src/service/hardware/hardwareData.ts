@@ -15,15 +15,6 @@ export interface HardwareProps {
 }
 
 
-// 하나의 키워드 매칭
-// export const NETWORK_MAPPING: Record<string, string> = {
-//     "Satellite(ORBCOMM)": "ORBCOMM",
-//     "Satellite(OGx/IDP)": "OGx/IDP",
-//     "Satellite(Starlink)": "Starlink",
-//     "Satellite(NTN)": "NTN",
-//     "Cellular(LTE/3G/2G)": "LTE/3G/2G",
-//     "Sigfox": "Sigfox",
-// }
 export const NETWORK_MAPPING: Record<string, string[]> = {
     "Satellite(ORBCOMM)": ["ORBCOMM"],
     "Satellite(OGx/IDP)": ["OGx/IDP"],
@@ -101,43 +92,6 @@ export const getFilteredHardwaresByQueryAndFilters = (
                 hardware.hideTag.map((tag) => tag.toLowerCase()).includes(category.toLowerCase())
             ),
         ].every((condition) => condition); // 모든 조건이 만족해야 true
-
-
-        const matchesTypes =
-            !filters.types || filters.types.length === 0 || filters.types.includes(hardware.category);
-
-        const matchesNetwork =
-            !filters.networks ||
-            filters.networks.length === 0 ||
-            // Cellular(LTE/3G/2G) = LTE/3G/2G 로 설정하고 싶을 때
-            // filters.networks.some((network) => {
-            //     const mappedTag = NETWORK_MAPPING[network];
-            //     return mappedTag && hardware.hideTag.map((tag) => tag.toLowerCase()).includes(mappedTag.toLowerCase());
-            // });
-            // Cellular(LTE/3G/2G) = Cellular || LTE/3G/2G 로 설정하고 싶을 때
-            filters.networks.some((network) => {
-                const mappedTags = NETWORK_MAPPING[network]; // 배열로 가져옴
-                return mappedTags?.some((mappedTag) =>
-                    hardware.hideTag.map((tag) => tag.toLowerCase()).includes(mappedTag.toLowerCase())
-                );
-            });
-
-        const matchesTag =
-            !filters.tags ||
-            filters.tags.length === 0 ||
-            filters.tags.some((ta) =>
-                hardware.hideTag.map((tag) => tag.toLowerCase()).includes(ta.toLowerCase())
-            );
-
-        // categories 필터: hardware.tag에서 categories와 매칭
-        const matchesCategory =
-            !filters.categories ||
-            filters.categories.length === 0 ||
-            filters.categories.some((category) =>
-                hardware.hideTag.map((hwTag) => hwTag.toLowerCase()).includes(category.toLowerCase())
-            );
-
-        // return matchesQuery && matchesTypes && matchesNetwork && matchesTag && matchesCategory;
 
         // Query와 Filters 모두 충족하는 데이터만 반환
         return matchesQuery && matchesFilters;
