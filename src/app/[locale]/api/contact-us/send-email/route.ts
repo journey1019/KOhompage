@@ -12,7 +12,6 @@ export async function POST(req: Request) {
             );
         }
 
-        // 이메일 전송
         await sendEmail({ name, email, subject, message });
 
         return new Response(

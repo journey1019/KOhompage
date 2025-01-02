@@ -1,9 +1,8 @@
 import nodemailer from 'nodemailer';
 
-// EmailData 인터페이스 정의
 export interface EmailData {
-    name: string;    // 발신자 이름
-    email: string;   // 발신자 이메일
+    name: string;    // 작성자 이름
+    email: string;   // 작성자 이메일
     subject: string; // 이메일 제목
     message: string; // 이메일 내용
 }
@@ -11,18 +10,16 @@ export interface EmailData {
 export async function sendEmail(data: EmailData): Promise<void> {
     const { name, email, subject, message } = data;
 
-    // Nodemailer SMTP 설정
     const transporter = nodemailer.createTransport({
         host: process.env.EMAIL_HOST,
-        port: parseInt(process.env.EMAIL_PORT || '587', 10), // STARTTLS는 587 포트
-        secure: process.env.SMTP_SECURE === 'true', // SSL 사용 여부
+        port: parseInt(process.env.EMAIL_PORT || '587', 10),
+        secure: process.env.SMTP_SECURE === 'true',
         auth: {
             user: process.env.EMAIL_USER,
             pass: process.env.EMAIL_PASS,
         },
     });
 
-    // SMTP 서버 연결 확인
     try {
         await transporter.verify();
         console.log('SMTP server is ready to send emails');
@@ -31,13 +28,12 @@ export async function sendEmail(data: EmailData): Promise<void> {
         throw new Error('SMTP server connection failed');
     }
 
-    // 이메일 전송
     const mailOptions = {
-        from: `"${name}" <${process.env.EMAIL_FROM}>`, // 발신자
-        to: process.env.EMAIL_TO, // 수신자
-        replyTo: email, // 회신 주소
-        subject: subject || 'No Subject',             // 제목
-        text: `Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}`, // 본문
+        from: `"${name}" <${process.env.EMAIL_USER}>`, // 발신자는 SMTP 계정으로 고정
+        to: process.env.EMAIL_TO,                     // 수신자는 고정된 이메일 주소
+        replyTo: email,                               // 회신 주소를 사용자 입력 이메일로 설정
+        subject: subject || 'No Subject',
+        text: `Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}`,
     };
 
     await transporter.sendMail(mailOptions);
