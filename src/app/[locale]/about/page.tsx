@@ -47,6 +47,8 @@ import History from '@/components/(About)/History';
 import PartnerManyLines from '@/components/PartnerManyLines';
 import PageHeroCenter from '@/components/PageHeroCenter';
 import { CtaSolution } from '@/components/(Solution)/CtaSolution';
+import Value from '@/components/(About)/Value';
+import Feature from '@/components/Feature';
 
 interface PageProps {
     params: {locale: string};
@@ -71,14 +73,23 @@ export default function AboutPage({params}: PageProps) {
 
                 {/*<Hero />*/}
                 {/*<DownloadSection/>*/}
-                <SectionTitle
-                    preTitle="KOREA ORBCOMM"
-                    title={data.introTitle}
-                >
-                    {data.introLetter}
-                </SectionTitle>
+                {/*<SectionTitle*/}
+                {/*    preTitle="KOREA ORBCOMM"*/}
+                {/*    title={data.introTitle}*/}
+                {/*>*/}
+                {/*    {data.introLetter}*/}
+                {/*</SectionTitle>*/}
 
-                <History />
+
+                <Feature sections={data.feature}/>
+
+                <SectionTitle
+                    preTitle="Values"
+                    title="Why KOREA ORBCOMM"
+                >
+                </SectionTitle>
+                {/*<History />*/}
+                <Value items={data.value}/>
 
                 {/*<Benefits data={benefitOne} />*/}
                 {/*<Benefits imgPos="right" data={benefitTwo} />*/}
@@ -94,19 +105,18 @@ export default function AboutPage({params}: PageProps) {
 
                 {/*<Video videoId="fZ0D0cnR88E" />*/}
 
-                <SectionTitle
-                    preTitle="Testimonials"
-                    title="Here's what our customers said"
-                >
-                    Testimonials is a great way to increase the brand trust and awareness.
-                    Use this section to highlight your popular customers.
-                </SectionTitle>
-
-                <Testimonials />
+                {/*<SectionTitle*/}
+                {/*    preTitle="Testimonials"*/}
+                {/*    title="Here's what our customers said"*/}
+                {/*>*/}
+                {/*    Testimonials is a great way to increase the brand trust and awareness.*/}
+                {/*    Use this section to highlight your popular customers.*/}
+                {/*</SectionTitle>*/}
+                {/*<Testimonials />*/}
 
                 {/*<Faq />*/}
-                {/*<Cta />*/}
-                <CtaSolution items={data.ctas} />
+                <Cta items={data.ctas}/>
+                {/*<CtaSolution items={data.ctas} />*/}
                 {/*<Blog/>*/}
                 {/*<Footer />*/}
                 {/*<PopupWidget />*/}

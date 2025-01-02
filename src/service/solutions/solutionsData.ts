@@ -156,7 +156,7 @@ const solutionsData: Record<string, Record<string, SolutionData>> = {
                     imageTitle1: "Water level Measurement",
                     imageTitle2: "Electronic Voting",
                     imageTitle3: "Marine Distress Safety",
-                    imageUrl1: "/images/solutions/global-iot/WaterLevelMeasurement.jpeg",
+                    imageUrl1: "/images/solutions/global-iot/WaterLevelMeasurementAI.webp",
                     imageUrl2: "/images/solutions/global-iot/ElectronicVoting.png",
                     imageUrl3: "/images/solutions/global-iot/MarineDistressSafety.png",
                 },
@@ -378,7 +378,7 @@ const solutionsData: Record<string, Record<string, SolutionData>> = {
                     imageTitle1: "수위 측정",
                     imageTitle2: "전자 투표",
                     imageTitle3: "해양 조난 안전",
-                    imageUrl1: "/images/solutions/global-iot/WaterLevelMeasurement.png",
+                    imageUrl1: "/images/solutions/global-iot/WaterLevelMeasurementAI.webp",
                     imageUrl2: "/images/solutions/global-iot/ElectronicVoting.png",
                     imageUrl3: "/images/solutions/global-iot/MarineDistressSafety.png",
                 }

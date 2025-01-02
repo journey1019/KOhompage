@@ -25,7 +25,7 @@ export default function History() {
             path: '/pdf/support/PrivacyPolicy.pdf'
         },
         {
-            image: '/images/icons/color/Exchange.png',
+            image: '/images/icons/color/Rotation.png',
             title: '안정적이고 빠른 통신서비스',
             description: 'Neque Dolor, fugiat non cum doloribus aperiam voluptates nostrum.',
             alt: 'Exchange Icon',

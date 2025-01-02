@@ -1,9 +1,19 @@
+interface SectionData {
+    image: string;
+    title: string;
+    description: string;
+    reverse?: boolean;
+}
+interface ValueData {
+    image: string;
+    title: string;
+    description: string;
+}
 
 interface CtaData{
     title: string;
     subTitle: string;
     button: string;
-    imageUrl: string;
 }
 interface FaqData{
     question: string;
@@ -16,29 +26,21 @@ interface MaritimeData{
     imageUrl: string;
     imageSub: string;
     imageThird: string;
-    introTitle: string;
-    introLetter: string;
-    qnaTitle: string;
-    qnaLetter: string;
-    useCaseTitle: string;
-    useCaseLetter: string;
+    valueTitle: string;
     faqs?: FaqData[];
     ctas: CtaData;
+    value: ValueData[];
+    feature: SectionData[];
 }
 
 const maritimeData: Record<string, MaritimeData> = {
     "en": {
         imageIntro: "About",
-        imageMain: "Korea ORBCOMM",
         imageUrl: "/images/header/Company.jpg",
-        imageThird: "",
-        imageSub: "Global IoT Connecting the World's Assets",
-        introTitle: "글로벌 저궤도 위성통신 사업의 선두주자",
-        introLetter: "1999년 9월 법인을 설립하여, 미국 ORBCOMM Inc.와 위성사용에 관한 라이선스 계약을 체결하였고, 2000년 2월 12일 정보통신부(현 과학기술정보통신부)로부터 위성 휴대용 무선통신 사업자(Global Mobil Personal Communication Service: GMPCS)로써 기간통신서비스 사업 면허를 취득 하였습니다.",
-        qnaTitle: "Frequently Asked Questions",
-        qnaLetter: "Check out our customers' frequently asked questions",
-        useCaseTitle: "Why should you use this solution",
-        useCaseLetter: "KOREA ORBCOM's uniquely combines IoT and AIS-based solutions and services to provide critical monitoring of shipping companies, commercial fishing boats and merchant containers, and other maritime assets operating in waters around the world.",
+        imageMain: "KOREA ORBCOMM provides reliable",
+        imageSub: "connectivity for all customer assets",
+        imageThird: "and infrastructure.",
+        valueTitle: "Why KOREA ORBCOMM",
         faqs: [
             {
                 question: "How do I create a new ID on the Maritime Platform?",
@@ -58,24 +60,74 @@ const maritimeData: Record<string, MaritimeData> = {
             },
         ],
         ctas: {
-            title: "Master Maritime Visibility with ORBCOMM",
-            subTitle: "Gain remote vessel tracking, monitoring and control capabilities for your commercial fishing boats, merchant marine fleets and more.",
-            button: "Get a tailored quote",
-            imageUrl: "/images/befo_ko/Meeting.jpg"
-        }
+            title: "Have any questions?",
+            subTitle: "Send us a message today to learn more about our company values and how we can help you achieve your goals.",
+            button: "Contact Us",
+        },
+        value: [
+            {
+                image: '/images/icons/About/Experienced.png',
+                title: 'Experienced',
+                description: '30 years of IoT development and key domain expertise.'
+            },
+            {
+                image: '/images/icons/About/Comprehensive.png',
+                title: 'Comprehensive',
+                description: 'End-to-end turn-key solutions: devices, satellite/cellular connectivity and analytics apps.'
+            },
+            {
+                image: '/images/icons/About/Proven.png',
+                title: 'Proven',
+                description: '2.2 million subscribers and countless industry awards for innovation excellence.'
+            },
+            {
+                image: '/images/icons/About/Reliable.png',
+                title: 'Reliable',
+                description: 'Ubiquitous global coverage across multiple satellite and cellular networks.'
+            },
+            {
+                image: '/images/icons/About/Global.png',
+                title: 'Global',
+                description: 'We are where you are, with authorizations in 120 countries and offices in 15 regions.'
+            },
+            {
+                image: '/images/icons/About/Innovative.png',
+                title: 'Innovative',
+                description: 'More than 175 patents, 300 engineers and the only satellite network dedicated to IoT.'
+            },
+            {
+                image: '/images/icons/About/CustomerFocused.png',
+                title: 'Customer-focused',
+                description: '…with global best-in-class multilingual sales, service and 24/7/365 technical support teams.\n'
+            },
+            {
+                image: '/images/icons/About/SingleSource.png',
+                title: 'Single source',
+                description: 'All your asset data where and when you need it.'
+            },
+        ],
+        feature: [
+            {
+                image: '/images/about/ORBCOMM_Company_AboutUs_Mission.webp',
+                title: 'Unlocking Potential with the Power of Data',
+                description: 'Our innovative IoT technology helps customers optimize their industrial operations and build a more sustainable future.',
+            },
+            // {
+            //     image: '/images/solutions/ais/UseData2.png',
+            //     title: '고품질의 AIS 데이터',
+            //     description: 'Korea ORBCOMM의 AIS 서비스는 60만척 이상의 선박에서 일일 천만개의 AIS 메시지를 수집/처리합니다.',
+            //     reverse: true, // 이미지와 텍스트 위치 반전
+            // },
+        ]
     },
+
     "ko": {
         imageIntro: "KOREA ORBCOMM",
-        imageMain: "코리아오브컴은",
         imageUrl: "/images/header/Company.jpg",
+        imageMain: "코리아오브컴은",
         imageSub: "고객의 모든 자산/인프라에",
         imageThird: "Connectivity를 제공합니다.",
-        introTitle: "Reefer Container 감시 및 제어 시스템",
-        introLetter: "전세계 Top3 선사가 선택한 ORBCOMM의 ReeferContainer는 현재 500,000개 이상의 제품이 냉동냉장 컨테이너에 설치되어 운영 중이며, 컨테이너선사, 복합운송업체, 화주 및 기타 사용자에게 육해상 전 지역에서의 실시간 컨테이너관제 서비스를 제공합니다.",
-        qnaTitle: "자주 묻는 질문",
-        qnaLetter: "고객들이 자주 묻는 질문을 확인해보세요",
-        useCaseTitle: "이 솔루션을 사용해야 하는 이유",
-        useCaseLetter: "KOREA ORBCOMM은 IoT와 AIS 기반 솔루션 및 서비스를 독특하게 결합하여 전 세계 해역에서 운영되는 해운 회사, 상업용 어선 및 상선 컨테이너 및 기타 해상 자산에 대한 중요한 모니터링을 제공합니다.",
+        valueTitle: "Why KOREA ORBCOMM",
         faqs: [
             {
                 question: "Maritime Platform에서 새로운 아이디를 생성하려면 어떻게 해야 하나요?",
@@ -95,11 +147,65 @@ const maritimeData: Record<string, MaritimeData> = {
             },
         ],
         ctas: {
-            title: "ORBCOMM으로 해상 가시성 마스터하기",
-            subTitle: "상업용 어선, 상선 함대 등에 대한 원격 선박 추적, 모니터링 및 제어 기능을 확보하세요.",
-            button: "맞춤형 견적을 받아보세요",
-            imageUrl: "/images/befo_ko/Meeting.jpg"
-        }
+            title: "궁금한 점이 있으신가요?",
+            subTitle: "저희 회사의 가치와 목표 달성을 위한 지원 방법에 대해 더 알아보시려면 지금 메시지를 보내주세요.",
+            button: "문의하기"
+        },
+        value: [
+            {
+                "image": "/images/icons/About/Experienced.png",
+                "title": "풍부한 경험",
+                "description": "30년의 IoT 개발과 주요 도메인 전문성을 보유하고 있습니다."
+            },
+            {
+                "image": "/images/icons/About/Comprehensive.png",
+                "title": "포괄적인 솔루션",
+                "description": "디바이스, 위성/셀룰러 연결, 분석 앱을 포함한 엔드 투 엔드 턴키 솔루션을 제공합니다."
+            },
+            {
+                "image": "/images/icons/About/Proven.png",
+                "title": "입증된 성과",
+                "description": "220만 명의 가입자와 혁신 우수성을 인정받은 다수의 산업 수상 경력이 있습니다."
+            },
+            {
+                "image": "/images/icons/About/Reliable.png",
+                "title": "신뢰할 수 있는 네트워크",
+                "description": "다수의 위성 및 셀룰러 네트워크를 통해 전 세계적으로 끊김 없는 서비스를 제공합니다."
+            },
+            {
+                "image": "/images/icons/About/Global.png",
+                "title": "글로벌 네트워크",
+                "description": "120개국에서 인증을 받았으며 15개 지역에 사무소를 운영하고 있습니다."
+            },
+            {
+                "image": "/images/icons/About/Innovative.png",
+                "title": "혁신적 기술",
+                "description": "175건 이상의 특허, 300명의 엔지니어, IoT 전용 위성 네트워크를 보유하고 있습니다."
+            },
+            {
+                "image": "/images/icons/About/CustomerFocused.png",
+                "title": "고객 중심",
+                "description": "다국어 지원 글로벌 최상의 세일즈, 서비스 및 연중무휴(24/7/365) 기술 지원팀을 제공합니다."
+            },
+            {
+                "image": "/images/icons/About/SingleSource.png",
+                "title": "통합 데이터 소스",
+                "description": "필요한 자산 데이터를 필요한 시간과 장소에서 제공합니다."
+            }
+        ],
+        feature: [
+            {
+                image: '/images/about/ORBCOMM_Company_AboutUs_Mission.webp',
+                title: '데이터의 힘으로 잠재력을 실현하다',
+                description: '혁신적인 IoT 기술을 통해 고객이 산업 운영을 최적화하고 더욱 지속 가능한 미래를 구축할 수 있도록 돕습니다.'
+            },
+            // {
+            //     image: '/images/solutions/ais/UseData2.png',
+            //     title: '고품질의 AIS 데이터',
+            //     description: 'Korea ORBCOMM의 AIS 서비스는 60만척 이상의 선박에서 일일 천만개의 AIS 메시지를 수집/처리합니다.',
+            //     reverse: true, // 이미지와 텍스트 위치 반전
+            // },
+        ]
     }
 }
 export default maritimeData;

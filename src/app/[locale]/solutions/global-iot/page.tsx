@@ -125,8 +125,8 @@ export default async function GlobalIoT({params}: PageProps){
             <FilterHardwareCarouselBySolutionTags keywords={filteredKeyword} />
 
             <SectionTitle
-                preTitle="Q n A"
-                title="Global-IoT 관련 문의와 답변 리스트"
+                preTitle="FAQ"
+                title="자주 묻는 질문"
             />
             <FAQ items={data.faq || []}/>
 

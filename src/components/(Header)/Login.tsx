@@ -29,7 +29,7 @@ export default function Login() {
     return (
         <Popover className="relative">
             <PopoverButton className="inline-flex items-center gap-x-1 text-sm font-semibold leading-6 text-gray-900">
-                <span className='text-black dark:text-white'>Login</span>
+                <span className='text-black dark:text-white'>Platforms</span>
                 <ChevronDownIcon aria-hidden="true" className="h-5 w-5 text-black dark:text-white" />
             </PopoverButton>
 

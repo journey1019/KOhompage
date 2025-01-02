@@ -2,7 +2,7 @@ import React from "react";
 import { Container } from "@/components/Container";
 
 interface CtaProps {
-    items: { title: string; subTitle: string; button: string; button2: string; }
+    items: { title: string; subTitle: string; button: string; button2?: string; }
 }
 
 export const Cta:React.FC<CtaProps> = ({ items }) => {
