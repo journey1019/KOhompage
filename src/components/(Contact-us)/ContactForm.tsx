@@ -2,6 +2,7 @@
 
 import React, { useState } from 'react';
 import Banner from './Banner';
+import PDFButton from '@/components/(Header)/PDFButton';
 
 interface ContactFormProps {
     locale: string;
@@ -32,6 +33,7 @@ export default function ContactForm({ locale }: ContactFormProps) {
         message: '',
     });
 
+    const [isAgreed, setIsAgreed] = useState(false); // Legal notice agreement state
     const [isLoading, setIsLoading] = useState(false);
     const [banner, setBanner] = useState<{ message: string; state: 'success' | 'error' } | null>(null);
 
@@ -71,7 +73,7 @@ export default function ContactForm({ locale }: ContactFormProps) {
     };
 
     const handleSubmit = async () => {
-        if (!validateForm()) return;
+        if (!validateForm() || !isAgreed) return; // Ensure the legal notice is agreed upon
 
         setIsLoading(true);
         setBanner(null);
@@ -304,11 +306,32 @@ export default function ContactForm({ locale }: ContactFormProps) {
                 {errors.message && <p className="text-red-500 text-xs mt-1">{errors.message}</p>}
             </div>
 
+            {/* Legal Notice */}
+            <div className="flex items-start space-x-2">
+                <input
+                    type="checkbox"
+                    id="legal-notice"
+                    checked={isAgreed}
+                    onChange={(e) => setIsAgreed(e.target.checked)}
+                    className="w-5 h-5"
+                />
+                <label htmlFor="legal-notice" className="text-sm font-medium text-gray-700">
+                    I agree to KoresORBCOMM&apos;s{' '}
+                    <a href="/support" className="text-blue-600 underline">
+                        Terms of Service
+                    </a>{' '}
+                    and{' '}
+                    <PDFButton path="/pdf/support/PrivacyPolicy.pdf" label="Privacy Policy" className="text-blue-600 underline" />
+                    , which includes my consent to receive marketing information. I can unsubscribe at any time.
+                </label>
+            </div>
+
+            {/* Submit Button */}
             <button
                 type="button"
                 onClick={handleSubmit}
-                className="bg-blue-500 text-white px-4 py-3 rounded-md"
-                disabled={isLoading}
+                className={`bg-blue-500 text-white px-4 py-3 rounded-md ${!isAgreed ? 'opacity-50 cursor-not-allowed' : ''}`}
+                disabled={!isAgreed || isLoading}
             >
                 {isLoading ? 'Sending...' : 'Send'}
             </button>

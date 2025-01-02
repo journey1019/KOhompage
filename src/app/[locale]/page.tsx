@@ -74,9 +74,11 @@ import TagFilterBlog from '@/components/(Main)/TagFilterBlog';
 import TagFilterBoard from '@/components/(Main)/TagFilterBoard';
 import References from '@/components/(Main)/References';
 import TagFilterBlogCarousel from '@/components/(Resources)/TagFilterBlogCarousel';
+import { notFound } from 'next/navigation';
 
 
 export default async function HomePage() {
+
     // const t = useTranslations('home');
     const solutions = await getAllSolutions(); // 데이터를 비동기로 가져옴
 

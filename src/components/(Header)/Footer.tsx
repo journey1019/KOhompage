@@ -147,13 +147,13 @@ export function Footer({locale}: {locale: string}) {
                         </Link>
                         {/* 개인위치정보처리방침 버튼 */}
                         <PDFButton
-                            path="/images/support/PrivacyPolicy.pdf"
+                            path="/pdf/support/PrivacyPolicy.pdf"
                             label="개인위치정보처리방침"
                             className="pr-5"
                         />
                         {/* 서비스이용약관 버튼 */}
                         <PDFButton
-                            path="/images/support/TermsOfUse.pdf"
+                            path="/pdf/support/TermsOfUse.pdf"
                             label="서비스이용약관"
                         />
                     </div>
