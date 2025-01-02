@@ -1,3 +1,7 @@
+/** API Endpoint
+ * - 데이터 유효성 검사
+ * - 이메일 서비스 호출
+ * */
 import { sendEmail, EmailData } from '@/service/email';
 
 export async function POST(req: Request) {

@@ -143,7 +143,7 @@ export function Footer({locale}: {locale: string}) {
                         <Link href="/support"
                               className="pr-5"
                         >
-                            <span className="hover:border-b-2">법적고지</span>
+                            <span className="hover:underline">법적고지</span>
                         </Link>
                         {/* 개인위치정보처리방침 버튼 */}
                         <PDFButton

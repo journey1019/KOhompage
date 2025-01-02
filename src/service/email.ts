@@ -1,3 +1,7 @@
+/** Service Layer
+ * - 이메일 작성 및 전송
+ * - SMTP 서버와 통신
+ * */
 import nodemailer from 'nodemailer';
 
 export interface EmailData {
