@@ -7,16 +7,48 @@ import { sendEmail, EmailData } from '@/service/email';
 export async function POST(req: Request) {
     try {
         const body = await req.json();
-        const { name, email, subject, message } = body as EmailData;
+        const {
+            firstName,
+            lastName,
+            company,
+            companyEmail,
+            position,
+            country,
+            phone,
+            inquiryType,
+            message,
+        } = body as EmailData;
 
-        if (!name || !email || !subject || !message) {
+        // 필수 필드 검증
+        if (
+            !firstName ||
+            !lastName ||
+            !company ||
+            !companyEmail ||
+            !position ||
+            !country ||
+            !phone ||
+            !inquiryType ||
+            !message
+        ) {
             return new Response(
                 JSON.stringify({ message: 'All fields are required.' }),
                 { status: 400 }
             );
         }
 
-        await sendEmail({ name, email, subject, message });
+        // 이메일 전송
+        await sendEmail({
+            firstName,
+            lastName,
+            company,
+            companyEmail,
+            position,
+            country,
+            phone,
+            inquiryType,
+            message,
+        });
 
         return new Response(
             JSON.stringify({ message: 'Email sent successfully!' }),

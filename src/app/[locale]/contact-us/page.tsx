@@ -120,9 +120,7 @@ export default function Page({ params }: { params: { locale: string } }) {
                         </div>
                     </div>
 
-
                 </div>
-
 
             </div>
             <ContactForm locale={params.locale} />

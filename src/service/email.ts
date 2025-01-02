@@ -5,14 +5,29 @@
 import nodemailer from 'nodemailer';
 
 export interface EmailData {
-    name: string;    // 작성자 이름
-    email: string;   // 작성자 이메일
-    subject: string; // 이메일 제목
-    message: string; // 이메일 내용
+    firstName: string;
+    lastName: string;
+    company: string;
+    companyEmail: string;
+    position: string;
+    country: string;
+    phone: string;
+    inquiryType: string;
+    message: string;
 }
 
 export async function sendEmail(data: EmailData): Promise<void> {
-    const { name, email, subject, message } = data;
+    const {
+        firstName,
+        lastName,
+        company,
+        companyEmail,
+        position,
+        country,
+        phone,
+        inquiryType,
+        message,
+    } = data;
 
     const transporter = nodemailer.createTransport({
         host: process.env.EMAIL_HOST,
@@ -33,11 +48,23 @@ export async function sendEmail(data: EmailData): Promise<void> {
     }
 
     const mailOptions = {
-        from: `"${name}" <${process.env.EMAIL_USER}>`, // 발신자는 SMTP 계정으로 고정
-        to: process.env.EMAIL_TO,                     // 수신자는 고정된 이메일 주소
-        replyTo: email,                               // 회신 주소를 사용자 입력 이메일로 설정
-        subject: subject || 'No Subject',
-        text: `Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}`,
+        from: `"${firstName} ${lastName}" <${process.env.EMAIL_USER}>`, // 발신자는 SMTP 계정으로 고정
+        to: process.env.EMAIL_TO,                                     // 수신자는 고정된 이메일 주소
+        replyTo: companyEmail,                                        // 회신 주소를 사용자 입력 이메일로 설정
+        subject: `[HomePage] 고객 문의: ${inquiryType}`,
+        text: `
+        First Name: ${firstName}
+        Last Name: ${lastName}
+        Phone: (${country}) ${phone}
+        Email: ${companyEmail}
+        Company: ${company}
+        Position: ${position}
+        
+        Inquiry Type: ${inquiryType}
+
+        Message:
+        ${message}
+        `,
     };
 
     await transporter.sendMail(mailOptions);
