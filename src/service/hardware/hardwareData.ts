@@ -132,10 +132,6 @@ export const getHardwareByKeywordsInPage = (keywords: string[]): HardwareProps[]
     return hardwareData.filter((hardware) => {
         if (!hardware.use) return false;
 
-        // Normalize tags and solutionTag
-        // const normalizedHideTags = hardware.hideTag.map((tag) =>
-        //     tag.toLowerCase().replace(/[^a-z0-9]/g, "")
-        // );
         const normalizedSolutionTag = hardware.solutionTag.map((tag) =>
             tag.toLowerCase().replace(/[^a-z0-9]/g, "")
         );
