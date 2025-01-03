@@ -95,9 +95,9 @@ const NewDropdown = ({ menuKey, locale }: DropdownProps) => {
     else if (menuKey === 'hardware') {
         return (
             <div className="absolute top-full left-0 w-screen bg-white shadow-lg border-t z-50">
-                <div className="grid max-w-screen-xl mx-auto px-6 py-5 grid-cols-3 gap-8">
+                <div className="grid max-w-screen-xl mx-auto px-6 py-2 grid-cols-3 gap-8">
                     {/* Categories */}
-                    <div className="space-y-1">
+                    <div className="space-y-0">
                         <h3 className="text-md font-bold">Category</h3>
                         {items
                             .filter((item) => item.filterKey === 'categories')
@@ -105,14 +105,14 @@ const NewDropdown = ({ menuKey, locale }: DropdownProps) => {
                                 <Link
                                     key={item.label}
                                     href={`/hardware?${item.filterKey}=${item.filterValue}`}
-                                    className="block text-gray-700 hover:text-red-600 w-full hover:bg-gray-100 p-3 rounded-md"
+                                    className="block text-gray-700 hover:text-red-600 w-full hover:bg-gray-100 px-3 py-2 rounded-md"
                                 >
                                     {item.label}
                                 </Link>
                             ))}
                     </div>
                     {/* Types */}
-                    <div className="space-y-1">
+                    <div className="space-y-0">
                         <h3 className="text-md font-bold">Types</h3>
                         {items
                             .filter((item) => item.filterKey === 'types')
@@ -120,14 +120,14 @@ const NewDropdown = ({ menuKey, locale }: DropdownProps) => {
                                 <Link
                                     key={item.label}
                                     href={`/hardware?${item.filterKey}=${item.filterValue}`}
-                                    className="block text-gray-700 hover:text-red-600 w-full hover:bg-gray-100 p-3 rounded-md"
+                                    className="block text-gray-700 hover:text-red-600 w-full hover:bg-gray-100 px-3 py-2 rounded-md"
                                 >
                                     {item.label}
                                 </Link>
                             ))}
                     </div>
                     {/* Networks */}
-                    <div className="space-y-1">
+                    <div className="space-y-0">
                         <h3 className="text-md font-bold">Network</h3>
                         {items
                             .filter((item) => item.filterKey === 'networks')
@@ -135,7 +135,7 @@ const NewDropdown = ({ menuKey, locale }: DropdownProps) => {
                                 <Link
                                     key={item.label}
                                     href={`/hardware?${item.filterKey}=${item.filterValue}`}
-                                    className="block text-gray-700 hover:text-red-600 w-full hover:bg-gray-100 p-3 rounded-md"
+                                    className="block text-gray-700 hover:text-red-600 w-full hover:bg-gray-100 px-3 py-2 rounded-md"
                                 >
                                     {item.label}
                                 </Link>
