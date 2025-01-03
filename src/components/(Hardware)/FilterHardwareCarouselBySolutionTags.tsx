@@ -5,6 +5,7 @@ import React from "react";
 import { getHardwareByKeywordsInPage, HardwareProps } from "@/service/hardware/hardwareData";
 import Carousel from "@/components/Carousel";
 import FilteredHardwareCard from '@/components/(Hardware)/FilteredHardwareCard';
+import FilteredHardwarePDFCard from '@/components/(Hardware)/FilteredHardwarePDFCard';
 
 interface FilterHardwareProps {
     keywords: string[]; // Keywords to filter hardware by
@@ -21,7 +22,7 @@ const FilterHardwareCarouselBySolutionTags: React.FC<FilterHardwareProps> = ({ k
             {filteredHardware.length > 0 ? (
                 <Carousel itemsCount={filteredHardware.length}>
                     {filteredHardware.map((hardware) => (
-                        <FilteredHardwareCard key={hardware.slug} {...hardware} />
+                        <FilteredHardwarePDFCard key={hardware.slug} {...hardware} />
                     ))}
                 </Carousel>
             ) : (
