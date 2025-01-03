@@ -70,10 +70,10 @@ export default async function MaritimePage({params}: PageProps) {
                 <FilterHardwareCarouselBySolutionTags keywords={filteredKeyword} />
 
 
-                <SectionTitle preTitle="FAQ" title={data.qnaTitle}>
-                    {data.qnaLetter}
-                </SectionTitle>
-                <Faq items={data.faqs || []} />
+                {/*<SectionTitle preTitle="FAQ" title={data.qnaTitle}>*/}
+                {/*    {data.qnaLetter}*/}
+                {/*</SectionTitle>*/}
+                {/*<Faq items={data.faqs || []} />*/}
 
 
                 <SectionTitle

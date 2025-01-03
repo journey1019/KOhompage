@@ -34,7 +34,7 @@ const FAQ: React.FC<FAQProps> = ({ faqImage, items }) => {
 
     return (
         <section className="bg-white dark:bg-gray-900" ref={ref}>
-            <div className="py-24">
+            <div className="py-6">
                 <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
                     <motion.div
                         className="flex flex-col justify-center items-center gap-x-16 gap-y-5 xl:gap-28 lg:flex-row lg:justify-between max-lg:max-w-2xl mx-auto max-w-full"

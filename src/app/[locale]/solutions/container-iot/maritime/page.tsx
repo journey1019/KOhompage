@@ -65,10 +65,10 @@ export default async function MaritimePage({params}: PageProps) {
                 {/*    {data.qnaLetter}*/}
                 {/*</SectionTitle>*/}
 
-                <SectionTitle preTitle="FAQ" title={data.qnaTitle}>
-                    {data.qnaLetter}
-                </SectionTitle>
-                <Faq items={data.faqs || []} />
+                {/*<SectionTitle preTitle="FAQ" title={data.qnaTitle}>*/}
+                {/*    {data.qnaLetter}*/}
+                {/*</SectionTitle>*/}
+                {/*<Faq items={data.faqs || []} />*/}
 
                 {/*<ChipFilterHardwareCarousel chips={['maritime']} />*/}
                 <SectionTitle

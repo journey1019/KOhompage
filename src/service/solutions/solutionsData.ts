@@ -66,7 +66,7 @@ const solutionsData: Record<string, Record<string, SolutionData>> = {
             solutionNumber: "Container IoT",
             title: "Streamline Container Operations",
             solutionName: "",
-            faqImage: "/images/solutions/global-iot/NMSAI.webp",
+            faqImage: "/images/solutions/container-iot/ContainerFAQ.jpeg",
             useCases: [
                 {
                     direction: "left",
@@ -235,7 +235,6 @@ const solutionsData: Record<string, Record<string, SolutionData>> = {
             solutionNumber: "Satellite",
             title: "Communication Network",
             solutionName: "It provides optimal devices and communication networks for a wide range of industries for your customers.",
-            faqImage: "/images/solutions/global-iot/NMSAI.webp",
             useCases: [
                 {
                     direction: "left",
@@ -261,28 +260,6 @@ const solutionsData: Record<string, Record<string, SolutionData>> = {
                     description: "Starlink equipment, developed by SpaceX, is an ultra-fast, low-latency satellite internet solution that provides stable internet connectivity anywhere on Earth. With its compact design, Starlink equipment includes a satellite dish, router, and power supply, offering easy installation and exceptional performance. Connecting the world, SpaceX's Starlink equipment is an advanced internet solution suitable for various purposes such as smart work, streaming, and online gaming.",
                     image: "/images/solutions/satellite/Starlink.png",
                 },
-            ],
-            faq: [
-                {
-                    question: "Global-IoT란 무엇인가요?",
-                    answer: "Global-IoT는 코리아오브컴이 제공하는 글로벌 통신망(셀룰러, 저궤도 및 정지궤도 위성망, IoT 망 등)을 활용하여 전 세계 다양한 산업 분야에 적합한 솔루션을 제공하는 서비스입니다."
-                },
-                {
-                    question: "Global-IoT는 어떤 산업 분야에서 활용되나요?",
-                    answer: "주로 '중장비 모니터링', '해양 정보 모니터링', '공공 및 사회 안전망' 같은 분야에서 활용됩니다."
-                },
-                {
-                    question: "데이터 전송 중 보안은 어떻게 보장되나요?",
-                    answer: "모든 데이터 전송은 암호화되어 진행되며, 인증 및 접근 제어를 통해 불법적인 접근을 방지합니다."
-                },
-                {
-                    question: "Global-IoT 서비스를 도입하는 데 비용이 얼마나 드나요?",
-                    answer: "비용은 사용하려는 통신망, 필요한 장비, 서비스 규모에 따라 달라집니다. 상담을 통해 고객 맞춤형 견적을 제공해드립니다."
-                },
-                {
-                    question: "서비스 확장이 필요한 경우 추가 비용이 발생하나요?",
-                    answer: "네, 추가 장비 및 통신망 사용에 따라 추가 비용이 발생할 수 있지만, 확장성을 고려한 유연한 요금제를 제공합니다."
-                }
             ]
         },
         "ais": {
@@ -293,7 +270,6 @@ const solutionsData: Record<string, Record<string, SolutionData>> = {
             solutionNumber: "AIS",
             title: "Enhanced Maritime Tracking",
             solutionName: "",
-            faqImage: "/images/solutions/global-iot/NMSAI.webp",
             useCases: [
                 {
                     direction: "left",
@@ -321,28 +297,6 @@ const solutionsData: Record<string, Record<string, SolutionData>> = {
                         "You can monitor the location and status of all refrigerated container units and remotely adjust settings such as temperature. With automatic alarm notifications, you can quickly respond to critical situations such as equipment malfunctions or power outages in reefers. Installed on over 600,000 refrigerated containers worldwide, it helps transport lines, multimodal carriers, and shippers achieve verified ROI.",
                     image: "https://www.orbcomm.co.kr/resources/img/solution/orbcommplatform/orbcommplatform_2.jpg",
                 },
-            ],
-            faq: [
-                {
-                    question: "Global-IoT란 무엇인가요?",
-                    answer: "Global-IoT는 코리아오브컴이 제공하는 글로벌 통신망(셀룰러, 저궤도 및 정지궤도 위성망, IoT 망 등)을 활용하여 전 세계 다양한 산업 분야에 적합한 솔루션을 제공하는 서비스입니다."
-                },
-                {
-                    question: "Global-IoT는 어떤 산업 분야에서 활용되나요?",
-                    answer: "주로 '중장비 모니터링', '해양 정보 모니터링', '공공 및 사회 안전망' 같은 분야에서 활용됩니다."
-                },
-                {
-                    question: "데이터 전송 중 보안은 어떻게 보장되나요?",
-                    answer: "모든 데이터 전송은 암호화되어 진행되며, 인증 및 접근 제어를 통해 불법적인 접근을 방지합니다."
-                },
-                {
-                    question: "Global-IoT 서비스를 도입하는 데 비용이 얼마나 드나요?",
-                    answer: "비용은 사용하려는 통신망, 필요한 장비, 서비스 규모에 따라 달라집니다. 상담을 통해 고객 맞춤형 견적을 제공해드립니다."
-                },
-                {
-                    question: "서비스 확장이 필요한 경우 추가 비용이 발생하나요?",
-                    answer: "네, 추가 장비 및 통신망 사용에 따라 추가 비용이 발생할 수 있지만, 확장성을 고려한 유연한 요금제를 제공합니다."
-                }
             ]
         }
     },
@@ -357,7 +311,7 @@ const solutionsData: Record<string, Record<string, SolutionData>> = {
             solutionNumber: "Container IoT",
             title: "컨테이너 IoT 솔루션",
             solutionName: "코리아오브컴의 Container IoT Solution은 화물에 대한 실시간 추적, 화물 및 컨테이너의 상태 모니터링, Reefer Container의 원격제어 기능을 제공합니다. ",
-            faqImage: "/images/solutions/global-iot/NMSAI.webp",
+            faqImage: "/images/solutions/container-iot/ContainerFAQ.jpeg",
             useCases: [
                 {
                     direction: "left",
@@ -527,7 +481,6 @@ const solutionsData: Record<string, Record<string, SolutionData>> = {
             solutionNumber: "Satellite",
             title: "통신망 서비스",
             solutionName: "고객의 다양한 산업 분야에 적합한 최적의 디바이스 및 통신망을 제공합니다.",
-            faqImage: "/images/solutions/global-iot/NMSAI.webp",
             useCases: [
                 {
                     direction: "left",
@@ -567,28 +520,6 @@ const solutionsData: Record<string, Record<string, SolutionData>> = {
                     title: "SpaceX StarLink",
                     image: "/images/solutions/satellite/SpaceX.png"
                 },
-            ],
-            faq: [
-                {
-                    question: "Global-IoT란 무엇인가요?",
-                    answer: "Global-IoT는 코리아오브컴이 제공하는 글로벌 통신망(셀룰러, 저궤도 및 정지궤도 위성망, IoT 망 등)을 활용하여 전 세계 다양한 산업 분야에 적합한 솔루션을 제공하는 서비스입니다."
-                },
-                {
-                    question: "Global-IoT는 어떤 산업 분야에서 활용되나요?",
-                    answer: "주로 '중장비 모니터링', '해양 정보 모니터링', '공공 및 사회 안전망' 같은 분야에서 활용됩니다."
-                },
-                {
-                    question: "데이터 전송 중 보안은 어떻게 보장되나요?",
-                    answer: "모든 데이터 전송은 암호화되어 진행되며, 인증 및 접근 제어를 통해 불법적인 접근을 방지합니다."
-                },
-                {
-                    question: "Global-IoT 서비스를 도입하는 데 비용이 얼마나 드나요?",
-                    answer: "비용은 사용하려는 통신망, 필요한 장비, 서비스 규모에 따라 달라집니다. 상담을 통해 고객 맞춤형 견적을 제공해드립니다."
-                },
-                {
-                    question: "서비스 확장이 필요한 경우 추가 비용이 발생하나요?",
-                    answer: "네, 추가 장비 및 통신망 사용에 따라 추가 비용이 발생할 수 있지만, 확장성을 고려한 유연한 요금제를 제공합니다."
-                }
             ]
         },
         "ais": {
@@ -599,7 +530,6 @@ const solutionsData: Record<string, Record<string, SolutionData>> = {
             solutionNumber: "AIS",
             title: "Automatic identification system",
             solutionName: "AIS(선박 자동 식별 시스템)는 선박의 식별, 위치, 탐색을 지원하고 해양 안전을 위해 사용할 수 있는 중요한 데이터를 전송하는 선박 발신 시스템 입니다. 코리아오브컴의 AIS 서비스는 위성과 물론 10,000개 이상의 육상AIS 수신국을 통해  전세계 모든 지역의 AIS 정보를 수집하여 해상 정보 분석, 수색 및 구조, 환경 모니터링 등 다양한 분야에 활용되고 있습니다.",
-            faqImage: "/images/solutions/global-iot/NMSAI.webp",
             character: [
                 {
                     title: "Lower Latency",
@@ -615,28 +545,6 @@ const solutionsData: Record<string, Record<string, SolutionData>> = {
                     title: "Cost-Effective",
                     subtitle: "Korea ORBCOMM의 위성 AIS는 더 유연한 요금제와 고객의 요구에 적합한 서비스를 제공합니다.",
                     icon: "/images/icons/Service.png"
-                }
-            ],
-            faq: [
-                {
-                    question: "Global-IoT란 무엇인가요?",
-                    answer: "Global-IoT는 코리아오브컴이 제공하는 글로벌 통신망(셀룰러, 저궤도 및 정지궤도 위성망, IoT 망 등)을 활용하여 전 세계 다양한 산업 분야에 적합한 솔루션을 제공하는 서비스입니다."
-                },
-                {
-                    question: "Global-IoT는 어떤 산업 분야에서 활용되나요?",
-                    answer: "주로 '중장비 모니터링', '해양 정보 모니터링', '공공 및 사회 안전망' 같은 분야에서 활용됩니다."
-                },
-                {
-                    question: "데이터 전송 중 보안은 어떻게 보장되나요?",
-                    answer: "모든 데이터 전송은 암호화되어 진행되며, 인증 및 접근 제어를 통해 불법적인 접근을 방지합니다."
-                },
-                {
-                    question: "Global-IoT 서비스를 도입하는 데 비용이 얼마나 드나요?",
-                    answer: "비용은 사용하려는 통신망, 필요한 장비, 서비스 규모에 따라 달라집니다. 상담을 통해 고객 맞춤형 견적을 제공해드립니다."
-                },
-                {
-                    question: "서비스 확장이 필요한 경우 추가 비용이 발생하나요?",
-                    answer: "네, 추가 장비 및 통신망 사용에 따라 추가 비용이 발생할 수 있지만, 확장성을 고려한 유연한 요금제를 제공합니다."
                 }
             ]
         }

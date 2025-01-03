@@ -28,7 +28,7 @@ const Timeline: React.FC<TimelineProps> = ({ timeline }) => {
                         }`}
                         initial={{ opacity: 0, x: index % 2 === 0 ? 100 : -100 }}
                         whileInView={{ opacity: 1, x: 0 }}
-                        transition={{ duration: 0.8, ease: 'easeOut' }}
+                        transition={{ duration: 0.4, ease: 'easeOut' }} // 속도 증가
                         viewport={{ once: true, margin: '-50px' }}
                     >
                         {/* Connector Dot */}
@@ -39,7 +39,7 @@ const Timeline: React.FC<TimelineProps> = ({ timeline }) => {
                             }}
                             initial={{ scale: 0 }}
                             animate={{ scale: 1 }}
-                            transition={{ duration: 0.6, ease: 'easeOut', delay: index * 0.2 }}
+                            transition={{ duration: 0.3, ease: 'easeOut' }} // 속도 증가
                         >
                             {index + 1}
                         </motion.div>
@@ -51,7 +51,7 @@ const Timeline: React.FC<TimelineProps> = ({ timeline }) => {
                             }`}
                             initial={{ opacity: 0, y: 50 }}
                             whileInView={{ opacity: 1, y: 0 }}
-                            transition={{ duration: 0.8, ease: 'easeOut', delay: index * 0.2 }}
+                            transition={{ duration: 0.4, ease: 'easeOut' }} // 속도 증가
                             viewport={{ once: true, margin: '-50px' }}
                         >
                             <h3 className="text-red-500 text-xl font-bold mb-2">
