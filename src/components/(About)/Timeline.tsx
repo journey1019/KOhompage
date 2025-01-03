@@ -32,17 +32,17 @@ const Timeline: React.FC<TimelineProps> = ({ timeline }) => {
                         viewport={{ once: true, margin: '-50px' }}
                     >
                         {/* Connector Dot */}
-                        <motion.div
-                            className="w-8 h-8 bg-red-700 rounded-full flex items-center justify-center text-white font-bold text-sm absolute top-0 transform -translate-y-1/2"
-                            style={{
-                                left: index % 2 === 0 ? 'calc(50% + 1rem)' : 'calc(50% - 2rem)',
-                            }}
-                            initial={{ scale: 0 }}
-                            animate={{ scale: 1 }}
-                            transition={{ duration: 0.3, ease: 'easeOut' }} // 속도 증가
-                        >
-                            {index + 1}
-                        </motion.div>
+                        {/*<motion.div*/}
+                        {/*    className="w-8 h-8 bg-red-700 rounded-full flex items-center justify-center text-white font-bold text-sm absolute top-10 transform -translate-y-1/2"*/}
+                        {/*    style={{*/}
+                        {/*        left: index % 2 === 0 ? 'calc(50% + 1rem)' : 'calc(50% - 2rem)',*/}
+                        {/*    }}*/}
+                        {/*    initial={{ scale: 0 }}*/}
+                        {/*    animate={{ scale: 1 }}*/}
+                        {/*    transition={{ duration: 0.3, ease: 'easeOut' }} // 속도 증가*/}
+                        {/*>*/}
+                        {/*    {index + 1}*/}
+                        {/*</motion.div>*/}
 
                         {/* Content Box */}
                         <motion.div

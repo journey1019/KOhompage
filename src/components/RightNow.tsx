@@ -9,9 +9,20 @@ const links = [
     { name: 'Resources', href: '/resources' },
     { name: 'Contact', href: '/contact-us' },
 ];
+
 const offices = [
-    { location: '서울 본사(HQ)', tel: 'T. 02-3444-7311', address: 'A. 06536 서울특별시 서초구 강남대로 525 세영제이타워 15층', mail: 'M. sales_team@orbcomm.co.kr' },
-    { location: '위성 지구국(Gateway Earth Station)', tel: 'T. 031-642-9940', address: 'A. 17416 경기도 이천시 장호원읍 장여로 229-100', mail: 'M. support@orbcomm.co.kr' },
+    {
+        location: '서울 본사(HQ)',
+        tel: 'T. 02-3444-7311',
+        address: 'A. 06536 서울특별시 서초구 강남대로 525 세영제이타워 15층',
+        mail: 'M. sales_team@orbcomm.co.kr',
+    },
+    {
+        location: '위성 지구국(Gateway Earth Station)',
+        tel: 'T. 031-642-9940',
+        address: 'A. 17416 경기도 이천시 장호원읍 장여로 229-100',
+        mail: 'M. support@orbcomm.co.kr',
+    },
 ];
 
 const containerVariants = {
@@ -35,6 +46,13 @@ const itemVariants = {
     },
 };
 
+const gradientAnimation = {
+    animate: {
+        backgroundPosition: ['0% 50%', '100% 50%'],
+        transition: { duration: 8, repeat: Infinity, ease: 'linear' },
+    },
+};
+
 export default function WorkWithUs() {
     return (
         <motion.div
@@ -44,28 +62,33 @@ export default function WorkWithUs() {
             viewport={{ once: true, amount: 0.2 }}
             variants={containerVariants}
         >
+            {/* Animated Gradient Background */}
+            <motion.div
+                className="absolute inset-0 -z-10 bg-gradient-to-r from-[#ffe5e5] via-[#776fff] to-[#ffe5e5] opacity-70"
+                style={{ backgroundSize: '300% 300%' }}
+                variants={gradientAnimation}
+            ></motion.div>
+
+            {/* Static Image Background */}
             <Image
                 alt="Background"
                 src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&crop=focalpoint&fp-y=.8&w=2830&h=1500&q=80&blend=111827&sat=-100&exp=15&blend-mode=multiply"
                 width={500}
                 height={500}
                 priority
-                className="absolute inset-0 -z-10 dark:block hidden"
+                className="absolute inset-0 -z-20 hidden dark:block"
                 unoptimized
             />
+
+            {/* Content */}
             <div className="mx-auto max-w-7xl px-6 lg:px-8">
                 <motion.div
                     className="mx-auto max-w-2xl lg:mx-0"
                     variants={itemVariants}
                 >
-                    <div className="py-2">
-                        <h2 className="text-4xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-6xl">
-                            Together,
-                        </h2>
-                        <h2 className="text-4xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-6xl">
-                            We Build Connectivity.
-                        </h2>
-                    </div>
+                    <h2 className="text-4xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-6xl">
+                        Together, We Build Connectivity.
+                    </h2>
                     <p className="mt-6 text-lg leading-8 text-gray-700 dark:text-gray-300">
                         자산과 인프라를 연결하여 가치를 확장하고, 실시간 데이터 통해 새로운 가능성을 발견하세요.
                     </p>
