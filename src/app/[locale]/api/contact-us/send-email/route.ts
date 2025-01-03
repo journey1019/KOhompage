@@ -8,12 +8,10 @@ export async function POST(req: Request) {
     try {
         const body = await req.json();
         const {
-            firstName,
-            lastName,
+            name,
             company,
             companyEmail,
             position,
-            country,
             phone,
             inquiryType,
             message,
@@ -21,12 +19,10 @@ export async function POST(req: Request) {
 
         // 필수 필드 검증
         if (
-            !firstName ||
-            !lastName ||
+            !name ||
             !company ||
             !companyEmail ||
             !position ||
-            !country ||
             !phone ||
             !inquiryType ||
             !message
@@ -39,12 +35,10 @@ export async function POST(req: Request) {
 
         // 이메일 전송
         await sendEmail({
-            firstName,
-            lastName,
+            name,
             company,
             companyEmail,
             position,
-            country,
             phone,
             inquiryType,
             message,

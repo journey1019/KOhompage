@@ -18,7 +18,7 @@ import { useParams } from 'next/navigation';
 
 const HardwarePage = () => {
     const params = useParams(); // params를 가져옴
-    const [locale, setLocale] = useState<string>('en'); // 기본값 설정
+    const [locale, setLocale] = useState<string>('ko'); // 기본값 설정
     const [data, setData] = useState(hardwareData[locale]); // 초기 데이터 설정
 
     const [searchQuery, setSearchQuery] = useState(""); // 검색어 상태

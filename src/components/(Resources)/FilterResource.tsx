@@ -56,20 +56,20 @@ const FilterResource: React.FC<FiltersResourcesProps> = ({ filters, onFilterChan
             </div>
 
             {/* Form 필터 */}
-            <div className="mb-4">
-                <h3 className="font-semibold">Form</h3>
-                {["link", "pdf", "page"].map((type) => (
-                    <label key={type} className="block">
-                        <input
-                            type="checkbox"
-                            checked={filters.form?.includes(type) || false}
-                            onChange={() => handleCheckboxChange("form", type)}
-                            className="mr-2"
-                        />
-                        {type}
-                    </label>
-                ))}
-            </div>
+            {/*<div className="mb-4">*/}
+            {/*    <h3 className="font-semibold">Form</h3>*/}
+            {/*    {["link", "pdf", "page"].map((type) => (*/}
+            {/*        <label key={type} className="block">*/}
+            {/*            <input*/}
+            {/*                type="checkbox"*/}
+            {/*                checked={filters.form?.includes(type) || false}*/}
+            {/*                onChange={() => handleCheckboxChange("form", type)}*/}
+            {/*                className="mr-2"*/}
+            {/*            />*/}
+            {/*            {type}*/}
+            {/*        </label>*/}
+            {/*    ))}*/}
+            {/*</div>*/}
 
             {/* Solutions 필터 */}
             <div className="mb-4">

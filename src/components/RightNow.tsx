@@ -4,20 +4,14 @@ import Image from 'next/image';
 import { motion } from 'framer-motion';
 
 const links = [
-    { name: 'Our Company', href: '/about' },
-    { name: 'Our Solutions', href: '/solutions/container-iot' },
-    { name: 'Our Resources', href: '/resources' },
-    { name: 'Our Contact', href: '/contact-us' },
-];
-const stats = [
-    { name: '1999년 9월 법인설립', value: 'Korea ORBCOMM' },
-    { name: 'ORBCOMM Inc.', value: '라이선스 체결' },
-    { name: '2000.02.~', value: '기간통신사업자' },
-    { name: '글로벌 저궤도 위성통신', value: '안정적·신속함' },
+    { name: 'Company', href: '/about' },
+    { name: 'Solutions', href: '/solutions/container-iot' },
+    { name: 'Resources', href: '/resources' },
+    { name: 'Contact', href: '/contact-us' },
 ];
 const offices = [
-    { location: '서울 본사(HQ)', tel: 'T. 02-3444-7311', address: 'A. 06536 서울특별시 서초구 강남대로 525 세영제이타워 15층', mail: 'M. support@orbcomm.co.kr' },
-    { location: '위성 지구국(Gateway Earth Station)', tel: 'T. 031-642-9940', address: 'A. 17416 경기도 이천시 장호원읍 장여로 229-100' }
+    { location: '서울 본사(HQ)', tel: 'T. 02-3444-7311', address: 'A. 06536 서울특별시 서초구 강남대로 525 세영제이타워 15층', mail: 'M. sales_team@orbcomm.co.kr' },
+    { location: '위성 지구국(Gateway Earth Station)', tel: 'T. 031-642-9940', address: 'A. 17416 경기도 이천시 장호원읍 장여로 229-100', mail: 'M. support@orbcomm.co.kr' },
 ];
 
 const containerVariants = {

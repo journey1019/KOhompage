@@ -63,7 +63,7 @@ export function Footer({locale}: {locale: string}) {
                         <div className="flex flex-col max-w-md mt-4 text-gray-500 dark:text-gray-400">
                             <span>서울특별시 서초구 강남대로 525 세영제이타워 15층 [06536]</span>
                             <span>02-3444-7311</span>
-                            <span>sales@orbcomm.co.kr</span>
+                            <span>sales_team@orbcomm.co.kr</span>
                         </div>
 
                         {/*<div className="mt-5">*/}
@@ -86,7 +86,7 @@ export function Footer({locale}: {locale: string}) {
                     {/* Right Section */}
                     <div>
                         <div className="flex flex-wrap w-full -mt-2 -ml-3 lg:ml-0">
-                            <span className="w-full px-4 py-2 text-gray-800 rounded-md">Solutions</span>
+                            <span className="w-full px-4 py-2 font-bold text-gray-800 rounded-md">Solutions</span>
                             {solutions.map((item, index) => (
                                 <Link
                                     key={index}
@@ -100,6 +100,7 @@ export function Footer({locale}: {locale: string}) {
                     </div>
                     <div>
                         <div className="flex flex-wrap w-full -mt-2 -ml-3 lg:ml-0">
+                            <Link href={`/${locale}/hardware`} className="w-full px-4 py-2 font-bold text-gray-800 rounded-md"><span>Hardware</span></Link>
                             {legal.map((item, index) => (
                                 <Link
                                     key={index}
@@ -113,7 +114,7 @@ export function Footer({locale}: {locale: string}) {
                     </div>
                     <div>
                         <div className="flex flex-wrap w-full -mt-2 -ml-3 lg:ml-0">
-                            <span className="w-full px-4 py-2 text-gray-800 rounded-md">Company</span>
+                            <span className="w-full px-4 py-2 font-bold text-gray-800 rounded-md">Company</span>
                             {etc.map((item, index) => (
                                 <Link
                                     key={index}

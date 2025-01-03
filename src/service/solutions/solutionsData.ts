@@ -549,7 +549,7 @@ const solutionsData: Record<string, Record<string, SolutionData>> = {
             kind: [
                 {
                     title: "OGx : next generation of satellite",
-                    image: "/images/solutions/satellite/OrbcommInmarsat.webp"
+                    image: "/images/solutions/satellite/OrbcommInmarsat.png"
                 },
                 {
                     title: "ORBCOMM : Low Earth Orbit",
