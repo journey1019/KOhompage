@@ -15,8 +15,10 @@ export function Footer({locale}: {locale: string}) {
     ];
 
     const legal = [
-        { title: "Hardware", href: "hardware" },
-        // { title: "Case Studies", href: "case-studies" },
+        { title: "Device", href: "hardware" },
+        { title: "Module", href: "hardware" },
+        { title: "Antenna", href: "hardware" },
+        { title: "Sensor", href: "hardware" },
     ];
 
     const etc = [
