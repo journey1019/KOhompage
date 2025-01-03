@@ -8,8 +8,6 @@ interface CtaData{
     title: string;
     subTitle: string;
     button: string;
-    solutionButton: string;
-    solutionUrl: string;
 }
 interface FaqData{
     question: string;
@@ -71,8 +69,6 @@ const starlinkData: Record<string, StarlinkData> = {
             title: "HIGH-SPEED INTERNET AROUND THE WORLD",
             subTitle: "It provides a reliable Internet connection anytime, anywhere.",
             button: "Get a tailored quote",
-            solutionButton: "Give It a Try!",
-            solutionUrl: "https://www.starlink.com/specifications?spec=1"
         },
         character: [
             {
@@ -138,8 +134,6 @@ const starlinkData: Record<string, StarlinkData> = {
             title: "전 세계 고속 인터넷",
             subTitle: "언제 어디에서나 안정적인 인터넷 연결을 제공합니다.",
             button: "맞춤형 견적을 받아보세요",
-            solutionButton: "솔루션을 경험해보세요",
-            solutionUrl: "https://www.starlink.com/specifications?spec=1"
         },
         character: [
             {
