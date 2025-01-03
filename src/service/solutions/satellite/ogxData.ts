@@ -33,7 +33,7 @@ const maritimeData: Record<string, MaritimeData> = {
     "en": {
         imageIntro: "Next-generation satellite IoT services with innovative network capabilities and flexible prices",
         imageMain: "Marine Solutions for the Smart, Connected Supply Chain",
-        imageUrl: "/images/header/Port.jpg",
+        imageUrl: "/images/header/OGx.webp",
         imageSub: "",
         introTitle: "Reefer Container Monitoring and Control System",
         introLetter: "KOREA ORBCOMM's ReeferContainer, selected by top three shipping companies worldwide, is currently operating with more than 500,000 products installed in cold-refrigerated containers, providing container carriers, multimodal carriers, shippers and other users with real-time container control services across the land and sea.",
@@ -88,7 +88,7 @@ const maritimeData: Record<string, MaritimeData> = {
     "ko": {
         imageIntro: "혁신적인 네트워크 기능과 유연한 가격의 차세대 위성 IoT 서비스",
         imageMain: "OGx: Next Generation Of Satellite ",
-        imageUrl: "/images/header/ogx.webp",
+        imageUrl: "/images/header/OGx.webp",
         imageSub: "",
         introTitle: "차세대 위성",
         introLetter: "OGx 위성 서비스는 Inmarsat(인말셋) 4세대 및 6세대 위성의 L-Band 대역을 이용하여 전세계에 위성통신을 제공합니다. Global L-Band 위성서비스는 우천 등 기상조건의 영향을 받지 않는 네트워크 가용성으로 고객의 자산을 원격 모니터링을 위한 신뢰성있는 통신망을 제공합니다.",
