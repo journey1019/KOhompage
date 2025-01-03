@@ -66,7 +66,6 @@ export default async function AISPage({params}: PageProps){
                 intro={data.imageIntro}
                 title={data.imageMain}
                 subtitle={data.imageSub}
-                textPosition="center"
             />
             <Greet {...data} />
             {/*<Greet*/}

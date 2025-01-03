@@ -54,7 +54,6 @@ const NoticePage = () => {
                 intro=""
                 title="Notice"
                 subtitle="공지사항 및 이용약관 등 정보를 전해드립니다."
-                textPosition="center"
             />
             <SectionTitle preTitle="FAQ" title="공지사항">
                 공지사항 및 이용약관에 관한 게시물입니다.

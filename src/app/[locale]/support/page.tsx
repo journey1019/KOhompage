@@ -16,7 +16,6 @@ export default function SupportPage() {
                 intro=""
                 title="약관"
                 subtitle="법적고지"
-                textPosition="center"
             />
             <Container>
                 <div className="container mx-auto my-8 p-4 text-gray-800 space-y-8">

@@ -1,53 +1,96 @@
 'use client';
 
-import React from "react";
-import { useState } from 'react';
+import React, { useState, useRef } from "react";
 import Image from 'next/image';
+import { motion, useAnimation } from 'framer-motion'; // framer-motion 라이브러리 사용
+import { useInView } from "react-intersection-observer";
 
 interface FAQItem {
     question: string;
     answer: string;
 }
 interface FAQProps {
+    faqImage: string;
     items: FAQItem[];
 }
 
-const FAQ:React.FC<FAQProps> = ({ items }) => {
-    const [openIndex, setOpenIndex] = useState<number | null>(null); // 아코디언을 열기 위한 상태 관리
+const FAQ: React.FC<FAQProps> = ({ faqImage, items }) => {
+    const [openIndex, setOpenIndex] = useState<number | null>(null);
 
     const toggleAccordion = (index: number) => {
         setOpenIndex(openIndex === index ? null : index);
     };
 
+    // Intersection Observer 설정
+    const controls = useAnimation();
+    const { ref, inView } = useInView({
+        threshold: 0.2, // 컴포넌트가 20% 보일 때 트리거
+        triggerOnce: true, // 한 번만 실행
+    });
+
+    if (inView) {
+        controls.start("visible");
+    }
+
     return (
-        <section className="bg-white dark:bg-gray-900">
+        <section className="bg-white dark:bg-gray-900" ref={ref}>
             <div className="py-24">
                 <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-                    <div className="flex flex-col justify-center items-center gap-x-16 gap-y-5 xl:gap-28 lg:flex-row lg:justify-between max-lg:max-w-2xl mx-auto max-w-full">
-                        <div className="w-full lg:w-1/2">
+                    <motion.div
+                        className="flex flex-col justify-center items-center gap-x-16 gap-y-5 xl:gap-28 lg:flex-row lg:justify-between max-lg:max-w-2xl mx-auto max-w-full"
+                        initial="hidden"
+                        animate={controls}
+                        variants={{
+                            hidden: { opacity: 0, y: 50 },
+                            visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: "easeOut" } },
+                        }}
+                    >
+                        {/* 이미지 */}
+                        <motion.div
+                            className="w-full lg:w-1/2"
+                            initial={{ opacity: 0, scale: 0.9 }}
+                            animate={controls}
+                            variants={{
+                                hidden: { opacity: 0, scale: 0.9 },
+                                visible: { opacity: 1, scale: 1, transition: { duration: 0.8, ease: "easeOut" } },
+                            }}
+                        >
                             <Image
-                                src="https://images.pexels.com/photos/5428824/pexels-photo-5428824.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
-                                alt="FAQ tailwind section"
-                                width={400} // 너비를 줄임
-                                height={240} // 높이를 줄임
+                                src={faqImage}
+                                alt="FAQ section"
+                                width={400}
+                                height={240}
                                 unoptimized
-                                className="w-full max-w-md rounded-xl object-cover mx-auto" // 크기 제한 및 중앙 정렬
+                                className="w-full max-w-md rounded-xl object-cover mx-auto"
                             />
-                        </div>
+                        </motion.div>
+
+                        {/* FAQ */}
                         <div className="w-full lg:w-1/2">
                             <div className="lg:max-w-xl">
                                 <div className="accordion-group">
                                     {items.map((item, index) => (
-                                        <div
+                                        <motion.div
                                             key={index}
                                             className={`accordion border border-solid p-4 rounded-xl transition duration-500 ${openIndex === index ? 'bg-indigo-50 border-indigo-600 dark:bg-indigo-900' : 'border-gray-300 dark:border-gray-700'} mb-8 lg:p-4`}
+                                            initial="hidden"
+                                            animate={controls}
+                                            variants={{
+                                                hidden: { opacity: 0, y: 20 },
+                                                visible: { opacity: 1, y: 0, transition: { delay: index * 0.1 } },
+                                            }}
                                         >
                                             <button
                                                 className="accordion-toggle group inline-flex items-center justify-between text-left text-lg font-normal leading-8 w-full transition duration-500 hover:text-indigo-600 dark:text-gray-200 dark:hover:text-indigo-300"
                                                 onClick={() => toggleAccordion(index)}
-                                                aria-controls="basic-collapse-one"
+                                                aria-controls={`collapse-${index}`}
                                             >
-                                                <h5>{item.question}</h5>
+                                                <motion.h5
+                                                    whileHover={{ scale: 1.05 }}
+                                                    className="transition-transform"
+                                                >
+                                                    {item.question}
+                                                </motion.h5>
                                                 {openIndex === index ? (
                                                     <svg
                                                         className="w-6 h-6 text-gray-900 dark:text-gray-200"
@@ -81,26 +124,29 @@ const FAQ:React.FC<FAQProps> = ({ items }) => {
                                                 )}
                                             </button>
                                             {openIndex === index && (
-                                                <div
-                                                    id="basic-collapse-one"
-                                                    className="accordion-content mt-4 transition-all duration-500"
+                                                <motion.div
+                                                    id={`collapse-${index}`}
+                                                    className="accordion-content mt-4"
+                                                    initial={{ height: 0, opacity: 0 }}
+                                                    animate={{ height: "auto", opacity: 1 }}
+                                                    exit={{ height: 0, opacity: 0 }}
+                                                    transition={{ duration: 0.8 }}
                                                 >
                                                     <p className="text-base text-gray-900 dark:text-gray-200 font-normal leading-6">
                                                         {item.answer}
                                                     </p>
-                                                </div>
+                                                </motion.div>
                                             )}
-                                        </div>
+                                        </motion.div>
                                     ))}
-
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </motion.div>
                 </div>
             </div>
         </section>
     );
-}
+};
 
 export default FAQ;

@@ -29,7 +29,6 @@ export default function OGxPage({params}: PageProps) {
                 intro={data.imageIntro}
                 title={data.imageMain}
                 subtitle={data.imageSub}
-                textPosition="center"
             />
 
             <SectionTitle

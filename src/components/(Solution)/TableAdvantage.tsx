@@ -1,5 +1,8 @@
+'use client';
+
 import Image from 'next/image';
 import React from 'react';
+import { motion } from 'framer-motion';
 
 interface FeaturesData {
     messageSize: string;
@@ -10,14 +13,40 @@ interface FeaturesProps {
     items: FeaturesData[];
 }
 
-
 const TableAdvantage: React.FC<FeaturesProps> = ({ items }) => {
+    // 애니메이션 Variants 설정
+    const leftVariants = {
+        hidden: { opacity: 0, x: -50 }, // 왼쪽에서 대기
+        visible: {
+            opacity: 1,
+            x: 0, // 원래 위치로 이동
+            transition: { duration: 0.8, ease: 'easeOut' },
+        },
+    };
+
+    const rightVariants = {
+        hidden: { opacity: 0, x: 50 }, // 오른쪽에서 대기
+        visible: {
+            opacity: 1,
+            x: 0, // 원래 위치로 이동
+            transition: { duration: 0.8, ease: 'easeOut' },
+        },
+    };
+
     return (
         <section className="bg-white dark:bg-gray-900 mx-auto max-w-7xl p-6 lg:p-8 lg:pb-40">
             <h1 className="text-center text-3xl font-bold pb-6">OGx 위성서비스 특장점</h1>
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+            <motion.div
+                className="grid grid-cols-1 lg:grid-cols-2 gap-8"
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true, amount: 0.2 }} // 화면에 20% 이상 보이면 애니메이션 실행
+            >
                 {/* Left Side: Icon and Text */}
-                <div className="flex flex-col items-center lg:items-start">
+                <motion.div
+                    className="flex flex-col items-center lg:items-start"
+                    variants={leftVariants}
+                >
                     {/* Icon */}
                     <div className="mb-4">
                         <Image
@@ -25,7 +54,8 @@ const TableAdvantage: React.FC<FeaturesProps> = ({ items }) => {
                             alt="Icon Description"
                             width={100}
                             height={100}
-                            className="object-contain" unoptimized
+                            className="object-contain"
+                            unoptimized
                         />
                     </div>
                     {/* Text */}
@@ -35,10 +65,13 @@ const TableAdvantage: React.FC<FeaturesProps> = ({ items }) => {
                     <p className="text-sm text-gray-600 dark:text-gray-300 mt-2">
                         이전 세대의 위성보다 최대 40배 빠른 메시지 전송 속도로 향상된 위성 IoT 서비스를 지원합니다.
                     </p>
-                </div>
+                </motion.div>
 
                 {/* Right Side: Table */}
-                <div className="overflow-x-auto">
+                <motion.div
+                    className="overflow-x-auto"
+                    variants={rightVariants}
+                >
                     <table className="table-auto w-full h-full border-collapse border border-gray-300 dark:border-gray-700">
                         <thead>
                         <tr className="bg-gray-100 dark:bg-gray-800">
@@ -76,11 +109,10 @@ const TableAdvantage: React.FC<FeaturesProps> = ({ items }) => {
                         ))}
                         </tbody>
                     </table>
-                </div>
-            </div>
+                </motion.div>
+            </motion.div>
         </section>
     );
-}
-
+};
 
 export default TableAdvantage;

@@ -67,7 +67,6 @@ export default async function ContainerIoT({ params }: PageProps){
                 intro={data.imageIntro}
                 title={data.imageMain}
                 subtitle={data.imageSub}
-                textPosition="center"
             />
             <Greet {...data} />
             {/*<Greet*/}
@@ -99,6 +98,12 @@ export default async function ContainerIoT({ params }: PageProps){
             {/*<References locale={locale} tag="container-iot" />*/}
 
             {/*<TagFilterBlog initialTags={chips}/>*/}
+
+            <SectionTitle
+                preTitle="FAQ"
+                title="자주 묻는 질문"
+            />
+            <FAQ faqImage={data.faqImage || ''} items={data.faq || []}/>
 
             <SectionTitle
                 preTitle="RESOURCES"

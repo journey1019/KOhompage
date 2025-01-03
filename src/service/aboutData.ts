@@ -1,3 +1,7 @@
+interface TimelineData {
+    year: number;
+    events: string[];
+}
 interface SectionData {
     image: string;
     title: string;
@@ -31,9 +35,10 @@ interface MaritimeData{
     ctas: CtaData;
     value: ValueData[];
     feature: SectionData[];
+    timeline: TimelineData[];
 }
 
-const maritimeData: Record<string, MaritimeData> = {
+const aboutData: Record<string, MaritimeData> = {
     "en": {
         imageIntro: "About",
         imageUrl: "/images/header/Company.jpg",
@@ -118,6 +123,75 @@ const maritimeData: Record<string, MaritimeData> = {
             //     description: 'Korea ORBCOMM의 AIS 서비스는 60만척 이상의 선박에서 일일 천만개의 AIS 메시지를 수집/처리합니다.',
             //     reverse: true, // 이미지와 텍스트 위치 반전
             // },
+        ],
+        timeline: [
+            {
+                year: 1999,
+                events: [
+                    "오브컴글로벌과 위성서비스 라이선스 계약",
+                    "코리아오브컴㈜ 법인 설립",
+                ],
+            },
+            {
+                year: 2000,
+                events: [
+                    "정통부(현 과학기술정보통신부) <기간통신사업면허> 취득, 허가번호 제 38호",
+                    "위성관문지구국(GES) 설비 준공 (경기도 이천시 장호원읍 장여로 229-100)",
+                    "정통부(현 과학기술정보통신부)로부터 <지구국 주파수허가> 승인 - 전국 기간통신망 사업",
+                ],
+            },
+            {
+                year: 2004,
+                events: [
+                    "선박안전경보장치 SSAS 서비스 공급"
+                ],
+            },
+            {
+                year: 2009,
+                events: [
+                    "장거리선박위치추적장치 LRIT 서비스 공급",
+                    "현대건설기계와 글로벌자산추적솔루션 공급계약 체결"
+                ],
+            },
+            {
+                year: 2016,
+                events: [
+                    "해양수산부, 지능형 해양수산재난정보체계 구축사업의 위성기반 선박정보 서비스 공급",
+                    "위성통신서비스 국경간 공급 협정 승인(미래창조과학부, 현 과학기술정보통신부)"
+                ],
+            },
+            {
+                year: 2017,
+                events: [
+                    "정지궤도 위성통신 서비스 공급 별정통신사업자 등록, 등록번호 제 1-01-17-0017호 "
+                ],
+            },
+            {
+                year: 2018,
+                events: [
+                    "해양수산부 TAC 규제완화 시범사업 추진. ",
+                    "국제 환경규제 대비 저감장치모니터링솔루션 공급"
+                ],
+            },
+            {
+                year: 2022,
+                events: [
+                    "주요 정부기관과 실시간 선박정보 기반 의심선박 탐지 솔루션 공급계약 체결",
+                    "고려해운, 주요선사 및 화주에 컨테이너 IoT 솔루션 공급"
+                ],
+            },
+            {
+                year: 2023,
+                events: [
+                    "수자원공사 물관리시스템, 해양 원격관측을 위한 위성 IoT 솔루션 공급"
+                ],
+            },
+            {
+                year: 2024,
+                events: [
+                    "저궤도 위성서비스를 위한 GS site hosting 및 운영서비스 계약 체결"
+                ],
+            },
         ]
     },
 
@@ -205,7 +279,76 @@ const maritimeData: Record<string, MaritimeData> = {
             //     description: 'Korea ORBCOMM의 AIS 서비스는 60만척 이상의 선박에서 일일 천만개의 AIS 메시지를 수집/처리합니다.',
             //     reverse: true, // 이미지와 텍스트 위치 반전
             // },
+        ],
+        timeline: [
+            {
+                year: 1999,
+                events: [
+                    "오브컴글로벌과 위성서비스 라이선스 계약",
+                    "코리아오브컴㈜ 법인 설립",
+                ],
+            },
+            {
+                year: 2000,
+                events: [
+                    "정통부(현 과학기술정보통신부) <기간통신사업면허> 취득, 허가번호 제 38호",
+                    "위성관문지구국(GES) 설비 준공 (경기도 이천시 장호원읍 장여로 229-100)",
+                    "정통부(현 과학기술정보통신부)로부터 <지구국 주파수허가> 승인 - 전국 기간통신망 사업",
+                ],
+            },
+            {
+                year: 2004,
+                events: [
+                    "선박안전경보장치 SSAS 서비스 공급"
+                ],
+            },
+            {
+                year: 2009,
+                events: [
+                    "장거리선박위치추적장치 LRIT 서비스 공급",
+                    "현대건설기계와 글로벌자산추적솔루션 공급계약 체결"
+                ],
+            },
+            {
+                year: 2016,
+                events: [
+                    "해양수산부, 지능형 해양수산재난정보체계 구축사업의 위성기반 선박정보 서비스 공급",
+                    "위성통신서비스 국경간 공급 협정 승인(미래창조과학부, 현 과학기술정보통신부)"
+                ],
+            },
+            {
+                year: 2017,
+                events: [
+                    "정지궤도 위성통신 서비스 공급 별정통신사업자 등록, 등록번호 제 1-01-17-0017호 "
+                ],
+            },
+            {
+                year: 2018,
+                events: [
+                    "해양수산부 TAC 규제완화 시범사업 추진. ",
+                    "국제 환경규제 대비 저감장치모니터링솔루션 공급"
+                ],
+            },
+            {
+                year: 2022,
+                events: [
+                    "주요 정부기관과 실시간 선박정보 기반 의심선박 탐지 솔루션 공급계약 체결",
+                    "고려해운, 주요선사 및 화주에 컨테이너 IoT 솔루션 공급"
+                ],
+            },
+            {
+                year: 2023,
+                events: [
+                    "수자원공사 물관리시스템, 해양 원격관측을 위한 위성 IoT 솔루션 공급"
+                ],
+            },
+            {
+                year: 2024,
+                events: [
+                    "저궤도 위성서비스를 위한 GS site hosting 및 운영서비스 계약 체결"
+                ],
+            },
         ]
     }
 }
-export default maritimeData;
+export default aboutData;

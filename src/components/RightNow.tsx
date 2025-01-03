@@ -1,12 +1,13 @@
-// pages/index.tsx
+'use client';
 
 import Image from 'next/image';
+import { motion } from 'framer-motion';
 
 const links = [
-    { name: 'Out Company', href: '/about' },
+    { name: 'Our Company', href: '/about' },
     { name: 'Our Solutions', href: '/solutions/container-iot' },
     { name: 'Our Resources', href: '/resources' },
-    { name: 'Our Connect', href: '/contact-us' },
+    { name: 'Our Contact', href: '/contact-us' },
 ];
 const stats = [
     { name: '1999년 9월 법인설립', value: 'Korea ORBCOMM' },
@@ -15,13 +16,40 @@ const stats = [
     { name: '글로벌 저궤도 위성통신', value: '안정적·신속함' },
 ];
 const offices = [
-    { location: '서울 본사(HQ)', tel: 'T. 02-3444-7311', address: 'A. 06536 서울특별시 서초구 강남대로 525 세영제이타워 15층', mail: 'M. support@orbcomm.co.kr'},
-    { location: '위성 지구국(Gateway Earth Station)', tel: 'T. 031-642-9940', address: 'A. 17416 경기도 이천시 장호원읍 장여로 229-100'}
-]
+    { location: '서울 본사(HQ)', tel: 'T. 02-3444-7311', address: 'A. 06536 서울특별시 서초구 강남대로 525 세영제이타워 15층', mail: 'M. support@orbcomm.co.kr' },
+    { location: '위성 지구국(Gateway Earth Station)', tel: 'T. 031-642-9940', address: 'A. 17416 경기도 이천시 장호원읍 장여로 229-100' }
+];
+
+const containerVariants = {
+    hidden: { opacity: 0, y: 50 },
+    visible: {
+        opacity: 1,
+        y: 0,
+        transition: {
+            duration: 0.8,
+            staggerChildren: 0.3,
+        },
+    },
+};
+
+const itemVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: {
+        opacity: 1,
+        y: 0,
+        transition: { duration: 0.6 },
+    },
+};
 
 export default function WorkWithUs() {
     return (
-        <div className="relative isolate overflow-hidden bg-gray-100 dark:bg-gray-900 py-24 sm:py-32">
+        <motion.div
+            className="relative isolate overflow-hidden bg-gray-100 dark:bg-gray-900 py-24 sm:py-32"
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.2 }}
+            variants={containerVariants}
+        >
             <Image
                 alt="Background"
                 src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&crop=focalpoint&fp-y=.8&w=2830&h=1500&q=80&blend=111827&sat=-100&exp=15&blend-mode=multiply"
@@ -31,65 +59,59 @@ export default function WorkWithUs() {
                 className="absolute inset-0 -z-10 dark:block hidden"
                 unoptimized
             />
-            <div
-                aria-hidden="true"
-                className="hidden sm:absolute sm:-top-10 sm:right-1/2 sm:-z-10 sm:mr-10 sm:block sm:transform-gpu sm:blur-3xl dark:from-[#ff4694] dark:to-[#776fff]"
-            >
-                <div
-                    style={{
-                        clipPath:
-                            'polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)',
-                    }}
-                    className="aspect-[1097/845] w-[68.5625rem] bg-gradient-to-tr from-[#ff4694] to-[#776fff] opacity-20 dark:from-[#ff4694] dark:to-[#776fff]"
-                />
-            </div>
-            <div
-                aria-hidden="true"
-                className="absolute -top-52 left-1/2 -z-10 -translate-x-1/2 transform-gpu blur-3xl dark:from-[#ff4694] dark:to-[#776fff] sm:top-[-28rem] sm:ml-16 sm:translate-x-0 sm:transform-gpu"
-            >
-                <div
-                    style={{
-                        clipPath:
-                            'polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)',
-                    }}
-                    className="aspect-[1097/845] w-[68.5625rem] bg-gradient-to-tr from-[#ff4694] to-[#776fff] opacity-20 dark:from-[#ff4694] dark:to-[#776fff]"
-                />
-            </div>
             <div className="mx-auto max-w-7xl px-6 lg:px-8">
-                <div className="mx-auto max-w-2xl lg:mx-0">
-                    <h2 className="text-4xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-6xl">Work with us</h2>
+                <motion.div
+                    className="mx-auto max-w-2xl lg:mx-0"
+                    variants={itemVariants}
+                >
+                    <div className="py-2">
+                        <h2 className="text-4xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-6xl">
+                            Together,
+                        </h2>
+                        <h2 className="text-4xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-6xl">
+                            We Build Connectivity.
+                        </h2>
+                    </div>
                     <p className="mt-6 text-lg leading-8 text-gray-700 dark:text-gray-300">
-                        앞으로도 솔루션의 확장과 데이터의 정확도를 높이는데 주력하며, 물류산업 전반의 관계자분들께 신뢰할 수 있는 공급망 정보를 제공하고자 합니다.
+                        자산과 인프라를 연결하여 가치를 확장하고, 실시간 데이터 통해 새로운 가능성을 발견하세요.
                     </p>
-                </div>
-                <div className="mx-auto mt-10 max-w-2xl lg:mx-0 lg:max-w-none">
+                </motion.div>
+                <motion.div
+                    className="mx-auto mt-10 max-w-2xl lg:mx-0 lg:max-w-none"
+                    variants={itemVariants}
+                >
                     <div className="grid grid-cols-1 gap-x-8 gap-y-6 text-base font-semibold leading-7 text-gray-900 dark:text-white sm:grid-cols-2 md:flex lg:gap-x-10">
                         {links.map((link) => (
-                            <a key={link.name} href={link.href}>
+                            <motion.a
+                                key={link.name}
+                                href={link.href}
+                                variants={itemVariants}
+                                whileHover={{ scale: 1.1 }}
+                                className="hover:text-red-600"
+                            >
                                 {link.name} <span aria-hidden="true">&rarr;</span>
-                            </a>
+                            </motion.a>
                         ))}
                     </div>
-                    <dl className="mt-16 grid grid-cols-1 gap-8 sm:mt-20 sm:grid-cols-2 lg:grid-cols-4">
-                        {stats.map((stat) => (
-                            <div key={stat.name} className="flex flex-col-reverse">
-                                <dt className="text-base leading-7 text-gray-700 dark:text-gray-300">{stat.name}</dt>
-                                <dd className="text-2xl font-bold leading-9 tracking-tight text-gray-900 dark:text-white">{stat.value}</dd>
-                            </div>
-                        ))}
-                    </dl>
-                    <dl className='mt-16 grid grid-cols-1 gap-8 sm:mt-20 sm:grid-cols-1 lg:grid-cols-2'>
+                    <motion.dl
+                        className="mt-16 grid grid-cols-1 gap-8 sm:mt-20 sm:grid-cols-1 lg:grid-cols-2 items-start"
+                        variants={containerVariants}
+                    >
                         {offices.map((office) => (
-                            <div key={office.location} className="flex flex-col-reverse border-l-2 border-gray-300 dark:border-amber-50 pl-4">
+                            <motion.div
+                                key={office.location}
+                                className="flex flex-col-reverse border-l-2 border-gray-300 dark:border-amber-50 pl-4"
+                                variants={itemVariants}
+                            >
                                 <dt className="text-base leading-7 text-gray-700 dark:text-gray-300">{office.mail}</dt>
                                 <dt className="text-base leading-7 text-gray-700 dark:text-gray-300">{office.tel}</dt>
                                 <dt className="text-base leading-7 text-gray-700 dark:text-gray-300">{office.address}</dt>
                                 <dd className="text-2xl font-bold leading-9 tracking-tight text-gray-900 dark:text-white">{office.location}</dd>
-                            </div>
+                            </motion.div>
                         ))}
-                    </dl>
-                </div>
+                    </motion.dl>
+                </motion.div>
             </div>
-        </div>
+        </motion.div>
     );
 }

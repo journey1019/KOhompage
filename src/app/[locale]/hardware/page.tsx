@@ -55,7 +55,6 @@ const HardwarePage = () => {
                 intro={data.pageTopImageIntro}
                 title={data.pageTopImageTitle}
                 subtitle={data.pageTopImageSubtitle}
-                textPosition="center"
             />
 
             <div className="mx-auto max-w-7xl px-6 py-12 lg:px-8">

@@ -86,7 +86,6 @@ export default function ProductGrid() {
                 intro="KOREAORBCOMM FOR FINANCIAL SERVICES"
                 title="글로벌 통신으로 경험을 향상시키세요"
                 subtitle="이 섹션은 배경 이미지를 고정시키고, 스크롤할 때 안쪽 콘텐츠는 이동하는 구조입니다."
-                textPosition="center"
             />
             <div className="flex relative w-full flex-row ">
                 <h2 className="text-2xl sm:text-3xl lg:text-5xl xl:text-6xl text-white font-bold mt-2 text-center">

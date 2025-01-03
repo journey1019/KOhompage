@@ -1,4 +1,3 @@
-
 'use client';
 import React, { useState } from "react";
 import Image from 'next/image';
@@ -39,20 +38,20 @@ const CarouselSolutionBlock: React.FC<CarouselProps> = ({ items }) => {
                 {items.map((item, index) => (
                     <div
                         key={index}
-                        className="flex flex-col items-center justify-between w-full h-screen h-[70vh] p-4 md:p-8 flex-shrink-0"
+                        className="flex flex-col items-center w-full h-screen h-[50vh] p-4 md:p-8 flex-shrink-0"
                     >
                         {/* Top Section: Text */}
-                        <div className="text-start w-full py-4">
-                            <h1 className="text-3xl md:text-4xl font-bold mb-4 text-gray-800">
+                        <div className="text-start w-full pb-10">
+                            <h1 className="text-3xl md:text-4xl font-bold mb-0 text-gray-800"> {/* mb-4 제거 */}
                                 {item.title}
                             </h1>
-                            <p className="md:max-w-5xl text-md md:text-xl text-gray-500">
+                            <p className="md:max-w-5xl text-md md:text-xl text-gray-500 mt-0"> {/* mt-0 추가 */}
                                 {item.subtitle}
                             </p>
                         </div>
 
                         {/* Bottom Section: Images */}
-                        <div className="w-full px-16 md:py-4 md:px-16 grid grid-cols-1 md:grid-cols-3 gap-4">
+                        <div className="w-full px-16 md:py-0 grid grid-cols-1 md:grid-cols-3 gap-4"> {/* py-4 제거 */}
                             {/* 이미지 1 */}
                             <section className="block">
                                 <div
@@ -132,7 +131,7 @@ const CarouselSolutionBlock: React.FC<CarouselProps> = ({ items }) => {
             </button>
 
             {/* Carousel Indicators */}
-            <div className="absolute bottom-4 left-0 w-full flex items-center justify-center gap-2">
+            <div className="absolute bottom-72 left-0 w-full flex items-center justify-center gap-2 px-16">
                 {items.map((_, index) => (
                     <button
                         key={index}

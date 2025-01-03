@@ -69,7 +69,6 @@ export default async function GlobalIoT({params}: PageProps){
                 intro={data.imageIntro}
                 title={data.imageMain}
                 subtitle={data.imageSub}
-                textPosition="center"
             />
             <Greet {...data} />
             {/*<Greet*/}

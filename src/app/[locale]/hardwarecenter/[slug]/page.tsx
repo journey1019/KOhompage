@@ -39,7 +39,6 @@ export default function HardwareDetail({ params }: PageProps) {
                 intro=""
                 title={slug.toUpperCase()}
                 subtitle="Simple, Low-Cost, Reliable"
-                textPosition="center"
                 opacity={50}
             />
             {/*<div className="mx-auto max-w-7xl px-6 py-16">*/}

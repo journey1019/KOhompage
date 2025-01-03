@@ -41,7 +41,6 @@ export default async function MaritimePage({params}: PageProps) {
                 subtitle={data.imageSub}
                 solutionButton={data.solutionButton}
                 solutionUrl={data.solutionUrl}
-                textPosition="center"
             />
             <Container>
 
@@ -77,9 +76,6 @@ export default async function MaritimePage({params}: PageProps) {
                 <Faq items={data.faqs || []} />
 
 
-                <CtaSolution items={data.ctas}/>
-
-
                 <SectionTitle
                     preTitle="RESOURCES"
                     title={`${pageName} Resource Lists`}
@@ -87,6 +83,8 @@ export default async function MaritimePage({params}: PageProps) {
                 </SectionTitle>
                 <FilterResourceCarouselBySolutionTags keywords={filteredKeyword} />
 
+
+                <CtaSolution items={data.ctas}/>
             </Container>
         </section>
     )

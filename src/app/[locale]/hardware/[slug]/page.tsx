@@ -43,7 +43,6 @@ const HardwareDetailPage = () => {
                 intro={hardware.title}
                 title={hardware.subTitle}
                 subtitle=""
-                textPosition="center"
             />
 
             <div className="mx-auto max-w-7xl px-6 py-12">

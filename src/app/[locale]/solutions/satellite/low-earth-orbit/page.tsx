@@ -29,7 +29,6 @@ export default function LowEarthOrbitPage({params}: PageProps) {
                 intro={data.imageIntro}
                 title={data.imageMain}
                 subtitle={data.imageSub}
-                textPosition="center"
             />
 
             <SectionTitle

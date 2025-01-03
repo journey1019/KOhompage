@@ -32,6 +32,7 @@ export function Footer({locale}: {locale: string}) {
             <Container>
                 <div
                     className="grid max-w-screen-xl grid-cols-1 gap-10 pt-10 mx-auto mt-5 border-t border-gray-100 dark:border-trueGray-700 lg:grid-cols-5">
+                    {/* Left Section */}
                     <div className="lg:col-span-2">
                         <div>
                             {' '}
@@ -82,6 +83,7 @@ export function Footer({locale}: {locale: string}) {
                         {/*</div>*/}
                     </div>
 
+                    {/* Right Section */}
                     <div>
                         <div className="flex flex-wrap w-full -mt-2 -ml-3 lg:ml-0">
                             <span className="w-full px-4 py-2 text-gray-800 rounded-md">Solutions</span>

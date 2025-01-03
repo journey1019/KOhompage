@@ -1,36 +1,70 @@
+'use client';
+
 import React from "react";
 import { Container } from "@/components/Container";
+import { motion } from "framer-motion";
 
 interface CtaProps {
-    items: { imageUrl: string; title: string; subTitle: string; button: string; solutionButton?: string; solutionUrl?: string; };
+    items: {
+        imageUrl: string;
+        title: string;
+        subTitle: string;
+        button: string;
+        solutionButton?: string;
+        solutionUrl?: string;
+    };
 }
+
+// Animation Variants
+const containerVariants = {
+    hidden: { opacity: 0, scale: 0.95 },
+    visible: { opacity: 1, scale: 1, transition: { duration: 0.8, ease: "easeOut" } },
+};
+
+const textVariants = {
+    hidden: { opacity: 0, y: 50 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: "easeOut" } },
+};
+
+const buttonVariants = {
+    hidden: { opacity: 0, scale: 0.9 },
+    visible: { opacity: 1, scale: 1, transition: { duration: 0.6, ease: "easeOut", delay: 0.2 } },
+};
 
 export const CtaSolution: React.FC<CtaProps> = ({ items }) => {
     return (
         <Container>
-            <div
+            <motion.div
                 className="relative flex flex-wrap items-center justify-between w-full max-w-7xl gap-5 mx-auto text-white p-7 lg:p-12 lg:flex-nowrap rounded-xl"
                 style={{
-                    backgroundImage: `url(${items.imageUrl})`, // Fixed closing brace
+                    backgroundImage: `url(${items.imageUrl})`,
                     backgroundSize: "cover",
                     backgroundPosition: "center",
                 }}
+                variants={containerVariants}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true, amount: 0.3 }}
             >
                 {/* Overlay */}
                 <div className="absolute inset-0 bg-gray-900 opacity-50 rounded-xl"></div>
 
                 {/* Content */}
-                <div className="relative flex-grow text-center lg:text-left">
-                    <h2 className="text-2xl font-medium lg:text-3xl">
-                        {items.title}
-                    </h2>
+                <motion.div
+                    className="relative flex-grow text-center lg:text-left"
+                    variants={textVariants}
+                >
+                    <h2 className="text-2xl font-medium lg:text-3xl">{items.title}</h2>
                     <p className="mt-2 font-medium text-white text-opacity-90 lg:text-xl">
                         {items.subTitle}
                     </p>
-                </div>
+                </motion.div>
 
                 {/* Button 1 */}
-                <div className="relative flex-shrink-0 w-full text-center lg:w-auto">
+                <motion.div
+                    className="relative flex-shrink-0 w-full text-center lg:w-auto"
+                    variants={buttonVariants}
+                >
                     <a
                         href="/contact-us"
                         target="_blank"
@@ -39,11 +73,14 @@ export const CtaSolution: React.FC<CtaProps> = ({ items }) => {
                     >
                         {items.button}
                     </a>
-                </div>
+                </motion.div>
 
                 {/* Button 2 */}
                 {items.solutionButton && (
-                    <div className="relative flex-shrink-0 w-full text-center lg:w-auto">
+                    <motion.div
+                        className="relative flex-shrink-0 w-full text-center lg:w-auto"
+                        variants={buttonVariants}
+                    >
                         <a
                             href={items.solutionUrl}
                             target="_blank"
@@ -52,9 +89,9 @@ export const CtaSolution: React.FC<CtaProps> = ({ items }) => {
                         >
                             {items.solutionButton}
                         </a>
-                    </div>
+                    </motion.div>
                 )}
-            </div>
+            </motion.div>
         </Container>
     );
 };

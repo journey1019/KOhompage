@@ -24,7 +24,6 @@ export default async function MoviePage() {
                 intro="KOREAORBCOMM FOR FINANCIAL SERVICES"
                 title="글로벌 통신으로 경험을 향상시키세요"
                 subtitle="이 섹션은 배경 이미지를 고정시키고, 스크롤할 때 안쪽 콘텐츠는 이동하는 구조입니다."
-                textPosition="center"
             />
             <SerachCategory />
             <HardwareGrid />

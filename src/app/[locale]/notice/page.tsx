@@ -10,7 +10,6 @@ export default function Notice() {
                 intro="blabla"
                 title="blabla"
                 subtitle="blabla"
-                textPosition="center"
             />
 
         </section>

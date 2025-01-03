@@ -1,4 +1,7 @@
+'use client';
+
 import React from 'react';
+import { motion } from 'framer-motion';
 
 interface ImageTopPageProps {
     size: string;
@@ -8,26 +11,42 @@ interface ImageTopPageProps {
     subtitle: string;
     solutionButton?: string;
     solutionUrl?: string;
-    textPosition?: 'left' | 'center' | 'right'; // 텍스트 위치 조정 가능
     opacity?: number;
 }
 
+export default function PageHero({
+                                     size,
+                                     url,
+                                     intro,
+                                     title,
+                                     subtitle,
+                                     solutionButton,
+                                     solutionUrl,
+                                     opacity = 30,
+                                 }: ImageTopPageProps) {
+    const containerVariants = {
+        hidden: { opacity: 0, y: 50 },
+        visible: {
+            opacity: 1,
+            y: 0,
+            transition: {
+                duration: 0.8, // 전체 애니메이션 지속시간
+                staggerChildren: 0.1,
+            },
+        },
+    };
 
-export default function PageHero({size, url, intro, title, subtitle, solutionButton, solutionUrl, textPosition = 'left', opacity = 30}: ImageTopPageProps) {
-    const getTextPositionClass = () => {
-        switch(textPosition) {
-            case 'center':
-                return 'items-center text-center';
-            case 'right':
-                return 'items-end text-right';
-            default:
-                return 'items-start text-left'
-        }
-    }
+    const itemVariants = {
+        hidden: { opacity: 0, y: 50 },
+        visible: {
+            opacity: 1,
+            y: 0,
+            transition: { duration: 0.3 }, // 각 항목 애니메이션 지속 시간
+        },
+    };
 
     return (
         <>
-            {/* md 해상도 이전 (모바일 및 작은 해상도) */}
             <section className={`relative flex py-36 md:${size}`}>
                 {/* 고정된 배경 이미지 */}
                 <div className="absolute inset-0 bg-fixed bg-cover bg-center">
@@ -47,22 +66,42 @@ export default function PageHero({size, url, intro, title, subtitle, solutionBut
                 </div>
 
                 {/* 안쪽 콘텐츠 */}
-                <main
-                    className="relative flex flex-col justify-center items-start text-white z-10 p-5 text-center md:text-start md:ml-16 lg:ml-32">
-                    <h1 className="text-lg font-bold mb-5">{intro}</h1>
-                    <h1 className="text-5xl md:text-6xl font-bold mb-5">{title}</h1>
-                    <p className="text-base mb-5">{subtitle}</p>
+                <motion.main
+                    className="relative flex flex-col justify-center items-start text-white z-10 p-5 text-start md:ml-16 lg:ml-32"
+                    variants={containerVariants}
+                    initial="hidden"
+                    animate="visible"
+                >
+                    <motion.h1
+                        className="text-lg font-bold mb-5"
+                        variants={itemVariants}
+                    >
+                        {intro}
+                    </motion.h1>
+                    <motion.h1
+                        className="text-5xl md:text-6xl font-bold mb-5"
+                        variants={itemVariants}
+                    >
+                        {title}
+                    </motion.h1>
+                    <motion.p
+                        className="text-base mb-5"
+                        variants={itemVariants}
+                    >
+                        {subtitle}
+                    </motion.p>
                     {solutionUrl && (
-                        <a
+                        <motion.a
                             href={solutionUrl}
                             target="_blank"
                             rel="noopener"
-                            className="py-3 text-lg font-medium items-start text-start text-white bg-red-700 border-2 border-red-700 rounded-md px-7 lg:px-10 hover:bg-red-800 hover:text-white hover:border-2 hover:border-red-700"
+                            className="py-3 text-lg font-medium text-white bg-red-700 border-2 border-red-700 rounded-md px-7 lg:px-10 hover:bg-red-800 hover:text-white hover:border-2 hover:border-red-700"
+                            variants={itemVariants}
                         >
                             {solutionButton}
-                        </a>
+                        </motion.a>
                     )}
-                </main>
+                </motion.main>
             </section>
         </>
     );

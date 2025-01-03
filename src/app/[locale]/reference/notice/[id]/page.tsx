@@ -55,7 +55,6 @@ const NoticeDetailPage = ({params}: { params: Promise<{ id: string }>}) => {
                 intro="Notice"
                 title={notice.title}
                 subtitle={notice.category}
-                textPosition="center"
             />
             <Breadcrumbs items={breadcrumbs}/>
             <div className="container mx-auto px-4 py-12 max-w-7xl">
