@@ -6,7 +6,7 @@ import { motion } from "framer-motion";
 
 interface CtaProps {
     items: {
-        imageUrl: string;
+        imageUrl?: string;
         title: string;
         subTitle: string;
         button: string;
@@ -32,14 +32,18 @@ const buttonVariants = {
 };
 
 export const CtaSolution: React.FC<CtaProps> = ({ items }) => {
+    const hasImage = !!items.imageUrl;
+
     return (
         <Container>
             <motion.div
-                className="relative flex flex-wrap items-center justify-between w-full max-w-7xl gap-5 mx-auto text-white p-7 lg:p-12 lg:flex-nowrap rounded-xl"
+                className={`relative flex flex-wrap items-center justify-between w-full max-w-7xl gap-5 mx-auto text-white p-7 lg:p-12 lg:flex-nowrap rounded-xl ${
+                    hasImage ? "" : "bg-gray-900"
+                }`}
                 style={{
-                    backgroundImage: `url(${items.imageUrl})`,
-                    backgroundSize: "cover",
-                    backgroundPosition: "center",
+                    backgroundImage: hasImage ? `url(${items.imageUrl})` : "none",
+                    backgroundSize: hasImage ? "cover" : "none",
+                    backgroundPosition: hasImage ? "center" : "none",
                 }}
                 variants={containerVariants}
                 initial="hidden"
@@ -47,7 +51,9 @@ export const CtaSolution: React.FC<CtaProps> = ({ items }) => {
                 viewport={{ once: true, amount: 0.3 }}
             >
                 {/* Overlay */}
-                <div className="absolute inset-0 bg-gray-900 opacity-50 rounded-xl"></div>
+                {hasImage && (
+                    <div className="absolute inset-0 bg-gray-900 opacity-50 rounded-xl"></div>
+                )}
 
                 {/* Content */}
                 <motion.div
@@ -67,8 +73,8 @@ export const CtaSolution: React.FC<CtaProps> = ({ items }) => {
                 >
                     <a
                         href="/contact-us"
-                        target="_blank"
-                        rel="noopener"
+                        // target="_blank"
+                        // rel="noopener"
                         className="inline-block py-3 mx-auto text-lg font-medium text-center text-gray-900 bg-white rounded-md px-7 lg:px-10 lg:py-5 hover:bg-red-800 hover:text-white hover:border-2 hover:border-gray-50"
                     >
                         {items.button}

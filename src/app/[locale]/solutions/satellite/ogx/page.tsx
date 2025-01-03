@@ -9,6 +9,7 @@ import FilterHardwareCarousel from '@/components/(Hardware)/FilterHardwareCarous
 import FilterResourceCarousel from '@/components/(Resources)/FilterResourceCarousel';
 import FilterHardwareCarouselBySolutionTags from '@/components/(Hardware)/FilterHardwareCarouselBySolutionTags';
 import FilterResourceCarouselBySolutionTags from '@/components/(Resources)/FilterResourceCarouselBySolutionTags';
+import { CtaSolution } from '@/components/(Solution)/CtaSolution';
 
 
 interface PageProps {
@@ -69,6 +70,8 @@ export default function OGxPage({params}: PageProps) {
             >
             </SectionTitle>
             <FilterResourceCarouselBySolutionTags keywords={filteredKeyword} />
+
+            <CtaSolution items={data.ctas}/>
         </section>
     )
 }

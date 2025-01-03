@@ -1,3 +1,11 @@
+interface CtaData {
+    imageUrl?: string;
+    title: string;
+    subTitle: string;
+    button: string;
+    solutionButton?: string;
+    solutionUrl?: string;
+}
 interface FAQData {
     question: string;
     answer: string;
@@ -53,6 +61,7 @@ interface SolutionData {
     kind?: KindData[];
     character?: CharacterData[];
     faq?: FAQData[];
+    ctas: CtaData;
 }
 
 
@@ -143,7 +152,12 @@ const solutionsData: Record<string, Record<string, SolutionData>> = {
                     question: "서비스 확장이 필요한 경우 추가 비용이 발생하나요?",
                     answer: "네, 추가 장비 및 통신망 사용에 따라 추가 비용이 발생할 수 있지만, 확장성을 고려한 유연한 요금제를 제공합니다."
                 }
-            ]
+            ],
+            ctas: {
+                title: "When you need a tailored solution, contact us now.",
+                subTitle: "Leveraging experience and innovation to drive your success.",
+                button: "Contact Us",
+            }
         },
         "global-iot": {
             imageIntro: "KOREAORBCOMM FOR RINANCIAL SERVICES",
@@ -225,7 +239,12 @@ const solutionsData: Record<string, Record<string, SolutionData>> = {
                     question: "Do I have to pay extra if I need to expand my service?",
                     answer: "Yes, additional equipment and network usage may incur additional costs, but it provides flexible pricing plan considering scalability."
                 }
-            ]
+            ],
+            ctas: {
+                title: "When you need a tailored solution, contact us now.",
+                subTitle: "Leveraging experience and innovation to drive your success.",
+                button: "Contact Us",
+            }
         },
         "satellite": {
             imageIntro: "KOREAORBCOMM FOR RINANCIAL SERVICES",
@@ -260,7 +279,12 @@ const solutionsData: Record<string, Record<string, SolutionData>> = {
                     description: "Starlink equipment, developed by SpaceX, is an ultra-fast, low-latency satellite internet solution that provides stable internet connectivity anywhere on Earth. With its compact design, Starlink equipment includes a satellite dish, router, and power supply, offering easy installation and exceptional performance. Connecting the world, SpaceX's Starlink equipment is an advanced internet solution suitable for various purposes such as smart work, streaming, and online gaming.",
                     image: "/images/solutions/satellite/Starlink.png",
                 },
-            ]
+            ],
+            ctas: {
+                title: "When you need a tailored solution, contact us now.",
+                subTitle: "Leveraging experience and innovation to drive your success.",
+                button: "Contact Us",
+            }
         },
         "ais": {
             imageIntro: "KOREAORBCOMM FOR RINANCIAL SERVICES",
@@ -297,8 +321,13 @@ const solutionsData: Record<string, Record<string, SolutionData>> = {
                         "You can monitor the location and status of all refrigerated container units and remotely adjust settings such as temperature. With automatic alarm notifications, you can quickly respond to critical situations such as equipment malfunctions or power outages in reefers. Installed on over 600,000 refrigerated containers worldwide, it helps transport lines, multimodal carriers, and shippers achieve verified ROI.",
                     image: "https://www.orbcomm.co.kr/resources/img/solution/orbcommplatform/orbcommplatform_2.jpg",
                 },
-            ]
-        }
+            ],
+            ctas: {
+                title: "When you need a tailored solution, contact us now.",
+                subTitle: "Leveraging experience and innovation to drive your success.",
+                button: "Contact Us",
+            }
+        },
     },
 
 
@@ -389,7 +418,12 @@ const solutionsData: Record<string, Record<string, SolutionData>> = {
                     question: "컨테이너 IoT로 수집된 데이터는 어떻게 활용하나요?",
                     answer: "컨테이너 IoT를 활용하면 컨테이너 위치 및 화물의 상태를 원격으로 확인하거나, 특정 기간동안 컨테이너가 운용되지 않고 방치되어 있었는지를 손쉽게 확인할 수 있습니다. 대규모 컨테이너 선단을 보유한 글로벌 선사들은 컨테이너 IoT를 통해 컨테이너 운용 효율를 증대시키고 비용 절감을 위한 의사결정에 주요한 데이터 확보를 위해 활용하고 있습니다."
                 }
-            ]
+            ],
+            ctas: {
+                title: "맞춤형 솔루션이 필요한 순간, 지금 바로 상담하세요.",
+                subTitle: "축적된 경험과 혁신으로 고객의 성공을 돕겠습니다.",
+                button: "문의하기",
+            },
         },
         "global-iot": {
             imageIntro: "",
@@ -471,7 +505,12 @@ const solutionsData: Record<string, Record<string, SolutionData>> = {
                     question: "서비스 확장이 필요한 경우 추가 비용이 발생하나요?",
                     answer: "네, 추가 장비 및 통신망 사용에 따라 추가 비용이 발생할 수 있지만, 확장성을 고려한 유연한 요금제를 제공합니다."
                 }
-            ]
+            ],
+            ctas: {
+                title: "맞춤형 솔루션이 필요한 순간, 지금 바로 상담하세요.",
+                subTitle: "축적된 경험과 혁신으로 고객의 성공을 돕겠습니다.",
+                button: "문의하기",
+            },
         },
         "satellite": {
             imageIntro: "",
@@ -520,7 +559,12 @@ const solutionsData: Record<string, Record<string, SolutionData>> = {
                     title: "SpaceX StarLink",
                     image: "/images/solutions/satellite/SpaceX.png"
                 },
-            ]
+            ],
+            ctas: {
+                title: "맞춤형 솔루션이 필요한 순간, 지금 바로 상담하세요.",
+                subTitle: "축적된 경험과 혁신으로 고객의 성공을 돕겠습니다.",
+                button: "문의하기",
+            },
         },
         "ais": {
             imageIntro: "",
@@ -546,7 +590,12 @@ const solutionsData: Record<string, Record<string, SolutionData>> = {
                     subtitle: "Korea ORBCOMM의 위성 AIS는 더 유연한 요금제와 고객의 요구에 적합한 서비스를 제공합니다.",
                     icon: "/images/icons/Service.png"
                 }
-            ]
+            ],
+            ctas: {
+                title: "맞춤형 솔루션이 필요한 순간, 지금 바로 상담하세요.",
+                subTitle: "축적된 경험과 혁신으로 고객의 성공을 돕겠습니다.",
+                button: "문의하기",
+            },
         }
     }
 };

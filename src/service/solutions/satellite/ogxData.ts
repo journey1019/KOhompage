@@ -1,3 +1,9 @@
+interface CtaData{
+    title: string;
+    subTitle: string;
+    button: string;
+}
+
 interface AdvantageData {
     imageUrl: string;
     advantage: string;
@@ -20,6 +26,7 @@ interface MaritimeData{
     character?: CharacterData[];
     features?: OGxFeaturesData[];
     advantages?: AdvantageData[];
+    ctas: CtaData;
 }
 
 const maritimeData: Record<string, MaritimeData> = {
@@ -44,41 +51,36 @@ const maritimeData: Record<string, MaritimeData> = {
         ],
         advantages: [
             {
-                imageUrl: "/images/icons/color/Container.png",
-                advantage: "GPS 컨테이너 관리",
-                description: "컨테이너 온도 모니터링 및 원격제어"
+                imageUrl: "/images/icons/BigData.png",
+                advantage: "Larger message sizes",
+                description: "Transmit data up to 40 times larger than previous-generation satellites, supporting large-scale data, images, and over-the-air updates."
             },
             {
-                imageUrl: "/images/icons/color/Platform.png",
-                advantage: "원활한 상호 운용성",
-                description: "다양한 디바이스와 플랫폼에서 데이터를 쉽게 공유"
+                imageUrl: "/images/icons/MoneySaving.png",
+                advantage: "Competitive, flexible pricing",
+                description: "Reduce excess data usage costs with flexible OGx-exclusive data plans while offering tailored data solutions for customers."
             },
             {
-                imageUrl: "/images/icons/color/Global.png",
-                advantage: "글로벌 네트워크 연결",
-                description: "2G, 3G, LTE 네트워크를 통한 글로벌 커버리지"
+                imageUrl: "/images/icons/PowerSaving.png",
+                advantage: "Hardware flexibility",
+                description: "Reduce power consumption of existing ST series devices through updates, and support OGx-exclusive devices with solar charging options."
             },
             {
-                imageUrl: "/images/icons/color/Data.png",
-                advantage: "간편한 데이터 로그 액세스",
-                description: "컨테이너 이력정보의 손쉬운 접근"
+                imageUrl: "/images/icons/GlobalCoverage.png",
+                advantage: "Comprehensive global connectivity",
+                description: "Provide satellite services worldwide with OGx's global coverage and support the development of customized solutions for customers."
             },
             {
-                imageUrl: "/images/icons/color/Monitoring.png",
-                advantage: "24시간 실시간 모니터링",
-                description: "실시간 모니터링"
+                imageUrl: "/images/icons/Service1.png",
+                advantage: "End-to-end support",
+                description: "Offer technical support and services across diverse global locations through skilled technical personnel."
             },
-            {
-                imageUrl: "/images/icons/color/Satellite.png",
-                advantage: "위성 AIS",
-                description: "위성 AIS 데이터와 결합하여 해상이동정보 정확도 향상"
-            },
-            {
-                imageUrl: "/images/icons/color/Property.png",
-                advantage: "모든 자산 통합관리",
-                description: "고객의 다양한 형태의 자산을 단일플랫폼에서 통합관리"
-            },
-        ]
+        ],
+        ctas: {
+            title: "When you need a tailored solution, contact us now.",
+            subTitle: "Leveraging experience and innovation to drive your success.",
+            button: "Contact Us",
+        }
     },
 
 
@@ -104,31 +106,36 @@ const maritimeData: Record<string, MaritimeData> = {
         ],
         advantages: [
             {
-                imageUrl: "/images/icons/color/BigData.png",
-                advantage: "Larger message sizes",
-                description: "이전 세대의 위성보다 최대 40배 더 큰 데이터를 전송합니다. 대용량 데이터/이미지/무선 업데이트"
+                imageUrl: "/images/icons/BigData.png",
+                advantage: "더 큰 메시지 크기",
+                description: "이전 세대 위성보다 최대 40배 더 큰 데이터를 전송합니다. 대용량 데이터/이미지/무선 업데이트를 지원합니다."
             },
             {
-                imageUrl: "/images/icons/color/MoneySaving.png",
-                advantage: "Competitive, flexible pricing",
-                description: "유연한 OGx 전용 데이터 요금제로 초과 데이터 사용요금을 줄이고 고객 맞춤 데이터를 제공합니다."
+                imageUrl: "/images/icons/MoneySaving.png",
+                advantage: "경쟁력 있고 유연한 가격 정책",
+                description: "유연한 OGx 전용 데이터 요금제를 통해 초과 데이터 사용 요금을 줄이고, 고객 맞춤 데이터를 제공합니다."
             },
             {
-                imageUrl: "/images/icons/color/PowerSaving.png",
-                advantage: "Hardware flexibility",
-                description: "업데이트 통한 기존 ST series 단말기의 소모전력을 절감하고, 태양광충전 타입 OGx 전용 단말기를 지원합니다."
+                imageUrl: "/images/icons/PowerSaving.png",
+                advantage: "하드웨어 유연성",
+                description: "업데이트를 통해 기존 ST 시리즈 단말기의 소모 전력을 절감하며, 태양광 충전 타입 OGx 전용 단말기를 지원합니다."
             },
             {
-                imageUrl: "/images/icons/color/GlobalCoverage.png",
-                advantage: "Comprehensive global connectivity",
-                description: "OGx의 글로벌 커버리지로 전세계에 위성 서비스를 공급하며, 고객 맞춤형 솔루션 개발을 지원합니다."
+                imageUrl: "/images/icons/GlobalCoverage.png",
+                advantage: "포괄적인 글로벌 연결성",
+                description: "OGx의 글로벌 커버리지를 통해 전 세계에 위성 서비스를 공급하며, 고객 맞춤형 솔루션 개발을 지원합니다."
             },
             {
-                imageUrl: "/images/icons/color/Service.png",
-                advantage: "End-to-end support",
-                description: "숙련된 기술인력을 기반으로 전세계 다양한 현장에서 고객에 기술지원 및 서비스를 제공합니다."
+                imageUrl: "/images/icons/Service1.png",
+                advantage: "종합적인 지원",
+                description: "숙련된 기술 인력을 기반으로 전 세계 다양한 현장에서 고객에게 기술 지원 및 서비스를 제공합니다."
             },
-        ]
+        ],
+        ctas: {
+            title: "맞춤형 솔루션이 필요한 순간, 지금 바로 상담하세요.",
+            subTitle: "축적된 경험과 혁신으로 고객의 성공을 돕겠습니다.",
+            button: "문의하기",
+        },
     }
 }
 export default maritimeData;

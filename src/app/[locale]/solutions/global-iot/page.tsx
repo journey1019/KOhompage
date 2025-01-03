@@ -24,6 +24,7 @@ import FilterResourceCarousel from '@/components/(Resources)/FilterResourceCarou
 import CarouselSolutionBlock from '@/components/(Solution)/CarouselSolutionBlock';
 import FilterHardwareCarouselBySolutionTags from '@/components/(Hardware)/FilterHardwareCarouselBySolutionTags';
 import FilterResourceCarouselBySolutionTags from '@/components/(Resources)/FilterResourceCarouselBySolutionTags';
+import { CtaSolution } from '@/components/(Solution)/CtaSolution';
 
 interface PageProps {
     params: {locale: string};
@@ -141,6 +142,9 @@ export default async function GlobalIoT({params}: PageProps){
             >
             </SectionTitle>
             <FilterResourceCarouselBySolutionTags keywords={filteredKeyword} />
+
+
+            <CtaSolution items={data.ctas}/>
         </section>
     )
 }

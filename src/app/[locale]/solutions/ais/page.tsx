@@ -21,6 +21,7 @@ import FilterHardwareCarousel from '@/components/(Hardware)/FilterHardwareCarous
 import FilterResourceCarousel from '@/components/(Resources)/FilterResourceCarousel';
 import FilterHardwareCarouselBySolutionTags from '@/components/(Hardware)/FilterHardwareCarouselBySolutionTags';
 import FilterResourceCarouselBySolutionTags from '@/components/(Resources)/FilterResourceCarouselBySolutionTags';
+import { CtaSolution } from '@/components/(Solution)/CtaSolution';
 
 interface PageProps {
     params: {locale: string};
@@ -110,6 +111,7 @@ export default async function AISPage({params}: PageProps){
             </SectionTitle>
             <FilterResourceCarouselBySolutionTags keywords={filteredKeyword} />
             {/*<References/>*/}
+            <CtaSolution items={data.ctas}/>
         </section>
     )
 }

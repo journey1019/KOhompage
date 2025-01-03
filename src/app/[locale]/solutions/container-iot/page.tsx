@@ -27,6 +27,7 @@ import { notFound } from 'next/navigation';
 import FilterResourceCarousel from '@/components/(Resources)/FilterResourceCarousel';
 import FilterHardwareCarouselBySolutionTags from '@/components/(Hardware)/FilterHardwareCarouselBySolutionTags';
 import FilterResourceCarouselBySolutionTags from '@/components/(Resources)/FilterResourceCarouselBySolutionTags';
+import { CtaSolution } from '@/components/(Solution)/CtaSolution';
 
 interface PageProps {
     params: {locale: string};
@@ -114,7 +115,7 @@ export default async function ContainerIoT({ params }: PageProps){
             {/*<TagFilterBlog initialTags={['container-iot']} />*/}
             {/*<TagFilterBlogCarousel initialTags={chips} />*/}
 
-
+            <CtaSolution items={data.ctas}/>
         </section>
     )
 }
