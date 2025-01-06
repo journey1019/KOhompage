@@ -4,13 +4,14 @@ import React, { useState } from 'react';
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
-import partnerData from '@/data/partner.json'
+import partnerData from '@/data/partner.json';
 
 import Image from 'next/image';
 
 export default function PartnerSliderLines({ line }: { line: number }) {
     const [isPaused, setIsPaused] = useState(false);
 
+    // 슬라이더 설정
     const settings = {
         dots: false,
         infinite: true,
@@ -23,7 +24,7 @@ export default function PartnerSliderLines({ line }: { line: number }) {
         variableWidth: true,
         pauseOnHover: false,
         centerMode: true,
-        arrow: false,
+        rtl: line === 2, // line 2는 오른쪽에서 왼쪽으로 슬라이드
         responsive: [
             {
                 breakpoint: 1280,
@@ -78,7 +79,7 @@ export default function PartnerSliderLines({ line }: { line: number }) {
                         <Image
                             src={partner.imageUrl}
                             alt={partner.name}
-                            className="h-20 sm:h-16 md:h-14 lg:h-12 object-contain mx-auto filter grayscale brightness-1100" // 크기 조정
+                            className="h-20 sm:h-16 md:h-14 lg:h-12 object-contain mx-auto filter grayscale brightness-1100"
                             width={200}
                             height={200}
                             unoptimized
