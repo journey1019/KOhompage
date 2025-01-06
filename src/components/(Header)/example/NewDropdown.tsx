@@ -11,10 +11,7 @@ import {
     Squares2X2Icon
 } from '@heroicons/react/24/outline';
 import { GoContainer } from 'react-icons/go';
-import { MdDevicesOther } from "react-icons/md";
-import { MdViewModule } from "react-icons/md";
-import { MdOutlineSettingsInputAntenna } from "react-icons/md";
-import { MdOutlineSensors } from "react-icons/md";
+import { MdDevicesOther, MdViewModule, MdOutlineSettingsInputAntenna, MdOutlineSensors } from "react-icons/md";
 
 
 
@@ -166,7 +163,7 @@ const NewDropdown = ({ menuKey, locale }: DropdownProps) => {
                                 href={`/ko/hardware?${item.filterKey}=${item.filterValue}`} // 필터링 조건 URL
                                 className="flex flex-row items-center p-4 bg-gray-50 hover:bg-gray-100 rounded-lg text-gray-700 hover:text-red-600"
                             >
-                                <div className="p-1 rounded-md border border-gray-200 bg-indigo-50 flex items-center">
+                                <div className="p-1 rounded-md ring-1 ring-gray-300 bg-gray-200 flex items-center">
                                     {item.icon} {/* 아이콘 렌더링 */}
                                 </div>
                                 <h3 className="font-semibold pl-3">{item.label}</h3> {/* 라벨 표시 */}
@@ -186,7 +183,7 @@ const NewDropdown = ({ menuKey, locale }: DropdownProps) => {
                         href={`/${locale}${item.href}`}
                         className="flex flex-row p-4 bg-gray-50 hover:bg-gray-100 rounded-lg text-gray-700 hover:text-red-600 items-center"
                     >
-                        <div className="p-1 rounded-md border border-1 border-gray-200 bg-indigo-50 items-center">
+                        <div className="p-1 rounded-md ring-1 ring-gray-300 bg-gray-200 items-center">
                             {item.icon}
                         </div>
                         <h3 className="font-semibold pl-3">{item.label}</h3>
