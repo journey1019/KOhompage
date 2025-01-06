@@ -60,19 +60,28 @@ export const getFilteredHardwaresByQueryAndFilters = (
             .join(" ")
             .toLowerCase();
 
-
-        // 필터링 조건
         const matchesQuery = normalizedQuery === "" || searchableContent.includes(normalizedQuery);
 
-        // 필터 조건
+        // 교집합 필터링 조건
         const matchesFilters = [
+            // categories 필터
+            !filters.categories ||
+            filters.categories.length === 0 ||
+            filters.categories.every((category) =>
+                hardware.hideTag.map((tag) => tag.toLowerCase()).includes(category.toLowerCase())
+            ),
+
             // types 필터
-            !filters.types || filters.types.length === 0 || filters.types.includes(hardware.category),
+            !filters.types ||
+            filters.types.length === 0 ||
+            filters.types.every((type) =>
+                hardware.category.toLowerCase() === type.toLowerCase()
+            ),
 
             // networks 필터
             !filters.networks ||
             filters.networks.length === 0 ||
-            filters.networks.some((network) =>
+            filters.networks.every((network) =>
                 NETWORK_MAPPING[network]?.some((tag) =>
                     hardware.hideTag.map((t) => t.toLowerCase()).includes(tag.toLowerCase())
                 )
@@ -81,22 +90,17 @@ export const getFilteredHardwaresByQueryAndFilters = (
             // tags 필터
             !filters.tags ||
             filters.tags.length === 0 ||
-            filters.tags.some((tag) =>
+            filters.tags.every((tag) =>
                 hardware.hideTag.map((t) => t.toLowerCase()).includes(tag.toLowerCase())
-            ),
-
-            // categories 필터
-            !filters.categories ||
-            filters.categories.length === 0 ||
-            filters.categories.some((category) =>
-                hardware.hideTag.map((tag) => tag.toLowerCase()).includes(category.toLowerCase())
             ),
         ].every((condition) => condition); // 모든 조건이 만족해야 true
 
         // Query와 Filters 모두 충족하는 데이터만 반환
         return matchesQuery && matchesFilters;
-    })
-}
+    });
+};
+
+
 
 export const getHardwareByKeywords = (keywords: string[]): HardwareProps[] => {
     // Return all hardware if no keywords are provided

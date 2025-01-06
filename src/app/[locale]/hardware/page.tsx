@@ -13,34 +13,48 @@ import HardwareCardPDF from '@/components/(Hardware)/HardwareCardPDF'; // PDF �
 import SearchBar from '@/components/(Hardware)/SearchBar';
 import FiltersHardware from '@/components/(Hardware)/FilterHardware';
 import PageHero from '@/components/PageHero';
-import { useParams } from 'next/navigation';
-
+import { useRouter, useSearchParams } from 'next/navigation';
 
 const HardwarePage = () => {
-    const params = useParams(); // params를 가져옴
-    const [locale, setLocale] = useState<string>('ko'); // 기본값 설정
-    const [data, setData] = useState(hardwareData[locale]); // 초기 데이터 설정
-
-    const [searchQuery, setSearchQuery] = useState(""); // 검색어 상태
-    const [filters, setFilters] = useState<FilterOptions>({}); // 필터 상태
-    const [hardware, setHardware] = useState<HardwareProps[]>(getAllHardware()); // 필터링된 하드웨어 목록
-    const [totalResourcesCount, setTotalResourcesCount] = useState<number>(hardware.length); // 하드웨어 총 개수
+    const router = useRouter();
+    const searchParams = useSearchParams();
+    const [locale, setLocale] = useState<string>('ko');
+    const [data, setData] = useState(hardwareData[locale]);
+    const [searchQuery, setSearchQuery] = useState<string>("");
+    const [filters, setFilters] = useState<FilterOptions>({
+        categories: [],
+        types: [],
+        networks: [],
+        tags: [],
+    });
+    const [hardware, setHardware] = useState<HardwareProps[]>(getAllHardware());
+    const [totalResourcesCount, setTotalResourcesCount] = useState<number>(hardware.length);
     const [isDrawerOpen, setIsDrawerOpen] = useState<boolean>(false); // 모바일 필터 Drawer 상태
 
-    // URL params 기반으로 언어 설정
+    // URL params 기반으로 초기 필터 설정
     useEffect(() => {
-        if (params && params.locale) {
-            const newLocale = params.locale as string; // locale 값을 가져옴
-            setLocale(newLocale);
-            setData(hardwareData[newLocale] || hardwareData['ko']); // 해당 언어 데이터 로드
-        }
-    }, [params]);
+        const initialFilters: FilterOptions = {
+            categories: searchParams.getAll('categories') || [],
+            types: searchParams.getAll('types') || [],
+            networks: searchParams.getAll('networks') || [],
+            tags: searchParams.getAll('tags') || [],
+        };
+        setFilters(initialFilters);
+    }, [searchParams]);
 
     // 검색 및 필터링 동작
     useEffect(() => {
         const filteredResources = getFilteredHardwaresByQueryAndFilters(searchQuery, filters);
-        setHardware(filteredResources); // 필터링된 하드웨어 목록 업데이트
-        setTotalResourcesCount(filteredResources.length); // 총 개수 업데이트
+        setHardware(filteredResources);
+        setTotalResourcesCount(filteredResources.length);
+
+        // URL 업데이트 (replace로 리로드 방지 및 스크롤 유지)
+        const query = new URLSearchParams();
+        if (searchQuery) query.set('query', searchQuery);
+        Object.entries(filters).forEach(([key, values]) => {
+            if (values) values.forEach((value) => query.append(key, value));
+        });
+        router.replace(`/ko/hardware?${query.toString()}`, { scroll: false });
     }, [searchQuery, filters]);
 
     const toggleDrawer = () => {
@@ -64,7 +78,7 @@ const HardwarePage = () => {
                 <div className="grid grid-cols-1 lg:grid-cols-4 lg:gap-2">
                     {/* Left Section: SearchBar and Filters */}
                     <div className="lg:col-span-1 space-y-6">
-                        <SearchBar onSearch={setSearchQuery} /> {/* 검색어 전달 */}
+                        <SearchBar onSearch={setSearchQuery} />
 
                         {/* 모바일: Filters 버튼 */}
                         <div className="lg:hidden">
@@ -81,7 +95,7 @@ const HardwarePage = () => {
                             <FiltersHardware
                                 filters={filters}
                                 onFilterChange={setFilters}
-                                totalResourcesCount={totalResourcesCount} // 게시글 개수 전달
+                                totalResourcesCount={totalResourcesCount}
                             />
                         </div>
                     </div>
@@ -121,8 +135,7 @@ const HardwarePage = () => {
                 )}
             </div>
         </div>
-    )
-}
-
+    );
+};
 
 export default HardwarePage;

@@ -1,4 +1,3 @@
-/** Navbar에서 Hardware 선택하면 HardwarePage Filtering 선택 */
 'use client';
 
 import React, { useState, useRef } from 'react';
@@ -9,12 +8,11 @@ import Login from '../Login';
 import Language from '../Language';
 import { Bars3Icon, XMarkIcon, ChevronDownIcon, ChevronUpIcon } from '@heroicons/react/24/outline';
 
-
 const NewNavbar = ({ locale }: { locale: string }) => {
     const [openDropdown, setOpenDropdown] = useState<string | null>(null);
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
     const [openSubMenu, setOpenSubMenu] = useState<string | null>(null);
-    const closeTimeout = useRef<NodeJS.Timeout | null>(null); // Dropdown 닫기 타이머
+    const closeTimeout = useRef<NodeJS.Timeout | null>(null);
 
     const menuItems = [
         { key: 'solutions', label: 'Solutions' },
@@ -22,7 +20,7 @@ const NewNavbar = ({ locale }: { locale: string }) => {
         { key: 'company', label: 'Company' },
     ];
 
-    const dropdownContent: Record<string, { label: string; href: string }[]> = {
+    const dropdownContent: Record<string, { label: string; href: string; filterKey?: string; filterValue?: string }[]> = {
         solutions: [
             { label: 'Container-IoT', href: '/solutions/container-iot' },
             { label: 'Global-IoT', href: '/solutions/global-iot' },
@@ -30,41 +28,34 @@ const NewNavbar = ({ locale }: { locale: string }) => {
             { label: 'AIS', href: '/solutions/ais' },
         ],
         hardware: [
-
+            { label: 'Device', href: '/hardware', filterKey: 'types', filterValue: 'Device' },
+            { label: 'Module', href: '/hardware', filterKey: 'types', filterValue: 'Module' },
+            { label: 'Antenna', href: '/hardware', filterKey: 'types', filterValue: 'Antenna' },
+            { label: 'Sensor', href: '/hardware', filterKey: 'types', filterValue: 'Sensor' },
         ],
         company: [
             { label: 'About Us', href: '/about' },
             { label: 'Contact', href: '/contact-us' },
-            { label: 'Resources', href: '/resources' }
+            { label: 'Resources', href: '/resources' },
         ],
     };
 
-    // MenuItem 마우스 커서 Dropdown 제어
     const handleMouseEnter = (key: string) => {
-        if (closeTimeout.current) {
-            clearTimeout(closeTimeout.current);
-        }
+        if (closeTimeout.current) clearTimeout(closeTimeout.current);
         setOpenDropdown(key);
     };
+
     const handleMouseLeave = () => {
-        closeTimeout.current = setTimeout(() => {
-            setOpenDropdown(null);
-        }, 200); // 200ms 딜레이
+        closeTimeout.current = setTimeout(() => setOpenDropdown(null), 200);
     };
 
-    // Mobile || Tab 햄버거 버튼 메뉴
-    const toggleMobileMenu = () => {
-        setIsMobileMenuOpen((prev) => !prev);
-    };
-    const toggleSubMenu = (key: string) => {
-        setOpenSubMenu((prev) => (prev === key ? null : key));
-    };
+    const toggleMobileMenu = () => setIsMobileMenuOpen((prev) => !prev);
+
+    const toggleSubMenu = (key: string) => setOpenSubMenu((prev) => (prev === key ? null : key));
 
     return (
         <header className="fixed top-0 left-0 w-full z-50 bg-white shadow-md">
-            {/* Web Navbar */}
-            <nav className="max-w-screen-2xl w-full mx-auto flex items-center justify-between px-6 py-4">
-                {/* Logo */}
+            <nav className="max-w-screen-2xl mx-auto flex items-center justify-between px-6 py-4">
                 <Link href="/" className="flex items-center">
                     <Image
                         src="/images/KO_SmallLogo.png"
@@ -85,29 +76,17 @@ const NewNavbar = ({ locale }: { locale: string }) => {
                             onMouseLeave={handleMouseLeave}
                         >
                             {item.key === 'hardware' ? (
-                                <Link
-                                    href="/hardware"
-                                    className="text-gray-700 hover:text-red-600 px-4"
-                                    onClick={() => setOpenDropdown(null)}
-                                >
-                                    {item.label}
-                                </Link>
+                                <button className="text-gray-700 hover:text-red-600 px-4">{item.label}</button>
                             ) : (
-                                <button className="text-gray-700 hover:text-red-600 px-4">
-                                    {item.label}
-                                </button>
+                                <button className="text-gray-700 hover:text-red-600 px-4">{item.label}</button>
                             )}
                         </li>
                     ))}
                 </ul>
 
-
-                {/* Right Icons */}
                 <div className="flex items-center space-x-4">
                     <Login />
                     <Language />
-
-                    {/* Hamburger Menu for Mobile */}
                     <button
                         className="sm:p-2 py-2 hover:bg-gray-100 rounded-full md:hidden"
                         onClick={toggleMobileMenu}
@@ -121,17 +100,12 @@ const NewNavbar = ({ locale }: { locale: string }) => {
                 </div>
             </nav>
 
-            {/* Dropdown for Desktop */}
             {openDropdown && (
-                <div
-                    onMouseEnter={() => handleMouseEnter(openDropdown)}
-                    onMouseLeave={handleMouseLeave}
-                >
+                <div onMouseEnter={() => handleMouseEnter(openDropdown)} onMouseLeave={handleMouseLeave}>
                     <NewDropdown menuKey={openDropdown} locale={locale} />
                 </div>
             )}
 
-            {/* Mobile Menu */}
             {isMobileMenuOpen && (
                 <div className="fixed top-16 left-0 w-full bg-white shadow-md z-40 md:hidden">
                     <ul className="flex flex-col space-y-4 py-2 sm:p-4">
@@ -139,7 +113,7 @@ const NewNavbar = ({ locale }: { locale: string }) => {
                             <li key={item.key}>
                                 <button
                                     className="w-full flex justify-between items-center py-2 px-4 text-gray-700 hover:text-red-600"
-                                    onClick={() => toggleSubMenu(item.key)} // Toggle SubMenu
+                                    onClick={() => toggleSubMenu(item.key)}
                                 >
                                     {item.label}
                                     {openSubMenu === item.key ? (
@@ -149,15 +123,17 @@ const NewNavbar = ({ locale }: { locale: string }) => {
                                     )}
                                 </button>
 
-                                {/* SubMenu */}
                                 {openSubMenu === item.key && (
                                     <ul className="pl-6 pt-2">
-                                        {dropdownContent[item.key].map((subItem) => (
-                                            <li key={subItem.href} className="hover:bg-gray-100 pl-3">
+                                        {dropdownContent[item.key].map((subItem, index) => (
+                                            <li
+                                                key={`${item.key}-${subItem.filterValue || index}`}
+                                                className="hover:bg-gray-100 pl-3"
+                                            >
                                                 <Link
-                                                    href={`/${locale}${subItem.href}`}
+                                                    href={`/${locale}/${subItem.href}?${subItem.filterKey}=${subItem.filterValue}`}
                                                     className="block py-1 text-gray-700 hover:text-red-600"
-                                                    onClick={toggleMobileMenu} // Close mobile menu on click
+                                                    onClick={() => setIsMobileMenuOpen(false)}
                                                 >
                                                     {subItem.label}
                                                 </Link>

@@ -15,10 +15,10 @@ export function Footer({locale}: {locale: string}) {
     ];
 
     const legal = [
-        { title: "Device", href: "hardware" },
-        { title: "Module", href: "hardware" },
-        { title: "Antenna", href: "hardware" },
-        { title: "Sensor", href: "hardware" },
+        { title: "Device", href: "hardware", filterKey: "types" },
+        { title: "Module", href: "hardware", filterKey: "types" },
+        { title: "Antenna", href: "hardware", filterKey: "types" },
+        { title: "Sensor", href: "hardware", filterKey: "types" }
     ];
 
     const etc = [
@@ -106,7 +106,7 @@ export function Footer({locale}: {locale: string}) {
                             {legal.map((item, index) => (
                                 <Link
                                     key={index}
-                                    href={`/${locale}/${item.href}`}
+                                    href={`/${locale}/${item.href}?${item.filterKey}=${item.title}`}
                                     className="w-full px-4 py-2 text-gray-800 rounded-md dark:text-gray-300 hover:text-red-800 focus:text-red-800 focus:bg-red-100 focus:outline-none dark:focus:bg-trueGray-700"
                                 >
                                     {item.title}
