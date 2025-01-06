@@ -65,7 +65,7 @@ export function Footer({locale}: {locale: string}) {
                         <div className="flex flex-col max-w-md mt-4 text-gray-500 dark:text-gray-400">
                             <span>서울특별시 서초구 강남대로 525 세영제이타워 15층 [06536]</span>
                             <span>02-3444-7311</span>
-                            <span>sales_team@orbcomm.co.kr</span>
+                            <span>sales@orbcomm.co.kr</span>
                         </div>
 
                         {/*<div className="mt-5">*/}
@@ -107,7 +107,7 @@ export function Footer({locale}: {locale: string}) {
                                 <Link
                                     key={index}
                                     href={`/${locale}/${item.href}?${item.filterKey}=${item.title}`}
-                                    className="w-full px-4 py-2 text-gray-800 rounded-md dark:text-gray-300 hover:text-red-800 focus:text-red-800 focus:bg-red-100 focus:outline-none dark:focus:bg-trueGray-700"
+                                    className="w-full px-4 py-2 text-gray-500 rounded-md dark:text-gray-300 hover:text-red-800 focus:text-red-800 focus:bg-red-100 focus:outline-none dark:focus:bg-trueGray-700"
                                 >
                                     {item.title}
                                 </Link>
@@ -121,7 +121,7 @@ export function Footer({locale}: {locale: string}) {
                                 <Link
                                     key={index}
                                     href={`/${locale}/${item.href}`}
-                                    className="w-full px-4 py-2 text-gray-800 rounded-md dark:text-gray-300 hover:text-red-800 focus:text-red-800 focus:bg-red-100 focus:outline-none dark:focus:bg-trueGray-700"
+                                    className="w-full px-4 py-2 text-gray-500 rounded-md dark:text-gray-300 hover:text-red-800 focus:text-red-800 focus:bg-red-100 focus:outline-none dark:focus:bg-trueGray-700"
                                 >
                                     {item.title}
                                 </Link>

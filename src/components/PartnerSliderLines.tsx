@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
@@ -9,13 +9,25 @@ import partnerData from '@/data/partner.json';
 import Image from 'next/image';
 
 export default function PartnerSliderLines({ line }: { line: number }) {
-    const [isPaused, setIsPaused] = useState(false);
+    const [isPaused, setIsPaused] = useState(false); // Correctly defining isPaused state
+    const [isMobile, setIsMobile] = useState(false);
+
+    // 윈도우 크기에 따라 상태를 업데이트
+    useEffect(() => {
+        const handleResize = () => {
+            setIsMobile(window.innerWidth <= 768); // 768px 이하를 모바일로 간주
+        };
+
+        handleResize(); // 초기 실행
+        window.addEventListener('resize', handleResize);
+        return () => window.removeEventListener('resize', handleResize);
+    }, []);
 
     // 슬라이더 설정
     const settings = {
         dots: false,
         infinite: true,
-        speed: 5000,
+        speed: isMobile ? 3000 : 5000, // 모바일: 빠름, 데스크탑: 느림
         slidesToShow: 3,
         slidesToScroll: 1,
         autoplay: true,
@@ -31,7 +43,7 @@ export default function PartnerSliderLines({ line }: { line: number }) {
                 settings: {
                     slidesToShow: 3,
                     slidesToScroll: 1,
-                    speed: 5000,
+                    speed: isMobile ? 4000 : 5000,
                     variableWidth: true,
                 },
             },
@@ -40,7 +52,7 @@ export default function PartnerSliderLines({ line }: { line: number }) {
                 settings: {
                     slidesToShow: 2,
                     slidesToScroll: 1,
-                    speed: 5000,
+                    speed: isMobile ? 4000 : 5000,
                     variableWidth: true,
                 },
             },
@@ -49,7 +61,7 @@ export default function PartnerSliderLines({ line }: { line: number }) {
                 settings: {
                     slidesToShow: 1,
                     slidesToScroll: 1,
-                    speed: 4000,
+                    speed: isMobile ? 3000 : 4000,
                     variableWidth: true,
                 },
             },
@@ -64,7 +76,7 @@ export default function PartnerSliderLines({ line }: { line: number }) {
 
     return (
         <section
-            className="py-4 overflow-hidden max-w-screen-2xl xl:max-w-screen-xl px-10 mx-auto"
+            className="py-4 overflow-hidden max-w-screen-2xl xl:max-w-screen-xl px-4 md:px-10 mx-auto"
             onMouseEnter={() => setIsPaused(true)}
             onMouseLeave={() => setIsPaused(false)}
         >
@@ -75,13 +87,18 @@ export default function PartnerSliderLines({ line }: { line: number }) {
             `}</style>
             <Slider {...settings}>
                 {data.map((partner, index) => (
-                    <div key={index} className="px-2 sm:px-1 py-6 cursor-pointer items-center">
+                    <div
+                        key={index}
+                        className="px-2 sm:px-1 md:py-6 flex justify-center items-center"
+                    >
                         <Image
                             src={partner.imageUrl}
                             alt={partner.name}
-                            className="h-20 sm:h-16 md:h-14 lg:h-12 object-contain mx-auto filter grayscale brightness-1100"
-                            width={200}
-                            height={200}
+                            className={`object-contain mx-auto filter grayscale brightness-1100 ${
+                                isMobile ? 'h-16 sm:h-14 md:h-12' : 'h-20 sm:h-16 md:h-14 lg:h-12'
+                            }`}
+                            width={isMobile ? 150 : 200}
+                            height={isMobile ? 150 : 200}
                             unoptimized
                         />
                     </div>

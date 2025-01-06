@@ -220,12 +220,24 @@ const solutionsData: Record<string, Record<string, SolutionData>> = {
             ],
             faq: [
                 {
-                    question: "In which industries can Global-IoT be utilized?",
-                    answer: "Global-IoT can be used in any field where data collection and utilization are required. Representative services include heavy equipment (construction machinery, agricultural machinery, etc.) monitoring, marine information (ships, buoys, lighthouses, etc.) monitoring, and public and social safety (weather observation, water level monitoring, public safety, etc.) sectors."
+                    question: "What is Global-IoT?",
+                    answer: "Global-IoT is a service provided by Korea Orbcomm that leverages global communication networks (cellular, low-earth orbit and geostationary satellites, IoT, etc.) to offer solutions suitable for various industries worldwide."
+                },
+                {
+                    question: "In which industries is Global-IoT used?",
+                    answer: "Global-IoT can be utilized in any field that requires data collection and utilization. Key applications include monitoring in heavy machinery (construction/agricultural equipment), marine information (ships, buoys, beacons, etc.), and public and social safety (weather observation, water level monitoring, public safety, etc.)."
                 },
                 {
                     question: "How is data security ensured?",
-                    answer: "All data collected through IoT devices is encrypted before being transmitted to customers. Unauthorized access is prevented through authentication and access control for communication networks."
+                    answer: "All data collected through IoT devices is encrypted before being transmitted to customers. Unauthorized access is prevented through authentication and access control of the communication networks."
+                },
+                {
+                    question: "What are the costs of adopting the Global-IoT service?",
+                    answer: "Costs vary depending on the communication network, required devices, and service scale. Customized quotes are provided through consultation."
+                },
+                {
+                    question: "Are there additional costs for service expansion?",
+                    answer: "Yes, additional costs may apply for extra devices and network usage. However, we offer flexible pricing plans considering scalability."
                 }
             ],
             ctas: {
@@ -323,7 +335,7 @@ const solutionsData: Record<string, Record<string, SolutionData>> = {
         "container-iot": {
             imageIntro: "",
             imageMain: "컨테이너 IoT 통합 솔루션",
-            imageSub: "코리아오브컴의 컨테이너 솔루션은 통해 다양한 컨테이너(Reefer, Dry, Open, Flat 등)에 적합한 IoT 서비스를 제공합니다.",
+            imageSub: "코리아오브컴의 컨테이너 솔루션은 Reefer, Dry, Open, Flat 등 다양한 컨테이너에 적합한 IoT 서비스를 제공합니다.",
             imageUrl: "/images/solutions/container-iot/Container_Header.jpg",
             solutionNumber: "Container IoT",
             title: "컨테이너 IoT 솔루션",
@@ -474,12 +486,24 @@ const solutionsData: Record<string, Record<string, SolutionData>> = {
             ],
             faq: [
                 {
+                    question: "Global-IoT란 무엇인가요?",
+                    answer: "Global-IoT는 코리아오브컴에 제공하는 글로벌 통신망(셀룰러, 저궤도 및 정지궤도 위성망, IoT 등)을 활용하여 세계 다양한 산업 분야에 적합한 솔루션을 제공하는 서비스입니다."
+                },
+                {
                     question: "Global-Iot는 어떤 산업 분야에서 활용되나요?",
                     answer: "데이터를 수집하여 활용하고자 하는 모든 분야에서 활용이 가능합니다. 대표적인 서비스로 중장비(건설기계/농기계 등) 모니터링 분야, 해양정보(선박/Buoy/등부표 등) 모니터링 분야, 공공 및 사회안전(기상관측, 수위관측, 공공안전 등)분야에서 주로 활용됩니다."
                 },
                 {
                     question: "데이터 보안은 어떻게 보장되나요?",
                     answer: "IoT 장비를 통해 수집된 모든 데이터는 암호화되어 고객에게 전송됩니다. 통신망에 대한 인증 및 접근 제어를 통해 불법적인 접근을 방지하고 있습니다."
+                },
+                {
+                    question: "Global-IoT 서비스를 도입하는 데 비용이 얼마나 드나요?",
+                    answer: "비용은 사용하려는 통신망, 필요한 장비, 서비스 규모에 따라 달라집니다. 상담을 통해 고객 맞춤형 견적을 제공해드립니다."
+                },
+                {
+                    question: "서비스 확장이 필요한 경우 추가 비용이 발생하나요?",
+                    answer: "네, 추가 장비 및 통신망 사용에 따라 추가 비용이 발생할 수 있지만, 확장성을 고려한 유연한 요금제를 제공합니다."
                 }
             ],
             ctas: {

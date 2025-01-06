@@ -15,7 +15,7 @@ const offices = [
         location: '서울 본사(HQ)',
         tel: 'T. 02-3444-7311',
         address: 'A. 06536 서울특별시 서초구 강남대로 525 세영제이타워 15층',
-        mail: 'M. sales_team@orbcomm.co.kr',
+        mail: 'M. sales@orbcomm.co.kr',
     },
     {
         location: '위성 지구국(Gateway Earth Station)',
@@ -90,14 +90,17 @@ export default function WorkWithUs() {
                         Together, We Build Connectivity.
                     </h2>
                     <p className="mt-6 text-lg leading-8 text-gray-700 dark:text-gray-300">
-                        자산과 인프라를 연결하여 가치를 확장하고, 실시간 데이터 통해 새로운 가능성을 발견하세요.
+                        자산과 인프라를 연결하여 가치를 확장하고,
+                    </p>
+                    <p className="text-lg leading-8 text-gray-700 dark:text-gray-300">
+                        IoT 데이터를 통해 새로운 가능성을 발견하세요.
                     </p>
                 </motion.div>
                 <motion.div
                     className="mx-auto mt-10 max-w-2xl lg:mx-0 lg:max-w-none"
                     variants={itemVariants}
                 >
-                    <div className="grid grid-cols-1 gap-x-8 gap-y-6 text-base font-semibold leading-7 text-gray-900 dark:text-white sm:grid-cols-2 md:flex lg:gap-x-10">
+                <div className="grid grid-cols-1 gap-x-8 gap-y-6 text-base font-semibold leading-7 text-gray-900 dark:text-white sm:grid-cols-2 md:flex lg:gap-x-10">
                         {links.map((link) => (
                             <motion.a
                                 key={link.name}

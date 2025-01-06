@@ -46,7 +46,7 @@ export default function Page({ params }: { params: { locale: string } }) {
                                         href="mailto:sales@orbcomm.co.kr"
                                         className="text-blue-600 text-sm font-semibold hover:underline"
                                     >
-                                        sales_team@orbcomm.co.kr
+                                        sales@orbcomm.co.kr
                                     </a>
                                 </div>
                             </li>
