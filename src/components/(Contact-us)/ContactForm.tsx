@@ -23,13 +23,11 @@ export default function ContactForm({ locale }: ContactFormProps) {
         name: '',
         company: '',
         companyEmail: '',
-        position: '',
-        phone: '',
         inquiryType: '',
         message: '',
     });
 
-    const [isAgreed, setIsAgreed] = useState(false); // Legal notice agreement state
+    const [isAgreed, setIsAgreed] = useState(false);
     const [isLoading, setIsLoading] = useState(false);
     const [banner, setBanner] = useState<{ message: string; state: 'success' | 'error' } | null>(null);
 
@@ -44,22 +42,23 @@ export default function ContactForm({ locale }: ContactFormProps) {
     };
 
     const validateForm = () => {
-        const newErrors = { ...errors };
+        const newErrors: Partial<typeof errors> = {};
         let isValid = true;
 
-        Object.keys(formData).forEach((key) => {
+        // 필수 필드만 유효성 검사
+        ['name', 'company', 'companyEmail', 'inquiryType', 'message'].forEach((key) => {
             if (formData[key as keyof typeof formData].trim() === '') {
-                newErrors[key as keyof typeof newErrors] = 'This field is required.';
+                newErrors[key as keyof typeof errors] = 'This field is required.';
                 isValid = false;
             }
         });
 
-        setErrors(newErrors);
+        setErrors(newErrors as typeof errors);
         return isValid;
     };
 
     const handleSubmit = async () => {
-        if (!validateForm() || !isAgreed) return; // Ensure the legal notice is agreed upon
+        if (!validateForm() || !isAgreed) return;
 
         setIsLoading(true);
         setBanner(null);
@@ -116,7 +115,7 @@ export default function ContactForm({ locale }: ContactFormProps) {
                 {/* Phone */}
                 <div className="col-span-1">
                     <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
-                        Phone Number <span className="text-red-500">*</span>
+                        Phone Number
                     </label>
                     <input
                         type="tel"
@@ -126,7 +125,6 @@ export default function ContactForm({ locale }: ContactFormProps) {
                         placeholder="e.g., 010-0000-0000"
                         className="w-full rounded-md py-3 px-4 bg-gray-100 text-gray-800 h-[52px]"
                     />
-                    {errors.phone && <p className="text-red-500 text-xs mt-1">{errors.phone}</p>}
                 </div>
 
                 {/* Company */}
@@ -140,7 +138,7 @@ export default function ContactForm({ locale }: ContactFormProps) {
                         value={formData.company}
                         onChange={handleChange}
                         placeholder="Company"
-                        className="w-full rounded-md py-3 px-4 bg-gray-100 text-gray-800 h-[52px]" // 높이를 input과 동일하게 설정
+                        className="w-full rounded-md py-3 px-4 bg-gray-100 text-gray-800 h-[52px]"
                     />
                     {errors.company && (
                         <p className="text-red-500 text-xs mt-1">{errors.company}</p>
@@ -150,7 +148,7 @@ export default function ContactForm({ locale }: ContactFormProps) {
                 {/* Position */}
                 <div className="col-span-1">
                     <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
-                        Position <span className="text-red-500">*</span>
+                        Position
                     </label>
                     <input
                         type="text"
@@ -158,11 +156,8 @@ export default function ContactForm({ locale }: ContactFormProps) {
                         value={formData.position}
                         onChange={handleChange}
                         placeholder="Manager"
-                        className="w-full rounded-md py-3 px-4 bg-gray-100 text-gray-800 h-[52px]" // 높이를 input과 동일하게 설정
+                        className="w-full rounded-md py-3 px-4 bg-gray-100 text-gray-800 h-[52px]"
                     />
-                    {errors.position && (
-                        <p className="text-red-500 text-xs mt-1">{errors.position}</p>
-                    )}
                 </div>
 
                 {/* Company Email */}
@@ -250,7 +245,7 @@ export default function ContactForm({ locale }: ContactFormProps) {
                     className="w-5 h-5"
                 />
                 <label htmlFor="legal-notice" className="text-sm font-medium text-gray-700">
-                    I agree to KoresORBCOMM&apos;s{' '}
+                    I agree to KOREA ORBCOMM&apos;s{' '}
                     <a href="/support" className="text-blue-600 underline">
                         Terms of Service
                     </a>{' '}

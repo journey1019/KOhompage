@@ -10,8 +10,8 @@ export default function ThreeComponent() {
             opacity: 1,
             y: 0,
             transition: {
-                duration: 0.8,
-                staggerChildren: 0.2,
+                duration: 0.4, // 속도 조정
+                staggerChildren: 0.1, // 자식 요소 간의 간격 감소
             },
         },
     };
@@ -21,42 +21,46 @@ export default function ThreeComponent() {
         visible: {
             opacity: 1,
             y: 0,
-            transition: { duration: 0.6 },
+            transition: { duration: 0.3 }, // 요소 애니메이션 속도 조정
         },
     };
 
     const AnimatedCounter = ({ endValue, unit }: { endValue: number; unit: string }) => {
-        const motionValue = useMotionValue(0); // 초기값 0으로 설정
-        const roundedValue = useTransform(motionValue, (value) => Math.round(value)); // 정수로 변환
-        const [displayValue, setDisplayValue] = useState(0); // React 상태로 변환
+        const motionValue = useMotionValue(0);
+        const roundedValue = useTransform(motionValue, (value) => Math.round(value));
+        const [displayValue, setDisplayValue] = useState(0);
+        const [hasAnimated, setHasAnimated] = useState(false); // 애니메이션 실행 여부 추적
 
         useEffect(() => {
             const unsubscribe = roundedValue.onChange((latest) => {
-                setDisplayValue(latest); // 최신 값으로 상태 업데이트
+                setDisplayValue(latest);
             });
 
-            return () => unsubscribe(); // unmount 시 구독 해제
+            return () => unsubscribe();
         }, [roundedValue]);
 
         const startAnimation = () => {
-            const duration = 2000; // 애니메이션 지속 시간 (ms)
-            const interval = 20; // 업데이트 간격 (ms)
-            const step = endValue / (duration / interval); // 증가 값 계산
+            if (hasAnimated) return; // 이미 애니메이션이 실행되었으면 종료
+            setHasAnimated(true);
 
-            let currentValue = 0; // 현재 값을 추적
+            const duration = 1500; // 애니메이션 지속 시간 (ms) - 더 빠르게 설정
+            const interval = 15; // 업데이트 간격 (ms)
+            const step = endValue / (duration / interval);
+
+            let currentValue = 0;
             const increment = setInterval(() => {
                 currentValue += step;
                 if (currentValue >= endValue) {
-                    currentValue = endValue; // 종료 조건
-                    clearInterval(increment); // 애니메이션 완료 후 클리어
+                    currentValue = endValue;
+                    clearInterval(increment);
                 }
-                motionValue.set(currentValue); // 업데이트
+                motionValue.set(currentValue);
             }, interval);
         };
 
         return (
             <motion.span
-                onViewportEnter={startAnimation} // 뷰포트에 진입 시 애니메이션 실행
+                onViewportEnter={startAnimation} // 뷰포트에 들어올 때 애니메이션 시작
                 style={{ display: 'inline-block' }}
             >
                 {displayValue.toLocaleString()}
@@ -67,8 +71,8 @@ export default function ThreeComponent() {
 
     const data = [
         { value: 12000, label: '사용자 수', unit: '+' },
-        { value: 30, label: '월간 데이터', unit: 'M+' },
-        { value: 600, label: '탐지선박수', unit: 'K+' },
+        { value: 60, label: '월간 데이터', unit: 'M+' },
+        { value: 600, label: '모니터링 자산', unit: 'K+' },
     ];
 
     return (
@@ -78,7 +82,7 @@ export default function ThreeComponent() {
                 variants={containerVariants}
                 initial="hidden"
                 whileInView="visible"
-                viewport={{ once: true, amount: 0.3 }}
+                viewport={{ once: true, amount: 0.3 }} // 뷰포트에서 50% 이상 보일 때 실행
             >
                 {data.map((item, index) => (
                     <motion.div

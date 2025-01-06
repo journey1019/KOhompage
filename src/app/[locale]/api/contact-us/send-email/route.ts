@@ -22,8 +22,8 @@ export async function POST(req: Request) {
             !name ||
             !company ||
             !companyEmail ||
-            !position ||
-            !phone ||
+            // !position ||
+            // !phone ||
             !inquiryType ||
             !message
         ) {

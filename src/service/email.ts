@@ -80,7 +80,7 @@ export async function sendEmail(data: EmailData): Promise<void> {
                 <div style="margin-top: 16px; padding: 16px; background: #f1f1f1; border-radius: 8px;">
                     <h3 style="margin: 0; color: #0056b3;">Message</h3>
                     <p style="margin-top: 8px;">${message}</p>
-                </div>
+                </di
                 <footer style="margin-top: 24px; text-align: center; font-size: 12px; color: #888;">
                     <p>This email was generated from the HomePage contact form.</p>
                 </footer>
