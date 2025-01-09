@@ -12,8 +12,8 @@ import { RiShipLine } from "react-icons/ri";
 ;
 
 const login = [
-    { name: 'ORBCOMM Flatform', description: 'Fleet Management Solutions', url: 'https://platform.orbcomm.com/', icon: ChartPieIcon },
-    { name: 'Maritime Flatform', description: 'Driving container tracking', url: 'https://platform.orbcommmaritime.com/', icon: CursorArrowRaysIcon },
+    { name: 'ORBCOMM Platform', description: 'Fleet Management Solutions', url: 'https://platform.orbcomm.com/', icon: ChartPieIcon },
+    { name: 'Maritime Platform', description: 'Driving container tracking', url: 'https://platform.orbcommmaritime.com/', icon: CursorArrowRaysIcon },
     { name: 'NMS', description: "Network Monitoring System", url: 'https://nms.commtrace.com/', icon: PresentationChartBarIcon },
     { name: 'VMS', description: "Vessel Monitoring System", url: 'https://vms.commtrace.com/', icon: RiShipLine },
     { name: 'Windward', description: 'Decision Support Platform to Accelerate Global Trade', url: 'https://windward.ai/', icon: SquaresPlusIcon },

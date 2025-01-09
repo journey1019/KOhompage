@@ -63,7 +63,7 @@ export function Footer({locale}: {locale: string}) {
                         </div>
 
                         <div className="flex flex-col max-w-md mt-4 text-gray-500 dark:text-gray-400">
-                            <span>서울특별시 서초구 강남대로 525 세영제이타워 15층 [06536]</span>
+                            <span>[06536] 서울특별시 서초구 강남대로 525, 15</span>
                             <span>02-3444-7311</span>
                             <span>sales@orbcomm.co.kr</span>
                         </div>
