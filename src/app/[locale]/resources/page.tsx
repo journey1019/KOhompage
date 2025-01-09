@@ -5,7 +5,7 @@ import {
     getAllResources,
     getFilteredResourcesByQueryAndFilters,
     FilterOptions,
-} from "@/service/references/resourceData";
+} from "@/service/resources/resourceData";
 import ResourceCard from "@/components/(Resources)/ResourceCard";
 import SearchBar from "@/components/(Resources)/SearchBar";
 import FilterResource from "@/components/(Resources)/FilterResource";

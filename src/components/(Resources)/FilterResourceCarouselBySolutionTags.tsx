@@ -1,7 +1,7 @@
 'use client';
 
 import React from "react";
-import { getResourceByKeywordsInPage, ResourcesProps } from '@/service/references/resourceData';
+import { getResourceByKeywordsInPage, ResourcesProps } from '@/service/resources/resourceData';
 import ResourceCard from "@/components/(Resources)/ResourceCard";
 import Carousel from "@/components/Carousel";
 

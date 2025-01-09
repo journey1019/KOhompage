@@ -1,7 +1,7 @@
 'use client';
 
 import React from 'react';
-import { FilterOptions } from "@/service/references/resourceData";
+import { FilterOptions } from "@/service/resources/resourceData";
 
 interface FiltersResourcesProps {
     filters: FilterOptions,
