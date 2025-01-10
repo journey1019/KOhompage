@@ -1,4 +1,6 @@
-/** src/middleware.ts */
+/**
+ * @description: JWT 토큰 검증 & 로컬화 지원 & 관리자 페이지 보호
+ *  */
 import jwt from 'jsonwebtoken';
 import { NextRequest, NextResponse } from 'next/server';
 
@@ -24,7 +26,7 @@ export async function middleware(req: NextRequest) {
         try {
             jwt.verify(token.value, JWT_SECRET); // 토큰 유효성 검증
         } catch (err) {
-            url.pathname = `/${locale}/admin/login`;
+            url.pathname = `/${locale}/admin/login`; // 인증 실패 시 리다이렉트
             return NextResponse.redirect(url);
         }
     }
