@@ -1,5 +1,6 @@
 import React from 'react';
 
+import { Metadata } from 'next';
 import aboutData from '@/service/aboutData';
 import { Container } from "@/components/(About)/Container";
 import { SectionTitle } from "@/components/(About)/SectionTitle";
@@ -19,6 +20,38 @@ import Blog from '@/components/(Templates)/Blog';
 import PageHero from '@/components/PageHero';
 import Partner from '@/components/Partner'
 import History from '@/components/(About)/History';
+
+// 다국어 지원 Metadata 설정
+export async function generateMetadata({ params }: { params: { locale: string } }): Promise<Metadata> {
+    const locale = params.locale;
+    const data = aboutData[locale];
+
+    return {
+        title: `${data.title} | KOREA ORBCOMM`,
+        description: data.description,
+        icons: {
+            icon: "/favicon.ico",
+        },
+        openGraph: {
+            title: `${data.title} | KOREA ORBCOMM`,
+            description: data.description,
+            url: `https://www.orbcomm.co.kr/${locale}/about`,
+            images: "/images/KO_SmallLogo.png",
+            type: "website",
+        },
+        twitter: {
+            card: "summary_large_image",
+            title: `${data.title} | KOREA ORBCOMM`,
+            description: data.description,
+            images: "/images/KO_SmallLogo.png",
+        },
+        robots: {
+            index: true,
+            follow: true,
+        },
+        viewport: "width=device-width, initial-scale=1.0",
+    };
+}
 
 interface PageProps {
     params: {locale: string};

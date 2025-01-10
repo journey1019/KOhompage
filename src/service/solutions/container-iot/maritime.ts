@@ -20,6 +20,9 @@ interface FaqData{
 }
 
 interface MaritimeData{
+    title: string;
+    description: string;
+    openGraphDesc: string;
     imageIntro: string;
     imageMain: string;
     imageUrl: string;
@@ -39,6 +42,9 @@ interface MaritimeData{
 
 const maritimeData: Record<string, MaritimeData> = {
     "en": {
+        title: "Maritime Platform",
+        description: "Providing real-time data and monitoring with vessel and maritime IoT solutions.",
+        openGraphDesc: "Providing real-time data and monitoring with vessel and maritime IoT solutions.",
         imageIntro: "See more. Know more. Do more: The industry’s single source for complete maritime asset visibility and control.",
         imageMain: "Marine Solutions for the Smart, Connected Supply Chain",
         imageUrl: "/images/header/Port.jpg",
@@ -113,6 +119,9 @@ const maritimeData: Record<string, MaritimeData> = {
         ]
     },
     "ko": {
+        title: "Maritime Platform",
+        description: "선박 및 해양 IoT 솔루션으로 실시간 데이터 및 모니터링을 제공합니다.",
+        openGraphDesc: "선박 및 해양 IoT 솔루션으로 실시간 데이터 및 모니터링을 제공합니다.",
         imageIntro: "더 많이 보고, 더 깊이 알고, 더 능숙하게 행동하십시오: 업계에서 유일하게 완전한 해양 자산 가시성과 제어를 제공하는 단일 솔루션.",
         imageMain: "스마트하고 연결된 공급망을 위한 해양 솔루션",
         imageUrl: "/images/header/Port.jpg",

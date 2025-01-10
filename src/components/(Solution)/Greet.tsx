@@ -4,12 +4,12 @@ import { motion } from 'framer-motion';
 
 interface GreetProps {
     solutionNumber: string;
-    title: string;
+    solutionTitle: string;
     solutionName: string;
     description?: string; // 선택적으로 추가 가능
 }
 
-export default function Greet({ solutionNumber, title, solutionName, description }: GreetProps) {
+export default function Greet({ solutionNumber, solutionTitle, solutionName, description }: GreetProps) {
     const containerVariants = {
         hidden: { opacity: 0, y: 50 },
         visible: {
@@ -50,7 +50,7 @@ export default function Greet({ solutionNumber, title, solutionName, description
                     className="text-6xl text-black font-bold py-3 dark:text-white"
                     variants={itemVariants}
                 >
-                    {title}
+                    {solutionTitle}
                 </motion.h1>
                 <motion.h1
                     className="text-xl text-gray-400 font-semibold py-4"

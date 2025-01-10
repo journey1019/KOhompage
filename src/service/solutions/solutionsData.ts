@@ -46,12 +46,15 @@ interface CaseData {
     image: string;
 }
 interface SolutionData {
+    title: string;
+    description: string;
+    openGraphDesc: string;
     imageIntro: string;
     imageMain: string;
     imageSub: string;
     imageUrl: string;
     solutionNumber: string;
-    title: string
+    solutionTitle: string
     solutionName: string;
     faqImage?: string;
     carousels?: CarouselData[];
@@ -68,12 +71,15 @@ interface SolutionData {
 const solutionsData: Record<string, Record<string, SolutionData>> = {
     "en": {
         "container-iot": {
+            title: "Container IoT",
+            description: "Optimize logistics and supply chain management with global container IoT solutions.",
+            openGraphDesc: "Optimize logistics and supply chain management with global container IoT solutions.",
             imageIntro: "",
             imageMain: "Improve your experience with container solutions",
             imageSub: "Korea ofCom provides IoT solutions suitable for various fields around the world through a container monitoring service",
             imageUrl: "/images/solutions/container-iot/Container_Header.jpg",
             solutionNumber: "Container IoT",
-            title: "Streamline Container Operations",
+            solutionTitle: "Streamline Container Operations",
             solutionName: "",
             faqImage: "/images/solutions/container-iot/ContainerFAQ.jpeg",
             useCases: [
@@ -160,12 +166,15 @@ const solutionsData: Record<string, Record<string, SolutionData>> = {
             }
         },
         "global-iot": {
+            title: "Global IoT",
+            description: "글로벌 IoT 솔루션으로 데이터 수집과 분석을 통해 비즈니스를 혁신하세요. 중장비 모니터링, 해양 정보 모니터링, 공공/사회 안전망",
+            openGraphDesc: "글로벌 IoT 솔루션으로 데이터 수집과 분석을 제공합니다.",
             imageIntro: "KOREAORBCOMM FOR RINANCIAL SERVICES",
             imageMain: "Improve your experience with global communication.",
             imageSub: "Through the Global Communication Network provided by Korea ofCom, we provide IoT solutions suitable for various fields around the world.",
             imageUrl: "/images/solutions/global-iot/M2M_IoT.jpg",
             solutionNumber: "Global IoT",
-            title: "Industrial IoT Solutions",
+            solutionTitle: "Industrial IoT Solutions",
             solutionName: "Industrial IoT solutions provided by KOREA ORBCOMM provide solutions suitable for various industries such as construction equipment monitoring, marine information monitoring, and climate information monitoring.",
             faqImage: "/images/solutions/global-iot/NMSAI.webp",
             carousels: [
@@ -247,12 +256,15 @@ const solutionsData: Record<string, Record<string, SolutionData>> = {
             }
         },
         "satellite": {
+            title: "Satellite",
+            description: "Satellite-based IoT solutions offer global communication and connectivity. OGx/IDP, ORBCOMM: Low Earth Orbit, Starlink.",
+            openGraphDesc: "Satellite-based IoT solutions provide global communication and connectivity.",
             imageIntro: "KOREAORBCOMM FOR RINANCIAL SERVICES",
             imageMain: "안정적 통신 서비스로 경험을 향상시키세요",
             imageSub: "KOREA ORBCOMM provides satellite communication services suitable for customers through cooperation with global satellite network operators.",
             imageUrl: "/images/solutions/satellite/Satellite_Header.jpg",
             solutionNumber: "Satellite",
-            title: "Communication Network",
+            solutionTitle: "Communication Network",
             solutionName: "It provides optimal devices and communication networks for a wide range of industries for your customers.",
             useCases: [
                 {
@@ -287,12 +299,15 @@ const solutionsData: Record<string, Record<string, SolutionData>> = {
             }
         },
         "ais": {
+            title: "AIS",
+            description: "We provide a critical vessel signaling system that supports ship identification, location, navigation, and enhances maritime safety.",
+            openGraphDesc: "We offer an automatic identification system (AIS) for vessels. The AIS service collects data from satellites and over 10,000 terrestrial AIS stations.",
             imageIntro: "KOREAORBCOMM FOR RINANCIAL SERVICES",
             imageMain: "AIS: Automatic identification system",
             imageSub: "코리아오브컴에서 제공하는 Global 통신망을 통해 전세계 다양한 분야에 적합한 IoT 솔루션을 제공합니다.",
             imageUrl: "/images/solutions/ais/AIS_Header.jpg",
             solutionNumber: "AIS",
-            title: "Enhanced Maritime Tracking",
+            solutionTitle: "Enhanced Maritime Tracking",
             solutionName: "",
             useCases: [
                 {
@@ -333,12 +348,15 @@ const solutionsData: Record<string, Record<string, SolutionData>> = {
 
     "ko": {
         "container-iot": {
+            title: "Container IoT",
+            description: "글로벌 컨테이너 IoT 솔루션으로 물류 및 공급망 관리를 최적화하세요.",
+            openGraphDesc: "글로벌 컨테이너 IoT 솔루션으로 물류 및 공급망 관리를 최적화하세요.",
             imageIntro: "",
             imageMain: "컨테이너 IoT 통합 솔루션",
             imageSub: "코리아오브컴의 컨테이너 솔루션은 Reefer, Dry, Open, Flat 등 다양한 컨테이너에 적합한 IoT 서비스를 제공합니다.",
             imageUrl: "/images/solutions/container-iot/Container_Header.jpg",
             solutionNumber: "Container IoT",
-            title: "컨테이너 IoT 솔루션",
+            solutionTitle: "컨테이너 IoT 솔루션",
             solutionName: "코리아오브컴의 Container IoT Solution은 화물에 대한 실시간 추적, 화물 및 컨테이너의 상태 모니터링, Reefer Container의 원격제어 기능을 제공합니다. ",
             faqImage: "/images/solutions/container-iot/ContainerFAQ.jpeg",
             useCases: [
@@ -426,12 +444,15 @@ const solutionsData: Record<string, Record<string, SolutionData>> = {
             },
         },
         "global-iot": {
+            title: "Global IoT",
+            description: "Transform your business with global IoT solutions through data collection and analysis. Monitor heavy equipment, marine information, and public/social safety networks.",
+            openGraphDesc: "Global IoT solutions provide data collection and analysis to drive innovation.",
             imageIntro: "",
             imageMain: "글로벌 IoT 솔루션",
             imageSub: "코리아오브컴에서 제공하는 Global 통신망(Global Cellular, 저궤도/정지궤도 위성망, IoT 망 등)을 통해 전세계 다양한 분야에 적합한 솔루션을 제공합니다.",
             imageUrl: "/images/solutions/global-iot/M2M_IoT.jpg",
             solutionNumber: "Global IoT",
-            title: "산업용 IoT 솔루션",
+            solutionTitle: "산업용 IoT 솔루션",
             solutionName: "산업용 IoT 솔루션은 건설장비 모니터링, 해양정보 모니터링, 기후정보 모니터링 등 다양한 산업분야에 적합한 솔루션을 제공합니다.",
             faqImage: "/images/solutions/global-iot/NMSAI.webp",
             carousels: [
@@ -513,12 +534,15 @@ const solutionsData: Record<string, Record<string, SolutionData>> = {
             },
         },
         "satellite": {
+            title: "Satellite",
+            description: "위성 기반 IoT 솔루션으로 글로벌 통신과 연결성을 제공합니다. OGx/IDP, ORBCOMM:Low Earth Orbit, Starlink.",
+            openGraphDesc: "위성 기반 IoT 솔루션으로 글로벌 통신과 연결성을 제공합니다.",
             imageIntro: "",
             imageMain: "KOREA ORBCOMM 위성기반 통신 서비스",
             imageSub: "코리아오브컴은 글로벌위성망 사업자와 협력을 통해 고객에게 적합한 위성통신서비스를 제공합니다.",
             imageUrl: "/images/solutions/satellite/Satellite_Header.jpg",
             solutionNumber: "Satellite",
-            title: "통신망 서비스",
+            solutionTitle: "통신망 서비스",
             solutionName: "고객의 다양한 산업 분야에 적합한 최적의 디바이스 및 통신망을 제공합니다.",
             useCases: [
                 {
@@ -567,12 +591,15 @@ const solutionsData: Record<string, Record<string, SolutionData>> = {
             },
         },
         "ais": {
+            title: "AIS",
+            description: "선박의 식별, 위치, 탐색 등을 지원하고 해양 안전을 향상시키는데 사용할 수 있는 중요한 데이터 선박 발신 시스템을 제공합니다.",
+            openGraphDesc: "선박 자동식별 시스템을 제공합니다. AIS 서비스는 위성은 물론 10,000개 이상의 육상 AIS 정보를 수집합니다.",
             imageIntro: "",
             imageMain: "AIS: 자동 식별 시스템",
             imageSub: "선박의 식별, 위치, 탐색을 지원하고 해양 안전을 향상시키는데 사용할 수 있는 중요한 데이터 선박 발신 시스템",
             imageUrl: "/images/solutions/ais/AIS_Header.jpg",
             solutionNumber: "AIS",
-            title: "Automatic identification system",
+            solutionTitle: "Automatic identification system",
             solutionName: "AIS(선박 자동 식별 시스템)는 선박의 식별, 위치, 탐색을 지원하고 해양 안전을 위해 사용할 수 있는 중요한 데이터를 전송하는 선박 발신 시스템 입니다. 코리아오브컴의 AIS 서비스는 위성과 물론 10,000개 이상의 육상AIS 수신국을 통해  전세계 모든 지역의 AIS 정보를 수집하여 해상 정보 분석, 수색 및 구조, 환경 모니터링 등 다양한 분야에 활용되고 있습니다.",
             character: [
                 {

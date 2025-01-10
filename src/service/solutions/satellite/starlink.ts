@@ -15,6 +15,9 @@ interface FaqData{
 }
 
 interface StarlinkData{
+    title: string;
+    description: string;
+    openGraphDesc: string;
     imageIntro: string;
     imageMain: string;
     imageUrl: string;
@@ -32,12 +35,15 @@ interface StarlinkData{
 
 const starlinkData: Record<string, StarlinkData> = {
     "en": {
+        title: "Starlink: SpaceX",
+        description: "Offers lower latency and faster download/upload speeds than traditional satellite internet. Ensures fast and reliable connectivity with 1,000+ LEO satellites.",
+        openGraphDesc: "Offers lower latency and faster download/upload speeds than traditional satellite internet. Ensures fast and reliable connectivity with 1,000+ LEO satellites.",
         imageIntro: "It is an ultra-fast, low-latency satellite Internet solution that provides stable Internet connections anywhere on the planet.",
         imageMain: "Marine Solutions for the Smart, Connected Supply Chain",
         imageUrl: "/images/header/Starlink.webp",
         imageSub: "",
-        introTitle: "Reefer Container Monitoring and Control System",
-        introLetter: "KOREA ORBCOMM's ReeferContainer, selected by top three shipping companies worldwide, is currently operating with more than 500,000 products installed in cold-refrigerated containers, providing container carriers, multimodal carriers, shippers and other users with real-time container control services across the land and sea.",
+        "introTitle": "Innovative Satellite Internet Technology",
+        "introLetter": "Starlink is a low-Earth orbit satellite internet service developed by SpaceX, providing high-speed internet access anywhere in the world.",
         qnaTitle: "Frequently Asked Questions",
         qnaLetter: "Check out our customers' frequently asked questions",
         useCaseTitle: "Why should you use this solution",
@@ -97,12 +103,15 @@ const starlinkData: Record<string, StarlinkData> = {
 
 
     "ko": {
+        title: "스타링크: 스페이스X",
+        description: "기존 위성 인터넷보다 낮은 지연 시간(Latency)과 빠른 다운로드/업로드 속도를 제공. 1000개 이상의 저궤도 위성 네트워크로 빠르고 안정적인 연결을 보장.",
+        openGraphDesc: "기존 위성 인터넷보다 낮은 지연 시간(Latency)과 빠른 다운로드/업로드 속도를 제공. 1000개 이상의 저궤도 위성 네트워크로 빠르고 안정적인 연결을 보장.",
         imageIntro: "초고속 저지연 위성 인터넷 솔루션으로, 지구 어디에서나 안정적인 인터넷 연결을 제공합니다.",
         imageMain: "SpaceX: Starlink Satellite",
         imageUrl: "/images/header/Starlink.webp",
         imageSub: "",
-        introTitle: "Reefer Container 감시 및 제어 시스템",
-        introLetter: "전세계 Top3 선사가 선택한 ORBCOMM의 ReeferContainer는 현재 500,000개 이상의 제품이 냉동냉장 컨테이너에 설치되어 운영 중이며, 컨테이너선사, 복합운송업체, 화주 및 기타 사용자에게 육해상 전 지역에서의 실시간 컨테이너관제 서비스를 제공합니다.",
+        introTitle: "혁신적인 위성 인터넷 기술",
+        introLetter: "Starlink는 SpaceX가 개발한 저궤도 위성 인터넷 서비스로, 전 세계 어디서나 고속 인터넷 접속을 제공합니다.",
         qnaTitle: "자주 묻는 질문",
         qnaLetter: "고객들이 자주 묻는 질문을 확인해보세요",
         useCaseTitle: "이 솔루션을 사용해야 하는 이유",

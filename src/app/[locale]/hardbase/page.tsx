@@ -2,7 +2,7 @@ import { Metadata } from 'next';
 import ProductGrid from '@/components/ProductGrid';
 
 
-export const metadata = {
+export const metadata:Metadata = {
     title: {
         default: 'HARDWARE',
         template: 'KOREA ORBCOMM | %s'

@@ -22,6 +22,9 @@ interface FaqData{
 }
 
 interface MaritimeData{
+    title: string;
+    description: string;
+    openGraphDesc: string;
     imageIntro: string;
     imageMain: string;
     imageUrl: string;
@@ -40,6 +43,9 @@ interface MaritimeData{
 
 const lowEarthOrbitData: Record<string, MaritimeData> = {
     "en": {
+        title: "ORBCOMM: Low Earth Orbit",
+        description: "ORBCOMM's low-Earth orbit satellite network provides data communication in remote areas like mountains and oceans without infrastructure.",
+        openGraphDesc: "Provides tailored solutions for monitoring, tracking, and remote management in construction, marine, environment, and weather industries.",
         imageIntro: "It provides real-time data transmission and efficient remote monitoring solutions through low-orbit satellites.",
         imageMain: "Marine Solutions for the Smart, Connected Supply Chain",
         imageUrl: "/images/header/Port.jpg",
@@ -130,6 +136,9 @@ const lowEarthOrbitData: Record<string, MaritimeData> = {
 
 
     "ko": {
+        title: "ORBCOMM: 저궤도 위성 네트워크",
+        description: "ORBCOMM의 저궤도 위성 네트워크. 인프라가 구축되지 않은 산악/해상 등 장소에서 유용한 데이터 통신 서비스를 제공합니다.",
+        openGraphDesc: "각 분야에 맞는  솔루션을 제공하며 추가 설비나 투자 비용 없이 이용 가능. 건설장비, 해양, 환경, 기상 등 다양한 분야에 상태감시, 위치추적, 원격관리 등을 제공.",
         imageIntro: "저궤도 위성을 통해 실시간 데이터 전송과 효율적인 원격 모니터링 솔루션을 제공합니다.",
         imageMain: "ORBCOMM: Low Earth Orbit",
         imageUrl: "/images/header/Satellite.jpg",

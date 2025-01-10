@@ -47,18 +47,36 @@ import Footers from '@/components/Footer';
 import { Footer } from "@/components/(Header)/Footer";
 import Navbar from "@/components/(Header)/example/Navbar";
 import NewNavbar from "@/components/(Header)/example/NewNavbar";
+import { Metadata } from 'next';
 
 const sans = Open_Sans({ subsets: ['latin'] });
-export const metadata = {
-    title: {
-        default: 'Global AIS 서비스를 선도하는 서비스 | 코리아오브컴',
-        template: 'KOREA ORBCOMM | %s',
-    },
-    description: '전세계 M2M Service를 위한 통신 서비스와 하드웨어, 어플리케이션을 제공하는 Total SERVICE Provider',
+export const metadata:Metadata = {
+    title: "KOREA ORBCOMM | IoT & Satellite Solutions",
+    description:
+        "IoT와 위성통신 솔루션의 글로벌 리더, KOREA ORBCOMM. 최고의 IoT 통신 서비스를 제공합니다.",
     icons: {
-        icon: '/favicon.ico',
+        icon: "/favicon.ico",
     },
+    openGraph: {
+        title: "KOREA ORBCOMM | IoT & Satellite Solutions",
+        description: "IoT와 위성통신 솔루션의 글로벌 리더, KOREA ORBCOMM.",
+        url: "https://www.orbcomm.co.kr",
+        images: "/images/og-image-main.png",
+        type: "website",
+    },
+    twitter: {
+        card: "summary_large_image",
+        title: "KOREA ORBCOMM | IoT & Satellite Solutions",
+        description: "IoT와 위성통신 솔루션의 글로벌 리더, KOREA ORBCOMM.",
+        images: "/images/twitter-card-main.png",
+    },
+    robots: {
+        index: true,
+        follow: true,
+    },
+    viewport: "width=device-width, initial-scale=1.0",
 };
+
 
 type Props = {
     children: React.ReactNode;

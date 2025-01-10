@@ -1,8 +1,9 @@
 import PageHero from '@/components/PageHero';
 import SerachCategory from '@/components/SearchCategory';
 import HardwareGrid from '@/components/(Hardware)/HardwareGrid';
+import { Metadata } from 'next';
 
-export const metadata = {
+export const metadata:Metadata = {
     title: "Movie Home",
 }
 

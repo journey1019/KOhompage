@@ -19,6 +19,38 @@ import FilterHardwareCarousel from '@/components/(Hardware)/FilterHardwareCarous
 import FilterResourceCarousel from '@/components/(Resources)/FilterResourceCarousel';
 import FilterHardwareCarouselBySolutionTags from '@/components/(Hardware)/FilterHardwareCarouselBySolutionTags';
 import FilterResourceCarouselBySolutionTags from '@/components/(Resources)/FilterResourceCarouselBySolutionTags';
+import { Metadata } from 'next';
+
+export async function generateMetadata({ params }: { params: { locale: string } }): Promise<Metadata> {
+    const locale = params.locale;
+    const data = vmsData[locale];
+
+    return {
+        title: `${data.title} | KOREA ORBCOMM`,
+        description: data.description,
+        icons: {
+            icon: "/favicon.ico",
+        },
+        openGraph: {
+            title: `${data.title} | KOREA ORBCOMM`,
+            description: data.openGraphDesc,
+            url: `https://www.orbcomm.co.kr/${locale}/solutions/global-iot/vms`,
+            images: "/images/KO_SmallLogo.png",
+            type: "website",
+        },
+        twitter: {
+            card: "summary_large_image",
+            title: `${data.title} | KOREA ORBCOMM`,
+            description: data.openGraphDesc,
+            images: "/images/KO_SmallLogo.png",
+        },
+        robots: {
+            index: true,
+            follow: true,
+        },
+        viewport: "width=device-width, initial-scale=1.0",
+    };
+}
 
 interface PageProps {
     params: {locale: string};

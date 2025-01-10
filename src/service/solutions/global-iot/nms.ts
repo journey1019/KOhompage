@@ -17,6 +17,9 @@ interface FaqData{
 }
 
 interface NMSData{
+    title: string;
+    description: string;
+    openGraphDesc: string;
     imageIntro: string;
     imageMain: string;
     imageUrl: string;
@@ -36,6 +39,9 @@ interface NMSData{
 
 const nmsData: Record<string, NMSData> = {
     "en": {
+        title: "NMS(Network Monitoring System)",
+        description: "A solution for real-time monitoring and analysis of network-connected devices, enabling proactive issue detection and swift identification of root causes.",
+        openGraphDesc: "An innovative solution focused on enhancing network stability and maximizing operational efficiency.",
         imageIntro: "Real-time Network Monitoring System",
         imageMain: "Real-time data analytics dashboards and notifications",
         imageUrl: "/images/header/NMS.jpg",
@@ -98,6 +104,9 @@ const nmsData: Record<string, NMSData> = {
         ]
     },
     "ko": {
+        title: "NMS(네트워크 모니터링 시스템)",
+        description: "네트워크에 연결된 모든 단말기를 실시간 모니터링하고, 분석하여 사전에 장애 감지 및 발생 원인을 신속히 파악할 수 있도록 지원하는 솔루션.",
+        openGraphDesc: "네트워크 운영의 안정성을 높이고, 관리의 효율성을 극대화하는 데 초점을 맞춘 혁신적인 솔루션",
         imageIntro: "시스템 네트워크 모니터링 시스템",
         imageMain: "실시간 데이터 분석 대시보드 및 알림 기능",
         imageUrl: "/images/header/NMS.jpg",

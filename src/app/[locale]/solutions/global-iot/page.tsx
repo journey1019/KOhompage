@@ -26,20 +26,40 @@ import FilterHardwareCarouselBySolutionTags from '@/components/(Hardware)/Filter
 import FilterResourceCarouselBySolutionTags from '@/components/(Resources)/FilterResourceCarouselBySolutionTags';
 import { CtaSolution } from '@/components/(Solution)/CtaSolution';
 
+export async function generateMetadata({ params }: { params: { locale: string } }): Promise<Metadata> {
+    const locale = params.locale;
+    const data = solutionsData[locale]?.["global-iot"];
+
+    return {
+        title: `${data.title} | KOREA ORBCOMM`,
+        description: data.description,
+        icons: {
+            icon: "/favicon.ico",
+        },
+        openGraph: {
+            title: `${data.title} | KOREA ORBCOMM`,
+            description: data.openGraphDesc,
+            url: `https://www.orbcomm.co.kr/${locale}/solutions/global-iot`,
+            images: "/images/KO_SmallLogo.png",
+            type: "website",
+        },
+        twitter: {
+            card: "summary_large_image",
+            title: `${data.title} | KOREA ORBCOMM`,
+            description: data.openGraphDesc,
+            images: "/images/KO_SmallLogo.png",
+        },
+        robots: {
+            index: true,
+            follow: true,
+        },
+        viewport: "width=device-width, initial-scale=1.0",
+    };
+}
+
 interface PageProps {
     params: {locale: string};
 }
-export const metadata: Metadata = {
-    title: 'Solution | %s',
-    description: 'KOREA ORBCOMM 의 Solutions 소개'
-}
-export async function generateStaticParams() {
-    return [
-        { locale: 'en' },
-        { locale: 'ko' },
-    ];
-}
-
 export default async function GlobalIoT({params}: PageProps){
     const { locale } = params; // 비동기적으로 처리
     const data = solutionsData[locale]?.["global-iot"]; // 안전하게 데이터 접근

@@ -1,7 +1,8 @@
 import { getAllPosts } from '@/service/hardware';
 import FilterableHardware from '@/components/(Hardware)/FilterableHardware';
+import { Metadata } from 'next';
 
-export const metadata = {
+export const metadata:Metadata = {
     title: {
         default: 'HARDWARE',
         template: 'KOREA ORBCOMM | %s'

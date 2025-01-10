@@ -1,7 +1,43 @@
+import contactUsData from '@/service/contactUsData';
 import React from 'react';
 import ContactForm from '@/components/(Contact-us)/ContactForm';
+import { Metadata } from 'next';
+
+export async function generateMetadata({ params }: { params: { locale: string } }): Promise<Metadata> {
+    const locale = params.locale;
+    const data = contactUsData[locale];
+
+    return {
+        title: `${data.title} | KOREA ORBCOMM`,
+        description: data.description,
+        icons: {
+            icon: "/favicon.ico",
+        },
+        openGraph: {
+            title: `${data.title} | KOREA ORBCOMM`,
+            description: data.openGraphDesc,
+            url: `https://www.orbcomm.co.kr/${locale}/contact-us`,
+            images: "/images/KO_SmallLogo.png",
+            type: "website",
+        },
+        twitter: {
+            card: "summary_large_image",
+            title: `${data.title} | KOREA ORBCOMM`,
+            description: data.openGraphDesc,
+            images: "/images/KO_SmallLogo.png",
+        },
+        robots: {
+            index: true,
+            follow: true,
+        },
+        viewport: "width=device-width, initial-scale=1.0",
+    };
+}
 
 export default function Page({ params }: { params: { locale: string } }) {
+    const locale = params.locale;
+    const data = contactUsData[locale];
+
     return (
         <div className="grid md:grid-cols-2 lg:max-w-7xl lg:px-6 lg:py-28 items-start gap-16 p-4 mx-auto max-w-full bg-white">
             <div>
@@ -12,8 +48,7 @@ export default function Page({ params }: { params: { locale: string } }) {
                     KOREA ORBCOMM
                 </h1>
                 <p className="text-sm text-gray-500 mt-4">
-                    Have some big idea or brand to develop and need help? Then reach out we&apos;d love to hear about
-                    your project and provide help.
+                    {data.introText}
                 </p>
 
                 <div className="mt-12 space-y-12">

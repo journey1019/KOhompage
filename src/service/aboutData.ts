@@ -13,57 +13,34 @@ interface ValueData {
     title: string;
     description: string;
 }
-
 interface CtaData{
     title: string;
     subTitle: string;
     button: string;
 }
-interface FaqData{
-    question: string;
-    answer: string;
-}
-
-interface MaritimeData{
+interface AboutData{
+    title: string;
+    description: string;
     imageIntro: string;
     imageMain: string;
     imageUrl: string;
     imageSub: string;
     imageThird: string;
-    valueTitle: string;
-    faqs?: FaqData[];
     ctas: CtaData;
     value: ValueData[];
     feature: SectionData[];
     timeline: TimelineData[];
 }
 
-const aboutData: Record<string, MaritimeData> = {
+const aboutData: Record<string, AboutData> = {
     "en": {
+        title: "About",
+        description: "Introduction page of KOREA ORBCOMM. A global leader in IoT and satellite communication solutions.",
         imageIntro: "About",
         imageUrl: "/images/header/Company.jpg",
         imageMain: "KOREA ORBCOMM provides reliable",
         imageSub: "connectivity for all customer assets",
         imageThird: "and infrastructure.",
-        valueTitle: "Why KOREA ORBCOMM",
-        faqs: [
-            {
-                question: "How do I create a new ID on the Maritime Platform?",
-                answer: "Please leave an inquiry with the administrator or on the 'Contact-Us' page."
-            },
-            {
-                question: "Can I use it in a commercial project?",
-                answer: "Yes, this you can.",
-            },
-            {
-                question: "What is your refund policy? ",
-                answer: "If you're unhappy with your purchase for any reason, email us within 90 days and we'll refund you in full, no questions asked.",
-            },
-            {
-                question: "Do you offer technical support? ",
-                answer: "No, we don't offer technical support for free downloads. Please purchase a support plan to get 6 months of support.",
-            },
-        ],
         ctas: {
             title: "Have any questions?",
             subTitle: "Send us a message today to learn more about our company values and how we can help you achieve your goals.",
@@ -196,30 +173,13 @@ const aboutData: Record<string, MaritimeData> = {
     },
 
     "ko": {
-        imageIntro: "KOREA ORBCOMM",
+        title: "About",
+        description: "KOREA ORBCOMM의 소개 페이지입니다. IoT와 위성 통신 솔루션에 대한 글로벌 선두 주자.",
+        imageIntro: "About",
         imageUrl: "/images/header/Company.jpg",
         imageMain: "코리아오브컴은",
         imageSub: "고객의 모든 자산/인프라에",
         imageThird: "Connectivity를 제공합니다.",
-        valueTitle: "Why KOREA ORBCOMM",
-        faqs: [
-            {
-                question: "Maritime Platform에서 새로운 아이디를 생성하려면 어떻게 해야 하나요?",
-                answer: "관리자에게 문의 혹은 '문의하기' 페이지에서 문의를 남겨주세요."
-            },
-            {
-                question: "상업용 프로젝트에 사용할 수 있나요?",
-                answer: "네, 할 수 있습니다."
-            },
-            {
-                question: "환불 정책은 무엇인가요?",
-                answer: "어떤 이유로든 구매가 만족스럽지 않다면 90일 이내에 이메일을 보내주시면 question 없이 전액 환불해드리겠습니다.",
-            },
-            {
-                question: "기술 지원을 제공하시나요?",
-                answer: "아니요, 무료 다운로드에 대한 기술 지원은 제공하지 않습니다. 6개월 지원을 받으려면 지원 플랜을 구매하세요.",
-            },
-        ],
         ctas: {
             title: "궁금한 점이 있으신가요?",
             subTitle: "저희 회사의 가치와 목표 달성을 위한 지원 방법에 대해 더 알아보시려면 지금 메시지를 보내주세요.",

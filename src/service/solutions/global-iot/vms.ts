@@ -17,6 +17,9 @@ interface FaqData{
 }
 
 interface VMSData{
+    title: string;
+    description: string;
+    openGraphDesc: string;
     imageUrl: string;
     imageIntro: string;
     imageMain: string;
@@ -36,6 +39,9 @@ interface VMSData{
 
 const vmsData: Record<string, VMSData> = {
     "en": {
+        title: "VMS(Vessel Monitoring System)",
+        description: "Real-time tracking and monitoring with data from satellites, mobile networks, and SIGFOX. Our portal integrates device sensor data and geofence alerts.",
+        openGraphDesc: "Smart maritime logistics solutions improve vessel operations and ensure safety.",
         imageUrl: "/images/header/VMS.jpg",
         imageIntro: "Real-time Network Monitoring System",
         imageMain: "Real-time data analytics dashboards and notifications",
@@ -98,6 +104,9 @@ const vmsData: Record<string, VMSData> = {
         ]
     },
     "ko": {
+        title: "VMS(Vessel Monitoring System)",
+        description: "위성 및 이동통신, SIGFOX 등 다양한 통신장비를 통해 수집되는 위치정보를 실시간 모니터링 및 Tracking을 서비스하며 Device의 Sensor 데이터와 Geofence 등의 정보를 통해 종합적인 위치정보 포탈 서비스를 제공합니다.",
+        openGraphDesc: "상선 및 어선 운영의 효율성을 높이고 안전을 보장하는 스마트 해양 물류 관리 솔루션",
         imageUrl: "/images/header/VMS.jpg",
         imageIntro: "선박 모니터링 시스템",
         imageMain: "VMS Commtrace",

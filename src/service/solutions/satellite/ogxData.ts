@@ -17,6 +17,9 @@ interface OGxFeaturesData {
 }
 
 interface MaritimeData{
+    title: string;
+    description: string;
+    openGraphDesc: string;
     imageIntro: string;
     imageMain: string;
     imageUrl: string;
@@ -31,6 +34,9 @@ interface MaritimeData{
 
 const maritimeData: Record<string, MaritimeData> = {
     "en": {
+        title: "OGx",
+        description: "Next-generation satellite IoT service with innovative network features and flexible operation. Provides global satellite communication using Inmarsat's L-Band.",
+        openGraphDesc: "Next-generation satellite IoT service with innovative network features and flexible operation. Provides global satellite communication using Inmarsat's L-Band.",
         imageIntro: "Next-generation satellite IoT services with innovative network capabilities and flexible prices",
         imageMain: "Marine Solutions for the Smart, Connected Supply Chain",
         imageUrl: "/images/header/OGx.webp",
@@ -86,6 +92,9 @@ const maritimeData: Record<string, MaritimeData> = {
 
 
     "ko": {
+        title: "OGx",
+        description: "혁신적인 네트워크 기능과 유연한 가영의 차세대 위성 IoT 서비스. Inmarsat 위성의 L-Band 대역을 이용하여 전 세계에 위성통신을 제공.",
+        openGraphDesc: "혁신적인 네트워크 기능과 유연한 가영의 차세대 위성 IoT 서비스. Inmarsat 위성의 L-Band 대역을 이용하여 전 세계에 위성통신을 제공.",
         imageIntro: "혁신적인 네트워크 기능과 유연한 가격의 차세대 위성 IoT 서비스",
         imageMain: "OGx: Next Generation Of Satellite ",
         imageUrl: "/images/header/OGx.webp",

@@ -1,7 +1,8 @@
 import PostGrid from '@/components/(Hardware)/PostGrid';
 import { getFeaturedPosts } from '@/service/hardware';
+import { Metadata } from 'next';
 
-export const metadata = {
+export const metadata:Metadata = {
     title: {
         default: 'HARDWARE',
         template: 'KOREA ORBCOMM | %s'

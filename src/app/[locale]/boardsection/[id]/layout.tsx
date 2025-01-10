@@ -1,6 +1,6 @@
 import { Metadata } from 'next';
 
-export const metadata = {
+export const metadata:Metadata = {
     title: {
         default: 'KOREA ORBCOMM | Board',
         template: 'KOREA ORBCOMM | %s'
