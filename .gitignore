@@ -38,3 +38,6 @@ next-env.d.ts
 # .env.local
 NODE_ENV=development
 NEXT_PUBLIC_API_URL=http://localhost:3000
+
+# Admin - Login hashPassword 스크립트 추가 X
+scripts/hashPassword.js
