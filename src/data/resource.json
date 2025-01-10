@@ -4,7 +4,10 @@
     "contentType": "Video",
     "title": "How ORBCOMM and Inmarsat’s partnership benefits construction",
     "subtitle": "ORBCOMM and Inmarsat CEOs talk about the OGx global IoT satellite service.",
-    "tags": ["Satellite", "Global-IoT"],
+    "tags": [
+      "Satellite",
+      "Global-IoT"
+    ],
     "solutionTag": [],
     "form": "link",
     "image": "/images/resources/video/Resources-2-InmarsatVideo.webp",
@@ -64,8 +67,14 @@
     "contentType": "Video",
     "title": "하팍로이드와 오브컴",
     "subtitle": "하팍로이드가 오브컴의 혁신적인 IoT 기술를 통해 수많은 컨테이너 선단에 손쉽게 IoT 기술을 적용하는 것을 확인하세요.",
-    "tags": ["Container-IoT", "DRY"],
-    "solutionTag": ["Container-IoT", "Maritime"],
+    "tags": [
+      "Container-IoT",
+      "DRY"
+    ],
+    "solutionTag": [
+      "Container-IoT",
+      "Maritime"
+    ],
     "form": "link",
     "image": "/images/resources/video/Maritime-Resources-3-1532x880.webp",
     "path": "https://www.youtube.com/watch?v=-QE6gJMhrgU&t=760s",
@@ -76,16 +85,19 @@
     "contentType": "Video",
     "title": "냉동 컨테이너 제어하기",
     "subtitle": "ORBCOMM의 컨테이너 제어 솔루션을 사용하여 얼마나 손쉽게 냉동 컨테이너를 설정을 변경/제어할 수 있는지 확인하세요.",
-    "tags": ["Container-IoT", "Reefer"],
-    "solutionTag": ["Container-IoT", "Maritime"],
+    "tags": [
+      "Container-IoT",
+      "Reefer"
+    ],
+    "solutionTag": [
+      "Container-IoT",
+      "Maritime"
+    ],
     "form": "link",
     "image": "/images/resources/video/Resources-RemoteReeferCommands.webp",
     "path": "https://www.youtube.com/watch?v=XF7fW1gW4xs",
     "use": true
   },
-
-
-
   {
     "date": "2024-12-26",
     "contentType": "Brochure",
@@ -103,7 +115,9 @@
     "contentType": "Brochure",
     "title": "Protected. At every mile.",
     "subtitle": "Learn more about the smart dashcam that can protect your drivers, your vehicles and your reputation.",
-    "tags": ["Camera"],
+    "tags": [
+      "Camera"
+    ],
     "solutionTag": [],
     "form": "pdf",
     "image": "/images/resources/brochure/Resources-FM6510Brochure.webp",
@@ -115,8 +129,19 @@
     "contentType": "Brochure",
     "title": "위성 백업망을 통한 무중단 통신 솔루션",
     "subtitle": "오브컴의 위성백업망을 통해 중요화물을 계속 모니터링하세요.",
-    "tags": ["Global-IoT", "OGx/IDP", "Satellite", "Cellular"],
-    "solutionTag": ["Global-IoT", "VMS", "NMS", "Satellite", "OGx/IDP"],
+    "tags": [
+      "Global-IoT",
+      "OGx/IDP",
+      "Satellite",
+      "Cellular"
+    ],
+    "solutionTag": [
+      "Global-IoT",
+      "VMS",
+      "NMS",
+      "Satellite",
+      "OGx/IDP"
+    ],
     "form": "pdf",
     "image": "/images/resources/brochure/Transportation-Containers-resources_5_satellite-IoT.webp",
     "path": "/pdf/brochure/Power-Dual-Mode-Connectivity.pdf",
@@ -127,8 +152,19 @@
     "contentType": "Brochure",
     "title": "OGx : 새로운 세상을 만나세요.",
     "subtitle": "차세대 위성 서비스인 OGx를 통해 더 유연하고 강력한 IoT 서비스를 확보하세요.",
-    "tags": ["Global-IoT", "OGx/IDP", "Satellite", "Cellular"],
-    "solutionTag": ["Global-IoT", "VMS", "NMS", "Satellite", "OGx/IDP"],
+    "tags": [
+      "Global-IoT",
+      "OGx/IDP",
+      "Satellite",
+      "Cellular"
+    ],
+    "solutionTag": [
+      "Global-IoT",
+      "VMS",
+      "NMS",
+      "Satellite",
+      "OGx/IDP"
+    ],
     "form": "pdf",
     "image": "/images/resources/brochure/OGxBrochure.png",
     "path": "/pdf/brochure/OGx-Brochure.pdf",
@@ -139,21 +175,37 @@
     "contentType": "Brochure",
     "title": "건설장비 추적 및 제어 솔루션",
     "subtitle": "최고의 건설장비 솔루션을 확인하세요. ",
-    "tags": ["Global-IoT", "OGx/IDP", "Satellite", "Cellular"],
-    "solutionTag": ["Global-IoT", "VMS", "NMS", "Satellite", "OGx/IDP"],
+    "tags": [
+      "Global-IoT",
+      "OGx/IDP",
+      "Satellite",
+      "Cellular"
+    ],
+    "solutionTag": [
+      "Global-IoT",
+      "VMS",
+      "NMS",
+      "Satellite",
+      "OGx/IDP"
+    ],
     "form": "pdf",
     "image": "/images/resources/brochure/ORBCOMM-Heavy-Equipment.png",
     "path": "/pdf/brochure/ORBCOMM-Heavy-Equipment.pdf",
     "use": true
   },
-
   {
     "date": "2024-12-26",
     "contentType": "Brochure",
     "title": "스마트 컨테이너",
     "subtitle": "자산에 대한 가시성, 화물에 대한 보안 그리고 데이터 중심의 운영 계획을 통해 선단 운영을 개선하세요.",
-    "tags": ["Container-IoT", "DRY"],
-    "solutionTag": ["Container-IoT", "Maritime"],
+    "tags": [
+      "Container-IoT",
+      "DRY"
+    ],
+    "solutionTag": [
+      "Container-IoT",
+      "Maritime"
+    ],
     "form": "pdf",
     "image": "/images/resources/brochure/Smart-Dry-Container.png",
     "path": "/pdf/brochure/Smart-Dry-Container.pdf",
@@ -164,8 +216,14 @@
     "contentType": "Brochure",
     "title": "스마트 IoT 솔루션",
     "subtitle": "완벽한 가시성을 통해 비용을 최적화 하세요.",
-    "tags": ["Container-IoT", "Reefer"],
-    "solutionTag": ["Container-IoT", "Maritime"],
+    "tags": [
+      "Container-IoT",
+      "Reefer"
+    ],
+    "solutionTag": [
+      "Container-IoT",
+      "Maritime"
+    ],
     "form": "pdf",
     "image": "/images/resources/brochure/Resources-SmartTrailer.png",
     "path": "/pdf/brochure/Smart-Trailer.pdf",
@@ -176,8 +234,15 @@
     "contentType": "Brochure",
     "title": "오브컴 해상 물류 솔루션",
     "subtitle": "스마트 공급망에 최적화된 오브컴 해상 물류 솔루션을 확인하세요.",
-    "tags": ["Container-IoT", "Reefer", "DRY"],
-    "solutionTag": ["Container-IoT", "Maritime"],
+    "tags": [
+      "Container-IoT",
+      "Reefer",
+      "DRY"
+    ],
+    "solutionTag": [
+      "Container-IoT",
+      "Maritime"
+    ],
     "form": "pdf",
     "image": "/images/resources/brochure/Maritime.webp",
     "path": "/pdf/brochure/ORBCOMM-Maritime-Platform-A4-eng.pdf",
@@ -188,8 +253,14 @@
     "contentType": "Brochure",
     "title": "스마트 컨테이너 물류",
     "subtitle": "운송 화물 추적과 화물 모니터링를 통해 해상 자산에 대한 가시성을 확보하세요.",
-    "tags": ["Container-IoT", "Reefer"],
-    "solutionTag": ["Container-IoT", "Maritime"],
+    "tags": [
+      "Container-IoT",
+      "Reefer"
+    ],
+    "solutionTag": [
+      "Container-IoT",
+      "Maritime"
+    ],
     "form": "pdf",
     "image": "/images/resources/brochure/SmartContainerShipping.webp",
     "path": "/pdf/brochure/Smart-Container-Shipping.pdf",
@@ -200,8 +271,14 @@
     "contentType": "Brochure",
     "title": "Reefer Telematics",
     "subtitle": "Refrigerated Transport: 7 Keys to Preventing Rejected Loads",
-    "tags": ["Container-IoT", "Reefer"],
-    "solutionTag": ["Container-IoT", "Maritime"],
+    "tags": [
+      "Container-IoT",
+      "Reefer"
+    ],
+    "solutionTag": [
+      "Container-IoT",
+      "Maritime"
+    ],
     "form": "link",
     "image": "/images/resources/brochure/ReeferTelematics.png",
     "path": "https://www2.orbcomm.com/reefer-transport-keys",
@@ -212,8 +289,14 @@
     "contentType": "Brochure",
     "title": "7 Must-Have Compliance Features for Temperature Management",
     "subtitle": "7 FSMA Compliance Features to Look for in a Temperature Management Solution",
-    "tags": ["Container-IoT", "Reefer"],
-    "solutionTag": ["Container-IoT", "Maritime"],
+    "tags": [
+      "Container-IoT",
+      "Reefer"
+    ],
+    "solutionTag": [
+      "Container-IoT",
+      "Maritime"
+    ],
     "form": "link",
     "image": "/images/resources/brochure/ComplianceFeatures.jpg",
     "path": "https://blog.orbcomm.com/fsma-compliance-7-features-to-look-for-in-a-temperature-management-solution/",
@@ -224,8 +307,14 @@
     "contentType": "Brochure",
     "title": "스마트 냉동 컨테이너 솔루션",
     "subtitle": "신선식품과 의약품 화물 운송시 IoT 기술 적용에 대해 확인하세요",
-    "tags": ["Container-IoT", "Reefer"],
-    "solutionTag": ["Container-IoT", "Maritime"],
+    "tags": [
+      "Container-IoT",
+      "Reefer"
+    ],
+    "solutionTag": [
+      "Container-IoT",
+      "Maritime"
+    ],
     "form": "link",
     "image": "/images/resources/brochure/Carrier_Red_Truck.jpg",
     "path": "https://blog.orbcomm.com/preventing-revenue-loss-while-staying-compliant-q-and-a-with-reefer-expert-chris-corlee/",
@@ -236,8 +325,14 @@
     "contentType": "Brochure",
     "title": "위성 AIS 서비스",
     "subtitle": "육상기지국과 위성으로부터 수집한 AIS 데이터를 통합하여 전세계 모든 선박의 움직임을 파악하세요.",
-    "tags": ["AIS", "Satellite"],
-    "solutionTag": ["Satellite", "AIS"],
+    "tags": [
+      "AIS",
+      "Satellite"
+    ],
+    "solutionTag": [
+      "Satellite",
+      "AIS"
+    ],
     "form": "pdf",
     "image": "/images/resources/brochure/SatelliteAIS.webp",
     "path": "/pdf/brochure/Satellite-AIS.pdf",
@@ -248,17 +343,19 @@
     "contentType": "Brochure",
     "title": "위성 AIS 서비스 (KO)",
     "subtitle": "육상기지국과 위성으로부터 수집한 AIS 데이터를 통합하여 전세계 모든 선박의 움직임을 파악하세요.",
-    "tags": ["AIS", "Satellite"],
-    "solutionTag": ["Satellite", "AIS"],
+    "tags": [
+      "AIS",
+      "Satellite"
+    ],
+    "solutionTag": [
+      "Satellite",
+      "AIS"
+    ],
     "form": "pdf",
     "image": "/images/resources/brochure/SatelliteAISKO.png",
     "path": "/pdf/brochure/Satellite_AIS_KO.pdf",
     "use": true
   },
-
-
-
-
   {
     "date": "2024-12-26",
     "contentType": "Datasheet",
@@ -324,7 +421,9 @@
     "contentType": "Datasheet",
     "title": "IS-400",
     "subtitle": "",
-    "tags": ["Container-IoT"],
+    "tags": [
+      "Container-IoT"
+    ],
     "solutionTag": [],
     "form": "pdf",
     "image": "/images/resources/datasheet/hardware/IS-400-remote-datatsheet.webp",
@@ -336,7 +435,9 @@
     "contentType": "Datasheet",
     "title": "PT-6000",
     "subtitle": "",
-    "tags": ["Container-IoT"],
+    "tags": [
+      "Container-IoT"
+    ],
     "solutionTag": [],
     "form": "pdf",
     "image": "/images/resources/datasheet/hardware/PT6000Datasheet.webp",
@@ -348,7 +449,9 @@
     "contentType": "Datasheet",
     "title": "BT-500",
     "subtitle": "",
-    "tags": ["Container-IoT"],
+    "tags": [
+      "Container-IoT"
+    ],
     "solutionTag": [],
     "form": "pdf",
     "image": "/images/resources/datasheet/hardware/Resources-BT500Datasheet.webp",
@@ -360,7 +463,9 @@
     "contentType": "Datasheet",
     "title": "IC-500",
     "subtitle": "",
-    "tags": ["Truck"],
+    "tags": [
+      "Truck"
+    ],
     "solutionTag": [],
     "form": "pdf",
     "image": "/images/resources/datasheet/hardware/Resources-IC500Datasheet.webp",
@@ -372,7 +477,9 @@
     "contentType": "Datasheet",
     "title": "DS-100",
     "subtitle": "",
-    "tags": ["Container-IoT"],
+    "tags": [
+      "Container-IoT"
+    ],
     "solutionTag": [],
     "form": "pdf",
     "image": "/images/resources/datasheet/hardware/Gray.png",
@@ -384,7 +491,9 @@
     "contentType": "Datasheet",
     "title": "FS-210",
     "subtitle": "",
-    "tags": ["Genset"],
+    "tags": [
+      "Genset"
+    ],
     "solutionTag": [],
     "form": "pdf",
     "image": "/images/resources/datasheet/hardware/Gray.png",
@@ -396,7 +505,9 @@
     "contentType": "Datasheet",
     "title": "GT-1030",
     "subtitle": "",
-    "tags": ["Container-IoT"],
+    "tags": [
+      "Container-IoT"
+    ],
     "solutionTag": [],
     "form": "pdf",
     "image": "/images/resources/datasheet/hardware/Gray.png",
@@ -408,7 +519,9 @@
     "contentType": "Datasheet",
     "title": "GT 1210",
     "subtitle": "gt1200",
-    "tags": ["Container-IoT"],
+    "tags": [
+      "Container-IoT"
+    ],
     "solutionTag": [],
     "form": "pdf",
     "image": "/images/resources/datasheet/hardware/Gray.png",
@@ -420,7 +533,9 @@
     "contentType": "Datasheet",
     "title": "Starlink Standard",
     "subtitle": "Best for residential users and everyday internet applications like streaming, video calls, online gaming & more.",
-    "tags": ["Starlink"],
+    "tags": [
+      "Starlink"
+    ],
     "solutionTag": [],
     "form": "pdf",
     "image": "/images/resources/datasheet/hardware/StarlinkStandardDatasheet.png",
@@ -432,7 +547,9 @@
     "contentType": "Datasheet",
     "title": "Starlink HighPerfomance",
     "subtitle": "Best for power user, business, and enterprise applications.",
-    "tags": ["Starlink"],
+    "tags": [
+      "Starlink"
+    ],
     "solutionTag": [],
     "form": "pdf",
     "image": "/images/resources/datasheet/hardware/StarlinkHighPerformanceDatasheet.png",
@@ -480,23 +597,30 @@
     "contentType": "Datasheet",
     "title": "DS 100",
     "subtitle": "",
-    "tags": ["Container-IoT", "Reefer", "DRY"],
+    "tags": [
+      "Container-IoT",
+      "Reefer",
+      "DRY"
+    ],
     "solutionTag": [],
     "form": "pdf",
     "image": "/images/resources/datasheet/hardware/DS100Datasheet",
     "path": "/pdf/datasheet/hardware/ds-100-door-sensor.pdf",
     "use": false
   },
-
-
-
   {
     "date": "2024-12-26",
     "contentType": "Datasheet",
     "title": "VesselConnect: Reefer container management at sea",
     "subtitle": "Stay connected to containers at sea with an onboard cellular network that facilitates ship-to-shore communications, enabling remote temperature monitoring and more.",
-    "tags": ["Container-IoT", "Reefer"],
-    "solutionTag": ["Container-IoT", "Maritime"],
+    "tags": [
+      "Container-IoT",
+      "Reefer"
+    ],
+    "solutionTag": [
+      "Container-IoT",
+      "Maritime"
+    ],
     "form": "pdf",
     "image": "/images/resources/datasheet/application/VesselConnectDatasheet.png",
     "path": "/pdf/datasheet/application/vesselconnect.pdf",
@@ -507,8 +631,14 @@
     "contentType": "Datasheet",
     "title": "ReeferConnect",
     "subtitle": "",
-    "tags": ["Container-IoT", "Reefer"],
-    "solutionTag": ["Container-IoT", "Maritime"],
+    "tags": [
+      "Container-IoT",
+      "Reefer"
+    ],
+    "solutionTag": [
+      "Container-IoT",
+      "Maritime"
+    ],
     "form": "pdf",
     "image": "/images/resources/datasheet/application/ReeferConnect.jpg",
     "path": "/pdf/datasheet/application/ReeferConnect_KR.pdf",
@@ -519,7 +649,12 @@
     "contentType": "Datasheet",
     "title": "IDP 800",
     "subtitle": "Low profile fully programmed satellite communication device",
-    "tags": ["Global-IoT", "OGx/IDP", "Satellite", "Cellular"],
+    "tags": [
+      "Global-IoT",
+      "OGx/IDP",
+      "Satellite",
+      "Cellular"
+    ],
     "solutionTag": [],
     "form": "pdf",
     "image": "/images/resources/datasheet/hardware/IDP800Datasheet.png",
@@ -531,8 +666,19 @@
     "contentType": "Datasheet",
     "title": "SC 1000",
     "subtitle": "",
-    "tags": ["Global-IoT", "OGx/IDP", "Satellite", "Cellular"],
-    "solutionTag": ["Global-IoT", "VMS", "NMS", "Satellite", "OGx/IDP"],
+    "tags": [
+      "Global-IoT",
+      "OGx/IDP",
+      "Satellite",
+      "Cellular"
+    ],
+    "solutionTag": [
+      "Global-IoT",
+      "VMS",
+      "NMS",
+      "Satellite",
+      "OGx/IDP"
+    ],
     "form": "pdf",
     "image": "/images/resources/datasheet/hardware/SC1000Datasheet.png",
     "path": "/pdf/datasheet/hardware/sc-1000.pdf",
@@ -543,8 +689,19 @@
     "contentType": "Datasheet",
     "title": "ST 9100",
     "subtitle": "",
-    "tags": ["Global-IoT", "OGx/IDP", "Satellite", "Cellular"],
-    "solutionTag": ["Global-IoT", "VMS", "NMS", "Satellite", "OGx/IDP"],
+    "tags": [
+      "Global-IoT",
+      "OGx/IDP",
+      "Satellite",
+      "Cellular"
+    ],
+    "solutionTag": [
+      "Global-IoT",
+      "VMS",
+      "NMS",
+      "Satellite",
+      "OGx/IDP"
+    ],
     "form": "pdf",
     "image": "/images/resources/datasheet/hardware/ST9100Datasheet.png",
     "path": "/pdf/datasheet/hardware/st-9100.pdf",
@@ -555,8 +712,19 @@
     "contentType": "Datasheet",
     "title": "ST 9100: Dual-mode satellite-cellular terminal",
     "subtitle": "",
-    "tags": ["Global-IoT", "OGx/IDP", "Satellite", "Cellular"],
-    "solutionTag": ["Global-IoT", "VMS", "NMS", "Satellite", "OGx/IDP"],
+    "tags": [
+      "Global-IoT",
+      "OGx/IDP",
+      "Satellite",
+      "Cellular"
+    ],
+    "solutionTag": [
+      "Global-IoT",
+      "VMS",
+      "NMS",
+      "Satellite",
+      "OGx/IDP"
+    ],
     "form": "pdf",
     "image": "/images/resources/datasheet/hardware/Agri-resources-ST-9100.webp",
     "path": "/pdf/datasheet/hardware/st-9100_2.pdf",
@@ -567,8 +735,18 @@
     "contentType": "Datasheet",
     "title": "ST 6000",
     "subtitle": "",
-    "tags": ["Global-IoT", "OGx/IDP", "Satellite"],
-    "solutionTag": ["Global-IoT", "VMS", "NMS", "Satellite", "OGx/IDP"],
+    "tags": [
+      "Global-IoT",
+      "OGx/IDP",
+      "Satellite"
+    ],
+    "solutionTag": [
+      "Global-IoT",
+      "VMS",
+      "NMS",
+      "Satellite",
+      "OGx/IDP"
+    ],
     "form": "pdf",
     "image": "/images/resources/datasheet/hardware/ST6000Datasheet.png",
     "path": "/pdf/datasheet/hardware/st-6000.pdf",
@@ -579,8 +757,18 @@
     "contentType": "Datasheet",
     "title": "ST 6100",
     "subtitle": "",
-    "tags": ["Global-IoT", "OGx/IDP", "Satellite"],
-    "solutionTag": ["Global-IoT", "VMS", "NMS", "Satellite", "OGx/IDP"],
+    "tags": [
+      "Global-IoT",
+      "OGx/IDP",
+      "Satellite"
+    ],
+    "solutionTag": [
+      "Global-IoT",
+      "VMS",
+      "NMS",
+      "Satellite",
+      "OGx/IDP"
+    ],
     "form": "pdf",
     "image": "/images/resources/datasheet/hardware/ST6100Datasheet.png",
     "path": "/pdf/datasheet/hardware/st-6100.pdf",
@@ -591,8 +779,18 @@
     "contentType": "Datasheet",
     "title": "ST 2100",
     "subtitle": "",
-    "tags": ["Global-IoT", "OGx/IDP", "Satellite"],
-    "solutionTag": ["Global-IoT", "VMS", "NMS", "Satellite", "OGx/IDP"],
+    "tags": [
+      "Global-IoT",
+      "OGx/IDP",
+      "Satellite"
+    ],
+    "solutionTag": [
+      "Global-IoT",
+      "VMS",
+      "NMS",
+      "Satellite",
+      "OGx/IDP"
+    ],
     "form": "pdf",
     "image": "/images/resources/datasheet/hardware/ST2100Datasheet.png",
     "path": "/pdf/datasheet/hardware/st-2100.pdf",
@@ -603,8 +801,17 @@
     "contentType": "Datasheet",
     "title": "Q 4000",
     "subtitle": "",
-    "tags": ["Global IoT", "Satellite"],
-    "solutionTag": ["Global-IoT", "VMS", "NMS", "Satellite", "LowEarthOrbit"],
+    "tags": [
+      "Global IoT",
+      "Satellite"
+    ],
+    "solutionTag": [
+      "Global-IoT",
+      "VMS",
+      "NMS",
+      "Satellite",
+      "LowEarthOrbit"
+    ],
     "form": "pdf",
     "image": "/images/resources/datasheet/hardware/Q4000Datasheet.png",
     "path": "/pdf/datasheet/hardware/q-4000.pdf",
@@ -615,8 +822,17 @@
     "contentType": "Datasheet",
     "title": "QPRO",
     "subtitle": "",
-    "tags": ["Global-IoT", "Satellite"],
-    "solutionTag": ["Global-IoT", "VMS", "NMS", "Satellite", "LowEarthOrbit"],
+    "tags": [
+      "Global-IoT",
+      "Satellite"
+    ],
+    "solutionTag": [
+      "Global-IoT",
+      "VMS",
+      "NMS",
+      "Satellite",
+      "LowEarthOrbit"
+    ],
     "form": "pdf",
     "image": "/images/resources/datasheet/hardware/QPRO.png",
     "path": "/pdf/datasheet/hardware/qpro.pdf",
@@ -627,8 +843,18 @@
     "contentType": "Datasheet",
     "title": "OG2 and OGi",
     "subtitle": "",
-    "tags": ["Global-IoT", "Satellite"],
-    "solutionTag": ["Global-IoT", "VMS", "NMS", "Satellite", "OGx/IDP", "LowEarthOrbit"],
+    "tags": [
+      "Global-IoT",
+      "Satellite"
+    ],
+    "solutionTag": [
+      "Global-IoT",
+      "VMS",
+      "NMS",
+      "Satellite",
+      "OGx/IDP",
+      "LowEarthOrbit"
+    ],
     "form": "pdf",
     "image": "/images/resources/datasheet/hardware/OG2Datasheet.png",
     "path": "/pdf/datasheet/hardware/OG2-OG-ISAT-Satellite-Modems.pdf",
@@ -639,8 +865,19 @@
     "contentType": "Datasheet",
     "title": "GT 1220",
     "subtitle": "",
-    "tags": ["Container-IoT", "Global-IoT", "Cellular", "Door"],
-    "solutionTag": ["Container-IoT", "Maritime", "Global-IoT", "VMS", "NMS"],
+    "tags": [
+      "Container-IoT",
+      "Global-IoT",
+      "Cellular",
+      "Door"
+    ],
+    "solutionTag": [
+      "Container-IoT",
+      "Maritime",
+      "Global-IoT",
+      "VMS",
+      "NMS"
+    ],
     "form": "pdf",
     "image": "/images/resources/datasheet/hardware/GT-1220.jpeg",
     "path": "/pdf/datasheet/hardware/gt-1220.pdf",
@@ -651,8 +888,20 @@
     "contentType": "Datasheet",
     "title": "GT 1230",
     "subtitle": "",
-    "tags": ["Container-IoT", "Global-IoT", "Cellular", "Door", "Cargo"],
-    "solutionTag": ["Container-IoT", "Maritime", "Global-IoT", "VMS", "NMS"],
+    "tags": [
+      "Container-IoT",
+      "Global-IoT",
+      "Cellular",
+      "Door",
+      "Cargo"
+    ],
+    "solutionTag": [
+      "Container-IoT",
+      "Maritime",
+      "Global-IoT",
+      "VMS",
+      "NMS"
+    ],
     "form": "pdf",
     "image": "/images/resources/datasheet/hardware/GT-1230.png",
     "path": "/pdf/datasheet/hardware/gt-1230.pdf",
@@ -663,8 +912,19 @@
     "contentType": "Datasheet",
     "title": "CT 1000",
     "subtitle": "",
-    "tags": ["Container-IoT", "Global-IoT", "Cellular", "Dry"],
-    "solutionTag": ["Container-IoT", "Maritime", "Global-IoT", "VMS", "NMS"],
+    "tags": [
+      "Container-IoT",
+      "Global-IoT",
+      "Cellular",
+      "Dry"
+    ],
+    "solutionTag": [
+      "Container-IoT",
+      "Maritime",
+      "Global-IoT",
+      "VMS",
+      "NMS"
+    ],
     "form": "pdf",
     "image": "/images/resources/datasheet/hardware/CT1000Datasheet.webp",
     "path": "/pdf/datasheet/hardware/ct-1000.pdf",
@@ -675,8 +935,20 @@
     "contentType": "Datasheet",
     "title": "CT 1010",
     "subtitle": "",
-    "tags": ["Container-IoT", "Global-IoT", "Cellular", "Dry", "Cargo"],
-    "solutionTag": ["Container-IoT", "Maritime", "Global-IoT", "VMS", "NMS"],
+    "tags": [
+      "Container-IoT",
+      "Global-IoT",
+      "Cellular",
+      "Dry",
+      "Cargo"
+    ],
+    "solutionTag": [
+      "Container-IoT",
+      "Maritime",
+      "Global-IoT",
+      "VMS",
+      "NMS"
+    ],
     "form": "pdf",
     "image": "/images/resources/datasheet/hardware/CT1010Datasheet.webp",
     "path": "/pdf/datasheet/hardware/ct-1010.pdf",
@@ -687,8 +959,19 @@
     "contentType": "Datasheet",
     "title": "CT 3500",
     "subtitle": "",
-    "tags": ["Container-IoT", "Global-IoT", "Cellular", "Reefer"],
-    "solutionTag": ["Container-IoT", "Maritime", "Global-IoT", "VMS", "NMS"],
+    "tags": [
+      "Container-IoT",
+      "Global-IoT",
+      "Cellular",
+      "Reefer"
+    ],
+    "solutionTag": [
+      "Container-IoT",
+      "Maritime",
+      "Global-IoT",
+      "VMS",
+      "NMS"
+    ],
     "form": "pdf",
     "image": "/images/resources/datasheet/hardware/CT3500Datasheet.png",
     "path": "/pdf/datasheet/hardware/ct-3500.pdf",
@@ -699,8 +982,19 @@
     "contentType": "Datasheet",
     "title": "CT 3600",
     "subtitle": "",
-    "tags": ["Container-IoT", "Global-IoT", "Cellular", "Reefer"],
-    "solutionTag": ["Container-IoT", "Maritime", "Global-IoT", "VMS", "NMS"],
+    "tags": [
+      "Container-IoT",
+      "Global-IoT",
+      "Cellular",
+      "Reefer"
+    ],
+    "solutionTag": [
+      "Container-IoT",
+      "Maritime",
+      "Global-IoT",
+      "VMS",
+      "NMS"
+    ],
     "form": "pdf",
     "image": "/images/resources/datasheet/hardware/CT3600Datasheet.webp",
     "path": "/pdf/datasheet/hardware/ct-3600.pdf",
@@ -711,8 +1005,14 @@
     "contentType": "Datasheet",
     "title": "DS 300",
     "subtitle": "",
-    "tags": ["Container-IoT", "Reefer"],
-    "solutionTag": ["Container-IoT", "Maritime"],
+    "tags": [
+      "Container-IoT",
+      "Reefer"
+    ],
+    "solutionTag": [
+      "Container-IoT",
+      "Maritime"
+    ],
     "form": "pdf",
     "image": "/images/resources/datasheet/hardware/DS300Datasheet.png",
     "path": "/pdf/datasheet/hardware/ds-300-wireless-door-sensor.pdf",
@@ -723,8 +1023,14 @@
     "contentType": "Datasheet",
     "title": "TS-310",
     "subtitle": "",
-    "tags": ["Container-IoT", "Reefer"],
-    "solutionTag": ["Container-IoT", "Maritime"],
+    "tags": [
+      "Container-IoT",
+      "Reefer"
+    ],
+    "solutionTag": [
+      "Container-IoT",
+      "Maritime"
+    ],
     "form": "pdf",
     "image": "/images/resources/datasheet/hardware/TS310Datasheet.png",
     "path": "/pdf/datasheet/hardware/ts-310.pdf",
@@ -735,8 +1041,20 @@
     "contentType": "Datasheet",
     "title": "BG95-S5",
     "subtitle": "",
-    "tags": ["Global-IoT", "Satellite", "OGx/IDP", "NTN", "Cellular"],
-    "solutionTag": ["Global-IoT", "VMS", "NMS", "Satellite", "OGx/IDP"],
+    "tags": [
+      "Global-IoT",
+      "Satellite",
+      "OGx/IDP",
+      "NTN",
+      "Cellular"
+    ],
+    "solutionTag": [
+      "Global-IoT",
+      "VMS",
+      "NMS",
+      "Satellite",
+      "OGx/IDP"
+    ],
     "form": "pdf",
     "image": "/images/resources/datasheet/hardware/BG95-S5.webp",
     "path": "/pdf/datasheet/hardware/Quectel-BG95.pdf",
@@ -747,8 +1065,18 @@
     "contentType": "Datasheet",
     "title": "YETN001L1A",
     "subtitle": "",
-    "tags": ["Global-IoT", "Satellite", "OGx/IDP"],
-    "solutionTag": ["Global-IoT", "VMS", "NMS", "Satellite", "OGx/IDP"],
+    "tags": [
+      "Global-IoT",
+      "Satellite",
+      "OGx/IDP"
+    ],
+    "solutionTag": [
+      "Global-IoT",
+      "VMS",
+      "NMS",
+      "Satellite",
+      "OGx/IDP"
+    ],
     "form": "pdf",
     "image": "/images/resources/datasheet/hardware/YETN001L1A.png",
     "path": "/pdf/datasheet/hardware/Quectel-YETN001L1A.pdf",
@@ -759,8 +1087,18 @@
     "contentType": "Brochure",
     "title": "KSV 1001",
     "subtitle": "",
-    "tags": ["Global-IoT", "Satellite", "OGx/IDP"],
-    "solutionTag": ["Global-IoT", "VMS", "NMS", "Satellite", "OGx/IDP"],
+    "tags": [
+      "Global-IoT",
+      "Satellite",
+      "OGx/IDP"
+    ],
+    "solutionTag": [
+      "Global-IoT",
+      "VMS",
+      "NMS",
+      "Satellite",
+      "OGx/IDP"
+    ],
     "form": "pdf",
     "image": "/images/resources/brochure/KSV1001Brochure.png",
     "path": "/pdf/brochure/KSV-1001.pdf",
@@ -771,8 +1109,14 @@
     "contentType": "Datasheet",
     "title": "Starlink FlatHighPerformance",
     "subtitle": "",
-    "tags": ["Satellite", "Starlink"],
-    "solutionTag": ["Satellite", "Starlink"],
+    "tags": [
+      "Satellite",
+      "Starlink"
+    ],
+    "solutionTag": [
+      "Satellite",
+      "Starlink"
+    ],
     "form": "pdf",
     "image": "/images/resources/datasheet/hardware/Starlink_Flat-High-Performance.png",
     "path": "/pdf/datasheet/hardware/Starlink-FlatHighPerformance.pdf",
@@ -783,8 +1127,14 @@
     "contentType": "Datasheet",
     "title": "Starlink Enterprise",
     "subtitle": "",
-    "tags": ["Satellite", "Starlink"],
-    "solutionTag": ["Satellite", "Starlink"],
+    "tags": [
+      "Satellite",
+      "Starlink"
+    ],
+    "solutionTag": [
+      "Satellite",
+      "Starlink"
+    ],
     "form": "pdf",
     "image": "/images/resources/datasheet/hardware/Starlink_Enterprise.png",
     "path": "/pdf/datasheet/hardware/Starlink_Enterprise.pdf",
@@ -795,24 +1145,29 @@
     "contentType": "Datasheet",
     "title": "MT 5000",
     "subtitle": "",
-    "tags": ["AIS", "Maritime"],
-    "solutionTag": ["Satellite", "LowEarthOrbit", "AIS"],
+    "tags": [
+      "AIS",
+      "Maritime"
+    ],
+    "solutionTag": [
+      "Satellite",
+      "LowEarthOrbit",
+      "AIS"
+    ],
     "form": "pdf",
     "image": "/images/resources/datasheet/hardware/MT5000Datasheet.png",
     "path": "/pdf/datasheet/hardware/mt-5000.pdf",
     "use": true
   },
-
-
-
-
-
   {
     "date": "2016-04-27",
     "contentType": "Article",
     "title": "코리아오브컴, 전세계 선박정보 담은 위성데이터 서비스",
     "subtitle": "코리아오브컴 (KOREA ORBCOMM)은 M2M(Machine-to-Machine) 에 특화된 통신 서비스를 제공하는 기업으로 선박안전 운행정보와 관련된 통신 서비스를 제공한다.",
-    "tags": ["Satellite", "Global-IoT"],
+    "tags": [
+      "Satellite",
+      "Global-IoT"
+    ],
     "solutionTag": [],
     "form": "link",
     "image": "/images/resources/article/2016-04-27.png",
@@ -824,7 +1179,10 @@
     "contentType": "Article",
     "title": "위성통신기업 코리아오브컴, 선박 IoT솔루션 출시로 국내사업 강화",
     "subtitle": "글로벌 위성통신기업 오브컴이 한국시장에서 닫기\n사물인터넷 (IoT : Internet of Things)\n: 여러 사물(thing)이 만든 정보를 공유하는 컴퓨터 통신망\n상세보기▶",
-    "tags": ["Satellite", "Global-IoT"],
+    "tags": [
+      "Satellite",
+      "Global-IoT"
+    ],
     "solutionTag": [],
     "form": "link",
     "image": "/images/resources/article/2024-03-27.png",
@@ -836,11 +1194,63 @@
     "contentType": "Newsletter",
     "title": "[NEWS #1] KOREA ORBCOMM 첫 뉴스레터",
     "subtitle": "코리아오브컴 뉴스레터를 구독해주셔서 감사합니다.",
-    "tags": ["Satellite", "Global-IoT"],
+    "tags": [
+      "Satellite",
+      "Global-IoT"
+    ],
     "solutionTag": [],
     "form": "page",
     "image": "/images/resources/newsletter/2024-12-10.png",
-    "path": "http://www.haesanews.com/news/articleView.html?idxno=116775",
-    "use": false
+    "path": "resources/news1",
+    "use": true
+  },
+  {
+    "date": "2025-01-10",
+    "contentType": "Newsletter",
+    "title": "[NEWS #2] 두 번째 뉴스레터(TEST)",
+    "subtitle": "테스트 뉴스레터입니다.",
+    "tags": [
+      "satellite",
+      " starlink"
+    ],
+    "solutionTag": [
+      ""
+    ],
+    "form": "page",
+    "image": "/images/resources/newsletter/2024-12-10.png",
+    "path": "resources/news2",
+    "use": true
+  },
+  {
+    "date": "2025-01-10",
+    "contentType": "Newsletter",
+    "title": "[NEWS #3] 두 번째 뉴스레터(TEST)",
+    "subtitle": "테스트 뉴스레터",
+    "tags": [
+      "satellite",
+      " OGx/IDP"
+    ],
+    "solutionTag": [
+      ""
+    ],
+    "form": "page",
+    "image": "/images/resources/newsletter/2024-12-10.png",
+    "path": "resources/news3",
+    "use": true
+  },
+  {
+    "date": "2025-01-10",
+    "contentType": "Newsletter",
+    "title": "[NEWS #4] 네 번째 뉴스레터(TEST)",
+    "subtitle": "테스트 뉴스레터",
+    "tags": [
+      "Satellite",
+      "low-earth-orbit"
+    ],
+    "solutionTag": "",
+    "form": "page",
+    "image": "/images/resources/newsletter/2024-12-10.png",
+    "path": "resources/news4",
+    "use": true
   }
 ]

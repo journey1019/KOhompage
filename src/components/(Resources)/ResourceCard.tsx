@@ -3,6 +3,7 @@
 import React from "react";
 import Image from "next/image";
 import { ArrowDownOnSquareIcon, ArrowTopRightOnSquareIcon } from "@heroicons/react/24/outline";
+import { useRouter } from 'next/navigation';
 
 interface ResourceCardProps {
     date: string;
@@ -17,11 +18,17 @@ interface ResourceCardProps {
 }
 
 const ResourceCard: React.FC<ResourceCardProps> = ({ date, contentType, title, subtitle, tags, form, image, path, use }) => {
+    const router = useRouter();
     const handleOpenPDF = () => {
         if (form === "pdf") {
             window.open(path, "_blank", "noopener,noreferrer");
         }
     };
+    const handlePageNavigation = () => {
+        if (form === "page") {
+            router.push(path); // Next.js 라우팅
+        }
+    }
 
     return (
         <div className="group flex flex-col border rounded-lg p-4 shadow-lg hover:shadow-xl h-full">
@@ -75,6 +82,14 @@ const ResourceCard: React.FC<ResourceCardProps> = ({ date, contentType, title, s
                         View More
                         <ArrowTopRightOnSquareIcon aria-hidden="true" className="h-5 w-5 ml-2" />
                     </a>
+                ) : form === 'page' ? (
+                    <button
+                        onClick={handlePageNavigation}
+                        className="flex flex-row w-full items-center justify-end text-red-500 hover:underline text-end pr-2"
+                    >
+                        Go to Page
+                        <ArrowTopRightOnSquareIcon aria-hidden="true" className="h-5 w-5 ml-2" />
+                    </button>
                 ) : (
                     <button
                         onClick={handleOpenPDF}

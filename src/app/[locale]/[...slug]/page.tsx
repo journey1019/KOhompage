@@ -18,10 +18,11 @@ export default function DynamicPage({ params }: { params: { slug: string[] } }) 
         notFound();
     }
 
-    return (
-        <div className="p-6">
-            <h1 className="text-2xl font-bold">Dynamic Page: {slug.join("/")}</h1>
-            <p>This is a dynamically generated page.</p>
-        </div>
-    );
+    return notFound();
+    // return (
+    //     <div className="p-6">
+    //         <h1 className="text-2xl font-bold">Dynamic Page: {slug.join("/")}</h1>
+    //         <p>This is a dynamically generated page.</p>
+    //     </div>
+    // );
 }

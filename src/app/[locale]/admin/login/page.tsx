@@ -40,8 +40,8 @@ export default function LoginPage({ params }: { params: Promise<{ locale: string
             // Save JWT in localStorage
             localStorage.setItem('token', res.data.token);
 
-            // Redirect to admin dashboard
-            router.push(`/${locale}/admin/dashboard`);
+            // Redirect to Admin Page
+            router.push(`/${locale}/admin/`);
         } catch (err) {
             setError('Invalid email or password.');
         }

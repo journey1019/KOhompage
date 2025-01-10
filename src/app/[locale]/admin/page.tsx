@@ -47,15 +47,26 @@ export default function DashboardPage({ params }: { params: Promise<{ locale: st
     };
 
     return (
-        <div className="p-6">
-            <h1 className="text-3xl font-bold">Welcome to Admin Dashboard</h1>
-            <p>You are successfully logged in.</p>
-            <button
-                className="mt-4 px-4 py-2 bg-red-500 text-white rounded hover:bg-red-600"
-                onClick={handleLogout}
-            >
-                Logout
-            </button>
+        <div className="max-w-7xl mx-auto p-6">
+            <div className="flex flex-row justify-between items-center">
+                <div className="flex flex-col">
+                    <h1 className="text-3xl font-bold">Welcome to Admin Dashboard</h1>
+                    <p>You are successfully logged in.</p>
+                </div>
+
+                <button
+                    className="px-4 py-2 bg-red-500 text-white rounded hover:bg-red-600"
+                    onClick={handleLogout}
+                >
+                    Logout
+                </button>
+            </div>
+
+            <div className="flex pt-10">
+                <button className="px-6 py-3 bg-white text-red-700 border-2 border-red-700 hover:bg-neutral-100 rounded-md">
+                    Resource
+                </button>
+            </div>
         </div>
     );
 }
