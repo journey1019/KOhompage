@@ -167,8 +167,8 @@ const solutionsData: Record<string, Record<string, SolutionData>> = {
         },
         "global-iot": {
             title: "Global IoT",
-            description: "글로벌 IoT 솔루션으로 데이터 수집과 분석을 통해 비즈니스를 혁신하세요. 중장비 모니터링, 해양 정보 모니터링, 공공/사회 안전망",
-            openGraphDesc: "글로벌 IoT 솔루션으로 데이터 수집과 분석을 제공합니다.",
+            description: "Transform your business with global IoT solutions through data collection and analysis. Monitor heavy equipment, marine information, and public/social safety networks.",
+            openGraphDesc: "Transform your business with global IoT solutions. Collect and analyze data to monitor equipment, marine info, and public safety networks.",
             imageIntro: "KOREAORBCOMM FOR RINANCIAL SERVICES",
             imageMain: "Improve your experience with global communication.",
             imageSub: "Through the Global Communication Network provided by Korea ofCom, we provide IoT solutions suitable for various fields around the world.",
@@ -445,8 +445,8 @@ const solutionsData: Record<string, Record<string, SolutionData>> = {
         },
         "global-iot": {
             title: "Global IoT",
-            description: "Transform your business with global IoT solutions through data collection and analysis. Monitor heavy equipment, marine information, and public/social safety networks.",
-            openGraphDesc: "Global IoT solutions provide data collection and analysis to drive innovation.",
+            description: "글로벌 IoT 솔루션으로 데이터 수집과 분석을 통해 비즈니스를 혁신하세요. 중장비 모니터링, 해양 정보 모니터링, 공공/사회 안전망",
+            openGraphDesc: "글로벌 IoT 솔루션으로 데이터 수집과 분석을 제공합니다.",
             imageIntro: "",
             imageMain: "글로벌 IoT 솔루션",
             imageSub: "코리아오브컴에서 제공하는 Global 통신망(Global Cellular, 저궤도/정지궤도 위성망, IoT 망 등)을 통해 전세계 다양한 분야에 적합한 솔루션을 제공합니다.",
@@ -536,7 +536,7 @@ const solutionsData: Record<string, Record<string, SolutionData>> = {
         "satellite": {
             title: "Satellite",
             description: "위성 기반 IoT 솔루션으로 글로벌 통신과 연결성을 제공합니다. OGx/IDP, ORBCOMM:Low Earth Orbit, Starlink.",
-            openGraphDesc: "위성 기반 IoT 솔루션으로 글로벌 통신과 연결성을 제공합니다.",
+            openGraphDesc: "위성 기반 IoT 솔루션으로 글로벌 통신과 연결성을 제공합니다. (OGx/IDP, ORBCOMM:Low Earth Orbit, Starlink.)",
             imageIntro: "",
             imageMain: "KOREA ORBCOMM 위성기반 통신 서비스",
             imageSub: "코리아오브컴은 글로벌위성망 사업자와 협력을 통해 고객에게 적합한 위성통신서비스를 제공합니다.",

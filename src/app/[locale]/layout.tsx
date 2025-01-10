@@ -48,35 +48,40 @@ import { Footer } from "@/components/(Header)/Footer";
 import Navbar from "@/components/(Header)/example/Navbar";
 import NewNavbar from "@/components/(Header)/example/NewNavbar";
 import { Metadata } from 'next';
+import mainData from '@/service/mainData';
 
 const sans = Open_Sans({ subsets: ['latin'] });
-export const metadata:Metadata = {
-    title: "KOREA ORBCOMM | IoT & Satellite Solutions",
-    description:
-        "IoT와 위성통신 솔루션의 글로벌 리더, KOREA ORBCOMM. 최고의 IoT 통신 서비스를 제공합니다.",
-    icons: {
-        icon: "/favicon.ico",
-    },
-    openGraph: {
-        title: "KOREA ORBCOMM | IoT & Satellite Solutions",
-        description: "IoT와 위성통신 솔루션의 글로벌 리더, KOREA ORBCOMM.",
-        url: "https://www.orbcomm.co.kr",
-        images: "/images/og-image-main.png",
-        type: "website",
-    },
-    twitter: {
-        card: "summary_large_image",
-        title: "KOREA ORBCOMM | IoT & Satellite Solutions",
-        description: "IoT와 위성통신 솔루션의 글로벌 리더, KOREA ORBCOMM.",
-        images: "/images/twitter-card-main.png",
-    },
-    robots: {
-        index: true,
-        follow: true,
-    },
-    viewport: "width=device-width, initial-scale=1.0",
-};
 
+export async function generateMetadata({ params }: { params: { locale: string } }): Promise<Metadata> {
+    const locale = params.locale;
+    const data = mainData[locale];
+
+    return {
+        title: `${data.introduce}`,
+        description: data.description,
+        icons: {
+            icon: "/favicon.ico",
+        },
+        openGraph: {
+            title: `${data.introduce}`,
+            description: data.openGraphDesc,
+            url: `https://www.orbcomm.co.kr/${locale}`,
+            images: "/images/KO_SmallLogo.png",
+            type: "website",
+        },
+        twitter: {
+            card: "summary_large_image",
+            title: `${data.introduce}`,
+            description: data.openGraphDesc,
+            images: "/images/KO_SmallLogo.png",
+        },
+        robots: {
+            index: true,
+            follow: true,
+        },
+        viewport: "width=device-width, initial-scale=1.0",
+    };
+}
 
 type Props = {
     children: React.ReactNode;
