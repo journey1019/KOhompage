@@ -30,9 +30,14 @@ import FilterHardwareCarouselBySolutionTags from '@/components/(Hardware)/Filter
 import FilterResourceCarouselBySolutionTags from '@/components/(Resources)/FilterResourceCarouselBySolutionTags';
 import { CtaSolution } from '@/components/(Solution)/CtaSolution';
 
-export async function generateMetadata({ params }: { params: { locale: string } }): Promise<Metadata> {
-    const locale = params.locale;
+export const viewport = "width=device-width, initial-scale=1.0";
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
+    const { locale } = await params;
     const data = solutionsData[locale]?.["satellite"];
+
+    if (!data) {
+        throw new Error(`Metadata for locale ${locale} could not be found.`);
+    }
 
     return {
         title: `${data.title} | KOREA ORBCOMM`,
@@ -57,7 +62,6 @@ export async function generateMetadata({ params }: { params: { locale: string } 
             index: true,
             follow: true,
         },
-        viewport: "width=device-width, initial-scale=1.0",
     };
 }
 
@@ -65,17 +69,11 @@ interface PageProps {
     params: {locale: string};
 }
 export default async function GlobalIoT({params}: PageProps){
-    const { locale } = params; // 비동기적으로 처리
+    const { locale } = await params; // 비동기적으로 처리
     const data = solutionsData[locale]?.["satellite"]; // 안전하게 데이터 접근
 
     // 데이터 유효성 검증
     if (!data) {
-        // return (
-        //     <div className="text-center py-12">
-        //         <h2 className="text-2xl font-bold">Solution not found</h2>
-        //         <p>Please check the locale or solution slug.</p>
-        //     </div>
-        // );
         notFound();
     }
 

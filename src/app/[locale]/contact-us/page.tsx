@@ -91,7 +91,7 @@ export default function Page({ params }: { params: { locale: string } }) {
                     {/* Contact Us Section */}
                     <div>
                         <h2 className="text-gray-800 text-base font-bold">Contact Us</h2>
-                        <div className="flex flex-row gap-x-16 mt-4">
+                        <div className="flex flex-row gap-x-10 lg:gap-x-16 mt-4">
                             {/* Phone Info */}
                             <ul>
                                 <li className="flex items-center space-x-4">

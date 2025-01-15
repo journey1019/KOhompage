@@ -23,9 +23,14 @@ import FilterHardwareCarouselBySolutionTags from '@/components/(Hardware)/Filter
 import FilterResourceCarouselBySolutionTags from '@/components/(Resources)/FilterResourceCarouselBySolutionTags';
 import { CtaSolution } from '@/components/(Solution)/CtaSolution';
 
-export async function generateMetadata({ params }: { params: { locale: string } }): Promise<Metadata> {
-    const locale = params.locale;
+export const viewport = "width=device-width, initial-scale=1.0";
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
+    const { locale } = await params;
     const data = solutionsData[locale]?.["ais"];
+
+    if (!data) {
+        throw new Error(`Metadata for locale ${locale} could not be found.`);
+    }
 
     return {
         title: `${data.title} | KOREA ORBCOMM`,
@@ -50,7 +55,6 @@ export async function generateMetadata({ params }: { params: { locale: string } 
             index: true,
             follow: true,
         },
-        viewport: "width=device-width, initial-scale=1.0",
     };
 }
 
@@ -65,7 +69,7 @@ export async function generateStaticParams() {
 }
 
 export default async function AISPage({params}: PageProps){
-    const { locale } = params; // 비동기적으로 처리
+    const { locale } = await params; // 비동기적으로 처리
     const data = solutionsData[locale]?.["ais"]; // 안전하게 데이터 접근
 
     if (!data) {
@@ -96,6 +100,7 @@ export default async function AISPage({params}: PageProps){
                 subtitle={data.imageSub}
             />
             <Greet {...data} />
+
             {/*<Greet*/}
             {/*    solutionNumber={data.solutionNumber}*/}
             {/*    title={data.title}*/}

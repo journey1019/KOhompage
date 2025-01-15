@@ -97,12 +97,8 @@ export default async function HomePage() {
 
             {/*<Company />*/}
             {/*<Solutions solutions={solutions} />*/}
-
-            {/*<Solutions solutions={solutions}/>*/}
             {/*<CaseStudies />*/}
-
             {/*<Board />*/}
-
             {/*<div className="mx-auto max-w-7xl py-32">*/}
             {/*    <div className="m-auto max-w-5xl">*/}
             {/*        <h2 className="text-center text-md font-semibold text-red-800 pb-6 sm:pb-10">OUR RESOURCES</h2>*/}

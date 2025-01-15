@@ -88,7 +88,7 @@ const NewNavbar = ({ locale }: { locale: string }) => {
                     <Login />
                     <Language />
                     <button
-                        className="sm:p-2 py-2 hover:bg-gray-100 rounded-full md:hidden"
+                        className="sm:p-2 py-2 rounded-full md:hidden"
                         onClick={toggleMobileMenu}
                     >
                         {isMobileMenuOpen ? (
@@ -131,7 +131,7 @@ const NewNavbar = ({ locale }: { locale: string }) => {
                                                 className="hover:bg-gray-100 pl-3"
                                             >
                                                 <Link
-                                                    href={`/${locale}/${subItem.href}?${subItem.filterKey}=${subItem.filterValue}`}
+                                                    href={`/${locale}${subItem.href}${subItem.filterKey && subItem.filterValue ? `?${subItem.filterKey}=${subItem.filterValue}` : ''}`}
                                                     className="block py-1 text-gray-700 hover:text-red-600"
                                                     onClick={() => setIsMobileMenuOpen(false)}
                                                 >

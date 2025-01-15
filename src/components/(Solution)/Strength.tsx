@@ -39,7 +39,7 @@ const Strength: React.FC<AdvantageProps> = ({ items, gridCols = 4 }) => {
         <div className="bg-white dark:bg-gray-900 lg:pb-10">
             <div className="mx-auto max-w-7xl px-4 py-4 sm:px-6 sm:pt-0 sm:pb-24 lg:px-8">
                 <motion.div
-                    className={`grid grid-cols-1 gap-x-6 gap-y-20 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-${gridCols} xl:gap-x-8`}
+                    className={`grid grid-cols-2 gap-x-6 gap-y-20 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-${gridCols} xl:gap-x-8`}
                     initial="hidden"
                     whileInView="visible"
                     viewport={{ once: true, amount: 0.2 }}

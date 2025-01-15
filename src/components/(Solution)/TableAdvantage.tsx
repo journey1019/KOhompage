@@ -34,17 +34,17 @@ const TableAdvantage: React.FC<FeaturesProps> = ({ items }) => {
     };
 
     return (
-        <section className="bg-white dark:bg-gray-900 mx-auto max-w-7xl p-6 lg:p-8 lg:pb-40">
+        <section className="bg-white dark:bg-gray-900 mx-auto max-w-7xl px-6 lg:px-8 lg:pb-40">
             <h1 className="text-center text-3xl font-bold pb-6">OGx 위성서비스 특장점</h1>
             <motion.div
-                className="grid grid-cols-1 lg:grid-cols-2 gap-8"
+                className="grid grid-cols-1 md:grid-cols-2 gap-8"
                 initial="hidden"
                 whileInView="visible"
                 viewport={{ once: true, amount: 0.2 }} // 화면에 20% 이상 보이면 애니메이션 실행
             >
                 {/* Left Side: Icon and Text */}
                 <motion.div
-                    className="flex flex-col items-center lg:items-start"
+                    className="flex flex-col items-center md:items-start"
                     variants={leftVariants}
                 >
                     {/* Icon */}

@@ -32,7 +32,7 @@ export default function ThreeComponent() {
         const [hasAnimated, setHasAnimated] = useState(false); // 애니메이션 실행 여부 추적
 
         useEffect(() => {
-            const unsubscribe = roundedValue.onChange((latest) => {
+            const unsubscribe = roundedValue.on("change", (latest) => {
                 setDisplayValue(latest);
             });
 
@@ -87,7 +87,7 @@ export default function ThreeComponent() {
                 {data.map((item, index) => (
                     <motion.div
                         key={index}
-                        className="flex flex-col w-full m-5 text-center justify-center dark:text-white"
+                        className="flex flex-col w-full mt-5 text-center justify-center dark:text-white"
                         variants={itemVariants}
                     >
                         <motion.h3

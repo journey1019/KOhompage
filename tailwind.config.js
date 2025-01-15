@@ -21,6 +21,16 @@ module.exports = {
       colors: {
         customWhite: '#FAFBFC',
         customDark: '#272542'
+      },
+      screens: { // 해상도 조정
+        smallMobile: '321px',
+        mobile: '376px',
+        bigMobile: '426px',
+        sm: '640px',
+        md: '768px',
+        lg: '1024px',
+        xl: '1280px',
+        '2xl': '1536px',
       }
     },
   },

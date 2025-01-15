@@ -59,11 +59,11 @@ const Point: React.FC<PointProps> = ({ items }) => {
 
                     {/* Right Section: Points */}
                     <motion.dl
-                        className="grid grid-cols-1 gap-x-1 gap-y-0 lg:pt-2"
+                        className="grid grid-cols-1 gap-x-1 gap-y-4 md:gap-y-0 lg:pt-2"
                         variants={containerVariants}
                     >
                         <motion.div
-                            className="text-white text-4xl font-bold py-4"
+                            className="text-white text-3xl md:text-4xl font-bold pb-4 md:py-4"
                             variants={itemVariants}
                         >
                             Container Management
@@ -77,10 +77,10 @@ const Point: React.FC<PointProps> = ({ items }) => {
                                 <div className="rounded-md bg-white/5 p-2 ring-1 ring-gray-300 ring-white/10">
                                     <CheckCircleIcon
                                         aria-hidden="true"
-                                        className="h-6 w-6 text-white"
+                                        className="h-4 w-4 md:h-6 md:w-6 text-white"
                                     />
                                 </div>
-                                <p className="font-semibold text-white pl-3 text-xl m-0">
+                                <p className="font-semibold text-white pl-3 text-base md:text-xl m-0">
                                     {item.text}
                                 </p>
                             </motion.div>

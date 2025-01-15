@@ -47,32 +47,32 @@ export default function PageHeroCenter({ size, url, intro, title, subtitle, thir
 
             {/* 안쪽 콘텐츠 */}
             <motion.main
-                className="relative flex flex-col text-center text-white z-10 px-5"
+                className="relative flex flex-col text-center text-white z-10 px-2"
                 initial="hidden"
                 whileInView="visible"
                 viewport={{ once: true, amount: 0.2 }}
                 variants={containerVariants}
             >
                 <motion.h1
-                    className="text-lg font-bold mb-3"
+                    className="text-md md:text-lg font-bold mb-3"
                     variants={itemVariants}
                 >
                     {intro}
                 </motion.h1>
                 <motion.h2
-                    className="text-4xl md:text-5xl font-bold mb-3 pb-2"
+                    className="text-3xl md:text-5xl font-bold mb-3 md:pb-2"
                     variants={itemVariants}
                 >
                     {title}
                 </motion.h2>
                 <motion.h3
-                    className="text-4xl md:text-5xl font-bold mb-3 pb-2"
+                    className="text-3xl md:text-5xl font-bold mb-3 md:pb-2"
                     variants={itemVariants}
                 >
                     {subtitle}
                 </motion.h3>
                 <motion.h4
-                    className="text-4xl md:text-5xl font-bold pb-2"
+                    className="text-3xl md:text-5xl font-bold md:pb-2"
                     variants={itemVariants}
                 >
                     {thirdtitle}

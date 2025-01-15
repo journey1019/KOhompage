@@ -29,10 +29,16 @@ import FilterHardwareCarouselBySolutionTags from '@/components/(Hardware)/Filter
 import FilterResourceCarouselBySolutionTags from '@/components/(Resources)/FilterResourceCarouselBySolutionTags';
 import { CtaSolution } from '@/components/(Solution)/CtaSolution';
 
+// viewport 설정을 별도로 export
+export const viewport = "width=device-width, initial-scale=1.0";
 
-export async function generateMetadata({ params }: { params: { locale: string } }): Promise<Metadata> {
-    const locale = params.locale;
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
+    const { locale } = await params;
     const data = solutionsData[locale]?.["container-iot"];
+
+    if (!data) {
+        throw new Error(`Metadata for locale ${locale} could not be found.`);
+    }
 
     return {
         title: `${data.title} | KOREA ORBCOMM`,
@@ -57,7 +63,6 @@ export async function generateMetadata({ params }: { params: { locale: string } 
             index: true,
             follow: true,
         },
-        viewport: "width=device-width, initial-scale=1.0",
     };
 }
 
@@ -65,17 +70,18 @@ interface PageProps {
     params: {locale: string};
 }
 export default async function ContainerIoT({ params }: PageProps){
-    const { locale } = params; // 비동기적으로 처리
+    const { locale } = await params; // `params`를 비동기적으로 처리
     const data = solutionsData[locale]?.["container-iot"]; // 안전하게 데이터 접근
 
     // 데이터 유효성 검증
     if (!data) {
-        return (
-            <div className="text-center py-12">
-                <h2 className="text-2xl font-bold">Solution not found</h2>
-                <p>Please check the locale or solution slug.</p>
-            </div>
-        );
+        notFound(); // 데이터가 없으면 404 페이지로 리다이렉트
+        // return (
+        //     <div className="text-center py-12">
+        //         <h2 className="text-2xl font-bold">Solution not found</h2>
+        //         <p>Please check the locale or solution slug.</p>
+        //     </div>
+        // );
         // Redirect to 404 if the hardware is not found
     }
     const pageName = ['Container-IoT'];
@@ -84,7 +90,7 @@ export default async function ContainerIoT({ params }: PageProps){
     return(
         <section>
             <PageHero
-                size="py-52"
+                size="py-36"
                 url={data.imageUrl}
                 intro={data.imageIntro}
                 title={data.imageMain}

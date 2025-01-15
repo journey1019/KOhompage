@@ -1,3 +1,5 @@
+/** 추후 각 솔루션 페이지 별 데이터 나눠도 될 듯 */
+
 interface CtaData {
     imageUrl?: string;
     title: string;
@@ -303,7 +305,7 @@ const solutionsData: Record<string, Record<string, SolutionData>> = {
             description: "We provide a critical vessel signaling system that supports ship identification, location, navigation, and enhances maritime safety.",
             openGraphDesc: "We offer an automatic identification system (AIS) for vessels. The AIS service collects data from satellites and over 10,000 terrestrial AIS stations.",
             imageIntro: "KOREAORBCOMM FOR RINANCIAL SERVICES",
-            imageMain: "AIS: Automatic identification system",
+            imageMain: "AIS: Automatic Identification System",
             imageSub: "코리아오브컴에서 제공하는 Global 통신망을 통해 전세계 다양한 분야에 적합한 IoT 솔루션을 제공합니다.",
             imageUrl: "/images/solutions/ais/AIS_Header.jpg",
             solutionNumber: "AIS",
@@ -468,7 +470,7 @@ const solutionsData: Record<string, Record<string, SolutionData>> = {
                 },
                 {
                     title: "해양 정보 모니터링",
-                    subtitle: "해상안전, 해양산업, 학술정보 등을 위해 선박운항/파고/기온/기상정보 등을 센서로 수집하고 글로벌 통신망을 통해 전송/모니터링",
+                    subtitle: "해상안전, 해양산업, 학술정보 등을 위해 선박운항/파고/기온/기상정보 등을 센서로 수집하고 글로벌 통신망을 통해 전송 및 모니터링",
                     imageTitle1: "선박 모니터링",
                     imageTitle2: "부이/부표 LiDAR",
                     imageTitle3: "기상 관측선",
@@ -599,7 +601,7 @@ const solutionsData: Record<string, Record<string, SolutionData>> = {
             imageSub: "선박의 식별, 위치, 탐색을 지원하고 해양 안전을 향상시키는데 사용할 수 있는 중요한 데이터 선박 발신 시스템",
             imageUrl: "/images/solutions/ais/AIS_Header.jpg",
             solutionNumber: "AIS",
-            solutionTitle: "Automatic identification system",
+            solutionTitle: "Automatic Identification System",
             solutionName: "AIS(선박 자동 식별 시스템)는 선박의 식별, 위치, 탐색을 지원하고 해양 안전을 위해 사용할 수 있는 중요한 데이터를 전송하는 선박 발신 시스템 입니다. 코리아오브컴의 AIS 서비스는 위성과 물론 10,000개 이상의 육상AIS 수신국을 통해  전세계 모든 지역의 AIS 정보를 수집하여 해상 정보 분석, 수색 및 구조, 환경 모니터링 등 다양한 분야에 활용되고 있습니다.",
             character: [
                 {

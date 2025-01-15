@@ -22,10 +22,14 @@ import FilterResourceCarouselBySolutionTags from '@/components/(Resources)/Filte
 import { Metadata } from 'next';
 
 
-
-export async function generateMetadata({ params }: { params: { locale: string } }): Promise<Metadata> {
-    const locale = params.locale;
+export const viewport = "width=device-width, initial-scale=1.0";
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
+    const { locale } = await params;
     const data = maritimeData[locale];
+
+    if (!data) {
+        throw new Error(`Metadata for locale ${locale} could not be found.`);
+    }
 
     return {
         title: `${data.title} | KOREA ORBCOMM`,
@@ -50,14 +54,14 @@ export async function generateMetadata({ params }: { params: { locale: string } 
             index: true,
             follow: true,
         },
-        viewport: "width=device-width, initial-scale=1.0",
     };
 }
+
 interface PageProps {
     params: {locale: string};
 }
 export default async function MaritimePage({params}: PageProps) {
-    const { locale } = params; // 비동기 처리
+    const { locale } = await params; // 비동기 처리
     const data = maritimeData[locale];
 
     if (!data) {
@@ -78,53 +82,50 @@ export default async function MaritimePage({params}: PageProps) {
                 solutionButton={data.solutionButton}
                 solutionUrl={data.solutionUrl}
             />
-            <Container>
+            <SectionTitle
+                preTitle="Maritime Platform"
+                title={data.introTitle}
+            >
+                {data.introLetter}
+            </SectionTitle>
+            <Video videoUrl="https://www.youtube.com/embed/-QE6gJMhrgU" />
 
-                <SectionTitle
-                    preTitle="Maritime Platform"
-                    title={data.introTitle}
-                >
-                    {data.introLetter}
-                </SectionTitle>
-                <Video videoUrl="https://www.youtube.com/embed/-QE6gJMhrgU" />
+            <SectionTitle preTitle="Nextly Benefits" title={data.useCaseTitle}>
+                {data.useCaseLetter}
+            </SectionTitle>
+            {/*<UseCaseAdvantage solutionKey="maritime" locale={locale} />*/}
+            <SolutionAdvantage advantages={data.advantage} />
 
-                <SectionTitle preTitle="Nextly Benefits" title={data.useCaseTitle}>
-                    {data.useCaseLetter}
-                </SectionTitle>
-                {/*<UseCaseAdvantage solutionKey="maritime" locale={locale} />*/}
-                <SolutionAdvantage advantages={data.advantage} />
+            {/*<SectionTitle preTitle="Hardware" title={data.qnaTitle}>*/}
+            {/*    {data.qnaLetter}*/}
+            {/*</SectionTitle>*/}
 
-                {/*<SectionTitle preTitle="Hardware" title={data.qnaTitle}>*/}
-                {/*    {data.qnaLetter}*/}
-                {/*</SectionTitle>*/}
+            {/*<SectionTitle preTitle="FAQ" title={data.qnaTitle}>*/}
+            {/*    {data.qnaLetter}*/}
+            {/*</SectionTitle>*/}
+            {/*<Faq items={data.faqs || []} />*/}
 
-                {/*<SectionTitle preTitle="FAQ" title={data.qnaTitle}>*/}
-                {/*    {data.qnaLetter}*/}
-                {/*</SectionTitle>*/}
-                {/*<Faq items={data.faqs || []} />*/}
+            {/*<ChipFilterHardwareCarousel chips={['maritime']} />*/}
+            <SectionTitle
+                preTitle="HARDWARES"
+                title={`${pageName} Hardware Lists`}
+            >
+            </SectionTitle>
+            <FilterHardwareCarouselBySolutionTags keywords={filteredKeyword} />
+            {/*<FilterableHardwareList chips={chips}/>*/}
+            {/*<SlugHardware locale={locale}/>*/}
 
-                {/*<ChipFilterHardwareCarousel chips={['maritime']} />*/}
-                <SectionTitle
-                    preTitle="HARDWARES"
-                    title={`${pageName} Hardware Lists`}
-                >
-                </SectionTitle>
-                <FilterHardwareCarouselBySolutionTags keywords={filteredKeyword} />
-                {/*<FilterableHardwareList chips={chips}/>*/}
-                {/*<SlugHardware locale={locale}/>*/}
+            <SectionTitle
+                preTitle="RESOURCES"
+                title={`${pageName} Resource Lists`}
+            >
+            </SectionTitle>
+            <FilterResourceCarouselBySolutionTags keywords={filteredKeyword} />
 
-                <SectionTitle
-                    preTitle="RESOURCES"
-                    title={`${pageName} Resource Lists`}
-                >
-                </SectionTitle>
-                <FilterResourceCarouselBySolutionTags keywords={filteredKeyword} />
-
-                <CtaSolution items={data.ctas}/>
-                {/*<SectionTitle preTitle="Resources" title="Maritime Platform: Resources" />*/}
-                {/*<Blog/>*/}
-                {/*<TagFilterBlog initialTags={['maritime']} />*/}
-            </Container>
+            <CtaSolution items={data.ctas}/>
+            {/*<SectionTitle preTitle="Resources" title="Maritime Platform: Resources" />*/}
+            {/*<Blog/>*/}
+            {/*<TagFilterBlog initialTags={['maritime']} />*/}
         </section>
     )
 }

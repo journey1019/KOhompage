@@ -97,8 +97,8 @@ export default function PartnerSliderLines({ line }: { line: number }) {
                             className={`object-contain mx-auto filter grayscale brightness-1100 ${
                                 isMobile ? 'h-16 sm:h-14 md:h-12' : 'h-20 sm:h-16 md:h-14 lg:h-12'
                             }`}
-                            width={isMobile ? 150 : 200}
-                            height={isMobile ? 150 : 200}
+                            width={isMobile ? 100 : 200}
+                            height={isMobile ? 100 : 200}
                             unoptimized
                         />
                     </div>

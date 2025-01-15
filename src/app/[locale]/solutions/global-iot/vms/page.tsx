@@ -20,10 +20,16 @@ import FilterResourceCarousel from '@/components/(Resources)/FilterResourceCarou
 import FilterHardwareCarouselBySolutionTags from '@/components/(Hardware)/FilterHardwareCarouselBySolutionTags';
 import FilterResourceCarouselBySolutionTags from '@/components/(Resources)/FilterResourceCarouselBySolutionTags';
 import { Metadata } from 'next';
+import { notFound } from 'next/navigation';
 
-export async function generateMetadata({ params }: { params: { locale: string } }): Promise<Metadata> {
-    const locale = params.locale;
+export const viewport = "width=device-width, initial-scale=1.0";
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
+    const { locale } = await params;
     const data = vmsData[locale];
+
+    if (!data) {
+        throw new Error(`Metadata for locale ${locale} could not be found.`);
+    }
 
     return {
         title: `${data.title} | KOREA ORBCOMM`,
@@ -48,17 +54,19 @@ export async function generateMetadata({ params }: { params: { locale: string } 
             index: true,
             follow: true,
         },
-        viewport: "width=device-width, initial-scale=1.0",
     };
 }
 
 interface PageProps {
     params: {locale: string};
 }
-export default async function MaritimePage({params}: PageProps) {
-    const { locale } = params; // 비동기 처리
+export default async function VMSPage({params}: PageProps) {
+    const { locale } = await params; // 비동기 처리
     const data = vmsData[locale];
 
+    if (!data) {
+        notFound();
+    }
 
     const pageName = ['VMS']
     const filteredKeyword = ["vms"]
@@ -74,50 +82,47 @@ export default async function MaritimePage({params}: PageProps) {
                 solutionButton={data.solutionButton}
                 solutionUrl={data.solutionUrl}
             />
-            <Container>
-
-                <SectionTitle
-                    preTitle="VMS"
-                    title={data.characteristicsTitle}
-                >
-                    {data.characteristicsLetter}
-                </SectionTitle>
-                <Characteristics items={data.character || []} gridCols={4}/>
+            <SectionTitle
+                preTitle="VMS"
+                title={data.characteristicsTitle}
+            >
+                {data.characteristicsLetter}
+            </SectionTitle>
+            <Characteristics items={data.character || []} gridCols={4}/>
 
 
-                <SectionTitle
-                    preTitle="VMS"
-                    title={data.introTitle}
-                >
-                    {data.introLetter}
-                </SectionTitle>
-                <OneImage item="/images/solutions/global-iot/VMS.png"/>
+            <SectionTitle
+                preTitle="VMS"
+                title={data.introTitle}
+            >
+                {data.introLetter}
+            </SectionTitle>
+            <OneImage item="/images/solutions/global-iot/VMS.png"/>
 
 
-                <SectionTitle
-                    preTitle="HARDWARES"
-                    title={`${pageName} Hardware Lists`}
-                >
-                </SectionTitle>
-                <FilterHardwareCarouselBySolutionTags keywords={filteredKeyword} />
+            <SectionTitle
+                preTitle="HARDWARES"
+                title={`${pageName} Hardware Lists`}
+            >
+            </SectionTitle>
+            <FilterHardwareCarouselBySolutionTags keywords={filteredKeyword} />
 
 
-                {/*<SectionTitle preTitle="FAQ" title={data.qnaTitle}>*/}
-                {/*    {data.qnaLetter}*/}
-                {/*</SectionTitle>*/}
-                {/*<Faq items={data.faqs || []} />*/}
+            {/*<SectionTitle preTitle="FAQ" title={data.qnaTitle}>*/}
+            {/*    {data.qnaLetter}*/}
+            {/*</SectionTitle>*/}
+            {/*<Faq items={data.faqs || []} />*/}
 
 
-                <SectionTitle
-                    preTitle="RESOURCES"
-                    title={`${pageName} Resource Lists`}
-                >
-                </SectionTitle>
-                <FilterResourceCarouselBySolutionTags keywords={filteredKeyword} />
+            <SectionTitle
+                preTitle="RESOURCES"
+                title={`${pageName} Resource Lists`}
+            >
+            </SectionTitle>
+            <FilterResourceCarouselBySolutionTags keywords={filteredKeyword} />
 
 
-                <CtaSolution items={data.ctas}/>
-            </Container>
+            <CtaSolution items={data.ctas}/>
         </section>
     )
 }

@@ -34,7 +34,7 @@ const Kind: React.FC<KindProps> = ({ items }) => {
 
     return (
         <div className="bg-white dark:bg-gray-900">
-            <div className="mx-auto max-w-2xl px-4 py-4 sm:px-6 sm:py-24 lg:max-w-7xl lg:px-8">
+            <div className="mx-auto max-w-2xl px-4 pb-4 sm:px-6 sm:pb-24 lg:max-w-7xl lg:px-8">
                 <motion.div
                     className="grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-2 lg:grid-cols-3 xl:gap-x-8"
                     variants={containerVariants}
@@ -45,7 +45,7 @@ const Kind: React.FC<KindProps> = ({ items }) => {
                     {items.map((item, index) => (
                         <motion.div
                             key={index}
-                            className="group relative flex flex-col items-center text-center bg-white dark:bg-gray-800 rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300"
+                            className="group relative flex flex-col items-center text-center bg-white dark:bg-gray-800 rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300 border border-2"
                             variants={itemVariants}
                         >
                             {/* 이미지 */}

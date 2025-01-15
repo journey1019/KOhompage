@@ -56,7 +56,7 @@ const gradientAnimation = {
 export default function WorkWithUs() {
     return (
         <motion.div
-            className="relative isolate overflow-hidden bg-gray-100 dark:bg-gray-900 py-24 sm:py-32"
+            className="relative isolate overflow-hidden bg-gray-100 dark:bg-gray-900 py-14 sm:py-32"
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, amount: 0.2 }}
@@ -86,21 +86,21 @@ export default function WorkWithUs() {
                     className="mx-auto max-w-2xl lg:mx-0"
                     variants={itemVariants}
                 >
-                    <h2 className="text-4xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-6xl">
+                    <h2 className="text-3xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-6xl">
                         Together, We Build Connectivity.
                     </h2>
-                    <p className="mt-6 text-lg leading-8 text-gray-700 dark:text-gray-300">
+                    <p className="mt-3 sm:mt-8 text-md sm:text-lg leading-8 text-gray-700 dark:text-gray-300">
                         자산과 인프라를 연결하여 가치를 확장하고,
                     </p>
-                    <p className="text-lg leading-8 text-gray-700 dark:text-gray-300">
+                    <p className="sm:mt-2 text-md sm:text-lg leading-8 text-gray-700 dark:text-gray-300">
                         IoT 데이터를 통해 새로운 가능성을 발견하세요.
                     </p>
                 </motion.div>
                 <motion.div
-                    className="mx-auto mt-10 max-w-2xl lg:mx-0 lg:max-w-none"
+                    className="mx-auto mt-5 sm:mt-16 max-w-2xl lg:mx-0 lg:max-w-none"
                     variants={itemVariants}
                 >
-                <div className="grid grid-cols-1 gap-x-8 gap-y-6 text-base font-semibold leading-7 text-gray-900 dark:text-white sm:grid-cols-2 md:flex lg:gap-x-10">
+                <div className="grid grid-cols-1 gap-x-8 gap-y-3 sm:gap-y-6 text-base font-semibold leading-7 text-gray-900 dark:text-white sm:grid-cols-2 md:flex lg:gap-x-10">
                         {links.map((link) => (
                             <motion.a
                                 key={link.name}
@@ -114,7 +114,7 @@ export default function WorkWithUs() {
                         ))}
                     </div>
                     <motion.dl
-                        className="mt-16 grid grid-cols-1 gap-8 sm:mt-20 sm:grid-cols-1 lg:grid-cols-2 items-start"
+                        className="mt-8 grid grid-cols-1 gap-8 sm:mt-20 sm:grid-cols-1 lg:grid-cols-2 items-start"
                         variants={containerVariants}
                     >
                         {offices.map((office) => (
@@ -123,10 +123,10 @@ export default function WorkWithUs() {
                                 className="flex flex-col-reverse border-l-2 border-gray-300 dark:border-amber-50 pl-4"
                                 variants={itemVariants}
                             >
-                                <dt className="text-base leading-7 text-gray-700 dark:text-gray-300">{office.mail}</dt>
-                                <dt className="text-base leading-7 text-gray-700 dark:text-gray-300">{office.tel}</dt>
-                                <dt className="text-base leading-7 text-gray-700 dark:text-gray-300">{office.address}</dt>
-                                <dd className="text-2xl font-bold leading-9 tracking-tight text-gray-900 dark:text-white">{office.location}</dd>
+                                <dt className="text-sm sm:text-base sm:pt-1 leading-7 text-gray-700 dark:text-gray-300">{office.mail}</dt>
+                                <dt className="text-sm sm:text-base sm:pt-1 leading-7 text-gray-700 dark:text-gray-300">{office.tel}</dt>
+                                <dt className="text-sm sm:text-base sm:pt-1 leading-7 text-gray-700 dark:text-gray-300">{office.address}</dt>
+                                <dd className="text-lg sm:text-2xl sm:pt-1 font-bold leading-9 tracking-tight text-gray-900 dark:text-white">{office.location}</dd>
                             </motion.div>
                         ))}
                     </motion.dl>

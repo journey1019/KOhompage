@@ -49,7 +49,7 @@ const maritimeData: Record<string, MaritimeData> = {
         imageMain: "Marine Solutions for the Smart, Connected Supply Chain",
         imageUrl: "/images/header/Port.jpg",
         imageSub: "",
-        solutionButton: "Request a Demo",
+        solutionButton: "Explore the Solution",
         solutionUrl: "https://reeferconnect.tms-orbcomm.com/",
         introTitle: "Reefer Container Monitoring and Control System",
         introLetter: "KOREA ORBCOMM's ReeferContainer, selected by top three shipping companies worldwide, is currently operating with more than 500,000 products installed in cold-refrigerated containers, providing container carriers, multimodal carriers, shippers and other users with real-time container control services across the land and sea.",

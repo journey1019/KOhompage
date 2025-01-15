@@ -20,11 +20,16 @@ import FilterHardwareCarouselBySolutionTags from '@/components/(Hardware)/Filter
 import FilterResourceCarouselBySolutionTags from '@/components/(Resources)/FilterResourceCarouselBySolutionTags';
 import { Metadata } from 'next';
 import vmsData from '@/service/solutions/global-iot/vms';
+import { notFound } from 'next/navigation';
 
-
-export async function generateMetadata({ params }: { params: { locale: string } }): Promise<Metadata> {
-    const locale = params.locale;
+export const viewport = "width=device-width, initial-scale=1.0";
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
+    const { locale } = await params;
     const data = vmsData[locale];
+
+    if (!data) {
+        throw new Error(`Metadata for locale ${locale} could not be found.`);
+    }
 
     return {
         title: `${data.title} | KOREA ORBCOMM`,
@@ -49,7 +54,6 @@ export async function generateMetadata({ params }: { params: { locale: string } 
             index: true,
             follow: true,
         },
-        viewport: "width=device-width, initial-scale=1.0",
     };
 }
 
@@ -57,9 +61,13 @@ export async function generateMetadata({ params }: { params: { locale: string } 
 interface PageProps {
     params: {locale: string};
 }
-export default async function MaritimePage({params}: PageProps) {
-    const { locale } = params; // 비동기 처리
+export default async function NMSPage({params}: PageProps) {
+    const { locale } = await params; // 비동기 처리
     const data = nmsData[locale];
+
+    if (!data) {
+        notFound();
+    }
 
     const pageName = ['NMS']
     const filteredKeyword = ["nms"]
@@ -75,69 +83,66 @@ export default async function MaritimePage({params}: PageProps) {
                 solutionButton={data.solutionButton}
                 solutionUrl={data.solutionUrl}
             />
-            <Container>
+            <SectionTitle
+                preTitle="Network Monitoring System"
+                title={data.characteristicsTitle}
+            >
+                {data.characteristicsLetter}
+            </SectionTitle>
+            <Characteristics items={data.character || []} gridCols={4}/>
 
-                <SectionTitle
-                    preTitle="Network Monitoring System"
-                    title={data.characteristicsTitle}
-                >
-                    {data.characteristicsLetter}
-                </SectionTitle>
-                <Characteristics items={data.character || []} gridCols={4}/>
+            <SectionTitle
+                preTitle="NMS"
+                title={data.introTitle}
+            >
+                {data.introLetter}
+            </SectionTitle>
+            <OneImage item="/images/solutions/global-iot/nms_main.png"/>
 
-                <SectionTitle
-                    preTitle="NMS"
-                    title={data.introTitle}
-                >
-                    {data.introLetter}
-                </SectionTitle>
-                <OneImage item="/images/solutions/global-iot/nms_main.png"/>
-
-                {/*<SectionTitle preTitle="Nextly Benefits" title={data.useCaseTitle}>*/}
-                {/*    {data.useCaseLetter}*/}
-                {/*</SectionTitle>*/}
-                {/*<SolutionAdvantage advantages={data.advantage} />*/}
+            {/*<SectionTitle preTitle="Nextly Benefits" title={data.useCaseTitle}>*/}
+            {/*    {data.useCaseLetter}*/}
+            {/*</SectionTitle>*/}
+            {/*<SolutionAdvantage advantages={data.advantage} />*/}
 
 
-                {/*<SectionTitle preTitle="Hardware" title={data.qnaTitle}>*/}
-                {/*    {data.qnaLetter}*/}
-                {/*</SectionTitle>*/}
+            {/*<SectionTitle preTitle="Hardware" title={data.qnaTitle}>*/}
+            {/*    {data.qnaLetter}*/}
+            {/*</SectionTitle>*/}
 
 
-                {/*<SectionTitle*/}
-                {/*    preTitle="HARDWARES"*/}
-                {/*    title="HARDWARE LIST"*/}
-                {/*>*/}
-                {/*</SectionTitle>*/}
-                {/*<ChipFilterHardwareCarousel chips={chips} />*/}
-                {/*<FilterableHardwareList chips={chips}/>*/}
-                {/*<SlugHardware locale={locale}/>*/}
-                <SectionTitle
-                    preTitle="HARDWARES"
-                    title={`${pageName} Hardware Lists`}
-                >
-                </SectionTitle>
-                <FilterHardwareCarouselBySolutionTags keywords={filteredKeyword} />
+            {/*<SectionTitle*/}
+            {/*    preTitle="HARDWARES"*/}
+            {/*    title="HARDWARE LIST"*/}
+            {/*>*/}
+            {/*</SectionTitle>*/}
+            {/*<ChipFilterHardwareCarousel chips={chips} />*/}
+            {/*<FilterableHardwareList chips={chips}/>*/}
+            {/*<SlugHardware locale={locale}/>*/}
+            <SectionTitle
+                preTitle="HARDWARES"
+                title={`${pageName} Hardware Lists`}
+            >
+            </SectionTitle>
+            <FilterHardwareCarouselBySolutionTags keywords={filteredKeyword} />
 
 
-                {/*<SectionTitle preTitle="FAQ" title={data.qnaTitle}>*/}
-                {/*    {data.qnaLetter}*/}
-                {/*</SectionTitle>*/}
-                {/*<Faq items={data.faqs || []} />*/}
+            {/*<SectionTitle preTitle="FAQ" title={data.qnaTitle}>*/}
+            {/*    {data.qnaLetter}*/}
+            {/*</SectionTitle>*/}
+            {/*<Faq items={data.faqs || []} />*/}
 
-                {/*<SectionTitle preTitle="Resources" title={`${site}: Resources`} />*/}
-                {/*<Blog/>*/}
-                {/*<TagFilterBlog initialTags={chips} />*/}
-                <SectionTitle
-                    preTitle="RESOURCES"
-                    title={`${pageName} Resource Lists`}
-                >
-                </SectionTitle>
-                <FilterResourceCarouselBySolutionTags keywords={filteredKeyword} />
+            {/*<SectionTitle preTitle="Resources" title={`${site}: Resources`} />*/}
+            {/*<Blog/>*/}
+            {/*<TagFilterBlog initialTags={chips} />*/}
+            <SectionTitle
+                preTitle="RESOURCES"
+                title={`${pageName} Resource Lists`}
+            >
+            </SectionTitle>
+            <FilterResourceCarouselBySolutionTags keywords={filteredKeyword} />
 
 
-                <CtaSolution items={data.ctas}/>
-            </Container>
+            <CtaSolution items={data.ctas}/>
         </section>
     )
 }

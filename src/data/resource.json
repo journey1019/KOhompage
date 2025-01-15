@@ -1203,54 +1203,5 @@
     "image": "/images/resources/newsletter/2024-12-10.png",
     "path": "resources/news1",
     "use": true
-  },
-  {
-    "date": "2025-01-10",
-    "contentType": "Newsletter",
-    "title": "[NEWS #2] 두 번째 뉴스레터(TEST)",
-    "subtitle": "테스트 뉴스레터입니다.",
-    "tags": [
-      "satellite",
-      " starlink"
-    ],
-    "solutionTag": [
-      ""
-    ],
-    "form": "page",
-    "image": "/images/resources/newsletter/2024-12-10.png",
-    "path": "resources/news2",
-    "use": true
-  },
-  {
-    "date": "2025-01-10",
-    "contentType": "Newsletter",
-    "title": "[NEWS #3] 두 번째 뉴스레터(TEST)",
-    "subtitle": "테스트 뉴스레터",
-    "tags": [
-      "satellite",
-      " OGx/IDP"
-    ],
-    "solutionTag": [
-      ""
-    ],
-    "form": "page",
-    "image": "/images/resources/newsletter/2024-12-10.png",
-    "path": "resources/news3",
-    "use": true
-  },
-  {
-    "date": "2025-01-10",
-    "contentType": "Newsletter",
-    "title": "[NEWS #4] 네 번째 뉴스레터(TEST)",
-    "subtitle": "테스트 뉴스레터",
-    "tags": [
-      "Satellite",
-      "low-earth-orbit"
-    ],
-    "solutionTag": "",
-    "form": "page",
-    "image": "/images/resources/newsletter/2024-12-10.png",
-    "path": "resources/news4",
-    "use": true
   }
 ]

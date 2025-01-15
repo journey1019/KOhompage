@@ -26,9 +26,15 @@ import FilterHardwareCarouselBySolutionTags from '@/components/(Hardware)/Filter
 import FilterResourceCarouselBySolutionTags from '@/components/(Resources)/FilterResourceCarouselBySolutionTags';
 import { CtaSolution } from '@/components/(Solution)/CtaSolution';
 
-export async function generateMetadata({ params }: { params: { locale: string } }): Promise<Metadata> {
-    const locale = params.locale;
+export const viewport = "width=device-width, initial-scale=1.0";
+
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
+    const { locale } = await params;
     const data = solutionsData[locale]?.["global-iot"];
+
+    if (!data) {
+        throw new Error(`Metadata for locale ${locale} could not be found.`);
+    }
 
     return {
         title: `${data.title} | KOREA ORBCOMM`,
@@ -53,7 +59,6 @@ export async function generateMetadata({ params }: { params: { locale: string } 
             index: true,
             follow: true,
         },
-        viewport: "width=device-width, initial-scale=1.0",
     };
 }
 
@@ -61,21 +66,14 @@ interface PageProps {
     params: {locale: string};
 }
 export default async function GlobalIoT({params}: PageProps){
-    const { locale } = params; // 비동기적으로 처리
+    const { locale } = await params; // 비동기적으로 처리
     const data = solutionsData[locale]?.["global-iot"]; // 안전하게 데이터 접근
-
-
 
     // 데이터 유효성 검증
     if (!data) {
-        // return (
-        //     <div className="text-center py-12">
-        //         <h2 className="text-2xl font-bold">Solution not found</h2>
-        //         <p>Please check the locale or solution slug.</p>
-        //     </div>
-        // );
         notFound();
     }
+
     const pageName = ['Global-IoT']
     const filteredKeyword = ["global-iot"]
 
@@ -121,12 +119,12 @@ export default async function GlobalIoT({params}: PageProps){
 
             <SectionTitle
                 preTitle="Network"
-                title="Communication network"
+                title="Communication Network"
             >
                 고객의 다양한 산업 분야에 적합한 최적의 디바이스 및 통신망을 제공합니다.
             </SectionTitle>
             <Image src="/images/solutions/global-iot/global-iot.png" alt="/images/solutions/global-iot/global-iot.png"
-                   className="mx-auto items-center max-w-7xl justify-center pb-24"
+                   className="mx-auto items-center justify-center w-full h-auto sm:max-w-md md:max-w-lg lg:max-w-4xl pb-24"
                    width={800} height={300} unoptimized
             />
 

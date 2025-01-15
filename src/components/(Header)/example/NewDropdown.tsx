@@ -35,26 +35,7 @@ const dropdownContent: Record<
         { label: 'Device', filterKey: 'types', filterValue: 'Device', icon: <MdDevicesOther className="h-6 w-6" />  },
         { label: 'Module', filterKey: 'types', filterValue: 'Module', icon: <MdViewModule className="h-6 w-6" />  },
         { label: 'Antenna', filterKey: 'types', filterValue: 'Antenna', icon: <MdOutlineSettingsInputAntenna className="h-6 w-6" />  },
-        { label: 'Sensor', filterKey: 'types', filterValue: 'Sensor', icon: <MdOutlineSensors className="h-6 w-6" />  },
-        // Categories
-        // { label: 'Container-IoT', filterKey: 'categories', filterValue: 'Container-IoT' },
-        // { label: 'Global-IoT', filterKey: 'categories', filterValue: 'Global-IoT' },
-        // { label: 'Satellite-IoT', filterKey: 'categories', filterValue: 'Satellite-IoT' },
-        // { label: 'AIS', filterKey: 'categories', filterValue: 'AIS' },
-        // { label: 'Starlink', filterKey: 'categories', filterValue: 'Starlink' },
-        // { label: 'Tracking', filterKey: 'categories', filterValue: 'Tracking' },
-        // Types
-        // { label: 'Device', filterKey: 'types', filterValue: 'Device' },
-        // { label: 'Module', filterKey: 'types', filterValue: 'Module' },
-        // { label: 'Antenna', filterKey: 'types', filterValue: 'Antenna' },
-        // { label: 'Sensor', filterKey: 'types', filterValue: 'Sensor' },
-        // Networks
-        // { label: 'Satellite(ORBCOMM)', filterKey: 'networks', filterValue: 'Satellite(ORBCOMM)' },
-        // { label: 'Satellite(OGx/IDP)', filterKey: 'networks', filterValue: 'Satellite(OGx/IDP)' },
-        // { label: 'Satellite(Starlink)', filterKey: 'networks', filterValue: 'Satellite(Starlink)' },
-        // { label: 'Satellite(NTN)', filterKey: 'networks', filterValue: 'Satellite(NTN)' },
-        // { label: 'Cellular(LTE/3G/2G)', filterKey: 'networks', filterValue: 'Cellular(LTE/3G/2G)' },
-        // { label: 'Sigfox', filterKey: 'networks', filterValue: 'Sigfox' }
+        { label: 'Sensor', filterKey: 'types', filterValue: 'Sensor', icon: <MdOutlineSensors className="h-6 w-6" />  }
     ],
     company: [
         { label: 'About Us', href: '/about', icon: <DocumentTextIcon className="mt-1 h-5 w-5" /> },
@@ -66,8 +47,6 @@ const dropdownContent: Record<
 const NewDropdown = ({ menuKey, locale }: DropdownProps) => {
     const items = dropdownContent[menuKey];
 
-
-    // Handle `solutions` dropdown with a specific structure
     if (menuKey === 'solutions') {
         return (
             <div className="grid max-w-screen-2xl px-4 mx-auto text-sm text-gray-500 dark:text-gray-400 md:px-6">
@@ -102,57 +81,6 @@ const NewDropdown = ({ menuKey, locale }: DropdownProps) => {
     }
     else if (menuKey === 'hardware') {
         return (
-            // <div className="absolute top-full left-0 w-screen bg-white shadow-lg border-t z-50">
-            //     <div className="grid max-w-screen-xl mx-auto px-6 py-2 grid-cols-3 gap-8">
-            //         {/* Categories */}
-            //         <div className="space-y-0">
-            //             <h3 className="block w-full text-md font-bold">Category</h3>
-            //             {items
-            //                 .filter((item) => item.filterKey === 'categories')
-            //                 .map((item) => (
-            //                     <Link
-            //                         key={item.label}
-            //                         href={`/ko/hardware?${item.filterKey}=${item.filterValue}`}
-            //                         className="block text-gray-700 hover:text-red-600 w-full hover:bg-gray-100 px-3 py-2 rounded-md"
-            //                     >
-            //                         {item.label}
-            //                     </Link>
-            //                 ))}
-            //         </div>
-            //
-            //         {/* Types */}
-            //         <div className="space-y-0">
-            //             <h3 className="block w-full text-md font-bold">Types</h3>
-            //             {items
-            //                 .filter((item) => item.filterKey === 'types')
-            //                 .map((item) => (
-            //                     <Link
-            //                         key={item.label}
-            //                         href={`/ko/hardware?${item.filterKey}=${item.filterValue}`}
-            //                         className="block text-gray-700 hover:text-red-600 w-full hover:bg-gray-100 px-3 py-2 rounded-md"
-            //                     >
-            //                         {item.label}
-            //                     </Link>
-            //                 ))}
-            //         </div>
-            //
-            //         {/* Networks */}
-            //         <div className="space-y-0">
-            //             <h3 className="block w-full text-md font-bold">Networks</h3>
-            //             {items
-            //                 .filter((item) => item.filterKey === 'networks')
-            //                 .map((item) => (
-            //                     <Link
-            //                         key={item.label}
-            //                         href={`/ko/hardware?${item.filterKey}=${item.filterValue}`}
-            //                         className="block text-gray-700 hover:text-red-600 w-full hover:bg-gray-100 px-3 py-2 rounded-md"
-            //                     >
-            //                         {item.label}
-            //                     </Link>
-            //                 ))}
-            //         </div>
-            //     </div>
-            // </div>
             <div className="absolute top-full left-0 w-screen bg-white shadow-lg border-t z-50">
                 <div className="grid grid-cols-4 gap-4 p-6 max-w-screen-xl mx-auto">
                     {items

@@ -45,7 +45,7 @@ export default function CharacteristicsBackImage({ items, gridCols = 4 }: Charac
 
             {/* Content with Framer Motion */}
             <motion.div
-                className={`relative grid grid-cols-1 gap-8 mt-16 md:grid-cols-2 lg:grid-cols-${gridCols} max-w-7xl mx-auto px-6`}
+                className={`relative grid grid-cols-2 gap-8 mt-16 md:grid-cols-2 lg:grid-cols-${gridCols} max-w-7xl mx-auto px-6`}
                 variants={containerVariants}
                 initial="hidden"
                 whileInView="visible"

@@ -92,8 +92,8 @@ export default function AddResourcePage({ params }: { params: Promise<{ locale: 
     }
 
     return (
-        <div className="max-w-4xl mx-auto p-6">
-            <h1 className="text-3xl font-bold mb-6">Add New Resource</h1>
+        <div className="max-w-4xl mx-auto p-6 bg-white rounded-lg shadow-md">
+            <h1 className="text-3xl font-bold mb-6 text-center">Add New Resource</h1>
 
             {/* Alert Messages */}
             {alert && (
@@ -112,7 +112,8 @@ export default function AddResourcePage({ params }: { params: Promise<{ locale: 
                         fill="currentColor"
                         viewBox="0 0 20 20"
                     >
-                        <path d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM9.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM12 15H8a1 1 0 0 1 0-2h1v-3H8a1 1 0 0 1 0-2h2a1 1 0 0 1 1 1v4h1a1 1 0 0 1 0 2Z" />
+                        <path
+                            d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM9.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM12 15H8a1 1 0 0 1 0-2h1v-3H8a1 1 0 0 1 0-2h2a1 1 0 0 1 1 1v4h1a1 1 0 0 1 0 2Z" />
                     </svg>
                     <div>
                         <span className="font-medium">{alert.type === 'success' ? 'Success!' : 'Failed!'}</span>{' '}
@@ -199,74 +200,73 @@ export default function AddResourcePage({ params }: { params: Promise<{ locale: 
                 </div>
 
 
+                {/* Subtitle */}
+                <div>
+                    <label className="block mb-2">Subtitle</label>
+                    <textarea
+                        name="subtitle"
+                        value={formData.subtitle}
+                        onChange={handleInputChange}
+                        className="w-full border px-3 py-2 rounded"
+                    />
+                </div>
 
-                    {/* Subtitle */}
-                    <div>
-                        <label className="block mb-2">Subtitle</label>
-                        <textarea
-                            name="subtitle"
-                            value={formData.subtitle}
-                            onChange={handleInputChange}
-                            className="w-full border px-3 py-2 rounded"
-                        />
-                    </div>
+                {/* Solution Tags */}
+                <div>
+                    <label className="block mb-2">Solution Tags (comma-separated)</label>
+                    <input
+                        type="text"
+                        name="solutionTag"
+                        placeholder="e.g., Maritime, VMS"
+                        value={formData.solutionTag}
+                        onChange={handleInputChange}
+                        className="w-full border px-3 py-2 rounded"
+                    />
+                </div>
 
-                    {/* Solution Tags */}
-                    <div>
-                        <label className="block mb-2">Solution Tags (comma-separated)</label>
-                        <input
-                            type="text"
-                            name="solutionTag"
-                            placeholder="e.g., Maritime, VMS"
-                            value={formData.solutionTag}
-                            onChange={handleInputChange}
-                            className="w-full border px-3 py-2 rounded"
-                        />
-                    </div>
-
-                    {/* Image path */}
-                    <div>
-                        <label className="block mb-2">Image Path</label>
-                        <input
-                            type="text"
-                            name="image"
-                            placeholder="/images/example.jpg"
-                            value={formData.image}
-                            onChange={handleInputChange}
-                            className="w-full border px-3 py-2 rounded"
-                        />
-                    </div>
-                    {/* Resources Path (Slug) */}
-                    <div>
-                        <label className="block mb-2">Resource Path</label>
-                        <input
-                            type="text"
-                            name="path"
-                            placeholder="URL or page path"
-                            value={formData.path}
-                            onChange={handleInputChange}
-                            className="w-full border px-3 py-2 rounded"
-                        />
-                    </div>
-                    {/* Use CheckBox */}
-                    <div>
-                        <label className="block mb-2">Use</label>
-                        <input
-                            type="checkbox"
-                            name="use"
-                            checked={formData.use}
-                            onChange={handleInputChange}
-                            className="w-4 h-4"
-                        />
-                    </div>
-                    {/* Submit */}
-                    <button
-                        type="submit"
-                        className="px-6 py-2 bg-red-600 text-white rounded hover:bg-red-700"
-                    >
-                        Add Resource
-                    </button>
+                {/* Image path */}
+                <div>
+                    <label className="block mb-2">Image Path</label>
+                    <input
+                        type="text"
+                        name="image"
+                        placeholder="/images/example.jpg"
+                        value={formData.image}
+                        onChange={handleInputChange}
+                        className="w-full border px-3 py-2 rounded"
+                    />
+                </div>
+                {/* Resources Path (Slug) */}
+                <div>
+                    <label className="block mb-2">Resource Path</label>
+                    <input
+                        type="text"
+                        name="path"
+                        placeholder="URL or page path"
+                        value={formData.path}
+                        onChange={handleInputChange}
+                        className="w-full border px-3 py-2 rounded"
+                    />
+                </div>
+                {/* Use CheckBox */}
+                <div>
+                    <label className="block mb-2">Use</label>
+                    <input
+                        type="checkbox"
+                        name="use"
+                        checked={formData.use}
+                        onChange={handleInputChange}
+                        className="w-4 h-4"
+                    />
+                </div>
+                {/* Submit */}
+                <button
+                    type="submit"
+                    className="px-6 py-2 bg-red-600 text-white rounded hover:bg-red-700"
+                >
+                    Add Resource
+                </button>
             </form>
         </div>
-);
+    );
 }

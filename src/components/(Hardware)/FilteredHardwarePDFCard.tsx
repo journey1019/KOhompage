@@ -1,4 +1,4 @@
-'use client';
+"use client";
 
 import React from "react";
 import Image from "next/image";
@@ -14,15 +14,24 @@ interface HardwareItem {
     path: string;
 }
 
-const FilteredHardwarePDFCard: React.FC<HardwareItem> = ({ title, subTitle, description, category, imageSrc, tag, slug, path }) => (
+const FilteredHardwarePDFCard: React.FC<HardwareItem> = ({
+                                                             title,
+                                                             subTitle,
+                                                             description,
+                                                             category,
+                                                             imageSrc,
+                                                             tag,
+                                                             slug,
+                                                             path,
+                                                         }) => (
     <a
         className="group"
-        href={path} // PDF 파일 경로로 설정
-        target="_blank" // 새로운 탭에서 열기
-        rel="noopener noreferrer" // 보안상 설정
+        href={path}
+        target="_blank"
+        rel="noopener noreferrer"
     >
-        <div className="pb-4">
-            <div className="relative w-full h-60 overflow-hidden rounded-lg border-2 border-gray-200">
+        <div className="pb-2">
+            <div className="relative w-full h-48 overflow-hidden rounded-md border border-gray-200">
                 <Image
                     alt={slug}
                     src={imageSrc}
@@ -32,8 +41,10 @@ const FilteredHardwarePDFCard: React.FC<HardwareItem> = ({ title, subTitle, desc
                     unoptimized
                 />
             </div>
-            <h3 className="text-base font-normal mt-4 text-gray-500">{subTitle}</h3>
-            <h2 className="group-hover:text-blue-500 transition duration-300 text-2xl font-bold ">{title}</h2>
+            <h3 className="text-xs md:text-base font-normal mt-2 text-gray-500 text-center md:text-start">{subTitle}</h3>
+            <h2 className="group-hover:text-blue-500 transition duration-300 text-lg md:text-2xl font-bold text-center md:text-start">
+                {title}
+            </h2>
         </div>
     </a>
 );

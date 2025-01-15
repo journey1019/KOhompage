@@ -33,7 +33,7 @@ export default function Characteristics({ items, gridCols = 4 }: Characteristics
     return (
         <section className="mx-auto max-w-7xl px-6 lg:px-8 pb-12">
             <motion.div
-                className={`grid grid-cols-1 gap-8 mt-16 md:grid-cols-2 lg:grid-cols-${gridCols} max-w-7xl mx-auto px-6`}
+                className={`grid grid-cols-2 gap-4 sm:gap-8 mt-4 md:grid-cols-2 lg:grid-cols-${gridCols} max-w-7xl mx-auto px-2 sm:px-6`}
                 variants={containerVariants}
                 initial="hidden"
                 whileInView="visible"
@@ -42,7 +42,7 @@ export default function Characteristics({ items, gridCols = 4 }: Characteristics
                 {items.map((item, index) => (
                     <motion.div
                         key={index}
-                        className="flex flex-col items-center p-5 bg-white rounded-lg hover:shadow-lg transition-shadow duration-300"
+                        className="flex flex-col items-center sm:p-5 bg-white rounded-lg transition-shadow duration-300"
                         variants={itemVariants}
                     >
                         <Image

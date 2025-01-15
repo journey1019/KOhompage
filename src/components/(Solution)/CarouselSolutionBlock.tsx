@@ -29,7 +29,7 @@ const CarouselSolutionBlock: React.FC<CarouselProps> = ({ items }) => {
     };
 
     return (
-        <div className="relative w-full max-w-2xl md:max-w-7xl mx-auto h-screen overflow-hidden">
+        <div className="relative w-full max-w-7xl mx-auto overflow-hidden pb-10">
             {/* Carousel Items */}
             <div
                 className="flex transition-transform duration-700"
@@ -38,80 +38,44 @@ const CarouselSolutionBlock: React.FC<CarouselProps> = ({ items }) => {
                 {items.map((item, index) => (
                     <div
                         key={index}
-                        className="flex flex-col items-center w-full h-screen h-[50vh] p-4 md:p-8 flex-shrink-0"
+                        className="flex flex-col items-center w-full min-h-screen flex-shrink-0"
                     >
                         {/* Top Section: Text */}
-                        <div className="text-start w-full pb-10">
-                            <h1 className="text-3xl md:text-4xl font-bold mb-0 text-gray-800"> {/* mb-4 제거 */}
+                        <div className="w-full text-center lg:text-start mb-8 px-8 sm:px-16">
+                            <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold mb-2 text-gray-800">
                                 {item.title}
                             </h1>
-                            <p className="md:max-w-5xl text-md md:text-xl text-gray-500 mt-0"> {/* mt-0 추가 */}
+                            <p className="text-md sm:text-lg lg:text-xl text-gray-500">
                                 {item.subtitle}
                             </p>
                         </div>
 
                         {/* Bottom Section: Images */}
-                        <div className="w-full px-16 md:py-0 grid grid-cols-1 md:grid-cols-3 gap-4"> {/* py-4 제거 */}
-                            {/* 이미지 1 */}
-                            <section className="block">
+                        <div
+                            className="w-full grid grid-cols-1 lg:grid-cols-3 gap-4 px-16 sm:px-16 md:px-32 lg:px-16 sm:py-0 bigMobile:pb-16">
+                            {[item.imageUrl1, item.imageUrl2, item.imageUrl3].map((url, imgIndex) => (
                                 <div
-                                    className="relative min-h-[10rem] md:min-h-[30rem] rounded-xl overflow-hidden grid items-end transition-transform transform hover:scale-105 hover:border-2 hover:border-blue-500">
+                                    key={imgIndex}
+                                    className="relative w-full aspect-[7/4] smallMobile:aspect-[7/4] bigMobile:aspect-[9/3] lg:aspect-[4/3] xl:aspect-[16/12] 2xl:aspect-[4/5] rounded-xl overflow-hidden transition-transform transform hover:scale-105 hover:border-2 hover:border-blue-500"
+                                >
                                     <Image
-                                        src={item.imageUrl1}
-                                        alt={item.imageTitle1}
+                                        src={url}
+                                        alt={`Image ${imgIndex + 1}`}
                                         fill
-                                        className="absolute inset-0 h-full w-full object-cover object-center"
+                                        className="absolute inset-0 h-full w-full object-cover rounded-xl"
                                         unoptimized
                                     />
-                                    <div className="absolute inset-0 bg-black/30" />
-                                    <div className="relative p-4 flex flex-col justify-end">
-                                        <h3 className="text-sm md:text-xl font-bold text-white text-center">
-                                            {item.imageTitle1}
+                                    <div className="absolute inset-0 bg-black/30 rounded-xl" />
+                                    <div className="relative p-4 flex items-end justify-center">
+                                        <h3 className="text-sm md:text-lg lg:text-xl font-bold text-white">
+                                            {imgIndex === 0 ? item.imageTitle1 : imgIndex === 1 ? item.imageTitle2 : item.imageTitle3}
                                         </h3>
                                     </div>
                                 </div>
-                            </section>
-
-                            {/* 이미지 2 */}
-                            <section className="block">
-                                <div
-                                    className="relative min-h-[10rem] md:min-h-[30rem] rounded-xl overflow-hidden grid items-end transition-transform transform hover:scale-105 hover:border-2 hover:border-blue-500">
-                                    <Image
-                                        src={item.imageUrl2}
-                                        alt={item.imageTitle2}
-                                        fill
-                                        className="absolute inset-0 h-full w-full object-cover object-center"
-                                        unoptimized
-                                    />
-                                    <div className="absolute inset-0 bg-black/30" />
-                                    <div className="relative p-4 flex flex-col justify-end">
-                                        <h3 className="text-sm md:text-xl font-bold text-white text-center">
-                                            {item.imageTitle2}
-                                        </h3>
-                                    </div>
-                                </div>
-                            </section>
-
-                            {/* 이미지 3 */}
-                            <section className="block">
-                                <div
-                                    className="relative min-h-[10rem] md:min-h-[30rem] rounded-xl overflow-hidden grid items-end transition-transform transform hover:scale-105 hover:border-2 hover:border-blue-500">
-                                    <Image
-                                        src={item.imageUrl3}
-                                        alt={item.imageTitle3}
-                                        fill
-                                        className="absolute inset-0 h-full w-full object-cover object-center"
-                                        unoptimized
-                                    />
-                                    <div className="absolute inset-0 bg-black/30" />
-                                    <div className="relative p-4 flex flex-col justify-end">
-                                        <h3 className="text-sm md:text-xl font-bold text-white text-center">
-                                            {item.imageTitle3}
-                                        </h3>
-                                    </div>
-                                </div>
-                            </section>
+                            ))}
                         </div>
+
+
                     </div>
                 ))}
             </div>
@@ -131,12 +95,13 @@ const CarouselSolutionBlock: React.FC<CarouselProps> = ({ items }) => {
             </button>
 
             {/* Carousel Indicators */}
-            <div className="absolute bottom-72 left-0 w-full flex items-center justify-center gap-2 px-16">
+            <div
+                className="absolute bottom-32 smallMobile:bottom-14 mobile:bottom-3 bigMobile:bottom-10 sm:bottom-0 lg:bottom-72 xl:bottom-56 left-0 w-full flex items-center justify-center gap-2 p-4">
                 {items.map((_, index) => (
                     <button
                         key={index}
                         onClick={() => setCurrentIndex(index)}
-                        className={`h-1 flex-1 w-2 mx-2 rounded-full transition-all duration-300 ${
+                        className={`h-2 w-10 sm:w-1/5 rounded-full transition-all duration-300 ${
                             currentIndex === index ? 'bg-gray-800' : 'bg-gray-300'
                         }`}
                     ></button>

@@ -13,129 +13,94 @@ interface AdvantageData {
 }
 
 interface SolutionAdvantageProps {
-    advantages: AdvantageData[]; // advantage 데이터를 props로 전달받음
+    advantages: AdvantageData[];
 }
 
 // 애니메이션 Variants
 const textVariants = {
     hidden: (direction: "left" | "right") => ({
         opacity: 0,
-        x: direction === "left" ? -100 : 100,
+        x: direction === "left" ? -50 : 50,
     }),
     visible: {
         opacity: 1,
         x: 0,
-        transition: { duration: 0.8 },
+        transition: { duration: 0.8, ease: "easeOut" },
     },
 };
 
 const imageVariants = {
     hidden: (direction: "left" | "right") => ({
         opacity: 0,
-        x: direction === "left" ? 100 : -100,
+        x: direction === "left" ? 50 : -50,
     }),
     visible: {
         opacity: 1,
         x: 0,
-        transition: { duration: 0.8 },
+        transition: { duration: 0.8, ease: "easeOut" },
     },
 };
 
-// Case 컴포넌트: 각각의 장점 케이스를 렌더링
+// Case 컴포넌트
 const Case: React.FC<AdvantageData> = ({ direction, title1, title2, description, image }) => (
     <motion.div
-        className="flex justify-center flex-wrap md:flex-wrap lg:flex-nowrap lg:flex-row lg:justify-between gap-8 pb-20 items-center"
+        className={`flex flex-col-reverse lg:flex-row items-center gap-8 pb-20 overflow-hidden ${
+            direction === "left" ? "lg:flex-row-reverse" : ""
+        }`}
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true, amount: 0.3 }}
     >
-        {direction === "left" ? (
-            <>
-                {/* 텍스트 영역 */}
-                <motion.div
-                    className="w-full lg:w-2/5 flex items-center"
-                    custom="left"
-                    variants={textVariants}
-                >
-                    <div className="block lg:text-left text-center">
-                        <h2 className="text-4xl font-bold text-gray-900 dark:text-gray-200 leading-[3.25rem] mb-5">
-                            <span className="text-red-700">{title1}</span>
-                            {title2}
-                        </h2>
-                        <p className="text-gray-500 mb-10 max-lg:max-w-xl max-lg:mx-auto">{description}</p>
-                    </div>
-                </motion.div>
+        {/* 이미지 영역 */}
+        <motion.div
+            className={`w-full lg:w-3/5 order-1 lg:order-${direction === "left" ? "2" : "1"}`}
+            custom={direction}
+            variants={imageVariants}
+        >
+            <Image
+                src={image}
+                alt={`${title1} ${title2}`}
+                className="rounded-2xl object-cover w-full"
+                width={500}
+                height={300}
+                sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 500px"
+                unoptimized
+            />
+        </motion.div>
 
-                {/* 이미지 영역 */}
-                <motion.div
-                    className="w-full lg:w-3/5 flex items-center"
-                    custom="left"
-                    variants={imageVariants}
-                >
-                    <div className="group w-full border border-gray-300 rounded-2xl">
-                        <div className="flex items-center">
-                            <Image
-                                src={image}
-                                alt={`${title1} ${title2}`}
-                                className="rounded-2xl w-full object-cover"
-                                width={500}
-                                height={300}
-                                unoptimized
-                            />
-                        </div>
-                    </div>
-                </motion.div>
-            </>
-        ) : (
-            <>
-                {/* 이미지 영역 */}
-                <motion.div
-                    className="w-full lg:w-3/5 flex items-center"
-                    custom="right"
-                    variants={imageVariants}
-                >
-                    <div className="group w-full border border-gray-300 rounded-2xl">
-                        <div className="flex items-center">
-                            <Image
-                                src={image}
-                                alt={`${title1} ${title2}`}
-                                className="rounded-2xl w-full object-cover"
-                                width={500}
-                                height={300}
-                                unoptimized
-                            />
-                        </div>
-                    </div>
-                </motion.div>
-
-                {/* 텍스트 영역 */}
-                <motion.div
-                    className="w-full lg:w-2/5 flex items-center"
-                    custom="right"
-                    variants={textVariants}
-                >
-                    <div className="block lg:text-right text-center">
-                        <h2 className="text-4xl font-bold text-gray-900 dark:text-gray-200 leading-[3.25rem] mb-5">
-                            {title1}
-                            <span className="text-red-700">{title2}</span>
-                        </h2>
-                        <p className="text-gray-500 mb-10 max-lg:max-w-xl max-lg:mx-auto">{description}</p>
-                    </div>
-                </motion.div>
-            </>
-        )}
+        {/* 텍스트 영역 */}
+        <motion.div
+            className={`w-full lg:w-2/5 text-center ${
+                direction === "left" ? "lg:text-right" : "lg:text-left"
+            }`}
+            custom={direction}
+            variants={textVariants}
+        >
+            <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-gray-900 dark:text-gray-200 mb-5">
+                {direction === "left" ? (
+                    <>
+                        <span className="text-red-700">{title1}</span> {title2}
+                    </>
+                ) : (
+                    <>
+                        {title1} <span className="text-red-700">{title2}</span>
+                    </>
+                )}
+            </h2>
+            <p className="text-gray-500 text-sm md:text-base lg:text-lg">{description}</p>
+        </motion.div>
     </motion.div>
 );
 
-// SolutionAdvantage 컴포넌트: 전체 장점 섹션을 렌더링
+// SolutionAdvantage 컴포넌트
 const SolutionAdvantage: React.FC<SolutionAdvantageProps> = ({ advantages }) => {
     if (!advantages || advantages.length === 0) {
         return <p>No advantages available.</p>;
     }
 
     return (
-        <section className="bg-white dark:bg-gray-900">
-            <div className="py-24">
+        <section className="bg-white dark:bg-gray-900 overflow-hidden">
+            <div className="pb-24">
                 <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
                     {advantages.map((advantage, index) => (
                         <Case

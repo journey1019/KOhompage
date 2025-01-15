@@ -37,7 +37,7 @@ export const CtaSolution: React.FC<CtaProps> = ({ items }) => {
     return (
         <Container>
             <motion.div
-                className={`relative flex flex-wrap items-center justify-between w-full max-w-7xl gap-5 mx-auto text-white p-7 lg:p-12 lg:flex-nowrap rounded-xl ${
+                className={`relative flex flex-wrap items-center justify-between w-full max-w-7xl gap-5 mx-auto text-white p-7 lg:p-12 xl:flex-nowrap rounded-xl ${
                     hasImage ? "" : "bg-gray-900"
                 }`}
                 style={{
@@ -73,9 +73,7 @@ export const CtaSolution: React.FC<CtaProps> = ({ items }) => {
                 >
                     <a
                         href="/contact-us"
-                        // target="_blank"
-                        // rel="noopener"
-                        className="inline-block py-3 mx-auto text-lg font-medium text-center text-gray-900 bg-white rounded-md px-7 lg:px-10 lg:py-5 hover:bg-red-800 hover:text-white hover:border-2 hover:border-gray-50"
+                        className="inline-block py-3 mx-auto text-md lg:text-lg font-medium text-center text-gray-900 bg-white rounded-md px-7 lg:px-10 lg:py-5 hover:bg-red-800 hover:text-white hover:border-2 hover:border-gray-50"
                     >
                         {items.button}
                     </a>
@@ -91,7 +89,7 @@ export const CtaSolution: React.FC<CtaProps> = ({ items }) => {
                             href={items.solutionUrl}
                             target="_blank"
                             rel="noopener"
-                            className="inline-block py-3 mx-auto text-lg font-medium text-center text-white bg-red-700 border-2 border-red-700 rounded-md px-7 lg:px-10 lg:py-5 hover:bg-white hover:text-red-800 hover:border-2 hover:border-red-700"
+                            className="inline-block py-3 mx-auto text-md lg:text-lg font-medium text-center text-white bg-red-700 border-2 border-red-700 rounded-md px-7 lg:px-10 lg:py-5 hover:bg-white hover:text-red-800 hover:border-2 hover:border-red-700"
                         >
                             {items.solutionButton}
                         </a>

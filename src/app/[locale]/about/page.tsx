@@ -63,7 +63,7 @@ export default function AboutPage({params}: PageProps) {
     return (
         <>
             <PageHeroCenter
-                size="py-32"
+                size="py-52"
                 url={data.imageUrl}
                 intro={data.imageIntro}
                 title={data.imageMain}
@@ -71,47 +71,44 @@ export default function AboutPage({params}: PageProps) {
                 thirdtitle={data.imageThird}
             />
 
-            <Container>
-                <PartnerManyLines />
+            <PartnerManyLines />
 
-                {/*<DownloadSection/>*/}
-                {/*<History />*/}
-                {/*<Benefits data={benefitOne} />*/}
-                {/*<Benefits imgPos="right" data={benefitTwo} />*/}
+            {/*<DownloadSection/>*/}
+            {/*<History />*/}
+            {/*<Benefits data={benefitOne} />*/}
+            {/*<Benefits imgPos="right" data={benefitTwo} />*/}
 
-                <Feature sections={data.feature}/>
+            <Feature sections={data.feature}/>
 
+            <SectionTitle
+                preTitle="Time line"
+                title="Company History"
+            >
+            </SectionTitle>
+            <Timeline timeline={data.timeline} />
 
-                <SectionTitle
-                    preTitle="Time line"
-                    title="Company History"
-                >
-                </SectionTitle>
-                <Timeline timeline={data.timeline} />
+            <SectionTitle
+                preTitle="Values"
+                title="Why KOREA ORBCOMM"
+            >
+            </SectionTitle>
+            <Value items={data.value}/>
 
+            {/*<SectionTitle*/}
+            {/*    preTitle="Testimonials"*/}
+            {/*    title="Here's what our customers said"*/}
+            {/*>*/}
+            {/*    Testimonials is a great way to increase the brand trust and awareness.*/}
+            {/*    Use this section to highlight your popular customers.*/}
+            {/*</SectionTitle>*/}
+            {/*<Testimonials />*/}
 
-                <SectionTitle
-                    preTitle="Values"
-                    title="Why KOREA ORBCOMM"
-                >
-                </SectionTitle>
-                <Value items={data.value}/>
+            {/*<Blog/>*/}
+            {/*<Footer />*/}
+            {/*<PopupWidget />*/}
 
+            <Cta items={data.ctas}/>
 
-                {/*<SectionTitle*/}
-                {/*    preTitle="Testimonials"*/}
-                {/*    title="Here's what our customers said"*/}
-                {/*>*/}
-                {/*    Testimonials is a great way to increase the brand trust and awareness.*/}
-                {/*    Use this section to highlight your popular customers.*/}
-                {/*</SectionTitle>*/}
-                {/*<Testimonials />*/}
-
-                <Cta items={data.ctas}/>
-                {/*<Blog/>*/}
-                {/*<Footer />*/}
-                {/*<PopupWidget />*/}
-            </Container>
             <WorkWithUs />
         </>
     );

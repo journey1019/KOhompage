@@ -47,7 +47,7 @@ export default function PageHero({
 
     return (
         <>
-            <section className={`relative flex py-36 md:${size}`}>
+            <section className={`relative flex py-56 md:${size}`}>
                 {/* 고정된 배경 이미지 */}
                 <div className="absolute inset-0 bg-fixed bg-cover bg-center">
                     <div
@@ -67,25 +67,25 @@ export default function PageHero({
 
                 {/* 안쪽 콘텐츠 */}
                 <motion.main
-                    className="relative flex flex-col justify-center items-start text-white z-10 p-5 text-start md:ml-16 lg:ml-32"
+                    className="relative flex flex-col justify-center items-start text-white z-10 p-5 text-start md:ml-16 xl:ml-32"
                     variants={containerVariants}
                     initial="hidden"
                     animate="visible"
                 >
                     <motion.h1
-                        className="text-lg font-bold mb-5"
+                        className="text-sm md:text-lg font-bold mb-3 md:mb-5"
                         variants={itemVariants}
                     >
                         {intro}
                     </motion.h1>
                     <motion.h1
-                        className="text-5xl md:text-6xl font-bold mb-5"
+                        className="text-3xl md:text-6xl font-bold mb-5"
                         variants={itemVariants}
                     >
                         {title}
                     </motion.h1>
                     <motion.p
-                        className="text-base mb-5"
+                        className="text-sm md:text-base mb-5"
                         variants={itemVariants}
                     >
                         {subtitle}
@@ -95,7 +95,7 @@ export default function PageHero({
                             href={solutionUrl}
                             target="_blank"
                             rel="noopener"
-                            className="py-3 text-lg font-medium text-white bg-red-700 border-2 border-red-700 rounded-md px-7 lg:px-10 hover:bg-red-800 hover:text-white hover:border-2 hover:border-red-700"
+                            className="py-3 text-lg font-medium text-white bg-transparent border-2 border-white rounded-md px-7 lg:px-10 hover:bg-white hover:text-red-700 hover:border-red-700 transition-colors duration-300 ease-in-out"
                             variants={itemVariants}
                         >
                             {solutionButton}

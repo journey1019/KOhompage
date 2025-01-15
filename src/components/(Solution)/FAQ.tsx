@@ -127,10 +127,10 @@ const FAQ: React.FC<FAQProps> = ({ faqImage, items }) => {
                                                 <motion.div
                                                     id={`collapse-${index}`}
                                                     className="accordion-content mt-4"
-                                                    initial={{ height: 0, opacity: 0 }}
-                                                    animate={{ height: "auto", opacity: 1 }}
-                                                    exit={{ height: 0, opacity: 0 }}
-                                                    transition={{ duration: 0.8 }}
+                                                    initial={{ height: 0, opacity: 0, y: -20 }}
+                                                    animate={{ height: "auto", opacity: 1, y: 0 }}
+                                                    exit={{ height: 0, opacity: 0, y: -20 }}
+                                                    transition={{ duration: 0.8, ease: "easeOut" }}
                                                 >
                                                     <p className="text-base text-gray-900 dark:text-gray-200 font-normal leading-6">
                                                         {item.answer}

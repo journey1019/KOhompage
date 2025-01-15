@@ -6,31 +6,31 @@ import { motion } from 'framer-motion';
 export default function Feature() {
     // 애니메이션 Variants
     const textVariants = {
-        hidden: { opacity: 0, x: -50 },
+        hidden: { opacity: 0, x: -30 }, // 이동 범위 축소
         visible: {
             opacity: 1,
             x: 0,
-            transition: { duration: 0.8, ease: 'easeOut' },
+            transition: { duration: 1.3, ease: 'easeOut' },
         },
     };
 
     const imageVariants = {
-        hidden: { opacity: 0, x: 50 },
+        hidden: { opacity: 0, x: 30 }, // 이동 범위 축소
         visible: {
             opacity: 1,
             x: 0,
-            transition: { duration: 0.8, ease: 'easeOut' },
+            transition: { duration: 1.3, ease: 'easeOut' },
         },
     };
 
     return (
-        <div className="mx-auto max-w-7xl px-6 lg:px-8 lg:py-14">
+        <div className="mx-auto max-w-7xl px-6 lg:px-8 lg:py-14 overflow-hidden">
             {/* Section 1 */}
             <motion.div
                 className="mx-auto grid max-w-2xl grid-cols-1 gap-x-8 gap-y-16 pt-12 lg:max-w-none lg:grid-cols-2 items-center"
                 initial="hidden"
                 whileInView="visible"
-                viewport={{ once: true, amount: 0.2 }}
+                viewport={{ once: true, amount: 0.8 }}
             >
                 <motion.div
                     className="flex justify-center order-1 lg:order-none"
@@ -41,7 +41,7 @@ export default function Feature() {
                         alt="main_dashboard"
                         width={500}
                         height={300}
-                        className="w-full h-auto max-w-sm sm:max-w-md lg:max-w-lg"
+                        className="w-full h-auto aspect-[4/3] rounded-lg"
                         unoptimized
                     />
                 </motion.div>
@@ -63,7 +63,7 @@ export default function Feature() {
                 className="mx-auto grid max-w-2xl grid-cols-1 gap-x-8 gap-y-16 pt-12 lg:max-w-none lg:grid-cols-2 items-center"
                 initial="hidden"
                 whileInView="visible"
-                viewport={{ once: true, amount: 0.2 }}
+                viewport={{ once: true, amount: 0.8 }}
             >
                 <motion.div
                     className="max-w-xl lg:max-w-lg mx-auto text-center lg:text-start order-2 lg:order-none"
@@ -85,7 +85,7 @@ export default function Feature() {
                         alt="main_dashboard"
                         width={500}
                         height={300}
-                        className="w-full h-auto max-w-sm sm:max-w-md lg:max-w-lg"
+                        className="w-full h-auto aspect-[4/3] rounded-lg"
                         unoptimized
                     />
                 </motion.div>

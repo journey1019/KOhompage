@@ -9,11 +9,16 @@ import FilterHardwareCarousel from '@/components/(Hardware)/FilterHardwareCarous
 import FilterHardwareCarouselBySolutionTags from '@/components/(Hardware)/FilterHardwareCarouselBySolutionTags';
 import FilterResourceCarouselBySolutionTags from '@/components/(Resources)/FilterResourceCarouselBySolutionTags';
 import { Metadata } from 'next';
+import { notFound } from 'next/navigation';
 
-
-export async function generateMetadata({ params }: { params: { locale: string } }): Promise<Metadata> {
-    const locale = params.locale;
+export const viewport = "width=device-width, initial-scale=1.0";
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
+    const { locale } = await params;
     const data = starlinkData[locale];
+
+    if (!data) {
+        throw new Error(`Metadata for locale ${locale} could not be found.`);
+    }
 
     return {
         title: `${data.title} | KOREA ORBCOMM`,
@@ -38,15 +43,18 @@ export async function generateMetadata({ params }: { params: { locale: string } 
             index: true,
             follow: true,
         },
-        viewport: "width=device-width, initial-scale=1.0",
     };
 }
 interface PageProps {
     params: {locale: string};
 }
-export default function StarlinkPage({params}: PageProps) {
-    const { locale } = params; // 비동기 처리
+export default async function StarlinkPage({params}: PageProps) {
+    const { locale } = await params; // 비동기 처리
     const data = starlinkData[locale];
+
+    if (!data) {
+        notFound();
+    }
 
     const pageName = ['Starlink']
     const filteredKeyword = ["starlink"]
