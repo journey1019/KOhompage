@@ -48,32 +48,29 @@ const Strength: React.FC<AdvantageProps> = ({ items, gridCols = 4 }) => {
                     {items.map((item, index) => (
                         <motion.div
                             key={index}
-                            className="group relative"
+                            className="group relative flex flex-col items-center text-center"
                             variants={itemVariants}
                         >
                             {/* Image Section */}
-                            <div className="flex-shrink-0 w-20 h-20 rounded-md bg-gray-200 lg:aspect-none group-hover:opacity-75">
+                            <div className="flex-shrink-0 w-20 h-20 rounded-md lg:aspect-none group-hover:opacity-75 flex items-center justify-center">
                                 <Image
                                     src={item.imageUrl}
                                     alt="Example"
-                                    width={50}
-                                    height={50}
-                                    className="object-contain w-full h-full bg-white"
+                                    width={100}
+                                    height={100}
+                                    className="object-contain"
                                     unoptimized
                                 />
                             </div>
 
                             {/* Text Section */}
-                            <div className="mt-4 flex justify-between">
-                                <div>
-                                    <h3 className="text-md text-gray-700 font-semibold dark:text-gray-200">
-                                        <span aria-hidden="true" className="absolute inset-0" />
-                                        {item.advantage}
-                                    </h3>
-                                    <p className="mt-3 text-sm text-gray-500">
-                                        {item.description}
-                                    </p>
-                                </div>
+                            <div className="mt-4">
+                                <h3 className="text-md text-gray-700 font-semibold dark:text-gray-200">
+                                    {item.advantage}
+                                </h3>
+                                <p className="mt-3 text-sm text-gray-500">
+                                    {item.description}
+                                </p>
                             </div>
                         </motion.div>
                     ))}

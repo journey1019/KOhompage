@@ -40,19 +40,19 @@ export default function Greet({ solutionNumber, solutionTitle, solutionName }: G
                 viewport={{ once: true, amount: 0.2 }} // 한 번만 실행, 20%가 보이면 애니메이션 시작
             >
                 <motion.h1
-                    className="text-md md:text-xl text-red-800 font-semibold py-1"
+                    className="text-md md:text-xl text-red-800 font-semibold py-2"
                     variants={itemVariants}
                 >
                     {solutionNumber}
                 </motion.h1>
                 <motion.h1
-                    className="text-4xl md:text-6xl text-black font-bold py-3 dark:text-white"
+                    className="text-3xl md:text-6xl text-black font-bold dark:text-white"
                     variants={itemVariants}
                 >
                     {solutionTitle}
                 </motion.h1>
                 <motion.h1
-                    className="text-base md:text-xl text-gray-400 font-semibold py-4"
+                    className="text-sm md:text-xl text-gray-400 font-semibold py-4"
                     variants={itemVariants}
                 >
                     {solutionName}

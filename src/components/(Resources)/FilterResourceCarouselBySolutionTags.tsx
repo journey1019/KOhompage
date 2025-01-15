@@ -13,8 +13,8 @@ const FilterResourceCarouselBySolutionTags: React.FC<FilterReferenceCarouselProp
     const filteredResource: ResourcesProps[] = getResourceByKeywordsInPage(keywords);
 
     return (
-        <div className="mx-auto max-w-7xl px-6 py-8">
-            <h2 className="text-2xl font-bold text-gray-800 mb-6">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 py-4 sm:py-8">
+            <h2 className="text-xl sm:text-2xl font-bold text-gray-800 mb-4">
                 Filtered Resource
             </h2>
             {filteredResource.length > 0 ? (

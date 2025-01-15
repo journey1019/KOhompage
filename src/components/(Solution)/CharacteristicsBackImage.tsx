@@ -54,7 +54,7 @@ export default function CharacteristicsBackImage({ items, gridCols = 4 }: Charac
                 {items.map((item, index) => (
                     <motion.div
                         key={index}
-                        className="flex flex-col items-center p-5 bg-opacity-0 rounded-lg hover:shadow-lg transition-shadow duration-300"
+                        className="flex flex-col items-center p-5 bg-opacity-0 rounded-lg"
                         variants={itemVariants}
                     >
                         <Image

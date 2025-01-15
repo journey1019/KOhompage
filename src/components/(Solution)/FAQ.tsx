@@ -72,7 +72,7 @@ const FAQ: React.FC<FAQProps> = ({ faqImage, items }) => {
                                     {items.map((item, index) => (
                                         <motion.div
                                             key={index}
-                                            className={`accordion border border-solid p-4 rounded-xl transition duration-500 ${openIndex === index ? 'bg-indigo-50 border-indigo-600 dark:bg-indigo-900' : 'border-gray-300 dark:border-gray-700'} mb-8 lg:p-4`}
+                                            className={`accordion border border-solid p-3 md:p-4 mb-4 md:mb-8 rounded-xl transition duration-500 ${openIndex === index ? 'bg-indigo-50 border-indigo-600 dark:bg-indigo-900' : 'border-gray-300 dark:border-gray-700'}`}
                                             initial="hidden"
                                             animate={controls}
                                             variants={{
@@ -87,7 +87,7 @@ const FAQ: React.FC<FAQProps> = ({ faqImage, items }) => {
                                             >
                                                 <motion.h5
                                                     whileHover={{ scale: 1.05 }}
-                                                    className="transition-transform"
+                                                    className="transition-transform text-base md:text-lg"
                                                 >
                                                     {item.question}
                                                 </motion.h5>
@@ -132,7 +132,7 @@ const FAQ: React.FC<FAQProps> = ({ faqImage, items }) => {
                                                     exit={{ height: 0, opacity: 0, y: -20 }}
                                                     transition={{ duration: 0.8, ease: "easeOut" }}
                                                 >
-                                                    <p className="text-base text-gray-900 dark:text-gray-200 font-normal leading-6">
+                                                    <p className="text-sm md:text-base text-gray-900 dark:text-gray-200 font-normal leading-6">
                                                         {item.answer}
                                                     </p>
                                                 </motion.div>

@@ -1,9 +1,9 @@
 'use client';
 
-import solutionsData from '@/service/solutions/solutionsData';
 import React from 'react';
 import { motion } from 'framer-motion';
 import Image from 'next/image';
+import solutionsData from '@/service/solutions/solutionsData';
 
 interface CaseData {
     direction: 'left' | 'right';
@@ -19,49 +19,50 @@ interface UseCaseProps {
     slug: string;
 }
 
-
 const Case: React.FC<CaseData> = ({ direction, title1, title2, slug, description, image }) => {
-    // Updated animation variants (Fade-in with slight scaling)
+    // Animation Variants
     const textVariants = {
-        hidden: { opacity: 0, scale: 0.95 },
-        visible: { opacity: 1, scale: 1, transition: { duration: 0.8 } },
+        hidden: { opacity: 0, x: direction === 'left' ? -10 : 10 },
+        visible: { opacity: 1, x: 0, transition: { duration: 0.8, ease: 'easeOut' } },
     };
 
     const imageVariants = {
-        hidden: { opacity: 0, scale: 0.95 },
-        visible: { opacity: 1, scale: 1, transition: { duration: 0.8 } },
+        hidden: { opacity: 0, x: direction === 'left' ? 10 : -10 },
+        visible: { opacity: 1, x: 0, transition: { duration: 0.8, ease: 'easeOut' } },
     };
 
     return (
         <motion.div
-            className="grid grid-cols-1 lg:grid-cols-2 items-center gap-10 pb-16 lg:pb-36"
+            className="mx-auto grid max-w-2xl grid-cols-1 gap-x-8 gap-y-4 lg:gap-y-16 pb-24 lg:pb-12 lg:max-w-none lg:grid-cols-2 items-center"
             initial="hidden"
             whileInView="visible"
-            viewport={{ once: false, amount: 0.3 }}
+            viewport={{ once: true, amount: 0.3 }}
         >
+            {/* Image Section */}
             <motion.div
-                className={`flex justify-center order-1 lg:order-${direction === 'left' ? '2' : '1'}`}
+                className={`flex justify-center ${direction === 'left' ? 'order-1 lg:order-2' : 'order-2 lg:order-1'}`}
                 variants={imageVariants}
             >
-                <div className="w-full max-w-lg">
+                <div className="relative w-full max-w-lg aspect-[4/3]">
                     <Image
                         src={image}
-                        alt="blogs tailwind section"
-                        className="rounded-2xl object-contain"
-                        width={800}
-                        height={450}
-                        sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 800px"
-                        priority
+                        alt={title1}
+                        className="rounded-lg object-contain" // object-contain으로 이미지 전체 표시
+                        layout="fill" // Next.js Image layout 설정
                         unoptimized
                     />
                 </div>
             </motion.div>
 
+
+            {/* Text Section */}
             <motion.div
-                className={`flex flex-col items-center ${direction === 'left' ? 'lg:items-start lg:order-1' : 'lg:items-end lg:order-2'}`}
+                className={`max-w-xl lg:max-w-lg mx-auto text-center order-2 lg:text-start ${
+                    direction === 'left' ? 'order-2 lg:order-1' : 'order-1 lg:order-2'
+                } flex flex-col justify-center items-center lg:items-start`}
                 variants={textVariants}
             >
-                <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-gray-200 leading-snug mb-5">
+                <h2 className="text-3xl sm:text-3xl lg:text-4xl font-bold tracking-tight text-black">
                     {direction === 'left' ? (
                         <>
                             <span className="text-red-700">{title1}</span> {title2}
@@ -72,12 +73,12 @@ const Case: React.FC<CaseData> = ({ direction, title1, title2, slug, description
                         </>
                     )}
                 </h2>
-                <p className="text-gray-500 mb-10 max-w-prose text-center lg:text-left text-sm md:text-base">
+                <p className="mt-4 text-md sm:text-lg lg:text-xl text-gray-500 leading-6 sm:leading-7 lg:leading-8">
                     {description}
                 </p>
                 <a
                     href={slug}
-                    className="group flex items-center text-red-700 font-medium text-lg md:text-md gap-2 hover:gap-4 transition-all duration-300 ease-in-out"
+                    className="group flex items-center text-red-700 font-medium text-lg md:text-md gap-2 hover:gap-4 transition-all duration-300 ease-in-out mt-6"
                 >
                     View More
                     <svg
@@ -91,9 +92,9 @@ const Case: React.FC<CaseData> = ({ direction, title1, title2, slug, description
                     </svg>
                 </a>
             </motion.div>
+
         </motion.div>
     );
-
 };
 
 export default function UseCase({ locale, slug }: UseCaseProps) {
@@ -105,7 +106,7 @@ export default function UseCase({ locale, slug }: UseCaseProps) {
 
     return (
         <section className="bg-white dark:bg-gray-900">
-            <div className="py-12 md:py-24">
+            <div className="pb-12 md:pb-24">
                 <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
                     {solution.useCases.map((useCase, index) => (
                         <Case

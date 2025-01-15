@@ -31,7 +31,7 @@ export function Footer({locale}: {locale: string}) {
 
     return (
         <div className="relative">
-            <Container>
+            <div className="container p-4 mx-auto xl:px-0 md:px-8">
                 <div
                     className="grid max-w-screen-xl grid-cols-1 gap-10 pt-10 mx-auto sm:mt-5 border-t border-gray-100 dark:border-trueGray-700 lg:grid-cols-5">
                     {/* Left Section */}
@@ -62,7 +62,7 @@ export function Footer({locale}: {locale: string}) {
                             </Link>
                         </div>
 
-                        <div className="flex flex-col max-w-md mt-4 text-gray-500 dark:text-gray-400">
+                        <div className="text-sm md:text-base flex flex-col max-w-md mt-4 text-gray-500 dark:text-gray-400">
                             <span>[06536] 서울특별시 서초구 강남대로 525, 15 (세영제이타워)</span>
                             <span>02-3444-7311</span>
                             <span>sales@orbcomm.co.kr</span>
@@ -88,7 +88,8 @@ export function Footer({locale}: {locale: string}) {
                     {/* Right Section - 웹 해상도 */}
                     <div className="hidden lg:flex">
                         <div className="flex flex-wrap w-full -mt-2 ml-0">
-                            <span className="w-full px-4 sm:py-2 text-sm sm:text-base font-bold text-gray-800 rounded-md">Solutions</span>
+                            <span
+                                className="w-full px-4 sm:py-2 text-sm sm:text-base font-bold text-gray-800 rounded-md">Solutions</span>
                             {solutions.map((item, index) => (
                                 <Link
                                     key={index}
@@ -209,8 +210,7 @@ export function Footer({locale}: {locale: string}) {
                         />
                     </div>
                 </div>
-
-            </Container>
+            </div>
             {/* Do not remove this */}
             {/*<Backlink />*/}
         </div>

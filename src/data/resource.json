@@ -1202,6 +1202,6 @@
     "form": "page",
     "image": "/images/resources/newsletter/2024-12-10.png",
     "path": "resources/news1",
-    "use": true
+    "use": false
   }
 ]

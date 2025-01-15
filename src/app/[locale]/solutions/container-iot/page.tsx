@@ -109,7 +109,16 @@ export default async function ContainerIoT({ params }: PageProps){
             {/*<Advantage/>*/}
             <Point items={data.points || []} />
             {/*<ContentForm/>*/}
+
+            <SectionTitle
+                preTitle="Use Case"
+                title="문제를 예방하고 운영 효율성을 극대화하세요."
+                length={3}
+            >
+                IoT 기반 컨테이너 관리로 물류 전 과정에 대한 가시성을 확보하고, 공급망의 투명성을 높이세요.
+            </SectionTitle>
             <UseCase slug="container-iot" locale={locale} />
+
             <Strength items={data.advantages || []} gridCols={4} />
 
             <SectionTitle

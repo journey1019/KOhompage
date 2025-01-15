@@ -9,11 +9,12 @@ interface PointProps {
 }
 
 const Point: React.FC<PointProps> = ({ items }) => {
+    // Container 및 Item 애니메이션 Variants
     const containerVariants = {
         hidden: {},
         visible: {
             transition: {
-                staggerChildren: 0.2, // 각 아이템의 애니메이션을 순차적으로 실행
+                staggerChildren: 0.2, // 각 아이템 애니메이션 순차 실행
             },
         },
     };
@@ -22,7 +23,7 @@ const Point: React.FC<PointProps> = ({ items }) => {
         hidden: { opacity: 0, x: -50 }, // 아이템이 화면 왼쪽에서 시작
         visible: {
             opacity: 1,
-            x: 0,
+            x: 0, // 원래 위치로 이동
             transition: { duration: 0.6 },
         },
         exit: { opacity: 0, x: 50, transition: { duration: 0.6 } }, // 화면을 벗어날 때 오른쪽으로 사라짐
@@ -32,10 +33,10 @@ const Point: React.FC<PointProps> = ({ items }) => {
         <motion.div
             className="relative isolate overflow-hidden bg-gray-900 py-16 sm:py-24 lg:py-32"
             initial="hidden"
-            whileInView="visible"
+            whileInView="visible" // 스크롤이 뷰포트에 도달 시 실행
             exit="hidden"
             variants={containerVariants}
-            viewport={{ amount: 0.3 }} // 30%가 보일 때 애니메이션 시작
+            viewport={{ once: true, amount: 0.3 }} // 뷰포트의 30%에 도달하면 실행
         >
             <div className="mx-auto max-w-7xl px-6 lg:px-8">
                 <div className="mx-auto grid max-w-2xl grid-cols-1 gap-x-8 gap-y-16 lg:max-w-none lg:grid-cols-2">
@@ -45,7 +46,7 @@ const Point: React.FC<PointProps> = ({ items }) => {
                         initial={{ opacity: 0, scale: 0.8 }}
                         whileInView={{ opacity: 1, scale: 1 }}
                         transition={{ duration: 0.8 }}
-                        viewport={{ once: true }}
+                        viewport={{ once: true }} // 이미지 애니메이션은 한 번만 실행
                     >
                         <Image
                             src="/images/solutions/container-iot/Advantage.png"
@@ -61,6 +62,9 @@ const Point: React.FC<PointProps> = ({ items }) => {
                     <motion.dl
                         className="grid grid-cols-1 gap-x-1 gap-y-4 md:gap-y-0 lg:pt-2"
                         variants={containerVariants}
+                        initial="hidden"
+                        whileInView="visible"
+                        viewport={{ once: true, amount: 0.2 }} // 컨테이너가 뷰포트의 20% 이상 보이면 실행
                     >
                         <motion.div
                             className="text-white text-3xl md:text-4xl font-bold pb-4 md:py-4"

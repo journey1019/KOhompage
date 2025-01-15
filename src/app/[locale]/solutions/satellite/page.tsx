@@ -106,10 +106,10 @@ export default async function GlobalIoT({params}: PageProps){
 
             <SectionTitle
                 preTitle="Use Case"
-                title="실시간 모니터링 시스템을 경험해보세요"
+                title="차세대 위성 통신망을 경험해보세요"
                 length={3}
             >
-                고객에게 제공되는 웹플랫폼(VMS Commtrace, NMS)를 통해 산업별로 적합한 데이터를 제공하고 실시간 모니터링 및 제어 기능을 제공합니다.
+                초고속 저궤도 위성 네트워크를 활용하여 전세계 어디서나 초고속 인터넷을 경험하세요. 비스니스에 필요한 안정성과 유연성을 극대화하세요.
             </SectionTitle>
             <UseCase slug="satellite" locale={locale} />
 

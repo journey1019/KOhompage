@@ -65,7 +65,7 @@ const HardwarePage = () => {
         <div className="bg-white">
             <PageHero
                 size="py-28"
-                url="/images/befo_ko/M2M_IoT.jpg"
+                url="/images/header/Hardware.jpg"
                 intro={data.pageTopImageIntro}
                 title={data.pageTopImageTitle}
                 subtitle={data.pageTopImageSubtitle}

@@ -4,28 +4,25 @@ import React, { useState, useEffect, ReactNode } from "react";
 import { ArrowRightIcon, ArrowLeftIcon } from "@heroicons/react/24/outline";
 
 interface CarouselProps {
-    children: ReactNode; // Items to render inside the carousel
-    itemsCount: number; // Total number of items
+    children: ReactNode;
+    itemsCount: number;
 }
 
 const Carousel: React.FC<CarouselProps> = ({ children, itemsCount }) => {
     const [currentIndex, setCurrentIndex] = useState(0);
-
-    const getCardsToShow = () => {
-        if (typeof window !== "undefined") {
-            const width = window.innerWidth;
-            if (width < 640) return 2; // Show 2 items on mobile
-            if (width < 1024) return 2; // Show 2 items on tablet
-        }
-        return 3; // Show 3 items on desktop
-    };
-
-    const [cardsToShow, setCardsToShow] = useState(getCardsToShow());
+    const [cardsToShow, setCardsToShow] = useState(3);
 
     useEffect(() => {
-        const handleResize = () => setCardsToShow(getCardsToShow());
-        window.addEventListener("resize", handleResize);
-        return () => window.removeEventListener("resize", handleResize);
+        const updateCardsToShow = () => {
+            const width = window.innerWidth;
+            if (width < 640) setCardsToShow(1);
+            else if (width < 1024) setCardsToShow(2);
+            else setCardsToShow(3);
+        };
+
+        updateCardsToShow();
+        window.addEventListener("resize", updateCardsToShow);
+        return () => window.removeEventListener("resize", updateCardsToShow);
     }, []);
 
     const maxIndex = Math.max(itemsCount - cardsToShow, 0);
@@ -68,21 +65,19 @@ const Carousel: React.FC<CarouselProps> = ({ children, itemsCount }) => {
             <div className="flex justify-center gap-4 mt-4">
                 <button
                     onClick={goPrev}
-                    type="button"
-                    className="flex flex-row items-center bg-gray-800 text-white p-3 rounded-md hover:bg-gray-700 disabled:opacity-50"
+                    className="flex flex-row items-center bg-gray-800 text-white p-2 rounded-md hover:bg-gray-700 disabled:opacity-50"
                     disabled={currentIndex === 0}
                 >
-                    <ArrowLeftIcon aria-hidden="true" className="h-5 w-5 text-white mr-2" />
                     Prev
+                    <ArrowLeftIcon aria-hidden="true" className="h-5 w-5 text-white ml-2"/>
                 </button>
                 <button
                     onClick={goNext}
-                    type="button"
-                    className="flex flex-row items-center bg-gray-800 text-white p-3 rounded-md hover:bg-gray-700 disabled:opacity-50"
+                    className="flex flex-row items-center bg-gray-800 text-white p-2 rounded-md hover:bg-gray-700 disabled:opacity-50"
                     disabled={currentIndex === maxIndex}
                 >
                     Next
-                    <ArrowRightIcon aria-hidden="true" className="h-5 w-5 text-white ml-2" />
+                    <ArrowRightIcon aria-hidden="true" className="h-5 w-5 text-white ml-2"/>
                 </button>
             </div>
         </div>

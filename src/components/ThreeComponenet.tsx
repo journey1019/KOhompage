@@ -78,7 +78,7 @@ export default function ThreeComponent() {
     return (
         <section>
             <motion.div
-                className="grid grid-cols-1 lg:grid-cols-3 gap-8 mx-auto max-w-7xl py-12"
+                className="grid grid-cols-1 lg:grid-cols-3 gap-8 mx-auto max-w-7xl py-12 px-8"
                 variants={containerVariants}
                 initial="hidden"
                 whileInView="visible"

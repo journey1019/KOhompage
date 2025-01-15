@@ -16,7 +16,7 @@ interface FeaturesProps {
 const TableAdvantage: React.FC<FeaturesProps> = ({ items }) => {
     // 애니메이션 Variants 설정
     const leftVariants = {
-        hidden: { opacity: 0, x: -50 }, // 왼쪽에서 대기
+        hidden: { opacity: 0, x: -20 }, // 왼쪽에서 대기
         visible: {
             opacity: 1,
             x: 0, // 원래 위치로 이동
@@ -25,7 +25,7 @@ const TableAdvantage: React.FC<FeaturesProps> = ({ items }) => {
     };
 
     const rightVariants = {
-        hidden: { opacity: 0, x: 50 }, // 오른쪽에서 대기
+        hidden: { opacity: 0, x: 20 }, // 오른쪽에서 대기
         visible: {
             opacity: 1,
             x: 0, // 원래 위치로 이동
