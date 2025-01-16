@@ -111,7 +111,7 @@ const Timeline: React.FC<TimelineProps> = ({ timeline }) => {
 
     return (
         <section className="bg-gray-100 py-12">
-            <div className="mx-auto max-w-4xlm px-4 sm:px-6 lg:px-8">
+            <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
                 {/* Period Buttons */}
                 <div className="flex justify-center gap-2 md:gap-4 mb-8">
                     {periods.map((period) => (
@@ -133,7 +133,7 @@ const Timeline: React.FC<TimelineProps> = ({ timeline }) => {
                 <AnimatePresence mode="wait">
                     <motion.div
                         key={activePeriod}
-                        className="space-y-4 md:space-y-8"
+                        className="max-w-7xl mx-auto space-y-4 md:space-y-8"
                         initial="hidden"
                         animate="visible"
                         exit="exit"

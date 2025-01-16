@@ -126,7 +126,7 @@ const maritimeData: Record<string, MaritimeData> = {
         imageMain: "스마트하고 연결된 공급망을 위한 해양 솔루션",
         imageUrl: "/images/header/Port.jpg",
         imageSub: "",
-        solutionButton: "데모 신청",
+        solutionButton: "Explore the Solution",
         solutionUrl: "https://reeferconnect.tms-orbcomm.com/",
         introTitle: "Reefer Container 감시 및 제어 시스템",
         introLetter: "전세계 Top3 선사가 선택한 ORBCOMM의 ReeferContainer는 현재 500,000개 이상의 제품이 냉동냉장 컨테이너에 설치되어 운영 중이며, 컨테이너선사, 복합운송업체, 화주 및 기타 사용자에게 육해상 전 지역에서의 실시간 컨테이너관제 서비스를 제공합니다.",

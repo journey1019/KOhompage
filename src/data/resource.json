@@ -194,6 +194,40 @@
     "use": true
   },
   {
+    "date": "2025-01-15",
+    "contentType": "Brochure",
+    "title": "스마트 콜드체인 솔루션",
+    "subtitle": "냉장 운송시에 실시간으로 데이터를 전송하고, 해당 데이터를 분명히 식별하는 것의 중요성을 확인하세요.",
+    "tags": [
+      "Container-IoT",
+      "Reefer"
+    ],
+    "solutionTag": [
+      "Container-IoT"
+    ],
+    "form": "pdf",
+    "image": "/images/resources/brochure/Smart-Gold-Chain.png",
+    "path": "/pdf/brochure/Smart-Cold-Chain-EN.pdf",
+    "use": true
+  },
+  {
+    "date": "2025-01-15",
+    "contentType": "Brochure",
+    "title": "스마트 냉동 컨테이너 솔루션",
+    "subtitle": "신선식품과 의약품 화물 운송시 IoT 기술 적용에 대해 확인하세요.",
+    "tags": [
+      "Container-IoT",
+      "Reefer"
+    ],
+    "solutionTag": [
+      "Container-IoT"
+    ],
+    "form": "pdf",
+    "image": "/images/resources/brochure/Smart-Dry-Container.png",
+    "path": "/pdf/brochure/Smart-Reefer-Container.pdf",
+    "use": true
+  },
+  {
     "date": "2024-12-26",
     "contentType": "Brochure",
     "title": "스마트 컨테이너",
@@ -611,6 +645,23 @@
   {
     "date": "2024-12-26",
     "contentType": "Datasheet",
+    "title": "IDP 800",
+    "subtitle": "Low profile fully programmed satellite communication device",
+    "tags": [
+      "Global-IoT",
+      "OGx/IDP",
+      "Satellite",
+      "Cellular"
+    ],
+    "solutionTag": [],
+    "form": "pdf",
+    "image": "/images/resources/datasheet/hardware/IDP800Datasheet.png",
+    "path": "/pdf/datasheet/hardware/idp-800.pdf",
+    "use": false
+  },
+  {
+    "date": "2024-12-26",
+    "contentType": "Datasheet",
     "title": "VesselConnect: Reefer container management at sea",
     "subtitle": "Stay connected to containers at sea with an onboard cellular network that facilitates ship-to-shore communications, enabling remote temperature monitoring and more.",
     "tags": [
@@ -643,23 +694,6 @@
     "image": "/images/resources/datasheet/application/ReeferConnect.jpg",
     "path": "/pdf/datasheet/application/ReeferConnect_KR.pdf",
     "use": true
-  },
-  {
-    "date": "2024-12-26",
-    "contentType": "Datasheet",
-    "title": "IDP 800",
-    "subtitle": "Low profile fully programmed satellite communication device",
-    "tags": [
-      "Global-IoT",
-      "OGx/IDP",
-      "Satellite",
-      "Cellular"
-    ],
-    "solutionTag": [],
-    "form": "pdf",
-    "image": "/images/resources/datasheet/hardware/IDP800Datasheet.png",
-    "path": "/pdf/datasheet/hardware/idp-800.pdf",
-    "use": false
   },
   {
     "date": "2024-12-26",
@@ -1034,7 +1068,7 @@
     "form": "pdf",
     "image": "/images/resources/datasheet/hardware/TS310Datasheet.png",
     "path": "/pdf/datasheet/hardware/ts-310.pdf",
-    "use": false
+    "use": true
   },
   {
     "date": "2024-12-26",

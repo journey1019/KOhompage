@@ -130,7 +130,7 @@ const maritimeData: Record<string, MaritimeData> = {
                 description: "업데이트를 통해 기존 ST 시리즈 단말기의 소모 전력을 절감하며, 태양광 충전 타입 OGx 전용 단말기를 지원합니다."
             },
             {
-                imageUrl: "/images/icons/GlobalCoverage.png",
+                imageUrl: "/images/icons/globalCoverage.png",
                 advantage: "포괄적인 글로벌 연결성",
                 description: "OGx의 글로벌 커버리지를 통해 전 세계에 위성 서비스를 공급하며, 고객 맞춤형 솔루션 개발을 지원합니다."
             },

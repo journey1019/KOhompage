@@ -11,6 +11,7 @@ import {
     SquaresPlusIcon,
 } from '@heroicons/react/24/outline';
 import { RiShipLine } from "react-icons/ri";
+import Link from 'next/link';
 
 const login = [
     { name: 'ORBCOMM Platform', description: 'Fleet Management Solutions', url: 'https://platform.orbcomm.com/', icon: ChartPieIcon },
@@ -42,8 +43,11 @@ export default function Login() {
                 <div className="w-full md:max-w-md flex-auto overflow-hidden rounded-xl md:rounded-3xl bg-white text-sm leading-6 shadow-lg ring-1 ring-gray-900/5">
                     <div className="p-2 md:p-4">
                         {login.map((item) => (
-                            <div
+                            <a
                                 key={item.name}
+                                href={item.url}
+                                target="_blank"
+                                rel="noopener noreferrer"
                                 className="group relative flex gap-x-4 md:gap-x-6 rounded-lg p-3 md:p-4 hover:bg-gray-50"
                             >
                                 <div className="mt-1 flex h-9 w-9 md:h-11 md:w-11 flex-none items-center justify-center rounded-lg bg-gray-50 group-hover:bg-white">
@@ -53,23 +57,17 @@ export default function Login() {
                                     />
                                 </div>
                                 <div>
-                                    <a
-                                        href={item.url}
-                                        target="_blank"
-                                        rel="noopener noreferrer"
-                                        className="font-semibold text-gray-900 text-xs md:text-sm"
-                                    >
+                                    <span className="font-semibold text-gray-900 text-xs md:text-sm">
                                         {item.name}
-                                        <span className="absolute inset-0" />
-                                    </a>
+                                    </span>
                                     <p className="mt-1 text-gray-600 text-xs md:text-sm">{item.description}</p>
                                 </div>
-                            </div>
+                            </a>
                         ))}
                     </div>
                     <div className="grid grid-cols-2 divide-x divide-gray-900/5 bg-gray-50">
                         {callsToAction.map((item) => (
-                            <a
+                            <Link
                                 key={item.name}
                                 href={item.href}
                                 className="flex items-center justify-center gap-x-1.5 md:gap-x-2.5 p-2 md:p-3 font-semibold text-gray-900 hover:bg-gray-100 text-xs md:text-sm"
@@ -79,22 +77,22 @@ export default function Login() {
                                     className="h-4 w-4 md:h-5 md:w-5 flex-none text-gray-400"
                                 />
                                 {item.name}
-                            </a>
+                            </Link>
                         ))}
                     </div>
                 </div>
             </PopoverPanel>
 
-            {/* 모바일 해상도(md 미만) */}
-            <PopoverPanel
-                transition
-                className="md:hidden absolute left-1/4 z-10 mt-5 flex w-screen max-w-max -translate-x-1/2 px-8 transition data-[closed]:translate-y-1 data-[closed]:opacity-0 data-[enter]:duration-200 data-[leave]:duration-150 data-[enter]:ease-out data-[leave]:ease-in"
-            >
+            {/* 모바일 해상도 */}
+            <PopoverPanel className="md:hidden absolute left-1/4 z-10 mt-5 flex w-screen max-w-max -translate-x-1/2 px-8 transition">
                 <div className="w-full md:max-w-md flex-auto overflow-hidden rounded-xl md:rounded-3xl bg-white text-sm leading-6 shadow-lg ring-1 ring-gray-900/5">
                     <div className="p-2 md:p-4">
                         {login.map((item) => (
-                            <div
+                            <a
                                 key={item.name}
+                                href={item.url}
+                                target="_blank"
+                                rel="noopener noreferrer"
                                 className="group relative flex gap-x-4 md:gap-x-6 rounded-lg p-3 md:p-4 hover:bg-gray-50"
                             >
                                 <div className="mt-1 flex h-9 w-9 md:h-11 md:w-11 flex-none items-center justify-center rounded-lg bg-gray-50 group-hover:bg-white">
@@ -104,23 +102,17 @@ export default function Login() {
                                     />
                                 </div>
                                 <div>
-                                    <a
-                                        href={item.url}
-                                        target="_blank"
-                                        rel="noopener noreferrer"
-                                        className="font-semibold text-gray-900 text-xs md:text-sm"
-                                    >
+                                    <span className="font-semibold text-gray-900 text-xs md:text-sm">
                                         {item.name}
-                                        <span className="absolute inset-0" />
-                                    </a>
+                                    </span>
                                     <p className="mt-1 text-gray-600 text-xs md:text-sm">{item.description}</p>
                                 </div>
-                            </div>
+                            </a>
                         ))}
                     </div>
                     <div className="grid grid-cols-2 divide-x divide-gray-900/5 bg-gray-50">
                         {callsToAction.map((item) => (
-                            <a
+                            <Link
                                 key={item.name}
                                 href={item.href}
                                 className="flex items-center justify-center gap-x-1.5 md:gap-x-2.5 p-2 md:p-3 font-semibold text-gray-900 hover:bg-gray-100 text-xs md:text-sm"
@@ -130,7 +122,7 @@ export default function Login() {
                                     className="h-4 w-4 md:h-5 md:w-5 flex-none text-gray-400"
                                 />
                                 {item.name}
-                            </a>
+                            </Link>
                         ))}
                     </div>
                 </div>
