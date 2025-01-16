@@ -41,7 +41,10 @@ export const getFilteredHardwaresByQueryAndFilters = (
     query: string,
     filters: FilterOptions
 ): HardwareProps[] => {
-    const normalizedQuery = query.trim().toLowerCase();
+    const normalizeString = (str: string) =>
+        str.toLowerCase().replace(/[^a-z0-9]/g, ""); // 대소문자 변환 및 특수문자 제거
+
+    const normalizedQuery = normalizeString(query.trim());
 
     return hardwareData.filter((hardware) => {
         // use 필드가 true 인지 확인
@@ -57,41 +60,36 @@ export const getFilteredHardwaresByQueryAndFilters = (
             ...hardware.hideTag,
             ...hardware.solutionTag,
         ]
+            .map(normalizeString) // 모든 문자열을 정규화
             .join(" ")
-            .toLowerCase();
 
         const matchesQuery = normalizedQuery === "" || searchableContent.includes(normalizedQuery);
 
-        // 교집합 필터링 조건
+        // 필터 조건 검사
         const matchesFilters = [
-            // categories 필터
             !filters.categories ||
             filters.categories.length === 0 ||
             filters.categories.every((category) =>
-                hardware.hideTag.map((tag) => tag.toLowerCase()).includes(category.toLowerCase())
+                hardware.hideTag.map(normalizeString).includes(normalizeString(category))
             ),
-
-            // types 필터
             !filters.types ||
             filters.types.length === 0 ||
             filters.types.every((type) =>
-                hardware.category.toLowerCase() === type.toLowerCase()
+                normalizeString(hardware.category) === normalizeString(type)
             ),
-
-            // networks 필터
             !filters.networks ||
             filters.networks.length === 0 ||
             filters.networks.every((network) =>
                 NETWORK_MAPPING[network]?.some((tag) =>
-                    hardware.hideTag.map((t) => t.toLowerCase()).includes(tag.toLowerCase())
+                    hardware.hideTag
+                        .map(normalizeString)
+                        .includes(normalizeString(tag))
                 )
             ),
-
-            // tags 필터
             !filters.tags ||
             filters.tags.length === 0 ||
             filters.tags.every((tag) =>
-                hardware.hideTag.map((t) => t.toLowerCase()).includes(tag.toLowerCase())
+                hardware.hideTag.map(normalizeString).includes(normalizeString(tag))
             ),
         ].every((condition) => condition); // 모든 조건이 만족해야 true
 

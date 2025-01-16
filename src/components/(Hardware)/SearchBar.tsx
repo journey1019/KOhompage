@@ -9,10 +9,13 @@ interface SearchBarProps {
 const SearchBar: React.FC<SearchBarProps> = ({ onSearch }) => {
     const [input, setInput] = useState('');
 
+    const normalizeInput = (value: string) =>
+        value.toLowerCase().replace(/[^a-z0-9]/g, ""); // 입력값 정규화
+
     const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const value = e.target.value;
         setInput(value);
-        onSearch(value); // 검색어 전달
+        onSearch(normalizeInput(value)); // 정규화된 검색어 전달
     };
 
     return (
