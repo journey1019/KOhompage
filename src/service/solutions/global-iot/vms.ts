@@ -111,7 +111,7 @@ const vmsData: Record<string, VMSData> = {
         imageIntro: "선박 모니터링 시스템",
         imageMain: "VMS Commtrace",
         imageSub: "",
-        solutionButton: "Explore the Solution",
+        solutionButton: "솔루션 살펴보기",
         solutionUrl: "https://vms.commtrace.com/",
         introTitle: "선박 모니터링 시스템",
         introLetter: "Commtrace는 실시간 위치정보, 이동 이력 추적, 디바이스별 Geofence, 센서 데이터 제공, 그리고 이를 기반으로 한 알림 서비스를 통해 상선 및 어선 운영의 효율성을 높이고 안전을 보장하는 스마트 해양 물류 관리 솔루션입니다. 데이터 기반의 통찰력과 정교한 기술로 해양 산업의 미래를 함께 만들어갑니다.",

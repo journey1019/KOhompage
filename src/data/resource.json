@@ -223,7 +223,7 @@
       "Container-IoT"
     ],
     "form": "pdf",
-    "image": "/images/resources/brochure/Smart-Dry-Container.png",
+    "image": "/images/resources/brochure/Smart-Reefer-Container.png",
     "path": "/pdf/brochure/Smart-Reefer-Container.pdf",
     "use": true
   },
@@ -339,11 +339,11 @@
   {
     "date": "2024-12-27",
     "contentType": "Brochure",
-    "title": "스마트 냉동 컨테이너 솔루션",
-    "subtitle": "신선식품과 의약품 화물 운송시 IoT 기술 적용에 대해 확인하세요",
+    "title": "리퍼 모니터링 및 제어",
+    "subtitle": "",
     "tags": [
       "Container-IoT",
-      "Reefer"
+      "Maritimer"
     ],
     "solutionTag": [
       "Container-IoT",
@@ -352,7 +352,7 @@
     "form": "link",
     "image": "/images/resources/brochure/Carrier_Red_Truck.jpg",
     "path": "https://blog.orbcomm.com/preventing-revenue-loss-while-staying-compliant-q-and-a-with-reefer-expert-chris-corlee/",
-    "use": true
+    "use": false
   },
   {
     "date": "2024-12-26",
@@ -661,7 +661,7 @@
   },
   {
     "date": "2024-12-26",
-    "contentType": "Datasheet",
+    "contentType": "Brochure",
     "title": "VesselConnect: Reefer container management at sea",
     "subtitle": "Stay connected to containers at sea with an onboard cellular network that facilitates ship-to-shore communications, enabling remote temperature monitoring and more.",
     "tags": [
@@ -674,12 +674,12 @@
     ],
     "form": "pdf",
     "image": "/images/resources/datasheet/application/VesselConnectDatasheet.png",
-    "path": "/pdf/datasheet/application/vesselconnect.pdf",
+    "path": "/pdf/datasheet/application/VesselConnect.pdf",
     "use": true
   },
   {
     "date": "2024-12-26",
-    "contentType": "Datasheet",
+    "contentType": "Brochure",
     "title": "ReeferConnect",
     "subtitle": "",
     "tags": [
@@ -715,7 +715,7 @@
     ],
     "form": "pdf",
     "image": "/images/resources/datasheet/hardware/SC1000Datasheet.png",
-    "path": "/pdf/datasheet/hardware/sc-1000.pdf",
+    "path": "/pdf/hardware/SC-1000(KO).pdf",
     "use": true
   },
   {
@@ -737,9 +737,9 @@
       "OGx/IDP"
     ],
     "form": "pdf",
-    "image": "/images/resources/datasheet/hardware/ST9100Datasheet.png",
-    "path": "/pdf/datasheet/hardware/st-9100.pdf",
-    "use": true
+    "image": "/images/resources/datasheet/hardware/Agri-resources-ST-9100.webp",
+    "path": "/pdf/hardware/st-9100.pdf",
+    "use": false
   },
   {
     "date": "2024-12-26",
@@ -760,8 +760,8 @@
       "OGx/IDP"
     ],
     "form": "pdf",
-    "image": "/images/resources/datasheet/hardware/Agri-resources-ST-9100.webp",
-    "path": "/pdf/datasheet/hardware/st-9100_2.pdf",
+    "image": "/images/resources/datasheet/hardware/ST9100Datasheet.png",
+    "path": "/pdf/hardware/ST-9100-Dual-mode-satellite-cellular-terminal(KO).pdf",
     "use": true
   },
   {
@@ -783,7 +783,7 @@
     ],
     "form": "pdf",
     "image": "/images/resources/datasheet/hardware/ST6000Datasheet.png",
-    "path": "/pdf/datasheet/hardware/st-6000.pdf",
+    "path": "/pdf/hardware/ST-6000(KO).pdf",
     "use": true
   },
   {
@@ -805,7 +805,7 @@
     ],
     "form": "pdf",
     "image": "/images/resources/datasheet/hardware/ST6100Datasheet.png",
-    "path": "/pdf/datasheet/hardware/st-6100.pdf",
+    "path": "/pdf/hardware/ST-6100(KO).pdf",
     "use": true
   },
   {
@@ -827,7 +827,7 @@
     ],
     "form": "pdf",
     "image": "/images/resources/datasheet/hardware/ST2100Datasheet.png",
-    "path": "/pdf/datasheet/hardware/st-2100.pdf",
+    "path": "/pdf/hardware/ST-2100(KO).pdf",
     "use": true
   },
   {
@@ -848,7 +848,7 @@
     ],
     "form": "pdf",
     "image": "/images/resources/datasheet/hardware/Q4000Datasheet.png",
-    "path": "/pdf/datasheet/hardware/q-4000.pdf",
+    "path": "/pdf/hardware/Q-4000(KO).pdf",
     "use": true
   },
   {
@@ -868,8 +868,8 @@
       "LowEarthOrbit"
     ],
     "form": "pdf",
-    "image": "/images/resources/datasheet/hardware/QPRO.png",
-    "path": "/pdf/datasheet/hardware/qpro.pdf",
+    "image": "/images/resources/datasheet/hardware/QPRODatasheet.png",
+    "path": "/pdf/hardware/QPRO(KO).pdf",
     "use": true
   },
   {
@@ -891,7 +891,7 @@
     ],
     "form": "pdf",
     "image": "/images/resources/datasheet/hardware/OG2Datasheet.png",
-    "path": "/pdf/datasheet/hardware/OG2-OG-ISAT-Satellite-Modems.pdf",
+    "path": "/pdf/hardware/OG2-OGi(KO).pdf",
     "use": true
   },
   {
@@ -913,8 +913,8 @@
       "NMS"
     ],
     "form": "pdf",
-    "image": "/images/resources/datasheet/hardware/GT-1220.jpeg",
-    "path": "/pdf/datasheet/hardware/gt-1220.pdf",
+    "image": "/images/resources/datasheet/hardware/GT-1220.png",
+    "path": "/pdf/hardware/GT-1220(KO).pdf",
     "use": true
   },
   {
@@ -938,7 +938,7 @@
     ],
     "form": "pdf",
     "image": "/images/resources/datasheet/hardware/GT-1230.png",
-    "path": "/pdf/datasheet/hardware/gt-1230.pdf",
+    "path": "/pdf/hardware/GT-1230(KO).pdf",
     "use": true
   },
   {
@@ -961,7 +961,7 @@
     ],
     "form": "pdf",
     "image": "/images/resources/datasheet/hardware/CT1000Datasheet.webp",
-    "path": "/pdf/datasheet/hardware/ct-1000.pdf",
+    "path": "/pdf/hardware/CT-1000(KO).pdf",
     "use": true
   },
   {
@@ -985,7 +985,7 @@
     ],
     "form": "pdf",
     "image": "/images/resources/datasheet/hardware/CT1010Datasheet.webp",
-    "path": "/pdf/datasheet/hardware/ct-1010.pdf",
+    "path": "/pdf/hardware/CT-1010(KO).pdf",
     "use": true
   },
   {
@@ -1008,7 +1008,7 @@
     ],
     "form": "pdf",
     "image": "/images/resources/datasheet/hardware/CT3500Datasheet.png",
-    "path": "/pdf/datasheet/hardware/ct-3500.pdf",
+    "path": "/pdf/hardware/CT-3500(KO).pdf",
     "use": true
   },
   {
@@ -1031,13 +1031,13 @@
     ],
     "form": "pdf",
     "image": "/images/resources/datasheet/hardware/CT3600Datasheet.webp",
-    "path": "/pdf/datasheet/hardware/ct-3600.pdf",
+    "path": "/pdf/hardware/CT-3600(KO).pdf",
     "use": true
   },
   {
     "date": "2024-12-26",
     "contentType": "Datasheet",
-    "title": "DS 300",
+    "title": "DS 300(Temperature)",
     "subtitle": "",
     "tags": [
       "Container-IoT",
@@ -1048,8 +1048,26 @@
       "Maritime"
     ],
     "form": "pdf",
-    "image": "/images/resources/datasheet/hardware/DS300Datasheet.png",
-    "path": "/pdf/datasheet/hardware/ds-300-wireless-door-sensor.pdf",
+    "image": "/images/resources/datasheet/hardware/DS300WirelessTemperatureSensorDatasheet.png",
+    "path": "/pdf/hardware/DS-300-Wireless-temperature-sensor(KO).pdf",
+    "use": true
+  },
+  {
+    "date": "2025-01-16",
+    "contentType": "Datasheet",
+    "title": "DS 300(Tracking)",
+    "subtitle": "",
+    "tags": [
+      "Container-IoT",
+      "Reefer"
+    ],
+    "solutionTag": [
+      "Container-IoT",
+      "Maritime"
+    ],
+    "form": "pdf",
+    "image": "/images/resources/datasheet/hardware/DS300TrackAssetAccessWithEaseDatasheet.png",
+    "path": "/pdf/hardware/DS-300-Track-asset-access-with-ease(KO).pdf",
     "use": true
   },
   {
@@ -1067,7 +1085,7 @@
     ],
     "form": "pdf",
     "image": "/images/resources/datasheet/hardware/TS310Datasheet.png",
-    "path": "/pdf/datasheet/hardware/ts-310.pdf",
+    "path": "/pdf/hardware/TS-310(KO).pdf",
     "use": true
   },
   {
@@ -1078,7 +1096,6 @@
     "tags": [
       "Global-IoT",
       "Satellite",
-      "OGx/IDP",
       "NTN",
       "Cellular"
     ],
@@ -1086,12 +1103,33 @@
       "Global-IoT",
       "VMS",
       "NMS",
-      "Satellite",
-      "OGx/IDP"
+      "Satellite"
     ],
     "form": "pdf",
     "image": "/images/resources/datasheet/hardware/BG95-S5.webp",
-    "path": "/pdf/datasheet/hardware/Quectel-BG95.pdf",
+    "path": "/pdf/hardware/Quectel_BG95-S5_Satellite_Communication_Module_Specification_V1.2.pdf",
+    "use": true
+  },
+  {
+    "date": "2025-01-16",
+    "contentType": "Datasheet",
+    "title": "CC200A-LB",
+    "subtitle": "",
+    "tags": [
+      "Global-IoT",
+      "Satellite",
+      "OGx/IDP",
+      "Cellular"
+    ],
+    "solutionTag": [
+      "Global-IoT",
+      "VMS",
+      "NMS",
+      "Satellite"
+    ],
+    "form": "pdf",
+    "image": "/images/hardware/CC200A-LB.png",
+    "path": "/pdf/hardware/Quectel_CC200A-LB_Satellite_Communication_Module_Specification_V1.1.pdf",
     "use": true
   },
   {
@@ -1102,7 +1140,8 @@
     "tags": [
       "Global-IoT",
       "Satellite",
-      "OGx/IDP"
+      "OGx/IDP",
+      "NTN"
     ],
     "solutionTag": [
       "Global-IoT",
@@ -1113,7 +1152,7 @@
     ],
     "form": "pdf",
     "image": "/images/resources/datasheet/hardware/YETN001L1A.png",
-    "path": "/pdf/datasheet/hardware/Quectel-YETN001L1A.pdf",
+    "path": "/pdf/hardware/Quectel_Antenna_YETN001L1A_Datasheet_V1.2.pdf",
     "use": true
   },
   {
@@ -1135,7 +1174,7 @@
     ],
     "form": "pdf",
     "image": "/images/resources/brochure/KSV1001Brochure.png",
-    "path": "/pdf/brochure/KSV-1001.pdf",
+    "path": "/pdf/hardware/KSV-1001(KO).pdf",
     "use": true
   },
   {
@@ -1153,7 +1192,7 @@
     ],
     "form": "pdf",
     "image": "/images/resources/datasheet/hardware/Starlink_Flat-High-Performance.png",
-    "path": "/pdf/datasheet/hardware/Starlink-FlatHighPerformance.pdf",
+    "path": "/pdf/hardware/Starlink-FlatHighPerformance.pdf",
     "use": true
   },
   {
@@ -1171,7 +1210,7 @@
     ],
     "form": "pdf",
     "image": "/images/resources/datasheet/hardware/Starlink_Enterprise.png",
-    "path": "/pdf/datasheet/hardware/Starlink_Enterprise.pdf",
+    "path": "/pdf/hardware/Starlink_Enterprise.pdf",
     "use": true
   },
   {
@@ -1190,7 +1229,7 @@
     ],
     "form": "pdf",
     "image": "/images/resources/datasheet/hardware/MT5000Datasheet.png",
-    "path": "/pdf/datasheet/hardware/mt-5000.pdf",
+    "path": "/pdf/hardware/MT-5000(KO).pdf",
     "use": true
   },
   {

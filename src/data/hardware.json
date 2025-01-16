@@ -45,7 +45,7 @@
     ],
     "solutionTag": ["Container-IoT", "Maritime", "Global-IoT", "VMS", "NMS"],
     "slug": "gt-1220",
-    "path": "/pdf/datasheet/hardware/gt-1220.pdf"
+    "path": "/pdf/hardware/GT-1220(KO).pdf"
   },
   {
     "use": true,
@@ -69,7 +69,7 @@
     ],
     "solutionTag": ["Container-IoT", "Maritime", "Global-IoT", "VMS", "NMS"],
     "slug": "gt-1230",
-    "path": "/pdf/datasheet/hardware/gt-1230.pdf"
+    "path": "/pdf/hardware/GT-1230(KO).pdf"
   },
   {
     "use": true,
@@ -90,7 +90,7 @@
     ],
     "solutionTag": ["Container-IoT", "Maritime", "Global-IoT", "VMS", "NMS"],
     "slug": "ct-3500",
-    "path": "/pdf/datasheet/hardware/ct-3500.pdf"
+    "path": "/pdf/hardware/CT-3500(KO).pdf"
   },
   {
     "use": true,
@@ -111,7 +111,7 @@
     ],
     "solutionTag": ["Container-IoT", "Maritime", "Global-IoT", "VMS", "NMS"],
     "slug": "ct-3600",
-    "path": "/pdf/datasheet/hardware/ct-3600.pdf"
+    "path": "/pdf/hardware/CT-3600(KO).pdf"
   },
   {
     "use": true,
@@ -133,7 +133,7 @@
     ],
     "solutionTag": ["Container-IoT", "Maritime", "Global-IoT", "VMS", "NMS"],
     "slug": "ct-1000",
-    "path": "/pdf/datasheet/hardware/ct-1000.pdf"
+    "path": "/pdf/hardware/CT-1000(KO).pdf"
   },
   {
     "use": true,
@@ -156,7 +156,7 @@
     ],
     "solutionTag": ["Container-IoT", "Maritime", "Global-IoT", "VMS", "NMS"],
     "slug": "ct-1010",
-    "path": "/pdf/datasheet/hardware/ct-1010.pdf"
+    "path": "/pdf/hardware/CT-1010(KO).pdf"
   },
   {
     "use": true,
@@ -177,7 +177,7 @@
     ],
     "solutionTag": ["Global-IoT", "VMS", "NMS", "Satellite", "OGx/IDP"],
     "slug": "st-6000",
-    "path": ""
+    "path": "/pdf/hardware/ST-6000(KO).pdf"
   },
   {
     "use": true,
@@ -198,7 +198,7 @@
     ],
     "solutionTag": ["Global-IoT", "VMS", "NMS", "Satellite", "OGx/IDP"],
     "slug": "st-6100",
-    "path": "/pdf/datasheet/hardware/st-6100.pdf"
+    "path": "/pdf/hardware/ST-6100(KO).pdf"
   },
   {
     "use": true,
@@ -218,7 +218,7 @@
     ],
     "solutionTag": ["Global-IoT", "VMS", "NMS", "Satellite", "OGx/IDP"],
     "slug": "st-2100",
-    "path": "/pdf/datasheet/hardware/st-2100.pdf"
+    "path": "/pdf/hardware/ST-2100(KO).pdf"
   },
   {
     "use": true,
@@ -240,7 +240,7 @@
     ],
     "solutionTag": ["Global-IoT", "VMS", "NMS", "Satellite", "OGx/IDP"],
     "slug": "st-9100",
-    "path": "/pdf/datasheet/hardware/st-9100.pdf"
+    "path": "/pdf/hardware/ST-9100-Dual-mode-satellite-cellular-terminal(KO).pdf"
   },
   {
     "use": true,
@@ -261,7 +261,7 @@
     ],
     "solutionTag": ["Global-IoT", "VMS", "NMS", "Satellite", "OGx/IDP"],
     "slug": "sc-1000",
-    "path": "/pdf/datasheet/hardware/sc-1000.pdf"
+    "path": "/pdf/hardware/SC-1000(KO).pdf"
   },
   {
     "use": true,
@@ -271,7 +271,7 @@
     "brochure": "",
     "devkit": "QPRO",
     "category": "Device",
-    "imageSrc": "/images/hardware/QPRO.png",
+    "imageSrc": "/images/hardware/QPRODatasheet.png",
     "tag": ["Global-IoT", "Satellite"],
     "hideTag": [
       "Global-IoT",
@@ -284,7 +284,7 @@
     ],
     "solutionTag": ["Global-IoT", "VMS", "NMS", "Satellite", "LowEarthOrbit"],
     "slug": "qpro",
-    "path": "/pdf/datasheet/hardware/qpro.pdf"
+    "path": "/pdf/hardware/QPRO(KO).pdf"
   },
   {
     "use": true,
@@ -305,7 +305,7 @@
     ],
     "solutionTag": ["Global-IoT", "VMS", "NMS", "Satellite", "LowEarthOrbit"],
     "slug": "q-4000",
-    "path": "/pdf/datasheet/hardware/q-4000.pdf"
+    "path": "/pdf/hardware/Q-4000(KO).pdf"
   },
   {
     "use": true,
@@ -323,7 +323,7 @@
     ],
     "solutionTag": ["Satellite", "LowEarthOrbit", "AIS"],
     "slug": "mt-5000",
-    "path": "/pdf/datasheet/hardware/mt-5000.pdf"
+    "path": "/pdf/hardware/MT-5000(KO).pdf"
   },
   {
     "use": true,
@@ -349,7 +349,7 @@
     "description": "",
     "category": "Device",
     "imageSrc": "/images/hardware/GEN3-Router.png",
-    "tag": ["Satellite"],
+    "tag": ["Satellite", "Starlink"],
     "hideTag": [
       "Starlink",
       "Internet"
@@ -374,7 +374,7 @@
     ],
     "solutionTag": ["Global-IoT", "VMS", "NMS", "Satellite", "OGx/IDP"],
     "slug": "ksv-1001",
-    "path": "/pdf/brochure/KSV-1001.pdf"
+    "path": "/pdf/hardware/KSV-1001(KO).pdf"
   },
   {
     "use": true,
@@ -394,7 +394,7 @@
     ],
     "solutionTag": ["Global-IoT", "VMS", "NMS", "Satellite", "LowEarthOrbit", "OGx/IDP"],
     "slug": "og2-ogi",
-    "path": "/pdf/datasheet/hardware/OG2-OG-ISAT-Satellite-Modems.pdf"
+    "path": "/pdf/hardware/OG2-OGi(KO).pdf"
   },
   {
     "use": true,
@@ -407,15 +407,34 @@
     "hideTag": [
       "Global-IoT",
       "Satellite-IoT",
-      "OGx/IDP",
       "NTN",
       "Cellular",
       "Maritime",
       "Asset"
     ],
-    "solutionTag": ["Global-IoT", "VMS", "NMS", "Satellite", "OGx/IDP"],
+    "solutionTag": ["Global-IoT", "VMS", "NMS", "Satellite"],
     "slug": "bg95-s5",
-    "path": "/pdf/datasheet/hardware/Quectel-BG95.pdf"
+    "path": "/pdf/hardware/Quectel_BG95-S5_Satellite_Communication_Module_Specification_V1.2.pdf"
+  },
+  {
+    "use": true,
+    "title": "CC200A-LB",
+    "subTitle": "CC200A-LB satellite communication module",
+    "description": "",
+    "category": "Module",
+    "imageSrc": "/images/hardware/CC200A-LB.png",
+    "tag": ["Global-IoT", "Satellite"],
+    "hideTag": [
+      "Global-IoT",
+      "Satellite-IoT",
+      "Cellular",
+      "Maritime",
+      "Asset",
+      "OGx/IDP"
+    ],
+    "solutionTag": ["Global-IoT", "VMS", "Satellite", "OGx/IDP"],
+    "slug": "cc200a-lb",
+    "path": "/pdf/hardware/Quectel_CC200A-LB_Satellite_Communication_Module_Specification_V1.1.pdf"
   },
   {
     "use": false,
@@ -447,7 +466,7 @@
     ],
     "solutionTag": ["Container-IoT", "Maritime"],
     "slug": "ds-300",
-    "path": "/pdf/datasheet/hardware/ds-300-wireless-door-sensor.pdf"
+    "path": "/pdf/hardware/DS-300-Track-asset-access-with-ease(KO).pdf"
   },
   {
     "use": true,
@@ -463,7 +482,7 @@
     ],
     "solutionTag": ["Container-IoT", "Maritime"],
     "slug": "ts-310",
-    "path": "/pdf/datasheet/hardware/ts-310.pdf"
+    "path": "/pdf/hardware/TS-310(KO).pdf"
   },
   {
     "use": true,
@@ -472,15 +491,16 @@
     "description": "",
     "category": "Antenna",
     "imageSrc": "/images/hardware/YETN001L1A.png",
-    "tag": ["Global-IoT", "Satellite-IoT", "OGx/IDP"],
+    "tag": ["Global-IoT", "Satellite-IoT", "OGx/IDP", "NTN"],
     "hideTag": [
       "Global-IoT",
       "Satellite-IoT",
-      "OGx/IDP"
+      "OGx/IDP",
+      "NTN"
     ],
     "solutionTag": ["Global-IoT", "VMS", "NMS", "Satellite", "OGx/IDP"],
     "slug": "YETN001L1A",
-    "path": "/pdf/datasheet/hardware/Quectel-YETN001L1A.pdf.pdf"
+    "path": "/pdf/hardware/Quectel_Antenna_YETN001L1A_Datasheet_V1.2.pdf"
   },
   {
     "use": true,
@@ -489,14 +509,14 @@
     "description": "모바일 애플리케이션과 극한 환경에서 안정적인 연결을 제공하는 내구성이 뛰어난 고성능 장비.",
     "category": "Antenna",
     "imageSrc": "/images/hardware/Starlink_Flat-High-Performance.png",
-    "tag": ["Satellite"],
+    "tag": ["Satellite", "Starlink"],
     "hideTag": [
       "Starlink",
       "Internet"
     ],
     "solutionTag": ["Satellite", "Starlink"],
     "slug": "flat-high-performance",
-    "path": "/pdf/datasheet/hardware/Starlink-FlatHighPerformance.pdf"
+    "path": "/pdf/hardware/Starlink-FlatHighPerformance.pdf"
   },
   {
     "use": true,
@@ -505,13 +525,13 @@
     "description": "최고의 성능을 제공하는 고급 사용자 및 고정 사이트 비즈니스 솔루션, 유연한 설치와 다양한 맞춤형 설정을 지원합니다.",
     "category": "Antenna",
     "imageSrc": "/images/hardware/Starlink_Enterprise.png",
-    "tag": ["Satellite"],
+    "tag": ["Satellite", "Starlink"],
     "hideTag": [
       "Starlink",
       "Internet"
     ],
     "solutionTag": ["Satellite", "Starlink"],
     "slug": "enterprise",
-    "path": "/pdf/datasheet/hardware/Starlink_Enterprise.pdf"
+    "path": "/pdf/hardware/Starlink_Enterprise.pdf"
   }
 ]

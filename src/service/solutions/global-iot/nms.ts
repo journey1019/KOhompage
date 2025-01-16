@@ -111,7 +111,7 @@ const nmsData: Record<string, NMSData> = {
         imageMain: "실시간 데이터 분석 대시보드 및 알림 기능",
         imageUrl: "/images/header/NMS.jpg",
         imageSub: "",
-        solutionButton: "Explore the Solution",
+        solutionButton: "솔루션 살펴보기",
         solutionUrl: "https://nms.commtrace.com/",
         introTitle: "네트워크 모니터링 시스템",
         introLetter: "NMS(Network Monitoring System)는 네트워크에 연결된 모든 장비와 단말기를 실시간으로 모니터링하고, 데이터를 분석하여 장애를 사전에 감지하거나 발생 원인을 신속히 파악할 수 있도록 지원하는 시스템입니다. 최신 기술을 활용하여 네트워크 운영의 안정성을 높이고, 관리의 효율성을 극대화하는 데 초점을 맞춘 혁신적인 솔루션입니다.",
