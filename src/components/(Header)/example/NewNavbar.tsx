@@ -55,7 +55,7 @@ const NewNavbar = ({ locale }: { locale: string }) => {
 
     return (
         <header className="fixed top-0 left-0 w-full z-50 bg-white shadow-md">
-            <nav className="max-w-screen-2xl mx-auto flex items-center justify-between px-6 py-4">
+            <nav className="max-w-screen-2xl mx-auto flex items-center justify-between px-6 py-4 2xl:py-8">
                 <Link href="/" className="flex items-center">
                     <Image
                         src="/images/KO_SmallLogo.png"
@@ -75,11 +75,9 @@ const NewNavbar = ({ locale }: { locale: string }) => {
                             onMouseEnter={() => handleMouseEnter(item.key)}
                             onMouseLeave={handleMouseLeave}
                         >
-                            {item.key === 'hardware' ? (
-                                <button className="text-gray-700 hover:text-red-600 px-4">{item.label}</button>
-                            ) : (
-                                <button className="text-gray-700 hover:text-red-600 px-4">{item.label}</button>
-                            )}
+                            <button className="text-gray-700 hover:text-red-600 px-4">
+                                {item.label}
+                            </button>
                         </li>
                     ))}
                 </ul>

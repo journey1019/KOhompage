@@ -56,7 +56,8 @@ type Props = {
 };
 
 export default async function LocaleLayout({ children, params }: Props) {
-    const { locale } = await params;
+    const resolvedParams = await params; // Promise 처리
+    const { locale } = resolvedParams;
 
     if (!['en', 'ko'].includes(locale)) {
         notFound();
@@ -72,7 +73,7 @@ export default async function LocaleLayout({ children, params }: Props) {
         <body className="flex flex-col min-h-screen w-full mx-auto vsc-initialized">
         <NextIntlClientProvider messages={messages}>
             <NewNavbar locale={locale} />
-            <main className="grow pt-[74px]">{children}</main>
+            <main className="grow pt-[74px] 2xl:pt-[96px]">{children}</main>
             <Footer locale={locale} />
         </NextIntlClientProvider>
         </body>
