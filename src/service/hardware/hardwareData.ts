@@ -42,7 +42,7 @@ export const getFilteredHardwaresByQueryAndFilters = (
     filters: FilterOptions
 ): HardwareProps[] => {
     const normalizeString = (str: string) =>
-        str.toLowerCase().replace(/[^a-z0-9]/g, ""); // 대소문자 변환 및 특수문자 제거
+        str.toLowerCase().replace(/[^a-z0-9가-힣]/g, ""); // 대소문자 변환 및 특수문자 제거
 
     const normalizedQuery = normalizeString(query.trim());
 

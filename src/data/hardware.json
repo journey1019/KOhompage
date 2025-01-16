@@ -271,7 +271,7 @@
     "brochure": "",
     "devkit": "QPRO",
     "category": "Device",
-    "imageSrc": "/images/hardware/QPRODatasheet.png",
+    "imageSrc": "/images/hardware/QPRO.png",
     "tag": ["Global-IoT", "Satellite"],
     "hideTag": [
       "Global-IoT",

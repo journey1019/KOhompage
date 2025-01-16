@@ -11,7 +11,7 @@ import SearchBar from "@/components/(Resources)/SearchBar";
 import FilterResource from "@/components/(Resources)/FilterResource";
 import Pagination from "@/components/(Resources)/Pagination";
 
-const ReferencesPage = () => {
+const ResourcesPage = () => {
     const [searchQuery, setSearchQuery] = useState<string>(""); // 검색어 상태
     const [filters, setFilters] = useState<FilterOptions>({}); // 필터 상태
     const [resources, setResources] = useState(getAllResources()); // 초기 데이터
@@ -116,4 +116,4 @@ const ReferencesPage = () => {
     );
 };
 
-export default ReferencesPage;
+export default ResourcesPage;

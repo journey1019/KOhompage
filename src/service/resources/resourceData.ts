@@ -26,6 +26,10 @@ export const getAllResources = (): ResourcesProps[] => {
     return resourcesData.filter((resource) => resource.use);
 };
 
+// Normalize text by converting to lowercase and removing special characters
+const normalizeText = (text: string): string =>
+    text.toLowerCase().replace(/[^a-z0-9가-힣]/g, ""); // 대소문자, 특수문자 무시
+
 // 검색 필터링 함수
 export const getFilteredResources = (query: string): ResourcesProps[] => {
     const normalizedQuery = query.trim().toLowerCase(); // 검색어 소문자로 변환 및 공백 제거
@@ -52,13 +56,13 @@ export const getFilteredResourcesByQueryAndFilters = (
     query: string,
     filters: FilterOptions
 ): ResourcesProps[] => {
-    const normalizedQuery = query.trim().toLowerCase();
+    const normalizedQuery = normalizeText(query.trim());
 
     return resourcesData.filter((resource) => {
         // use 필드가 true인지 확인
         if (!resource.use) return false;
 
-        // 검색어 필터링
+        // 검색어 필터링 (검색 대상 필드 결합 및 정규화)
         const searchableContent = [
             resource.contentType,
             resource.title,
@@ -67,28 +71,30 @@ export const getFilteredResourcesByQueryAndFilters = (
             ...resource.solutionTag,
             resource.form,
         ]
-            .join(" ")
-            .toLowerCase();
+            .map(normalizeText) // 각 필드를 정규화
+            .join(" ");
 
-        const matchesQuery = normalizedQuery === "" || searchableContent.includes(normalizedQuery);
+        const matchesQuery = normalizedQuery === "" || searchableContent.includes(normalizedQuery); // 검색어 포함 여부 확인
 
         // 필터 조건
         const matchesFilters = [
             // contentType 필터
             !filters.contentType ||
             filters.contentType.length === 0 ||
-            filters.contentType.includes(resource.contentType),
+            filters.contentType.some((type) => normalizeText(type) === normalizeText(resource.contentType)),
 
             // form 필터
-            !filters.form || filters.form.length === 0 || filters.form.includes(resource.form),
+            !filters.form ||
+            filters.form.length === 0 ||
+            filters.form.some((form) => normalizeText(form) === normalizeText(resource.form)),
 
             // solutions 필터
             !filters.solutions ||
             filters.solutions.length === 0 ||
             filters.solutions.some((solution) =>
-                resource.tags.map((tag) => tag.toLowerCase()).includes(solution.toLowerCase())
+                resource.tags.map(normalizeText).includes(normalizeText(solution))
             ),
-        ].every((condition) => condition);
+        ].every(Boolean);
 
         // 필터링 조건
         const matchesContentType =
@@ -133,10 +139,6 @@ export const getResourcesByKeywords = (keywords: string[]): ResourcesProps[] => 
 };
 
 
-
-// Normalize text by converting to lowercase and removing special characters
-const normalizeText = (text: string): string =>
-    text.toLowerCase().replace(/[^a-z0-9]/g, "");
 
 // Filter resources by keywords (title, subtitle, tags)
 export const getResourcesByAllKeywords = (keywords: string[]): ResourcesProps[] => {

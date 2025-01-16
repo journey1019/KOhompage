@@ -12,7 +12,7 @@ const SearchBar: React.FC<SearchBarProps> = ({ onSearch }) => {
     const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const value = e.target.value;
         setInput(value);
-        onSearch(value); // 검색어 전달
+        onSearch(value.trim()); // 입력값을 상위 컴포넌트로 전달
     };
 
     return (
