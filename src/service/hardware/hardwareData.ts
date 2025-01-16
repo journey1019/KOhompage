@@ -115,7 +115,7 @@ export const getHardwareByKeywords = (keywords: string[]): HardwareProps[] => {
 
         // Check if any normalized keyword matches the tags
         const normalizedTags = hardware.hideTag.map((tag) =>
-            tag.toLowerCase().replace(/[^a-z0-9]/g, "")
+            tag.toLowerCase().replace(/[^a-z0-9가-힣]/g, "")
         );
 
         return normalizedKeywords.some((keyword) => normalizedTags.includes(keyword));
@@ -128,14 +128,14 @@ export const getHardwareByKeywordsInPage = (keywords: string[]): HardwareProps[]
 
     // Normalize keywords (lowercase, remove special characters)
     const normalizedKeywords = keywords.map((keyword) =>
-        keyword.toLowerCase().replace(/[^a-z0-9]/g, "")
+        keyword.toLowerCase().replace(/[^a-z0-9가-힣]/g, "")
     );
 
     return hardwareData.filter((hardware) => {
         if (!hardware.use) return false;
 
         const normalizedSolutionTag = hardware.solutionTag.map((tag) =>
-            tag.toLowerCase().replace(/[^a-z0-9]/g, "")
+            tag.toLowerCase().replace(/[^a-z0-9가-힣]/g, "")
         );
 
         // Match against hideTag or solutionTag

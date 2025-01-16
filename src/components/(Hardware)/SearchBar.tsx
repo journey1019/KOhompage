@@ -10,7 +10,7 @@ const SearchBar: React.FC<SearchBarProps> = ({ onSearch }) => {
     const [input, setInput] = useState('');
 
     const normalizeInput = (value: string) =>
-        value.toLowerCase().replace(/[^a-z0-9]/g, ""); // 입력값 정규화
+        value.toLowerCase().replace(/[^a-z0-9가-힣]/g, ""); // 입력값 정규화
 
     const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const value = e.target.value;

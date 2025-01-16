@@ -8,6 +8,7 @@
       "Satellite",
       "Global-IoT"
     ],
+    "hideTag": [],
     "solutionTag": [],
     "form": "link",
     "image": "/images/resources/video/Resources-2-InmarsatVideo.webp",
@@ -20,6 +21,7 @@
     "title": "MWC 2024: the power of satellite-cellular convergence",
     "subtitle": "Learn how satellite-celluar convergence is changing industries and what the future of satellite IoT",
     "tags": [],
+    "hideTag": [],
     "solutionTag": [],
     "form": "link",
     "image": "/images/resources/video/Tessla.png",
@@ -32,6 +34,7 @@
     "title": "Reefer Container Management: Trip-Based Telematics Adds New Possibilities",
     "subtitle": "Operators cna quickly react to issues and remotely adjust temperature levels to ensure compliance.",
     "tags": [],
+    "hideTag": [],
     "solutionTag": [],
     "form": "link",
     "image": "/images/resources/video/Reefer.png",
@@ -44,6 +47,7 @@
     "title": "MSUA Game Changers LIVE with Dave Roscoe",
     "subtitle": "Dave Roscoe, ORBCOMM’s Executive Vice President of Satellite Communications and Products, discusses how ORBCOMM satellite IoT technology is helping businesses optimize operations and drive results.",
     "tags": [],
+    "hideTag": [],
     "solutionTag": [],
     "form": "link",
     "image": "images/resources/video/Resources-MSUA-Games-Changers-Dave-Roscoe.png",
@@ -56,6 +60,7 @@
     "title": "MWC 2024: how satellite innovations are changing the game",
     "subtitle": "ORBCOMM’s Dave Roscoe shares how satellite IoT is changing with technological developments during this MWC 2024 panel discussion.",
     "tags": [],
+    "hideTag": [],
     "solutionTag": [],
     "form": "link",
     "image": "/images/resources/video/Resources-DaveRoscoePanel.png",
@@ -71,6 +76,7 @@
       "Container-IoT",
       "DRY"
     ],
+    "hideTag": ["컨테이너", "해양"],
     "solutionTag": [
       "Container-IoT",
       "Maritime"
@@ -89,6 +95,7 @@
       "Container-IoT",
       "Reefer"
     ],
+    "hideTag": ["컨테이너", "해양", "리퍼"],
     "solutionTag": [
       "Container-IoT",
       "Maritime"
@@ -104,6 +111,7 @@
     "title": "ORBCOMM Platform",
     "subtitle": "",
     "tags": [],
+    "hideTag": [],
     "solutionTag": [],
     "form": "pdf",
     "image": "/images/resources/datasheet/hardware/Gray.png",
@@ -118,6 +126,7 @@
     "tags": [
       "Camera"
     ],
+    "hideTag": [],
     "solutionTag": [],
     "form": "pdf",
     "image": "/images/resources/brochure/Resources-FM6510Brochure.webp",
@@ -135,6 +144,7 @@
       "Satellite",
       "Cellular"
     ],
+    "hideTag": ["글로벌", "위성"],
     "solutionTag": [
       "Global-IoT",
       "VMS",
@@ -158,6 +168,7 @@
       "Satellite",
       "Cellular"
     ],
+    "hideTag": ["글로벌", "위성", "셀룰러"],
     "solutionTag": [
       "Global-IoT",
       "VMS",
@@ -181,6 +192,7 @@
       "Satellite",
       "Cellular"
     ],
+    "hideTag": ["글로벌", "위성"],
     "solutionTag": [
       "Global-IoT",
       "VMS",
@@ -202,6 +214,7 @@
       "Container-IoT",
       "Reefer"
     ],
+    "hideTag": ["컨테이너", "리퍼"],
     "solutionTag": [
       "Container-IoT"
     ],
@@ -219,6 +232,7 @@
       "Container-IoT",
       "Reefer"
     ],
+    "hideTag": ["컨테이너", "리퍼"],
     "solutionTag": [
       "Container-IoT"
     ],
@@ -236,6 +250,7 @@
       "Container-IoT",
       "DRY"
     ],
+    "hideTag": ["컨테이너", "해양", "리퍼"],
     "solutionTag": [
       "Container-IoT",
       "Maritime"
@@ -254,6 +269,7 @@
       "Container-IoT",
       "Reefer"
     ],
+    "hideTag": ["컨테이너", "해양"],
     "solutionTag": [
       "Container-IoT",
       "Maritime"
@@ -273,6 +289,7 @@
       "Reefer",
       "DRY"
     ],
+    "hideTag": ["컨테이너", "해양", "리퍼"],
     "solutionTag": [
       "Container-IoT",
       "Maritime"
@@ -291,6 +308,7 @@
       "Container-IoT",
       "Reefer"
     ],
+    "hideTag": ["컨테이너", "해양", "리퍼"],
     "solutionTag": [
       "Container-IoT",
       "Maritime"
@@ -309,6 +327,7 @@
       "Container-IoT",
       "Reefer"
     ],
+    "hideTag": ["컨테이너", "해양", "리퍼"],
     "solutionTag": [
       "Container-IoT",
       "Maritime"
@@ -327,6 +346,7 @@
       "Container-IoT",
       "Reefer"
     ],
+    "hideTag": ["컨테이너", "해양", "리퍼"],
     "solutionTag": [
       "Container-IoT",
       "Maritime"
@@ -345,6 +365,7 @@
       "Container-IoT",
       "Maritimer"
     ],
+    "hideTag": ["컨테이너", "해양", "리퍼"],
     "solutionTag": [
       "Container-IoT",
       "Maritime"
@@ -363,6 +384,7 @@
       "AIS",
       "Satellite"
     ],
+    "hideTag": ["육상", "위성"],
     "solutionTag": [
       "Satellite",
       "AIS"
@@ -381,6 +403,7 @@
       "AIS",
       "Satellite"
     ],
+    "hideTag": ["육상", "위성"],
     "solutionTag": [
       "Satellite",
       "AIS"
@@ -396,6 +419,7 @@
     "title": "ORBCOMM Platform",
     "subtitle": "",
     "tags": [],
+    "hideTag": [],
     "solutionTag": [],
     "form": "pdf",
     "image": "/images/resources/datasheet/hardware/Gray.png",
@@ -408,6 +432,7 @@
     "title": "1Sat Datasheet",
     "subtitle": "",
     "tags": [],
+    "hideTag": [],
     "solutionTag": [],
     "form": "pdf",
     "image": "/images/resources/datasheet/hardware/Gray.png",
@@ -420,6 +445,7 @@
     "title": "Multi Path Communication System",
     "subtitle": "",
     "tags": [],
+    "hideTag": [],
     "solutionTag": [],
     "form": "pdf",
     "image": "/images/resources/datasheet/hardware/Gray.png",
@@ -432,6 +458,7 @@
     "title": "Development Kit",
     "subtitle": "",
     "tags": [],
+    "hideTag": [],
     "solutionTag": [],
     "form": "pdf",
     "image": "/images/resources/datasheet/hardware/Gray.png",
@@ -444,6 +471,7 @@
     "title": "FM 6510",
     "subtitle": "Protect your drivers, protect your vehicles and protect your reputation with our smart telematics-enabled dashcam.",
     "tags": [],
+    "hideTag": [],
     "solutionTag": [],
     "form": "pdf",
     "image": "/images/resources/datasheet/hardware/FM6510Datasheet.webp",
@@ -458,6 +486,7 @@
     "tags": [
       "Container-IoT"
     ],
+    "hideTag": [],
     "solutionTag": [],
     "form": "pdf",
     "image": "/images/resources/datasheet/hardware/IS-400-remote-datatsheet.webp",
@@ -472,6 +501,7 @@
     "tags": [
       "Container-IoT"
     ],
+    "hideTag": [],
     "solutionTag": [],
     "form": "pdf",
     "image": "/images/resources/datasheet/hardware/PT6000Datasheet.webp",
@@ -486,6 +516,7 @@
     "tags": [
       "Container-IoT"
     ],
+    "hideTag": [],
     "solutionTag": [],
     "form": "pdf",
     "image": "/images/resources/datasheet/hardware/Resources-BT500Datasheet.webp",
@@ -500,6 +531,7 @@
     "tags": [
       "Truck"
     ],
+    "hideTag": [],
     "solutionTag": [],
     "form": "pdf",
     "image": "/images/resources/datasheet/hardware/Resources-IC500Datasheet.webp",
@@ -514,6 +546,7 @@
     "tags": [
       "Container-IoT"
     ],
+    "hideTag": [],
     "solutionTag": [],
     "form": "pdf",
     "image": "/images/resources/datasheet/hardware/Gray.png",
@@ -528,6 +561,7 @@
     "tags": [
       "Genset"
     ],
+    "hideTag": [],
     "solutionTag": [],
     "form": "pdf",
     "image": "/images/resources/datasheet/hardware/Gray.png",
@@ -542,6 +576,7 @@
     "tags": [
       "Container-IoT"
     ],
+    "hideTag": [],
     "solutionTag": [],
     "form": "pdf",
     "image": "/images/resources/datasheet/hardware/Gray.png",
@@ -556,6 +591,7 @@
     "tags": [
       "Container-IoT"
     ],
+    "hideTag": [],
     "solutionTag": [],
     "form": "pdf",
     "image": "/images/resources/datasheet/hardware/Gray.png",
@@ -570,6 +606,7 @@
     "tags": [
       "Starlink"
     ],
+    "hideTag": [],
     "solutionTag": [],
     "form": "pdf",
     "image": "/images/resources/datasheet/hardware/StarlinkStandardDatasheet.png",
@@ -584,6 +621,7 @@
     "tags": [
       "Starlink"
     ],
+    "hideTag": [],
     "solutionTag": [],
     "form": "pdf",
     "image": "/images/resources/datasheet/hardware/StarlinkHighPerformanceDatasheet.png",
@@ -596,6 +634,7 @@
     "title": "iDirect X7",
     "subtitle": "",
     "tags": [],
+    "hideTag": [],
     "solutionTag": [],
     "form": "pdf",
     "image": "/images/resources/datasheet/hardware/Gray.png",
@@ -608,6 +647,7 @@
     "title": "Z8MK2",
     "subtitle": "",
     "tags": [],
+    "hideTag": [],
     "solutionTag": [],
     "form": "pdf",
     "image": "/images/resources/datasheet/hardware/Gray.png",
@@ -620,6 +660,7 @@
     "title": "Z10MK2",
     "subtitle": "",
     "tags": [],
+    "hideTag": [],
     "solutionTag": [],
     "form": "pdf",
     "image": "/images/resources/datasheet/hardware/Gray.png",
@@ -636,6 +677,7 @@
       "Reefer",
       "DRY"
     ],
+    "hideTag": [],
     "solutionTag": [],
     "form": "pdf",
     "image": "/images/resources/datasheet/hardware/DS100Datasheet",
@@ -653,6 +695,7 @@
       "Satellite",
       "Cellular"
     ],
+    "hideTag": [],
     "solutionTag": [],
     "form": "pdf",
     "image": "/images/resources/datasheet/hardware/IDP800Datasheet.png",
@@ -668,6 +711,7 @@
       "Container-IoT",
       "Reefer"
     ],
+    "hideTag": ["컨테이너", "해양", "리퍼"],
     "solutionTag": [
       "Container-IoT",
       "Maritime"
@@ -686,6 +730,7 @@
       "Container-IoT",
       "Reefer"
     ],
+    "hideTag": ["컨테이너", "해양", "리퍼"],
     "solutionTag": [
       "Container-IoT",
       "Maritime"
@@ -706,6 +751,7 @@
       "Satellite",
       "Cellular"
     ],
+    "hideTag": ["글로벌", "위성", "셀룰러"],
     "solutionTag": [
       "Global-IoT",
       "VMS",
@@ -729,6 +775,7 @@
       "Satellite",
       "Cellular"
     ],
+    "hideTag": ["글로벌", "위성", "셀룰러"],
     "solutionTag": [
       "Global-IoT",
       "VMS",
@@ -752,6 +799,7 @@
       "Satellite",
       "Cellular"
     ],
+    "hideTag": ["글로벌", "위성", "셀룰러"],
     "solutionTag": [
       "Global-IoT",
       "VMS",
@@ -774,6 +822,7 @@
       "OGx/IDP",
       "Satellite"
     ],
+    "hideTag": ["글로벌", "위성"],
     "solutionTag": [
       "Global-IoT",
       "VMS",
@@ -796,6 +845,7 @@
       "OGx/IDP",
       "Satellite"
     ],
+    "hideTag": ["글로벌", "위성"],
     "solutionTag": [
       "Global-IoT",
       "VMS",
@@ -818,6 +868,7 @@
       "OGx/IDP",
       "Satellite"
     ],
+    "hideTag": ["글로벌", "위성"],
     "solutionTag": [
       "Global-IoT",
       "VMS",
@@ -839,6 +890,7 @@
       "Global IoT",
       "Satellite"
     ],
+    "hideTag": ["글로벌", "위성", "저궤도"],
     "solutionTag": [
       "Global-IoT",
       "VMS",
@@ -860,6 +912,7 @@
       "Global-IoT",
       "Satellite"
     ],
+    "hideTag": ["글로벌", "위성", "저궤도"],
     "solutionTag": [
       "Global-IoT",
       "VMS",
@@ -881,6 +934,7 @@
       "Global-IoT",
       "Satellite"
     ],
+    "hideTag": ["글로벌", "위성", "저궤도"],
     "solutionTag": [
       "Global-IoT",
       "VMS",
@@ -905,6 +959,7 @@
       "Cellular",
       "Door"
     ],
+    "hideTag": ["컨테이너", "글로벌", "해양", "셀룰러"],
     "solutionTag": [
       "Container-IoT",
       "Maritime",
@@ -929,6 +984,7 @@
       "Door",
       "Cargo"
     ],
+    "hideTag": ["컨테이너", "해양", "글로벌", "셀룰러", "카고"],
     "solutionTag": [
       "Container-IoT",
       "Maritime",
@@ -952,6 +1008,7 @@
       "Cellular",
       "Dry"
     ],
+    "hideTag": ["컨테이너", "해양", "글로벌", "셀룰러"],
     "solutionTag": [
       "Container-IoT",
       "Maritime",
@@ -976,6 +1033,7 @@
       "Dry",
       "Cargo"
     ],
+    "hideTag": ["컨테이너", "해양", "글로벌", "카고"],
     "solutionTag": [
       "Container-IoT",
       "Maritime",
@@ -999,6 +1057,7 @@
       "Cellular",
       "Reefer"
     ],
+    "hideTag": ["컨테이너", "해양", "글로벌", "셀룰러", "리퍼"],
     "solutionTag": [
       "Container-IoT",
       "Maritime",
@@ -1022,6 +1081,7 @@
       "Cellular",
       "Reefer"
     ],
+    "hideTag": ["컨테이너", "해양", "글로벌", "셀룰러", "리퍼"],
     "solutionTag": [
       "Container-IoT",
       "Maritime",
@@ -1043,6 +1103,7 @@
       "Container-IoT",
       "Reefer"
     ],
+    "hideTag": ["컨테이너", "해양", "리퍼"],
     "solutionTag": [
       "Container-IoT",
       "Maritime"
@@ -1061,6 +1122,7 @@
       "Container-IoT",
       "Reefer"
     ],
+    "hideTag": ["컨테이너", "해양", "리퍼"],
     "solutionTag": [
       "Container-IoT",
       "Maritime"
@@ -1079,6 +1141,7 @@
       "Container-IoT",
       "Reefer"
     ],
+    "hideTag": ["컨테이너", "해양"],
     "solutionTag": [
       "Container-IoT",
       "Maritime"
@@ -1099,6 +1162,7 @@
       "NTN",
       "Cellular"
     ],
+    "hideTag": ["글로벌", "위성", "셀룰러"],
     "solutionTag": [
       "Global-IoT",
       "VMS",
@@ -1121,6 +1185,7 @@
       "OGx/IDP",
       "Cellular"
     ],
+    "hideTag": ["글로벌", "위성", "셀룰러"],
     "solutionTag": [
       "Global-IoT",
       "VMS",
@@ -1143,6 +1208,7 @@
       "OGx/IDP",
       "NTN"
     ],
+    "hideTag": ["글로벌", "위성", "셀룰러"],
     "solutionTag": [
       "Global-IoT",
       "VMS",
@@ -1165,6 +1231,7 @@
       "Satellite",
       "OGx/IDP"
     ],
+    "hideTag": ["글로벌", "위성", "셀룰러"],
     "solutionTag": [
       "Global-IoT",
       "VMS",
@@ -1186,6 +1253,7 @@
       "Satellite",
       "Starlink"
     ],
+    "hideTag": ["위성", "스타링크"],
     "solutionTag": [
       "Satellite",
       "Starlink"
@@ -1204,6 +1272,7 @@
       "Satellite",
       "Starlink"
     ],
+    "hideTag": ["위성", "스타링크"],
     "solutionTag": [
       "Satellite",
       "Starlink"
@@ -1222,6 +1291,7 @@
       "AIS",
       "Maritime"
     ],
+    "hideTag": ["육상", "해양", "위성", "저궤도"],
     "solutionTag": [
       "Satellite",
       "LowEarthOrbit",
@@ -1241,7 +1311,8 @@
       "Satellite",
       "Global-IoT"
     ],
-    "solutionTag": [],
+    "hideTag": ["위성", "글로벌"],
+    "solutionTag": ["Satellite", "Global-IoT"],
     "form": "link",
     "image": "/images/resources/article/2016-04-27.png",
     "path": "https://kr.aving.net/news/articleView.html?idxno=1367659",
@@ -1256,7 +1327,8 @@
       "Satellite",
       "Global-IoT"
     ],
-    "solutionTag": [],
+    "hideTag": ["위성", "글로벌"],
+    "solutionTag": ["Satellite", "Global-IoT"],
     "form": "link",
     "image": "/images/resources/article/2024-03-27.png",
     "path": "http://www.haesanews.com/news/articleView.html?idxno=116775",
@@ -1271,6 +1343,7 @@
       "Satellite",
       "Global-IoT"
     ],
+    "hideTag": [],
     "solutionTag": [],
     "form": "page",
     "image": "/images/resources/newsletter/2024-12-10.png",

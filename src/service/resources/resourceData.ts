@@ -6,6 +6,7 @@ export interface ResourcesProps {
     title: string;
     subtitle?: string;
     tags: string[];
+    hideTag: string[];
     solutionTag: string[];
     form: string; // "link" / "pdf" / "datasheet"
     image: string; // 대표 이미지 경로
@@ -41,6 +42,7 @@ export const getFilteredResources = (query: string): ResourcesProps[] => {
             resource.title,
             resource.subtitle || "",
             ...resource.tags,
+            ...resource.hideTag,
             ...resource.solutionTag,
             resource.form,
         ]
@@ -68,6 +70,7 @@ export const getFilteredResourcesByQueryAndFilters = (
             resource.title,
             resource.subtitle || "",
             ...resource.tags,
+            ...resource.hideTag,
             ...resource.solutionTag,
             resource.form,
         ]
@@ -81,17 +84,17 @@ export const getFilteredResourcesByQueryAndFilters = (
             // contentType 필터
             !filters.contentType ||
             filters.contentType.length === 0 ||
-            filters.contentType.some((type) => normalizeText(type) === normalizeText(resource.contentType)),
+            filters.contentType.every((type) => normalizeText(type) === normalizeText(resource.contentType)),
 
             // form 필터
             !filters.form ||
             filters.form.length === 0 ||
-            filters.form.some((form) => normalizeText(form) === normalizeText(resource.form)),
+            filters.form.every((form) => normalizeText(form) === normalizeText(resource.form)),
 
             // solutions 필터
             !filters.solutions ||
             filters.solutions.length === 0 ||
-            filters.solutions.some((solution) =>
+            filters.solutions.every((solution) =>
                 resource.tags.map(normalizeText).includes(normalizeText(solution))
             ),
         ].every(Boolean);
@@ -152,6 +155,7 @@ export const getResourcesByAllKeywords = (keywords: string[]): ResourcesProps[] 
             resource.title,
             resource.subtitle || "",
             ...resource.tags,
+            ...resource.hideTag,
             ...resource.solutionTag,
         ]
             .map(normalizeText)

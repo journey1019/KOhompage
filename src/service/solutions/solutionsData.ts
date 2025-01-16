@@ -369,7 +369,7 @@ const solutionsData: Record<string, Record<string, SolutionData>> = {
                     slug: "maritime",
                     description: "IoT가 설치된 컨테이너의 위치와 상태를 실시간 모니터링하고, Reefer Container의 컨트롤러를 원격으로 조정하여 화물에 적합한 온도 및 습도를 설정할 수 있습니다. 또한 자동 알람을 통해 Reefer Container의 오동작, 전원 off 정보는 물론 컨테이너의 각종 알람을 모니터링하고 신속하게 대응할 수 있습니다.\n" +
                         "코리아오브컴의 컨테이너 IoT 장비는 전세계 100만대 이상 설치되어 운영중이며 선사, 화주, 복합운송업체 등 다양한 사용자에게 해상/육상 전 지역에서 수집된 데이터를 제공하여 화물의 안전한 운송에 기여하고 있습니다.  \n",
-                    image: "https://www.orbcomm.co.kr/resources/img/solution/reeferconnect/reffer1.PNG",
+                    image: "/images/solutions/container-iot/ReeferConnect.png",
                 }
             ],
             advantages: [

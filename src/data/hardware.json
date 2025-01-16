@@ -41,7 +41,12 @@
       "Chassis",
       "Dry",
       "Asset",
-      "Door"
+      "Door",
+      "컨테이너",
+      "글로벌",
+      "트래킹",
+      "셀룰러",
+      "샤시"
     ],
     "solutionTag": ["Container-IoT", "Maritime", "Global-IoT", "VMS", "NMS"],
     "slug": "gt-1220",
@@ -65,7 +70,12 @@
       "Dry",
       "Asset",
       "Door",
-      "Cargo"
+      "Cargo",
+      "컨테이너",
+      "글로벌",
+      "트래킹",
+      "셀룰러",
+      "샤시"
     ],
     "solutionTag": ["Container-IoT", "Maritime", "Global-IoT", "VMS", "NMS"],
     "slug": "gt-1230",
@@ -86,7 +96,12 @@
       "Cellular",
       "Container",
       "Reefer",
-      "Asset"
+      "Asset",
+      "컨테이너",
+      "글로벌",
+      "트래킹",
+      "셀룰러",
+      "리퍼"
     ],
     "solutionTag": ["Container-IoT", "Maritime", "Global-IoT", "VMS", "NMS"],
     "slug": "ct-3500",
@@ -107,7 +122,12 @@
       "Cellular",
       "Container",
       "Reefer",
-      "Asset"
+      "Asset",
+      "컨테이너",
+      "글로벌",
+      "트래킹",
+      "셀룰러",
+      "리퍼"
     ],
     "solutionTag": ["Container-IoT", "Maritime", "Global-IoT", "VMS", "NMS"],
     "slug": "ct-3600",
@@ -129,7 +149,11 @@
       "Container",
       "Chassis",
       "Dry",
-      "Asset"
+      "Asset",
+      "컨테이너",
+      "글로벌",
+      "트래킹",
+      "셀룰러"
     ],
     "solutionTag": ["Container-IoT", "Maritime", "Global-IoT", "VMS", "NMS"],
     "slug": "ct-1000",
@@ -152,7 +176,12 @@
       "Chassis",
       "Dry",
       "Asset",
-      "Cargo"
+      "Cargo",
+      "컨테이너",
+      "글로벌",
+      "트래킹",
+      "셀룰러",
+      "샤시"
     ],
     "solutionTag": ["Container-IoT", "Maritime", "Global-IoT", "VMS", "NMS"],
     "slug": "ct-1010",
@@ -173,7 +202,11 @@
       "OGx/IDP",
       "Maritime",
       "Asset",
-      "Programmable"
+      "Programmable",
+      "글로벌",
+      "위성",
+      "트래킹",
+      "해양"
     ],
     "solutionTag": ["Global-IoT", "VMS", "NMS", "Satellite", "OGx/IDP"],
     "slug": "st-6000",
@@ -194,7 +227,11 @@
       "OGx/IDP",
       "Maritime",
       "Asset",
-      "Programmable"
+      "Programmable",
+      "글로벌",
+      "위성",
+      "트래킹",
+      "해양"
     ],
     "solutionTag": ["Global-IoT", "VMS", "NMS", "Satellite", "OGx/IDP"],
     "slug": "st-6100",
@@ -214,7 +251,11 @@
       "Tracking",
       "OGx/IDP",
       "Maritime",
-      "Asset"
+      "Asset",
+      "글로벌",
+      "위성",
+      "트래킹",
+      "해양"
     ],
     "solutionTag": ["Global-IoT", "VMS", "NMS", "Satellite", "OGx/IDP"],
     "slug": "st-2100",
@@ -236,7 +277,12 @@
       "Cellular",
       "Maritime",
       "Asset",
-      "Programmable"
+      "Programmable",
+      "글로벌",
+      "위성",
+      "트래킹",
+      "셀룰러",
+      "해양"
     ],
     "solutionTag": ["Global-IoT", "VMS", "NMS", "Satellite", "OGx/IDP"],
     "slug": "st-9100",
@@ -257,7 +303,12 @@
       "OGx/IDP",
       "Cellular",
       "Maritime",
-      "Asset"
+      "Asset",
+      "글로벌",
+      "위성",
+      "트래킹",
+      "셀룰러",
+      "해양"
     ],
     "solutionTag": ["Global-IoT", "VMS", "NMS", "Satellite", "OGx/IDP"],
     "slug": "sc-1000",
@@ -280,7 +331,11 @@
       "ORBCOMM",
       "Maritime",
       "Asset",
-      "Programmable"
+      "Programmable",
+      "글로벌",
+      "위성",
+      "트래킹",
+      "해양"
     ],
     "solutionTag": ["Global-IoT", "VMS", "NMS", "Satellite", "LowEarthOrbit"],
     "slug": "qpro",
@@ -301,7 +356,11 @@
       "ORBCOMM",
       "Maritime",
       "Asset",
-      "Programmable"
+      "Programmable",
+      "글로벌",
+      "위성",
+      "트래킹",
+      "해양"
     ],
     "solutionTag": ["Global-IoT", "VMS", "NMS", "Satellite", "LowEarthOrbit"],
     "slug": "q-4000",
@@ -319,7 +378,10 @@
       "AIS",
       "Tracking",
       "ORBCOMM",
-      "Maritime"
+      "Maritime",
+      "육상",
+      "트래킹",
+      "해양"
     ],
     "solutionTag": ["Satellite", "LowEarthOrbit", "AIS"],
     "slug": "mt-5000",
@@ -336,7 +398,9 @@
     "hideTag": [
       "Global-IoT",
       "Tracking",
-      "Sigfox"
+      "Sigfox",
+      "글로벌",
+      "트래킹"
     ],
     "solutionTag": ["Global-IoT", "VMS", "NMS"],
     "slug": "at-1",
@@ -352,7 +416,9 @@
     "tag": ["Satellite", "Starlink"],
     "hideTag": [
       "Starlink",
-      "Internet"
+      "Internet",
+      "위성",
+      "스타링크"
     ],
     "solutionTag": ["Satellite", "Starlink"],
     "slug": "gen3-router",
@@ -370,7 +436,10 @@
       "Global-IoT",
       "Satellite-IoT",
       "Tracking",
-      "OGx/IDP"
+      "OGx/IDP",
+      "글로벌",
+      "위성",
+      "트래킹"
     ],
     "solutionTag": ["Global-IoT", "VMS", "NMS", "Satellite", "OGx/IDP"],
     "slug": "ksv-1001",
@@ -390,7 +459,10 @@
       "ORBCOMM",
       "OGx/IDP",
       "Asset",
-      "Modem"
+      "Modem",
+      "글로벌",
+      "위성",
+      "모뎀"
     ],
     "solutionTag": ["Global-IoT", "VMS", "NMS", "Satellite", "LowEarthOrbit", "OGx/IDP"],
     "slug": "og2-ogi",
@@ -410,7 +482,11 @@
       "NTN",
       "Cellular",
       "Maritime",
-      "Asset"
+      "Asset",
+      "글로벌",
+      "위성",
+      "셀룰러",
+      "해양"
     ],
     "solutionTag": ["Global-IoT", "VMS", "NMS", "Satellite"],
     "slug": "bg95-s5",
@@ -430,7 +506,11 @@
       "Cellular",
       "Maritime",
       "Asset",
-      "OGx/IDP"
+      "OGx/IDP",
+      "글로벌",
+      "위성",
+      "셀룰러",
+      "해양"
     ],
     "solutionTag": ["Global-IoT", "VMS", "Satellite", "OGx/IDP"],
     "slug": "cc200a-lb",
@@ -446,7 +526,9 @@
     "tag": ["Container-IoT", "Sensor"],
     "hideTag": [
       "Reefer",
-      "Sensor"
+      "Sensor",
+      "리퍼",
+      "센서"
     ],
     "solutionTag": ["Container-IoT", "Maritime"],
     "slug": "ds-100",
@@ -462,7 +544,8 @@
     "tag": ["Container-IoT", "Dry"],
     "hideTag": [
       "Container-IoT",
-      "Dry"
+      "Dry",
+      "컨테이너"
     ],
     "solutionTag": ["Container-IoT", "Maritime"],
     "slug": "ds-300",
@@ -478,7 +561,8 @@
     "tag": ["Container-IoT", "Dry"],
     "hideTag": [
       "Container",
-      "Dry"
+      "Dry",
+      "컨테이너"
     ],
     "solutionTag": ["Container-IoT", "Maritime"],
     "slug": "ts-310",
@@ -496,7 +580,9 @@
       "Global-IoT",
       "Satellite-IoT",
       "OGx/IDP",
-      "NTN"
+      "NTN",
+      "글로벌",
+      "위성"
     ],
     "solutionTag": ["Global-IoT", "VMS", "NMS", "Satellite", "OGx/IDP"],
     "slug": "YETN001L1A",
@@ -512,7 +598,9 @@
     "tag": ["Satellite", "Starlink"],
     "hideTag": [
       "Starlink",
-      "Internet"
+      "Internet",
+      "위성",
+      "스타링크"
     ],
     "solutionTag": ["Satellite", "Starlink"],
     "slug": "flat-high-performance",
@@ -528,7 +616,9 @@
     "tag": ["Satellite", "Starlink"],
     "hideTag": [
       "Starlink",
-      "Internet"
+      "Internet",
+      "위성",
+      "스타링크"
     ],
     "solutionTag": ["Satellite", "Starlink"],
     "slug": "enterprise",
