@@ -29,7 +29,7 @@ const CarouselSolutionBlock: React.FC<CarouselProps> = ({ items }) => {
     };
 
     return (
-        <div className="relative w-full max-w-7xl 2xl:max-w-screen-2xl mx-auto overflow-hidden pb-10">
+        <div className="relative w-full max-w-7xl maxWeb:max-w-screen-2xl mx-auto overflow-hidden pb-10">
             {/* Carousel Items */}
             <div
                 className="flex transition-transform duration-700"
@@ -42,17 +42,17 @@ const CarouselSolutionBlock: React.FC<CarouselProps> = ({ items }) => {
                     >
                         {/* Top Section: Text */}
                         <div className="w-full text-center lg:text-start mb-8 px-8 sm:px-16">
-                            <h1 className="text-2xl sm:text-3xl lg:text-4xl 2xl:text-5xl font-bold mb-2 text-gray-800">
+                            <h1 className="text-2xl sm:text-3xl lg:text-4xl maxWeb:text-5xl font-bold mb-2 text-gray-800">
                                 {item.title}
                             </h1>
-                            <p className="text-md sm:text-lg lg:text-xl 2xl:text-2xl text-gray-500">
+                            <p className="text-md sm:text-lg lg:text-xl maxWeb:text-2xl text-gray-500">
                                 {item.subtitle}
                             </p>
                         </div>
 
                         {/* Bottom Section: Images */}
                         <div
-                            className="w-full grid grid-cols-1 lg:grid-cols-3 gap-4 px-16 sm:px-16 md:px-32 lg:px-16 2xl:px-32 sm:py-0 bigMobile:pb-16">
+                            className="w-full grid grid-cols-1 lg:grid-cols-3 gap-4 px-16 sm:px-16 md:px-32 lg:px-16 maxWeb:px-32 sm:py-0 bigMobile:pb-16">
                             {[item.imageUrl1, item.imageUrl2, item.imageUrl3].map((url, imgIndex) => (
                                 <div
                                     key={imgIndex}
@@ -67,7 +67,7 @@ const CarouselSolutionBlock: React.FC<CarouselProps> = ({ items }) => {
                                     />
                                     <div className="absolute inset-0 bg-black/30 rounded-xl" />
                                     <div className="relative p-4 flex items-end justify-center">
-                                        <h3 className="text-sm md:text-lg lg:text-xl 2xl:text-2xl font-bold text-white">
+                                        <h3 className="text-sm md:text-lg lg:text-xl maxWeb:text-2xl font-bold text-white">
                                             {imgIndex === 0 ? item.imageTitle1 : imgIndex === 1 ? item.imageTitle2 : item.imageTitle3}
                                         </h3>
                                     </div>
@@ -81,13 +81,13 @@ const CarouselSolutionBlock: React.FC<CarouselProps> = ({ items }) => {
             {/* Navigation Buttons */}
             <button
                 onClick={handlePrev}
-                className="absolute text-base 2xl:text-2xl h-1/2 top-1/2 left-4 transform -translate-y-1/2 bg-gray-800 bg-opacity-30 text-white py-2 px-4 2xl:py-3 2xl:px-5 rounded-md shadow-lg hover:bg-gray-600"
+                className="absolute text-base maxWeb:text-2xl h-1/2 top-1/2 left-4 transform -translate-y-1/2 bg-gray-800 bg-opacity-30 text-white py-2 px-4 maxWeb:py-3 maxWeb:px-5 rounded-md shadow-lg hover:bg-gray-600"
             >
                 ❮
             </button>
             <button
                 onClick={handleNext}
-                className="absolute text-base 2xl:text-2xl h-1/2 top-1/2 right-4 transform -translate-y-1/2 bg-gray-800 bg-opacity-30 text-white py-2 px-4 2xl:py-3 2xl:px-5 rounded-md shadow-lg hover:bg-gray-600"
+                className="absolute text-base maxWeb:text-2xl h-1/2 top-1/2 right-4 transform -translate-y-1/2 bg-gray-800 bg-opacity-30 text-white py-2 px-4 maxWeb:py-3 maxWeb:px-5 rounded-md shadow-lg hover:bg-gray-600"
             >
                 ❯
             </button>
@@ -99,7 +99,7 @@ const CarouselSolutionBlock: React.FC<CarouselProps> = ({ items }) => {
                     <button
                         key={index}
                         onClick={() => setCurrentIndex(index)}
-                        className={`h-2 2xl:h-3 w-10 sm:w-1/5 lg:w-1/3 rounded-full transition-all duration-300 ${
+                        className={`h-2 maxWeb:h-3 w-10 sm:w-1/5 lg:w-1/3 rounded-full transition-all duration-300 ${
                             currentIndex === index ? 'bg-gray-800' : 'bg-gray-300'
                         }`}
                     ></button>

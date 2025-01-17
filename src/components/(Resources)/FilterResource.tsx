@@ -36,16 +36,16 @@ const FilterResource: React.FC<FiltersResourcesProps> = ({ filters, onFilterChan
 
     return (
         <div className="mb-4">
-            <h2 className="text-xl 2xl:text-2xl font-semibold mb-2">Filters</h2>
-            <p className="text-gray-600 mb-4 text-base 2xl:text-lg">{totalResourcesCount} resources found</p>
+            <h2 className="text-xl maxWeb:text-2xl font-semibold mb-2">Filters</h2>
+            <p className="text-gray-600 mb-4 text-base maxWeb:text-lg">{totalResourcesCount} resources found</p>
 
             {/* Content Type 필터 */}
-            <div className="mb-4 2xl:mb-6">
-                <h3 className="font-semibold text-base 2xl:text-lg xl:mb-1">Content Type</h3>
+            <div className="mb-4 maxWeb:mb-6">
+                <h3 className="font-semibold text-base maxWeb:text-lg xl:mb-1">Content Type</h3>
                 {['Article', 'Brochure', 'Datasheet', 'Video'].map((type) => (
                     <label
                         key={type}
-                        className="flex items-center space-x-2 text-base 2xl:text-lg cursor-pointer"
+                        className="flex items-center space-x-2 text-base maxWeb:text-lg cursor-pointer"
                     >
                         <input
                             type="checkbox"
@@ -62,11 +62,11 @@ const FilterResource: React.FC<FiltersResourcesProps> = ({ filters, onFilterChan
 
             {/* Form 필터 (주석 제거 시 사용 가능) */}
             {/* <div className="mb-4">
-                <h3 className="font-semibold text-base 2xl:text-lg xl:mb-1">Form</h3>
+                <h3 className="font-semibold text-base maxWeb:text-lg xl:mb-1">Form</h3>
                 {["link", "pdf", "page"].map((type) => (
                     <label
                         key={type}
-                        className="flex items-center space-x-2 text-base 2xl:text-lg cursor-pointer"
+                        className="flex items-center space-x-2 text-base maxWeb:text-lg cursor-pointer"
                     >
                         <input
                             type="checkbox"
@@ -80,12 +80,12 @@ const FilterResource: React.FC<FiltersResourcesProps> = ({ filters, onFilterChan
             </div> */}
 
             {/* Solutions 필터 */}
-            <div className="mb-4 2xl:mb-6">
-                <h3 className="font-semibold text-base 2xl:text-lg xl:mb-1">Solutions</h3>
+            <div className="mb-4 maxWeb:mb-6">
+                <h3 className="font-semibold text-base maxWeb:text-lg xl:mb-1">Solutions</h3>
                 {['Container-IoT', 'Global-IoT', 'Satellite', 'AIS'].map((solution) => (
                     <label
                         key={solution}
-                        className="flex items-center space-x-2 text-base 2xl:text-lg cursor-pointer"
+                        className="flex items-center space-x-2 text-base maxWeb:text-lg cursor-pointer"
                     >
                         <input
                             type="checkbox"

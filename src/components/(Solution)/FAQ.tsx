@@ -35,7 +35,7 @@ const FAQ: React.FC<FAQProps> = ({ faqImage, items }) => {
     return (
         <section className="bg-white dark:bg-gray-900" ref={ref}>
             <div className="py-6">
-                <div className="mx-auto max-w-7xl 2xl:max-w-screen-2xl px-4 sm:px-6 lg:px-8">
+                <div className="mx-auto max-w-7xl maxWeb:max-w-screen-2xl px-4 sm:px-6 lg:px-8">
                     <motion.div
                         className="flex flex-col justify-center items-center gap-x-16 gap-y-5 xl:gap-28 lg:flex-row lg:justify-between max-lg:max-w-2xl mx-auto max-w-full"
                         initial="hidden"
@@ -61,13 +61,13 @@ const FAQ: React.FC<FAQProps> = ({ faqImage, items }) => {
                                 width={400}
                                 height={240}
                                 unoptimized
-                                className="w-full max-w-md 2xl:max-w-lg rounded-xl object-cover mx-auto"
+                                className="w-full max-w-md maxWeb:max-w-lg rounded-xl object-cover mx-auto"
                             />
                         </motion.div>
 
                         {/* FAQ */}
                         <div className="w-full lg:w-1/2">
-                            <div className="lg:max-w-xl 2xl:max-w-2xl">
+                            <div className="lg:max-w-xl maxWeb:max-w-2xl">
                                 <div className="accordion-group">
                                     {items.map((item, index) => (
                                         <motion.div
@@ -87,7 +87,7 @@ const FAQ: React.FC<FAQProps> = ({ faqImage, items }) => {
                                             >
                                                 <motion.h5
                                                     whileHover={{ scale: 1.05 }}
-                                                    className="transition-transform text-base md:text-lg 2xl:text-xl"
+                                                    className="transition-transform text-base md:text-lg maxWeb:text-xl"
                                                 >
                                                     {item.question}
                                                 </motion.h5>
@@ -132,7 +132,7 @@ const FAQ: React.FC<FAQProps> = ({ faqImage, items }) => {
                                                     exit={{ height: 0, opacity: 0, y: -20 }}
                                                     transition={{ duration: 0.8, ease: "easeOut" }}
                                                 >
-                                                    <p className="text-sm md:text-base 2xl:text-xl text-gray-900 dark:text-gray-200 font-normal leading-6">
+                                                    <p className="text-sm md:text-base maxWeb:text-xl text-gray-900 dark:text-gray-200 font-normal leading-6">
                                                         {item.answer}
                                                     </p>
                                                 </motion.div>

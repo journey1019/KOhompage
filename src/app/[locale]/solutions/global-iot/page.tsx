@@ -125,7 +125,7 @@ export default async function GlobalIoT({params}: PageProps){
                 고객의 다양한 산업 분야에 적합한 최적의 디바이스 및 통신망을 제공합니다.
             </SectionTitle>
             {/*<Image src="/images/solutions/global-iot/global-iot.png" alt="/images/solutions/global-iot/global-iot.png"*/}
-            {/*       className="mx-auto items-center justify-center w-full h-auto sm:max-w-md md:max-w-lg lg:max-w-4xl 2xl:max-w-5xl pb-24"*/}
+            {/*       className="mx-auto items-center justify-center w-full h-auto sm:max-w-md md:max-w-lg lg:max-w-4xl maxWeb:max-w-5xl pb-24"*/}
             {/*       width={800} height={300} unoptimized*/}
             {/*/>*/}
             <OneImage item="/images/solutions/global-iot/global-iot.png"/>

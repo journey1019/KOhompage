@@ -76,7 +76,7 @@ const Case: React.FC<AdvantageData> = ({ direction, title1, title2, description,
             custom={direction}
             variants={textVariants}
         >
-            <h2 className="text-2xl md:text-3xl lg:text-4xl 2xl:text-5xl font-bold text-gray-900 dark:text-gray-200 mb-5">
+            <h2 className="text-2xl md:text-3xl lg:text-4xl maxWeb:text-5xl font-bold text-gray-900 dark:text-gray-200 mb-5">
                 {direction === "left" ? (
                     <>
                         <span className="text-red-700">{title1}</span> {title2}
@@ -87,7 +87,7 @@ const Case: React.FC<AdvantageData> = ({ direction, title1, title2, description,
                     </>
                 )}
             </h2>
-            <p className="text-gray-500 text-sm md:text-base lg:text-lg 2xl:text-2xl">{description}</p>
+            <p className="text-gray-500 text-sm md:text-base lg:text-lg maxWeb:text-2xl">{description}</p>
         </motion.div>
     </motion.div>
 );
@@ -101,7 +101,7 @@ const SolutionAdvantage: React.FC<SolutionAdvantageProps> = ({ advantages }) => 
     return (
         <section className="bg-white dark:bg-gray-900 overflow-hidden">
             <div className="pb-24">
-                <div className="mx-auto max-w-7xl 2xl:max-w-screen-2xl px-4 sm:px-6 lg:px-8">
+                <div className="mx-auto max-w-7xl maxWeb:max-w-screen-2xl px-4 sm:px-6 lg:px-8">
                     {advantages.map((advantage, index) => (
                         <Case
                             key={index}

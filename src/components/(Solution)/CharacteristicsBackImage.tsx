@@ -35,7 +35,7 @@ export default function CharacteristicsBackImage({ items, gridCols = 4 }: Charac
 
     return (
         <section
-            className="relative mx-auto max-w-7xl 2xl:max-w-screen-2xl px-6 lg:px-8 py-12 bg-cover bg-center"
+            className="relative mx-auto max-w-7xl maxWeb:max-w-screen-2xl px-6 lg:px-8 py-12 bg-cover bg-center"
             style={{
                 backgroundImage: "url('/images/solutions/satellite/WorldMap.png')",
             }}
@@ -62,10 +62,10 @@ export default function CharacteristicsBackImage({ items, gridCols = 4 }: Charac
                             alt="Advantage Icon"
                             width={80}
                             height={80}
-                            className="object-contain my-4 w-14 h-14 sm:w-16 sm:h-16 lg:w-20 lg:h-20 2xl:w-28 2xl:h-28"
+                            className="object-contain my-4 w-14 h-14 sm:w-16 sm:h-16 lg:w-20 lg:h-20 maxWeb:w-28 maxWeb:h-28"
                             unoptimized
                         />
-                        <h2 className="text-base 2xl:text-2xl font-medium text-gray-600 text-center">
+                        <h2 className="text-base maxWeb:text-2xl font-medium text-gray-600 text-center">
                             {item.title}
                         </h2>
                     </motion.div>

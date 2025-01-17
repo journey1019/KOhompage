@@ -38,7 +38,7 @@ const Point: React.FC<PointProps> = ({ items }) => {
             variants={containerVariants}
             viewport={{ once: true, amount: 0.3 }} // 뷰포트의 30%에 도달하면 실행
         >
-            <div className="mx-auto max-w-7xl 2xl:max-w-screen-2xl px-6 lg:px-8">
+            <div className="mx-auto max-w-7xl maxWeb:max-w-screen-2xl px-6 lg:px-8">
                 <div className="mx-auto grid max-w-2xl grid-cols-1 gap-x-8 gap-y-16 lg:max-w-none lg:grid-cols-2">
                     {/* Left Section: Image */}
                     <motion.div
@@ -67,7 +67,7 @@ const Point: React.FC<PointProps> = ({ items }) => {
                         viewport={{ once: true, amount: 0.2 }} // 컨테이너가 뷰포트의 20% 이상 보이면 실행
                     >
                         <motion.div
-                            className="text-white text-3xl md:text-4xl 2xl:text-5xl font-bold pb-4 md:py-4"
+                            className="text-white text-3xl md:text-4xl maxWeb:text-5xl font-bold pb-4 md:py-4"
                             variants={itemVariants}
                         >
                             Container Management
@@ -81,10 +81,10 @@ const Point: React.FC<PointProps> = ({ items }) => {
                                 <div className="rounded-md bg-white/5 p-2 ring-1 ring-gray-300 ring-white/10">
                                     <CheckCircleIcon
                                         aria-hidden="true"
-                                        className="h-4 w-4 md:h-6 md:w-6 2xl:w-8 2xl:h-8 text-white"
+                                        className="h-4 w-4 md:h-6 md:w-6 maxWeb:w-8 maxWeb:h-8 text-white"
                                     />
                                 </div>
-                                <p className="font-semibold text-white pl-3 2xl:pl-7 text-base md:text-xl 2xl:text-2xl m-0">
+                                <p className="font-semibold text-white pl-3 maxWeb:pl-7 text-base md:text-xl maxWeb:text-2xl m-0">
                                     {item.text}
                                 </p>
                             </motion.div>

@@ -28,9 +28,9 @@ export default function Language() {
                 onClick={() => setMenuOpen(!menuOpen)} // 드롭다운 열기/닫기 토글
                 className="flex items-center space-x-2 sm:pl-4 py-2 text-gray-900 rounded-md"
             >
-                <GrLanguage className="sm:ml-2 cursor-pointer text-sm 2xl:text-2xl dark:text-white" />
+                <GrLanguage className="sm:ml-2 cursor-pointer text-sm maxWeb:text-2xl dark:text-white" />
                 {/*<span>{currentLocale.toUpperCase()}</span> /!* 현재 언어 표시 *!/*/}
-                <ChevronDownIcon aria-hidden="true" className="h-4 w-4 mobile:h-5 mobile:w-5 2xl:h-8 2xl:w-8 text-black dark:text-white" />
+                <ChevronDownIcon aria-hidden="true" className="h-4 w-4 mobile:h-5 mobile:w-5 maxWeb:h-8 maxWeb:w-8 text-black dark:text-white" />
             </button>
 
             {/* 드롭다운 메뉴 */}

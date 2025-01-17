@@ -15,7 +15,7 @@ const FilterHardwareCarouselBySolutionTags: React.FC<FilterHardwareProps> = ({ k
     const filteredHardware: HardwareProps[] = getHardwareByKeywordsInPage(keywords);
 
     return (
-        <div className="mx-auto max-w-7xl 2xl:max-w-screen-2xl px-4 sm:px-6 py-4 sm:py-8">
+        <div className="mx-auto max-w-7xl maxWeb:max-w-screen-2xl px-4 sm:px-6 py-4 sm:py-8">
             {/*<h2 className="text-xl sm:text-2xl font-bold text-gray-800 mb-4">*/}
             {/*    Filtered Hardware*/}
             {/*</h2>*/}

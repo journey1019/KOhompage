@@ -33,14 +33,14 @@ const FiltersHardware: React.FC<FiltersHardwareProps> = ({ filters, onFilterChan
 
     return (
         <div>
-            <h2 className="text-xl 2xl:text-2xl font-semibold mb-2">Filters</h2>
-            <p className="text-gray-600 mb-4 text-base 2xl:text-lg">{totalResourcesCount} hardware found</p>
+            <h2 className="text-xl maxWeb:text-2xl font-semibold mb-2">Filters</h2>
+            <p className="text-gray-600 mb-4 text-base maxWeb:text-lg">{totalResourcesCount} hardware found</p>
 
             {/* Categories 필터 */}
-            <div className="mb-4 2xl:mb-6">
-                <h3 className="font-semibold text-base 2xl:text-lg xl:mb-1">Category</h3>
+            <div className="mb-4 maxWeb:mb-6">
+                <h3 className="font-semibold text-base maxWeb:text-lg xl:mb-1">Category</h3>
                 {CATEGORY_OPTIONS.map((category) => (
-                    <label key={category} className="flex items-center space-x-2 text-base 2xl:text-lg cursor-pointer">
+                    <label key={category} className="flex items-center space-x-2 text-base maxWeb:text-lg cursor-pointer">
                         <input
                             type="checkbox"
                             checked={filters.categories?.includes(category) || false}
@@ -53,10 +53,10 @@ const FiltersHardware: React.FC<FiltersHardwareProps> = ({ filters, onFilterChan
             </div>
 
             {/* Types 필터 */}
-            <div className="mb-4 2xl:mb-6">
-                <h3 className="font-semibold text-base 2xl:text-lg xl:mb-1">Type</h3>
+            <div className="mb-4 maxWeb:mb-6">
+                <h3 className="font-semibold text-base maxWeb:text-lg xl:mb-1">Type</h3>
                 {TYPE_OPTIONS.map((type) => (
-                    <label key={type} className="flex items-center space-x-2 text-base 2xl:text-lg cursor-pointer">
+                    <label key={type} className="flex items-center space-x-2 text-base maxWeb:text-lg cursor-pointer">
                         <input
                             type="checkbox"
                             checked={filters.types?.includes(type) || false}
@@ -69,10 +69,10 @@ const FiltersHardware: React.FC<FiltersHardwareProps> = ({ filters, onFilterChan
             </div>
 
             {/* Networks 필터 */}
-            <div className="mb-4 2xl:mb-6">
-                <h3 className="font-semibold text-base 2xl:text-lg xl:mb-1">Network</h3>
+            <div className="mb-4 maxWeb:mb-6">
+                <h3 className="font-semibold text-base maxWeb:text-lg xl:mb-1">Network</h3>
                 {NETWORK_OPTIONS.map((network) => (
-                    <label key={network} className="flex items-center space-x-2 text-base 2xl:text-lg cursor-pointer">
+                    <label key={network} className="flex items-center space-x-2 text-base maxWeb:text-lg cursor-pointer">
                         <input
                             type="checkbox"
                             checked={filters.networks?.includes(network) || false}

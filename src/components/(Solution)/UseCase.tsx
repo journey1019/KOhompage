@@ -43,7 +43,7 @@ const Case: React.FC<CaseData> = ({ direction, title1, title2, slug, description
                 className={`flex justify-center ${direction === 'left' ? 'order-1 lg:order-2' : 'order-2 lg:order-1'}`}
                 variants={imageVariants}
             >
-                <div className="relative w-full max-w-lg 2xl:max-w-2xl aspect-[4/3]">
+                <div className="relative w-full max-w-lg maxWeb:max-w-2xl aspect-[4/3]">
                     <Image
                         src={image}
                         alt={title1}
@@ -57,12 +57,12 @@ const Case: React.FC<CaseData> = ({ direction, title1, title2, slug, description
 
             {/* Text Section */}
             <motion.div
-                className={`max-w-xl lg:max-w-lg 2xl:max-w-2xl mx-auto text-center order-2 lg:text-start ${
+                className={`max-w-xl lg:max-w-lg maxWeb:max-w-2xl mx-auto text-center order-2 lg:text-start ${
                     direction === 'left' ? 'order-2 lg:order-1' : 'order-1 lg:order-2'
                 } flex flex-col justify-center items-center lg:items-start`}
                 variants={textVariants}
             >
-                <h2 className="text-3xl sm:text-3xl lg:text-4xl 2xl:text-5xl font-bold tracking-tight text-black">
+                <h2 className="text-3xl sm:text-3xl lg:text-4xl maxWeb:text-5xl font-bold tracking-tight text-black">
                     {direction === 'left' ? (
                         <>
                             <span className="text-red-700">{title1}</span> {title2}
@@ -73,17 +73,17 @@ const Case: React.FC<CaseData> = ({ direction, title1, title2, slug, description
                         </>
                     )}
                 </h2>
-                <p className="mt-4 text-md sm:text-lg lg:text-xl 2xl:text-2xl text-gray-500 leading-6 sm:leading-7 lg:leading-8">
+                <p className="mt-4 text-md sm:text-lg lg:text-xl maxWeb:text-2xl text-gray-500 leading-6 sm:leading-7 lg:leading-8">
                     {description}
                 </p>
                 <a
                     href={slug}
-                    className="group flex items-center text-red-700 font-medium text-lg md:text-md 2xl:text-2xl gap-2 hover:gap-4 transition-all duration-300 ease-in-out mt-6"
+                    className="group flex items-center text-red-700 font-medium text-lg md:text-md maxWeb:text-2xl gap-2 hover:gap-4 transition-all duration-300 ease-in-out mt-6"
                 >
                     View More
                     <svg
                         xmlns="http://www.w3.org/2000/svg"
-                        className="h-6 w-6 2xl:h-8 2xl:w-8 text-red-700 group-hover:translate-x-2 transition-transform duration-300 ease-in-out"
+                        className="h-6 w-6 maxWeb:h-8 maxWeb:w-8 text-red-700 group-hover:translate-x-2 transition-transform duration-300 ease-in-out"
                         fill="none"
                         viewBox="0 0 24 24"
                         stroke="currentColor"
@@ -107,7 +107,7 @@ export default function UseCase({ locale, slug }: UseCaseProps) {
     return (
         <section className="bg-white dark:bg-gray-900">
             <div className="pb-12 md:pb-24">
-                <div className="mx-auto max-w-7xl 2xl:max-w-screen-2xl px-4 sm:px-6 lg:px-8">
+                <div className="mx-auto max-w-7xl maxWeb:max-w-screen-2xl px-4 sm:px-6 lg:px-8">
                     {solution.useCases.map((useCase, index) => (
                         <Case
                             key={index}

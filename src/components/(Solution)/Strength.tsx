@@ -37,9 +37,9 @@ const Strength: React.FC<AdvantageProps> = ({ items, gridCols = 4 }) => {
 
     return (
         <div className="bg-white dark:bg-gray-900 lg:pb-10">
-            <div className="mx-auto max-w-7xl 2xl:max-w-screen-2xl px-4 py-4 sm:px-6 sm:pt-0 sm:pb-24 lg:px-8">
+            <div className="mx-auto max-w-7xl maxWeb:max-w-screen-2xl px-4 py-4 sm:px-6 sm:pt-0 sm:pb-24 lg:px-8">
                 <motion.div
-                    className={`grid grid-cols-2 gap-x-6 2xl:gap-x-4 gap-y-20 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-${gridCols} xl:gap-x-8`}
+                    className={`grid grid-cols-2 gap-x-6 maxWeb:gap-x-4 gap-y-20 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-${gridCols} xl:gap-x-8`}
                     initial="hidden"
                     whileInView="visible"
                     viewport={{ once: true, amount: 0.2 }}
@@ -59,17 +59,17 @@ const Strength: React.FC<AdvantageProps> = ({ items, gridCols = 4 }) => {
                                     alt="Example"
                                     width={100}
                                     height={100}
-                                    className="object-contain w-14 h-14 sm:w-16 sm:h-16 lg:w-20 lg:h-20 2xl:w-28 2xl:h-28"
+                                    className="object-contain w-14 h-14 sm:w-16 sm:h-16 lg:w-20 lg:h-20 maxWeb:w-28 maxWeb:h-28"
                                     unoptimized
                                 />
                             </div>
 
                             {/* Text Section */}
                             <div className="mt-4">
-                                <h3 className="text-md 2xl:text-2xl text-gray-700 font-semibold dark:text-gray-200">
+                                <h3 className="text-md maxWeb:text-2xl text-gray-700 font-semibold dark:text-gray-200">
                                     {item.advantage}
                                 </h3>
-                                <p className="mt-3 text-sm 2xl:text-lg text-gray-500">
+                                <p className="mt-3 text-sm maxWeb:text-lg text-gray-500">
                                     {item.description}
                                 </p>
                             </div>

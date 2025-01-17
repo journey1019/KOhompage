@@ -41,8 +41,8 @@ const FilteredHardwarePDFCard: React.FC<HardwareItem> = ({
                     unoptimized
                 />
             </div>
-            <h3 className="text-xs md:text-base font-normal 2xl:text-lg mt-2 text-gray-500 text-center md:text-start">{subTitle}</h3>
-            <h2 className="group-hover:text-blue-500 transition duration-300 text-lg md:text-2xl 2xl:text-3xl font-bold text-center md:text-start">
+            <h3 className="text-xs md:text-base font-normal maxWeb:text-lg mt-2 text-gray-500 text-center md:text-start">{subTitle}</h3>
+            <h2 className="group-hover:text-blue-500 transition duration-300 text-lg md:text-2xl maxWeb:text-3xl font-bold text-center md:text-start">
                 {title}
             </h2>
         </div>

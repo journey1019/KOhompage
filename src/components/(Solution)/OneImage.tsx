@@ -13,7 +13,7 @@ const OneImage = ({ item }: { item: string }) => {
 
     return (
         <Container>
-            <div className="flex w-full max-w-4xl 2xl:max-w-5xl mx-auto rounded-2xl">
+            <div className="flex w-full max-w-4xl maxWeb:max-w-5xl mx-auto rounded-2xl">
                 <motion.div
                     className="w-full h-full"
                     variants={imageVariants}
