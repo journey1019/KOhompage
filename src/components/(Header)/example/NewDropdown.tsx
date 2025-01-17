@@ -1,6 +1,6 @@
 'use client';
 
-import React from 'react';
+import React, { ReactElement } from 'react';
 import Link from 'next/link';
 import {
     GlobeAltIcon,
@@ -23,24 +23,24 @@ interface DropdownProps {
 
 const dropdownContent: Record<
     string,
-    { label: string; href?: string; title?:string; description?:string; filterKey?: string; filterValue?: string; icon?: React.ReactNode }[]
+    { label: string; href?: string; title?:string; description?:string; filterKey?: string; filterValue?: string; icon?: ReactElement }[]
 > = {
     solutions: [
-        { label: 'Container-IoT', href: 'container-iot', title: 'Container IoT', description: 'Real-time tracking, monitoring, and remote control for refrigerated containers.', icon: <GoContainer className="h-6 w-6" /> },
-        { label: 'Global-IoT', href: 'global-iot', title: 'Global IoT', description: 'Monitoring construction equipment, weather data, and marine information.', icon: <GlobeAltIcon className="h-6 w-6" />, },
-        { label: 'Satellite', href: 'satellite', title: 'Satellite', description: 'INMARSAT / ORBCOMM / STARLINK satellite communication services.', icon: <RocketLaunchIcon className="h-6 w-6" />, },
-        { label: 'AIS', href: 'ais', title: 'AIS', description: 'AIS data collection and provision through satellite/terrestrial networks.', icon: <MapIcon className="h-6 w-6" />, }
+        { label: 'Container-IoT', href: 'container-iot', title: 'Container IoT', description: 'Real-time tracking, monitoring, and remote control for refrigerated containers.', icon: <GoContainer className="w-6 h-6 2xl:w-8 2xl:h-8" /> },
+        { label: 'Global-IoT', href: 'global-iot', title: 'Global IoT', description: 'Monitoring construction equipment, weather data, and marine information.', icon: <GlobeAltIcon className="w-6 h-6 2xl:w-8 2xl:h-8" />, },
+        { label: 'Satellite', href: 'satellite', title: 'Satellite', description: 'INMARSAT / ORBCOMM / STARLINK satellite communication services.', icon: <RocketLaunchIcon className="w-6 h-6 2xl:w-8 2xl:h-8" />, },
+        { label: 'AIS', href: 'ais', title: 'AIS', description: 'AIS data collection and provision through satellite/terrestrial networks.', icon: <MapIcon className="w-6 h-6 2xl:w-8 2xl:h-8" />, }
     ],
     hardware: [
-        { label: 'Device', filterKey: 'types', filterValue: 'Device', icon: <MdDevicesOther className="h-6 w-6" />  },
-        { label: 'Module', filterKey: 'types', filterValue: 'Module', icon: <MdViewModule className="h-6 w-6" />  },
-        { label: 'Antenna', filterKey: 'types', filterValue: 'Antenna', icon: <MdOutlineSettingsInputAntenna className="h-6 w-6" />  },
-        { label: 'Sensor', filterKey: 'types', filterValue: 'Sensor', icon: <MdOutlineSensors className="h-6 w-6" />  }
+        { label: 'Device', filterKey: 'types', filterValue: 'Device', icon: <MdDevicesOther className="w-6 h-6 2xl:w-8 2xl:h-8" />  },
+        { label: 'Module', filterKey: 'types', filterValue: 'Module', icon: <MdViewModule className="w-6 h-6 2xl:w-8 2xl:h-8" />  },
+        { label: 'Antenna', filterKey: 'types', filterValue: 'Antenna', icon: <MdOutlineSettingsInputAntenna className="w-6 h-6 2xl:w-8 2xl:h-8" />  },
+        { label: 'Sensor', filterKey: 'types', filterValue: 'Sensor', icon: <MdOutlineSensors className="w-6 h-6 2xl:w-8 2xl:h-8" />  }
     ],
     company: [
-        { label: 'About Us', href: '/about', icon: <DocumentTextIcon className="mt-1 h-5 w-5" /> },
-        { label: 'Contact', href: '/contact-us', icon: <PhoneIcon className="mt-1 h-5 w-5" /> },
-        { label: 'Resources', href: '/resources', icon: <Squares2X2Icon className="mt-1 h-5 w-5" /> }
+        { label: 'About Us', href: '/about', icon: <DocumentTextIcon className="mt-1 w-6 h-6 2xl:w-8 2xl:h-8" /> },
+        { label: 'Contact', href: '/contact-us', icon: <PhoneIcon className="mt-1 w-6 h-6 2xl:w-8 2xl:h-8" /> },
+        { label: 'Resources', href: '/resources', icon: <Squares2X2Icon className="mt-1 w-6 h-6 2xl:w-8 2xl:h-8" /> }
     ]
 };
 
@@ -54,7 +54,7 @@ const NewDropdown = ({ menuKey, locale }: DropdownProps) => {
                     id="mega-menu-full-dropdown"
                     className="border-gray-200 shadow-sm bg-gray-50 md:bg-white border-y dark:bg-gray-800 dark:border-gray-600"
                 >
-                    <div className="grid max-w-screen-xl px-4 py-3 mx-auto text-gray-900 dark:text-white grid-cols-1 sm:grid-cols-4 md:px-6">
+                    <div className="grid max-w-screen-xl px-4 md:px-6 2xl:px-0 py-3 mx-auto text-gray-900 dark:text-white grid-cols-1 sm:grid-cols-4">
                         {items.map((item) => (
                             <ul key={item.href}>
                                 <li>
@@ -63,12 +63,15 @@ const NewDropdown = ({ menuKey, locale }: DropdownProps) => {
                                         className="group block px-3 py-1 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700"
                                     >
                                         <div className="flex flex-col items-start">
-                                            <div className="group-hover:text-red-700 rounded-md bg-gray-200 dark:bg-white/5 p-1 ring-1 ring-gray-300 dark:ring-white/10">
-                                                {/* Icon Rendering */}
+                                            <div
+                                                className="group-hover:text-red-700 rounded-md bg-gray-200 dark:bg-white/5 p-1 ring-1 ring-gray-300 dark:ring-white/10">
                                                 {item.icon}
                                             </div>
-                                            <div className="group-hover:text-red-700 font-semibold pt-5">{item.title}</div>
-                                            <div className="text-sm pt-2 text-gray-400">{item.description}</div>
+
+                                            <div
+                                                className="group-hover:text-red-700 font-semibold 2xl:text-xl pt-5">{item.title}</div>
+                                            <div
+                                                className="text-sm 2xl:text-base pt-2 text-gray-400">{item.description}</div>
                                         </div>
                                     </a>
                                 </li>
@@ -78,8 +81,7 @@ const NewDropdown = ({ menuKey, locale }: DropdownProps) => {
                 </div>
             </div>
         );
-    }
-    else if (menuKey === 'hardware') {
+    } else if (menuKey === 'hardware') {
         return (
             <div className="absolute top-full left-0 w-screen bg-white shadow-lg border-t z-50">
                 <div className="grid grid-cols-4 gap-4 p-6 max-w-screen-xl mx-auto">
@@ -92,9 +94,10 @@ const NewDropdown = ({ menuKey, locale }: DropdownProps) => {
                                 className="flex flex-row items-center p-4 bg-gray-50 hover:bg-gray-100 rounded-lg text-gray-700 hover:text-red-600"
                             >
                                 <div className="p-1 rounded-md ring-1 ring-gray-300 bg-gray-200 flex items-center">
-                                    {item.icon} {/* 아이콘 렌더링 */}
+                                    {/* 아이콘 렌더링 */}
+                                    {item.icon}
                                 </div>
-                                <h3 className="font-semibold pl-3">{item.label}</h3> {/* 라벨 표시 */}
+                                <h3 className="text-base 2xl:text-xl font-semibold pl-3">{item.label}</h3> {/* 라벨 표시 */}
                             </Link>
                         ))}
                 </div>
@@ -111,10 +114,11 @@ const NewDropdown = ({ menuKey, locale }: DropdownProps) => {
                         href={`/${locale}${item.href}`}
                         className="flex flex-row p-4 bg-gray-50 hover:bg-gray-100 rounded-lg text-gray-700 hover:text-red-600 items-center"
                     >
-                        <div className="p-1 rounded-md ring-1 ring-gray-300 bg-gray-200 items-center">
+                        <div className="p-1 rounded-md ring-1 ring-gray-300 bg-gray-200 flex items-center">
+                            {/* 아이콘 렌더링 */}
                             {item.icon}
                         </div>
-                        <h3 className="font-semibold pl-3">{item.label}</h3>
+                        <h3 className="text-base 2xl:text-xl font-semibold pl-3">{item.label}</h3> {/* 라벨 표시 */}
                     </Link>
                 ))}
             </div>

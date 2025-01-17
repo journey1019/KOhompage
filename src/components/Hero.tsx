@@ -5,7 +5,7 @@ import VideoBackground from '@/components/VideoBackground';
 
 export default function Hero() {
     return (
-        <section className="relative w-full h-[calc(100vh-74px)] bg-white dark:bg-gray-900">
+        <section className="relative w-full h-[calc(100vh-72px)] bg-white dark:bg-gray-900">
             {/* 비디오 배경 */}
             <VideoBackground src="/video/main_video.mov" />
 

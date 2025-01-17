@@ -27,8 +27,8 @@ const HardwareCardPDF: React.FC<HardwareItem> = ({ title, subTitle, description,
                 <Image
                     alt={slug}
                     src={imageSrc}
-                    layout="fill"
-                    objectFit="contain"
+                    fill
+                    style={{ objectFit: "contain" }} // 새로운 방식으로 설정
                     className="bg-white transform group-hover:scale-105 transition-transform duration-300 ease-in-out"
                     unoptimized
                 />

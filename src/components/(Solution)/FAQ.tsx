@@ -35,7 +35,7 @@ const FAQ: React.FC<FAQProps> = ({ faqImage, items }) => {
     return (
         <section className="bg-white dark:bg-gray-900" ref={ref}>
             <div className="py-6">
-                <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+                <div className="mx-auto max-w-7xl 2xl:max-w-screen-2xl px-4 sm:px-6 lg:px-8">
                     <motion.div
                         className="flex flex-col justify-center items-center gap-x-16 gap-y-5 xl:gap-28 lg:flex-row lg:justify-between max-lg:max-w-2xl mx-auto max-w-full"
                         initial="hidden"
@@ -61,18 +61,18 @@ const FAQ: React.FC<FAQProps> = ({ faqImage, items }) => {
                                 width={400}
                                 height={240}
                                 unoptimized
-                                className="w-full max-w-md rounded-xl object-cover mx-auto"
+                                className="w-full max-w-md 2xl:max-w-lg rounded-xl object-cover mx-auto"
                             />
                         </motion.div>
 
                         {/* FAQ */}
                         <div className="w-full lg:w-1/2">
-                            <div className="lg:max-w-xl">
+                            <div className="lg:max-w-xl 2xl:max-w-2xl">
                                 <div className="accordion-group">
                                     {items.map((item, index) => (
                                         <motion.div
                                             key={index}
-                                            className={`accordion border border-solid p-3 md:p-4 mb-4 md:mb-8 rounded-xl transition duration-500 ${openIndex === index ? 'bg-indigo-50 border-indigo-600 dark:bg-indigo-900' : 'border-gray-300 dark:border-gray-700'}`}
+                                            className={`accordion border border-solid p-3 md:p-4 mb-4 md:mb-8 rounded-xl transition duration-500 ${openIndex === index ? 'bg-gray-100 border-gray-600' : 'border-gray-300 dark:border-gray-700'}`}
                                             initial="hidden"
                                             animate={controls}
                                             variants={{
@@ -81,13 +81,13 @@ const FAQ: React.FC<FAQProps> = ({ faqImage, items }) => {
                                             }}
                                         >
                                             <button
-                                                className="accordion-toggle group inline-flex items-center justify-between text-left text-lg font-normal leading-8 w-full transition duration-500 hover:text-indigo-600 dark:text-gray-200 dark:hover:text-indigo-300"
+                                                className="accordion-toggle group inline-flex items-center justify-between text-left text-lg font-normal leading-8 w-full transition duration-500 hover:text-gray-600"
                                                 onClick={() => toggleAccordion(index)}
                                                 aria-controls={`collapse-${index}`}
                                             >
                                                 <motion.h5
                                                     whileHover={{ scale: 1.05 }}
-                                                    className="transition-transform text-base md:text-lg"
+                                                    className="transition-transform text-base md:text-lg 2xl:text-xl"
                                                 >
                                                     {item.question}
                                                 </motion.h5>
@@ -132,7 +132,7 @@ const FAQ: React.FC<FAQProps> = ({ faqImage, items }) => {
                                                     exit={{ height: 0, opacity: 0, y: -20 }}
                                                     transition={{ duration: 0.8, ease: "easeOut" }}
                                                 >
-                                                    <p className="text-sm md:text-base text-gray-900 dark:text-gray-200 font-normal leading-6">
+                                                    <p className="text-sm md:text-base 2xl:text-xl text-gray-900 dark:text-gray-200 font-normal leading-6">
                                                         {item.answer}
                                                     </p>
                                                 </motion.div>

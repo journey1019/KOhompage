@@ -47,7 +47,7 @@ export default function Feature({ sections }: FeatureProps) {
     };
 
     return (
-        <div className="mx-auto max-w-7xl px-6 lg:px-8 lg:py-14">
+        <div className="mx-auto max-w-7xl 2xl:max-w-screen-2xl px-6 lg:px-8 lg:py-14">
             {sections.map((section, index) => (
                 <motion.div
                     key={index}
@@ -76,13 +76,13 @@ export default function Feature({ sections }: FeatureProps) {
                     </motion.div>
                     {/* 텍스트 */}
                     <motion.div
-                        className="max-w-xl lg:max-w-lg mx-auto text-center lg:text-start"
+                        className="max-w-xl 2xl:max-w-screen-2xl lg:max-w-lg mx-auto text-center lg:text-start"
                         variants={textVariants}
                     >
-                        <h2 className="text-3xl sm:text-3xl lg:text-4xl font-bold tracking-tight text-black">
+                        <h2 className="text-3xl sm:text-3xl lg:text-4xl 2xl:text-5xl font-bold tracking-tight text-black">
                             {section.title}
                         </h2>
-                        <p className="mt-4 text-md sm:text-lg lg:text-xl text-gray-500 leading-6 sm:leading-7 lg:leading-8">
+                        <p className="mt-4 text-md sm:text-lg lg:text-xl 2xl:text-2xl text-gray-500 leading-6 sm:leading-7 lg:leading-8">
                             {section.description}
                         </p>
                     </motion.div>

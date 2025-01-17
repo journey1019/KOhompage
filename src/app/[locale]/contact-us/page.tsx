@@ -3,11 +3,13 @@ import React from 'react';
 import ContactForm from '@/components/(Contact-us)/ContactForm';
 import { Metadata } from 'next';
 
+export const viewport = "width=device-width, initial-scale=1.0";
 export async function generateMetadata({ params }: { params: { locale: string } }): Promise<Metadata> {
-    const locale = params.locale;
+    const { locale } = await params;
     const data = contactUsData[locale];
 
     return {
+        metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || "https://www.orbcomm.co.kr"), // 환경 변수 사용
         title: `${data.title} | KOREA ORBCOMM`,
         description: data.description,
         icons: {
@@ -30,16 +32,15 @@ export async function generateMetadata({ params }: { params: { locale: string } 
             index: true,
             follow: true,
         },
-        viewport: "width=device-width, initial-scale=1.0",
     };
 }
 
-export default function Page({ params }: { params: { locale: string } }) {
-    const locale = params.locale;
+export default async function Page({ params }: { params: Promise<{ locale: string }> }) {
+    const { locale } = await params;
     const data = contactUsData[locale];
 
     return (
-        <div className="grid md:grid-cols-2 lg:max-w-7xl lg:px-6 lg:py-28 items-start gap-16 p-4 mx-auto max-w-full bg-white">
+        <div className="grid md:grid-cols-2 lg:max-w-7xl 2xl:max-w-screen-2xl lg:px-6 lg:py-28 items-start gap-16 p-4 mx-auto max-w-full bg-white">
             <div>
                 <h1 className="text-gray-800 text-4xl lg:text-6xl font-extrabold text-start">
                     Contact
@@ -47,25 +48,24 @@ export default function Page({ params }: { params: { locale: string } }) {
                 <h1 className="text-gray-800 text-4xl lg:text-6xl font-extrabold text-start">
                     KOREA ORBCOMM
                 </h1>
-                <p className="text-sm text-gray-500 mt-4">
+                <p className="text-sm 2xl:text-xl text-gray-500 mt-4">
                     {data.introText}
                 </p>
 
                 <div className="mt-12 space-y-12">
                     {/* Email Section */}
                     <div>
-                        <h2 className="text-gray-800 text-base font-bold">Email</h2>
+                        <h2 className="text-gray-800 text-base 2xl:text-2xl font-bold">Email</h2>
                         <ul className="mt-4">
                             <li className="flex items-center space-x-4">
-                                {/* Icon Container */}
+                                {/* Iscon Container */}
                                 <div
-                                    className="bg-gray-200 h-10 w-10 rounded-full flex items-center justify-center shrink-0"
+                                    className="bg-gray-200 h-10 w-10 2xl:h-14 2xl:w-14 rounded-full flex items-center justify-center shrink-0"
                                     aria-hidden="true"
                                 >
                                     <svg
                                         xmlns="http://www.w3.org/2000/svg"
-                                        width="20"
-                                        height="20"
+                                        className="w-5 h-5 2xl:w-7 2xl:h-7" // 기본 크기와 2xl 크기 설정
                                         fill="#007bff"
                                         viewBox="0 0 479.058 479.058"
                                     >
@@ -76,34 +76,34 @@ export default function Page({ params }: { params: { locale: string } }) {
                                 </div>
                                 {/* Email Info */}
                                 <div>
-                                    <small className="text-gray-600 block">Mail</small>
+                                    <small className="text-sm bigMobile:text-base 2xl:text-xl text-gray-600 block">Mail</small>
                                     <a
                                         href="mailto:sales@orbcomm.co.kr"
-                                        className="text-blue-600 text-sm font-semibold hover:underline"
+                                        className="text-blue-600 text-sm bigMobile:text-base 2xl:text-xl font-semibold hover:underline"
                                     >
                                         sales@orbcomm.co.kr
                                     </a>
                                 </div>
                             </li>
+
                         </ul>
                     </div>
 
                     {/* Contact Us Section */}
                     <div>
-                        <h2 className="text-gray-800 text-base font-bold">Contact Us</h2>
+                        <h2 className="text-gray-800 text-base 2xl:text-2xl font-bold">Contact Us</h2>
                         <div className="flex flex-row gap-x-10 lg:gap-x-16 mt-4">
                             {/* Phone Info */}
                             <ul>
                                 <li className="flex items-center space-x-4">
                                     {/* Icon Container */}
                                     <div
-                                        className="bg-gray-200 h-10 w-10 rounded-full flex items-center justify-center shrink-0"
+                                        className="bg-gray-200 h-10 w-10 2xl:h-14 2xl:w-14 rounded-full flex items-center justify-center shrink-0"
                                         aria-hidden="true"
                                     >
                                         <svg
                                             xmlns="http://www.w3.org/2000/svg"
-                                            width="20"
-                                            height="20"
+                                            className="w-5 h-5 2xl:w-7 2xl:h-7" // 아이콘 크기 조정
                                             fill="#007bff"
                                             viewBox="0 0 24 24"
                                         >
@@ -113,10 +113,10 @@ export default function Page({ params }: { params: { locale: string } }) {
                                         </svg>
                                     </div>
                                     <div>
-                                        <small className="text-gray-600 block">Call</small>
+                                        <small className="text-sm bigMobile:text-base 2xl:text-xl text-gray-600 block">Call</small>
                                         <a
                                             href="tel:02-3444-7311"
-                                            className="text-blue-600 text-sm font-semibold hover:underline"
+                                            className="text-blue-600 text-sm bigMobile:text-base 2xl:text-xl font-semibold hover:underline"
                                         >
                                             02-3444-7311
                                         </a>
@@ -129,13 +129,12 @@ export default function Page({ params }: { params: { locale: string } }) {
                                 <li className="flex items-center space-x-4">
                                     {/* Icon Container */}
                                     <div
-                                        className="bg-gray-200 h-10 w-10 rounded-full flex items-center justify-center shrink-0"
+                                        className="bg-gray-200 h-10 w-10 2xl:h-14 2xl:w-14 rounded-full flex items-center justify-center shrink-0"
                                         aria-hidden="true"
                                     >
                                         <svg
                                             xmlns="http://www.w3.org/2000/svg"
-                                            width="20"
-                                            height="20"
+                                            className="w-5 h-5 2xl:w-7 2xl:h-7" // 아이콘 크기 조정
                                             fill="#007bff"
                                             viewBox="0 0 24 24"
                                         >
@@ -145,10 +144,10 @@ export default function Page({ params }: { params: { locale: string } }) {
                                         </svg>
                                     </div>
                                     <div>
-                                        <small className="text-gray-600 block">Fax</small>
+                                        <small className="text-sm bigMobile:text-base 2xl:text-xl text-gray-600 block">Fax</small>
                                         <a
                                             href="fax:02-3444-7312"
-                                            className="text-blue-600 text-sm font-semibold hover:underline"
+                                            className="text-blue-600 text-sm bigMobile:text-base 2xl:text-xl font-semibold hover:underline"
                                         >
                                             02-3444-7312
                                         </a>
@@ -158,10 +157,11 @@ export default function Page({ params }: { params: { locale: string } }) {
                         </div>
                     </div>
 
+
                 </div>
 
             </div>
-            <ContactForm locale={params.locale} />
+            <ContactForm locale={locale} />
         </div>
     );
 }

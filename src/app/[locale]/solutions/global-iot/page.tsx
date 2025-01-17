@@ -25,9 +25,9 @@ import CarouselSolutionBlock from '@/components/(Solution)/CarouselSolutionBlock
 import FilterHardwareCarouselBySolutionTags from '@/components/(Hardware)/FilterHardwareCarouselBySolutionTags';
 import FilterResourceCarouselBySolutionTags from '@/components/(Resources)/FilterResourceCarouselBySolutionTags';
 import { CtaSolution } from '@/components/(Solution)/CtaSolution';
+import OneImage from '@/components/(Solution)/OneImage';
 
 export const viewport = "width=device-width, initial-scale=1.0";
-
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
     const { locale } = await params;
     const data = solutionsData[locale]?.["global-iot"];
@@ -37,6 +37,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     }
 
     return {
+        metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || "https://www.orbcomm.co.kr"),
         title: `${data.title} | KOREA ORBCOMM`,
         description: data.description,
         icons: {
@@ -123,10 +124,11 @@ export default async function GlobalIoT({params}: PageProps){
             >
                 고객의 다양한 산업 분야에 적합한 최적의 디바이스 및 통신망을 제공합니다.
             </SectionTitle>
-            <Image src="/images/solutions/global-iot/global-iot.png" alt="/images/solutions/global-iot/global-iot.png"
-                   className="mx-auto items-center justify-center w-full h-auto sm:max-w-md md:max-w-lg lg:max-w-4xl pb-24"
-                   width={800} height={300} unoptimized
-            />
+            {/*<Image src="/images/solutions/global-iot/global-iot.png" alt="/images/solutions/global-iot/global-iot.png"*/}
+            {/*       className="mx-auto items-center justify-center w-full h-auto sm:max-w-md md:max-w-lg lg:max-w-4xl 2xl:max-w-5xl pb-24"*/}
+            {/*       width={800} height={300} unoptimized*/}
+            {/*/>*/}
+            <OneImage item="/images/solutions/global-iot/global-iot.png"/>
 
             {/*<SectionTitle*/}
             {/*    preTitle="HARDWARES"*/}

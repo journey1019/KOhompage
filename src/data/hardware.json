@@ -27,7 +27,7 @@
   {
     "use": true,
     "title": "GT 1220",
-    "subTitle": "Next generation tracking devices(Door)",
+    "subTitle": "Next generation tracking devices (Door)",
     "description": "",
     "category": "Device",
     "imageSrc": "/images/hardware/GT-1220.jpeg",
@@ -55,7 +55,7 @@
   {
     "use": true,
     "title": "GT 1230",
-    "subTitle": "Next generation tracking devices(Door+Cargo)",
+    "subTitle": "Next generation tracking devices (Door+Cargo)",
     "description": "",
     "category": "Device",
     "imageSrc": "/images/hardware/GT-1230.png",

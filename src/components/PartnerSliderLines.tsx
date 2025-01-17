@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
-import Slider from 'react-slick';
+import Slider from "react-slick";
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import partnerData from '@/data/partner.json';
@@ -76,7 +76,7 @@ export default function PartnerSliderLines({ line }: { line: number }) {
 
     return (
         <section
-            className="py-4 overflow-hidden max-w-screen-2xl xl:max-w-screen-xl px-4 md:px-10 mx-auto"
+            className="overflow-hidden max-w-screen-2xl xl:max-w-screen-xl px-4 md:px-10 mx-auto"
             onMouseEnter={() => setIsPaused(true)}
             onMouseLeave={() => setIsPaused(false)}
         >
@@ -85,25 +85,22 @@ export default function PartnerSliderLines({ line }: { line: number }) {
                     display: none !important;
                 }
             `}</style>
-            <Slider {...settings}>
+            <Slider {...(settings as any)}>
                 {data.map((partner, index) => (
-                    <div
-                        key={index}
-                        className="px-2 sm:px-1 md:py-6 flex justify-center items-center"
-                    >
-                        <Image
-                            src={partner.imageUrl}
-                            alt={partner.name}
-                            className={`object-contain mx-auto filter grayscale brightness-1100 ${
-                                isMobile ? 'h-16 sm:h-14 md:h-12' : 'h-20 sm:h-16 md:h-14 lg:h-12'
-                            }`}
-                            width={isMobile ? 100 : 200}
-                            height={isMobile ? 100 : 200}
-                            unoptimized
-                        />
+                    <div key={index} className="px-2 sm:p-3 flex justify-center items-center">
+                        <div className="relative w-32 h-32 md:w-40 md:h-40">
+                            <Image
+                                src={partner.imageUrl}
+                                alt={partner.name}
+                                fill
+                                style={{ objectFit: 'contain', filter: 'grayscale(1) brightness(1.1)' }}
+                                unoptimized
+                            />
+                        </div>
                     </div>
                 ))}
             </Slider>
+
         </section>
     );
 }

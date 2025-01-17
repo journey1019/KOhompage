@@ -31,7 +31,6 @@ import { CtaSolution } from '@/components/(Solution)/CtaSolution';
 
 // viewport 설정을 별도로 export
 export const viewport = "width=device-width, initial-scale=1.0";
-
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
     const { locale } = await params;
     const data = solutionsData[locale]?.["container-iot"];
@@ -41,6 +40,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     }
 
     return {
+        metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || "https://www.orbcomm.co.kr"), // 환경 변수 사용
         title: `${data.title} | KOREA ORBCOMM`,
         description: data.description,
         icons: {
@@ -90,7 +90,7 @@ export default async function ContainerIoT({ params }: PageProps){
     return(
         <section>
             <PageHero
-                size="py-36"
+                size="py-52"
                 url={data.imageUrl}
                 intro={data.imageIntro}
                 title={data.imageMain}

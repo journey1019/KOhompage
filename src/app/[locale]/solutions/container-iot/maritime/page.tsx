@@ -32,6 +32,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     }
 
     return {
+        metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || "https://www.orbcomm.co.kr"), // 환경 변수 사용
         title: `${data.title} | KOREA ORBCOMM`,
         description: data.description,
         icons: {

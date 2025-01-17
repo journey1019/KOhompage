@@ -35,8 +35,8 @@ const HardwareList: React.FC<HardwareListProps> = ({ items }) => {
                         <Image
                             alt={item.slug}
                             src={item.imageSrc}
-                            layout="fill" // 이미지 크기를 부모 요소에 맞춤
-                            objectFit="contain" // 비율 유지하면서 부모에 맞춤
+                            fill // 이미지 크기를 부모 요소에 맞춤
+                            style={{ objectFit: "contain" }} // 비율 유지하면서 부모에 맞춤
                             className="bg-white group-hover:opacity-90 transition duration-300"
                             unoptimized
                         />

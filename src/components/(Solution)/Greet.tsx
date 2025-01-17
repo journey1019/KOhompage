@@ -31,28 +31,28 @@ export default function Greet({ solutionNumber, solutionTitle, solutionName }: G
     };
 
     return (
-        <section className="w-full max-w-2xl md:max-w-7xl mx-auto bg-white dark:bg-gray-900">
+        <section className="w-full max-w-2xl md:max-w-7xl 2xl:max-w-screen-2xl mx-auto bg-white dark:bg-gray-900">
             <motion.div
-                className="py-10 md:py-36 px-4 md:px-24 text-center"
+                className="py-10 md:py-36 px-4 md:px-24 2xl:px-16 text-center"
                 variants={containerVariants}
                 initial="hidden"
                 whileInView="visible" // 스크롤이 컴포넌트 영역에 들어오면 visible 상태로 전환
                 viewport={{ once: true, amount: 0.2 }} // 한 번만 실행, 20%가 보이면 애니메이션 시작
             >
                 <motion.h1
-                    className="text-md md:text-xl text-red-800 font-semibold py-2"
+                    className="text-md md:text-xl 2xl:text-3xl text-red-800 font-semibold py-2"
                     variants={itemVariants}
                 >
                     {solutionNumber}
                 </motion.h1>
                 <motion.h1
-                    className="text-3xl md:text-6xl text-black font-bold dark:text-white"
+                    className="text-3xl md:text-6xl 2xl:text-7xl text-black font-bold dark:text-white"
                     variants={itemVariants}
                 >
                     {solutionTitle}
                 </motion.h1>
                 <motion.h1
-                    className="text-sm md:text-xl text-gray-400 font-semibold py-4"
+                    className="text-sm md:text-xl 2xl:text-3xl text-gray-400 font-semibold py-4"
                     variants={itemVariants}
                 >
                     {solutionName}

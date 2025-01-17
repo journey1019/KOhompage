@@ -20,7 +20,7 @@ const SearchBar: React.FC<SearchBarProps> = ({ onSearch }) => {
             <div className="relative flex items-center">
                 {/* 돋보기 아이콘 */}
                 <svg
-                    className="absolute left-4 w-5 h-5 text-gray-500 dark:text-gray-400"
+                    className="absolute left-4 w-5 h-5 2xl:w-6 2xl:h-6 text-gray-500 dark:text-gray-400"
                     xmlns="http://www.w3.org/2000/svg"
                     fill="none"
                     viewBox="0 0 20 20"
@@ -40,7 +40,7 @@ const SearchBar: React.FC<SearchBarProps> = ({ onSearch }) => {
                     value={input}
                     onChange={handleInputChange} // 입력 변경 시 바로 검색
                     placeholder="Search by keyword"
-                    className="py-3 px-12 rounded-md w-full border-gray-300 border-2"
+                    className="text-base 2xl:text-xl py-3 px-12 2xl:px-14 rounded-md w-full border-gray-300 border-2"
                 />
             </div>
         </div>

@@ -33,7 +33,7 @@ export function Footer({locale}: {locale: string}) {
         <div className="relative">
             <div className="container p-4 mx-auto xl:px-0 md:px-8">
                 <div
-                    className="grid max-w-screen-xl grid-cols-1 gap-10 pt-10 mx-auto sm:mt-5 border-t border-gray-100 dark:border-trueGray-700 lg:grid-cols-5">
+                    className="grid max-w-screen-xl 2xl:max-w-screen-2xl grid-cols-1 gap-10 pt-10 mx-auto sm:mt-5 border-t border-gray-100 dark:border-trueGray-700 lg:grid-cols-5">
                     {/* Left Section */}
                     <div className="lg:col-span-2">
                         <div>
@@ -47,7 +47,7 @@ export function Footer({locale}: {locale: string}) {
                                     alt="N"
                                     width="32"
                                     height="32"
-                                    className="w-8"
+                                    className="w-8 2xl:w-10"
                                     unoptimized
                                 />
                                 <Image
@@ -55,14 +55,14 @@ export function Footer({locale}: {locale: string}) {
                                     alt="/images/KO_SmallLogo.png"
                                     width="32"
                                     height="32"
-                                    className="w-36"
+                                    className="w-36 2xl:w-40"
                                     unoptimized
                                 />
                                 {/*<span>Nextly</span>*/}
                             </Link>
                         </div>
 
-                        <div className="text-sm md:text-base flex flex-col max-w-md mt-4 text-gray-500 dark:text-gray-400">
+                        <div className="text-sm md:text-base 2xl:text-xl flex flex-col max-w-md 2xl:max-w-lg mt-4 text-gray-500 dark:text-gray-400">
                             <span>[06536] 서울특별시 서초구 강남대로 525, 15 (세영제이타워)</span>
                             <span>02-3444-7311</span>
                             <span>sales@orbcomm.co.kr</span>
@@ -89,12 +89,12 @@ export function Footer({locale}: {locale: string}) {
                     <div className="hidden lg:flex">
                         <div className="flex flex-wrap w-full -mt-2 ml-0">
                             <span
-                                className="w-full px-4 sm:py-2 text-sm sm:text-base font-bold text-gray-800 rounded-md">Solutions</span>
+                                className="w-full px-4 sm:py-2 text-sm sm:text-base 2xl:text-xl font-bold text-gray-800 rounded-md">Solutions</span>
                             {solutions.map((item, index) => (
                                 <Link
                                     key={index}
                                     href={`/${locale}/solutions/${item.href}`}
-                                    className="w-full px-4 py-1 sm:py-2 text-sm sm:text-base text-gray-500 rounded-md dark:text-gray-300 hover:text-red-800 focus:text-red-800 focus:bg-red-100 focus:outline-none dark:focus:bg-trueGray-700"
+                                    className="w-full px-4 py-1 sm:py-2 text-sm sm:text-base 2xl:text-xl text-gray-500 rounded-md dark:text-gray-300 hover:text-red-800 focus:text-red-800 focus:bg-red-100 focus:outline-none dark:focus:bg-trueGray-700"
                                 >
                                     {item.title}
                                 </Link>
@@ -104,12 +104,12 @@ export function Footer({locale}: {locale: string}) {
                     <div className="hidden lg:flex">
                         <div className="flex flex-wrap w-full -mt-2 ml-0">
                             <Link href={`/${locale}/hardware`}
-                                  className="w-full px-4 sm:py-2 text-sm sm:text-base font-bold text-gray-800 rounded-md"><span>Hardware</span></Link>
+                                  className="w-full px-4 sm:py-2 text-sm sm:text-base 2xl:text-xl font-bold text-gray-800 rounded-md"><span>Hardware</span></Link>
                             {legal.map((item, index) => (
                                 <Link
                                     key={index}
                                     href={`/${locale}/${item.href}?${item.filterKey}=${item.title}`}
-                                    className="w-full px-4 py-1 sm:py-2 text-sm sm:text-base text-gray-500 rounded-md dark:text-gray-300 hover:text-red-800 focus:text-red-800 focus:bg-red-100 focus:outline-none dark:focus:bg-trueGray-700"
+                                    className="w-full px-4 py-1 sm:py-2 text-sm sm:text-base 2xl:text-xl text-gray-500 rounded-md dark:text-gray-300 hover:text-red-800 focus:text-red-800 focus:bg-red-100 focus:outline-none dark:focus:bg-trueGray-700"
                                 >
                                     {item.title}
                                 </Link>
@@ -119,12 +119,12 @@ export function Footer({locale}: {locale: string}) {
                     <div className="hidden lg:flex">
                         <div className="flex flex-wrap w-full -mt-2 ml-0">
                             <span
-                                className="w-full px-4 sm:py-2 text-sm sm:text-base font-bold text-gray-800 rounded-md">Company</span>
+                                className="w-full px-4 sm:py-2 text-sm sm:text-base 2xl:text-xl font-bold text-gray-800 rounded-md">Company</span>
                             {etc.map((item, index) => (
                                 <Link
                                     key={index}
                                     href={`/${locale}/${item.href}`}
-                                    className="w-full px-4 py-1 sm:py-2 text-sm sm:text-base text-gray-500 rounded-md dark:text-gray-300 hover:text-red-800 focus:text-red-800 focus:bg-red-100 focus:outline-none dark:focus:bg-trueGray-700"
+                                    className="w-full px-4 py-1 sm:py-2 text-sm sm:text-base 2xl:text-xl text-gray-500 rounded-md dark:text-gray-300 hover:text-red-800 focus:text-red-800 focus:bg-red-100 focus:outline-none dark:focus:bg-trueGray-700"
                                 >
                                     {item.title}
                                 </Link>
@@ -179,7 +179,7 @@ export function Footer({locale}: {locale: string}) {
                 {/* Under Section */}
                 <div className="flex flex-col md:flex-row justify-between my-10 text-center">
                     {/* 상단: 모바일에서는 저작권 정보 */}
-                    <div className="order-2 md:order-1 text-sm text-gray-600 dark:text-gray-400">
+                    <div className="order-2 md:order-1 text-sm 2xl:text-lg text-gray-600 dark:text-gray-400">
                         Copyright © {new Date().getFullYear()}.{' '}
                         <a href="https://www.orbcomm.co.kr/" target="_blank" rel="noopener">
                             KOREA ORBCOMM™
@@ -191,7 +191,7 @@ export function Footer({locale}: {locale: string}) {
                     </div>
 
                     {/* 하단: 모바일에서는 개인정보처리방침, 서비스이용약관 */}
-                    <div className="order-1 md:order-2 text-sm text-gray-600 dark:text-gray-400 mb-4 md:mb-0">
+                    <div className="order-1 md:order-2 text-sm 2xl:text-lg text-gray-600 dark:text-gray-400 mb-4 md:mb-0">
                         <Link href="/support"
                               className="pr-5"
                         >

@@ -73,7 +73,7 @@ export default async function LocaleLayout({ children, params }: Props) {
         <body className="flex flex-col min-h-screen w-full mx-auto vsc-initialized">
         <NextIntlClientProvider messages={messages}>
             <NewNavbar locale={locale} />
-            <main className="grow pt-[74px] 2xl:pt-[96px]">{children}</main>
+            <main className="grow pt-[72px] 2xl:pt-[96px]">{children}</main>
             <Footer locale={locale} />
         </NextIntlClientProvider>
         </body>

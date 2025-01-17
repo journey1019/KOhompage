@@ -36,18 +36,18 @@ const FilterResource: React.FC<FiltersResourcesProps> = ({ filters, onFilterChan
 
     return (
         <div className="mb-4">
-            <h2 className="text-xl font-semibold mb-2">Filters</h2>
-            <p className="text-gray-600 mb-4">{totalResourcesCount} resources found</p>
+            <h2 className="text-xl 2xl:text-2xl font-semibold mb-2">Filters</h2>
+            <p className="text-gray-600 mb-4 text-base 2xl:text-lg">{totalResourcesCount} resources found</p>
 
             {/* Content Type 필터 */}
-            <div className="mb-4">
-                <h3 className="font-semibold">Content Type</h3>
-                {["Article", "Brochure", "Datasheet", "Video"].map((type) => (
-                    <label key={type} className="block">
+            <div className="mb-4 2xl:mb-6">
+                <h3 className="font-semibold text-base 2xl:text-lg xl:mb-1">Content Type</h3>
+                {['Article', 'Brochure', 'Datasheet', 'Video'].map((type) => (
+                    <label key={type} className="block text-base 2xl:text-lg">
                         <input
                             type="checkbox"
                             checked={filters.contentType?.includes(type) || false}
-                            onChange={() => handleCheckboxChange("contentType", type)}
+                            onChange={() => handleCheckboxChange('contentType', type)}
                             className="mr-2"
                         />
                         {type}
@@ -72,14 +72,14 @@ const FilterResource: React.FC<FiltersResourcesProps> = ({ filters, onFilterChan
             {/*</div>*/}
 
             {/* Solutions 필터 */}
-            <div className="mb-4">
-                <h3 className="font-semibold">Solutions</h3>
-                {["Container-IoT", "Global-IoT", "Satellite", "AIS"].map((solution) => (
-                    <label key={solution} className="block">
+            <div className="mb-4 2xl:mb-6">
+                <h3 className="font-semibold text-base 2xl:text-lg xl:mb-1">Solutions</h3>
+                {['Container-IoT', 'Global-IoT', 'Satellite', 'AIS'].map((solution) => (
+                    <label key={solution} className="block text-base 2xl:text-lg">
                         <input
                             type="checkbox"
                             checked={filters.solutions?.includes(solution) || false}
-                            onChange={() => handleCheckboxChange("solutions", solution)}
+                            onChange={() => handleCheckboxChange('solutions', solution)}
                             className="mr-2"
                         />
                         {solution}

@@ -37,7 +37,7 @@ export const CtaSolution: React.FC<CtaProps> = ({ items }) => {
     return (
         <Container>
             <motion.div
-                className={`relative flex flex-wrap items-center justify-between w-full max-w-7xl gap-5 mx-auto text-white p-7 lg:p-12 xl:flex-nowrap rounded-xl ${
+                className={`relative flex flex-wrap items-center justify-between w-full max-w-7xl 2xl:max-w-screen-2xl gap-5 mx-auto text-white p-7 lg:p-12 2xl:p-16 2xl:my-10 xl:flex-nowrap rounded-xl ${
                     hasImage ? "" : "bg-gray-900"
                 }`}
                 style={{
@@ -60,8 +60,8 @@ export const CtaSolution: React.FC<CtaProps> = ({ items }) => {
                     className="relative flex-grow text-center lg:text-left"
                     variants={textVariants}
                 >
-                    <h2 className="text-2xl font-medium lg:text-3xl">{items.title}</h2>
-                    <p className="mt-2 font-medium text-white text-opacity-90 lg:text-xl">
+                    <h2 className="text-2xl font-medium lg:text-3xl 2xl:text-4xl">{items.title}</h2>
+                    <p className="mt-2 font-medium text-white text-opacity-90 lg:text-xl 2xl:text-2xl">
                         {items.subTitle}
                     </p>
                 </motion.div>
@@ -73,7 +73,7 @@ export const CtaSolution: React.FC<CtaProps> = ({ items }) => {
                 >
                     <a
                         href="/contact-us"
-                        className="inline-block py-3 mx-auto text-md lg:text-lg font-medium text-center text-gray-900 bg-white rounded-md px-7 lg:px-10 lg:py-5 hover:bg-red-800 hover:text-white hover:border-2 hover:border-gray-50"
+                        className="inline-block py-3 mx-auto text-md lg:text-lg 2xl:text-xl font-medium text-center text-gray-900 bg-white rounded-md px-7 lg:px-10 lg:py-5 hover:bg-red-800 hover:text-white hover:border-2 hover:border-gray-50"
                     >
                         {items.button}
                     </a>
@@ -89,7 +89,7 @@ export const CtaSolution: React.FC<CtaProps> = ({ items }) => {
                             href={items.solutionUrl}
                             target="_blank"
                             rel="noopener"
-                            className="inline-block py-3 mx-auto text-md lg:text-lg font-medium text-center text-white bg-red-700 border-2 border-red-700 rounded-md px-7 lg:px-10 lg:py-5 hover:bg-white hover:text-red-800 hover:border-2 hover:border-red-700"
+                            className="inline-block py-3 mx-auto text-md lg:text-lg 2xl:text-xl font-medium text-center text-white bg-red-700 border-2 border-red-700 rounded-md px-7 lg:px-10 lg:py-5 hover:bg-white hover:text-red-800 hover:border-2 hover:border-red-700"
                         >
                             {items.solutionButton}
                         </a>

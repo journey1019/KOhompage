@@ -25,8 +25,8 @@ const HardwareCard2: React.FC<HardwareItem> = ({ title, subTitle, description, c
                 <Image
                     alt={slug}
                     src={imageSrc}
-                    layout="fill"
-                    objectFit="contain"
+                    fill
+                    style={{ objectFit: "contain" }}
                     className="bg-white transform group-hover:scale-105 transition-transform duration-300 ease-in-out"
                     unoptimized
                 />

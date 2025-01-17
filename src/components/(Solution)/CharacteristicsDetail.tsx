@@ -35,9 +35,9 @@ export default function Characteristics({ items, gridCols = 4 }: Characteristics
     };
 
     return (
-        <section className="mx-auto max-w-7xl px-6 lg:px-8 pb-12">
+        <section className="mx-auto max-w-7xl 2xl:max-w-screen-2xl px-6 lg:px-8 pb-12">
             <motion.div
-                className={`grid grid-cols-1 gap-8 mt-16 md:grid-cols-2 lg:grid-cols-${gridCols} max-w-7xl mx-auto px-6`}
+                className={`grid grid-cols-1 gap-8 2xl:gap-4 mt-16 md:grid-cols-2 lg:grid-cols-${gridCols} max-w-7xl mx-auto px-6`}
                 variants={containerVariants}
                 initial="hidden"
                 whileInView="visible"
@@ -52,15 +52,15 @@ export default function Characteristics({ items, gridCols = 4 }: Characteristics
                         <Image
                             src={item.icon}
                             alt="Advantage Icon"
-                            className="w-20 h-20 object-contain my-4"
+                            className="object-contain my-4 w-14 h-14 sm:w-16 sm:h-16 lg:w-20 lg:h-20 2xl:w-28 2xl:h-28"
                             width={80}
                             height={80}
                             unoptimized
                         />
-                        <h2 className="text-lg text-gray-600 text-center font-semibold">
+                        <h2 className="text-lg 2xl:text-2xl text-gray-600 text-center font-semibold">
                             {item.title}
                         </h2>
-                        <p className="mt-2 text-sm text-gray-500 dark:text-gray-400 text-center line-clamp-3">
+                        <p className="mt-2 text-sm 2xl:text-lg text-gray-500 dark:text-gray-400 text-center line-clamp-3">
                             {item.subtitle}
                         </p>
                     </motion.div>

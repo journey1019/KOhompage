@@ -22,11 +22,13 @@ import Partner from '@/components/Partner'
 import History from '@/components/(About)/History';
 
 // 다국어 지원 Metadata 설정
+export const viewport = "width=device-width, initial-scale=1.0";
 export async function generateMetadata({ params }: { params: { locale: string } }): Promise<Metadata> {
-    const locale = params.locale;
+    const { locale } = await params;
     const data = aboutData[locale];
 
     return {
+        metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || "https://www.orbcomm.co.kr"), // 환경 변수 사용
         title: `${data.title} | KOREA ORBCOMM`,
         description: data.description,
         icons: {
@@ -49,15 +51,14 @@ export async function generateMetadata({ params }: { params: { locale: string } 
             index: true,
             follow: true,
         },
-        viewport: "width=device-width, initial-scale=1.0",
     };
 }
 
 interface PageProps {
-    params: {locale: string};
+    params: Promise<{locale: string}>;
 }
-export default function AboutPage({params}: PageProps) {
-    const { locale } = params;
+export default async function AboutPage({params}: PageProps) {
+    const { locale } = await params;
     const data = aboutData[locale];
 
     return (

@@ -98,7 +98,7 @@ export default function ContactForm({ locale }: ContactFormProps) {
             <div className="grid grid-cols-2 gap-2">
                 {/* Name */}
                 <div className="col-span-1">
-                    <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+                    <label className="block mb-2 text-sm 2xl:text-xl font-medium text-gray-900 dark:text-white">
                         Name <span className="text-red-500">*</span>
                     </label>
                     <input
@@ -114,7 +114,7 @@ export default function ContactForm({ locale }: ContactFormProps) {
 
                 {/* Phone */}
                 <div className="col-span-1">
-                    <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+                    <label className="block mb-2 text-sm 2xl:text-xl font-medium text-gray-900 dark:text-white">
                         Phone Number
                     </label>
                     <input
@@ -129,7 +129,7 @@ export default function ContactForm({ locale }: ContactFormProps) {
 
                 {/* Company */}
                 <div className="col-span-1">
-                    <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+                    <label className="block mb-2 text-sm 2xl:text-xl font-medium text-gray-900 dark:text-white">
                         Company <span className="text-red-500">*</span>
                     </label>
                     <input
@@ -147,7 +147,7 @@ export default function ContactForm({ locale }: ContactFormProps) {
 
                 {/* Position */}
                 <div className="col-span-1">
-                    <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+                    <label className="block mb-2 text-sm 2xl:text-xl font-medium text-gray-900 dark:text-white">
                         Position
                     </label>
                     <input
@@ -162,7 +162,7 @@ export default function ContactForm({ locale }: ContactFormProps) {
 
                 {/* Company Email */}
                 <div className="col-span-1">
-                    <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+                    <label className="block mb-2 text-sm 2xl:text-xl font-medium text-gray-900 dark:text-white">
                         Email <span className="text-red-500">*</span>
                     </label>
                     <input
@@ -198,14 +198,14 @@ export default function ContactForm({ locale }: ContactFormProps) {
 
             {/* Inquiry Type */}
             <div>
-                <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+                <label className="block mb-2 text-sm 2xl:text-base font-medium text-gray-900 dark:text-white">
                     Inquiry Type <span className="text-red-500">*</span>
                 </label>
                 <select
                     name="inquiryType"
                     value={formData.inquiryType}
                     onChange={handleChange}
-                    className="w-auto rounded-md py-3 px-4 bg-gray-100 text-gray-800"
+                    className="w-auto rounded-md py-3 px-4 bg-gray-100 text-gray-800 text-base 2xl:text-xl"
                 >
                     <option value="" disabled>
                         Select Inquiry Type
@@ -219,9 +219,10 @@ export default function ContactForm({ locale }: ContactFormProps) {
                 {errors.inquiryType && <p className="text-red-500 text-xs mt-1">{errors.inquiryType}</p>}
             </div>
 
+
             {/* Additional Comments */}
             <div>
-                <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+                <label className="block mb-2 text-sm 2xl:text-xl font-medium text-gray-900 dark:text-white">
                     Additional Comments <span className="text-red-500">*</span>
                 </label>
                 <textarea
@@ -230,7 +231,7 @@ export default function ContactForm({ locale }: ContactFormProps) {
                     onChange={handleChange}
                     placeholder="Additional Comments"
                     rows={6}
-                    className="w-full rounded-md px-4 bg-gray-100 text-gray-800"
+                    className="w-full rounded-md px-4 bg-gray-100 text-gray-800 pt-4"
                 ></textarea>
                 {errors.message && <p className="text-red-500 text-xs mt-1">{errors.message}</p>}
             </div>
@@ -244,13 +245,14 @@ export default function ContactForm({ locale }: ContactFormProps) {
                     onChange={(e) => setIsAgreed(e.target.checked)}
                     className="w-5 h-5"
                 />
-                <label htmlFor="legal-notice" className="text-sm font-medium text-gray-700">
+                <label htmlFor="legal-notice" className="text-sm 2xl:text-xl font-medium text-gray-700">
                     I agree to KOREA ORBCOMM&apos;s{' '}
                     <a href="/support" className="text-blue-600 underline">
                         Terms of Service
                     </a>{' '}
                     and{' '}
-                    <PDFButton path="/pdf/support/PrivacyPolicy.pdf" label="Privacy Policy" className="text-blue-600 underline" />
+                    <PDFButton path="/pdf/support/PrivacyPolicy.pdf" label="Privacy Policy"
+                               className="text-blue-600 underline" />
                     , which includes my consent to receive marketing information. I can unsubscribe at any time.
                 </label>
             </div>
@@ -259,7 +261,7 @@ export default function ContactForm({ locale }: ContactFormProps) {
             <button
                 type="button"
                 onClick={handleSubmit}
-                className={`bg-blue-500 text-white px-4 py-3 rounded-md ${!isAgreed ? 'opacity-50 cursor-not-allowed' : ''}`}
+                className={`bg-blue-500 text-white text-base 2xl:text-xl px-4 py-3 rounded-md ${!isAgreed ? 'opacity-50 cursor-not-allowed' : ''}`}
                 disabled={!isAgreed || isLoading}
             >
                 {isLoading ? 'Sending...' : 'Send'}
