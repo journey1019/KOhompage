@@ -43,46 +43,57 @@ const FilterResource: React.FC<FiltersResourcesProps> = ({ filters, onFilterChan
             <div className="mb-4 2xl:mb-6">
                 <h3 className="font-semibold text-base 2xl:text-lg xl:mb-1">Content Type</h3>
                 {['Article', 'Brochure', 'Datasheet', 'Video'].map((type) => (
-                    <label key={type} className="block text-base 2xl:text-lg">
+                    <label
+                        key={type}
+                        className="flex items-center space-x-2 text-base 2xl:text-lg cursor-pointer"
+                    >
                         <input
                             type="checkbox"
                             checked={filters.contentType?.includes(type) || false}
                             onChange={() => handleCheckboxChange('contentType', type)}
-                            className="mr-2"
+                            className="form-checkbox h-5 w-5 text-blue-600 rounded-md focus:ring-2 focus:ring-blue-500"
                         />
-                        {type}
+                        <span>{type}</span>
                     </label>
                 ))}
             </div>
 
-            {/* Form 필터 */}
-            {/*<div className="mb-4">*/}
-            {/*    <h3 className="font-semibold">Form</h3>*/}
-            {/*    {["link", "pdf", "page"].map((type) => (*/}
-            {/*        <label key={type} className="block">*/}
-            {/*            <input*/}
-            {/*                type="checkbox"*/}
-            {/*                checked={filters.form?.includes(type) || false}*/}
-            {/*                onChange={() => handleCheckboxChange("form", type)}*/}
-            {/*                className="mr-2"*/}
-            {/*            />*/}
-            {/*            {type}*/}
-            {/*        </label>*/}
-            {/*    ))}*/}
-            {/*</div>*/}
+
+
+            {/* Form 필터 (주석 제거 시 사용 가능) */}
+            {/* <div className="mb-4">
+                <h3 className="font-semibold text-base 2xl:text-lg xl:mb-1">Form</h3>
+                {["link", "pdf", "page"].map((type) => (
+                    <label
+                        key={type}
+                        className="flex items-center space-x-2 text-base 2xl:text-lg cursor-pointer"
+                    >
+                        <input
+                            type="checkbox"
+                            checked={filters.form?.includes(type) || false}
+                            onChange={() => handleCheckboxChange("form", type)}
+                            className="form-checkbox h-5 w-5 text-blue-600 rounded-md focus:ring-2 focus:ring-blue-500"
+                        />
+                        <span>{type}</span>
+                    </label>
+                ))}
+            </div> */}
 
             {/* Solutions 필터 */}
             <div className="mb-4 2xl:mb-6">
                 <h3 className="font-semibold text-base 2xl:text-lg xl:mb-1">Solutions</h3>
                 {['Container-IoT', 'Global-IoT', 'Satellite', 'AIS'].map((solution) => (
-                    <label key={solution} className="block text-base 2xl:text-lg">
+                    <label
+                        key={solution}
+                        className="flex items-center space-x-2 text-base 2xl:text-lg cursor-pointer"
+                    >
                         <input
                             type="checkbox"
                             checked={filters.solutions?.includes(solution) || false}
                             onChange={() => handleCheckboxChange('solutions', solution)}
-                            className="mr-2"
+                            className="form-checkbox h-5 w-5 text-blue-600 rounded-md focus:ring-2 focus:ring-blue-500"
                         />
-                        {solution}
+                        <span>{solution}</span>
                     </label>
                 ))}
             </div>

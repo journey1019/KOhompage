@@ -40,14 +40,14 @@ const FiltersHardware: React.FC<FiltersHardwareProps> = ({ filters, onFilterChan
             <div className="mb-4 2xl:mb-6">
                 <h3 className="font-semibold text-base 2xl:text-lg xl:mb-1">Category</h3>
                 {CATEGORY_OPTIONS.map((category) => (
-                    <label key={category} className="block text-base 2xl:text-lg">
+                    <label key={category} className="flex items-center space-x-2 text-base 2xl:text-lg cursor-pointer">
                         <input
                             type="checkbox"
                             checked={filters.categories?.includes(category) || false}
                             onChange={() => handleCheckboxChange('categories', category)}
-                            className="mr-2"
+                            className="form-checkbox h-5 w-5 text-blue-600 rounded-md focus:ring-2 focus:ring-blue-500"
                         />
-                        {category}
+                        <span>{category}</span>
                     </label>
                 ))}
             </div>
@@ -56,14 +56,14 @@ const FiltersHardware: React.FC<FiltersHardwareProps> = ({ filters, onFilterChan
             <div className="mb-4 2xl:mb-6">
                 <h3 className="font-semibold text-base 2xl:text-lg xl:mb-1">Type</h3>
                 {TYPE_OPTIONS.map((type) => (
-                    <label key={type} className="block text-base 2xl:text-lg">
+                    <label key={type} className="flex items-center space-x-2 text-base 2xl:text-lg cursor-pointer">
                         <input
                             type="checkbox"
                             checked={filters.types?.includes(type) || false}
                             onChange={() => handleCheckboxChange('types', type)}
-                            className="mr-2"
+                            className="form-checkbox h-5 w-5 text-blue-600 rounded-md focus:ring-2 focus:ring-blue-500"
                         />
-                        {type}
+                        <span>{type}</span>
                     </label>
                 ))}
             </div>
@@ -72,14 +72,14 @@ const FiltersHardware: React.FC<FiltersHardwareProps> = ({ filters, onFilterChan
             <div className="mb-4 2xl:mb-6">
                 <h3 className="font-semibold text-base 2xl:text-lg xl:mb-1">Network</h3>
                 {NETWORK_OPTIONS.map((network) => (
-                    <label key={network} className="block text-base 2xl:text-lg">
+                    <label key={network} className="flex items-center space-x-2 text-base 2xl:text-lg cursor-pointer">
                         <input
                             type="checkbox"
                             checked={filters.networks?.includes(network) || false}
                             onChange={() => handleCheckboxChange('networks', network)}
-                            className="mr-2"
+                            className="form-checkbox h-5 w-5 text-blue-600 rounded-md focus:ring-2 focus:ring-blue-500"
                         />
-                        {network}
+                        <span>{network}</span>
                     </label>
                 ))}
             </div>
