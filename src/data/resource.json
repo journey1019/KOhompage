@@ -154,7 +154,7 @@
     ],
     "form": "pdf",
     "image": "/images/resources/brochure/Transportation-Containers-resources_5_satellite-IoT.webp",
-    "path": "/pdf/brochure/Power-Dual-Mode-Connectivity.pdf",
+    "path": "/pdf/brochure/Power-Dual-Mode-Connectivity(KO).pdf",
     "use": true
   },
   {
@@ -178,7 +178,7 @@
     ],
     "form": "pdf",
     "image": "/images/resources/brochure/OGxBrochure.png",
-    "path": "/pdf/brochure/OGx-Brochure.pdf",
+    "path": "/pdf/brochure/OGx-Brochure(KO).pdf",
     "use": true
   },
   {
@@ -220,7 +220,7 @@
     ],
     "form": "pdf",
     "image": "/images/resources/brochure/Smart-Gold-Chain.png",
-    "path": "/pdf/brochure/Smart-Cold-Chain-EN.pdf",
+    "path": "/pdf/brochure/Smart-Cold-Chain-EN(KO).pdf",
     "use": true
   },
   {
@@ -238,7 +238,7 @@
     ],
     "form": "pdf",
     "image": "/images/resources/brochure/Smart-Reefer-Container.png",
-    "path": "/pdf/brochure/Smart-Reefer-Container.pdf",
+    "path": "/pdf/brochure/Smart-Reefer-Container(KO).pdf",
     "use": true
   },
   {
@@ -257,7 +257,7 @@
     ],
     "form": "pdf",
     "image": "/images/resources/brochure/Smart-Dry-Container.png",
-    "path": "/pdf/brochure/Smart-Dry-Container.pdf",
+    "path": "/pdf/brochure/Smart-Dry-Container(KO).pdf",
     "use": true
   },
   {
@@ -276,7 +276,7 @@
     ],
     "form": "pdf",
     "image": "/images/resources/brochure/Resources-SmartTrailer.png",
-    "path": "/pdf/brochure/Smart-Trailer.pdf",
+    "path": "/pdf/brochure/Smart-Trailer(KO).pdf",
     "use": true
   },
   {
@@ -296,7 +296,7 @@
     ],
     "form": "pdf",
     "image": "/images/resources/brochure/Maritime.webp",
-    "path": "/pdf/brochure/ORBCOMM-Maritime-Platform-A4-eng.pdf",
+    "path": "/pdf/brochure/ORBCOMM-Maritime-Platform-A4-eng(KO).pdf",
     "use": true
   },
   {
@@ -718,7 +718,7 @@
     ],
     "form": "pdf",
     "image": "/images/resources/datasheet/application/VesselConnectDatasheet.png",
-    "path": "/pdf/datasheet/application/VesselConnect.pdf",
+    "path": "/pdf/brochure/VesselConnect(KO).pdf",
     "use": true
   },
   {
@@ -737,7 +737,7 @@
     ],
     "form": "pdf",
     "image": "/images/resources/datasheet/application/ReeferConnect.jpg",
-    "path": "/pdf/datasheet/application/ReeferConnect_KR.pdf",
+    "path": "/pdf/brochure/ReeferConnect(KO).pdf",
     "use": true
   },
   {
