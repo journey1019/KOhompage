@@ -53,12 +53,12 @@ export default function PageHeroCenter({ size, url, intro, title, subtitle, thir
                 viewport={{ once: true, amount: 0.2 }}
                 variants={containerVariants}
             >
-                <motion.h1
-                    className="text-md md:text-lg 2xl:text-2xl font-bold mb-3"
-                    variants={itemVariants}
-                >
-                    {intro}
-                </motion.h1>
+                {/*<motion.h1*/}
+                {/*    className="text-md md:text-lg 2xl:text-2xl font-bold mb-3"*/}
+                {/*    variants={itemVariants}*/}
+                {/*>*/}
+                {/*    {intro}*/}
+                {/*</motion.h1>*/}
                 <motion.h2
                     className="text-3xl md:text-5xl 2xl:text-6xl font-bold mb-3 md:pb-2"
                     variants={itemVariants}

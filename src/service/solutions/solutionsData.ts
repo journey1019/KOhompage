@@ -540,7 +540,7 @@ const solutionsData: Record<string, Record<string, SolutionData>> = {
             description: "위성 기반 IoT 솔루션으로 글로벌 통신과 연결성을 제공합니다. OGx/IDP, ORBCOMM:Low Earth Orbit, Starlink.",
             openGraphDesc: "위성 기반 IoT 솔루션으로 글로벌 통신과 연결성을 제공합니다. (OGx/IDP, ORBCOMM:Low Earth Orbit, Starlink.)",
             imageIntro: "",
-            imageMain: "KOREA ORBCOMM 위성기반 통신 서비스",
+            imageMain: "위성기반 통신 서비스",
             imageSub: "코리아오브컴은 글로벌위성망 사업자와 협력을 통해 고객에게 적합한 위성통신서비스를 제공합니다.",
             imageUrl: "/images/solutions/satellite/Satellite_Header.jpg",
             solutionNumber: "Satellite",

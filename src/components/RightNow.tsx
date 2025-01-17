@@ -14,7 +14,7 @@ const offices = [
     {
         location: '서울 본사(HQ)',
         tel: 'T. 02-3444-7311',
-        address: 'A. 06536 서울특별시 서초구 강남대로 525, 15',
+        address: 'A. 06536 서울특별시 서초구 강남대로 525, 15층',
         mail: 'M. sales@orbcomm.co.kr',
     },
     {
