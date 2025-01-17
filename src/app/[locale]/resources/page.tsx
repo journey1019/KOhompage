@@ -38,8 +38,8 @@ const ResourcesPage = () => {
 
 
     return (
-        <div className="mx-auto max-w-7xl 2xl:max-w-screen-2xl px-6 py-12 lg:px-8">
-            <h1 className="text-4xl 2xl:text-5xl font-bold text-gray-800 mb-8">Resources</h1>
+        <div className="mx-auto max-w-7xl maxWeb:max-w-screen-2xl px-6 py-12 lg:px-8">
+            <h1 className="text-4xl maxWeb:text-5xl font-bold text-gray-800 mb-8">Resources</h1>
 
             {/* Grid Layout */}
             <div className="grid grid-cols-1 lg:grid-cols-4 lg:gap-2">

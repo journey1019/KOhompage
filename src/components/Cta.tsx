@@ -28,7 +28,7 @@ export const Cta: React.FC<CtaProps> = ({ items }) => {
     return (
         <Container>
             <motion.div
-                className="flex flex-wrap items-center justify-between w-full max-w-7xl gap-5 mx-auto text-white bg-gray-900 p-7 lg:p-12 2xl:my-10 lg:flex-nowrap rounded-xl"
+                className="flex flex-wrap items-center justify-between w-full max-w-7xl gap-5 mx-auto text-white bg-gray-900 p-7 lg:p-12 maxWeb:my-10 lg:flex-nowrap rounded-xl"
                 variants={containerVariants}
                 initial="hidden"
                 whileInView="visible"

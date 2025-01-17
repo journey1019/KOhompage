@@ -111,14 +111,14 @@ const Timeline: React.FC<TimelineProps> = ({ timeline }) => {
 
     return (
         <section className="bg-gray-100 py-12">
-            <div className="mx-auto max-w-4xl 2xl:max-w-screen-2xl px-4 sm:px-6 lg:px-8">
+            <div className="mx-auto max-w-4xl maxWeb:max-w-screen-2xl px-4 sm:px-6 lg:px-8">
                 {/* Period Buttons */}
                 <div className="flex justify-center gap-2 md:gap-4 mb-8">
                     {periods.map((period) => (
                         <button
                             key={period.label}
                             onClick={() => setActivePeriod(period.label)}
-                            className={`px-4 py-2 text-xs md:text-sm 2xl:text-xl font-medium rounded-md transition ${
+                            className={`px-4 py-2 text-xs md:text-sm maxWeb:text-xl font-medium rounded-md transition ${
                                 activePeriod === period.label
                                     ? 'bg-red-700 text-white'
                                     : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
@@ -141,10 +141,10 @@ const Timeline: React.FC<TimelineProps> = ({ timeline }) => {
                     >
                         {filteredTimeline.map((item) => (
                             <div key={item.year} className="bg-white shadow-md rounded-lg p-4 md:p-6">
-                                <h3 className="text-xl 2xl:text-3xl font-bold text-red-700 mb-4">{item.year}</h3>
+                                <h3 className="text-xl maxWeb:text-3xl font-bold text-red-700 mb-4">{item.year}</h3>
                                 <ul className="list-disc pl-5 space-y-2">
                                     {item.events.map((event, idx) => (
-                                        <li key={idx} className="text-gray-700 text-sm md:text-base 2xl:text-2xl">
+                                        <li key={idx} className="text-gray-700 text-sm md:text-base maxWeb:text-2xl">
                                             {event}
                                         </li>
                                     ))}

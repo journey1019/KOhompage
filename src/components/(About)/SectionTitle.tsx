@@ -41,7 +41,7 @@ export const SectionTitle = (props: Readonly<SectionTitleProps>) => {
             >
                 {props.preTitle && (
                     <motion.div
-                        className="text-sm 2xl:text-xl font-bold tracking-wider text-red-700 uppercase"
+                        className="text-sm maxWeb:text-xl font-bold tracking-wider text-red-700 uppercase"
                         variants={variants}
                     >
                         {props.preTitle}
@@ -50,7 +50,7 @@ export const SectionTitle = (props: Readonly<SectionTitleProps>) => {
 
                 {props.title && (
                     <motion.h2
-                        className="max-w-2xl 2xl:max-w-screen-2xl mt-3 2xl:mt-5 text-2xl md:text-3xl lg:text-4xl 2xl:text-5xl font-bold leading-snug tracking-tight text-gray-800 lg:leading-tight dark:text-white"
+                        className="max-w-2xl maxWeb:max-w-screen-2xl mt-3 maxWeb:mt-5 text-2xl md:text-3xl lg:text-4xl maxWeb:text-5xl font-bold leading-snug tracking-tight text-gray-800 lg:leading-tight dark:text-white"
                         variants={variants}
                     >
                         {props.title}
@@ -59,7 +59,7 @@ export const SectionTitle = (props: Readonly<SectionTitleProps>) => {
 
                 {props.children && (
                     <motion.p
-                        className={`${maxWidthClass} 2xl:max-w-screen-2xl py-4 2xl:pb-8 text-base md:text-lg lg:text-xl 2xl:text-2xl leading-normal text-gray-500 dark:text-gray-300`}
+                        className={`${maxWidthClass} maxWeb:max-w-screen-2xl py-4 maxWeb:pb-8 text-base md:text-lg lg:text-xl maxWeb:text-2xl leading-normal text-gray-500 dark:text-gray-300`}
                         variants={variants}
                     >
                         {props.children}

@@ -66,19 +66,19 @@ const Carousel: React.FC<CarouselProps> = ({ children, itemsCount }) => {
             <div className="flex justify-center gap-4 mt-4">
                 <button
                     onClick={goPrev}
-                    className="flex flex-row items-center 2xl:text-xl bg-gray-800 text-white p-2 2xl:p-3 rounded-md hover:bg-gray-700 disabled:opacity-50"
+                    className="flex flex-row items-center maxWeb:text-xl bg-gray-800 text-white p-2 maxWeb:p-3 rounded-md hover:bg-gray-700 disabled:opacity-50"
                     disabled={currentIndex === 0}
                 >
                     Prev
-                    <ArrowLeftIcon aria-hidden="true" className="h-5 w-5 2xl:h-7 2xl:w-7 text-white ml-2"/>
+                    <ArrowLeftIcon aria-hidden="true" className="h-5 w-5 maxWeb:h-7 maxWeb:w-7 text-white ml-2"/>
                 </button>
                 <button
                     onClick={goNext}
-                    className="flex flex-row items-center 2xl:text-xl bg-gray-800 text-white p-2 2xl:p-3 rounded-md hover:bg-gray-700 disabled:opacity-50"
+                    className="flex flex-row items-center maxWeb:text-xl bg-gray-800 text-white p-2 maxWeb:p-3 rounded-md hover:bg-gray-700 disabled:opacity-50"
                     disabled={currentIndex === maxIndex}
                 >
                     Next
-                    <ArrowRightIcon aria-hidden="true" className="h-5 w-5 2xl:h-7 2xl:w-7 text-white ml-2"/>
+                    <ArrowRightIcon aria-hidden="true" className="h-5 w-5 maxWeb:h-7 maxWeb:w-7 text-white ml-2"/>
                 </button>
             </div>
         </div>

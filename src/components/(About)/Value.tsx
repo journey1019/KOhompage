@@ -37,7 +37,7 @@ export default function Value({ items }: ItemsProps) {
     };
 
     return (
-        <section className="mx-auto max-w-screen-xl 2xl:max-w-screen-2xl">
+        <section className="mx-auto max-w-screen-xl maxWeb:max-w-screen-2xl">
             <motion.div
                 className="mt-4 grid gap-2 sm:gap-6 grid-cols-2 lg:grid-cols-4 px-4 sm:px-8"
                 variants={containerVariants}
@@ -53,7 +53,7 @@ export default function Value({ items }: ItemsProps) {
                     >
                         <div className="flex flex-col items-start space-y-4">
                             {/* 이미지 크기 조정 */}
-                            <div className="relative w-14 h-14 sm:w-16 sm:h-16 2xl:w-28 2xl:h-28 transition-all duration-500 ease-in-out group-hover:scale-110">
+                            <div className="relative w-14 h-14 sm:w-16 sm:h-16 maxWeb:w-28 maxWeb:h-28 transition-all duration-500 ease-in-out group-hover:scale-110">
                                 <Image
                                     src={item.image}
                                     alt={item.title || 'Image description missing'}
@@ -65,10 +65,10 @@ export default function Value({ items }: ItemsProps) {
                             </div>
                             <div>
                                 {/* 텍스트 상단 정렬 */}
-                                <h5 className="text-md sm:text-lg 2xl:text-2xl font-semibold text-gray-800 dark:text-white transition-all duration-500 ease-in-out group-hover:text-red-700">
+                                <h5 className="text-md sm:text-lg maxWeb:text-2xl font-semibold text-gray-800 dark:text-white transition-all duration-500 ease-in-out group-hover:text-red-700">
                                     {item.title}
                                 </h5>
-                                <p className="mt-2 text-xs sm:text-sm 2xl:text-xl text-gray-600 dark:text-gray-300 transition-all duration-500 ease-in-out group-hover:text-gray-900 dark:group-hover:text-gray-100">
+                                <p className="mt-2 text-xs sm:text-sm maxWeb:text-xl text-gray-600 dark:text-gray-300 transition-all duration-500 ease-in-out group-hover:text-gray-900 dark:group-hover:text-gray-100">
                                     {item.description}
                                 </p>
                             </div>

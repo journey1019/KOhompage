@@ -21,7 +21,7 @@ export const SectionTitle = (props: Readonly<SectionTitleProps>) => {
     return (
         <Container
             className={`flex w-full flex-col mt-4 ${
-                props.align === "left" ? "" : "items-center justify-center text-center 2xl:max-w-screen-2xl"
+                props.align === "left" ? "" : "items-center justify-center text-center maxWeb:max-w-screen-2xl"
             }`}>
             {/* PreTitle with Animation */}
             {props.preTitle && (
@@ -30,7 +30,7 @@ export const SectionTitle = (props: Readonly<SectionTitleProps>) => {
                     whileInView="visible"
                     viewport={{ once: true, amount: 0.2 }}
                     variants={fadeInUp}
-                    className="text-sm 2xl:text-xl font-bold tracking-wider text-red-800 uppercase"
+                    className="text-sm maxWeb:text-xl font-bold tracking-wider text-red-800 uppercase"
                 >
                     {props.preTitle}
                 </motion.div>
@@ -43,7 +43,7 @@ export const SectionTitle = (props: Readonly<SectionTitleProps>) => {
                     whileInView="visible"
                     viewport={{ once: true, amount: 0.2 }}
                     variants={fadeInUp}
-                    className="max-w-2xl 2xl:max-w-7xl mt-3 text-3xl 2xl:text-5xl font-bold leading-snug tracking-tight text-gray-800 lg:leading-tight lg:text-4xl dark:text-white"
+                    className="max-w-2xl maxWeb:max-w-7xl mt-3 text-3xl maxWeb:text-5xl font-bold leading-snug tracking-tight text-gray-800 lg:leading-tight lg:text-4xl dark:text-white"
                 >
                     {props.title}
                 </motion.h2>
@@ -56,7 +56,7 @@ export const SectionTitle = (props: Readonly<SectionTitleProps>) => {
                     whileInView="visible"
                     viewport={{ once: true, amount: 0.2 }}
                     variants={fadeInUp}
-                    className="max-w-4xl 2xl:max-w-7xl py-4 2xl:py-5 text-sm 2xl:text-2xl leading-normal text-gray-500 lg:text-lg dark:text-gray-300"
+                    className="max-w-4xl maxWeb:max-w-7xl py-4 maxWeb:py-5 text-sm maxWeb:text-2xl leading-normal text-gray-500 lg:text-lg dark:text-gray-300"
                 >
                     {props.children}
                 </motion.p>
