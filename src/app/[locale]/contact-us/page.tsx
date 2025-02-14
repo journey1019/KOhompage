@@ -157,6 +157,50 @@ export default async function Page({ params }: { params: Promise<{ locale: strin
                         </div>
                     </div>
 
+                    {/* KaKao Section */}
+                    {/* KaKao Section */}
+                    <div>
+                        <h2 className="text-gray-800 text-base maxWeb:text-2xl font-bold">Kakao Talk</h2>
+                        <div className="mt-4 flex items-center space-x-4">
+                            {/* Icon Container */}
+                            <div
+                                className="bg-yellow-400 h-10 w-10 maxWeb:h-14 maxWeb:w-14 rounded-full flex items-center justify-center shrink-0"
+                                aria-hidden="true"
+                            >
+                                <svg
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    className="w-6 h-6 maxWeb:w-8 maxWeb:h-8"
+                                    viewBox="0 0 24 24"
+                                    fill="black"
+                                >
+                                    <path d="M12 2C6.48 2 2 5.91 2 10.73c0 3.07 1.86 5.8 4.7 7.44l-1 3.59c-.13.46.4.82.79.54l4.14-3.1c.45.05.91.08 1.37.08 5.52 0 10-3.91 10-8.73C22 5.91 17.52 2 12 2zm0 14.5c-4.14 0-7.5-2.79-7.5-6.23S7.86 4 12 4s7.5 2.79 7.5 6.27-3.36 6.23-7.5 6.23z" />
+                                </svg>
+                            </div>
+                            {/* Kakao Channel Button */}
+                            <div>
+                                <small className="text-sm bigMobile:text-base maxWeb:text-xl text-gray-600 block">
+                                    카카오톡 채널 추가
+                                </small>
+                                <a
+                                    href="https://pf.kakao.com/_FHxajn"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="text-yellow-500 text-sm bigMobile:text-base maxWeb:text-xl font-semibold hover:underline flex items-center"
+                                >
+                                    <span className="mr-2">코리아오브컴</span>
+                                    <svg
+                                        xmlns="http://www.w3.org/2000/svg"
+                                        className="w-4 h-4 maxWeb:w-6 maxWeb:h-6"
+                                        viewBox="0 0 24 24"
+                                        fill="currentColor"
+                                    >
+                                        <path d="M10 17l5-5-5-5v10z" />
+                                    </svg>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
 
                 </div>
 

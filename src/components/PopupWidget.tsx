@@ -1,7 +1,9 @@
 "use client";
 import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
-import { FaPlus, FaTimes, FaComments } from "react-icons/fa";
+import { FaPlus, FaTimes } from "react-icons/fa";
+import { IoMail } from "react-icons/io5";
+
 import { RiKakaoTalkFill } from "react-icons/ri";
 
 const STORAGE_KEY = "popupWidgetState"; // 로컬 스토리지 키
@@ -36,14 +38,14 @@ const PopupWidget = () => {
             {/* 메인 버튼 */}
             <button
                 onClick={togglePopup}
-                className="w-14 h-14 3xl:w-20 3xl:h-20 maxWeb:w-24 maxWeb:h-24 flex items-center justify-center rounded-full bg-gray-700 text-white shadow-lg transition-transform duration-300"
+                className="w-14 h-14 maxWeb:w-24 maxWeb:h-24 flex items-center justify-center rounded-full bg-gray-700 text-white shadow-lg transition-transform duration-300"
             >
-                {isOpen ? <FaTimes size={24} className="3xl:size-10 maxWeb:size-14" /> : <FaPlus size={24} className="3xl:size-10 maxWeb:size-14" />}
+                {isOpen ? <FaTimes size={24} className="maxWeb:size-14" /> : <FaPlus size={24} className="maxWeb:size-14" />}
             </button>
 
             {/* 팝업 메뉴 */}
             <div
-                className={`absolute bottom-16 3xl:bottom-24 maxWeb:bottom-28 right-1 maxWeb:right-2 flex flex-col space-y-3 transition-all duration-300 ${
+                className={`absolute bottom-16 maxWeb:bottom-28 right-1 maxWeb:right-2 flex flex-col space-y-3 transition-all duration-300 ${
                     isOpen ? "opacity-100 translate-y-0" : "opacity-0 translate-y-5 pointer-events-none"
                 }`}
             >
@@ -55,18 +57,18 @@ const PopupWidget = () => {
                     className="flex items-center p-3 maxWeb:p-4 bg-yellow-400 text-black rounded-lg shadow-lg hover:bg-yellow-500 transition"
                     onClick={togglePopup}
                 >
-                    <RiKakaoTalkFill className="w-6 h-6 3xl:w-12 3xl:h-12" />
+                    <RiKakaoTalkFill className="w-6 h-6" />
                 </a>
 
                 {/* 문의하기 */}
                 <button
-                    className="flex items-center p-3 maxWeb:p-4 bg-green-500 text-white rounded-lg shadow-lg hover:bg-green-600 transition"
+                    className="flex items-center p-3 maxWeb:p-4 bg-blue-500 text-white rounded-lg shadow-lg hover:bg-blue-600 transition"
                     onClick={() => {
                         router.push('/contact-us');
                         togglePopup();
                     }}
                 >
-                    <FaComments className="w-6 h-6 3xl:w-12 3xl:h-12" />
+                    <IoMail className="w-6 h-6 " />
                 </button>
             </div>
         </div>
