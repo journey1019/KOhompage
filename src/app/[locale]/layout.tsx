@@ -8,6 +8,7 @@ import NewNavbar from "@/components/(Header)/example/NewNavbar";
 import { Footer } from "@/components/(Header)/Footer";
 import { Metadata } from 'next';
 import mainData from '@/service/mainData';
+import PopupWidget from '@/components/PopupWidget';
 
 const sans = Open_Sans({ subsets: ['latin'] });
 
@@ -75,6 +76,7 @@ export default async function LocaleLayout({ children, params }: Props) {
             <NewNavbar locale={locale} />
             <main className="grow pt-[72px] maxWeb:pt-[96px]">{children}</main>
             <Footer locale={locale} />
+            <PopupWidget/>
         </NextIntlClientProvider>
         </body>
         </html>
