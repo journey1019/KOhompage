@@ -75,7 +75,7 @@ const NewNavbar = ({ locale }: { locale: string }) => {
                             onMouseEnter={() => handleMouseEnter(item.key)}
                             onMouseLeave={handleMouseLeave}
                         >
-                            <button className="text-gray-700 hover:text-red-600 px-4 maxWeb:text-2xl">
+                            <button className="text-gray-700 hover:text-red-600 px-4 maxWeb:text-2xl font-semibold">
                                 {item.label}
                             </button>
                         </li>
