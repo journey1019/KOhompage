@@ -30,7 +30,7 @@ const callsToAction = [
 export default function Login() {
     return (
         <Popover className="relative">
-            <PopoverButton className="group inline-flex items-center gap-x-1 text-xs mobile:text-sm maxWeb:text-xl font-semibold leading-6 text-gray-900">
+            <PopoverButton className="group inline-flex items-center gap-x-1 text-xs mobile:text-sm 3xl:text-base maxWeb:text-xl font-semibold leading-6 text-gray-900">
                 <span>Platforms</span>
                 <ChevronDownIcon aria-hidden="true" className="h-4 w-4 mobile:h-5 mobile:w-5 maxWeb:h-8 maxWeb:w-8"/>
             </PopoverButton>

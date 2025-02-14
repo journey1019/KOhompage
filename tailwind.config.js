@@ -30,8 +30,9 @@ module.exports = {
         md: '768px',
         lg: '1024px',
         xl: '1280px',
-        '2xl': '1536px',
-        'maxWeb': '2561px',
+        '2xl': '1441px',
+        '3xl': '1751px',
+        'maxWeb': '2001px',
       }
     },
   },

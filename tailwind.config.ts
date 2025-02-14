@@ -17,12 +17,15 @@ const config: Config = {
         },
         screens: { // 해상도 조정
             smallMobile: '321px',
-            mobile: '426px', // 375px 이상
-            sm: '640px',     // 기본 Tailwind sm 해상도
+            mobile: '376px',
+            bigMobile: '426px',
+            sm: '640px',
             md: '768px',
             lg: '1024px',
             xl: '1280px',
-            '2xl': '1536px',
+            '2xl': '1441px',
+            '3xl': '1751px',
+            'maxWeb': '2001px',
         }
     },
   },
