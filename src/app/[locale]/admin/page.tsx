@@ -52,7 +52,7 @@ export default function DashboardPage({ params }: { params: Promise<{ locale: st
                 <div className="flex flex-col">
                     <h1 className="text-3xl font-bold">Welcome to Admin Dashboard</h1>
                     <p>You are successfully logged in.</p>
-                    <p>Test</p>
+                    <p>Test.</p>
                 </div>
 
                 <form action={`/${locale}/api/auth/logout`} method="POST">
