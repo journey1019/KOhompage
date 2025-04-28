@@ -71,8 +71,8 @@ export default function Payment() {
         IMP.init('imp31675063')
 
         IMP.request_pay({
-            pg: 'html5_inicis', // nice, html5_inicis
-            pay_method: 'card',
+            pg: 'html5_inicis.INIpayTest', // nice, html5_inicis, INIpayTest
+            // pay_method: 'card',
             merchant_uid: `order_${new Date().getTime()}`,
             name: `${productNames} 외 ${cart.length}건`,
             amount: totalAmount,
