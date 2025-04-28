@@ -54,21 +54,21 @@ const PopupWidget = () => {
                     href="https://pf.kakao.com/_FHxajn"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center p-3 maxWeb:p-4 bg-yellow-400 text-black rounded-lg shadow-lg hover:bg-yellow-500 transition"
+                    className="flex items-center p-3 maxWeb:p-6 bg-yellow-400 text-black rounded-lg shadow-lg hover:bg-yellow-500 transition"
                     onClick={togglePopup}
                 >
-                    <RiKakaoTalkFill className="w-6 h-6" />
+                    <RiKakaoTalkFill className="w-6 h-6 maxWeb:w-8 maxWeb:h-8" />
                 </a>
 
                 {/* 문의하기 */}
                 <button
-                    className="flex items-center p-3 maxWeb:p-4 bg-blue-500 text-white rounded-lg shadow-lg hover:bg-blue-600 transition"
+                    className="flex items-center p-3 maxWeb:p-6 bg-blue-500 text-white rounded-lg shadow-lg hover:bg-blue-600 transition"
                     onClick={() => {
                         router.push('/contact-us');
                         togglePopup();
                     }}
                 >
-                    <IoMail className="w-6 h-6 " />
+                    <IoMail className="w-6 h-6 maxWeb:w-8 maxWeb:h-8" />
                 </button>
             </div>
         </div>

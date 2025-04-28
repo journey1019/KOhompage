@@ -31,19 +31,19 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
         icons: {
             icon: "/favicon.ico",
         },
-        openGraph: {
-            title: data.title,
-            description: data.openGraphDesc,
-            url: `https://www.orbcomm.co.kr/${locale}`,
-            images: "/images/KO_SmallLogo.png",
-            type: "website",
-        },
-        twitter: {
-            card: "summary_large_image",
-            title: data.title,
-            description: data.openGraphDesc,
-            images: "/images/KO_SmallLogo.png",
-        },
+        // openGraph: {
+        //     title: data.title,
+        //     description: data.openGraphDesc,
+        //     url: `https://www.orbcomm.co.kr/${locale}`,
+        //     images: "/images/KO_SmallLogo.png",
+        //     type: "website",
+        // },
+        // twitter: {
+        //     card: "summary_large_image",
+        //     title: data.title,
+        //     description: data.openGraphDesc,
+        //     images: "/images/KO_SmallLogo.png",
+        // },
         robots: {
             index: true,
             follow: true,

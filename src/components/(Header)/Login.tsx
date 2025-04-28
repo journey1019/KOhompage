@@ -18,8 +18,8 @@ const login = [
     { name: 'Maritime Platform', description: 'Driving container tracking', url: 'https://platform.orbcommmaritime.com/', icon: CursorArrowRaysIcon },
     { name: 'NMS', description: "Network Monitoring System", url: 'https://nms.commtrace.com/', icon: PresentationChartBarIcon },
     { name: 'VMS', description: "Vessel Monitoring System", url: 'https://vms.commtrace.com/', icon: RiShipLine },
-    { name: 'Windward', description: 'Decision Support Platform to Accelerate Global Trade', url: 'https://windward.ai/', icon: SquaresPlusIcon },
-    { name: "Lloyd's List", description: 'Real-time ship movement monitoring', url: 'https://www.lloydslist.com/', icon: ArrowPathIcon },
+    // { name: 'Windward', description: 'Decision Support Platform to Accelerate Global Trade', url: 'https://windward.ai/', icon: SquaresPlusIcon },
+    // { name: "Lloyd's List", description: 'Real-time ship movement monitoring', url: 'https://www.lloydslist.com/', icon: ArrowPathIcon },
 ];
 
 const callsToAction = [

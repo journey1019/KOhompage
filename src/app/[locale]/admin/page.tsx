@@ -54,16 +54,25 @@ export default function DashboardPage({ params }: { params: Promise<{ locale: st
                     <p>You are successfully logged in.</p>
                 </div>
 
-                <button
-                    className="px-4 py-2 bg-red-500 text-white rounded hover:bg-red-600"
-                    onClick={handleLogout}
-                >
-                    Logout
-                </button>
+                <form action={`/${locale}/api/auth/logout`} method="POST">
+                    <button
+                        type="submit"
+                        className="px-4 py-2 bg-red-500 text-white rounded hover:bg-red-600"
+                    >
+                        Logout
+                    </button>
+                </form>
+                {/*<button*/}
+                {/*    className="px-4 py-2 bg-red-500 text-white rounded hover:bg-red-600"*/}
+                {/*    onClick={handleLogout}*/}
+                {/*>*/}
+                {/*    Logout*/}
+                {/*</button>*/}
             </div>
 
             <div className="flex pt-10">
-                <button className="px-6 py-3 bg-white text-red-700 border-2 border-red-700 hover:bg-neutral-100 rounded-md">
+                <button
+                    className="px-6 py-3 bg-white text-red-700 border-2 border-red-700 hover:bg-neutral-100 rounded-md">
                     Resource
                 </button>
             </div>

@@ -7,7 +7,7 @@ module.exports = withNextIntl({
     reactStrictMode: false, // 개발 시 엄격 모드 활성화
     typescript: {
         ignoreBuildErrors: true, // 실제 환경에서는 타입 오류 허용하지 않음
-    }
+    },
 });
 
 
