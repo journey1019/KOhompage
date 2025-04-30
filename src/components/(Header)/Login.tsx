@@ -12,6 +12,7 @@ import {
 } from '@heroicons/react/24/outline';
 import { RiShipLine } from "react-icons/ri";
 import Link from 'next/link';
+import {signIn, signOut, useSession } from "next-auth/react";
 
 const login = [
     { name: 'ORBCOMM Platform', description: 'Fleet Management Solutions', url: 'https://platform.orbcomm.com/', icon: ChartPieIcon },
@@ -23,7 +24,7 @@ const login = [
 ];
 
 const callsToAction = [
-    { name: 'Admin', href: '/admin/login', icon: UserIcon },
+    { name: 'Admin', href: '/ko/auth/signin', icon: UserIcon },
     { name: 'Contact sales', href: '/contact-us', icon: PhoneIcon },
 ];
 
