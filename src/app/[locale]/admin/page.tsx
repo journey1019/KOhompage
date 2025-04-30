@@ -9,6 +9,12 @@ export default function DashboardPage({ params }: { params: Promise<{ locale: st
     const { data: session, status } = useSession();
     const router = useRouter();
 
+    if (session?.user?.role === 'ADMIN') {
+        console.log('관리자입니다.');
+    } else {
+        console.log('일반 사용자입니다.');
+    }
+
     // 비동기적으로 params 처리
     useEffect(() => {
         if (status === "loading") return; // 세션 확인 중이면 아무것도 안함

@@ -37,6 +37,11 @@ export default withAuth(
         pages: {
             signIn: '/ko/auth/signin',
         },
+        callbacks: {
+            authorized: ({ token }) => {
+                return token?.role === 'ADMIN';
+            },
+        },
     }
 );
 

@@ -28,12 +28,13 @@ export async function POST(request: Request) {
             return new Response(JSON.stringify({ error: 'Invalid credentials' }), { status: 401 })
         }
 
+        // password 제외
         const { password, ...userWithoutPass } = user
 
         const accessToken = signJwtAccessToken(userWithoutPass);
         const result = {
             ...userWithoutPass,
-            accessToken,
+            accessToken, // token 에도 role 이 포함됨
         };
 
         return new Response(JSON.stringify(result), {

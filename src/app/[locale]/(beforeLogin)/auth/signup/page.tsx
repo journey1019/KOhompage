@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
+import Link from 'next/link';
 
 export default function SignUpPage() {
     const router = useRouter();
@@ -88,6 +89,15 @@ export default function SignUpPage() {
                     >
                         회원가입
                     </button>
+
+                    <div className="pt-1">
+                        <Link href="/ko/auth/signup">
+                            <div
+                                className="w-full rounded-md text-sm text-center hover:underline hover:text-blue-500">
+                                로그인 페이지
+                            </div>
+                        </Link>
+                    </div>
                 </form>
             </div>
         </div>

@@ -2,7 +2,6 @@
 import NextAuth from 'next-auth/next'
 import CredentialsProvider from 'next-auth/providers/credentials'
 
-
 const handler = NextAuth({
     providers: [
         CredentialsProvider({
@@ -25,7 +24,12 @@ const handler = NextAuth({
 
                 if (user) {
                     // 반환된 모든 객체는 JWT의 '사용자' 속성에 저장됩니다.
-                    return user
+                    return {
+                        id: user.id, // ✅ 이건 있어야 하고
+                        name: user.name, // ✅ 필요하다면 name도 추가
+                        email: user.email,
+                        role: user.role, // ✅ 핵심!
+                    };
                 } else {
                     // null을 반환하면 사용자에게 세부 정보를 확인하라는 오류가 표시됩니다. null 반환
                     return null
@@ -39,12 +43,21 @@ const handler = NextAuth({
     callbacks:{
         // token 정보와 user 정보를 하나의 object로 return
         async jwt({ token, user }) {
-            return { ...token, ...user };
+            if (user) {
+                token.role = user.role;
+                token.email = user.email;
+                token.name = user.name;
+            }
+            return token;
         },
 
         async session({ session, token }) {
             console.log('$$$ token: ', token)
-            session.user = token as any;
+            session.user = {
+                name: token.name,
+                email: token.email,
+                role: token.role,
+            };
             console.log('$$$ session: ', session)
             return session;
         },

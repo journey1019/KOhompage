@@ -94,7 +94,7 @@ export default function LoginModal() {
 
                 {/* 타이틀 */}
                 <h2 className="text-2xl font-bold text-center text-gray-800 mb-8">
-                    로그인하세요
+                    관리자 로그인
                 </h2>
 
                 {/* 로그인 폼 */}
@@ -159,18 +159,10 @@ export default function LoginModal() {
                             로그인하기
                         </button>
 
-                        <div className="pt-4">
-                            <Link href="/auth/signup">
-                                <div
-                                    className="w-full rounded-md text-sm text-center hover:underline hover:text-blue-500">
-                                    계정 만들기
-                                </div>
-                            </Link>
-                        </div>
                         {/*<div className="pt-4">*/}
-                        {/*    <Link href="/auth/signup">*/}
+                        {/*    <Link href="/ko/auth/signup">*/}
                         {/*        <div*/}
-                        {/*            className="w-full py-2 px-4 rounded-md text-white font-semibold text-center transition bg-blue-500 hover:bg-blue-600">*/}
+                        {/*            className="w-full rounded-md text-sm text-center hover:underline hover:text-blue-500">*/}
                         {/*            계정 만들기*/}
                         {/*        </div>*/}
                         {/*    </Link>*/}
