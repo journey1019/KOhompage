@@ -51,6 +51,8 @@ export default withAuth(
             authorized: ({ token, req }) => {
                 const url = req.nextUrl.pathname
 
+                if (url === '/' || url === '/ko' || url === '/en') return true;
+
                 if(!token) return false // 로그인 안했으면 막음
 
                 // ADMIN은 모두 통과
@@ -76,8 +78,10 @@ export const config = {
          * - favicon.ico, robots.txt 등
          * - images/, fonts/, videos/: 정적 폴더들
          */
+        // '/', // 루트 경로도 감지ㄴ
         // '/((?!_next/static|_next/image|favicon.ico|robots.txt|sitemap.xml|images/|fonts/|video/).*)',
-        '/((?!api|_next/static|_next/image|favicon.ico|robots.txt|sitemap.xml|images/|fonts/|video/).*)',
-
+        // '/((?!api|_next/static|_next/image|favicon.ico|robots.txt|sitemap.xml|images/|fonts/|video/).*)',
+        '/',
+        // '/((?!api|_next/static|_next/image|favicon.ico|robots.txt|sitemap.xml|images/|fonts/|video/|auth).*)',
     ],
 }
