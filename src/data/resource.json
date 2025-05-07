@@ -1349,5 +1349,176 @@
     "image": "/images/resources/newsletter/2024-12-10.png",
     "path": "resources/news1",
     "use": false
+  },
+  {
+    "date": "2025-01-17",
+    "contentType": "Newsletter",
+    "title": "[NEWS #1] 코리아오브컴 스마트 컨테이너 IoT 솔루션",
+    "subtitle": "",
+    "tags": [
+      "Container-IoT",
+      "Global-IoT"
+    ],
+    "hideTag": ["CT-1000", "DRY", "Reefer", "냉동", "냉장"],
+    "solutionTag": [],
+    "form": "link",
+    "image": "/images/resources/newsletter/2025-01-17.jpg",
+    "path": "https://pf.kakao.com/_FHxajn/108143988",
+    "use": true
+  },
+  {
+    "date": "2025-01-23",
+    "contentType": "Newsletter",
+    "title": "[NEWS #2] Reefer Container 전용 IoT \"CT3500\"",
+    "subtitle": "",
+    "tags": [
+      "Container-IoT",
+      "Global-IoT"
+    ],
+    "hideTag": ["CT-3500", "Reefer", "냉동", "냉장", "Monitoring"],
+    "solutionTag": [],
+    "form": "link",
+    "image": "/images/resources/newsletter/2025-01-23.png",
+    "path": "https://pf.kakao.com/_FHxajn/108207987",
+    "use": true
+  },
+  {
+    "date": "2025-01-24",
+    "contentType": "Newsletter",
+    "title": "[NEWS #3] OGx 전용 위성 디바이스, SC 1000",
+    "subtitle": "",
+    "tags": [
+      "Satellite-IoT"
+    ],
+    "hideTag": ["SC-1000", "Inmarsat", "Satellite", "Monitoring"],
+    "solutionTag": [],
+    "form": "link",
+    "image": "/images/resources/newsletter/2025-01-24.png",
+    "path": "https://pf.kakao.com/_FHxajn/108220906",
+    "use": true
+  },
+  {
+    "date": "2025-01-25",
+    "contentType": "Newsletter",
+    "title": "[NEWS #4] ORBCOMM ST6100 위성 디바이스",
+    "subtitle": "",
+    "tags": [
+      "Satellite-IoT"
+    ],
+    "hideTag": ["ST-6100", "OGx", "Inmarsat"],
+    "solutionTag": [],
+    "form": "link",
+    "image": "/images/resources/newsletter/2025-01-25.png",
+    "path": "https://pf.kakao.com/_FHxajn/108309584",
+    "use": true
+  },
+  {
+    "date": "2025-02-07",
+    "contentType": "Newsletter",
+    "title": "[NEWS #5] Dry Container 전용 IoT \"CT1000\"",
+    "subtitle": "",
+    "tags": [
+      "Container-IoT"
+    ],
+    "hideTag": ["CT-1000", "Monitoring", "DRY"],
+    "solutionTag": [],
+    "form": "link",
+    "image": "/images/resources/newsletter/2025-02-07.jpg",
+    "path": "https://pf.kakao.com/_FHxajn/108339082",
+    "use": true
+  },
+  {
+    "date": "2025-04-07",
+    "contentType": "Newsletter",
+    "title": "[NEWS #6] ORBCOMM ST6100 활용 사례_어선안전",
+    "subtitle": "",
+    "tags": [
+      "Container-IoT"
+    ],
+    "hideTag": ["ST-6100", "Inmarsat"],
+    "solutionTag": [],
+    "form": "link",
+    "image": "/images/resources/newsletter/2025-04-07.png",
+    "path": "https://pf.kakao.com/_FHxajn/108977302",
+    "use": true
+  },
+  {
+    "date": "2025-04-15",
+    "contentType": "Newsletter",
+    "title": "[NEWS #7] 미국의 신해양전략이 해운·조선산업에 미치는 영향",
+    "subtitle": "",
+    "tags": [
+      "Global-IoT"
+    ],
+    "hideTag": [],
+    "solutionTag": [],
+    "form": "link",
+    "image": "/images/resources/newsletter/2025-04-15.png",
+    "path": "https://pf.kakao.com/_FHxajn/109060438",
+    "use": true
+  },
+  {
+    "date": "2025-04-24",
+    "contentType": "Newsletter",
+    "title": "[NEWS #8] 세상을 연결하는 위성 IoT의 미래, OGx",
+    "subtitle": "",
+    "tags": [
+      "Satellite-IoT",
+      "Global-IoT"
+    ],
+    "hideTag": ["OGx", "Inmarsat", "IDP", "SC-1000", "ST-8100"],
+    "solutionTag": [],
+    "form": "link",
+    "image": "/images/resources/newsletter/2025-04-24.png",
+    "path": "https://pf.kakao.com/_FHxajn/109172939",
+    "use": true
+  },
+  {
+    "date": "2025-05-01",
+    "contentType": "Newsletter",
+    "title": "[NEWS #9] 냉동/냉장 컨테이너를 위한 새로운 디바이스 \"CT3600\"",
+    "subtitle": "",
+    "tags": [
+      "Global-IoT",
+      "Container-IoT"
+    ],
+    "hideTag": ["GT-3600", "냉동"],
+    "solutionTag": [],
+    "form": "link",
+    "image": "/images/resources/newsletter/2025-05-01.png",
+    "path": "https://pf.kakao.com/_FHxajn/109242029",
+    "use": true
+  },
+  {
+    "date": "2025-05-01",
+    "contentType": "Newsletter",
+    "title": "[NEWS #10] 컨테이너를 더욱 스마트하게 ORBCOMM \"CT1010\"",
+    "subtitle": "",
+    "tags": [
+      "Global-IoT",
+      "Container-IoT"
+    ],
+    "hideTag": ["CT-1010", "DRY"],
+    "solutionTag": [],
+    "form": "link",
+    "image": "/images/resources/newsletter/2025-05-01_2.png",
+    "path": "https://pf.kakao.com/_FHxajn/109246436",
+    "use": true
+  },
+  {
+    "date": "2025-05-07",
+    "contentType": "Newsletter",
+    "title": "[NEWS #11] Why Shipping Lines Are Turning to Smart Reefer",
+    "subtitle": "",
+    "tags": [
+      "Global-IoT",
+      "Container-IoT"
+    ],
+    "hideTag": ["Reefer"],
+    "solutionTag": [],
+    "form": "link",
+    "image": "/images/resources/newsletter/2025-05-07.jpg",
+    "path": "https://pf.kakao.com/_FHxajn/109306337",
+    "use": true
   }
 ]

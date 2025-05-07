@@ -99,7 +99,7 @@ const solutionsData: Record<string, GlobalIoTData> = {
                 title1: "VMS",
                 title2: "Commtrace",
                 slug: "vms",
-                description: "Real-Time Network Monitoring System",
+                description: "Real-Time Network Management System",
                 image: "/images/solutions/global-iot/VMS.png",
             },
             {
@@ -107,7 +107,7 @@ const solutionsData: Record<string, GlobalIoTData> = {
                 title1: "",
                 title2: "NMS",
                 slug: "nms",
-                description: "Real-Time Network Monitoring System",
+                description: "Real-Time Network Management System",
                 image: "/images/solutions/global-iot/nms_main.png",
             },
         ],

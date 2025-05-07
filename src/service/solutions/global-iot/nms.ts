@@ -39,19 +39,19 @@ interface NMSData{
 
 const nmsData: Record<string, NMSData> = {
     "en": {
-        title: "NMS(Network Monitoring System)",
+        title: "NMS(Network Management System)",
         description: "A solution for real-time monitoring and analysis of network-connected devices, enabling proactive issue detection and swift identification of root causes.",
         openGraphDesc: "An innovative solution focused on enhancing network stability and maximizing operational efficiency.",
-        imageIntro: "Real-time Network Monitoring System",
+        imageIntro: "Real-time Network Management System",
         imageMain: "Real-time data analytics dashboards and notifications",
         imageUrl: "/images/header/NMS.jpg",
         imageSub: "",
         solutionButton: "Explore the Solution",
         solutionUrl: "https://nms.commtrace.com/",
-        introTitle: "Network Monitoring System",
-        introLetter: "Network Monitoring System (NMS) is a system that monitors all equipment and terminals connected to the network in real time and analyzes data to help proactively detect failures or quickly identify causes. It is an innovative solution that focuses on utilizing the latest technologies to increase the stability of network operations and maximize management efficiency",
+        introTitle: "Network Management System",
+        introLetter: "Network Management System (NMS) is a system that monitors all equipment and terminals connected to the network in real time and analyzes data to help proactively detect failures or quickly identify causes. It is an innovative solution that focuses on utilizing the latest technologies to increase the stability of network operations and maximize management efficiency",
         characteristicsTitle: "NMS 서비스 특징",
-        characteristicsLetter: "통신망 상태를 한눈에, Network Monitoring System(NMS) NMS는 위성, 이동통신, Sigfox 등 다양한 통신망 데이터를 통합하여 수집, 분석, 그리고 실시간 모니터링을 제공합니다.",
+        characteristicsLetter: "통신망 상태를 한눈에, Network Management System(NMS) NMS는 위성, 이동통신, Sigfox 등 다양한 통신망 데이터를 통합하여 수집, 분석, 그리고 실시간 모니터링을 제공합니다.",
         qnaTitle: "Frequently Asked Questions",
         qnaLetter: "Check out our customers' frequently asked questions",
         faqs: [
@@ -114,9 +114,9 @@ const nmsData: Record<string, NMSData> = {
         solutionButton: "솔루션 살펴보기",
         solutionUrl: "https://nms.commtrace.com/",
         introTitle: "네트워크 모니터링 시스템",
-        introLetter: "NMS(Network Monitoring System)는 네트워크에 연결된 모든 장비와 단말기를 실시간으로 모니터링하고, 데이터를 분석하여 장애를 사전에 감지하거나 발생 원인을 신속히 파악할 수 있도록 지원하는 시스템입니다. 최신 기술을 활용하여 네트워크 운영의 안정성을 높이고, 관리의 효율성을 극대화하는 데 초점을 맞춘 혁신적인 솔루션입니다.",
+        introLetter: "NMS(Network Management System)는 네트워크에 연결된 모든 장비와 단말기를 실시간으로 모니터링하고, 데이터를 분석하여 장애를 사전에 감지하거나 발생 원인을 신속히 파악할 수 있도록 지원하는 시스템입니다. 최신 기술을 활용하여 네트워크 운영의 안정성을 높이고, 관리의 효율성을 극대화하는 데 초점을 맞춘 혁신적인 솔루션입니다.",
         characteristicsTitle: "NMS 서비스 특징",
-        characteristicsLetter: "통신망 상태를 한눈에, Network Monitoring System(NMS) NMS는 위성, 이동통신, Sigfox 등 다양한 통신망 데이터를 통합하여 수집, 분석, 그리고 실시간 모니터링을 제공합니다.",
+        characteristicsLetter: "통신망 상태를 한눈에, Network Management System(NMS) NMS는 위성, 이동통신, Sigfox 등 다양한 통신망 데이터를 통합하여 수집, 분석, 그리고 실시간 모니터링을 제공합니다.",
         qnaTitle: "자주 묻는 질문",
         qnaLetter: "고객들이 자주 묻는 질문을 확인해보세요",
         faqs: [

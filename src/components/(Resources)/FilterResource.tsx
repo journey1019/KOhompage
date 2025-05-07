@@ -42,7 +42,7 @@ const FilterResource: React.FC<FiltersResourcesProps> = ({ filters, onFilterChan
             {/* Content Type 필터 */}
             <div className="mb-4 maxWeb:mb-6">
                 <h3 className="font-semibold text-base maxWeb:text-lg xl:mb-1">Content Type</h3>
-                {['Article', 'Brochure', 'Datasheet', 'Video'].map((type) => (
+                {['Article', 'Brochure', 'Datasheet', 'Video', 'Newsletter'].map((type) => (
                     <label
                         key={type}
                         className="flex items-center space-x-2 text-base maxWeb:text-lg cursor-pointer"

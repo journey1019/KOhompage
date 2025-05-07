@@ -18,7 +18,7 @@ export default function VideoBackground({ src }: VideoBackgroundProps) {
 
     return (
         <video
-            className="absolute top-0 left-0 w-full h-full object-cover"
+            className="absolute top-0 left-0 w-full h-full object-cover z-0"
             src={src}
             autoPlay
             loop

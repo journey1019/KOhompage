@@ -1,6 +1,7 @@
 // app/api/auth/[...nextauth]/route.ts
 import NextAuth from 'next-auth/next'
 import CredentialsProvider from 'next-auth/providers/credentials'
+import KakaoProvider from "next-auth/providers/kakao";
 
 const handler = NextAuth({
     providers: [
@@ -38,6 +39,11 @@ const handler = NextAuth({
                 }
 
             },
+        }),
+        // 카카오 프로바이더
+        KakaoProvider({
+            clientId: process.env.KAKAO_CLIENT_ID!,
+            clientSecret: process.env.KAKAO_CLIENT_SECRET!
         })
     ],
     callbacks:{

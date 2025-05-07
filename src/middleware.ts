@@ -16,12 +16,19 @@ export default withAuth(
         const pathname = req.nextUrl.pathname;
         const locale = locales.find((locale) => pathname.startsWith(`/${locale}`));
 
+        // ✅ 1. locale이 아예 없으면 /ko로 리디렉션
         if (!locale) {
             const defaultLocale = 'ko';
-            return NextResponse.redirect(new URL(`/${defaultLocale}${pathname}`, req.url));
+            // / → /ko 리디렉션
+            if (pathname === '/') {
+                return NextResponse.redirect(new URL(`/${defaultLocale}`, req.url));
+            }
+
+            // 그 외 /ko, /en이 아닌 경로는 404로 rewrite
+            return NextResponse.rewrite(new URL(`/${defaultLocale}/404`, req.url));
         }
 
-        // 관리자 페이지 보호
+        // ✅ 2. 관리자 경로 보호
         const isAdminPath = pathname.includes('/admin');
 
         if (isAdminPath) {
@@ -35,16 +42,42 @@ export default withAuth(
     },
     {
         pages: {
-            signIn: '/ko/auth/signin',
+            signIn: '/ko/auth/signin', // 공통 로그인 페이지
         },
         callbacks: {
-            authorized: ({ token }) => {
-                return token?.role === 'ADMIN';
-            },
+            // authorized: ({ token }) => {
+            //     return token?.role === 'ADMIN';
+            // },
+            authorized: ({ token, req }) => {
+                const url = req.nextUrl.pathname
+
+                if(!token) return false // 로그인 안했으면 막음
+
+                // ADMIN은 모두 통과
+                if(token.role === 'ADMIN') return true
+
+                // USER는 /admin 아래 접근 차단
+                if(url.startsWith('/ko/admin')) return false
+
+                // 나머지 경로는 USER도 허용
+                return true
+            }
         },
     }
 );
 
+
 export const config = {
-    matcher: ['/ko/admin/:path*', '/en/admin/:path*'], // 언어별 관리페이지 보호
-};
+    matcher: [
+        /**
+         * 정적 리소스들은 미들웨어 제외
+         * - _next/static: JS, CSS 번들
+         * - _next/image: 이미지 최적화
+         * - favicon.ico, robots.txt 등
+         * - images/, fonts/, videos/: 정적 폴더들
+         */
+        // '/((?!_next/static|_next/image|favicon.ico|robots.txt|sitemap.xml|images/|fonts/|video/).*)',
+        '/((?!api|_next/static|_next/image|favicon.ico|robots.txt|sitemap.xml|images/|fonts/|video/).*)',
+
+    ],
+}

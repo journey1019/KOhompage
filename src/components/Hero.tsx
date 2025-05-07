@@ -7,7 +7,7 @@ export default function Hero() {
     return (
         <section className="relative w-full h-[calc(100vh-72px)] bg-white dark:bg-gray-900">
             {/* 비디오 배경 */}
-            <VideoBackground src="/video/main_video.mov" />
+            <VideoBackground src="/video/main_video.mp4" />
 
             {/* 콘텐츠 오버레이 */}
             <div className="relative z-10 flex flex-col items-center justify-center h-full px-5 dark:bg-black/50">

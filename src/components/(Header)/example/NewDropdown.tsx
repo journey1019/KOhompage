@@ -59,7 +59,7 @@ const NewDropdown = ({ menuKey, locale }: DropdownProps) => {
                             <ul key={item.href}>
                                 <li>
                                     <a
-                                        href={`/solutions/${item.href}`}
+                                        href={`/${locale}/solutions/${item.href}`}
                                         className="group block px-3 py-1 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700"
                                     >
                                         <div className="flex flex-col items-start">
@@ -90,7 +90,7 @@ const NewDropdown = ({ menuKey, locale }: DropdownProps) => {
                         .map((item) => (
                             <Link
                                 key={`${item.filterKey}-${item.label}`} // 고유한 key 설정
-                                href={`/ko/hardware?${item.filterKey}=${item.filterValue}`} // 필터링 조건 URL
+                                href={`/${locale}/hardware?${item.filterKey}=${item.filterValue}`} // 필터링 조건 URL
                                 className="flex flex-row items-center p-4 bg-gray-50 hover:bg-gray-100 rounded-lg text-gray-700 hover:text-red-600"
                             >
                                 <div className="p-1 rounded-md ring-1 ring-gray-300 bg-gray-200 flex items-center">

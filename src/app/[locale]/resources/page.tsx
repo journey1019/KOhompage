@@ -23,8 +23,14 @@ const ResourcesPage = () => {
 
     useEffect(() => {
         const filteredResources = getFilteredResourcesByQueryAndFilters(searchQuery, filters);
-        setResources(filteredResources); // 필터링된 게시글 업데이트
-        setTotalResourcesCount(filteredResources.length); // 게시글 개수 업데이트
+
+        // 날짜 기준 내림차순 정렬
+        const sortedResources = filteredResources.sort((a, b) => {
+            return new Date(b.date).getTime() - new Date(a.date).getTime();
+        });
+
+        setResources(sortedResources); // 필터링된 게시글 업데이트
+        setTotalResourcesCount(sortedResources.length); // 게시글 개수 업데이트
         setCurrentPage(1); // 필터링 시 첫 번째 페이지로 이동
     }, [searchQuery, filters]);
 

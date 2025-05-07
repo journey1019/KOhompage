@@ -2,7 +2,7 @@
 "use client";
 
 import { ChangeEventHandler, FormEventHandler, useEffect, useState } from "react";
-import { useRouter } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 import { signIn } from "next-auth/react";
 import Image from 'next/image';
 import Link from 'next/link';
@@ -12,6 +12,7 @@ export default function LoginModal() {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [rememberMe, setRememberMe] = useState(false);
+    const [loginError, setLoginError] = useState<string | null>(null);
     const router = useRouter();
 
     // 페이지 열릴 때, localStorage에서 이메일 불러오기
@@ -25,6 +26,7 @@ export default function LoginModal() {
 
     const handleSubmit: FormEventHandler<HTMLFormElement> = async (event) => {
         event.preventDefault();
+        setLoginError(null); // 이전 오류 초기화
 
         if (rememberMe) {
             localStorage.setItem('rememberEmail', email);
@@ -32,12 +34,36 @@ export default function LoginModal() {
             localStorage.removeItem('rememberEmail');
         }
 
+        // redirect: false => 로그인 성공 여부만 반환
         const result = await signIn("credentials", {
             username: email,
             password: password,
-            redirect: true,
-            callbackUrl: "/ko/admin",
+            redirect: false,
         });
+
+        if (result?.ok) {
+            // 로그인 성공 후 세션을 확인
+            const sessionRes = await fetch("/api/auth/session");
+            const session = await sessionRes.json();
+
+            const role = session?.user?.role;
+
+            if (role === "ADMIN") {
+                router.push("/ko/admin");
+            } else if (role === "USER") {
+                // router.push("/ko/shop");
+                setLoginError("이 페이지는 관리자 전용입니다.");
+            } else {
+                console.log(result)
+                // 예외: role 없거나 이상하면 fallback
+                // router.push("/");
+                // setLoginError("로그인 정보는 맞지만 역할 정보가 올바르지 않습니다. 관리자에게 문의해주세요.");
+                setLoginError("아이디 또는 비밀번호가 잘못되었습니다.");
+            }
+        } else {
+            setLoginError("아이디 또는 비밀번호가 잘못되었습니다.");
+            // alert("로그인 실패: 아이디 또는 비밀번호를 확인하세요.");
+        }
         console.log(result)
     };
 
@@ -96,6 +122,13 @@ export default function LoginModal() {
                 <h2 className="text-2xl font-bold text-center text-gray-800 mb-8">
                     관리자 로그인
                 </h2>
+
+                {/* 로그인 에러 이유 */}
+                {loginError && (
+                    <p className="text-center text-red-500 text-sm mb-4">
+                        {loginError}
+                    </p>
+                )}
 
                 {/* 로그인 폼 */}
                 <form onSubmit={handleSubmit} className="space-y-6">
@@ -159,14 +192,14 @@ export default function LoginModal() {
                             로그인하기
                         </button>
 
-                        {/*<div className="pt-4">*/}
-                        {/*    <Link href="/ko/auth/signup">*/}
-                        {/*        <div*/}
-                        {/*            className="w-full rounded-md text-sm text-center hover:underline hover:text-blue-500">*/}
-                        {/*            계정 만들기*/}
-                        {/*        </div>*/}
-                        {/*    </Link>*/}
-                        {/*</div>*/}
+                        <div className="pt-4">
+                            <Link href="/ko/auth/signup">
+                                <div
+                                    className="w-full rounded-md text-sm text-center hover:underline hover:text-blue-500">
+                                    계정 만들기
+                                </div>
+                            </Link>
+                        </div>
                     </div>
                 </form>
             </div>

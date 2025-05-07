@@ -91,7 +91,7 @@ export default function SignUpPage() {
                     </button>
 
                     <div className="pt-1">
-                        <Link href="/ko/auth/signup">
+                        <Link href="/ko/auth/signin">
                             <div
                                 className="w-full rounded-md text-sm text-center hover:underline hover:text-blue-500">
                                 로그인 페이지

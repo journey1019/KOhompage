@@ -85,7 +85,7 @@ export default async function NMSPage({params}: PageProps) {
                 solutionUrl={data.solutionUrl}
             />
             <SectionTitle
-                preTitle="Network Monitoring System"
+                preTitle="Network Management System"
                 title={data.characteristicsTitle}
             >
                 {data.characteristicsLetter}

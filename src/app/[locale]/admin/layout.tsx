@@ -1,5 +1,6 @@
 import { Metadata } from 'next';
 import adminData from '@/service/adminData';
+import SidebarDrawer from '@/components/(Admin)/SidebarDrawer';
 
 export const viewport = "width=device-width, initial-scale=1.0";
 export async function generateMetadata({ params }: { params: { locale: string } }): Promise<Metadata> {
@@ -35,5 +36,9 @@ export async function generateMetadata({ params }: { params: { locale: string } 
 
 
 export default function ResourcesLayout({ children }: { children: React.ReactNode }) {
-    return <>{children}</>;
+    return(
+        <>
+            {children}
+        </>
+    );
 }

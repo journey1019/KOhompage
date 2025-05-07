@@ -17,7 +17,7 @@ import {signIn, signOut, useSession } from "next-auth/react";
 const login = [
     { name: 'ORBCOMM Platform', description: 'Fleet Management Solutions', url: 'https://platform.orbcomm.com/', icon: ChartPieIcon },
     { name: 'Maritime Platform', description: 'Driving container tracking', url: 'https://platform.orbcommmaritime.com/', icon: CursorArrowRaysIcon },
-    { name: 'NMS', description: "Network Monitoring System", url: 'https://nms.commtrace.com/', icon: PresentationChartBarIcon },
+    { name: 'NMS', description: "Network Management System", url: 'https://nms.commtrace.com/', icon: PresentationChartBarIcon },
     { name: 'VMS', description: "Vessel Monitoring System", url: 'https://vms.commtrace.com/', icon: RiShipLine },
     // { name: 'Windward', description: 'Decision Support Platform to Accelerate Global Trade', url: 'https://windward.ai/', icon: SquaresPlusIcon },
     // { name: "Lloyd's List", description: 'Real-time ship movement monitoring', url: 'https://www.lloydslist.com/', icon: ArrowPathIcon },
@@ -54,7 +54,7 @@ export default function Login() {
                                 <div className="mt-1 flex h-9 w-9 md:h-11 md:w-11 flex-none items-center justify-center rounded-lg bg-gray-50 group-hover:bg-white">
                                     <item.icon
                                         aria-hidden="true"
-                                        className="h-5 w-5 md:h-6 md:w-6 text-gray-600 group-hover:text-indigo-600"
+                                        className="h-5 w-5 md:h-6 md:w-6 text-gray-600 group-hover:text-red-600"
                                     />
                                 </div>
                                 <div>
