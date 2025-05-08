@@ -192,7 +192,7 @@ export function Footer({locale}: {locale: string}) {
 
                     {/* 하단: 모바일에서는 개인정보처리방침, 서비스이용약관 */}
                     <div className="order-1 md:order-2 text-sm maxWeb:text-lg text-gray-600 dark:text-gray-400 mb-4 md:mb-0">
-                        <Link href="/support"
+                        <Link href={`/${locale}/support`}
                               className="pr-5"
                         >
                             <span className="hover:underline">법적고지</span>
