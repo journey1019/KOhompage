@@ -12,7 +12,7 @@ export default function SupportPage() {
         <section>
             <PageHero
                 size=""
-                url="/images/Header/KOREA_ORBCOMM_notify.jpg"
+                url="/images/header/KOREA_ORBCOMM_notify.jpg"
                 intro=""
                 title="약관"
                 subtitle="법적고지"
