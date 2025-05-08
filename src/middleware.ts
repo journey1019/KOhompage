@@ -53,16 +53,16 @@ export default withAuth(
 
                 if (url === '/' || url === '/ko' || url === '/en') return true;
 
-                if(!token) return false // 로그인 안했으면 막음
+                // 관리자 페이지만 보호
+                const isAdminPath = url.startsWith('/ko/admin') || url.startsWith('/en/admin');
 
-                // ADMIN은 모두 통과
-                if(token.role === 'ADMIN') return true
+                if (isAdminPath) {
+                    if (!token) return false; // 로그인 안한 상태면 관리자 접근 불가
+                    return token.role === 'ADMIN'; // 관리자 권한만 허용
+                }
 
-                // USER는 /admin 아래 접근 차단
-                if(url.startsWith('/ko/admin')) return false
-
-                // 나머지 경로는 USER도 허용
-                return true
+                // 🔓 그 외 페이지는 로그인 여부와 무관하게 접근 허용
+                return true;
             }
         },
     }
