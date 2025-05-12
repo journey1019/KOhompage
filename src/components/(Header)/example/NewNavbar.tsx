@@ -83,7 +83,7 @@ const NewNavbar = ({ locale }: { locale: string }) => {
                 </ul>
 
                 <div className="flex items-center space-x-4">
-                    <Login />
+                    <Login locale={locale} />
                     <Language />
                     <button
                         className="sm:p-2 py-2 rounded-full md:hidden"
