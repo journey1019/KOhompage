@@ -146,7 +146,7 @@ export default async function GlobalIoT({params}: PageProps){
             {/*<Download/>*/}
             {/*<References/>*/}
 
-            <CtaSolution items={data.ctas}/>
+            <CtaSolution items={data.ctas} locale={locale}/>
         </section>
     )
 }

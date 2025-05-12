@@ -75,10 +75,11 @@ import TagFilterBoard from '@/components/(Main)/TagFilterBoard';
 import References from '@/components/(Main)/References';
 import TagFilterBlogCarousel from '@/components/(Resources)/TagFilterBlogCarousel';
 import { notFound } from 'next/navigation';
+import { Metadata } from 'next';
 
 
-export default async function HomePage() {
-
+export default async function HomePage({params}: {params: {locale: string}}) {
+    const { locale } = params;
     // const t = useTranslations('home');
     const solutions = await getAllSolutions(); // 데이터를 비동기로 가져옴
 
@@ -86,7 +87,7 @@ export default async function HomePage() {
         <section>
             {/*<h1>{t('HomePage.title')}</h1>*/}
             {/*<Link href="/about">{t('HomePage.about')}</Link>*/}
-            <Hero />
+            <Hero locale={locale}/>
 
             {/*<Introduce />*/}
             {/*<Partner />*/}
@@ -109,7 +110,7 @@ export default async function HomePage() {
             {/*<TagFilterBoard initialTags={[]} />*/}
 
             {/*<SubscribeSection />*/}
-            <WorkWithUs />
+            <WorkWithUs locale={locale}/>
         </section>
     );
 }

@@ -144,7 +144,7 @@ export default async function AISPage({params}: PageProps){
             </SectionTitle>
             <FilterResourceCarouselBySolutionTags keywords={filteredKeyword} />
             {/*<References/>*/}
-            <CtaSolution items={data.ctas}/>
+            <CtaSolution items={data.ctas} locale={locale}/>
         </section>
     )
 }

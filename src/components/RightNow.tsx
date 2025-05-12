@@ -53,7 +53,11 @@ const gradientAnimation = {
     },
 };
 
-export default function WorkWithUs() {
+interface Props {
+    locale: string;
+}
+
+export default function WorkWithUs({locale}: Props) {
     return (
         <motion.div
             className="relative isolate overflow-hidden bg-gray-100 dark:bg-gray-900 py-14 sm:py-32"
@@ -104,7 +108,7 @@ export default function WorkWithUs() {
                         {links.map((link) => (
                             <motion.a
                                 key={link.name}
-                                href={link.href}
+                                href={`/${locale}/${link.href}`}
                                 variants={itemVariants}
                                 whileHover={{ scale: 1.1 }}
                                 className="hover:text-red-600"

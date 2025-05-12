@@ -151,7 +151,7 @@ export default async function ContainerIoT({ params }: PageProps){
             {/*<TagFilterBlog initialTags={['container-iot']} />*/}
             {/*<TagFilterBlogCarousel initialTags={chips} />*/}
 
-            <CtaSolution items={data.ctas}/>
+            <CtaSolution items={data.ctas} locale={locale}/>
         </section>
     )
 }

@@ -13,6 +13,7 @@ interface CtaProps {
         solutionButton?: string;
         solutionUrl?: string;
     };
+    locale: string;
 }
 
 // Animation Variants
@@ -31,7 +32,8 @@ const buttonVariants = {
     visible: { opacity: 1, scale: 1, transition: { duration: 0.6, ease: "easeOut", delay: 0.2 } },
 };
 
-export const CtaSolution: React.FC<CtaProps> = ({ items }) => {
+
+export const CtaSolution: React.FC<CtaProps> = ({ items, locale }) => {
     const hasImage = !!items.imageUrl;
 
     return (
@@ -72,7 +74,7 @@ export const CtaSolution: React.FC<CtaProps> = ({ items }) => {
                     variants={buttonVariants}
                 >
                     <a
-                        href="/contact-us"
+                        href={`/ko/contact-us`}
                         className="inline-block py-3 mx-auto text-md lg:text-lg maxWeb:text-xl font-medium text-center text-gray-900 bg-white rounded-md px-7 lg:px-10 lg:py-5 hover:bg-red-800 hover:text-white hover:border-2 hover:border-gray-50"
                     >
                         {items.button}

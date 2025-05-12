@@ -23,8 +23,8 @@ import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 
 export const viewport = "width=device-width, initial-scale=1.0";
-export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
-    const { locale } = await params;
+export async function generateMetadata({ params }: { params: { locale: string } }): Promise<Metadata> {
+    const { locale } = params;
     const data = vmsData[locale];
 
     if (!data) {
@@ -62,7 +62,7 @@ interface PageProps {
     params: {locale: string};
 }
 export default async function VMSPage({params}: PageProps) {
-    const { locale } = await params; // 비동기 처리
+    const { locale } = params; // 비동기 처리
     const data = vmsData[locale];
 
     if (!data) {
@@ -123,7 +123,7 @@ export default async function VMSPage({params}: PageProps) {
             <FilterResourceCarouselBySolutionTags keywords={filteredKeyword} />
 
 
-            <CtaSolution items={data.ctas}/>
+            <CtaSolution items={data.ctas} locale={locale}/>
         </section>
     )
 }

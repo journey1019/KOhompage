@@ -3,7 +3,11 @@ import { motion } from 'framer-motion';
 import Image from 'next/image';
 import VideoBackground from '@/components/VideoBackground';
 
-export default function Hero() {
+interface HeroProps {
+    locale: string;
+}
+
+export default function Hero({ locale }: HeroProps) {
     return (
         <section className="relative w-full h-[calc(100vh-72px)] bg-white dark:bg-gray-900">
             {/* 비디오 배경 */}
@@ -45,7 +49,7 @@ export default function Hero() {
                     className="flex flex-col items-center space-y-4 lg:space-y-0 mt-6 lg:flex-row lg:gap-x-5"
                 >
                     <a
-                        href="/contact-us"
+                        href={`/${locale}/contact-us`}
                         className="w-full max-w-xs lg:max-w-[12rem] bg-gray-300 bg-opacity-10 font-bold text-gray-300 rounded-full border-2 border-gray-800 py-3 px-6 sm:px-8 lg:px-10 text-center hover:bg-gray-700 hover:bg-opacity-10"
                     >
                         상담 요청하기
