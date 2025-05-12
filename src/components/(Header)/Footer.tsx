@@ -207,6 +207,12 @@ export function Footer({locale}: {locale: string}) {
                         <PDFButton
                             path="/pdf/support/TermsOfUse.pdf"
                             label="서비스이용약관"
+                            className="pr-5"
+                        />
+                        {/* 코리아오브컴 이용약관 변경에 대한 고지 */}
+                        <PDFButton
+                            path="/pdf/support/TermsOfUse.pdf"
+                            label="이용약관 변경에 대한 고지"
                         />
                     </div>
                 </div>

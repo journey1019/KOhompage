@@ -93,7 +93,7 @@ export default async function StarlinkPage({params}: PageProps) {
             <FilterResourceCarouselBySolutionTags keywords={filteredKeyword} />
 
 
-            <CtaSolution items={data.ctas}/>
+            <CtaSolution items={data.ctas} locale={locale}/>
         </section>
     )
 }
