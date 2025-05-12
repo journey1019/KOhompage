@@ -195,7 +195,7 @@ export function Footer({locale}: {locale: string}) {
                         <Link href={`/ko/support`}
                               className="pr-5"
                         >
-                            <span className="hover:underline">법적고지</span>
+                            <span className="underline text-blue-600 hover:text-blue-800">법적고지</span>
                         </Link>
                         {/* 개인위치정보처리방침 버튼 */}
                         <PDFButton
