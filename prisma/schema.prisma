@@ -33,3 +33,20 @@ enum Role {
   USER
   ADMIN
 }
+
+model Resource {
+  id          Int      @id @default(autoincrement())
+  date        DateTime
+  contentType String
+  title       String   @unique
+  subtitle    String
+  tags        String // 예: "Satellite,AIS"
+  hideTag     String // 예: "위성,글로벌"
+  solutionTag String // 예: "NMS,OGx/IDP"
+  form        String // 예: "pdf" or "link"
+  image       String
+  path        String
+  use         Boolean  @default(true)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}

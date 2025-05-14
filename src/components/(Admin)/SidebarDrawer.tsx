@@ -1,12 +1,16 @@
 'use client'
 
 import { useState } from 'react'
+import Link from 'next/link';
 import Drawer from '@mui/material/Drawer'
 import IconButton from '@mui/material/IconButton'
 import { IoIosArrowForward, IoIosArrowBack, IoIosArrowDown } from 'react-icons/io'
 import { IoMdClose } from 'react-icons/io'
 
-export default function SidebarDrawer() {
+interface Props{
+    locale: string;
+}
+export default function SidebarDrawer({ locale }: Props) {
     const [open, setOpen] = useState(false)
     const toggleDrawer = (newOpen: boolean) => () => setOpen(newOpen)
 
@@ -16,6 +20,37 @@ export default function SidebarDrawer() {
     const handleAccordionToggle = (panel: string) => {
         setExpanded(expanded === panel ? null : panel)
     }
+
+    const menuSections = [
+        {
+            title: '콘텐츠 관리',
+            items: [
+                { name: '뉴스레터', href: 'contents/newsletter' },
+                { name: '자료실', href: 'contents/resources' },
+            ],
+        },
+        {
+            title: '제품 관리',
+            items: [
+                { name: '하드웨어', href: 'hardware' },
+            ],
+        },
+        {
+            title: '결제 관리',
+            items: [
+                { name: '회원관리', href: 'payment/user' },
+                { name: '상품관리', href: 'payment/item' },
+                { name: '결제내역', href: 'payment/detail' },
+                { name: '주문관리', href: 'payment/order' },
+            ],
+        },
+        {
+            title: '통계',
+            items: [
+                { name: '대시보드', href: 'dashboard' },
+            ],
+        },
+    ];
 
     return (
         <>
@@ -43,20 +78,7 @@ export default function SidebarDrawer() {
 
                 <div className="flex-1 overflow-y-auto divide-y px-4 py-2">
                     {/* 아코디언 항목 */}
-                    {[
-                        {
-                            title: '회원관리',
-                            items: ['서브 메뉴 1-1', '서브 메뉴 1-2', '서브 메뉴 1-3'],
-                        },
-                        {
-                            title: '콘텐츠 관리',
-                            items: ['뉴스레터', '자료실'],
-                        },
-                        {
-                            title: '제품관리',
-                            items: ['계정', '보안'],
-                        },
-                    ].map((section) => (
+                    {menuSections.map((section) => (
                         <div key={section.title} className="py-2">
                             <button
                                 className="flex w-full items-center justify-between text-left font-medium text-gray-800 hover:text-blue-600"
@@ -72,9 +94,11 @@ export default function SidebarDrawer() {
                             {expanded === section.title && (
                                 <ul className="mt-2 text-sm text-gray-600">
                                     {section.items.map((item) => (
-                                        <li key={item} className="hover:text-blue-500 hover:bg-gray-100 cursor-pointer pl-4 py-2">
-                                            {item}
-                                        </li>
+                                        <Link key={item.name} href={`/${locale}/admin/${item.href}`} passHref>
+                                            <li className="group hover:text-blue-500 hover:bg-gray-100 pl-4 py-2 rounded cursor-pointer list-none">
+                                                {item.name}
+                                            </li>
+                                        </Link>
                                     ))}
                                 </ul>
                             )}

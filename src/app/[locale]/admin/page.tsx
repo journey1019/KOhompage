@@ -1,39 +1,36 @@
 'use client';
 
+import { use } from 'react';
 import { useSession } from "next-auth/react";
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import SidebarDrawer from '@/components/(Admin)/SidebarDrawer';
 
-export default function DashboardPage({ params }: { params: Promise<{ locale: string }> }) {
-    const [locale, setLocale] = useState<string | null>(null);
+interface Props {
+    params: Promise<{ locale: string }>;
+}
+
+export default function AdminPage({ params }: Props) {
+    const { locale } = use(params); // ✅ Promise 해제
+
     // 로그인 여부 확인
     const { data: session, status } = useSession();
     const router = useRouter();
 
-    console.log(session)
-    console.log(status)
-    if (session?.user?.role === 'ADMIN') {
-        // 관리자 권한 허용
-        console.log('관리자입니다.');
-    } else {
-        console.log('일반 사용자입니다.');
-        router.push('/');
-    }
-
-    // 비동기적으로 params 처리
     useEffect(() => {
-        if (status === "loading") return; // 세션 확인 중이면 아무것도 안함
-        if (!session || session?.user?.role !== 'ADMIN') {
-            alert("관리자만 접근할 수 있습니다.");
-            router.push(`/ko/auth/signin`); // 로그인 안 되어 있으면 /signin으로 이동
-        }
-    }, [session, status, router]);
+        if (status === 'loading') return;
 
-    if (status === "loading" || !session) {
+        if (!session || session.user?.role !== 'ADMIN') {
+            alert('관리자만 접근할 수 있습니다.');
+            router.push(`/${locale}/auth/signin`);
+        }
+    }, [session, status, router, locale]);
+
+    if (status === 'loading' || !session || session.user?.role !== 'ADMIN') {
         return <div>로딩 중...</div>;
     }
 
+    console.log(session)
     const handleLogout = () => {
         // JWT 토큰 삭제 및 리다이렉션
         localStorage.removeItem('token');
@@ -42,7 +39,7 @@ export default function DashboardPage({ params }: { params: Promise<{ locale: st
 
     return (
         <div className="flex flex-row justify-between p-4">
-            <SidebarDrawer />
+            <SidebarDrawer locale={locale}/>
         </div>
 
         // <div className="max-w-7xl mx-auto p-6">

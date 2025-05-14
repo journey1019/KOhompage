@@ -110,7 +110,7 @@ export default async function AboutPage({params}: PageProps) {
 
             <Cta items={data.ctas}/>
 
-            <WorkWithUs />
+            <WorkWithUs locale={locale}/>
         </>
     );
 }
