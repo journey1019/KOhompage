@@ -211,7 +211,7 @@ export function Footer({locale}: {locale: string}) {
                         />
                         {/* 코리아오브컴 이용약관 변경에 대한 고지 */}
                         <PDFButton
-                            path="/pdf/support/TermsOfUse.pdf"
+                            path="/pdf/support/Noti_TermsOfUse.pdf"
                             label="이용약관 변경에 대한 고지"
                         />
                     </div>
