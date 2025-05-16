@@ -11,4 +11,5 @@ export interface Resource {
     image: string;
     path: string;
     use: boolean;
+    html?: string;
 }

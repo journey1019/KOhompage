@@ -83,8 +83,16 @@ export default function ResourceListPage() {
     const currentResources = resources.slice(startIndex, startIndex + itemsPerPage);
 
     // 리소스 수정
+    // const handleEdit = (resource: Resource) => {
+    //     if (resource.form === 'page') {
+    //         router.push(`/${locale}/resource/${resource.id}`);
+    //     } else {
+    //         router.push(`/${locale}/admin/resource/edit/${resource.id}`);
+    //     }
+    // };
+
     const handleEdit = (id: number) => {
-        router.push(`/${locale}/admin/resource/${id}`);
+        router.push(`/${locale}/admin/resource/edit/${id}`);
     };
 
     // 리소스 삭제

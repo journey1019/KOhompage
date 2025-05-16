@@ -44,10 +44,11 @@ model Resource {
   tags        String // 예: "Satellite,AIS"
   hideTag     String // 예: "위성,글로벌"
   solutionTag String // 예: "NMS,OGx/IDP"
-  form        String // 예: "pdf" or "link"
+  form        String // 예: "pdf" or "link" or "page"
   image       String
   path        String
   use         Boolean  @default(true)
+  html        String? // tiptap으로 작성된 HMTL
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt
 }

@@ -2,37 +2,32 @@
 
 import React from "react";
 import Image from "next/image";
+import { Resource } from '@/types/resource'
 import { ArrowDownOnSquareIcon, ArrowTopRightOnSquareIcon } from "@heroicons/react/24/outline";
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 
-interface ResourceCardProps {
-    id: number;
-    date: string;
-    contentType: string; // Video / Guide / Brochures / DataSheets
-    title: string;
-    subtitle?: string;
-    tags: string;
-    form: string;
-    image: string; // 대표 이미지 경로
-    path: string; // 링크 및 페이지
-    use: boolean;
-    onDelete: (id: number) => void; // ✅ 추가
-    onEdit: (id: number) => void; // ✅ 추가
-}
 
-const ResourceCardAdmin: React.FC<ResourceCardProps> = ({ id, date, contentType, title, subtitle, tags, form, image, path, use, onDelete, onEdit }) => {
+const ResourceCardAdmin: React.FC<Resource> = ({ id, date, contentType, title, subtitle, tags, form, image, path, use, onDelete, onEdit }) => {
     const router = useRouter();
     const handleOpenPDF = () => {
         if (form === "pdf") {
             window.open(path, "_blank", "noopener,noreferrer");
         }
     };
-    const handlePageNavigation = () => {
-        if (form === "page") {
-            router.push(path); // Next.js 라우팅
+    const handlePageNavigation = (id, form) => {
+        if (form === 'page') {
+            router.push(`resource/${id}`);
+        } else {
+            router.push(`resource/edit/${id}`);
         }
-    }
+    };
+
+    // const handlePageNavigation = () => {
+    //     if (form === "page") {
+    //         router.push(path); // Next.js 라우팅
+    //     }
+    // }
 
     return (
         <div className={`group flex flex-col border rounded-lg p-4 shadow-lg hover:shadow-xl h-full ${!use && 'bg-gray-300'}`}>
@@ -103,7 +98,7 @@ const ResourceCardAdmin: React.FC<ResourceCardProps> = ({ id, date, contentType,
                         </a>
                     ) : form === 'page' ? (
                         <button
-                            onClick={handlePageNavigation}
+                            onClick={() => handlePageNavigation(id, form)}
                             className="flex flex-row w-full items-center justify-end text-red-500 hover:underline text-end pr-2"
                         >
                             Go to Page

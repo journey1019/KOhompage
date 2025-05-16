@@ -28,6 +28,7 @@ export async function POST(req: NextRequest) {
             image,
             path,
             use,
+            html,
         } = body;
 
         const result = await prisma.resource.create({
@@ -43,6 +44,7 @@ export async function POST(req: NextRequest) {
                 image,
                 path,
                 use,
+                html,
             },
         });
 

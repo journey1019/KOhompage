@@ -9,7 +9,7 @@ import {
 } from '@/components/(Admin)/(Resources)/ResourceFormUtils';
 import Switch from '@mui/material/Switch';
 import FormControlLabel from '@mui/material/FormControlLabel';
-
+import TiptapEditor from '@/components/(Admin)/(Resources)/TipTapEditor';
 
 export default function NewResourcePage() {
     const router = useRouter();
@@ -29,6 +29,7 @@ export default function NewResourcePage() {
         image: '',
         path: '',
         use: true,
+        html: ''
     });
 
     const [existingTitles, setExistingTitles] = useState<string[]>([]);
@@ -70,6 +71,7 @@ export default function NewResourcePage() {
             tags: form.tags.join(','),
             hideTag: form.hideTag.join(','),
             solutionTag: form.solutionTag.join(','),
+            html:form.html
         };
 
         const res = await fetch('/api/resource', {
@@ -167,6 +169,7 @@ export default function NewResourcePage() {
                     <select name="form" value={form.form} onChange={handleChange} className="flex-1 border p-2 rounded">
                         <option value="pdf">PDF</option>
                         <option value="link">Link</option>
+                        <option value="page">Page</option>
                     </select>
                 </div>
 
@@ -182,12 +185,17 @@ export default function NewResourcePage() {
                             <FileUploader label="PDF 업로드" accept="application/pdf" page="resources" onUpload={(url) => setForm(prev => ({...prev, image: url}))} />
                         </div>
                     </div>
-                ) : (
+                ) : form.form === 'link' ? (
                     <div className="flex items-center gap-4">
                         <label className="w-40 text-left font-medium text-gray-700">🔗 링크 입력</label>
                         <input name="path" value={form.path} onChange={handleChange}
                                className="flex-1 border p-2 rounded" />
                     </div>
+                ) : (
+                    <TiptapEditor
+                        content={form.html}
+                        onChange={(newHtml) => setForm(prev => ({ ...prev, html: newHtml }))}
+                    />
                 )}
 
                 {/* 사용 여부 - Checkbox */}
