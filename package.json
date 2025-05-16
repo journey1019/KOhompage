@@ -7,7 +7,8 @@
     "build": "next build || exit 0",
     "start": "next start",
     "lint": "next lint",
-    "seed": "tsx prisma/seed.ts"
+    "seed": "ts-node prisma/seed.ts",
+    "clean-meta": "find public/uploads -name '._*' -type f -delete"
   },
   "dependencies": {
     "@emotion/react": "^11.14.0",

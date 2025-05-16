@@ -2,18 +2,17 @@
 
 import hardwareData from '@/service/hardwarePageData';
 import React, { useState, useEffect } from "react";
+import { Hardware } from "@/types/hardware";
 import {
-    getAllHardware,
     getFilteredHardwaresByQueryAndFilters,
     FilterOptions,
-    HardwareProps
 } from '@/service/hardware/hardwareData';
-import HardwareCard2 from '@/components/(Hardware)/HardwareCard2'; // Page 이동
 import HardwareCardPDF from '@/components/(Hardware)/HardwareCardPDF'; // PDF 다운
 import SearchBar from '@/components/(Hardware)/SearchBar';
 import FiltersHardware from '@/components/(Hardware)/FilterHardware';
 import PageHero from '@/components/PageHero';
 import { useRouter, useSearchParams } from 'next/navigation';
+import { Resource } from '@/types/resource';
 
 const HardwarePage = () => {
     const router = useRouter();
@@ -27,9 +26,18 @@ const HardwarePage = () => {
         networks: [],
         tags: [],
     });
-    const [hardware, setHardware] = useState<HardwareProps[]>(getAllHardware());
+    const [hardware, setHardware] = useState<Hardware[]>([]);
     const [totalResourcesCount, setTotalResourcesCount] = useState<number>(hardware.length);
     const [isDrawerOpen, setIsDrawerOpen] = useState<boolean>(false); // 모바일 필터 Drawer 상태
+
+    useEffect(() => {
+        fetch('/api/hardware')
+            .then(res => res.json())
+            .then(data => {
+                const activeResources = data.filter((item: Resource) => item.use === true);
+                setHardware(activeResources);
+            });
+    }, []);
 
     // URL params 기반으로 초기 필터 설정
     useEffect(() => {
@@ -44,18 +52,28 @@ const HardwarePage = () => {
 
     // 검색 및 필터링 동작
     useEffect(() => {
-        const filteredResources = getFilteredHardwaresByQueryAndFilters(searchQuery, filters);
-        setHardware(filteredResources);
-        setTotalResourcesCount(filteredResources.length);
+        const fetchFilteredHardwares = async () => {
+            const filtered = await getFilteredHardwaresByQueryAndFilters(searchQuery, filters);
 
-        // URL 업데이트 (replace로 리로드 방지 및 스크롤 유지)
-        const query = new URLSearchParams();
-        if (searchQuery) query.set('query', searchQuery);
-        Object.entries(filters).forEach(([key, values]) => {
-            if (values) values.forEach((value) => query.append(key, value));
-        });
-        router.replace(`/ko/hardware?${query.toString()}`, { scroll: false });
-    }, [searchQuery, filters]);
+            const sorted = filtered
+                .filter(h => h.use) // ✅ use: true만
+                .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
+
+            setHardware(sorted);
+            setTotalResourcesCount(sorted.length);
+
+            const query = new URLSearchParams();
+            if (searchQuery) query.set('query', searchQuery);
+            Object.entries(filters).forEach(([key, values]) => {
+                if (values) values.forEach(value => query.append(key, value));
+            });
+
+            router.replace(`/${locale}/hardware?${query.toString()}`, { scroll: false });
+        };
+
+        fetchFilteredHardwares();
+    }, [searchQuery, filters, locale]);
+
 
     const toggleDrawer = () => {
         setIsDrawerOpen(!isDrawerOpen); // 드로어 상태 토글

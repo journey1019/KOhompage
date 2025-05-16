@@ -16,7 +16,7 @@ export default function History() {
             title: '기간통신사업자',
             description: 'Neque Dolor, fugiat non cum doloribus aperiam voluptates nostrum.',
             alt: 'Satellite Icon',
-            path: '/pdf/support/TermsOfUse.pdf'
+            path: '/pdf/support/TermsOfUse_v1.pdf'
         },
         {
             image: '/images/icons/color/Handshake.png',
@@ -29,7 +29,7 @@ export default function History() {
             title: '안정적이고 빠른 통신서비스',
             description: 'Neque Dolor, fugiat non cum doloribus aperiam voluptates nostrum.',
             alt: 'Exchange Icon',
-            path: '/pdf/support/TermsOfUse.pdf'
+            path: '/pdf/support/TermsOfUse_v1.pdf'
         },
     ];
 

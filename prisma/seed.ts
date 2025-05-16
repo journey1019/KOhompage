@@ -32,12 +32,51 @@ async function main() {
 
 
     // 📁 resource.json 불러오기
-    const resourcePath = path.join(__dirname, '../src/data/resource.json');
-    const resourceRaw = fs.readFileSync(resourcePath, 'utf-8');
-    const resources = JSON.parse(resourceRaw);
+    /**
+     * 실행 하지 X
+     * */
+    // const resourcePath = path.join(__dirname, '../src/data/resource.json');
+    // const resourceRaw = fs.readFileSync(resourcePath, 'utf-8');
+    // const resources = JSON.parse(resourceRaw);
+    //
+    // for (const item of resources) {
+    //     const exists = await prisma.resource.findFirst({
+    //         where: {
+    //             title: item.title,
+    //             date: new Date(item.date),
+    //         },
+    //     });
+    //
+    //     if (exists) {
+    //         console.log(`🔁 이미 존재하는 리소스: ${item.title} - 스킵`);
+    //         continue;
+    //     }
+    //
+    //     await prisma.resource.create({
+    //         data: {
+    //             date: new Date(item.date),
+    //             contentType: item.contentType,
+    //             title: item.title,
+    //             subtitle: item.subtitle,
+    //             tags: item.tags.join(','),             // 배열 → 문자열
+    //             hideTag: item.hideTag.join(','),
+    //             solutionTag: item.solutionTag.join(','),
+    //             form: item.form,
+    //             image: item.image,
+    //             path: item.path,
+    //             use: item.use,
+    //         },
+    //     });
+    //
+    //     console.log(`✅ 리소스 추가됨: ${item.title}`);
+    // }
 
-    for (const item of resources) {
-        const exists = await prisma.resource.findFirst({
+    const filePath = path.join(process.cwd(), 'src/data/hardware.json');
+    const rawData = fs.readFileSync(filePath, 'utf-8');
+    const hardwares = JSON.parse(rawData);
+
+    for (const item of hardwares) {
+        const exists = await prisma.hardware.findFirst({
             where: {
                 title: item.title,
                 date: new Date(item.date),
@@ -45,27 +84,28 @@ async function main() {
         });
 
         if (exists) {
-            console.log(`🔁 이미 존재하는 리소스: ${item.title} - 스킵`);
+            console.log(`🔁 이미 존재: ${item.title} - 건너뜀`);
             continue;
         }
 
-        await prisma.resource.create({
+        await prisma.hardware.create({
             data: {
                 date: new Date(item.date),
-                contentType: item.contentType,
+                category: item.category,
                 title: item.title,
-                subtitle: item.subtitle,
-                tags: item.tags.join(','),             // 배열 → 문자열
+                subtitle: item.subTitle || '', // 예외 처리
+                description: item.description || '',
+                tags: item.tags.join(','), // ✅ 올바른 키 이름 주의
                 hideTag: item.hideTag.join(','),
                 solutionTag: item.solutionTag.join(','),
-                form: item.form,
-                image: item.image,
+                imageSrc: item.imageSrc,
+                slug: item.slug,
                 path: item.path,
                 use: item.use,
             },
         });
 
-        console.log(`✅ 리소스 추가됨: ${item.title}`);
+        console.log(`✅ 삽입 완료: ${item.title}`);
     }
 }
 

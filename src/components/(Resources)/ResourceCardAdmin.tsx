@@ -35,7 +35,7 @@ const ResourceCardAdmin: React.FC<ResourceCardProps> = ({ id, date, contentType,
     }
 
     return (
-        <div className="group flex flex-col border rounded-lg p-4 shadow-lg hover:shadow-xl h-full">
+        <div className={`group flex flex-col border rounded-lg p-4 shadow-lg hover:shadow-xl h-full ${!use && 'bg-gray-300'}`}>
             {/* 이미지 섹션 */}
             <div className="relative overflow-hidden rounded-xl">
                 {image ? (
@@ -71,22 +71,26 @@ const ResourceCardAdmin: React.FC<ResourceCardProps> = ({ id, date, contentType,
                 <p className="mt-2 text-sm maxWeb:text-lg text-gray-600 line-clamp-2">{subtitle}</p>
 
                 {/* Tags */}
+                {/*<div className="mt-4 flex flex-wrap gap-2">*/}
+                {/*    {tags.split(',').map((tag) => (*/}
+                {/*        <span key={tag} className="px-2 py-1 text-xs text-white bg-red-500 rounded-full">*/}
+                {/*            {tag}*/}
+                {/*        </span>*/}
+                {/*    ))}*/}
+                {/*</div>*/}
                 <div className="mt-4 flex flex-wrap gap-2">
-                    {tags.split(',').map((tag) => (
+                    {(typeof tags === 'string' ? tags.split(',') : Array.isArray(tags) ? tags : []).map((tag) => (
                         <span key={tag} className="px-2 py-1 text-xs text-white bg-red-500 rounded-full">
                             {tag}
                         </span>
                     ))}
                 </div>
+
             </div>
 
             {/* 버튼 섹션 */}
             <div className="mt-4">
-                <div className="flex flex-row justify-between">
-                    <div className="flex flex-row space-x-4">
-                        <button onClick={() => onEdit(id)} className="px-3 py-1 rounded-full bg-blue-300 group-hover:bg-blue-500 text-white">Edit</button>
-                        <button onClick={() => onDelete(id)} className="px-3 py-1 rounded-full bg-red-300 group-hover:bg-red-500 text-white">Delete</button>
-                    </div>
+                <div className="flex flex-row justify-end">
                     {form === 'link' ? (
                         <a
                             href={path}
@@ -114,6 +118,16 @@ const ResourceCardAdmin: React.FC<ResourceCardProps> = ({ id, date, contentType,
                             <ArrowDownOnSquareIcon aria-hidden="true" className="h-5 w-5 ml-2" />
                         </button>
                     )}
+                </div>
+                <div className="flex flex-row flex-wrap gap-3 mt-4">
+                    <button onClick={() => onEdit(id)}
+                            className="px-3 py-1 rounded-full bg-blue-500 hover:bg-blue-600 text-white">
+                        ✏️ Edit
+                    </button>
+                    <button onClick={() => onDelete(id)}
+                            className="px-3 py-1 rounded-full bg-red-500 hover:bg-red-600 text-white">
+                        🗑 Delete
+                    </button>
                 </div>
             </div>
         </div>

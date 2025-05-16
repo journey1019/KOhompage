@@ -3,33 +3,28 @@
 import { useRouter, usePathname } from 'next/navigation';
 import { useState, useEffect } from 'react';
 import { GoPlus } from "react-icons/go";
+import {
+    tagOptions, solutionTagOptions, contentTypeOptions,
+    useFormHandlers, TagSelector, FileUploader
+} from '@/components/(Admin)/(Resources)/ResourceFormUtils';
+import Switch from '@mui/material/Switch';
+import FormControlLabel from '@mui/material/FormControlLabel';
 
-const tagOptions = [
-    'Container-IoT', 'Global-IoT', 'Satellite', 'AIS', 'Cellular', 'Door', 'Cargo',
-    'Dry', 'Reefer', 'NTN', 'OGx/IDP'
-];
-
-const solutionTagOptions = [
-    'Container-IoT', 'Maritime', 'Global-IoT', 'NMS', 'VMS',
-    'Satellite', 'OGx/IDP', 'LowEarthOrbit', 'Starlink', 'AIS'
-];
-
-const contentTypeOptions = [
-    'Article', 'Datasheet', 'Newsletter', 'Video', 'Brochure'
-];
 
 export default function NewResourcePage() {
     const router = useRouter();
     const locale = usePathname().split('/')[1];
 
-    const [form, setForm] = useState({
+    const {
+        form, setForm, handleChange, toggleTag
+    } = useFormHandlers({
         date: new Date().toISOString().split('T')[0],
         contentType: 'Brochure',
         title: '',
         subtitle: '',
-        tags: [] as string[],
-        hideTag: [] as string[],
-        solutionTag: [] as string[],
+        tags: [],
+        hideTag: [],
+        solutionTag: [],
         form: 'pdf',
         image: '',
         path: '',
@@ -45,42 +40,14 @@ export default function NewResourcePage() {
             .then(data => setExistingTitles(data.map((r: any) => r.title)));
     }, []);
 
-    const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
-        const { name, value, type, checked } = e.target;
-        setForm(prev => ({ ...prev, [name]: type === 'checkbox' ? checked : value }));
-    };
-
-    const toggleTag = (tag: string) => {
-        setForm(prev => {
-            const tags = prev.tags.includes(tag)
-                ? prev.tags.filter(t => t !== tag)
-                : [...prev.tags, tag];
-            return { ...prev, tags };
-        });
-    };
-
-    const toggleSolutionTag = (tag: string) => {
-        setForm(prev => {
-            const tags = prev.solutionTag.includes(tag)
-                ? prev.solutionTag.filter(t => t !== tag)
-                : [...prev.solutionTag, tag];
-            return { ...prev, solutionTag: tags };
-        });
-    };
-
-    const handleImageUpload = async (file: File) => {
+    const handleImageUpload = async (file: File, page: 'resource') => {
         const formData = new FormData();
         formData.append('file', file);
-        try {
-            const res = await fetch('/api/upload/image', { method: 'POST', body: formData });
-            if (!res.ok) throw new Error('이미지 업로드 실패');
-            const data = await res.json();
-            return data.url;
-        } catch (err) {
-            console.error('❌ 이미지 업로드 실패', err);
-            alert('이미지 업로드에 실패했습니다.');
-            return '';
-        }
+        formData.append('page', page);
+
+        const res = await fetch('/api/upload/image', { method: 'POST', body: formData });
+        const data = await res.json();
+        setForm(prev => ({ ...prev, image: data.url }));
     };
 
     const handlePdfUpload = async (file: File) => {
@@ -88,7 +55,7 @@ export default function NewResourcePage() {
         formData.append('file', file);
         const res = await fetch('/api/upload/pdf', { method: 'POST', body: formData });
         const data = await res.json();
-        return data.url;
+        setForm(prev => ({ ...prev, path: data.url }));
     };
 
     const handleSubmit = async (e: React.FormEvent) => {
@@ -97,134 +64,165 @@ export default function NewResourcePage() {
             setError('동일한 제목의 리소스가 이미 존재합니다.');
             return;
         }
-        setError(null);
+
         const payload = {
             ...form,
             tags: form.tags.join(','),
             hideTag: form.hideTag.join(','),
             solutionTag: form.solutionTag.join(','),
         };
-        try {
-            const res = await fetch('/api/resource', {
-                method: 'POST',
-                body: JSON.stringify(payload),
-                headers: { 'Content-Type': 'application/json' },
-            });
-            if (!res.ok) {
-                const errorRes = await res.json();
-                setError(errorRes.message || '리소스 생성 중 오류가 발생했습니다.');
-                return;
-            }
+
+        const res = await fetch('/api/resource', {
+            method: 'POST',
+            body: JSON.stringify(payload),
+            headers: { 'Content-Type': 'application/json' },
+        });
+
+        if (res.ok) {
             router.push(`/${locale}/admin/resource`);
-        } catch (err) {
-            console.error('❌ 리소스 생성 실패:', err);
-            setError('서버와 통신 중 문제가 발생했습니다.');
+        } else {
+            const err = await res.json();
+            setError(err.message || '등록 중 오류 발생');
         }
     };
 
     return (
-        <div className="p-4 max-w-2xl mx-auto">
-            <h1 className="text-2xl font-bold mb-6">📄 새 리소스 등록</h1>
-            {error && <div className="text-red-500 mb-4">{error}</div>}
+        <div className="p-6 max-w-4xl mx-auto">
+            <h1 className="text-2xl font-bold mb-8">📄 새 리소스 등록</h1>
             <form onSubmit={handleSubmit} className="space-y-4">
-                <div>
-                    <label className="block font-medium">📆 게시 날짜</label>
-                    <input name="date" type="date" value={form.date} onChange={handleChange} className="w-full border p-2 rounded" />
+
+                {/* 날짜 */}
+                <div className="flex items-center gap-4">
+                    <label className="w-40 text-left font-medium text-gray-700">📆 게시 날짜</label>
+                    <input name="date" type="date" value={form.date} onChange={handleChange}
+                           className="flex-1 border p-2 rounded" />
                 </div>
-                <div>
-                    <label className="block font-medium">📌 제목</label>
-                    <input name="title" value={form.title} onChange={handleChange} className="w-full border p-2 rounded" placeholder="제목 입력" />
+
+                {/* 제목 */}
+                <div className="flex items-center gap-4">
+                    <label className="w-40 text-left font-medium text-gray-700">📌 제목</label>
+                    <input name="title" value={form.title} onChange={handleChange} placeholder="제목 입력"
+                           className="flex-1 border p-2 rounded" />
                 </div>
-                <div>
-                    <label className="block font-medium">📝 부제목</label>
-                    <input name="subtitle" value={form.subtitle} onChange={handleChange} className="w-full border p-2 rounded" placeholder="부제목 입력" />
+
+                {/* 부제목 */}
+                <div className="flex items-center gap-4">
+                    <label className="w-40 text-left font-medium text-gray-700">📝 부제목</label>
+                    <input name="subtitle" value={form.subtitle} onChange={handleChange} placeholder="부제목 입력"
+                           className="flex-1 border p-2 rounded" />
                 </div>
-                <div>
-                    <label className="block font-medium">📁 콘텐츠 유형</label>
-                    <select name="contentType" value={form.contentType} onChange={handleChange} className="w-full border p-2 rounded">
+
+                {/* 콘텐츠 유형 */}
+                <div className="flex items-center gap-4">
+                    <label className="w-40 text-left font-medium text-gray-700">📁 콘텐츠 유형</label>
+                    <select name="contentType" value={form.contentType} onChange={handleChange}
+                            className="flex-1 border p-2 rounded">
                         {contentTypeOptions.map(opt => <option key={opt}>{opt}</option>)}
                     </select>
                 </div>
-                <div>
-                    <label className="block font-medium">🏷 대표 태그</label>
-                    <div className="flex flex-wrap gap-2">
-                        {tagOptions.map(tag => (
-                            <button
-                                key={tag}
-                                type="button"
-                                onClick={() => toggleTag(tag)}
-                                className={`px-3 py-1 rounded-full border text-sm ${form.tags.includes(tag) ? 'bg-blue-500 text-white' : 'bg-gray-100 text-gray-700'}`}
-                            >{tag}</button>
-                        ))}
-                    </div>
+
+                {/* 대표 태그 */}
+                <div className="flex items-start gap-4">
+                    <label className="w-40 text-left pt-2 font-medium text-gray-700">🏷 대표 태그</label>
+                    <div className="flex-1"><TagSelector field="tags" selected={form.tags}
+                                                         onToggle={tag => toggleTag('tags', tag)}
+                                                         options={tagOptions} /></div>
                 </div>
-                <div>
-                    <label className="block font-medium">🧩 솔루션 태그</label>
-                    <div className="flex flex-wrap gap-2">
-                        {solutionTagOptions.map(tag => (
-                            <button
-                                key={tag}
-                                type="button"
-                                onClick={() => toggleSolutionTag(tag)}
-                                className={`px-3 py-1 rounded-full border text-sm ${form.solutionTag.includes(tag) ? 'bg-blue-500 text-white' : 'bg-gray-100 text-gray-700'}`}
-                            >{tag}</button>
-                        ))}
-                    </div>
+
+                {/* 솔루션 태그 */}
+                <div className="flex items-start gap-4">
+                    <label className="w-40 text-left pt-2 font-medium text-gray-700">🧩 솔루션 태그</label>
+                    <div className="flex-1"><TagSelector field="solutionTag" selected={form.solutionTag}
+                                                         onToggle={tag => toggleTag('solutionTag', tag)}
+                                                         options={solutionTagOptions} /></div>
                 </div>
-                <div>
-                    <label className="block font-medium">🙈 숨김 태그 (쉼표 구분)</label>
+
+                {/* 숨김 태그 */}
+                <div className="flex items-start gap-4">
+                    <label className="w-40 text-left pt-2 font-medium text-gray-700">🙈 숨김 태그</label>
                     <textarea
                         name="hideTag"
+                        placeholder="쉼표(,)로 구분"
                         value={form.hideTag.join(',')}
-                        onChange={e => setForm(prev => ({ ...prev, hideTag: e.target.value.split(',').map(t => t.trim()) }))}
-                        className="w-full border p-2 rounded"
+                        onChange={e => setForm(prev => ({
+                            ...prev,
+                            hideTag: e.target.value.split(',').map(t => t.trim()),
+                        }))}
+                        className="flex-1 border p-2 rounded"
                     />
                 </div>
-                <div>
-                    <label className="block font-medium">🖼 대표 이미지</label>
-                    <input type="file" accept="image/*" onChange={async e => {
-                        if (!e.target.files) return;
-                        const url = await handleImageUpload(e.target.files[0]);
-                        setForm(prev => ({ ...prev, image: url }));
-                    }} />
+
+                {/* 이미지 업로드 */}
+                <div className="flex items-start gap-4">
+                    <label className="w-40 text-left pt-2 font-medium text-gray-700">🖼 대표 이미지</label>
+                    <div className="flex-1">
+                        {form.image && <img src={form.image} alt="현재 이미지" className="w-1/2 rounded border" />}
+                        <FileUploader label="이미지 업로드" accept="image/*" page="resources" onUpload={(url) => setForm(prev => ({ ...prev, image: url }))} />
+                    </div>
                 </div>
-                <div>
-                    <label className="block font-medium">📎 파일 또는 링크</label>
-                    {form.form === 'pdf' ? (
-                        <input
-                            type="file"
-                            accept="application/pdf"
-                            onChange={async e => {
-                                if (!e.target.files) return;
-                                const url = await handlePdfUpload(e.target.files[0]);
-                                setForm(prev => ({ ...prev, path: url }));
-                            }}
-                            className="w-full border p-2 rounded"
-                        />
-                    ) : (
-                        <input
-                            name="path"
-                            placeholder="링크 입력"
-                            value={form.path}
-                            onChange={handleChange}
-                            className="w-full border p-2 rounded"
-                        />
-                    )}
-                </div>
-                <div>
-                    <label className="block font-medium">🔗 링크 형식</label>
-                    <select name="form" value={form.form} onChange={handleChange} className="w-full border p-2 rounded">
+
+                {/* 링크 형식 선택 */}
+                <div className="flex items-center gap-4">
+                    <label className="w-40 text-left font-medium text-gray-700">📄 링크 형식</label>
+                    <select name="form" value={form.form} onChange={handleChange} className="flex-1 border p-2 rounded">
                         <option value="pdf">PDF</option>
                         <option value="link">Link</option>
                     </select>
                 </div>
-                <div className="flex items-center gap-2">
-                    <input type="checkbox" name="use" checked={form.use} onChange={handleChange} />
-                    <label htmlFor="use">사용 여부</label>
+
+                {/* PDF 또는 링크 업로드 */}
+                {form.form === 'pdf' ? (
+                    <div className="flex items-start gap-4">
+                        <label className="w-40 text-left pt-2 font-medium text-gray-700">📎 PDF 업로드</label>
+                        <div className="flex-1">
+                            {form.path && (
+                                <a href={form.path} target="_blank" className="text-blue-500 text-sm block hover:underline">현재 PDF
+                                    보기</a>
+                            )}
+                            <FileUploader label="PDF 업로드" accept="application/pdf" page="resources" onUpload={(url) => setForm(prev => ({...prev, image: url}))} />
+                        </div>
+                    </div>
+                ) : (
+                    <div className="flex items-center gap-4">
+                        <label className="w-40 text-left font-medium text-gray-700">🔗 링크 입력</label>
+                        <input name="path" value={form.path} onChange={handleChange}
+                               className="flex-1 border p-2 rounded" />
+                    </div>
+                )}
+
+                {/* 사용 여부 - Checkbox */}
+                {/*<div className="flex items-center gap-4">*/}
+                {/*    <label className="w-40 text-left font-medium text-gray-700">✅ 사용 여부</label>*/}
+                {/*    <input type="checkbox" name="use" checked={form.use} onChange={handleChange}/>*/}
+                {/*</div>*/}
+                {/* 사용 여부 - Toggle */}
+                <div className="flex items-center gap-4">
+                    <label className="w-40 text-left font-medium text-gray-700">✅ 노출 설정</label>
+                    <FormControlLabel
+                        control={
+                            <Switch
+                                checked={form.use}
+                                onChange={(e) => handleChange({
+                                    target: { name: 'use', value: e.target.checked },
+                                })}
+                                color="primary"
+                            />
+                        }
+                        label={form.use ? '사용 중' : '비활성'}
+                    />
                 </div>
-                <button type="submit" className="w-full bg-blue-600 hover:bg-blue-700 text-white py-2 rounded">
-                    ✅ 리소스 등록
-                </button>
+
+
+                {/* 에러 메시지 */}
+                {error && <div className="text-red-500 text-sm text-center">{error}</div>}
+
+                {/* 제출 버튼 */}
+                <div className="flex justify-end">
+                    <button type="submit"
+                            className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-2 rounded font-medium">
+                        ✅ 리소스 등록
+                    </button>
+                </div>
             </form>
         </div>
     );

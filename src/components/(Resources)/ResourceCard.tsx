@@ -2,22 +2,12 @@
 
 import React from "react";
 import Image from "next/image";
+import { Resource } from '@/types/resource';
 import { ArrowDownOnSquareIcon, ArrowTopRightOnSquareIcon } from "@heroicons/react/24/outline";
 import { useRouter } from 'next/navigation';
 
-interface ResourceCardProps {
-    date: string;
-    contentType: string; // Video / Guide / Brochures / DataSheets
-    title: string;
-    subtitle?: string;
-    tags: string[];
-    form: string;
-    image: string; // 대표 이미지 경로
-    path: string; // 링크 및 페이지
-    use: boolean;
-}
 
-const ResourceCard: React.FC<ResourceCardProps> = ({ date, contentType, title, subtitle, tags, form, image, path, use }) => {
+const ResourceCard: React.FC<Resource> = ({ date, contentType, title, subtitle, tags, form, image, path, use }) => {
     const router = useRouter();
     const handleOpenPDF = () => {
         if (form === "pdf") {
@@ -62,7 +52,7 @@ const ResourceCard: React.FC<ResourceCardProps> = ({ date, contentType, title, s
 
                 {/* Tags */}
                 <div className="mt-4 flex flex-wrap gap-2">
-                    {tags.map((tag) => (
+                    {tags.split(',').map((tag) => (
                         <span key={tag} className="px-2 py-1 text-xs text-white bg-red-500 rounded-full">
                             {tag}
                         </span>

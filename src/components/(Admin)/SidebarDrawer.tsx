@@ -25,8 +25,8 @@ export default function SidebarDrawer({ locale }: Props) {
         {
             title: '콘텐츠 관리',
             items: [
-                { name: '뉴스레터', href: 'contents/newsletter' },
-                { name: '자료실', href: 'contents/resources' },
+                { name: '자료실', href: 'resource' },
+                { name: '블로그', href: 'blog' },
             ],
         },
         {
@@ -94,11 +94,16 @@ export default function SidebarDrawer({ locale }: Props) {
                             {expanded === section.title && (
                                 <ul className="mt-2 text-sm text-gray-600">
                                     {section.items.map((item) => (
-                                        <Link key={item.name} href={`/${locale}/admin/${item.href}`} passHref>
-                                            <li className="group hover:text-blue-500 hover:bg-gray-100 pl-4 py-2 rounded cursor-pointer list-none">
+                                        <li key={item.name} className="list-none">
+                                            <Link
+                                                href={`/${locale}/admin/${item.href}`}
+                                                className="block w-full pl-4 py-2 rounded hover:bg-gray-100 hover:text-blue-500 transition"
+                                                onClick={() => setOpen(false)}
+                                            >
                                                 {item.name}
-                                            </li>
-                                        </Link>
+                                            </Link>
+
+                                        </li>
                                     ))}
                                 </ul>
                             )}

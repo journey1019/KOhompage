@@ -56,18 +56,56 @@ const TagSelector = ({ field, selected, onToggle, options }: {
     </div>
 );
 
-const FileUploader = ({ label, accept, onUpload }: {
-    label: string,
-    accept: string,
-    onUpload: (file: File) => void
-}) => (
-    <div>
-        <label className="block font-medium">{label}</label>
-        <input type="file" accept={accept} onChange={e => {
-            const file = e.target.files?.[0];
-            if (file) onUpload(file);
-        }} className="w-full" />
-    </div>
-);
+// const FileUploader = ({ label, accept, onUpload }: {
+//     label: string,
+//     accept: string,
+//     onUpload: (file: File) => void
+// }) => (
+//     <div>
+//         <label className="block font-medium">{label}</label>
+//         <input type="file" accept={accept} onChange={e => {
+//             const file = e.target.files?.[0];
+//             if (file) onUpload(file);
+//         }} className="w-full" />
+//     </div>
+// );
+const FileUploader = ({
+                          label,
+                          accept,
+                          page,
+                          onUpload,
+                      }: {
+    label: string;
+    accept: string;
+    page: 'resources' | 'hardware';
+    onUpload: (url: string) => void;
+}) => {
+    const endpoint = accept.includes('pdf') ? '/api/upload/pdf' : '/api/upload/image';
+
+    return (
+        <div>
+            <label className="block font-medium">{label}</label>
+            <input
+                type="file"
+                accept={accept}
+                onChange={async (e) => {
+                    const file = e.target.files?.[0];
+                    if (!file) return;
+
+                    const formData = new FormData();
+                    formData.append('file', file);
+                    formData.append('page', page);
+
+                    const res = await fetch(endpoint, { method: 'POST', body: formData });
+                    const data = await res.json();
+
+                    if (data.url) onUpload(data.url);
+                }}
+                className="w-full"
+            />
+        </div>
+    );
+};
+
 
 export { tagOptions, solutionTagOptions, contentTypeOptions, useFormHandlers, TagSelector, FileUploader };

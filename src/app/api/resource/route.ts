@@ -1,6 +1,7 @@
 // src/app/api/resource/route.ts
 import { prisma } from '@/lib/prisma';
 import { NextRequest, NextResponse } from 'next/server';
+import { PrismaClient } from '@prisma/client';
 
 export async function GET() {
     const resources = await prisma.resource.findMany({
@@ -9,21 +10,8 @@ export async function GET() {
     return NextResponse.json(resources);
 }
 
-// export async function POST(req: NextRequest) {
-//     const data = await req.json();
-//     const newResource = await prisma.resource.create({
-//         data: {
-//             ...data,
-//             date: new Date(data.date),
-//         },
-//     });
-//     return NextResponse.json(newResource, { status: 201 });
-// }
-
-import { PrismaClient } from '@prisma/client';
 
 const prisma = new PrismaClient();
-
 export async function POST(req: NextRequest) {
     try {
         const body = await req.json();

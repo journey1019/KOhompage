@@ -35,9 +35,16 @@ export async function generateMetadata({ params }: { params: { locale: string } 
 }
 
 
-export default function ResourcesLayout({ children }: { children: React.ReactNode }) {
+export default function ResourcesLayout({ children, params }: {
+    children: React.ReactNode;
+    params: {locale: string};
+}) {
+    const { locale } = params;
     return(
         <>
+            <div className="flex flex-row justify-between p-4">
+                <SidebarDrawer locale={locale} />
+            </div>
             {children}
         </>
     );

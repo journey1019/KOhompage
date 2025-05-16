@@ -10,11 +10,12 @@ import ResourceCard from "@/components/(Resources)/ResourceCard";
 import SearchBar from "@/components/(Resources)/SearchBar";
 import FilterResource from "@/components/(Resources)/FilterResource";
 import Pagination from "@/components/(Resources)/Pagination";
+import { Resource } from '@/types/resource';
 
 const ResourcesPage = () => {
     const [searchQuery, setSearchQuery] = useState<string>(""); // 검색어 상태
     const [filters, setFilters] = useState<FilterOptions>({}); // 필터 상태
-    const [resources, setResources] = useState(getAllResources()); // 초기 데이터
+    const [resources, setResources] = useState<Resource[]>([]); // 초기 데이터
     const [totalResourcesCount, setTotalResourcesCount] = useState<number>(resources.length); // 전체 게시글 개수
     const [isDrawerOpen, setIsDrawerOpen] = useState<boolean>(false); // 드로어 상태
 
@@ -22,16 +23,29 @@ const ResourcesPage = () => {
     const itemsPerPage = 9; // 페이지당 항목 수
 
     useEffect(() => {
-        const filteredResources = getFilteredResourcesByQueryAndFilters(searchQuery, filters);
+        fetch('/api/resource')
+            .then(res => res.json())
+            .then(data => {
+                const activeResources = data.filter((item: Resource) => item.use === true);
+                setResources(activeResources);
+            });
+    }, []);
 
-        // 날짜 기준 내림차순 정렬
-        const sortedResources = filteredResources.sort((a, b) => {
-            return new Date(b.date).getTime() - new Date(a.date).getTime();
-        });
+    useEffect(() => {
+        const fetchFilteredResources = async () => {
+            const filteredResources = await getFilteredResourcesByQueryAndFilters(searchQuery, filters);
 
-        setResources(sortedResources); // 필터링된 게시글 업데이트
-        setTotalResourcesCount(sortedResources.length); // 게시글 개수 업데이트
-        setCurrentPage(1); // 필터링 시 첫 번째 페이지로 이동
+            const sortedResources = filteredResources
+                .filter((item: Resource) => item.use === true)
+                .sort((a, b) => {
+                return new Date(b.date).getTime() - new Date(a.date).getTime();
+            });
+
+            setResources(sortedResources);
+            setTotalResourcesCount(sortedResources.length);
+            setCurrentPage(1);
+        };
+        fetchFilteredResources();
     }, [searchQuery, filters]);
 
     const toggleDrawer = () => {

@@ -3,7 +3,7 @@
 
 import React from "react";
 import Image from "next/image";
-
+import { Hardware } from "@/types/hardware"
 interface HardwareItem {
     title: string;
     subTitle: string;
@@ -15,7 +15,7 @@ interface HardwareItem {
     path: string;
 }
 
-const HardwareCardPDF: React.FC<HardwareItem> = ({ title, subTitle, description, category, imageSrc, tag, slug, path }) => (
+const HardwareCardPDF: React.FC<Hardware> = ({ title, subtitle, description, category, imageSrc, tags, slug, path }) => (
     <a
         className="group"
         href={path} // PDF 파일 경로로 설정
@@ -25,7 +25,7 @@ const HardwareCardPDF: React.FC<HardwareItem> = ({ title, subTitle, description,
         <div className="pb-4">
             <div className="relative w-full h-60 overflow-hidden rounded-lg border-2 border-gray-200">
                 <Image
-                    alt={slug}
+                    alt={title}
                     src={imageSrc}
                     fill
                     style={{ objectFit: "contain" }} // 새로운 방식으로 설정
@@ -44,7 +44,7 @@ const HardwareCardPDF: React.FC<HardwareItem> = ({ title, subTitle, description,
             <div className="mt-2">
                 {/*<span className="text-xs text-gray-400">Tags:</span>*/}
                 <div className="flex flex-wrap gap-1 mt-1"> {/* Ensure tags wrap properly */}
-                    {tag.map((t, index) => (
+                    {tags.split(',').map((t, index) => (
                         <span
                             key={index}
                             className="bg-blue-100 text-blue-500 px-2 py-1 text-xs rounded-full truncate " // Prevent tags from overflowing

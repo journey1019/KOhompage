@@ -27,7 +27,7 @@ export default function AdminPage({ params }: Props) {
     }, [session, status, router, locale]);
 
     if (status === 'loading' || !session || session.user?.role !== 'ADMIN') {
-        return <div>로딩 중...</div>;
+        return <div>관리자 계정 검사 로딩 중...</div>;
     }
 
     console.log(session)
@@ -38,10 +38,8 @@ export default function AdminPage({ params }: Props) {
     };
 
     return (
-        <div className="flex flex-row justify-between p-4">
-            <SidebarDrawer locale={locale}/>
-        </div>
-
+        <>
+        </>
         // <div className="max-w-7xl mx-auto p-6">
         //     <div className="flex flex-row justify-between items-center">
         //         <div className="flex flex-col">

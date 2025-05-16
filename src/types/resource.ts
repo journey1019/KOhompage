@@ -3,7 +3,7 @@ export interface Resource {
     date: string;
     contentType: string;
     title: string;
-    subtitle: string;
+    subtitle?: string;
     tags: string;
     hideTag: string;
     solutionTag: string;

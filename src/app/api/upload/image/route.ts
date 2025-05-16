@@ -15,31 +15,25 @@ function sanitizeFileName(name: string) {
 export async function POST(req: NextRequest) {
     const formData = await req.formData();
     const file = formData.get('file') as File;
+    const page = (formData.get('page')?.toString() || 'resources').toLowerCase(); // default to 'resource'
 
     if (!file) return NextResponse.json({ error: 'No file provided' }, { status: 400 });
 
-    const bytes = await file.arrayBuffer();
-    const buffer = Buffer.from(bytes);
-
     const safeName = sanitizeFileName(file.name);
     const fileName = `${Date.now()}-${safeName}`;
-    const uploadDir = path.join(process.cwd(), 'public/uploads/images');
-    console.log('✅ 파일 저장 경로:', uploadDir);
-    // 디렉토리 없으면 생성
+    const uploadDir = path.join(process.cwd(), 'public/images/', page);
+    const uploadPath = path.join(uploadDir, fileName);
+
     await mkdir(uploadDir, { recursive: true });
 
-    const uploadPath = path.join(uploadDir, fileName);
+    const buffer = Buffer.from(await file.arrayBuffer());
+
     try {
         await writeFile(uploadPath, buffer);
+        return NextResponse.json({ url: `/images/${page}/${fileName}` });
     } catch (err) {
         console.error('❌ 파일 저장 실패:', err);
         return NextResponse.json({ error: '파일 저장 중 오류 발생' }, { status: 500 });
     }
-
-    console.log('[UPLOAD] formData:', formData.get('file'));
-    console.log('[UPLOAD] safeName:', safeName);
-    console.log('[UPLOAD] uploadPath:', uploadPath);
-
-
-    return NextResponse.json({ url: `/uploads/images/${fileName}` });
 }
+

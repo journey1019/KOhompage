@@ -30,32 +30,56 @@ function sanitizeFileName(name: string) {
         .replace(/[^\w.-]/g, '')                 // 특수문자 제거
         .toLowerCase();
 }
+// export async function POST(req: NextRequest) {
+//     try {
+//         const formData = await req.formData();
+//         const file = formData.get('file') as File;
+//         const page = (formData.get('page')?.toString() || 'resources').toLowerCase(); // 'resources' | 'hardware'
+//
+//         if (!file) return NextResponse.json({ error: 'No file uploaded' }, { status: 400 });
+//
+//         const bytes = await file.arrayBuffer();
+//         const buffer = Buffer.from(bytes);
+//
+//         const safeFileName = sanitizeFileName(file.name);
+//         const fileName = `${Date.now()}-${safeFileName}`;
+//
+//         // ❗ 디렉토리만 생성
+//         const pdfDir = path.join(process.cwd(), 'public/uploads/pdfs', page);
+//         await mkdir(pdfDir, { recursive: true });
+//
+//         // ✅ 파일은 디렉토리 아래에 바로 저장
+//         const uploadPath = path.join(pdfDir, fileName);
+//         await writeFile(uploadPath, buffer);
+//
+//         console.log('✅ PDF 저장:', uploadPath);
+//         return NextResponse.json({ url: `/uploads/pdfs/${fileName}` });
+//
+//     } catch (error) {
+//         console.error('Upload error:', error);
+//         return NextResponse.json({ error: 'Upload failed' }, { status: 500 });
+//     }
+// }
 export async function POST(req: NextRequest) {
+    const formData = await req.formData();
+    const file = formData.get('file') as File;
+    const page = (formData.get('page')?.toString() || 'resources').toLowerCase(); // 'resources' | 'hardware'
+
+    if (!file) return NextResponse.json({ error: 'No file uploaded' }, { status: 400 });
+
+    const fileName = `${Date.now()}-${sanitizeFileName(file.name)}`;
+    const uploadDir = path.join(process.cwd(), 'public/pdf', page);
+    const uploadPath = path.join(uploadDir, fileName);
+
+    await mkdir(uploadDir, { recursive: true });
+
+    const buffer = Buffer.from(await file.arrayBuffer());
+
     try {
-        const formData = await req.formData();
-        const file = formData.get('file') as File;
-
-        if (!file) {
-            return NextResponse.json({ error: 'No file uploaded' }, { status: 400 });
-        }
-
-        const bytes = await file.arrayBuffer();
-        const buffer = Buffer.from(bytes);
-
-        const safeFileName = sanitizeFileName(file.name);
-        const fileName = `${Date.now()}-${safeFileName}`;
-        const filePath = path.join(process.cwd(), 'public/uploads/pdfs', fileName);
-        console.log('✅ 파일 저장 경로:', filePath);
-        // 디렉토리 없으면 생성
-        await mkdir(filePath, { recursive: true });
-
-        const uploadPath = path.join(filePath, fileName);
         await writeFile(uploadPath, buffer);
-        console.log('✅ 파일 저장 경로:', uploadPath);
-
-        return NextResponse.json({ url: `/uploads/pdfs/${fileName}` });
+        return NextResponse.json({ url: `/pdf/${page}/${fileName}` });
     } catch (error) {
-        console.error('Upload error:', error);
-        return NextResponse.json({ error: 'Upload failed' }, { status: 500 });
+        console.error('❌ PDF 저장 실패:', error);
+        return NextResponse.json({ error: '파일 저장 중 오류 발생' }, { status: 500 });
     }
 }

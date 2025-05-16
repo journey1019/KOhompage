@@ -34,6 +34,7 @@ enum Role {
   ADMIN
 }
 
+// Resource
 model Resource {
   id          Int      @id @default(autoincrement())
   date        DateTime
@@ -49,4 +50,41 @@ model Resource {
   use         Boolean  @default(true)
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt
+}
+
+// Hardware
+model Hardware {
+  id          Int      @id @default(autoincrement())
+  date        DateTime
+  category    String
+  title       String   @unique
+  subtitle    String
+  description String?
+  tags        String // 예: "Satellite,AIS"
+  hideTag     String // 예: "위성,글로벌"
+  solutionTag String // 예: "NMS,OGx/IDP"
+  imageSrc    String
+  slug        String
+  path        String
+  use         Boolean  @default(true)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+// Resource Content Type Filtering
+model ResourceFilterOption {
+  id        Int      @id @default(autoincrement())
+  type      String // 'contentType' 또는 'solution'
+  label     String   @unique
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+// Hardware Content Type Filtering
+model HardwareFilterOption {
+  id        Int      @id @default(autoincrement())
+  type      String // 'categoryOptions' || 'typeOptions' || 'networkOptions'
+  label     String   @unique
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 }
