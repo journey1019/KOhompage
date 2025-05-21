@@ -9,7 +9,7 @@ import {
 } from '@/components/(Admin)/(Resources)/ResourceFormUtils';
 import Switch from '@mui/material/Switch';
 import FormControlLabel from '@mui/material/FormControlLabel';
-import TiptapEditor from '@/components/(Admin)/(Resources)/TipTapEditor';
+import TiptapEditor from '@/components/(Admin)/(Resources)/Tiptap/TipTapEditor';
 
 export default function NewResourcePage() {
     const router = useRouter();
@@ -192,10 +192,13 @@ export default function NewResourcePage() {
                                className="flex-1 border p-2 rounded" />
                     </div>
                 ) : (
-                    <TiptapEditor
-                        content={form.html}
-                        onChange={(newHtml) => setForm(prev => ({ ...prev, html: newHtml }))}
-                    />
+                    <>
+                        {/*<TiptapEditor/>*/}
+                        <TiptapEditor
+                            content={form.html}
+                            onChange={(newHtml) => setForm(prev => ({ ...prev, html: newHtml }))}
+                        />
+                    </>
                 )}
 
                 {/* 사용 여부 - Checkbox */}

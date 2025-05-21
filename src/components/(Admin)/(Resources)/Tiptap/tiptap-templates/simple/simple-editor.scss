@@ -1,0 +1,132 @@
+@import url("https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap");
+
+body {
+  --tt-toolbar-height: 44px;
+  --tt-theme-text: var(--tt-gray-light-900);
+
+  .dark & {
+    --tt-theme-text: var(--tt-gray-dark-900);
+  }
+}
+
+body {
+  font-family: "Inter", sans-serif;
+  color: var(--tt-theme-text);
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+  padding: 0;
+}
+
+html,
+body,
+#root,
+#app {
+  height: 100%;
+  background-color: var(--tt-bg-color);
+}
+
+body {
+  //overflow: hidden;
+}
+
+.tiptap.ProseMirror {
+  font-family: "DM Sans", sans-serif;
+}
+
+.content-wrapper {
+  height: calc(100% - var(--tt-toolbar-height));
+  overflow-y: auto;
+
+  &::-webkit-scrollbar {
+    display: block;
+    width: 0.5rem;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: var(--tt-scrollbar-color);
+    border-radius: 4px;
+  }
+
+  /* Firefox scrollbar */
+  scrollbar-width: thin;
+  scrollbar-color: var(--tt-scrollbar-color) transparent;
+}
+
+.simple-editor-content {
+  max-width: 640px;
+  width: 100%;
+  margin: 0 auto;
+
+  blockquote {
+    border-left: 4px solid #ccc;
+    margin: 1rem 0;
+    padding: 0.5rem 1rem;
+    color: #666;
+    background-color: #f9f9f9;
+    font-style: italic;
+  }
+
+  pre {
+    background-color: #1e1e1e;
+    color: #f8f8f2;
+    padding: 1rem;
+    border-radius: 6px;
+    font-family: 'Fira Code', 'Source Code Pro', monospace;
+    font-size: 0.9rem;
+    overflow-x: auto;
+    line-height: 1.6;
+    white-space: pre-wrap;
+    tab-size: 2;
+  }
+
+  code {
+    background-color: rgba(27,31,35,.05);
+    padding: 0.2rem 0.4rem;
+    border-radius: 3px;
+    font-size: 85%;
+    font-family: 'Fira Code', monospace;
+  }
+
+
+  mark {
+    background-color: #fff59d; // 연노랑
+    padding: 0.1rem 0.2rem;
+    border-radius: 2px;
+  }
+  .simple-editor-content mark[data-color="pink"] {
+    background-color: #f8bbd0;
+  }
+  .simple-editor-content mark[data-color="green"] {
+    background-color: #c8e6c9;
+  }
+  .simple-editor-content mark[data-color="blue"] {
+    background-color: #bbdefb;
+  }
+
+  ::selection {
+    background: rgba(100, 149, 237, 0.4); // 연한 블루
+  }
+
+  p.is-editor-empty:first-child::before {
+    content: attr(data-placeholder);
+    float: left;
+    color: #999;
+    pointer-events: none;
+    height: 0;
+  }
+}
+
+.simple-editor-content .tiptap.ProseMirror {
+  padding: 3rem 3rem;
+}
+
+@media screen and (max-width: 480px) {
+  .simple-editor-content .tiptap.ProseMirror {
+    padding: 1rem 1.5rem;
+  }
+}

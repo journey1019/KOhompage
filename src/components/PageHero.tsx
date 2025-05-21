@@ -6,7 +6,7 @@ import { motion } from 'framer-motion';
 interface ImageTopPageProps {
     size: string;
     url: string;
-    intro: string;
+    intro?: string;
     title: string;
     subtitle: string;
     solutionButton?: string;

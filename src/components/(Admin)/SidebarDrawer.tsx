@@ -26,7 +26,7 @@ export default function SidebarDrawer({ locale }: Props) {
             title: '콘텐츠 관리',
             items: [
                 { name: '자료실', href: 'resource' },
-                { name: '블로그', href: 'blog' },
+                // { name: '블로그', href: 'blog' },
             ],
         },
         {
@@ -36,7 +36,7 @@ export default function SidebarDrawer({ locale }: Props) {
             ],
         },
         {
-            title: '결제 관리',
+            title: '결제 관리(준비중)',
             items: [
                 { name: '회원관리', href: 'payment/user' },
                 { name: '상품관리', href: 'payment/item' },
@@ -45,7 +45,7 @@ export default function SidebarDrawer({ locale }: Props) {
             ],
         },
         {
-            title: '통계',
+            title: '통계(준비중)',
             items: [
                 { name: '대시보드', href: 'dashboard' },
             ],

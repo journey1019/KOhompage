@@ -13,7 +13,7 @@ import {
 } from '@/components/(Admin)/(Resources)/ResourceFormUtils';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import Switch from '@mui/material/Switch';
-import TiptapEditor from '@/components/(Admin)/(Resources)/TipTapEditor';
+import TiptapEditor from '@/components/(Admin)/(Resources)/Tiptap/TipTapEditor';
 
 
 export default function EditResourcePage() {
