@@ -2,25 +2,15 @@
 
 import React from "react";
 import Image from "next/image";
+import { Hardware } from "@/types/hardware";
 
-interface HardwareItem {
-    title: string;
-    subTitle: string;
-    description: string;
-    category: string;
-    imageSrc: string;
-    tag: string[];
-    slug: string;
-    path: string;
-}
-
-const FilteredHardwarePDFCard: React.FC<HardwareItem> = ({
+const FilteredHardwarePDFCard: React.FC<Hardware> = ({
                                                              title,
-                                                             subTitle,
+                                                             subtitle,
                                                              description,
                                                              category,
                                                              imageSrc,
-                                                             tag,
+                                                             tags,
                                                              slug,
                                                              path,
                                                          }) => (
@@ -41,7 +31,7 @@ const FilteredHardwarePDFCard: React.FC<HardwareItem> = ({
                     unoptimized
                 />
             </div>
-            <h3 className="text-xs md:text-base font-normal maxWeb:text-lg mt-2 text-gray-500 text-center md:text-start">{subTitle}</h3>
+            <h3 className="text-xs md:text-base font-normal maxWeb:text-lg mt-2 text-gray-500 text-center md:text-start">{subtitle}</h3>
             <h2 className="group-hover:text-blue-500 transition duration-300 text-lg md:text-2xl maxWeb:text-3xl font-bold text-center md:text-start">
                 {title}
             </h2>

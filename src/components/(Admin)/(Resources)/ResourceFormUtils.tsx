@@ -3,16 +3,90 @@
 import { useRouter, usePathname, useParams } from 'next/navigation';
 import { useEffect, useState } from 'react';
 import { GoPlus } from 'react-icons/go';
+import { IoIosClose } from 'react-icons/io';
 
-const tagOptions = [
-    'Container-IoT', 'Global-IoT', 'Satellite', 'AIS', 'Cellular', 'Door', 'Cargo',
-    'Dry', 'Reefer', 'NTN', 'OGx/IDP'
-];
 
-const solutionTagOptions = [
-    'Container-IoT', 'Maritime', 'Global-IoT', 'NMS', 'VMS',
-    'Satellite', 'OGx/IDP', 'LowEarthOrbit', 'Starlink', 'AIS'
-];
+// export const useTagOptions = (): [string[], React.Dispatch<React.SetStateAction<string[]>>] => {
+//     const [tags, setTags] = useState<string[]>([]);
+//
+//     useEffect(() => {
+//         fetch('/api/tags?type=tags')
+//             .then(res => res.json())
+//             .then(data => setTags(data.map((t: any) => t.name)))
+//             .catch(err => console.error('태그 로딩 실패:', err));
+//     }, []);
+//
+//     return [tags, setTags];
+// };
+export const useTagOptions = (): {
+    tags: string[];
+    loading: boolean;
+    error: string | null;
+    setTags: React.Dispatch<React.SetStateAction<string[]>>;
+} => {
+    const [tags, setTags] = useState<string[]>([]);
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState<string | null>(null);
+
+    useEffect(() => {
+        fetch('/api/tags?type=tags')
+            .then(res => res.json())
+            .then(data => {
+                setTags(data.map((t: any) => t.name));
+                setLoading(false);
+            })
+            .catch(err => {
+                console.error('태그 로딩 실패:', err);
+                setError('태그를 불러오는 데 실패했습니다.');
+                setLoading(false);
+            });
+    }, []);
+
+    return { tags, loading, error, setTags };
+};
+
+
+// export const useSolutionTagOptions = (): [string[], React.Dispatch<React.SetStateAction<string[]>>] => {
+//     const [tags, setTags] = useState<string[]>([]);
+//
+//     useEffect(() => {
+//         fetch('/api/tags?type=solutionTag')
+//             .then(res => res.json())
+//             .then(data => setTags(data.map((t: any) => t.name)))
+//             .catch(err => console.error('솔루션 태그 로딩 실패:', err));
+//     }, []);
+//
+//     return [tags, setTags];
+// };
+export const useSolutionTagOptions = (): {
+    tags: string[];
+    loading: boolean;
+    error: string | null;
+    setTags: React.Dispatch<React.SetStateAction<string[]>>;
+} => {
+    const [tags, setTags] = useState<string[]>([]);
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState<string | null>(null);
+
+    useEffect(() => {
+        fetch('/api/tags?type=solutionTag')
+            .then(res => res.json())
+            .then(data => {
+                setTags(data.map((t: any) => t.name));
+                setLoading(false);
+            })
+            .catch(err => {
+                console.error('솔루션 태그 로딩 실패:', err);
+                setError('솔루션 태그를 불러오는 데 실패했습니다.');
+                setLoading(false);
+            });
+    }, []);
+
+    return { tags, loading, error, setTags };
+};
+
+
+
 
 const contentTypeOptions = [
     'Article', 'Datasheet', 'Newsletter', 'Video', 'Brochure'
@@ -38,20 +112,39 @@ const useFormHandlers = (initialState: any) => {
     return { form, setForm, handleChange, toggleTag };
 };
 
-const TagSelector = ({ field, selected, onToggle, options }: {
+const TagSelector = ({ field, selected, onToggle, onDelete, options }: {
     field: 'tags' | 'solutionTag',
     selected: string[],
     onToggle: (tag: string) => void,
+    onDelete?: (tag: string) => void, // 삭제룔 콜백 추가
     options: string[]
 }) => (
     <div className="flex flex-wrap gap-2">
         {options.map(tag => (
-            <button
-                key={tag}
-                type="button"
-                onClick={() => onToggle(tag)}
-                className={`px-3 py-1 rounded-full border text-sm ${selected.includes(tag) ? 'bg-blue-500 text-white' : 'bg-gray-100 text-gray-700'}`}
-            >{tag}</button>
+            <div key={tag} className="relative inline-flex items-center">
+                <button
+                    type="button"
+                    onClick={() => onToggle(tag)}
+                    className={`px-3 py-1 pr-6 rounded-full border text-sm flex items-center gap-1 ${
+                        selected.includes(tag)
+                            ? 'bg-blue-500 text-white'
+                            : 'bg-gray-100 text-gray-700'
+                    }`}
+                >
+                    {tag}
+                </button>
+                {onDelete && (
+                    <IoIosClose
+                        className="absolute right-1 top-1.5 cursor-pointer text-gray-500 hover:text-red-500"
+                        onClick={(e) => {
+                            e.stopPropagation();
+                            if (confirm(`'${tag}' 태그를 정말 삭제할까요?`)) {
+                                onDelete(tag);
+                            }
+                        }}
+                    />
+                )}
+            </div>
         ))}
     </div>
 );
@@ -108,4 +201,5 @@ const FileUploader = ({
 };
 
 
-export { tagOptions, solutionTagOptions, contentTypeOptions, useFormHandlers, TagSelector, FileUploader };
+// export { tagOptions, solutionTagOptions, contentTypeOptions, useFormHandlers, TagSelector, FileUploader };
+export { contentTypeOptions, useFormHandlers, TagSelector, FileUploader };

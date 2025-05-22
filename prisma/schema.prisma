@@ -51,6 +51,8 @@ model Resource {
   html        String? // tiptap으로 작성된 HMTL
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt
+  Tag         Tag?     @relation(fields: [tagId], references: [id])
+  tagId       Int?
 }
 
 // Hardware
@@ -88,4 +90,13 @@ model HardwareFilterOption {
   label     String   @unique
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
+}
+
+model Tag {
+  id       Int        @id @default(autoincrement())
+  name     String
+  type     String
+  Resource Resource[]
+
+  @@unique([name, type])
 }

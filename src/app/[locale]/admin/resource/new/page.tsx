@@ -4,16 +4,40 @@ import { useRouter, usePathname } from 'next/navigation';
 import { useState, useEffect } from 'react';
 import { GoPlus } from "react-icons/go";
 import {
-    tagOptions, solutionTagOptions, contentTypeOptions,
+    // tagOptions, solutionTagOptions,
+    contentTypeOptions,
+    useTagOptions, useSolutionTagOptions,
     useFormHandlers, TagSelector, FileUploader
 } from '@/components/(Admin)/(Resources)/ResourceFormUtils';
 import Switch from '@mui/material/Switch';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import TiptapEditor from '@/components/(Admin)/(Resources)/Tiptap/TipTapEditor';
 
+
+
 export default function NewResourcePage() {
     const router = useRouter();
     const locale = usePathname().split('/')[1];
+
+    // const tagOptions = useTagOptions() || ['Container-IoT', 'Global-IoT', 'Satellite', 'AIS', 'Cellular', 'Door', 'Cargo',
+    //     'Dry', 'Reefer', 'NTN', 'OGx/IDP'];
+    // const solutionTagOptions = useSolutionTagOptions() || ['Container-IoT', 'Global-IoT', 'Satellite', 'AIS', 'Cellular', 'Door', 'Cargo',
+    //     'Dry', 'Reefer', 'NTN', 'OGx/IDP'];
+    const {
+        tags: tagOptions,
+        loading: tagsLoading,
+        error: tagsError,
+        setTags: setTagOptions,
+    } = useTagOptions();
+
+    const {
+        tags: solutionTagOptions,
+        loading: solutionTagsLoading,
+        error: solutionTagsError,
+        setTags: setSolutionTagOptions,
+    } = useSolutionTagOptions();
+    // const [tagOptions, setTagOptions] = useTagOptions();
+    // const [solutionTagOptions, setSolutionTagOptions] = useSolutionTagOptions();
 
     const {
         form, setForm, handleChange, toggleTag
@@ -88,6 +112,77 @@ export default function NewResourcePage() {
         }
     };
 
+    const handleAddDynamicTag = async ({
+                                           type,
+                                           tagOptions,
+                                           setTagOptions,
+                                           formField,
+                                       }: {
+        type: 'tags' | 'solutionTag';
+        tagOptions: string[];
+        setTagOptions: React.Dispatch<React.SetStateAction<string[]>>;
+        formField: 'tags' | 'solutionTag';
+    }) => {
+        const promptText = type === 'tags' ? '추가할 태그 이름을 입력하세요:' : '새 솔루션 태그를 입력하세요:';
+        const newTag = prompt(promptText)?.trim();
+
+        if (!newTag) return;
+
+        if (tagOptions.includes(newTag)) {
+            alert("이미 존재하는 태그입니다.");
+            return;
+        }
+
+        const res = await fetch("/api/tags", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ name: newTag, type }),
+        });
+
+        if (!res.ok) {
+            const err = await res.json();
+            alert(err?.error || "태그 추가 실패");
+            return;
+        }
+
+        setTagOptions(prev => [...prev, newTag]);
+        setForm(prev => ({
+            ...prev,
+            [formField]: [...prev[formField], newTag],
+        }));
+    };
+
+    const handleDeleteTag = async ({
+                                       name,
+                                       type,
+                                       setOptions,
+                                       setFormField,
+                                   }: {
+        name: string;
+        type: 'tags' | 'solutionTag';
+        setOptions: React.Dispatch<React.SetStateAction<string[]>>;
+        setFormField: (updater: (prev: any) => any) => void;
+    }) => {
+        const res = await fetch(`/api/tags/${encodeURIComponent(name)}?type=${type}`, {
+            method: 'DELETE',
+        });
+
+        if (!res.ok) {
+            const err = await res.json();
+            alert(err.error || '삭제 실패');
+            return;
+        }
+
+        setOptions(prev => prev.filter(t => t !== name));
+        setFormField(prev => ({
+            ...prev,
+            [type]: prev[type].filter((t: string) => t !== name),
+        }));
+    };
+
+
+
+
     return (
         <div className="p-6 max-w-4xl mx-auto">
             <h1 className="text-2xl font-bold mb-8">📄 새 리소스 등록</h1>
@@ -126,24 +221,88 @@ export default function NewResourcePage() {
                 {/* 대표 태그 */}
                 <div className="flex items-start gap-4">
                     <label className="w-40 text-left pt-2 font-medium text-gray-700">🏷 대표 태그</label>
-                    <div className="flex-1"><TagSelector field="tags" selected={form.tags}
-                                                         onToggle={tag => toggleTag('tags', tag)}
-                                                         options={tagOptions} /></div>
-                    <button className="p-1 bg-gray-100 rounded-full text-gray-700"><GoPlus className=""/></button>
+                    <div className="flex-1">
+                        {tagsLoading ? (
+                            <div className="text-gray-500 text-sm">태그를 불러오는 중...</div>
+                        ) : tagsError ? (
+                            <div className="text-red-500 text-sm">{tagsError}</div>
+                        ) : (
+                            <TagSelector
+                                field="tags"
+                                selected={form.tags}
+                                onToggle={tag => toggleTag('tags', tag)}
+                                onDelete={(tag) =>
+                                    handleDeleteTag({
+                                        name: tag,
+                                        type: 'tags',
+                                        setOptions: setSolutionTagOptions,
+                                        setFormField: setForm,
+                                    })
+                                }
+                                options={tagOptions}
+                            />
+                        )}
+                    </div>
+                    <button
+                        type="button"
+                        className="p-1 bg-gray-100 rounded-full text-gray-700"
+                        onClick={() =>
+                            handleAddDynamicTag({
+                                type: 'tags',
+                                tagOptions,
+                                setTagOptions,
+                                formField: 'tags',
+                            })
+                        }
+                    >
+                        <GoPlus />
+                    </button>
                 </div>
 
                 {/* 솔루션 태그 */}
                 <div className="flex items-start gap-4">
                     <label className="w-40 text-left pt-2 font-medium text-gray-700">🧩 솔루션 태그</label>
-                    <div className="flex-1"><TagSelector field="solutionTag" selected={form.solutionTag}
-                                                         onToggle={tag => toggleTag('solutionTag', tag)}
-                                                         options={solutionTagOptions} /></div>
-                    <button className="p-1 bg-gray-100 rounded-full text-gray-700"><GoPlus className="" /></button>
+                    <div className="flex-1">
+                        {solutionTagsLoading ? (
+                            <div className="text-gray-500 text-sm">솔루션 태그를 불러오는 중...</div>
+                        ) : solutionTagsError ? (
+                            <div className="text-red-500 text-sm">{solutionTagsError}</div>
+                        ) : (
+                            <TagSelector
+                                field="solutionTag"
+                                selected={form.solutionTag}
+                                onToggle={tag => toggleTag('solutionTag', tag)}
+                                onDelete={(tag) =>
+                                    handleDeleteTag({
+                                        name: tag,
+                                        type: 'solutionTag',
+                                        setOptions: setSolutionTagOptions,
+                                        setFormField: setForm,
+                                    })
+                                }
+                                options={solutionTagOptions}
+                            />
+                        )}
+                    </div>
+                    <button
+                        type="button"
+                        className="p-1 bg-gray-100 rounded-full text-gray-700"
+                        onClick={() =>
+                            handleAddDynamicTag({
+                                type: 'solutionTag',
+                                tagOptions: solutionTagOptions,
+                                setTagOptions: setSolutionTagOptions,
+                                formField: 'solutionTag',
+                            })
+                        }
+                    >
+                        <GoPlus />
+                    </button>
                 </div>
 
                 {/* 숨김 태그 */}
                 <div className="flex items-start gap-4">
-                <label className="w-40 text-left pt-2 font-medium text-gray-700">🙈 숨김 태그</label>
+                    <label className="w-40 text-left pt-2 font-medium text-gray-700">🙈 숨김 태그</label>
                     <textarea
                         name="hideTag"
                         placeholder="쉼표(,)로 구분"
