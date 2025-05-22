@@ -13,6 +13,7 @@ import FiltersHardware from '@/components/(Hardware)/FilterHardware';
 import PageHero from '@/components/PageHero';
 import { useRouter, useSearchParams } from 'next/navigation';
 import { Resource } from '@/types/resource';
+import HardwareCardPDFAdmin from '@/components/(Hardware)/HardwareCardPDFAdmin';
 
 const HardwarePage = () => {
     const router = useRouter();
@@ -29,6 +30,7 @@ const HardwarePage = () => {
     const [hardware, setHardware] = useState<Hardware[]>([]);
     const [totalResourcesCount, setTotalResourcesCount] = useState<number>(hardware.length);
     const [isDrawerOpen, setIsDrawerOpen] = useState<boolean>(false); // 모바일 필터 Drawer 상태
+    const [isLoading, setIsLoading] = useState<boolean>(true);
 
     useEffect(() => {
         fetch('/api/hardware')
@@ -52,6 +54,7 @@ const HardwarePage = () => {
 
     // 검색 및 필터링 동작
     useEffect(() => {
+        setIsLoading(true);
         const fetchFilteredHardwares = async () => {
             const filtered = await getFilteredHardwaresByQueryAndFilters(searchQuery, filters);
 
@@ -67,6 +70,7 @@ const HardwarePage = () => {
             Object.entries(filters).forEach(([key, values]) => {
                 if (values) values.forEach(value => query.append(key, value));
             });
+            setIsLoading(false);
 
             router.replace(`/${locale}/hardware?${query.toString()}`, { scroll: false });
         };
@@ -121,13 +125,26 @@ const HardwarePage = () => {
                     {/* Right Section: Hardware List */}
                     <div className="lg:col-span-3">
                         <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
-                            {hardware.length > 0 ? (
+                            {isLoading ? (
+                                <div className="col-span-full flex justify-center items-center py-20">
+                                    <div className="animate-spin rounded-full h-10 w-10 border-t-4 border-blue-500"></div>
+                                </div>
+                            ) : hardware.length > 0 ? (
                                 hardware.map((post) => (
-                                    <HardwareCardPDF key={post.slug} {...post} />
+                                    <HardwareCardPDF key={post.id} {...post}  />
                                 ))
                             ) : (
-                                <p className="text-gray-500">No hardware matches your criteria.</p>
+                                <p className="text-gray-500 col-span-full text-center py-10">
+                                    No hardwares match your criteria.
+                                </p>
                             )}
+                            {/*{hardware.length > 0 ? (*/}
+                            {/*    hardware.map((post) => (*/}
+                            {/*        <HardwareCardPDF key={post.id} {...post} />*/}
+                            {/*    ))*/}
+                            {/*) : (*/}
+                            {/*    <p className="text-gray-500">No hardware matches your criteria.</p>*/}
+                            {/*)}*/}
                         </div>
                     </div>
                 </div>

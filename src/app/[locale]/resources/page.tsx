@@ -11,6 +11,7 @@ import SearchBar from "@/components/(Resources)/SearchBar";
 import FilterResource from "@/components/(Resources)/FilterResource";
 import Pagination from "@/components/(Resources)/Pagination";
 import { Resource } from '@/types/resource';
+import ResourceCardAdmin from '@/components/(Resources)/ResourceCardAdmin';
 
 const ResourcesPage = () => {
     const [searchQuery, setSearchQuery] = useState<string>(""); // 검색어 상태
@@ -18,32 +19,65 @@ const ResourcesPage = () => {
     const [resources, setResources] = useState<Resource[]>([]); // 초기 데이터
     const [totalResourcesCount, setTotalResourcesCount] = useState<number>(resources.length); // 전체 게시글 개수
     const [isDrawerOpen, setIsDrawerOpen] = useState<boolean>(false); // 드로어 상태
+    const [isLoading, setIsLoading] = useState<boolean>(true);
 
     const [currentPage, setCurrentPage] = useState<number>(1); // 현재 페이지
     const itemsPerPage = 9; // 페이지당 항목 수
 
+    // useEffect(() => {
+    //     fetch('/api/resource')
+    //         .then(res => res.json())
+    //         .then(data => {
+    //             const activeResources = data.filter((item: Resource) => item.use === true);
+    //             setResources(activeResources);
+    //         });
+    // }, []);
     useEffect(() => {
-        fetch('/api/resource')
-            .then(res => res.json())
-            .then(data => {
-                const activeResources = data.filter((item: Resource) => item.use === true);
-                setResources(activeResources);
-            });
+        const fetchInitialResources = async () => {
+            setIsLoading(true);
+            const all = await getAllResources();
+            setResources(all);
+            setTotalResourcesCount(all.length);
+            setIsLoading(false);
+        };
+        fetchInitialResources();
     }, []);
 
+    // useEffect(() => {
+    //     const fetchFilteredResources = async () => {
+    //         const filteredResources = await getFilteredResourcesByQueryAndFilters(searchQuery, filters);
+    //
+    //         const sortedResources = filteredResources
+    //             .filter((item: Resource) => item.use === true)
+    //             .sort((a, b) => {
+    //             return new Date(b.date).getTime() - new Date(a.date).getTime();
+    //         });
+    //
+    //         setResources(sortedResources);
+    //         setTotalResourcesCount(sortedResources.length);
+    //         setCurrentPage(1);
+    //     };
+    //     fetchFilteredResources();
+    // }, [searchQuery, filters]);
+
     useEffect(() => {
+        setIsLoading(true); // 시작 시 로딩
         const fetchFilteredResources = async () => {
             const filteredResources = await getFilteredResourcesByQueryAndFilters(searchQuery, filters);
 
+            // const sortedResources = filteredResources.sort((a, b) => {
+            //     return new Date(b.date).getTime() - new Date(a.date).getTime();
+            // });
             const sortedResources = filteredResources
                 .filter((item: Resource) => item.use === true)
                 .sort((a, b) => {
-                return new Date(b.date).getTime() - new Date(a.date).getTime();
-            });
+                    return new Date(b.date).getTime() - new Date(a.date).getTime();
+                });
 
             setResources(sortedResources);
             setTotalResourcesCount(sortedResources.length);
             setCurrentPage(1);
+            setIsLoading(false); // 시작 시 로딩
         };
         fetchFilteredResources();
     }, [searchQuery, filters]);
@@ -90,12 +124,25 @@ const ResourcesPage = () => {
                 {/* Right Section: Resource List */}
                 <div className="lg:col-span-3">
                     <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
-                        {currentResources.length > 0 ? (
+                        {/*{currentResources.length > 0 ? (*/}
+                        {/*    currentResources.map((post) => (*/}
+                        {/*        <ResourceCard key={post.id} {...post} />*/}
+                        {/*    ))*/}
+                        {/*) : (*/}
+                        {/*    <p className="text-gray-500">No resources match your criteria.</p>*/}
+                        {/*)}*/}
+                        {isLoading ? (
+                            <div className="col-span-full flex justify-center items-center py-20">
+                                <div className="animate-spin rounded-full h-10 w-10 border-t-4 border-blue-500"></div>
+                            </div>
+                        ) : currentResources.length > 0 ? (
                             currentResources.map((post) => (
-                                <ResourceCard key={post.path} {...post} />
+                                <ResourceCard key={post.id} {...post} />
                             ))
                         ) : (
-                            <p className="text-gray-500">No resources match your criteria.</p>
+                            <p className="text-gray-500 col-span-full text-center py-10">
+                                No resource match your criteria.
+                            </p>
                         )}
                     </div>
 

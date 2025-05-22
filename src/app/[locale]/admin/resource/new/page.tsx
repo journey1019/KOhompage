@@ -129,6 +129,7 @@ export default function NewResourcePage() {
                     <div className="flex-1"><TagSelector field="tags" selected={form.tags}
                                                          onToggle={tag => toggleTag('tags', tag)}
                                                          options={tagOptions} /></div>
+                    <button className="p-1 bg-gray-100 rounded-full text-gray-700"><GoPlus className=""/></button>
                 </div>
 
                 {/* 솔루션 태그 */}
@@ -137,11 +138,12 @@ export default function NewResourcePage() {
                     <div className="flex-1"><TagSelector field="solutionTag" selected={form.solutionTag}
                                                          onToggle={tag => toggleTag('solutionTag', tag)}
                                                          options={solutionTagOptions} /></div>
+                    <button className="p-1 bg-gray-100 rounded-full text-gray-700"><GoPlus className="" /></button>
                 </div>
 
                 {/* 숨김 태그 */}
                 <div className="flex items-start gap-4">
-                    <label className="w-40 text-left pt-2 font-medium text-gray-700">🙈 숨김 태그</label>
+                <label className="w-40 text-left pt-2 font-medium text-gray-700">🙈 숨김 태그</label>
                     <textarea
                         name="hideTag"
                         placeholder="쉼표(,)로 구분"

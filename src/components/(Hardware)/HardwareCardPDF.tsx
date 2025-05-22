@@ -15,7 +15,7 @@ interface HardwareItem {
     path: string;
 }
 
-const HardwareCardPDF: React.FC<Hardware> = ({ title, subtitle, description, category, imageSrc, tags, slug, path }) => (
+const HardwareCardPDF: React.FC<Hardware> = ({ id, title, subtitle, description, category, imageSrc, tags, slug, path }) => (
     <a
         className="group"
         href={path} // PDF 파일 경로로 설정

@@ -7,8 +7,12 @@ import { ArrowDownOnSquareIcon, ArrowTopRightOnSquareIcon } from "@heroicons/rea
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 
-
-const ResourceCardAdmin: React.FC<Resource> = ({ id, date, contentType, title, subtitle, tags, form, image, path, use, onDelete, onEdit }) => {
+interface ResourceCardProps extends Resource {
+    onDelete?: (id: number) => void;
+    onEdit?: (id: number) => void;
+    isAdmin?: boolean; // ✅ 추가
+}
+const ResourceCardAdmin: React.FC<Resource> = ({ id, date, contentType, title, subtitle, tags, form, image, path, use, onDelete, onEdit, isAdmin = false }) => {
     const router = useRouter();
     const handleOpenPDF = () => {
         if (form === "pdf") {
@@ -114,16 +118,18 @@ const ResourceCardAdmin: React.FC<Resource> = ({ id, date, contentType, title, s
                         </button>
                     )}
                 </div>
-                <div className="flex flex-row flex-wrap gap-3 mt-4">
-                    <button onClick={() => onEdit(id)}
-                            className="px-3 py-1 rounded-full bg-blue-500 hover:bg-blue-600 text-white">
-                        ✏️ Edit
-                    </button>
-                    <button onClick={() => onDelete(id)}
-                            className="px-3 py-1 rounded-full bg-red-500 hover:bg-red-600 text-white">
-                        🗑 Delete
-                    </button>
-                </div>
+                {isAdmin && onEdit && onDelete && (
+                    <div className="flex flex-row flex-wrap gap-3 mt-4">
+                        <button onClick={() => onEdit(id)}
+                                className="px-3 py-1 rounded-full bg-blue-500 hover:bg-blue-600 text-white">
+                            ✏️ Edit
+                        </button>
+                        <button onClick={() => onDelete(id)}
+                                className="px-3 py-1 rounded-full bg-red-500 hover:bg-red-600 text-white">
+                            🗑 Delete
+                        </button>
+                    </div>
+                )}
             </div>
         </div>
 

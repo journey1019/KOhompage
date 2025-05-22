@@ -7,16 +7,17 @@ import { ArrowDownOnSquareIcon, ArrowTopRightOnSquareIcon } from "@heroicons/rea
 import { useRouter } from 'next/navigation';
 
 
-const ResourceCard: React.FC<Resource> = ({ date, contentType, title, subtitle, tags, form, image, path, use }) => {
+const ResourceCard: React.FC<Resource> = ({ id, date, contentType, title, subtitle, tags, form, image, path, use }) => {
     const router = useRouter();
     const handleOpenPDF = () => {
         if (form === "pdf") {
             window.open(path, "_blank", "noopener,noreferrer");
         }
     };
-    const handlePageNavigation = () => {
+    const handlePageNavigation = (id, form) => {
         if (form === "page") {
-            router.push(path); // Next.js 라우팅
+            console.log('click')
+            router.push(`resources/${id}`); // Next.js 라우팅
         }
     }
 
@@ -52,7 +53,12 @@ const ResourceCard: React.FC<Resource> = ({ date, contentType, title, subtitle, 
 
                 {/* Tags */}
                 <div className="mt-4 flex flex-wrap gap-2">
-                    {tags.split(',').map((tag) => (
+                    {/*{tags.split(',').map((tag) => (*/}
+                    {/*    <span key={tag} className="px-2 py-1 text-xs text-white bg-red-500 rounded-full">*/}
+                    {/*        {tag}*/}
+                    {/*    </span>*/}
+                    {/*))}*/}
+                    {(typeof tags === 'string' ? tags.split(',') : Array.isArray(tags) ? tags : []).map((tag) => (
                         <span key={tag} className="px-2 py-1 text-xs text-white bg-red-500 rounded-full">
                             {tag}
                         </span>
@@ -74,7 +80,7 @@ const ResourceCard: React.FC<Resource> = ({ date, contentType, title, subtitle, 
                     </a>
                 ) : form === 'page' ? (
                     <button
-                        onClick={handlePageNavigation}
+                        onClick={() => handlePageNavigation(id, form)}
                         className="flex flex-row w-full items-center justify-end text-red-500 hover:underline text-end pr-2"
                     >
                         Go to Page

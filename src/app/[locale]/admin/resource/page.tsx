@@ -142,7 +142,7 @@ export default function ResourceListPage() {
                             </div>
                         ) : currentResources.length > 0 ? (
                             currentResources.map((post) => (
-                                <ResourceCardAdmin key={post.id} {...post} onDelete={handleDelete} onEdit={handleEdit} />
+                                <ResourceCardAdmin key={post.id} {...post} onDelete={handleDelete} onEdit={handleEdit} isAdmin="true"/>
                             ))
                         ) : (
                             <p className="text-gray-500 col-span-full text-center py-10">
