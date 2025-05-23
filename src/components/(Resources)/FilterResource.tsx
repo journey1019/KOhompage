@@ -4,7 +4,8 @@ import React, { useEffect, useState } from 'react';
 import { FilterOptions } from "@/service/resources/resourceData";
 import { GoPlus } from "react-icons/go";
 import { MdOutlineClose } from "react-icons/md";
-
+import Tooltip from '@mui/material/Tooltip';
+import { IoInformation } from 'react-icons/io5';
 
 interface FiltersResourcesProps {
     filters: FilterOptions,
@@ -12,7 +13,10 @@ interface FiltersResourcesProps {
     totalResourcesCount: number; // 전체 게시글 개수
     isAdmin?: boolean; // 관리자 여부 (기본값 false)
 }
-
+interface FilterOption {
+    type: string;
+    label: string;
+}
 const FilterResource: React.FC<FiltersResourcesProps> = ({ filters, onFilterChange, totalResourcesCount, isAdmin = false}) => {
     const [contentTypes, setContentTypes] = useState<string[]>([]);
     const [solutions, setSolutions] = useState<string[]>([]);
@@ -20,7 +24,7 @@ const FilterResource: React.FC<FiltersResourcesProps> = ({ filters, onFilterChan
     useEffect(() => {
         fetch('/api/resource/filter-options')
             .then(res => res.json())
-            .then((options) => {
+            .then((options: FilterOption[]) => {
                 setContentTypes(options.filter((opt) => opt.type === 'contentType').map((opt) => opt.label));
                 setSolutions(options.filter((opt) => opt.type === 'solution').map((opt) => opt.label));
             });
@@ -86,10 +90,18 @@ const FilterResource: React.FC<FiltersResourcesProps> = ({ filters, onFilterChan
     };
 
 
-
     return (
         <div className="mb-4">
-            <h2 className="text-xl maxWeb:text-2xl font-semibold mb-2">Filters</h2>
+            <div className="flex flex-row items-center space-x-4">
+                <h2 className="items-center text-xl maxWeb:text-2xl font-semibold mb-2">Filters</h2>
+                {/* 활성화/비활성화 검색 방법 안내*/}
+                {isAdmin && (
+                    <Tooltip title="'true/false'를 입력하면, Resource 페이지 노출 여부로 필터링됩니다." className="flex flex-row items-center">
+                        <IoInformation className="bg-gray-100 rounded-full p-1 w-5 h-5 hover:bg-gray-200"/>
+                    </Tooltip>
+                )}
+            </div>
+
             <p className="text-gray-600 mb-4 text-base maxWeb:text-lg">{totalResourcesCount} resources found</p>
 
             {/* Content Type 필터 */}
@@ -130,28 +142,8 @@ const FilterResource: React.FC<FiltersResourcesProps> = ({ filters, onFilterChan
                         <GoPlus className="w-3 h-3" />
                     </button>
                 )}
-
             </div>
 
-
-            {/* Form 필터 (주석 제거 시 사용 가능) */}
-            {/* <div className="mb-4">
-                <h3 className="font-semibold text-base maxWeb:text-lg xl:mb-1">Form</h3>
-                {["link", "pdf", "page"].map((type) => (
-                    <label
-                        key={type}
-                        className="flex items-center space-x-2 text-base maxWeb:text-lg cursor-pointer"
-                    >
-                        <input
-                            type="checkbox"
-                            checked={filters.form?.includes(type) || false}
-                            onChange={() => handleCheckboxChange("form", type)}
-                            className="form-checkbox h-5 w-5 text-blue-600 rounded-md focus:ring-2 focus:ring-blue-500"
-                        />
-                        <span>{type}</span>
-                    </label>
-                ))}
-            </div> */}
 
             {/* Solutions 필터 */}
             <div className="mb-4 maxWeb:mb-6">

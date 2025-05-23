@@ -29,7 +29,7 @@ export default function LanguageSwitcher() {
                 <button
                     onClick={() => {
                         switchLanguage('ko');
-                        console.log('korea');
+                        // console.log('korea');
                     }}
                     className="text-gray-800 dark:text-white p-2"
                 >
@@ -38,7 +38,7 @@ export default function LanguageSwitcher() {
                 <button
                     onClick={() => {
                         switchLanguage('en');
-                        console.log('english')
+                        // console.log('english')
                     }}
                     className="text-gray-800 dark:text-white p-2"
                 >

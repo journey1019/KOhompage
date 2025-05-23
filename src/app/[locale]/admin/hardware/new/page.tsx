@@ -157,6 +157,7 @@ export default function NewHardwarePage() {
                     <div className="flex-1"><TagSelector field="tags" selected={form.tags}
                                                          onToggle={tag => toggleTag('tags', tag)}
                                                          options={tagsOptions} /></div>
+                    <GoPlus/>
                 </div>
 
                 {/* 솔루션 태그 */}
@@ -165,6 +166,7 @@ export default function NewHardwarePage() {
                     <div className="flex-1"><TagSelector field="solutionTag" selected={form.solutionTag}
                                                          onToggle={tag => toggleTag('solutionTag', tag)}
                                                          options={solutionTagOptions} /></div>
+                    <GoPlus/>
                 </div>
 
                 {/* 숨김 태그 */}

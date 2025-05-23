@@ -86,7 +86,7 @@ export default function Payment() {
         }, (rsp: any) => {
             if (rsp.success) {
                 alert('결제 성공!')
-                console.log('결제 응답', rsp)
+                // console.log('결제 응답', rsp)
                 setOpen(false)
             } else {
                 alert(`결제 실패: ${rsp.error_msg}`)

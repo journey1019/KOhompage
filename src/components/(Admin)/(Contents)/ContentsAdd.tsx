@@ -126,7 +126,7 @@ export default function ContentsAdd() {
         else alert('저장 실패!')
     }
 
-    console.log(formState)
+    // console.log(formState)
 
     return (
         <div className="max-w-2xl mx-auto p-4 space-y-4 bg-white shadow rounded">

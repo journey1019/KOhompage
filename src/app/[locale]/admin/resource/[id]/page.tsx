@@ -1,14 +1,10 @@
-
-// app/[locale]/resource/[id]/page.tsx
 'use client';
 
 import { useParams, usePathname, useRouter } from 'next/navigation';
 import React, { useEffect, useState } from 'react';
 import { Resource } from '@/types/resource';
 import PageHero from '@/components/PageHero';
-import Image from 'next/image';
 import { FaArrowLeft } from "react-icons/fa";
-import { router } from 'next/client';
 import Link from 'next/link';
 
 

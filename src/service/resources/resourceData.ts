@@ -17,34 +17,15 @@ export const getAllResources = async (): Promise<Resource[]> => {
     // return data.filter((resource) => resource.use);
 };
 
+// const tagOptions = useTagOptions() || ['Container-IoT', 'Global-IoT', 'Satellite', 'AIS', 'Cellular', 'Door', 'Cargo',
+//     'Dry', 'Reefer', 'NTN', 'OGx/IDP'];
+// const solutionTagOptions = useSolutionTagOptions() || ['Container-IoT', 'Global-IoT', 'Satellite', 'AIS', 'Cellular', 'Door', 'Cargo',
+//     'Dry', 'Reefer', 'NTN', 'OGx/IDP'];
+
+
 // Normalize text by converting to lowercase and removing special characters
-const normalizeText = (text: string): string =>
-    text.toLowerCase().replace(/[^a-z0-9가-힣]/g, ""); // 대소문자, 특수문자 무시
-
-// 검색 필터링 함수
-export const getFilteredResources = async (query: string): Promise<Resource[]> => {
-    const normalizedQuery = query.trim().toLowerCase(); // 검색어 소문자로 변환 및 공백 제거
-
-    const res = await fetch('/api/resource');
-    const data: Resource[] = await res.json();
-
-    return data.filter((resource) => {
-        // 필터링할 모든 문자열을 하나로 결합
-        const searchableContent = [
-            resource.contentType,
-            resource.title,
-            resource.subtitle || "",
-            ...resource.tags,
-            ...resource.hideTag,
-            ...resource.solutionTag,
-            resource.form,
-        ]
-            .join(" ") // 문자열 합치기
-            .toLowerCase(); // 소문자로 변환
-
-        return searchableContent.includes(normalizedQuery); // 검색어 포함 여부 확인
-    });
-};
+const normalizeText = (text: string | number | boolean): string =>
+    String(text).toLowerCase().replace(/[^a-z0-9가-힣]/g, ""); // 대소문자, 특수문자 무시
 
 // 검색 및 필터링 함수
 export const getFilteredResourcesByQueryAndFilters = async (
@@ -67,6 +48,7 @@ export const getFilteredResourcesByQueryAndFilters = async (
             resource.hideTag,
             resource.solutionTag,
             resource.form,
+            String(resource.use)
         ]
             .map(normalizeText)
             .join(" ");
@@ -111,8 +93,6 @@ export const getResourcesByKeywords = async (keywords: string[]): Promise<Resour
     });
 };
 
-
-
 // Filter resources by keywords (title, subtitle, tags)
 export const getResourcesByAllKeywords = async (keywords: string[]): Promise<Resource[]> => {
     const normalizedKeywords = keywords.map(normalizeText);
@@ -154,10 +134,6 @@ export const getResourceByKeywordsInPage = async (keywords: string[]): Promise<R
     return data.filter((resource) => {
         if (!resource.use) return false;
 
-        // Normalize tags and solutionTag
-        // const normalizedHideTags = hardware.hideTag.map((tag) =>
-        //     tag.toLowerCase().replace(/[^a-z0-9]/g, "")
-        // );
         const normalizedSolutionTag = resource.solutionTag.split(',').map((tag) =>
             tag.toLowerCase().replace(/[^a-z0-9]/g, "")
         );

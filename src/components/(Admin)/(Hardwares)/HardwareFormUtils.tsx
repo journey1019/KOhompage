@@ -21,11 +21,13 @@ const categoryOptions = [
     'Module', 'Device', 'Antenna', 'Sensor'
 ];
 
+
 const useFormHandlers = (initialState: any) => {
     const [form, setForm] = useState(initialState);
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
-        const { name, value, type, checked } = e.target;
+        const target = e.target as HTMLInputElement;
+        const { name, value, type, checked } = target;
         setForm((prev: any) => ({ ...prev, [name]: type === 'checkbox' ? checked : value }));
     };
 

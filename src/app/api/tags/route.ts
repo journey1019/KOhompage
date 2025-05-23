@@ -23,7 +23,7 @@ export async function POST(req: NextRequest) {
         });
         return NextResponse.json(tag);
     } catch (error) {
-        console.log(error)
+        // console.log(error)
         return NextResponse.json({ error: '이미 존재하는 태그이거나 오류 발생' }, { status: 500 });
     }
 }

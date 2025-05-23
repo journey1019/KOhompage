@@ -30,7 +30,7 @@ export default function AdminPage({ params }: Props) {
         return <div>관리자 계정 검사 로딩 중...</div>;
     }
 
-    console.log(session)
+    console.log(session)//
     const handleLogout = () => {
         // JWT 토큰 삭제 및 리다이렉션
         localStorage.removeItem('token');

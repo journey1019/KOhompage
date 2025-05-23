@@ -22,7 +22,7 @@ export function verifyJwt(token: string) {
         const decoded = jwt.verify(token, secret_key!);
         return decoded as JwtPayload;
     } catch (error) {
-        console.log(error);
+        // console.log(error);
         return null;
     }
 }

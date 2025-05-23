@@ -4,6 +4,7 @@ import { useRouter, usePathname, useParams } from 'next/navigation';
 import { useEffect, useState } from 'react';
 import { GoPlus } from 'react-icons/go';
 import { IoIosClose } from 'react-icons/io';
+import { Resource, ResourceFormState } from "@/types/resource"
 
 
 // export const useTagOptions = (): [string[], React.Dispatch<React.SetStateAction<string[]>>] => {
@@ -92,16 +93,20 @@ const contentTypeOptions = [
     'Article', 'Datasheet', 'Newsletter', 'Video', 'Brochure'
 ];
 
-const useFormHandlers = (initialState: any) => {
-    const [form, setForm] = useState(initialState);
+const useFormHandlers = (initialState: ResourceFormState) => {
+    const [form, setForm] = useState<ResourceFormState>(initialState);
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
-        const { name, value, type, checked } = e.target;
-        setForm((prev: any) => ({ ...prev, [name]: type === 'checkbox' ? checked : value }));
+        const target = e.target as HTMLInputElement;
+        const { name, value, type, checked } = target;
+        setForm(prev => ({
+            ...prev,
+            [name]: type === 'checkbox' ? checked : value,
+        }));
     };
 
     const toggleTag = (field: 'tags' | 'solutionTag', tag: string) => {
-        setForm((prev: any) => {
+        setForm(prev => {
             const list = prev[field].includes(tag)
                 ? prev[field].filter((t: string) => t !== tag)
                 : [...prev[field], tag];

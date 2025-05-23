@@ -4,7 +4,6 @@ import { useEffect, useState } from 'react';
 import { useParams, useRouter, usePathname } from 'next/navigation';
 import { GoPlus } from "react-icons/go";
 import {
-    // tagOptions, solutionTagOptions,
     contentTypeOptions,
     useTagOptions, useSolutionTagOptions,
     useFormHandlers, TagSelector, FileUploader
@@ -44,6 +43,7 @@ export default function EditResourcePage() {
         handleChange,
         toggleTag
     } = useFormHandlers({
+        id: 0,
         date: '',
         contentType: '',
         title: '',
@@ -77,22 +77,6 @@ export default function EditResourcePage() {
             .then(res => res.json())
             .then(data => setExistingResources(data.map((r: any) => ({ id: r.id, title: r.title }))));
     }, []);
-
-    const handleImageUpload = async (file: File) => {
-        const formData = new FormData();
-        formData.append('file', file);
-        const res = await fetch('/api/upload/image', { method: 'POST', body: formData });
-        const data = await res.json();
-        setForm(prev => ({ ...prev, image: data.url }));
-    };
-
-    const handlePdfUpload = async (file: File) => {
-        const formData = new FormData();
-        formData.append('file', file);
-        const res = await fetch('/api/upload/pdf', { method: 'POST', body: formData });
-        const data = await res.json();
-        setForm(prev => ({ ...prev, path: data.url }));
-    };
 
     const handleTitleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const newTitle = e.target.value;
@@ -209,7 +193,7 @@ export default function EditResourcePage() {
         }));
     };
 
-    console.log(form)
+    // console.log(form)
     return (
         <div className="p-6 max-w-4xl mx-auto">
             <h1 className="text-2xl font-bold mb-8">✏️ 리소스 수정</h1>
@@ -258,11 +242,6 @@ export default function EditResourcePage() {
                 {/*</div>*/}
                 {/* 공통 입력 행 */}
                 {[
-                    // {
-                    //     label: '📅 날짜',
-                    //     field: <input type="date" name="date" value={form.date} onChange={handleChange}
-                    //                   className="w-full border p-2 rounded" />
-                    // },
                     {
                         label: '📌 제목',
                         field: <div className="w-full">
@@ -290,34 +269,6 @@ export default function EditResourcePage() {
                             </select>
                         )
                     },
-                    // {
-                    //     label: '🙈 숨김 태그', field: (
-                    //         <textarea
-                    //             name="hideTag"
-                    //             value={form.hideTag.join(',')}
-                    //             onChange={e => setForm(prev => ({
-                    //                 ...prev,
-                    //                 hideTag: e.target.value.split(',').map(t => t.trim())
-                    //             }))}
-                    //             className="w-full border p-2 rounded"
-                    //         />
-                    //     )
-                    // },
-                    // {
-                    //     label: '📄 형식 선택', field: (
-                    //         <select name="form" value={form.form} onChange={handleChange}
-                    //                 className="w-full border p-2 rounded">
-                    //             <option value="pdf">PDF</option>
-                    //             <option value="link">Link</option>
-                    //         </select>
-                    //     )
-                    // },
-                    // {
-                    //     label: '🔗 링크 입력', field: form.form === 'link' && (
-                    //         <input name="path" value={form.path} onChange={handleChange}
-                    //                className="w-full border p-2 rounded" />
-                    //     )
-                    // }
                 ].map(({ label, field }) => (
                     <div key={label} className="flex items-center gap-4">
                         <label className="w-40 font-medium text-gray-700">{label}</label>
@@ -328,8 +279,6 @@ export default function EditResourcePage() {
                 <div className="flex items-start gap-4">
                     <label className="w-40 font-medium pt-2">🏷 대표 태그</label>
                     <div className="flex-1">
-                        {/*<TagSelector field="tags" selected={form.tags} onToggle={(tag) => toggleTag('tags', tag)}*/}
-                        {/*             options={tagOptions} />*/}
                         {tagsLoading ? (
                             <div className="text-gray-500 text-sm">태그를 불러오는 중...</div>
                         ) : tagsError ? (
@@ -463,7 +412,7 @@ export default function EditResourcePage() {
                     </div>
                 ) : (
                     <TiptapEditor
-                        content={form.html}
+                        content={form.html ?? ''}
                         onChange={(newHtml) => setForm(prev => ({ ...prev, html: newHtml }))}
                     />
                 )}
@@ -479,9 +428,7 @@ export default function EditResourcePage() {
                         control={
                             <Switch
                                 checked={form.use}
-                                onChange={(e) => handleChange({
-                                    target: { name: 'use', value: e.target.checked },
-                                })}
+                                onChange={(e) => setForm(prev => ({ ...prev, use: e.target.checked }))}
                                 color="primary"
                             />
                         }

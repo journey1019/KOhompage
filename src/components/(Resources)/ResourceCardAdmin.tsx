@@ -5,33 +5,26 @@ import Image from "next/image";
 import { Resource } from '@/types/resource'
 import { ArrowDownOnSquareIcon, ArrowTopRightOnSquareIcon } from "@heroicons/react/24/outline";
 import { useRouter } from 'next/navigation';
-import Link from 'next/link';
 
 interface ResourceCardProps extends Resource {
     onDelete?: (id: number) => void;
     onEdit?: (id: number) => void;
-    isAdmin?: boolean; // ✅ 추가
+    isAdmin?: boolean | undefined; // ✅ 추가
 }
-const ResourceCardAdmin: React.FC<Resource> = ({ id, date, contentType, title, subtitle, tags, form, image, path, use, onDelete, onEdit, isAdmin = false }) => {
+const ResourceCardAdmin = ({ id, date, contentType, title, subtitle, tags, form, image, path, use, onDelete, onEdit, isAdmin = false }: ResourceCardProps) => {
     const router = useRouter();
     const handleOpenPDF = () => {
         if (form === "pdf") {
             window.open(path, "_blank", "noopener,noreferrer");
         }
     };
-    const handlePageNavigation = (id, form) => {
+    const handlePageNavigation = (id: Number, form: "page" | "pdf" | "link") => {
         if (form === 'page') {
             router.push(`resource/${id}`);
         } else {
             router.push(`resource/edit/${id}`);
         }
     };
-
-    // const handlePageNavigation = () => {
-    //     if (form === "page") {
-    //         router.push(path); // Next.js 라우팅
-    //     }
-    // }
 
     return (
         <div className={`group flex flex-col border rounded-lg p-4 shadow-lg hover:shadow-xl h-full ${!use && 'bg-gray-300'}`}>

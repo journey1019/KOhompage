@@ -176,6 +176,7 @@ const MobileToolbarContent = ({
     </>
 )
 
+
 export default function TipTapEditor({ content, onChange }: { content: string, onChange: (html: string) => void }) {
     const isMobile = useMobile()
     const windowSize = useWindowSize()

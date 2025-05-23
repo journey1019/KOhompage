@@ -37,9 +37,9 @@ export async function sendEmail(data: EmailData): Promise<void> {
 
     try {
         await transporter.verify();
-        console.log('SMTP server is ready to send emails');
+        // console.log('SMTP server is ready to send emails');
     } catch (error) {
-        console.error('Error connecting to SMTP server:', error);
+        // console.error('Error connecting to SMTP server:', error);
         throw new Error('SMTP server connection failed');
     }
 

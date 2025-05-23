@@ -21,7 +21,6 @@ const HardwarePage = () => {
     const locale = pathname.split('/')[1];
     const [isLoading, setIsLoading] = useState<boolean>(true);
 
-
     const [searchQuery, setSearchQuery] = useState<string>(""); // 검색어 상태
     const [filters, setFilters] = useState<FilterOptions>({}); // 필터 상태
     const [totalHardwaresCount, setTotalHardwaresCount] = useState<number>(hardwares.length); // 전체 게시글 개수
@@ -128,15 +127,6 @@ const HardwarePage = () => {
                                 No hardwares match your criteria.
                             </p>
                         )}
-
-                        {/*{hardwares.length > 0 ? (*/}
-                        {/*    hardwares.map((post) => (*/}
-                        {/*        <HardwareCardPDFAdmin key={post.id} {...post} onDelete={handleDelete}*/}
-                        {/*                              onEdit={handleEdit} />*/}
-                        {/*    ))*/}
-                        {/*) : (*/}
-                        {/*    <p className="text-gray-500">No hardwares match your criteria.</p>*/}
-                        {/*)}*/}
                     </div>
 
                     {/* Pagination */}

@@ -4,7 +4,7 @@ export interface Resource {
     contentType: string;
     title: string;
     subtitle?: string;
-    tags: string;
+    tags: string; // "a, b, c"
     hideTag: string;
     solutionTag: string;
     form: string;
@@ -12,4 +12,13 @@ export interface Resource {
     path: string;
     use: boolean;
     html?: string;
+}
+
+// 프론트에서만 사용할 form 상태 타입
+export interface ResourceFormState extends Omit<Resource, 'tags' | 'hideTag' | 'solutionTag'> {
+    tags: string[];
+    hideTag: string[];
+    solutionTag: string[];
+    createdAt?: string;
+    updatedAt?: string;
 }

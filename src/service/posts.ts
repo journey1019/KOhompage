@@ -28,7 +28,7 @@ export async function getNonFeaturedPosts():Promise<Post[]> {
 
 // DB에 접근하거나 file을 읽는 함수는 여러번 호출하면 중복방지가 안돼서, 중복을 방지해줄 수 있도록
 export const getAllPosts = cache(async () => {
-    console.log('getAllPosts');
+    // console.log('getAllPosts');
     const filePath = path.join(process.cwd(), 'data', 'posts.json');
     return readFile(filePath, 'utf-8')
         .then<Post[]>(JSON.parse)

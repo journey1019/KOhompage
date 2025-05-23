@@ -4,7 +4,6 @@ import { useRouter, usePathname } from 'next/navigation';
 import { useState, useEffect } from 'react';
 import { GoPlus } from "react-icons/go";
 import {
-    // tagOptions, solutionTagOptions,
     contentTypeOptions,
     useTagOptions, useSolutionTagOptions,
     useFormHandlers, TagSelector, FileUploader
@@ -12,17 +11,13 @@ import {
 import Switch from '@mui/material/Switch';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import TiptapEditor from '@/components/(Admin)/(Resources)/Tiptap/TipTapEditor';
-
+import { Resource } from "@/types/resource";
 
 
 export default function NewResourcePage() {
     const router = useRouter();
     const locale = usePathname().split('/')[1];
 
-    // const tagOptions = useTagOptions() || ['Container-IoT', 'Global-IoT', 'Satellite', 'AIS', 'Cellular', 'Door', 'Cargo',
-    //     'Dry', 'Reefer', 'NTN', 'OGx/IDP'];
-    // const solutionTagOptions = useSolutionTagOptions() || ['Container-IoT', 'Global-IoT', 'Satellite', 'AIS', 'Cellular', 'Door', 'Cargo',
-    //     'Dry', 'Reefer', 'NTN', 'OGx/IDP'];
     const {
         tags: tagOptions,
         loading: tagsLoading,
@@ -36,19 +31,18 @@ export default function NewResourcePage() {
         error: solutionTagsError,
         setTags: setSolutionTagOptions,
     } = useSolutionTagOptions();
-    // const [tagOptions, setTagOptions] = useTagOptions();
-    // const [solutionTagOptions, setSolutionTagOptions] = useSolutionTagOptions();
 
     const {
         form, setForm, handleChange, toggleTag
     } = useFormHandlers({
+        id: 0,
         date: new Date().toISOString().split('T')[0],
         contentType: 'Brochure',
         title: '',
         subtitle: '',
-        tags: [],
-        hideTag: [],
-        solutionTag: [],
+        tags: [],           // ✅ string[]
+        hideTag: [],        // ✅ string[]
+        solutionTag: [],    // ✅ string[]
         form: 'pdf',
         image: '',
         path: '',
@@ -65,24 +59,6 @@ export default function NewResourcePage() {
             .then(data => setExistingTitles(data.map((r: any) => r.title)));
     }, []);
 
-    const handleImageUpload = async (file: File, page: 'resource') => {
-        const formData = new FormData();
-        formData.append('file', file);
-        formData.append('page', page);
-
-        const res = await fetch('/api/upload/image', { method: 'POST', body: formData });
-        const data = await res.json();
-        setForm(prev => ({ ...prev, image: data.url }));
-    };
-
-    const handlePdfUpload = async (file: File) => {
-        const formData = new FormData();
-        formData.append('file', file);
-        const res = await fetch('/api/upload/pdf', { method: 'POST', body: formData });
-        const data = await res.json();
-        setForm(prev => ({ ...prev, path: data.url }));
-    };
-
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
         if (existingTitles.includes(form.title)) {
@@ -90,7 +66,7 @@ export default function NewResourcePage() {
             return;
         }
 
-        const payload = {
+        const payload: Resource = {
             ...form,
             tags: form.tags.join(','),
             hideTag: form.hideTag.join(','),
@@ -179,8 +155,6 @@ export default function NewResourcePage() {
             [type]: prev[type].filter((t: string) => t !== name),
         }));
     };
-
-
 
 
     return (
@@ -356,17 +330,12 @@ export default function NewResourcePage() {
                     <>
                         {/*<TiptapEditor/>*/}
                         <TiptapEditor
-                            content={form.html}
+                            content={form.html ?? ''}
                             onChange={(newHtml) => setForm(prev => ({ ...prev, html: newHtml }))}
                         />
                     </>
                 )}
 
-                {/* 사용 여부 - Checkbox */}
-                {/*<div className="flex items-center gap-4">*/}
-                {/*    <label className="w-40 text-left font-medium text-gray-700">✅ 사용 여부</label>*/}
-                {/*    <input type="checkbox" name="use" checked={form.use} onChange={handleChange}/>*/}
-                {/*</div>*/}
                 {/* 사용 여부 - Toggle */}
                 <div className="flex items-center gap-4">
                     <label className="w-40 text-left font-medium text-gray-700">✅ 노출 설정</label>
@@ -374,16 +343,16 @@ export default function NewResourcePage() {
                         control={
                             <Switch
                                 checked={form.use}
-                                onChange={(e) => handleChange({
-                                    target: { name: 'use', value: e.target.checked },
-                                })}
+                                onChange={(e) => setForm(prev => ({ ...prev, use: e.target.checked }))}
+                                // onChange={(e) => handleChange({
+                                //     target: { name: 'use', value: e.target.checked },
+                                // })}
                                 color="primary"
                             />
                         }
                         label={form.use ? '사용 중' : '비활성'}
                     />
                 </div>
-
 
                 {/* 에러 메시지 */}
                 {error && <div className="text-red-500 text-sm text-center">{error}</div>}

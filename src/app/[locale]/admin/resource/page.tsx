@@ -13,6 +13,8 @@ import {
 } from '@/service/resources/resourceData';
 import FilterResource from '@/components/(Resources)/FilterResource';
 import Pagination from '@/components/(Resources)/Pagination';
+import { IoMdClose } from "react-icons/io";
+
 
 export default function ResourceListPage() {
     const [resources, setResources] = useState<Resource[]>([]); // 초기 데이터
@@ -20,7 +22,6 @@ export default function ResourceListPage() {
     const pathname = usePathname();
     const locale = pathname.split('/')[1];
     const [isLoading, setIsLoading] = useState<boolean>(true);
-
 
     const [searchQuery, setSearchQuery] = useState<string>(""); // 검색어 상태
     const [filters, setFilters] = useState<FilterOptions>({}); // 필터 상태
@@ -40,13 +41,6 @@ export default function ResourceListPage() {
             setIsLoading(false);
         };
         fetchInitialResources();
-        // fetch('/api/resource')
-        //     .then(res => res.json())
-        //     // .then(data => {
-        //     //     const activeResources = data.filter((item: Resource) => item.use === true);
-        //     //     setResources(activeResources);
-        //     // })
-        //     .then(data => setResources(data));
     }, []);
 
     useEffect(() => {
@@ -54,14 +48,11 @@ export default function ResourceListPage() {
         const fetchFilteredResources = async () => {
             const filteredResources = await getFilteredResourcesByQueryAndFilters(searchQuery, filters);
 
-            // const sortedResources = filteredResources.sort((a, b) => {
-            //     return new Date(b.date).getTime() - new Date(a.date).getTime();
-            // });
             const sortedResources = filteredResources.sort((a, b) => {
                 // 1. use가 false인 항목 우선
-                if (a.use !== b.use) {
-                    return a.use ? -1 : 1; // a가 true이면 뒤로
-                }
+                // if (a.use !== b.use) {
+                //     return a.use ? -1 : 1; // a가 true이면 뒤로
+                // }
                 // 2. 날짜 기준 정렬 (내림차순)
                 return new Date(b.date).getTime() - new Date(a.date).getTime();
             });
@@ -81,15 +72,6 @@ export default function ResourceListPage() {
     // 현재 페이지에 표시할 리소스 계산
     const startIndex = (currentPage - 1) * itemsPerPage;
     const currentResources = resources.slice(startIndex, startIndex + itemsPerPage);
-
-    // 리소스 수정
-    // const handleEdit = (resource: Resource) => {
-    //     if (resource.form === 'page') {
-    //         router.push(`/${locale}/resource/${resource.id}`);
-    //     } else {
-    //         router.push(`/${locale}/admin/resource/edit/${resource.id}`);
-    //     }
-    // };
 
     const handleEdit = (id: number) => {
         router.push(`/${locale}/admin/resource/edit/${id}`);
@@ -142,25 +124,13 @@ export default function ResourceListPage() {
                             </div>
                         ) : currentResources.length > 0 ? (
                             currentResources.map((post) => (
-                                <ResourceCardAdmin key={post.id} {...post} onDelete={handleDelete} onEdit={handleEdit} isAdmin="true"/>
+                                <ResourceCardAdmin key={post.id} {...post} onDelete={handleDelete} onEdit={handleEdit} isAdmin/>
                             ))
                         ) : (
                             <p className="text-gray-500 col-span-full text-center py-10">
                                 No resource match your criteria.
                             </p>
                         )}
-                        {/*{resources.length > 0 ? (*/}
-                        {/*    resources.map((post) => (*/}
-                        {/*        <ResourceCardAdmin*/}
-                        {/*            key={post.id}*/}
-                        {/*            {...post}*/}
-                        {/*            onDelete={handleDelete}*/}
-                        {/*            onEdit={handleEdit}*/}
-                        {/*        />*/}
-                        {/*    ))*/}
-                        {/*) : (*/}
-                        {/*    <p className="text-gray-500">No resources match your criteria.</p>*/}
-                        {/*)}*/}
                     </div>
 
                     {/* Pagination */}
@@ -180,7 +150,7 @@ export default function ResourceListPage() {
                             onClick={toggleDrawer}
                             className="text-gray-500 hover:text-gray-800"
                         >
-                            Close
+                            <IoMdClose className="w-5 h-5" />
                         </button>
                         <FilterResource
                             filters={filters}

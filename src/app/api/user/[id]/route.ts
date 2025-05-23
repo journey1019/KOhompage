@@ -16,7 +16,7 @@ export async function GET(
         })
     }
 
-    console.log(params)
+    // console.log(params)
 
     // 테이블에서 id 값은 Int 로 정의되어 있기 때문에 형변환
     const id = Number(params.id)

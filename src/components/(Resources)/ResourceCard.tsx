@@ -16,7 +16,7 @@ const ResourceCard: React.FC<Resource> = ({ id, date, contentType, title, subtit
     };
     const handlePageNavigation = (id, form) => {
         if (form === "page") {
-            console.log('click')
+            // console.log('click')
             router.push(`resources/${id}`); // Next.js 라우팅
         }
     }
