@@ -12,5 +12,17 @@ module.exports = {
     ],
     rules: {
         '@typescript-eslint/no-explicit-any': 'warn',
+        '@typescript-eslint/no-unused-vars': 'warn',
+        '@typescript-eslint/no-empty-interface': 'off',
     },
+    overrides: [
+        {
+            files: ['node_modules/@prisma/client/**', 'prisma/generated/**'],
+            rules: {
+                '@typescript-eslint/no-explicit-any': 'off',
+                '@typescript-eslint/no-unused-vars': 'off',
+            },
+        },
+    ],
+
 };
