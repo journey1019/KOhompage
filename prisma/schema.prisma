@@ -1,9 +1,5 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
-
 generator client {
   provider = "prisma-client-js"
-  // output   = "../src/generated/prisma"
 }
 
 datasource db {
@@ -13,11 +9,11 @@ datasource db {
 
 model User {
   id       Int     @id @default(autoincrement())
-  password String // << 추가
+  password String
   email    String  @unique
   name     String?
+  role     String  @default("USER")
   posts    Post[]
-  role     Role    @default(USER)
 }
 
 model Post {
@@ -25,37 +21,30 @@ model Post {
   title     String
   content   String?
   published Boolean @default(false)
-  author    User    @relation(fields: [authorId], references: [id])
   authorId  Int
+  author    User    @relation(fields: [authorId], references: [id])
 }
 
-enum Role {
-  USER
-  ADMIN
-}
-
-// Resource
 model Resource {
   id          Int      @id @default(autoincrement())
   date        DateTime
   contentType String
   title       String   @unique
   subtitle    String
-  tags        String // 예: "Satellite,AIS"
-  hideTag     String // 예: "위성,글로벌"
-  solutionTag String // 예: "NMS,OGx/IDP"
-  form        String // 예: "pdf" or "link" or "page"
+  tags        String
+  hideTag     String
+  solutionTag String
+  form        String
   image       String
   path        String
   use         Boolean  @default(true)
-  html        String? // tiptap으로 작성된 HMTL
+  html        String?
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt
-  Tag         Tag?     @relation(fields: [tagId], references: [id])
   tagId       Int?
+  Tag         Tag?     @relation(fields: [tagId], references: [id])
 }
 
-// Hardware
 model Hardware {
   id          Int      @id @default(autoincrement())
   date        DateTime
@@ -63,9 +52,9 @@ model Hardware {
   title       String   @unique
   subtitle    String
   description String?
-  tags        String // 예: "Satellite,AIS"
-  hideTag     String // 예: "위성,글로벌"
-  solutionTag String // 예: "NMS,OGx/IDP"
+  tags        String
+  hideTag     String
+  solutionTag String
   imageSrc    String
   slug        String
   path        String
@@ -74,19 +63,17 @@ model Hardware {
   updatedAt   DateTime @updatedAt
 }
 
-// Resource Content Type Filtering
 model ResourceFilterOption {
   id        Int      @id @default(autoincrement())
-  type      String // 'contentType' 또는 'solution'
+  type      String
   label     String   @unique
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 }
 
-// Hardware Content Type Filtering
 model HardwareFilterOption {
   id        Int      @id @default(autoincrement())
-  type      String // 'categoryOptions' || 'typeOptions' || 'networkOptions'
+  type      String
   label     String   @unique
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
@@ -95,8 +82,9 @@ model HardwareFilterOption {
 model Tag {
   id       Int        @id @default(autoincrement())
   name     String
-  type     String
+  type     String // 'tags' or 'solutionTag'
+  scope    String // 'resource' or 'hardware'
   Resource Resource[]
 
-  @@unique([name, type])
+  @@unique([name, type, scope])
 }

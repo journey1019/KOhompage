@@ -45,9 +45,9 @@ const HardwarePage = () => {
             // });
             const sortedHardwares = filterHardwares.sort((a, b) => {
                 // 1. use가 false인 항목 우선
-                if (a.use !== b.use) {
-                    return a.use ? -1 : 1; // a가 true이면 뒤로
-                }
+                // if (a.use !== b.use) {
+                //     return a.use ? -1 : 1; // a가 true이면 뒤로
+                // }
                 // 2. 날짜 기준 정렬 (내림차순)
                 return new Date(b.date).getTime() - new Date(a.date).getTime();
             });
@@ -120,7 +120,7 @@ const HardwarePage = () => {
                             </div>
                         ) : currentResources.length > 0 ? (
                             currentResources.map((post) => (
-                                <HardwareCardPDFAdmin key={post.id} {...post} onDelete={handleDelete} onEdit={handleEdit} />
+                                <HardwareCardPDFAdmin key={post.id} {...post} onDelete={handleDelete} onEdit={handleEdit} isAdmin/>
                             ))
                         ) : (
                             <p className="text-gray-500 col-span-full text-center py-10">

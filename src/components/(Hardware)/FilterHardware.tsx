@@ -4,6 +4,8 @@ import React, { useEffect, useState } from 'react';
 import { FilterOptions } from "@/service/hardware/hardwareData";
 import { GoPlus } from "react-icons/go";
 import { MdOutlineClose } from "react-icons/md";
+import Tooltip from '@mui/material/Tooltip';
+import { IoInformation } from 'react-icons/io5';
 
 interface FiltersHardwareProps {
     filters: FilterOptions;
@@ -11,7 +13,10 @@ interface FiltersHardwareProps {
     totalResourcesCount: number; // 전체 게시글 개수
     isAdmin?: boolean; // 관리자 여부 (기본값 false)
 }
-
+interface FilterOption {
+    type: string;
+    label: string;
+}
 const FiltersHardware: React.FC<FiltersHardwareProps> = ({ filters, onFilterChange, totalResourcesCount, isAdmin = false }) => {
     const [categoryOptions, setCategoryOptions] = useState<string[]>([]);
     const [typeOptions, setTypeOptions] = useState<string[]>([]);
@@ -20,7 +25,7 @@ const FiltersHardware: React.FC<FiltersHardwareProps> = ({ filters, onFilterChan
     useEffect(() => {
         fetch('/api/hardware/filter-options')
             .then(res => res.json())
-            .then((options) => {
+            .then((options: FilterOption[]) => {
                 setCategoryOptions(options.filter((opt) => opt.type === 'categoryOptions').map((opt) => opt.label));
                 setTypeOptions(options.filter((opt) => opt.type === 'typeOptions').map((opt) => opt.label));
                 setNetworkOptions(options.filter((opt) => opt.type === 'networkOptions').map((opt) => opt.label));
@@ -78,7 +83,16 @@ const FiltersHardware: React.FC<FiltersHardwareProps> = ({ filters, onFilterChan
 
     return (
         <div>
-            <h2 className="text-xl maxWeb:text-2xl font-semibold mb-2">Filters</h2>
+            <div className="flex flex-row items-center space-x-4">
+                <h2 className="items-center text-xl maxWeb:text-2xl font-semibold mb-2">Filters</h2>
+                {/* 활성화/비활성화 검색 방법 안내*/}
+                {isAdmin && (
+                    <Tooltip title="'true/false'를 입력하면, Hardware 페이지 노출 여부로 필터링됩니다."
+                             className="flex flex-row items-center">
+                        <IoInformation className="bg-gray-100 rounded-full p-1 w-5 h-5 hover:bg-gray-200" />
+                    </Tooltip>
+                )}
+            </div>
             <p className="text-gray-600 mb-4 text-base maxWeb:text-lg">{totalResourcesCount} hardware found</p>
 
             {/* Categories 필터 */}
@@ -101,7 +115,7 @@ const FiltersHardware: React.FC<FiltersHardwareProps> = ({ filters, onFilterChan
                                 className="text-red-500 hover:text-red-700 text-sm"
                                 title="삭제"
                             >
-                                <MdOutlineClose className="w-5 h-5"/>
+                                <MdOutlineClose className="w-5 h-5" />
                             </button>
                         )}
                     </div>
@@ -152,7 +166,7 @@ const FiltersHardware: React.FC<FiltersHardwareProps> = ({ filters, onFilterChan
                                 className="text-red-500 hover:text-red-700 text-sm"
                                 title="삭제"
                             >
-                                <MdOutlineClose className="w-5 h-5"/>
+                                <MdOutlineClose className="w-5 h-5" />
                             </button>
                         )}
                     </div>
@@ -204,7 +218,7 @@ const FiltersHardware: React.FC<FiltersHardwareProps> = ({ filters, onFilterChan
                                 className="text-red-500 hover:text-red-700 text-sm"
                                 title="삭제"
                             >
-                                <MdOutlineClose className="w-5 h-5"/>
+                                <MdOutlineClose className="w-5 h-5" />
                             </button>
                         )}
                     </div>

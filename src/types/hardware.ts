@@ -1,3 +1,5 @@
+import { Resource } from '@/types/resource';
+
 export interface Hardware {
     id: number;
     date: string;
@@ -13,4 +15,12 @@ export interface Hardware {
     slug?: string;
     path: string;
     use: boolean;
+}
+
+export interface HardwareFormState extends Omit<Resource, 'tags' | 'hideTag' | 'solutionTag'> {
+    tags: string[];
+    hideTag: string[];
+    solutionTag: string[];
+    createdAt?: string;
+    updatedAt?: string;
 }

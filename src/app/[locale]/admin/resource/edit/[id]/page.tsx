@@ -24,6 +24,7 @@ export default function EditResourcePage() {
         loading: tagsLoading,
         error: tagsError,
         setTags: setTagOptions,
+        refresh: refreshTags
     } = useTagOptions();
 
     const {
@@ -31,6 +32,7 @@ export default function EditResourcePage() {
         loading: solutionTagsLoading,
         error: solutionTagsError,
         setTags: setSolutionTagOptions,
+        refresh: refreshSolutionTag,
     } = useSolutionTagOptions();
 
     // Title 중복 검사
@@ -170,11 +172,13 @@ export default function EditResourcePage() {
                                        type,
                                        setOptions,
                                        setFormField,
+                                       refresh,
                                    }: {
         name: string;
         type: 'tags' | 'solutionTag';
         setOptions: React.Dispatch<React.SetStateAction<string[]>>;
         setFormField: (updater: (prev: any) => any) => void;
+        refresh: () => Promise<void>;
     }) => {
         const res = await fetch(`/api/tags/${encodeURIComponent(name)}?type=${type}`, {
             method: 'DELETE',
@@ -191,6 +195,9 @@ export default function EditResourcePage() {
             ...prev,
             [type]: prev[type].filter((t: string) => t !== name),
         }));
+
+        // ✅ 실제 서버 상태도 반영
+        await refresh();
     };
 
     // console.log(form)
@@ -294,6 +301,7 @@ export default function EditResourcePage() {
                                         type: 'tags',
                                         setOptions: setSolutionTagOptions,
                                         setFormField: setForm,
+                                        refresh: refreshTags,
                                     })
                                 }
                                 options={tagOptions}
@@ -337,6 +345,7 @@ export default function EditResourcePage() {
                                         type: 'solutionTag',
                                         setOptions: setSolutionTagOptions,
                                         setFormField: setForm,
+                                        refresh: refreshSolutionTag,
                                     })
                                 }
                                 options={solutionTagOptions}
@@ -388,7 +397,7 @@ export default function EditResourcePage() {
                     <select name="form" value={form.form} onChange={handleChange} className="flex-1 border p-2 rounded">
                         <option value="pdf">PDF</option>
                         <option value="link">Link</option>
-                        <option value="link">Page</option>
+                        <option value="page">Page</option>
                     </select>
                 </div>
 

@@ -24,26 +24,47 @@ export const useTagOptions = (): {
     loading: boolean;
     error: string | null;
     setTags: React.Dispatch<React.SetStateAction<string[]>>;
+    refresh: () => Promise<void>; // 추가됨
 } => {
     const [tags, setTags] = useState<string[]>([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState<string | null>(null);
 
+    // useEffect(() => {
+    //     fetch('/api/tags?type=tags&scope=resource')
+    //         .then(res => res.json())
+    //         .then(data => {
+    //             setTags(data.map((t: any) => t.name));
+    //             setLoading(false);
+    //         })
+    //         .catch(err => {
+    //             console.error('태그 로딩 실패:', err);
+    //             setError('태그를 불러오는 데 실패했습니다.');
+    //             setLoading(false);
+    //         });
+    // }, []);
+    //
+    // return { tags, loading, error, setTags };
+
+    const fetchTags = async () => {
+        setLoading(true);
+        try {
+            const res = await fetch('/api/tags?type=tags&scope=resource');
+            const data = await res.json();
+            setTags(data.map((t: any) => t.name));
+            setLoading(false);
+        } catch (err) {
+            console.error('태그 로딩 실패:', err);
+            setError('태그를 불러오는 데 실패했습니다.');
+            setLoading(false);
+        }
+    };
+
     useEffect(() => {
-        fetch('/api/tags?type=tags')
-            .then(res => res.json())
-            .then(data => {
-                setTags(data.map((t: any) => t.name));
-                setLoading(false);
-            })
-            .catch(err => {
-                console.error('태그 로딩 실패:', err);
-                setError('태그를 불러오는 데 실패했습니다.');
-                setLoading(false);
-            });
+        fetchTags();
     }, []);
 
-    return { tags, loading, error, setTags };
+    return { tags, loading, error, setTags, refresh: fetchTags };
 };
 
 
@@ -64,26 +85,46 @@ export const useSolutionTagOptions = (): {
     loading: boolean;
     error: string | null;
     setTags: React.Dispatch<React.SetStateAction<string[]>>;
+    refresh: () => Promise<void>; // 추가됨
 } => {
     const [tags, setTags] = useState<string[]>([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState<string | null>(null);
 
+    // useEffect(() => {
+    //     fetch('/api/tags?type=solutionTag&scope=resource')
+    //         .then(res => res.json())
+    //         .then(data => {
+    //             setTags(data.map((t: any) => t.name));
+    //             setLoading(false);
+    //         })
+    //         .catch(err => {
+    //             console.error('솔루션 태그 로딩 실패:', err);
+    //             setError('솔루션 태그를 불러오는 데 실패했습니다.');
+    //             setLoading(false);
+    //         });
+    // }, []);
+    //
+    // return { tags, loading, error, setTags };
+    const fetchTags = async () => {
+        setLoading(true);
+        try {
+            const res = await fetch('/api/tags?type=solutionTag&scope=resource');
+            const data = await res.json();
+            setTags(data.map((t: any) => t.name));
+            setLoading(false);
+        } catch (err) {
+            console.error('솔루션 태그 로딩 실패:', err);
+            setError('솔루션 태그를 불러오는 데 실패했습니다.');
+            setLoading(false);
+        }
+    };
+
     useEffect(() => {
-        fetch('/api/tags?type=solutionTag')
-            .then(res => res.json())
-            .then(data => {
-                setTags(data.map((t: any) => t.name));
-                setLoading(false);
-            })
-            .catch(err => {
-                console.error('솔루션 태그 로딩 실패:', err);
-                setError('솔루션 태그를 불러오는 데 실패했습니다.');
-                setLoading(false);
-            });
+        fetchTags();
     }, []);
 
-    return { tags, loading, error, setTags };
+    return { tags, loading, error, setTags, refresh: fetchTags };
 };
 
 

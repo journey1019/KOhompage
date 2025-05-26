@@ -16,11 +16,12 @@ interface HardwareItem {
     slug?: string;
     path: string;
     use: boolean;
+    isAdmin?: boolean;
     onDelete: (id: number) => void; // ✅ 추가
     onEdit: (id: number) => void; // ✅ 추가
 }
 
-const HardwareCardPDFAdmin: React.FC<HardwareItem> = ({ id, title, subtitle, description, category, imageSrc, tags, slug, path, use, onDelete, onEdit }) => (
+const HardwareCardPDFAdmin: React.FC<HardwareItem> = ({ id, title, subtitle, description, category, imageSrc, tags, slug, path, use, onDelete, onEdit, isAdmin = false }) => (
     <div className={`group border rounded-lg shadow p-4 transition hover:shadow-md ${!use ? 'bg-gray-300' : 'bg-white'}`}>
         <div className="relative w-full h-60 overflow-hidden rounded-lg border-2 border-gray-200">
             {imageSrc ? (

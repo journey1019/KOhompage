@@ -48,6 +48,7 @@ export const getFilteredHardwaresByQueryAndFilters = async (
             hardware.tags,
             hardware.hideTag,
             hardware.solutionTag,
+            String(hardware.use),
         ].map(normalizeString).join(" ");
 
         const matchesQuery = normalizedQuery === "" || searchableContent.includes(normalizedQuery);

@@ -1,15 +1,16 @@
-
 'use client';
 
 import { useEffect, useState } from 'react';
 import { useParams, useRouter, usePathname } from 'next/navigation';
 import { GoPlus } from "react-icons/go";
 import {
+    useHardwareTagOptions, useHardwareSolutionTagOptions,
     tagsOptions, solutionTagOptions, categoryOptions,
     useFormHandlers, TagSelector, FileUploader
 } from '@/components/(Admin)/(Hardwares)/HardwareFormUtils';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import Switch from '@mui/material/Switch';
+import { Hardware } from '@/types/hardware';
 
 
 export default function EditResourcePage() {
@@ -17,9 +18,22 @@ export default function EditResourcePage() {
     const router = useRouter();
     const locale = usePathname().split('/')[1];
 
-    // Title 중복 검사
-    const [existingResources, setExistingResources] = useState<{ id: string; title: string }[]>([]);
-    const [titleError, setTitleError] = useState('');
+    const {
+        tags: hardwareTagOptions,
+        setTags: setHardwareTagOptions,
+        loading: hardwareTagsLoading,
+        error: hardwareTagsError,
+        refresh: refreshTags,
+    } = useHardwareTagOptions();
+
+    const {
+        tags: hardwareSolutionTagOptions,
+        setTags: setHardwareSolutionTagOptions,
+        loading: hardwareSolutionTagsLoading,
+        error: hardwareSolutionTagsError,
+        refresh: refreshSolutionTag,
+    } = useHardwareSolutionTagOptions();
+
 
     const {
         form,
@@ -40,6 +54,10 @@ export default function EditResourcePage() {
         path: '',
         use: true,
     });
+
+    // Title 중복 검사
+    const [existingResources, setExistingResources] = useState<{ id: string; title: string }[]>([]);
+    const [titleError, setTitleError] = useState('');
 
     useEffect(() => {
         fetch(`/api/hardware/${id}`)
@@ -62,25 +80,10 @@ export default function EditResourcePage() {
             .then(data => setExistingResources(data.map((r: any) => ({ id: r.id, title: r.title }))));
     }, []);
 
-    const handleImageUpload = async (file: File) => {
-        const formData = new FormData();
-        formData.append('file', file);
-        const res = await fetch('/api/upload/image', { method: 'POST', body: formData });
-        const data = await res.json();
-        setForm(prev => ({ ...prev, image: data.url }));
-    };
-
-    const handlePdfUpload = async (file: File) => {
-        const formData = new FormData();
-        formData.append('file', file);
-        const res = await fetch('/api/upload/pdf', { method: 'POST', body: formData });
-        const data = await res.json();
-        setForm(prev => ({ ...prev, path: data.url }));
-    };
 
     const handleTitleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const newTitle = e.target.value;
-        setForm(prev => ({ ...prev, title: newTitle }));
+        setForm((prev: typeof form) => ({ ...prev, title: newTitle }));
 
         // 동일한 title을 가진 다른 리소스가 있는지 검사
         const isDuplicate = existingResources.some(
@@ -95,7 +98,7 @@ export default function EditResourcePage() {
     };
 
 
-    const handleSubmit = async (e: FormEvent) => {
+    const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
         if (titleError) {
             alert('제목 중복을 먼저 해결해주세요.');
@@ -122,6 +125,81 @@ export default function EditResourcePage() {
             alert(err.message || '수정 중 오류 발생');
         }
     };
+
+    const handleAddDynamicTag = async ({
+                                           type,
+                                           tagOptions,
+                                           setTagOptions,
+                                           formField,
+                                           scopeField,
+                                       }: {
+        type: string; // 'tags' | 'solutionTag'
+        tagOptions: string[];
+        setTagOptions: React.Dispatch<React.SetStateAction<string[]>>;
+        formField: 'tags' | 'solutionTag';
+        scopeField: 'resource' | 'hardware';
+    }) => {
+        const newTag = prompt("새 태그를 입력하세요:")?.trim();
+        if (!newTag) return;
+
+        if (tagOptions.includes(newTag)) {
+            alert("이미 존재하는 태그입니다.");
+            return;
+        }
+
+        const res = await fetch("/api/tags", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ name: newTag, type, scope: scopeField }), // ✅ scope 포함
+        });
+
+        if (!res.ok) {
+            const err = await res.json();
+            alert(err?.error || "태그 추가 실패");
+            return;
+        }
+
+        setTagOptions(prev => [...prev, newTag]);
+        setForm((prev: typeof form) => ({
+            ...prev,
+            [formField]: [...prev[formField], newTag],
+        }));
+    };
+    const handleDeleteTag = async ({
+                                       name,
+                                       type,
+                                       scope,
+                                       setOptions,
+                                       setFormField,
+                                       refresh,
+                                   }: {
+        name: string;
+        type: 'tags' | 'solutionTag';
+        scope: 'resource' | 'hardware';
+        setOptions: React.Dispatch<React.SetStateAction<string[]>>;
+        setFormField: (updater: (prev: any) => any) => void;
+        refresh: () => Promise<void>;
+    }) => {
+        const res = await fetch(`/api/tags/${encodeURIComponent(name)}?type=${type}&scope=${scope}`, {
+            method: 'DELETE',
+        });
+
+        if (!res.ok) {
+            const err = await res.json();
+            alert(err.error || '삭제 실패');
+            return;
+        }
+
+        setOptions(prev => prev.filter(t => t !== name));
+        setFormField(prev => ({
+            ...prev,
+            [type]: prev[type].filter((t: string) => t !== name),
+        }));
+
+        // ✅ 실제 서버 상태도 반영
+        await refresh();
+    };
+
 
     return (
         <div className="p-6 max-w-4xl mx-auto">
@@ -234,22 +312,107 @@ export default function EditResourcePage() {
                 ))}
 
                 {/* 대표 태그 선택 영역 */}
+                {/*<div className="flex items-start gap-4">*/}
+                {/*    <label className="w-40 font-medium pt-2">🏷 대표 태그</label>*/}
+                {/*    <div className="flex-1">*/}
+                {/*        <TagSelector field="tags" selected={form.tags} onToggle={(tag) => toggleTag('tags', tag)}*/}
+                {/*                     options={tagsOptions} />*/}
+                {/*    </div>*/}
+                {/*    <button className="items-center rounded-full p-1 bg-gray-200"><GoPlus /></button>*/}
+                {/*</div>*/}
                 <div className="flex items-start gap-4">
-                    <label className="w-40 font-medium pt-2">🏷 대표 태그</label>
+                    <label className="w-40 text-left pt-2 font-medium text-gray-700">🏷 대표 태그</label>
                     <div className="flex-1">
-                        <TagSelector field="tags" selected={form.tags} onToggle={(tag) => toggleTag('tags', tag)}
-                                     options={tagsOptions} />
+                        {hardwareTagsLoading ? (
+                            <div className="text-gray-500 text-sm">태그를 불러오는 중...</div>
+                        ) : hardwareTagsError ? (
+                            <div className="text-red-500 text-sm">{hardwareTagsError}</div>
+                        ) : (
+                            <TagSelector
+                                field="tags"
+                                selected={form.tags}
+                                onToggle={tag => toggleTag('tags', tag)}
+                                onDelete={(tag) =>
+                                    handleDeleteTag({
+                                        name: tag,
+                                        type: 'tags',
+                                        scope: 'hardware',
+                                        setOptions: setHardwareTagOptions,
+                                        setFormField: setForm,
+                                        refresh: refreshTags,
+                                    })
+                                }
+                                options={hardwareTagOptions}
+                            />
+                        )}
                     </div>
-                    <button className="items-center rounded-full p-1 bg-gray-200"><GoPlus /></button>
+                    <button
+                        type="button"
+                        className="p-1 bg-gray-100 rounded-full text-gray-700"
+                        onClick={() =>
+                            handleAddDynamicTag({
+                                type: 'tags',
+                                tagOptions: hardwareTagOptions,
+                                setTagOptions: setHardwareTagOptions,
+                                formField: 'tags',
+                                scopeField: 'hardware'
+                            })
+                        }
+                    >
+                        <GoPlus />
+                    </button>
                 </div>
 
+
                 {/* 솔루션 태그 선택 영역 */}
+                {/*<div className="flex items-start gap-4">*/}
+                {/*    <label className="w-40 font-medium pt-2">🧩 솔루션 태그</label>*/}
+                {/*    <div className="flex-1">*/}
+                {/*        <TagSelector field="solutionTag" selected={form.solutionTag}*/}
+                {/*                     onToggle={(tag) => toggleTag('solutionTag', tag)} options={solutionTagOptions} />*/}
+                {/*    </div>*/}
+                {/*</div>*/}
                 <div className="flex items-start gap-4">
-                    <label className="w-40 font-medium pt-2">🧩 솔루션 태그</label>
+                    <label className="w-40 text-left pt-2 font-medium text-gray-700">🧩 솔루션 태그</label>
                     <div className="flex-1">
-                        <TagSelector field="solutionTag" selected={form.solutionTag}
-                                     onToggle={(tag) => toggleTag('solutionTag', tag)} options={solutionTagOptions} />
+                        {hardwareSolutionTagsLoading ? (
+                            <div className="text-gray-500 text-sm">솔루션 태그를 불러오는 중...</div>
+                        ) : hardwareSolutionTagsError ? (
+                            <div className="text-red-500 text-sm">{hardwareSolutionTagsError}</div>
+                        ) : (
+                            <TagSelector
+                                field="solutionTag"
+                                selected={form.solutionTag}
+                                onToggle={tag => toggleTag('solutionTag', tag)}
+                                onDelete={(tag) =>
+                                    handleDeleteTag({
+                                        name: tag,
+                                        type: 'solutionTag',
+                                        scope: 'hardware',
+                                        setOptions: setHardwareSolutionTagOptions,
+                                        setFormField: setForm,
+                                        refresh: refreshSolutionTag,
+                                    })
+                                }
+                                options={hardwareSolutionTagOptions}
+                            />
+                        )}
                     </div>
+                    <button
+                        type="button"
+                        className="p-1 bg-gray-100 rounded-full text-gray-700"
+                        onClick={() =>
+                            handleAddDynamicTag({
+                                type: 'solutionTag',
+                                tagOptions: hardwareSolutionTagOptions,
+                                setTagOptions: setHardwareSolutionTagOptions,
+                                formField: 'solutionTag',
+                                scopeField: 'hardware'
+                            })
+                        }
+                    >
+                        <GoPlus />
+                    </button>
                 </div>
 
                 <div className="flex items-start gap-4">
@@ -258,7 +421,7 @@ export default function EditResourcePage() {
                         name="hideTag"
                         placeholder="쉼표(,)로 구분"
                         value={form.hideTag.join(',')}
-                        onChange={e => setForm(prev => ({
+                        onChange={e => setForm((prev: typeof form) => ({
                             ...prev,
                             hideTag: e.target.value.split(',').map(t => t.trim()),
                         }))}
@@ -272,7 +435,7 @@ export default function EditResourcePage() {
                     <div className="flex-1 space-y-2">
                         {form.imageSrc && <img src={form.imageSrc} alt="현재 이미지" className="w-1/2 rounded border" />}
                         <FileUploader label="이미지 업로드" accept="image/*" page="hardware"
-                                      onUpload={(url) => setForm(prev => ({ ...prev, imageSrc: url }))} />
+                                      onUpload={(url) => setForm((prev: typeof form) => ({ ...prev, imageSrc: url }))} />
                     </div>
                 </div>
 
@@ -294,7 +457,8 @@ export default function EditResourcePage() {
                                 현재 PDF 보기
                             </a>
                         )}
-                        <FileUploader label="PDF 업로드" accept="application/pdf" page="hardware" onUpload={(url) => setForm(prev => ({...prev, path: url}))} />
+                        <FileUploader label="PDF 업로드" accept="application/pdf" page="hardware"
+                                      onUpload={(url) => setForm((prev: typeof form) => ({ ...prev, path: url }))} />
                     </div>
                 </div>
                 {/*{form.form === 'pdf' ? (*/}
@@ -329,9 +493,10 @@ export default function EditResourcePage() {
                         control={
                             <Switch
                                 checked={form.use}
-                                onChange={(e) => handleChange({
-                                    target: { name: 'use', value: e.target.checked },
-                                })}
+                                onChange={(e) => setForm((prev: typeof form) => ({ ...prev, use: e.target.checked }))}
+                                // onChange={(e) => handleChange({
+                                //     target: { name: 'use', value: e.target.checked },
+                                // })}
                                 color="primary"
                             />
                         }
