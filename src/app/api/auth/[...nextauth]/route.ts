@@ -17,23 +17,33 @@ const handler = NextAuth({
             },
             async authorize(credentials, req) {
                 if (!credentials?.username || !credentials?.password) {
-                    // console.log("❌ 인증 실패: 입력 누락");
-                    // return null;
-                    throw new Error("Missing credentials");
+                    console.log("❌ 인증 실패: 입력 누락");
+                    return null;
                 };
 
                 const user = await prisma.user.findUnique({
                     where: { email: credentials.username },
                 });
 
-                if (!user || !user.password) {
-                    throw new Error("Invalid credentials");
+                if (!user) {
+                    console.log("❌ 인증 실패: 사용자 없음");
+                    return null;
+                }
+
+                if (!user.password) {
+                    console.log("❌ 인증 실패: 비밀번호 없음");
+                    return null;
                 }
 
                 const isValid = await bcrypt.compare(credentials.password, user.password);
                 if (!isValid) {
-                    throw new Error("Invalid credentials");
+                    console.log("❌ 인증 실패: 비밀번호 불일치");
+                    console.log("입력한 패스워드:", credentials.password);
+                    console.log("DB의 해시 패스워드:", user.password);
+                    return null;
                 }
+
+                console.log("✅ 인증 성공:", user.email);
 
                 return {
                     id: String(user.id),
@@ -41,31 +51,6 @@ const handler = NextAuth({
                     email: user.email,
                     role: user.role,
                 };
-                // const res = await fetch(`${process.env.NEXTAUTH_URL}/api/signin`, {
-                //     method: 'POST',
-                //     headers: { 'Content-Type': 'application/json' },
-                //     body: JSON.stringify({
-                //         username: credentials?.username,
-                //         password: credentials?.password,
-                //     }),
-                // })
-                // const user = await res.json()
-                // console.log('$$$user: ', user)
-                //
-                // if (user) {
-                //     // 반환된 모든 객체는 JWT의 '사용자' 속성에 저장됩니다.
-                //     return {
-                //         id: user.id, // ✅ 이건 있어야 하고
-                //         name: user.name, // ✅ 필요하다면 name도 추가
-                //         email: user.email,
-                //         role: user.role, // ✅ 핵심!
-                //     };
-                // } else {
-                //     // null을 반환하면 사용자에게 세부 정보를 확인하라는 오류가 표시됩니다. null 반환
-                //     return null
-                //
-                //     // 이 콜백은 오류로 거부할 수도 있으므로 사용자는 오류 메시지를 쿼리 매개변수로 사용하여 오류 페이지로 전송됩니다.
-                // }
             }
         }),
         // 카카오 프로바이더

@@ -79,7 +79,7 @@ import { Metadata } from 'next';
 
 
 export default async function HomePage({params}: {params: {locale: string}}) {
-    const { locale } = await params;
+    const { locale } = params;
     // const t = useTranslations('home');
     const solutions = await getAllSolutions(); // 데이터를 비동기로 가져옴
 
