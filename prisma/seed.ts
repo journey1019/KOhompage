@@ -14,14 +14,18 @@ async function main() {
     });
 
     if (!existingAdmin) {
-        const hashedPassword = await bcrypt.hash('admin123!!', 10);
+        if (!process.env.ADMIN_EMAIL || !process.env.ADMIN_PASSWORD) {
+            throw new Error("환경변수 ADMIN_EMAIL 또는 ADMIN_PASSWORD가 설정되어 있지 않습니다.");
+        }
+
+        const hashedPassword = await bcrypt.hash(process.env.ADMIN_PASSWORD, 10);
 
         await prisma.user.create({
             data: {
-                email: 'admin@gmail.com',
-                name: '관리자',
+                email: process.env.ADMIN_EMAIL,
                 password: hashedPassword,
-                role: 'ADMIN', // 명시적으로 ADMIN
+                role: 'ADMIN',
+                name: '관리자',
             },
         });
 
