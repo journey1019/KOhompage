@@ -23,9 +23,10 @@ export default function LoginModal() {
 
         if (session?.user?.role === 'ADMIN') {
             router.replace('/ko/admin');
-        } else if (session?.user?.role === 'USER') {
-            router.replace('/ko'); // 또는 /shop 등
         }
+        // else if (session?.user?.role === 'USER') {
+        //     router.replace('/ko'); // 또는 /shop 등
+        // }
     }, [session, status, router]);
 
 
@@ -74,10 +75,11 @@ export default function LoginModal() {
                 // setLoginError("로그인 정보는 맞지만 역할 정보가 올바르지 않습니다. 관리자에게 문의해주세요.");
                 setLoginError("아이디 또는 비밀번호가 잘못되었습니다.");
             }
-        } else {
-            setLoginError("아이디 또는 비밀번호가 잘못되었습니다.");
-            // alert("로그인 실패: 아이디 또는 비밀번호를 확인하세요.");
         }
+        // else {
+        //     setLoginError("아이디 또는 비밀번호가 잘못되었습니다.");
+        //     // alert("로그인 실패: 아이디 또는 비밀번호를 확인하세요.");
+        // }
         // console.log(result)
     };
 
