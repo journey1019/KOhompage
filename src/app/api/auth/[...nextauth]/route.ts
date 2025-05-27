@@ -81,6 +81,7 @@ const handler = NextAuth({
             return session;
         },
     },
+    debug: true,
     pages:{
         signIn: '/ko/auth/signin',
         signOut: '/ko/auth/signout',
