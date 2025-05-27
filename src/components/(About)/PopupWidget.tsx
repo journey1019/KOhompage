@@ -35,7 +35,7 @@ export function PopupWidget() {
             body: JSON.stringify(data, null, 2),
         })
             .then(async (response) => {
-                let json = await response.json();
+                const json = await response.json();
                 if (json.success) {
                     setIsSuccess(true);
                     setMessage(json.message);

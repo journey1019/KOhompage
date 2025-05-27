@@ -12,11 +12,9 @@ export default function MarkdownViewer({content}: {content: string}) {
             className='prose lg:prose-xl'
             remarkPlugins={[remarkGfm]}
             components={{
-                // @ts-ignore
-                code({ node, inline, className, children, ...props }) {
+                code({ inline, className, children, ...props }: React.HTMLAttributes<HTMLElement> & { inline?: boolean }) {
                     const match = /language-(\w+)/.exec(className || '');
                     return !inline && match ? (
-                        // @ts-ignore
                         <SyntaxHighlighter
                             language={match[1]}
                             PreTag='div'

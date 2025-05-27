@@ -16,6 +16,14 @@ export default withAuth(
         const pathname = req.nextUrl.pathname;
         const locale = locales.find((locale) => pathname.startsWith(`/${locale}`));
 
+        // ✅ 로그인된 사용자가 로그인 페이지 접근 시 자동 리디렉션
+        if (pathname.endsWith('/auth/signin') && token) {
+            const locale = locales.find((locale) => pathname.startsWith(`/${locale}`)) || 'ko';
+            const isAdmin = token.role === 'ADMIN';
+            url.pathname = `/${locale}/${isAdmin ? 'admin' : ''}`;
+            return NextResponse.redirect(url);
+        }
+
         // ✅ 1. locale이 아예 없으면 /ko로 리디렉션
         if (!locale) {
             const defaultLocale = 'ko';
@@ -23,19 +31,14 @@ export default withAuth(
             if (pathname === '/') {
                 return NextResponse.redirect(new URL(`/${defaultLocale}`, req.url));
             }
-
             // 그 외 /ko, /en이 아닌 경로는 404로 rewrite
             return NextResponse.rewrite(new URL(`/${defaultLocale}/404`, req.url));
         }
 
-        // ✅ 2. 관리자 경로 보호
-        const isAdminPath = pathname.includes('/admin');
-
-        if (isAdminPath) {
-            if (!token) {
-                url.pathname = `/${locale}/auth/signin`;
-                return NextResponse.redirect(url);
-            }
+        // ✅ 관리자 페이지 보호
+        if (pathname.includes('/admin') && !token) {
+            url.pathname = `/${locale}/auth/signin`;
+            return NextResponse.redirect(url);
         }
 
         return NextResponse.next();
@@ -82,7 +85,7 @@ export const config = {
         // '/((?!_next/static|_next/image|favicon.ico|robots.txt|sitemap.xml|images/|fonts/|video/).*)',
         // '/((?!api|_next/static|_next/image|favicon.ico|robots.txt|sitemap.xml|images/|fonts/|video/).*)',
         '/',
-        '/((?!api|_next/static|_next/image|favicon.ico|robots.txt|sitemap.xml|images/|fonts/|video/|auth|pdf/|images/|uploads/|pdfs/).*)',
-
+        '/((?!api|_next/static|_next/image|favicon.ico|robots.txt|sitemap.xml|images/|fonts/|video|pdf/|images/|uploads/|pdfs/).*)',
+        '/(ko|en)/auth/signin'
     ],
 }

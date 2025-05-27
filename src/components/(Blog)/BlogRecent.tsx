@@ -20,7 +20,7 @@ export default function BlogRecent() {
                                 <Image
                                     src="https://sendbird.imgix.net/cms/Push-notification-examples.jpg?auto=format,compress&crop=faces&w=1000"
                                     alt="blog_message"
-                                    className="rounded-t-2xl w-full object-cover"
+                                    className="rounded-t-2xl w-full object-cover h-auto"
                                     width={500} height={400} unoptimized
                                 />
                             </div>
@@ -46,7 +46,7 @@ export default function BlogRecent() {
                                 <Image
                                     src="https://sendbird.imgix.net/cms/Push-notification-examples.jpg?auto=format,compress&crop=faces&w=1000"
                                     alt="blog_message"
-                                    className="rounded-t-2xl w-full object-cover"
+                                    className="rounded-t-2xl w-full object-cover h-auto"
                                     width={500} height={400} unoptimized
                                 />
                             </div>
@@ -72,7 +72,7 @@ export default function BlogRecent() {
                                 <Image
                                     src="https://sendbird.imgix.net/cms/Push-notification-examples.jpg?auto=format,compress&crop=faces&w=1000"
                                     alt="blog_message"
-                                    className="rounded-t-2xl w-full object-cover"
+                                    className="rounded-t-2xl w-full object-cover h-auto"
                                     width={500} height={400} unoptimized
                                 />
                             </div>

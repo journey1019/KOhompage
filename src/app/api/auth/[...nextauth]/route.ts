@@ -21,7 +21,7 @@ const handler = NextAuth({
                     }),
                 })
                 const user = await res.json()
-                console.log('$$$user: ', user)
+                // console.log('$$$user: ', user)
 
                 if (user) {
                     // 반환된 모든 객체는 JWT의 '사용자' 속성에 저장됩니다.
@@ -58,13 +58,13 @@ const handler = NextAuth({
         },
 
         async session({ session, token }) {
-            console.log('$$$ token: ', token)
+            // console.log('$$$ token: ', token)
             session.user = {
                 name: token.name,
                 email: token.email,
                 role: token.role,
             };
-            console.log('$$$ session: ', session)
+            // console.log('$$$ session: ', session)
             return session;
         },
     },

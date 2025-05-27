@@ -24,7 +24,7 @@ export default function Main() {
 
                     <Link
                         href="/auth/signup"
-                        className="inline-block w-1/2 px-10 py-2 bg-blue-500 text-white rounded-full text-sm hover:bg-blue-600 transition text-center"
+                        className="inline-block w-1/2 px-10 py-2 bg-blue-500 text-white rounded-full text-sm hover:bg-blue-600 transition text-center h-auto"
                     >
                         계정 만들기
                     </Link>

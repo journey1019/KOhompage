@@ -48,7 +48,7 @@ export default function History() {
                         <div className="relative space-y-8 py-12 p-8">
                             <Image
                                 src={milestone.image}
-                                className="w-12"
+                                className="w-12 h-auto"
                                 width={512}
                                 height={512}
                                 alt={milestone.alt || 'Image description missing'}

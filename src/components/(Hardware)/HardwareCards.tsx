@@ -10,7 +10,7 @@ export function HardwareCards({title, description, brochure, devkit, category, t
         <Link href={`/movies/${path}`} className="group">
             <div
                 className="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-lg bg-gray-200 xl:aspect-h-8 xl:aspect-w-7">
-                <Image className="w-full bg-white" src={`/images/hardware/${path}.png`} alt={title} width={150}
+                <Image className="w-full bg-white h-auto" src={`/images/hardware/${path}.png`} alt={title} width={150}
                        height={100} unoptimized />
             </div>
             {tag.map((ta, index) => (

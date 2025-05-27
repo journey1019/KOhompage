@@ -45,17 +45,17 @@ export function Footer({locale}: {locale: string}) {
                                 <Image
                                     src="/images/ko_logo.png"
                                     alt="N"
-                                    width="32"
-                                    height="32"
-                                    className="w-8 maxWeb:w-10"
+                                    width={32}
+                                    height={32}
+                                    className="w-8 h-auto maxWeb:w-10"
                                     unoptimized
                                 />
                                 <Image
                                     src="/images/KO_SmallLogo.png"
                                     alt="/images/KO_SmallLogo.png"
-                                    width="32"
-                                    height="32"
-                                    className="w-36 maxWeb:w-40"
+                                    width={32}
+                                    height={32}
+                                    className="w-36 h-auto maxWeb:w-40"
                                     unoptimized
                                 />
                                 {/*<span>Nextly</span>*/}

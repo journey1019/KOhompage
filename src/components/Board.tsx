@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from 'react';
 import Image from 'next/image';
+import blogData from '../../data/blogData.json' assert { type: 'json' };
 
 interface BlogPost {
     id: number;
@@ -20,8 +21,6 @@ interface BlogPost {
         date: string;
     }[];
 }
-
-const blogData: BlogPost[] = require('../../data/blogData.json');
 
 export default function Board() {
     const [latestPost, setLatestPost] = useState<BlogPost | null>(null); // Explicitly typing as BlogPost | null

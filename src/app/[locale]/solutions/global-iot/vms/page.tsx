@@ -24,7 +24,7 @@ import { notFound } from 'next/navigation';
 
 export const viewport = "width=device-width, initial-scale=1.0";
 export async function generateMetadata({ params }: { params: { locale: string } }): Promise<Metadata> {
-    const { locale } = params;
+    const { locale } = aparams;
     const data = vmsData[locale];
 
     if (!data) {

@@ -6,6 +6,7 @@ import { useRouter, useSearchParams } from "next/navigation";
 import { signIn } from "next-auth/react";
 import Image from 'next/image';
 import Link from 'next/link';
+import { useSession } from "next-auth/react";
 import loginPage from '../../../../../public/images/admin/talk_dark.jpg';
 
 export default function LoginModal() {
@@ -14,6 +15,19 @@ export default function LoginModal() {
     const [rememberMe, setRememberMe] = useState(false);
     const [loginError, setLoginError] = useState<string | null>(null);
     const router = useRouter();
+
+    // 로그인 검사 후 Session 있을 시 '/admin' 페이지로 redirect
+    const { data: session, status } = useSession();
+    useEffect(() => {
+        if (status === "loading") return;
+
+        if (session?.user?.role === 'ADMIN') {
+            router.replace('/ko/admin');
+        } else if (session?.user?.role === 'USER') {
+            router.replace('/ko'); // 또는 /shop 등
+        }
+    }, [session, status, router]);
+
 
     // 페이지 열릴 때, localStorage에서 이메일 불러오기
     useEffect(() => {

@@ -44,7 +44,7 @@ export default function SolutionCard({ solution: { solution, title, subTitle, im
                         <Image
                             src={good.image}
                             alt="Advantage Icon"
-                            className="my-2 dark:filter dark:invert dark:brightness-50"
+                            className="my-2 h-auto dark:filter dark:invert dark:brightness-50"
                             width={100}
                             height={100}
                             unoptimized

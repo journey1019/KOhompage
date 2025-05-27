@@ -35,7 +35,7 @@ export async function generateMetadata({ params }: { params: { locale: string } 
 }
 
 
-export default function ResourcesLayout({ children, params }: {
+export default async function ResourcesLayout({ children, params }: {
     children: React.ReactNode;
     params: {locale: string};
 }) {

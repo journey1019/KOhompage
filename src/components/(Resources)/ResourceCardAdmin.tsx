@@ -18,7 +18,7 @@ const ResourceCardAdmin = ({ id, date, contentType, title, subtitle, tags, form,
             window.open(path, "_blank", "noopener,noreferrer");
         }
     };
-    const handlePageNavigation = (id: Number, form: "page" | "pdf" | "link") => {
+    const handlePageNavigation = (id: number, form: "page" | "pdf" | "link") => {
         if (form === 'page') {
             router.push(`resource/${id}`);
         } else {

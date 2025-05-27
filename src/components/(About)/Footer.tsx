@@ -22,7 +22,7 @@ export function Footer() {
                   alt="N"
                   width="32"
                   height="32"
-                  className="w-8"
+                  className="w-8 h-auto"
                 />
                 <span>Nextly</span>
               </Link>

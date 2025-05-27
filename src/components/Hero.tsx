@@ -27,7 +27,7 @@ export default function Hero({ locale }: HeroProps) {
                         width={700}
                         height={500}
                         unoptimized
-                        className="items-center justify-center mx-auto"
+                        className="items-center justify-center mx-auto h-auto"
                     />
                 </motion.div>
 

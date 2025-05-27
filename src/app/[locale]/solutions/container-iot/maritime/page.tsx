@@ -123,7 +123,7 @@ export default async function MaritimePage({params}: PageProps) {
             </SectionTitle>
             <FilterResourceCarouselBySolutionTags keywords={filteredKeyword} />
 
-            <CtaSolution items={data.ctas}/>
+            <CtaSolution items={data.ctas} locale={locale}/>
             {/*<SectionTitle preTitle="Resources" title="Maritime Platform: Resources" />*/}
             {/*<Blog/>*/}
             {/*<TagFilterBlog initialTags={['maritime']} />*/}

@@ -14,11 +14,16 @@ export const config = {
     },
 }
 
-const parseForm = async (req: any): Promise<{ fields: any; files: any }> => {
+const parseForm = (req: any): Promise<{ fields: any; files: any }> => {
     const form = new IncomingForm()
-    const parse = promisify(form.parse.bind(form))
-    return parse(req)
+    return new Promise((resolve, reject) => {
+        form.parse(req, (err, fields, files) => {
+            if (err) return reject(err)
+            resolve({ fields, files })
+        })
+    })
 }
+
 
 export async function POST(req: NextRequest) {
     const contentType = req.headers.get('x-content-type') || 'misc'

@@ -67,7 +67,7 @@ const HardwarePage = () => {
 
             const query = new URLSearchParams();
             if (searchQuery) query.set('query', searchQuery);
-            console.log(filters)
+            // console.log(filters)
             Object.entries(filters).forEach(([key, values]) => {
                 if (values) values.forEach((value: string) => query.append(key, value));
             });

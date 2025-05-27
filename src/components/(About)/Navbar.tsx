@@ -25,7 +25,7 @@ export const Navbar = () => {
                   width="32"
                   alt="N"
                   height="32"
-                  className="w-8"
+                  className="w-8 h-auto"
                 />
               </span>
             <span>Nextly</span>
