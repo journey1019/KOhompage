@@ -61,7 +61,7 @@ export default function LoginModal({locale}: Props) {
 
         if (result?.ok) {
             // 로그인 성공 후 세션을 확인
-            const sessionRes = await fetch(`{${locale}/api/auth/session}`);
+            const sessionRes = await fetch(`/${locale}/api/auth/session`);
             const session = await sessionRes.json();
 
             const role = session?.user?.role;
