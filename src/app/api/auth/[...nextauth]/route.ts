@@ -16,16 +16,34 @@ const handler = NextAuth({
                 password: { label: 'Password', type: 'password' },
             },
             async authorize(credentials, req) {
-                if (!credentials?.username || !credentials?.password) return null;
+                if (!credentials?.username || !credentials?.password) {
+                    console.log("❌ 인증 실패: 입력 누락");
+                    return null;
+                };
 
                 const user = await prisma.user.findUnique({
                     where: { email: credentials.username },
                 });
 
-                if (!user || !user.password) return null;
+                if (!user) {
+                    console.log("❌ 인증 실패: 사용자 없음");
+                    return null;
+                }
+
+                if (!user.password) {
+                    console.log("❌ 인증 실패: 비밀번호 없음");
+                    return null;
+                }
 
                 const isValid = await bcrypt.compare(credentials.password, user.password);
-                if (!isValid) return null;
+                if (!isValid) {
+                    console.log("❌ 인증 실패: 비밀번호 불일치");
+                    console.log("입력한 패스워드:", credentials.password);
+                    console.log("DB의 해시 패스워드:", user.password);
+                    return null;
+                }
+
+                console.log("✅ 인증 성공:", user.email);
 
                 return {
                     id: String(user.id),
