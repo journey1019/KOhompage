@@ -9,7 +9,10 @@ import Link from 'next/link';
 import { useSession } from "next-auth/react";
 import loginPage from '../../../../../public/images/admin/talk_dark.jpg';
 
-export default function LoginModal() {
+interface Props {
+    locale: string;
+}
+export default function LoginModal({locale}: Props) {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [rememberMe, setRememberMe] = useState(false);
@@ -58,7 +61,7 @@ export default function LoginModal() {
 
         if (result?.ok) {
             // 로그인 성공 후 세션을 확인
-            const sessionRes = await fetch("/api/auth/session");
+            const sessionRes = await fetch(`{${locale}/api/auth/session}`);
             const session = await sessionRes.json();
 
             const role = session?.user?.role;
