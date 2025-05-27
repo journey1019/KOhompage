@@ -59,6 +59,11 @@ export default function LoginModal({locale}: Props) {
             redirect: false,
         });
 
+        if (result?.error) {
+            setLoginError("아이디 또는 비밀번호가 잘못되었습니다.");
+            return;
+        }
+
         if (result?.ok) {
             // 로그인 성공 후 세션을 확인
             const sessionRes = await fetch(`/api/auth/session`);
@@ -78,9 +83,6 @@ export default function LoginModal({locale}: Props) {
                 // setLoginError("로그인 정보는 맞지만 역할 정보가 올바르지 않습니다. 관리자에게 문의해주세요.");
                 setLoginError("아이디 또는 비밀번호가 잘못되었습니다.");
             }
-        }
-        else {
-            setLoginError("아이디 또는 비밀번호가 잘못되었습니다.");
         }
         // console.log(result)
     };
