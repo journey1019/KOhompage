@@ -61,13 +61,10 @@ export default function LoginModal({locale}: Props) {
 
         if (result?.ok) {
             // 로그인 성공 후 세션을 확인
-            const sessionRes = await fetch(`/${locale}/api/auth/session`);
+            const sessionRes = await fetch(`/api/auth/session`);
             const session = await sessionRes.json();
 
             const role = session?.user?.role;
-            console.log(session)
-            console.log(role)
-            console.log('role')
 
             if (role === "ADMIN") {
                 router.push("/ko/admin");
@@ -84,7 +81,6 @@ export default function LoginModal({locale}: Props) {
         }
         else {
             setLoginError("아이디 또는 비밀번호가 잘못되었습니다.");
-            // alert("로그인 실패: 아이디 또는 비밀번호를 확인하세요.");
         }
         // console.log(result)
     };
