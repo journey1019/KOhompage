@@ -1,4 +1,3 @@
-// Email 만 Remember
 "use client";
 
 import { ChangeEventHandler, FormEventHandler, useEffect, useState } from "react";
@@ -76,6 +75,7 @@ export default function LoginModal() {
                 setLoginError("아이디 또는 비밀번호가 잘못되었습니다.");
             }
         } else {
+
             setLoginError("아이디 또는 비밀번호가 잘못되었습니다.");
             // alert("로그인 실패: 아이디 또는 비밀번호를 확인하세요.");
         }

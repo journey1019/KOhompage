@@ -6,39 +6,29 @@ import path from 'path';
 const prisma = new PrismaClient();
 
 async function main() {
-    if (!process.env.ADMIN_EMAIL || !process.env.ADMIN_PASSWORD) {
-        throw new Error("환경변수 ADMIN_EMAIL 또는 ADMIN_PASSWORD가 설정되어 있지 않습니다.");
-    }
-
-    const hashedPassword = await bcrypt.hash(process.env.ADMIN_PASSWORD, 10);
-
     const existingAdmin = await prisma.user.findFirst({
         where: {
             role: 'ADMIN',
         },
     });
 
-    if (existingAdmin) {
-        await prisma.user.update({
-            where: {
-                id: existingAdmin.id,
-            },
-            data: {
-                email: process.env.ADMIN_EMAIL,
-                password: hashedPassword,
-            },
-        });
-        console.log(`🔁 기존 ADMIN 계정의 이메일/비밀번호를 업데이트했습니다: ${process.env.ADMIN_EMAIL}`);
-    } else {
+    if (!existingAdmin) {
+        const hashedPassword = await bcrypt.hash('@gccko2512', 10);
         await prisma.user.create({
+
+
             data: {
-                email: process.env.ADMIN_EMAIL,
-                password: hashedPassword,
-                role: 'ADMIN',
+                email: 'support@orbcomm.co.kr',
                 name: '관리자',
+                password: hashedPassword,
+                role: 'ADMIN', // 명시적으로 ADMIN
+
             },
         });
-        console.log(`✅ 새로운 ADMIN 계정을 생성했습니다: ${process.env.ADMIN_EMAIL}`);
+
+        console.log('✅ 관리자 계정이 생성되었습니다.');
+    } else {
+        console.log('⚠️ 이미 관리자 계정이 존재합니다. 추가 생성하지 않음.');
     }
 
     // --- 하드웨어 데이터 삽입 ---

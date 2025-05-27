@@ -1,4 +1,3 @@
-
 import FeaturedPosts from '@/components/FeaturedPosts';
 import CarouselPosts from '@/components/CarouselPosts';
 // import Board from '@/components/Board';
@@ -113,4 +112,4 @@ export default async function HomePage({params}: {params: {locale: string}}) {
             <WorkWithUs locale={locale}/>
         </section>
     );
-}
+    }
