@@ -7,6 +7,8 @@ import { IncomingForm } from 'formidable'
 import { promisify } from 'util'
 import fs from 'fs'
 
+export const runtime = 'nodejs'
+
 // Next.js 13 App Router에서 Edge Runtime이 기본이므로 설정 필요
 export const config = {
     api: {

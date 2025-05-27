@@ -60,6 +60,9 @@ function sanitizeFileName(name: string) {
 //         return NextResponse.json({ error: 'Upload failed' }, { status: 500 });
 //     }
 // }
+
+export const runtime = 'nodejs'
+
 export async function POST(req: NextRequest) {
     const formData = await req.formData();
     const file = formData.get('file') as File;

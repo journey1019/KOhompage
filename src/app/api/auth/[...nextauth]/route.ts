@@ -5,6 +5,8 @@ import KakaoProvider from "next-auth/providers/kakao";
 import prisma from '@/app/lib/prisma';
 import bcrypt from 'bcrypt';
 
+export const runtime = 'nodejs'
+
 const handler = NextAuth({
     providers: [
         CredentialsProvider({

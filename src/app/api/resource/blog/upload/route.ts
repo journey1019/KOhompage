@@ -4,6 +4,8 @@ import { writeFile } from "fs/promises"
 import path from "path"
 import { mkdirSync, existsSync } from "fs"
 
+export const runtime = 'nodejs'
+
 export async function POST(req: NextRequest) {
     const contentType = req.headers.get("content-type")
     if (!contentType?.includes("multipart/form-data")) {

@@ -3,6 +3,8 @@ import { prisma } from '@/lib/prisma';
 import { NextRequest, NextResponse } from 'next/server';
 import { PrismaClient } from '@prisma/client';
 
+export const runtime = 'nodejs';
+
 export async function GET() {
     const hardwares = await prisma.hardware.findMany({
         orderBy: { date: 'desc' }
@@ -10,8 +12,6 @@ export async function GET() {
     return NextResponse.json(hardwares);
 }
 
-
-const prisma = new PrismaClient();
 export async function POST(req: NextRequest) {
     try {
         const body = await req.json();

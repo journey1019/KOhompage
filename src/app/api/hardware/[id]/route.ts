@@ -1,6 +1,8 @@
 import { prisma } from '@/lib/prisma';
 import { NextRequest, NextResponse } from 'next/server';
 
+export const runtime = 'nodejs'
+
 export async function GET(req: NextRequest, { params }: { params: { id: string } }) {
     const resource = await prisma.hardware.findUnique({
         where: { id: Number(params.id) },

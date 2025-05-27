@@ -3,6 +3,8 @@
 import prisma from '@/app/lib/prisma'
 import { verifyJwt } from '@/app/lib/jwt'
 
+export const runtime = 'nodejs'
+
 export async function GET(
     request: Request,
     { params }: { params: { id: string } },

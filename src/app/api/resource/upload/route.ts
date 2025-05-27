@@ -3,6 +3,8 @@ import { writeFile } from 'fs/promises';
 import { join } from 'path';
 import { NextRequest, NextResponse } from 'next/server';
 
+export const runtime = 'nodejs'
+
 export async function POST(req: NextRequest) {
     const formData = await req.formData();
     const file = formData.get('image') as File;

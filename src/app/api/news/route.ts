@@ -4,6 +4,8 @@ import path from "path";
 
 const newsFilePath = path.resolve(process.cwd(), "data/resources/news.json");
 
+export const runtime = 'nodejs'
+
 // GET: Fetch all news data
 export async function GET() {
     const data = fs.readFileSync(newsFilePath, "utf-8");

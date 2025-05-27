@@ -4,6 +4,8 @@ import { writeFile, mkdir } from 'fs/promises';
 import path from 'path';
 import { NextRequest, NextResponse } from 'next/server';
 
+export const runtime = 'nodejs'
+
 function sanitizeFileName(name: string) {
     return name
         .normalize('NFD')                        // 한글 분해
