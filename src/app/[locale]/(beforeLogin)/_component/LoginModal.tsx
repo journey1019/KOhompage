@@ -9,10 +9,7 @@ import Link from 'next/link';
 import { useSession } from "next-auth/react";
 import loginPage from '../../../../../public/images/admin/talk_dark.jpg';
 
-interface Props {
-    locale: string;
-}
-export default function LoginModal({locale}: Props) {
+export default function LoginModal() {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [rememberMe, setRememberMe] = useState(false);
@@ -59,14 +56,9 @@ export default function LoginModal({locale}: Props) {
             redirect: false,
         });
 
-        if (result?.error) {
-            setLoginError("아이디 또는 비밀번호가 잘못되었습니다.");
-            return;
-        }
-
         if (result?.ok) {
             // 로그인 성공 후 세션을 확인
-            const sessionRes = await fetch(`/api/auth/session`);
+            const sessionRes = await fetch("/api/auth/session");
             const session = await sessionRes.json();
 
             const role = session?.user?.role;
@@ -83,6 +75,9 @@ export default function LoginModal({locale}: Props) {
                 // setLoginError("로그인 정보는 맞지만 역할 정보가 올바르지 않습니다. 관리자에게 문의해주세요.");
                 setLoginError("아이디 또는 비밀번호가 잘못되었습니다.");
             }
+        } else {
+            setLoginError("아이디 또는 비밀번호가 잘못되었습니다.");
+            // alert("로그인 실패: 아이디 또는 비밀번호를 확인하세요.");
         }
         // console.log(result)
     };
