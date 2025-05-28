@@ -14,6 +14,8 @@ import TiptapEditor from '@/components/(Admin)/(Resources)/Tiptap/TipTapEditor';
 import { Resource } from "@/types/resource";
 
 
+const baseUrl = process.env.NEXT_PUBLIC_SITE_URL;
+
 export default function NewResourcePage() {
     const router = useRouter();
     const locale = usePathname().split('/')[1];
@@ -56,7 +58,7 @@ export default function NewResourcePage() {
     const [error, setError] = useState<string | null>(null);
 
     useEffect(() => {
-        fetch('/api/resource')
+        fetch(`${baseUrl}/api/resource`)
             .then(res => res.json())
             .then(data => setExistingTitles(data.map((r: any) => r.title)));
     }, []);
@@ -76,7 +78,7 @@ export default function NewResourcePage() {
             html:form.html
         };
 
-        const res = await fetch('/api/resource', {
+        const res = await fetch(`${baseUrl}/api/resource`, {
             method: 'POST',
             body: JSON.stringify(payload),
             headers: { 'Content-Type': 'application/json' },
@@ -113,7 +115,7 @@ export default function NewResourcePage() {
             return;
         }
 
-        const res = await fetch("/api/tags", {
+        const res = await fetch(`${baseUrl}/api/tags`, {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ name: newTag, type, scope: scope }),
@@ -147,7 +149,7 @@ export default function NewResourcePage() {
         setFormField: (updater: (prev: any) => any) => void;
         refresh: () => Promise<void>;
     }) => {
-        const res = await fetch(`/api/tags/${encodeURIComponent(name)}?type=${type}&scope=${scope}`, {
+        const res = await fetch(`${baseUrl}/api/tags/${encodeURIComponent(name)}?type=${type}&scope=${scope}`, {
             method: 'DELETE',
         });
 

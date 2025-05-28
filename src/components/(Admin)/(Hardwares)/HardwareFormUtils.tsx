@@ -22,6 +22,7 @@ const categoryOptions = [
     'Module', 'Device', 'Antenna', 'Sensor'
 ];
 
+const baseUrl = process.env.NEXT_PUBLIC_SITE_URL;
 
 // ✅ Hardware에서 태그를 가져오는 Hook
 export const useHardwareTagOptions = (): {
@@ -38,7 +39,7 @@ export const useHardwareTagOptions = (): {
     const fetchTags = async () => {
         setLoading(true);
         try {
-            const res = await fetch('/api/tags?type=tags&scope=hardware');
+            const res = await fetch(`${baseUrl}/api/tags?type=tags&scope=hardware`);
             const data = await res.json();
             setTags(data.map((t: any) => t.name));
             setLoading(false);
@@ -56,6 +57,7 @@ export const useHardwareTagOptions = (): {
     return { tags, loading, error, setTags, refresh: fetchTags };
 };
 
+
 export const useHardwareSolutionTagOptions = (): {
     tags: string[];
     loading: boolean;
@@ -70,7 +72,7 @@ export const useHardwareSolutionTagOptions = (): {
     const fetchTags = async () => {
         setLoading(true);
         try {
-            const res = await fetch('/api/tags?type=solutionTag&scope=hardware');
+            const res = await fetch(`${baseUrl}/api/tags?type=solutionTag&scope=hardware`);
             const data = await res.json();
             setTags(data.map((t: any) => t.name));
             setLoading(false);

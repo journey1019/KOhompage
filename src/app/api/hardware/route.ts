@@ -6,17 +6,17 @@ import { PrismaClient } from '@prisma/client';
 export const runtime = 'nodejs';
 
 export async function GET() {
-    // const hardwares = await prisma.hardware.findMany({
-    //     orderBy: { date: 'desc' }
-    // });
-    // return NextResponse.json(hardwares);
-    try {
-        const hardwares = await prisma.hardware.findMany({ orderBy: { date: 'desc' } })
-        return NextResponse.json(hardwares)
-    } catch (error) {
-        console.error('Error fetching hardware:', error)
-        return NextResponse.json({ error: '서버 에러' }, { status: 500 })
-    }
+    const hardwares = await prisma.hardware.findMany({
+        orderBy: { date: 'desc' }
+    });
+    return NextResponse.json(hardwares);
+    // try {
+    //     const hardwares = await prisma.hardware.findMany({ orderBy: { date: 'desc' } })
+    //     return NextResponse.json(hardwares)
+    // } catch (error) {
+    //     console.error('Error fetching hardware:', error)
+    //     return NextResponse.json({ error: '서버 에러' }, { status: 500 })
+    // }
 }
 
 export async function POST(req: NextRequest) {

@@ -5,6 +5,7 @@ import { Dialog } from '@headlessui/react';
 import { GoPlus } from 'react-icons/go';
 import { XMarkIcon } from '@heroicons/react/24/solid';
 
+const baseUrl = process.env.NEXT_PUBLIC_SITE_URL;
 export default function TagEditorDialog({ tagOptions, setTagOptions }: {
     tagOptions: string[],
     setTagOptions: (tags: string[]) => void
@@ -31,7 +32,7 @@ export default function TagEditorDialog({ tagOptions, setTagOptions }: {
         if (tagOptions.includes(clean)) return;
 
         // 👉 POST API 호출 (예: /api/tags)
-        const res = await fetch('/api/tags', {
+        const res = await fetch(`${baseUrl}/api/tags`, {
             method: 'POST',
             body: JSON.stringify({ tag: clean }),
             headers: { 'Content-Type': 'application/json' }

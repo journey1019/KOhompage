@@ -16,6 +16,8 @@ import Pagination from '@/components/(Resources)/Pagination';
 import { IoMdClose } from "react-icons/io";
 
 
+const baseUrl = process.env.NEXT_PUBLIC_SITE_URL;
+
 export default function ResourceListPage() {
     const [resources, setResources] = useState<Resource[]>([]); // 초기 데이터
     const router = useRouter();
@@ -80,7 +82,7 @@ export default function ResourceListPage() {
     // 리소스 삭제
     const handleDelete = async (id: number) => {
         if (!confirm('정말 삭제하시겠습니까?')) return;
-        await fetch(`/api/resource/${id}`, { method: 'DELETE' });
+        await fetch(`${baseUrl}/api/resource/${id}`, { method: 'DELETE' });
         setResources(resources.filter(r => r.id !== id));
     };
 

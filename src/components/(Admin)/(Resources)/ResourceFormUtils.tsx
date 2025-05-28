@@ -19,6 +19,7 @@ import { Resource, ResourceFormState } from "@/types/resource"
 //
 //     return [tags, setTags];
 // };
+const baseUrl = process.env.NEXT_PUBLIC_SITE_URL;
 export const useTagOptions = (): {
     tags: string[];
     loading: boolean;
@@ -49,7 +50,7 @@ export const useTagOptions = (): {
     const fetchTags = async () => {
         setLoading(true);
         try {
-            const res = await fetch('/api/tags?type=tags&scope=resource');
+            const res = await fetch(`${baseUrl}/api/tags?type=tags&scope=resource`);
             const data = await res.json();
             setTags(data.map((t: any) => t.name));
             setLoading(false);
@@ -109,7 +110,7 @@ export const useSolutionTagOptions = (): {
     const fetchTags = async () => {
         setLoading(true);
         try {
-            const res = await fetch('/api/tags?type=solutionTag&scope=resource');
+            const res = await fetch(`${baseUrl}/api/tags?type=solutionTag&scope=resource`);
             const data = await res.json();
             setTags(data.map((t: any) => t.name));
             setLoading(false);
