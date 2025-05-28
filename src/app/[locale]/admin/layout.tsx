@@ -39,7 +39,7 @@ export default async function ResourcesLayout({ children, params }: {
     children: React.ReactNode;
     params: {locale: string};
 }) {
-    const { locale } = params;
+    const { locale } = await params;
     return (
         <>
             <div className="flex flex-row justify-between p-4">
