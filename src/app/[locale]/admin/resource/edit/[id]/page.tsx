@@ -76,7 +76,13 @@ export default function EditResourcePage() {
     useEffect(() => {
         fetch(`/api/resource/${id}`)
             .then(res => res.json())
-            .then(data => setExistingResources(data.map((r: any) => ({ id: r.id, title: r.title }))));
+            .then(data => {
+                if (Array.isArray(data)) {
+                    setExistingResources(data.map((r: any) => ({ id: r.id, title: r.title })));
+                } else {
+                    setExistingResources([]);  // 배열 아니면 빈 배열 처리
+                }
+            });
     }, []);
 
     const handleTitleChange = (e: React.ChangeEvent<HTMLInputElement>) => {

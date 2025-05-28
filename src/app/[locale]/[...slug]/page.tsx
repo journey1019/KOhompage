@@ -4,8 +4,8 @@ import { notFound } from "next/navigation";
 import fs from "fs";
 import path from "path";
 
-export default function DynamicPage({ params }: { params: { slug: string[] } }) {
-    const { slug } = params;
+export default async function DynamicPage({ params }: { params: { slug: string[] } }) {
+    const { slug } = await params;
 
     // 유효한 페이지를 File System에서 가져오기
     const pagesDirectory = path.join(process.cwd(), "src/app/[locale]");

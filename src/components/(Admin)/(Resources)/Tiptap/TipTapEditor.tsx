@@ -209,6 +209,11 @@ export default function TipTapEditor({ content, onChange }: { content: string, o
             Subscript,
 
             Selection,
+            Image.configure({
+                HTMLAttributes: {
+                    style: 'max-width: 600px; max-height: 500px; height: auto; width: auto;',
+                }
+            }),
             ImageUploadNode.configure({
                 accept: "image/*",
                 maxSize: MAX_FILE_SIZE,
