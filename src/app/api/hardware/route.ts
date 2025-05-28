@@ -6,6 +6,7 @@ import { PrismaClient } from '@prisma/client';
 export const runtime = 'nodejs';
 
 export async function GET() {
+    console.log(prisma.hardware)
     const hardwares = await prisma.hardware.findMany({
         orderBy: { date: 'desc' }
     });
