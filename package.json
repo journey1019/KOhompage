@@ -5,6 +5,8 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build || exit 0",
+    "build:local": "cross-env NODE_ENV=local next build",
+    "build:prod": "cross-env NODE_ENV=production next build",
     "start": "next start",
     "lint": "next lint",
     "seed": "ts-node prisma/seed.ts",

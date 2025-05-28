@@ -8,6 +8,9 @@ module.exports = withNextIntl({
     typescript: {
         ignoreBuildErrors: true, // 실제 환경에서는 타입 오류 허용하지 않음
     },
+    env: {
+        CUSTOM_VAR: process.env.CUSTOM_VAR,
+    },
 });
 
 
