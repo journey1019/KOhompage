@@ -16,6 +16,7 @@ const handler = NextAuth({
                 password: { label: 'Password', type: 'password' },
             },
             async authorize(credentials, req) {
+                console.log('로그 테스트')
                 if (!credentials?.username || !credentials?.password) return null;
 
                 const user = await prisma.user.findUnique({

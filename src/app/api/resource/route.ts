@@ -6,10 +6,17 @@ import { PrismaClient } from '@prisma/client';
 export const runtime = 'nodejs'
 
 export async function GET() {
-    const resources = await prisma.resource.findMany({
-        orderBy: { date: 'desc' }
-    });
-    return NextResponse.json(resources);
+    // const resources = await prisma.resource.findMany({
+    //     orderBy: { date: 'desc' }
+    // });
+    // return NextResponse.json(resources);
+    try {
+        const resources = await prisma.resource.findMany();
+        return NextResponse.json(resources);
+    } catch (error) {
+        console.error('❌ resource API 에러:', error);
+        return NextResponse.json({ error: '서버 오류 발생' }, { status: 500 });
+    }
 }
 
 export async function POST(req: NextRequest) {
