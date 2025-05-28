@@ -7,7 +7,6 @@ import PageHero from '@/components/PageHero';
 import { FaArrowLeft } from "react-icons/fa";
 import Link from 'next/link';
 
-const baseUrl = process.env.NEXT_PUBLIC_SITE_URL;
 export default function ResourceDetailPage() {
     const { id } = useParams();
     const router = useRouter();
@@ -15,7 +14,7 @@ export default function ResourceDetailPage() {
     const [resource, setResource] = useState<Resource | null>(null);
 
     useEffect(() => {
-        fetch(`${baseUrl}/api/resource/${id}`)
+        fetch(`/api/resource/${id}`)
             .then((res) => res.json())
             .then((data) => setResource(data));
     }, [id]);
@@ -36,7 +35,7 @@ export default function ResourceDetailPage() {
     const handleDelete = async () => {
         if (!confirm("정말 삭제하시겠습니까?")) return;
 
-        await fetch(`${baseUrl}/api/resource/${id}`, { method: "DELETE" });
+        await fetch(`/api/resource/${id}`, { method: "DELETE" });
 
         // 삭제 후 이동 등 처리
         router.push(`/${locale}/admin/resource`) // 예: 목록으로 이동

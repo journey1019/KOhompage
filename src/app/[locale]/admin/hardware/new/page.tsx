@@ -12,8 +12,6 @@ import Switch from '@mui/material/Switch';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import { Hardware } from '@/types/hardware';
 
-const baseUrl = process.env.NEXT_PUBLIC_SITE_URL;
-
 export default function NewHardwarePage() {
     const router = useRouter();
     const locale = usePathname().split('/')[1];
@@ -61,7 +59,7 @@ export default function NewHardwarePage() {
     //         .then(data => setExistingTitles(data.map((r: any) => r.title)));
     // }, []);
     useEffect(() => {
-        fetch(`${baseUrl}/api/hardware`)
+        fetch('/api/hardware')
             .then(async res => {
                 if (!res.ok) throw new Error('응답 실패');
                 const contentType = res.headers.get('Content-Type');
@@ -91,7 +89,7 @@ export default function NewHardwarePage() {
             solutionTag: form.solutionTag.join(','),
         };
 
-        const res = await fetch(`${baseUrl}/api/hardware`, {
+        const res = await fetch('/api/hardware', {
             method: 'POST',
             body: JSON.stringify(payload),
             headers: { 'Content-Type': 'application/json' },
@@ -127,7 +125,7 @@ export default function NewHardwarePage() {
             return;
         }
 
-        const res = await fetch(`${baseUrl}/api/hardware`, {
+        const res = await fetch("/api/tags", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ name: newTag, type, scope: scopeField }), // ✅ scope 포함
@@ -160,7 +158,7 @@ export default function NewHardwarePage() {
         setFormField: (updater: (prev: any) => any) => void;
         refresh: () => Promise<void>;
     }) => {
-        const res = await fetch(`${baseUrl}/api/tags/${encodeURIComponent(name)}?type=${type}&scope=${scope}`, {
+        const res = await fetch(`/api/tags/${encodeURIComponent(name)}?type=${type}&scope=${scope}`, {
             method: 'DELETE',
         });
 

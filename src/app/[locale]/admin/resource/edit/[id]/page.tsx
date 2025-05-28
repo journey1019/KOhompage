@@ -12,8 +12,6 @@ import FormControlLabel from '@mui/material/FormControlLabel';
 import Switch from '@mui/material/Switch';
 import TiptapEditor from '@/components/(Admin)/(Resources)/Tiptap/TipTapEditor';
 
-const baseUrl = process.env.NEXT_PUBLIC_SITE_URL;
-
 export default function EditResourcePage() {
     const { id } = useParams();
     const router = useRouter();
@@ -61,7 +59,7 @@ export default function EditResourcePage() {
     });
 
     useEffect(() => {
-        fetch(`${baseUrl}/api/resource/${id}`)
+        fetch(`/api/resource/${id}`)
             .then(res => res.json())
             .then(data => {
                 setForm({
@@ -76,7 +74,7 @@ export default function EditResourcePage() {
 
     // 중복 검사를 위한 전체 리소스 가져옴
     useEffect(() => {
-        fetch(`${baseUrl}/api/resource/${id}`)
+        fetch(`/api/resource/${id}`)
             .then(res => res.json())
             .then(data => setExistingResources(data.map((r: any) => ({ id: r.id, title: r.title }))));
     }, []);
@@ -113,7 +111,7 @@ export default function EditResourcePage() {
             html: form.html,
         };
 
-        const res = await fetch(`${baseUrl}/api/resource/${id}`, {
+        const res = await fetch(`/api/resource/${id}`, {
             method: 'PUT',
             body: JSON.stringify(payload),
             headers: { 'Content-Type': 'application/json' },
@@ -149,7 +147,7 @@ export default function EditResourcePage() {
             return;
         }
 
-        const res = await fetch(`${baseUrl}/api/tags`, {
+        const res = await fetch(`/api/tags`, {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ name: newTag, type }),
@@ -181,7 +179,7 @@ export default function EditResourcePage() {
         setFormField: (updater: (prev: any) => any) => void;
         refresh: () => Promise<void>;
     }) => {
-        const res = await fetch(`${baseUrl}/api/tags/${encodeURIComponent(name)}?type=${type}`, {
+        const res = await fetch(`/api/tags/${encodeURIComponent(name)}?type=${type}`, {
             method: 'DELETE',
         });
 
