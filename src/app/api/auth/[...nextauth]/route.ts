@@ -2,7 +2,8 @@
 import NextAuth from 'next-auth/next'
 import CredentialsProvider from 'next-auth/providers/credentials'
 import KakaoProvider from "next-auth/providers/kakao";
-import prisma from '@/app/lib/prisma';
+// import prisma from '@/app/lib/prisma';
+import { prisma } from '@/lib/prisma';
 import bcrypt from 'bcrypt';
 
 export const runtime = 'nodejs'

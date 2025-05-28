@@ -1,4 +1,5 @@
-import prisma from '@/app/lib/prisma'
+// import prisma from '@/app/lib/prisma'
+import { prisma } from '@/lib/prisma';
 import * as bcrypt from 'bcrypt'
 import { signJwtAccessToken } from "@/app/lib/jwt";
 

@@ -32,16 +32,34 @@ export default function ResourceListPage() {
     const itemsPerPage = 9; // 페이지당 항목 수
 
     // 리소스 불러오기
+    // useEffect(() => {
+    //     const fetchInitialResources = async () => {
+    //         setIsLoading(true);
+    //         const all = await getAllResources();
+    //         setResources(all);
+    //         setTotalResourcesCount(all.length);
+    //         setIsLoading(false);
+    //     };
+    //     fetchInitialResources();
+    // }, []);
     useEffect(() => {
-        const fetchInitialResources = async () => {
+        const fetchResources = async () => {
             setIsLoading(true);
-            const all = await getAllResources();
-            setResources(all);
-            setTotalResourcesCount(all.length);
-            setIsLoading(false);
+            try {
+                const all = await getAllResources();
+                setResources(all);
+                setTotalResourcesCount(all.length);
+            } catch (e) {
+                console.error('리소스 로드 실패:', e);
+                alert('리소스 로드 중 오류가 발생했습니다.');
+            } finally {
+                setIsLoading(false);
+            }
         };
-        fetchInitialResources();
+
+        fetchResources();
     }, []);
+
 
     useEffect(() => {
         setIsLoading(true); // 시작 시 로딩

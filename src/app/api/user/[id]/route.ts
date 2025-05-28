@@ -1,6 +1,7 @@
 //app/api/user/[id]/route.ts
 
-import prisma from '@/app/lib/prisma'
+// import prisma from '@/app/lib/prisma'
+import { prisma } from '@/lib/prisma'
 import { verifyJwt } from '@/app/lib/jwt'
 
 export const runtime = 'nodejs'

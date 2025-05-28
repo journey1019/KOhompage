@@ -1,5 +1,6 @@
 import { NextRequest } from 'next/server';
-import prisma from '@/app/lib/prisma'
+// import prisma from '@/app/lib/prisma'
+import { prisma } from '@/lib/prisma';
 import bcrypt from 'bcrypt' // 암호화
 
 interface RequestBody {
