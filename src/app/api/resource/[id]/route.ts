@@ -52,7 +52,7 @@ export async function GET(req: NextRequest, { params }: { params: { id: string }
         return NextResponse.json(resource);
     } catch (error) {
         console.error('❌ GET /api/resource/[id] 에러:', error);
-        return NextResponse.json({ error: '서버 에러 발생' }, { status: 500 });
+        return NextResponse.json([], { status: 500 });
     }
 }
 
@@ -71,7 +71,7 @@ export async function PUT(req: NextRequest, { params }: { params: { id: string }
         return NextResponse.json(updated);
     } catch (error) {
         console.error('❌ PUT /api/resource/[id] 에러:', error);
-        return NextResponse.json({ error: '서버 에러 발생' }, { status: 500 });
+        return NextResponse.json([], { status: 500 });
     }
 }
 
@@ -83,6 +83,6 @@ export async function DELETE(_: NextRequest, { params }: { params: { id: string 
         return NextResponse.json({ ok: true });
     } catch (error) {
         console.error('❌ DELETE /api/resource/[id] 에러:', error);
-        return NextResponse.json({ error: '서버 에러 발생' }, { status: 500 });
+        return NextResponse.json([], { status: 500 });
     }
 }

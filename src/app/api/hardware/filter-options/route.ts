@@ -62,7 +62,7 @@ export async function GET() {
         return NextResponse.json(options);
     } catch (error) {
         console.error('❌ GET /api/hardware/filter-options 에러:', error);
-        return NextResponse.json({ error: '서버 에러 발생' }, { status: 500 });
+        return NextResponse.json([], { status: 500 });
     }
 }
 
@@ -81,7 +81,7 @@ export async function POST(req: NextRequest) {
         return NextResponse.json(created);
     } catch (error) {
         console.error('❌ POST /api/hardware/filter-options 에러:', error);
-        return NextResponse.json({ error: '서버 에러 발생' }, { status: 500 });
+        return NextResponse.json([], { status: 500 });
     }
 }
 
@@ -100,6 +100,6 @@ export async function DELETE(req: NextRequest) {
         return NextResponse.json({ message: 'Deleted successfully', count: deleted.count });
     } catch (error) {
         console.error('❌ DELETE /api/hardware/filter-options 에러:', error);
-        return NextResponse.json({ error: '서버 에러 발생' }, { status: 500 });
+        return NextResponse.json([], { status: 500 });
     }
 }

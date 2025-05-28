@@ -73,7 +73,7 @@ export async function POST(req: NextRequest) {
         await writeFile(filePath, buffer);
     } catch (error) {
         console.error('❌ 파일 저장 실패:', error);
-        return NextResponse.json({ error: '서버 에러 발생' }, { status: 500 });
+        return NextResponse.json([], { status: 500 });
     }
 
     const fileUrl = `/uploads/${filename}`
