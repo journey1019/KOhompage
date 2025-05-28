@@ -1,57 +1,38 @@
 // src/app/api/hardware/route.ts
 import { prisma } from '@/lib/prisma';
 import { NextRequest, NextResponse } from 'next/server';
-import { PrismaClient } from '@prisma/client';
 
 export const runtime = 'nodejs';
 
 export async function GET() {
-    const hardwares = await prisma.hardware.findMany({
-        orderBy: { date: 'desc' }
-    });
-    return NextResponse.json(hardwares);
-    // try {
-    //     const hardwares = await prisma.hardware.findMany({ orderBy: { date: 'desc' } })
-    //     return NextResponse.json(hardwares)
-    // } catch (error) {
-    //     console.error('Error fetching hardware:', error)
-    //     return NextResponse.json({ error: '서버 에러' }, { status: 500 })
-    // }
+    try {
+        const hardwares = await prisma.hardware.findMany({ orderBy: { date: 'desc' } })
+        return NextResponse.json(hardwares)
+    } catch (error) {
+        console.error('Error fetching hardware:', error)
+        return NextResponse.json({ error: '서버 에러' }, { status: 500 })
+    }
 }
 
 export async function POST(req: NextRequest) {
     try {
         const body = await req.json();
 
-        const {
-            date,
-            title,
-            subtitle,
-            description,
-            tags,
-            hideTag,
-            solutionTag,
-            category,
-            imageSrc,
-            slug,
-            path,
-            use,
-        } = body;
 
         const result = await prisma.hardware.create({
             data: {
-                date: new Date(date),
-                title,
-                subtitle,
-                description,
-                tags,
-                hideTag,
-                solutionTag,
-                category,
-                imageSrc,
-                slug,
-                path,
-                use,
+                date: new Date(body.date),
+                title: body.title,
+                subtitle: body.subtitle,
+                description: body.description,
+                tags: body.tags,
+                hideTag: body.hideTag,
+                solutionTag: body.solutionTag,
+                category: body.category,
+                imageSrc: body.imageSrc,
+                slug: body.slug,
+                path: body.path,
+                use: body.use,
             },
         });
 

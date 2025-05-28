@@ -1,13 +1,18 @@
-import { NextRequest, NextResponse } from 'next/server';
 import { prisma } from '@/lib/prisma';
+import { NextRequest, NextResponse } from 'next/server';
 
-export const runtime = 'nodejs'
+export const runtime = 'nodejs';
 
 export async function GET() {
-    const options = await prisma.hardwareFilterOption.findMany({
-        orderBy: { type: 'asc' },
-    });
-    return NextResponse.json(options);
+    try {
+        const options = await prisma.hardwareFilterOption.findMany({
+            orderBy: { type: 'asc' },
+        });
+        return NextResponse.json(options);
+    } catch (error) {
+        console.error('❌ GET /api/hardware/filter-options 에러:', error);
+        return NextResponse.json({ error: '서버 에러 발생' }, { status: 500 });
+    }
 }
 
 export async function POST(req: NextRequest) {
@@ -24,8 +29,8 @@ export async function POST(req: NextRequest) {
 
         return NextResponse.json(created);
     } catch (error) {
-        console.error('❌ POST 오류:', error);
-        return NextResponse.json({ error: '서버 오류 발생' }, { status: 500 });
+        console.error('❌ POST /api/hardware/filter-options 에러:', error);
+        return NextResponse.json({ error: '서버 에러 발생' }, { status: 500 });
     }
 }
 
@@ -43,7 +48,7 @@ export async function DELETE(req: NextRequest) {
 
         return NextResponse.json({ message: 'Deleted successfully', count: deleted.count });
     } catch (error) {
-        console.error('❌ DELETE 오류:', error);
-        return NextResponse.json({ error: '서버 오류 발생' }, { status: 500 });
+        console.error('❌ DELETE /api/hardware/filter-options 에러:', error);
+        return NextResponse.json({ error: '서버 에러 발생' }, { status: 500 });
     }
 }
