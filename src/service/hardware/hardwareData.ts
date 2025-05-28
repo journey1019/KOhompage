@@ -20,6 +20,8 @@ export interface FilterOptions {
 export const getAllHardware = async (): Promise<Hardware[]> => {
     const res = await fetch(`/api/hardware`);
     const data: Hardware[] = await res.json();
+
+    console.log('Hardware Data:', data)
     return data;
 
     // 'use' 필드가 true 인 게시글만 가져오기
