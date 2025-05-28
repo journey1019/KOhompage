@@ -16,10 +16,8 @@ export interface FilterOptions {
     tags?: string[];
 }
 
-const baseUrl = process.env.NEXT_PUBLIC_SITE_URL;
-
 export const getAllHardware = async (): Promise<Hardware[]> => {
-    const res = await fetch(`${baseUrl}/api/hardware`);
+    const res = await fetch('/api/hardware');
     const data: Hardware[] = await res.json();
     return data;
 
@@ -35,7 +33,7 @@ export const getFilteredHardwaresByQueryAndFilters = async (
     const normalizeString = (str: string) =>
         str.toLowerCase().replace(/[^a-z0-9가-힣]/g, "");
 
-    const res = await fetch(`${baseUrl}/api/hardware`);
+    const res = await fetch('/api/hardware');
     const data: Hardware[] = await res.json();
     const normalizedQuery = normalizeString(query.trim());
 
@@ -84,7 +82,7 @@ export const getFilteredHardwaresByQueryAndFilters = async (
 
 
 export const getHardwareByKeywords = async (keywords: string[]): Promise<Hardware[]> => {
-    const res = await fetch(`${baseUrl}/api/hardware`);
+    const res = await fetch('/api/hardware');
     const data: Hardware[] = await res.json();
 
     // Return all hardware if no keywords are provided
@@ -110,7 +108,7 @@ export const getHardwareByKeywords = async (keywords: string[]): Promise<Hardwar
 
 /** solutionTag 에 의해 Filtering - [Page 에서 키워드 필터링] */
 export const getHardwareByKeywordsInPage = async (keywords: string[]): Promise<Hardware[]> => {
-    const res = await fetch(`${baseUrl}/api/hardware`);
+    const res = await fetch('/api/hardware');
     const data: Hardware[] = await res.json();
 
     if (!keywords || keywords.length === 0) return getAllHardware();

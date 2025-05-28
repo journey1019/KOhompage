@@ -14,8 +14,6 @@ import FiltersHardware from '@/components/(Hardware)/FilterHardware';
 import Pagination from '@/components/(Resources)/Pagination';
 
 
-const baseUrl = process.env.NEXT_PUBLIC_SITE_URL;
-
 const HardwarePage = () => {
     const [hardwares, setHardwares] = useState<Hardware[]>([]); // 초기 데이터
     const router = useRouter();
@@ -32,7 +30,7 @@ const HardwarePage = () => {
     const itemsPerPage = 9; // 페이지당 항목 수
 
     useEffect(() => {
-        fetch(`${baseUrl}/api/hardware`)
+        fetch('/api/hardware')
             .then(res => res.json())
             .then(data => setHardwares(data))
     }, []);
