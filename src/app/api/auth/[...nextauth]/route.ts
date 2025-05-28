@@ -22,6 +22,7 @@ const handler = NextAuth({
                     where: { email: credentials.username },
                 });
 
+
                 if (!user || !user.password) return null;
 
                 const isValid = await bcrypt.compare(credentials.password, user.password);

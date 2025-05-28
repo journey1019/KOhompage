@@ -8,9 +8,11 @@ export interface FilterOptions {
     solutions?: string[]; // 선택된 solutions
 }
 
+const baseUrl = process.env.NEXT_PUBLIC_SITE_URL;
+
 // 모든 references 데이터를 가져오는 함수
 export const getAllResources = async (): Promise<Resource[]> => {
-    const res = await fetch('/api/resource');
+    const res = await fetch(`${baseUrl}/api/resource`);
     const data: Resource[] = await res.json();
     return data;
     // `use` 필드가 true인 게시글만 가져오기
@@ -32,7 +34,7 @@ export const getFilteredResourcesByQueryAndFilters = async (
     query: string,
     filters: FilterOptions
 ): Promise<Resource[]> => {
-    const res = await fetch('/api/resource');
+    const res = await fetch(`${baseUrl}/api/resource`);
     const data: Resource[] = await res.json();
 
     const normalizedQuery = normalizeText(query.trim());
@@ -72,7 +74,7 @@ export const getFilteredResourcesByQueryAndFilters = async (
 
 // Filter resources by keywords (tags)
 export const getResourcesByKeywords = async (keywords: string[]): Promise<Resource[]> => {
-    const res = await fetch('/api/resource');
+    const res = await fetch(`${baseUrl}/api/resource`);
     const data: Resource[] = await res.json();
 
     // Normalize keywords (lowercase, remove special characters)
@@ -97,7 +99,7 @@ export const getResourcesByKeywords = async (keywords: string[]): Promise<Resour
 export const getResourcesByAllKeywords = async (keywords: string[]): Promise<Resource[]> => {
     const normalizedKeywords = keywords.map(normalizeText);
 
-    const res = await fetch('/api/resource');
+    const res = await fetch(`${baseUrl}/api/resource`);
     const data: Resource[] = await res.json();
 
     return data.filter((resource) => {
@@ -123,7 +125,7 @@ export const getResourcesByAllKeywords = async (keywords: string[]): Promise<Res
 export const getResourceByKeywordsInPage = async (keywords: string[]): Promise<Resource[]> => {
     if (!keywords || keywords.length === 0) return getAllResources();
 
-    const res = await fetch('/api/resource');
+    const res = await fetch(`${baseUrl}/api/resource`);
     const data: Resource[] = await res.json();
 
     // Normalize keywords (lowercase, remove special characters)
