@@ -248,19 +248,19 @@ const FileUploader = ({
                     }
 
                     // 이미지 사이즈 검사 (이미지 파일인 경우만)
-                    if (file.type.startsWith('image/')) {
-                        const img = new Image();
-                        img.onload = () => {
-                            if (img.width > recommendedWidth || img.height > recommendedHeight) {
-                                alert(`이미지 크기는 최대 ${recommendedWidth}x${recommendedHeight} 픽셀 권장입니다.`);
-                                // 권고사항일 뿐 업로드는 계속 진행할 수도 있음
-                            }
-                        };
-                        img.onerror = () => {
-                            alert("이미지 크기 확인에 실패했습니다.");
-                        };
-                        img.src = URL.createObjectURL(file);
-                    }
+                    // if (file.type.startsWith('image/')) {
+                    //     const img = new Image();
+                    //     img.onload = () => {
+                    //         if (img.width > recommendedWidth || img.height > recommendedHeight) {
+                    //             alert(`이미지 크기는 최대 ${recommendedWidth}x${recommendedHeight} 픽셀 권장입니다.`);
+                    //             // 권고사항일 뿐 업로드는 계속 진행할 수도 있음
+                    //         }
+                    //     };
+                    //     img.onerror = () => {
+                    //         alert("이미지 크기 확인에 실패했습니다.");
+                    //     };
+                    //     img.src = URL.createObjectURL(file);
+                    // }
 
                     const formData = new FormData();
                     formData.append('file', file);
