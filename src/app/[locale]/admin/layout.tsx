@@ -43,7 +43,7 @@ export default async function ResourcesLayout({ children, params }: {
     const { locale } = await params;
     return (
         <>
-            <div className="flex flex-row justify-between p-4">
+            <div className="flex flex-row justify-between p-4 maxWeb:pt-8">
                 <SidebarDrawer locale={locale} />
                 <LogoutButton />
             </div>

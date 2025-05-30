@@ -28,40 +28,15 @@ const HardwareCardPDFAdmin: React.FC<HardwareItem> = ({ id, title, subtitle, des
         }`}
     >
         {/* 이미지 박스: 고정 크기 */}
-        <div className="relative w-[250px] h-[250px] overflow-hidden rounded-lg border-2 border-gray-200">
-            {imageSrc ? (
-                <Image
-                    src={imageSrc}
-                    alt={slug || 'hardware-image'}
-                    fill
-                    style={{
-                        objectFit: 'contain',        // 꽉 채우면서 비율 유지
-                        objectPosition: 'center',  // 중앙 기준 자르기
-                    }}
-                    className="transform group-hover:scale-105 transition-transform duration-300 ease-in-out"
-                    unoptimized
-                />
-            ) : (
-                <div className="w-full h-full flex items-center justify-center text-sm text-gray-400 bg-gray-100">
-                    이미지 없음
-                </div>
-            )}
-            <div
-                className="absolute top-2 right-2 bg-gray-900 bg-opacity-50 text-white border border-gray-200 text-xs px-3 py-1 rounded-full shadow-md">
-                {category}
-            </div>
-        </div>
-        {/*<div*/}
-        {/*    className="relative w-full h-[240px] overflow-hidden rounded-lg border-2 border-gray-200 flex items-center justify-center bg-white">*/}
+        {/*<div className="relative w-[250px] h-[250px] overflow-hidden rounded-lg border-2 border-gray-200">*/}
         {/*    {imageSrc ? (*/}
         {/*        <Image*/}
         {/*            src={imageSrc}*/}
-        {/*            alt={slug || "hardware-image"}*/}
-        {/*            width={258}*/}
-        {/*            height={240}*/}
+        {/*            alt={slug || 'hardware-image'}*/}
+        {/*            fill*/}
         {/*            style={{*/}
-        {/*                objectFit: "contain",*/}
-        {/*                objectPosition: "center", // 이미지 중앙 정렬*/}
+        {/*                objectFit: 'cover',        // 꽉 채우면서 비율 유지*/}
+        {/*                objectPosition: 'center',  // 중앙 기준 자르기*/}
         {/*            }}*/}
         {/*            className="transform group-hover:scale-105 transition-transform duration-300 ease-in-out"*/}
         {/*            unoptimized*/}
@@ -71,12 +46,33 @@ const HardwareCardPDFAdmin: React.FC<HardwareItem> = ({ id, title, subtitle, des
         {/*            이미지 없음*/}
         {/*        </div>*/}
         {/*    )}*/}
-
-        {/*    <div*/}
-        {/*        className="absolute top-2 right-2 bg-gray-900 bg-opacity-50 text-white border border-gray-200 text-xs px-3 py-1 rounded-full shadow-md">*/}
-        {/*        {category}*/}
-        {/*    </div>*/}
         {/*</div>*/}
+        <div
+            className="relative w-full h-[240px] overflow-hidden rounded-lg border-2 border-gray-200 flex items-center justify-center bg-white">
+            {imageSrc ? (
+                <Image
+                    src={imageSrc}
+                    alt={slug || "hardware-image"}
+                    width={258}
+                    height={240}
+                    style={{
+                        objectFit: "contain",
+                        objectPosition: "center", // 이미지 중앙 정렬
+                    }}
+                    className="transform group-hover:scale-105 transition-transform duration-300 ease-in-out"
+                    unoptimized
+                />
+            ) : (
+                <div className="w-full h-full flex items-center justify-center text-sm text-gray-400 bg-gray-100">
+                    이미지 없음
+                </div>
+            )}
+
+            <div
+                className="absolute top-2 right-2 bg-gray-900 bg-opacity-50 text-white border border-gray-200 text-xs px-3 py-1 rounded-full shadow-md">
+                {category}
+            </div>
+        </div>
 
         {/* 제목 + PDF 버튼 */}
         <div className="mt-4 flex flex-row justify-between items-center">
