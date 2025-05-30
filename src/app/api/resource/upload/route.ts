@@ -7,7 +7,7 @@ export const runtime = 'nodejs'
 
 export async function POST(req: NextRequest) {
     const formData = await req.formData();
-    const file = formData.get('image') as File;
+    const file = formData.get('file') as File;
 
     if (!file) return NextResponse.json({ error: 'No file provided' }, { status: 400 });
 
