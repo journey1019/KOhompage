@@ -70,7 +70,7 @@ export default function LoginModal() {
 
             if (role === "ADMIN") {
                 setIsLoading(false); // 로딩 끝
-                router.push("/ko/admin");
+                router.push(callbackUrl);
             } else if (role === "USER") {
                 // router.push("/ko/shop");
                 setIsLoading(false); // 로딩 끝
