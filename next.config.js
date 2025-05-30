@@ -11,6 +11,11 @@ module.exports = withNextIntl({
     env: {
         CUSTOM_VAR: process.env.CUSTOM_VAR,
     },
+    api: {
+        bodyParser: {
+            sizeLimit: '10mb', // or whatever size needed
+        },
+    },
 });
 
 

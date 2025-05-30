@@ -38,4 +38,11 @@ export async function POST(req: NextRequest) {
         return NextResponse.json({ error: '파일 저장 중 오류 발생' }, { status: 500 });
     }
 }
+export const config = {
+    api: {
+        bodyParser: {
+            sizeLimit: '10mb', // 원하는 최대 크기로 설정
+        },
+    },
+};
 

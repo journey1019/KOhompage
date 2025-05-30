@@ -353,10 +353,8 @@ export default function NewHardwarePage() {
                     <div className="flex-1">
                         {form.imageSrc && <img src={form.imageSrc} alt="현재 이미지" className="w-1/2 rounded border" />}
                         <FileUploader label="이미지 업로드" accept="image/*" page="hardware"
-                                      onUpload={(url) => setForm((prev: typeof form) => ({
-                                          ...prev,
-                                          imageSrc: url
-                                      }))} />
+                                      onUpload={(url) => setForm((prev: typeof form) => ({ ...prev, imageSrc: url }))}
+                        />
                     </div>
                 </div>
 
