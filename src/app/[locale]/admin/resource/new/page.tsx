@@ -166,6 +166,7 @@ export default function NewResourcePage() {
         await refresh();
     };
 
+    console.log(form)
 
     return (
         <div className="p-6 max-w-4xl mx-auto">
@@ -330,10 +331,16 @@ export default function NewResourcePage() {
                         <label className="w-40 text-left pt-2 font-medium text-gray-700">📎 PDF 업로드</label>
                         <div className="flex-1">
                             {form.path && (
-                                <a href={form.path} target="_blank" className="text-blue-500 text-sm block hover:underline">현재 PDF
-                                    보기</a>
+                                <a
+                                    href={form.path}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="text-blue-500 text-sm block hover:underline"
+                                >
+                                    현재 PDF 보기
+                                </a>
                             )}
-                            <FileUploader label="PDF 업로드" accept="application/pdf" page="resources" onUpload={(url) => setForm(prev => ({...prev, image: url}))} />
+                            <FileUploader label="PDF 업로드" accept="application/pdf" page="resources" onUpload={(url) => setForm(prev => ({...prev, path: url}))} />
                         </div>
                     </div>
                 ) : form.form === 'link' ? (

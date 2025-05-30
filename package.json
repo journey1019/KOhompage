@@ -6,7 +6,7 @@
     "dev": "dotenv -e .env.local -- next dev",
     "build": "dotenv -e .env.local -- npx prisma generate && next build || exit 0",
     "build:local": "cross-env NODE_ENV=local dotenv -e .env.local -- next build",
-    "build:prod": "cross-env NODE_ENV=production dotenv -e .env.prod -- npx prisma generate && next build",
+    "build:prod": "cross-env NODE_ENV=production ./node_modules/.bin/dotenv -e .env.prod -- npx prisma generate && next build",
     "start": "next start",
     "lint": "next lint",
     "seed": "ts-node prisma/seed.ts",

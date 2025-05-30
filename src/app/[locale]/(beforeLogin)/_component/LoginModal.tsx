@@ -13,6 +13,7 @@ export default function LoginModal() {
     const [password, setPassword] = useState('');
     const [rememberMe, setRememberMe] = useState(false);
     const [loginError, setLoginError] = useState<string | null>(null);
+    const [isLoading, setIsLoading] = useState(false); // 로그인시 로딩
     const router = useRouter();
 
     // 로그인 검사 후 Session 있을 시 '/admin' 페이지로 redirect
@@ -41,6 +42,7 @@ export default function LoginModal() {
     const handleSubmit: FormEventHandler<HTMLFormElement> = async (event) => {
         event.preventDefault();
         setLoginError(null); // 이전 오류 초기화
+        setIsLoading(true); // 로딩 시작
 
         if (rememberMe) {
             localStorage.setItem('rememberEmail', email);
@@ -63,19 +65,22 @@ export default function LoginModal() {
             const role = session?.user?.role;
 
             if (role === "ADMIN") {
+                setIsLoading(false); // 로딩 끝
                 router.push("/ko/admin");
             } else if (role === "USER") {
                 // router.push("/ko/shop");
+                setIsLoading(false); // 로딩 끝
                 setLoginError("이 페이지는 관리자 전용입니다.");
             } else {
                 // console.log(result)
                 // 예외: role 없거나 이상하면 fallback
                 // router.push("/");
                 // setLoginError("로그인 정보는 맞지만 역할 정보가 올바르지 않습니다. 관리자에게 문의해주세요.");
+                setIsLoading(false); // 로딩 끝
                 setLoginError("아이디 또는 비밀번호가 잘못되었습니다.");
             }
         } else {
-
+            setIsLoading(false); // 로딩 끝
             setLoginError("아이디 또는 비밀번호가 잘못되었습니다.");
             // alert("로그인 실패: 아이디 또는 비밀번호를 확인하세요.");
         }
@@ -119,19 +124,19 @@ export default function LoginModal() {
 
             <div className="relative w-full max-w-md p-8 bg-white rounded-2xl shadow-xl">
                 {/* 닫기 버튼 */}
-                <button
-                    className="absolute top-4 right-4 text-gray-400 hover:text-gray-600 transition"
-                    onClick={onClickClose}
-                >
-                    <svg width={24} height={24} viewBox="0 0 24 24" aria-hidden="true">
-                        <g>
-                            <path
-                                d="M10.59 12L4.54 5.96l1.42-1.42L12 10.59l6.04-6.05 1.42 1.42L13.41 12l6.05 6.04-1.42 1.42L12 13.41l-6.04 6.05-1.42-1.42L10.59 12z"
-                                fill="currentColor"
-                            />
-                        </g>
-                    </svg>
-                </button>
+                {/*<button*/}
+                {/*    className="absolute top-4 right-4 text-gray-400 hover:text-gray-600 transition"*/}
+                {/*    onClick={onClickClose}*/}
+                {/*>*/}
+                {/*    <svg width={24} height={24} viewBox="0 0 24 24" aria-hidden="true">*/}
+                {/*        <g>*/}
+                {/*            <path*/}
+                {/*                d="M10.59 12L4.54 5.96l1.42-1.42L12 10.59l6.04-6.05 1.42 1.42L13.41 12l6.05 6.04-1.42 1.42L12 13.41l-6.04 6.05-1.42-1.42L10.59 12z"*/}
+                {/*                fill="currentColor"*/}
+                {/*            />*/}
+                {/*        </g>*/}
+                {/*    </svg>*/}
+                {/*</button>*/}
 
                 {/* 타이틀 */}
                 <h2 className="text-2xl font-bold text-center text-gray-800 mb-8">
@@ -197,14 +202,23 @@ export default function LoginModal() {
 
                     {/* 로그인 버튼 */}
                     <div>
+                        {/*<button*/}
+                        {/*    type="submit"*/}
+                        {/*    className={`w-full py-2 px-4 rounded-md text-white font-semibold transition*/}
+                        {/*    ${email && password ? 'bg-blue-600 hover:bg-blue-700' : 'bg-gray-400 cursor-not-allowed'}*/}
+                        {/*    `}*/}
+                        {/*    disabled={!email || !password}*/}
+                        {/*>*/}
+                        {/*    로그인하기*/}
+                        {/*</button>*/}
                         <button
                             type="submit"
                             className={`w-full py-2 px-4 rounded-md text-white font-semibold transition
-                            ${email && password ? 'bg-blue-600 hover:bg-blue-700' : 'bg-gray-400 cursor-not-allowed'}
+                            ${email && password && !isLoading ? 'bg-blue-600 hover:bg-blue-700' : 'bg-gray-400 cursor-not-allowed'}
                             `}
-                            disabled={!email || !password}
+                            disabled={!email || !password || isLoading}
                         >
-                            로그인하기
+                            {isLoading ? "로딩 중..." : "로그인하기"}
                         </button>
 
                         <div className="pt-4">

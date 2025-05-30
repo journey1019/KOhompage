@@ -221,6 +221,17 @@ const FileUploader = ({
 }) => {
     const endpoint = accept.includes('pdf') ? '/api/upload/pdf' : '/api/upload/image';
 
+    const acceptedFormats = accept === 'image/*'
+        ? ['jpg', 'jpeg', 'png', 'gif', 'webp']
+        : accept
+            .split(',')
+            .map((type) => type.split('/')[1] || '')
+            .filter(Boolean);
+
+    const maxFileSizeMB = 5; // 최대 용량 예: 5MB
+    const recommendedWidth = 516;  // 권장 가로 픽셀
+    const recommendedHeight = 384;  // 권장 세로 픽셀
+
     return (
         <div>
             <label className="block font-medium">{label}</label>
@@ -230,6 +241,26 @@ const FileUploader = ({
                 onChange={async (e) => {
                     const file = e.target.files?.[0];
                     if (!file) return;
+
+                    if (file.size > maxFileSizeMB * 1024 * 1024) {
+                        alert(`파일 크기는 최대 ${maxFileSizeMB}MB 이하로 업로드해주세요.`);
+                        return;
+                    }
+
+                    // 이미지 사이즈 검사 (이미지 파일인 경우만)
+                    if (file.type.startsWith('image/')) {
+                        const img = new Image();
+                        img.onload = () => {
+                            if (img.width > recommendedWidth || img.height > recommendedHeight) {
+                                alert(`이미지 크기는 최대 ${recommendedWidth}x${recommendedHeight} 픽셀 권장입니다.`);
+                                // 권고사항일 뿐 업로드는 계속 진행할 수도 있음
+                            }
+                        };
+                        img.onerror = () => {
+                            alert("이미지 크기 확인에 실패했습니다.");
+                        };
+                        img.src = URL.createObjectURL(file);
+                    }
 
                     const formData = new FormData();
                     formData.append('file', file);
@@ -242,9 +273,17 @@ const FileUploader = ({
                 }}
                 className="w-full"
             />
+
+            <p className="mt-1 text-sm text-gray-500">
+                권장 용량: 최대 {maxFileSizeMB}MB | 지원 형식: {acceptedFormats.join(', ')}
+                {accept === 'image/*' && (
+                    <> | 권장 크기: {recommendedWidth}x{recommendedHeight} px</>
+                )}
+            </p>
         </div>
     );
 };
+
 
 
 // export { tagOptions, solutionTagOptions, contentTypeOptions, useFormHandlers, TagSelector, FileUploader };
