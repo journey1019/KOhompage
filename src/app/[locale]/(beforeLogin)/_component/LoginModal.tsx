@@ -32,7 +32,6 @@ export default function LoginModal() {
         // }
     }, [session, status, router, callbackUrl]);
 
-
     // 페이지 열릴 때, localStorage에서 이메일 불러오기
     useEffect(() => {
         const storedEmail = localStorage.getItem('rememberEmail');
