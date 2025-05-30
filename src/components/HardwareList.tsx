@@ -60,17 +60,34 @@ const HardwareList: React.FC<HardwareListProps> = ({ items }) => {
                     {/* 태그 개수 제한 */}
                     <div className="mt-2">
                         <span className="text-xs text-gray-600">Tags: </span>
-                        {item.tag.slice(0, 3).map((tag) => (
-                            <span
-                                key={tag}
-                                className="text-blue-500 mr-2 text-xs group-hover:underline transition duration-300"
-                            >
-                                {tag}
-                            </span>
-                        ))}
-                        {item.tag.length > 3 && (
-                            <span className="text-gray-500 text-xs">
-                                +{item.tag.length - 3} more</span>
+                        {/*{item.tag.slice(0, 3).map((tag) => (*/}
+                        {/*    <span*/}
+                        {/*        key={tag}*/}
+                        {/*        className="text-blue-500 mr-2 text-xs group-hover:underline transition duration-300"*/}
+                        {/*    >*/}
+                        {/*        {tag}*/}
+                        {/*    </span>*/}
+                        {/*))}*/}
+                        {/*{item.tag.length > 3 && (*/}
+                        {/*    <span className="text-gray-500 text-xs">*/}
+                        {/*        +{item.tag.length - 3} more</span>*/}
+                        {/*)}*/}
+                        {Array.isArray(item.tag) && (
+                            <>
+                                {item.tag.slice(0, 3).map((tag) => (
+                                    <span
+                                        key={tag}
+                                        className="text-blue-500 mr-2 text-xs group-hover:underline transition duration-300"
+                                    >
+                                        {tag}
+                                    </span>
+                                ))}
+                                {item.tag.length > 3 && (
+                                    <span className="text-gray-500 text-xs">
+                                        +{item.tag.length - 3} more
+                                    </span>
+                                )}
+                            </>
                         )}
                     </div>
 
