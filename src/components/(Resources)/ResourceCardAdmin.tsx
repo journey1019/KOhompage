@@ -26,7 +26,6 @@ const ResourceCardAdmin = ({ id, date, contentType, title, subtitle, tags, form,
         }
     };
 
-    console.log(image)
     return (
         <div className={`group flex flex-col border rounded-lg p-4 shadow-lg hover:shadow-xl h-full ${!use && 'bg-gray-300'}`}>
             {/* 이미지 섹션 */}

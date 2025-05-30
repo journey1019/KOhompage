@@ -15,6 +15,9 @@ export default function LoginModal() {
     const [loginError, setLoginError] = useState<string | null>(null);
     const [isLoading, setIsLoading] = useState(false); // 로그인시 로딩
     const router = useRouter();
+    const searchParams = useSearchParams();
+
+    const callbackUrl = searchParams.get('callbackUrl') || '/ko/admin';
 
     // 로그인 검사 후 Session 있을 시 '/admin' 페이지로 redirect
     const { data: session, status } = useSession();
@@ -22,12 +25,12 @@ export default function LoginModal() {
         if (status === "loading") return;
 
         if (session?.user?.role === 'ADMIN') {
-            router.replace('/ko/admin');
+            router.replace(callbackUrl);
         }
         // else if (session?.user?.role === 'USER') {
         //     router.replace('/ko'); // 또는 /shop 등
         // }
-    }, [session, status, router]);
+    }, [session, status, router, callbackUrl]);
 
 
     // 페이지 열릴 때, localStorage에서 이메일 불러오기
@@ -55,6 +58,7 @@ export default function LoginModal() {
             username: email,
             password: password,
             redirect: false,
+            callbackUrl, // router.push 쓰므로 선택사항임
         });
 
         if (result?.ok) {
