@@ -2,8 +2,9 @@
 
 'use client';
 
-import React from "react";
-import { getResourcesByAllKeywords, ResourcesProps } from "@/service/resources/resourceData";
+import React, { useState, useEffect } from "react";
+import { Resource } from '@/types/resource';
+import { getResourcesByAllKeywords } from "@/service/resources/resourceData";
 import ResourceCard from "@/components/(Resources)/ResourceCard";
 import Carousel from "@/components/Carousel";
 
@@ -12,13 +13,24 @@ interface FilterReferenceCarouselProps {
 }
 
 const AllFilterReferenceCarousel: React.FC<FilterReferenceCarouselProps> = ({ keywords }) => {
-    const filteredResources: ResourcesProps[] = getResourcesByAllKeywords(keywords);
+    const [filteredResources, setFilteredResources] = useState<Resource[]>([]);
+    const [loading, setLoading] = useState(true);
+
+    useEffect(() => {
+        setLoading(true);
+        getResourcesByAllKeywords(keywords).then((res) => {
+            setFilteredResources(res);
+            setLoading(false);
+        });
+    }, [keywords]);
+
+    if (loading) {
+        return <div>Loading...</div>;
+    }
 
     return (
         <div className="mx-auto max-w-7xl px-6 py-8">
-            <h2 className="text-2xl font-bold text-gray-800 mb-6">
-                Resources
-            </h2>
+            <h2 className="text-2xl font-bold text-gray-800 mb-6">Resources</h2>
             {filteredResources.length > 0 ? (
                 <Carousel itemsCount={filteredResources.length}>
                     {filteredResources.map((resource) => (

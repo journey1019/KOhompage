@@ -221,17 +221,6 @@ const FileUploader = ({
 }) => {
     const endpoint = accept.includes('pdf') ? '/api/upload/pdf' : '/api/upload/image';
 
-    // accept 예: "image/jpeg,image/png" 또는 "image/*"
-    // 허용 확장자 배열 생성 (image/*인 경우 기본 확장자 리스트 표시)
-    const acceptedFormats = accept === 'image/*'
-        ? ['jpg', 'jpeg', 'png', 'gif', 'webp']
-        : accept
-            .split(',')
-            .map((type) => type.split('/')[1] || '')
-            .filter(Boolean);
-
-    const maxFileSizeMB = 5; // 예: 5MB 권장
-
     return (
         <div>
             <label className="block font-medium">{label}</label>
@@ -241,11 +230,6 @@ const FileUploader = ({
                 onChange={async (e) => {
                     const file = e.target.files?.[0];
                     if (!file) return;
-
-                    if (file.size > maxFileSizeMB * 1024 * 1024) {
-                        alert(`파일 크기는 최대 ${maxFileSizeMB}MB 이하로 업로드해주세요.`);
-                        return;
-                    }
 
                     const formData = new FormData();
                     formData.append('file', file);
@@ -258,10 +242,6 @@ const FileUploader = ({
                 }}
                 className="w-full"
             />
-
-            <p className="mt-1 text-sm text-gray-500">
-                권장 용량: 최대 {maxFileSizeMB}MB, 지원 형식: {acceptedFormats.join(', ')}
-            </p>
         </div>
     );
 };
