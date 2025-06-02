@@ -25,12 +25,20 @@ export async function PUT(req: NextRequest, { params }: { params: { id: string }
     return NextResponse.json(updated);
 }
 
-export async function DELETE(_: NextRequest, { params }: { params: { id: string } }) {
+// export async function DELETE(_: NextRequest, { params }: { params: { id: string } }) {
+//     await prisma.resource.delete({
+//         where: { id: Number(params.id) },
+//     });
+//     return NextResponse.json({ ok: true });
+// }
+export async function DELETE(req: NextRequest, context: { params: { id: string } }) {
+    const { params } = await context;
     await prisma.resource.delete({
         where: { id: Number(params.id) },
     });
     return NextResponse.json({ ok: true });
 }
+
 
 
 // src/app/api/resource/[id]/route.ts

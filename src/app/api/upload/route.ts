@@ -36,7 +36,7 @@ export async function POST(req: NextRequest) {
         if (!file) return new NextResponse('No image uploaded', { status: 400 })
 
         const contentTypeDir = contentType.toLowerCase()
-        const uploadDir = path.join(process.cwd(), 'public/images/resources', contentTypeDir)
+        const uploadDir = path.join(process.cwd(), '/images/resources', contentTypeDir)
         await mkdir(uploadDir, { recursive: true })
 
         const fileName = path.basename(file.originalFilename || 'upload.png')

@@ -71,7 +71,7 @@ export async function POST(req: NextRequest) {
     if (!file) return NextResponse.json({ error: 'No file uploaded' }, { status: 400 });
 
     const fileName = `${Date.now()}-${sanitizeFileName(file.name)}`;
-    const uploadDir = path.join(process.cwd(), 'public/pdf', page);
+    const uploadDir = path.join(process.cwd(), 'public', 'pdf', page);
     const uploadPath = path.join(uploadDir, fileName);
 
     await mkdir(uploadDir, { recursive: true });

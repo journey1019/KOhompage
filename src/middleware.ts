@@ -14,6 +14,9 @@ export default withAuth(
 
         const locales = ['en', 'ko'];
         const pathname = req.nextUrl.pathname;
+        if (pathname.startsWith('/images') || pathname.startsWith('/pdf')) {
+            return NextResponse.next();
+        }
         const locale = locales.find((locale) => pathname.startsWith(`/${locale}`));
 
         // ✅ 로그인된 사용자가 로그인 페이지 접근 시 자동 리디렉션

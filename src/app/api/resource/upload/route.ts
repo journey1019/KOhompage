@@ -14,7 +14,7 @@ export async function POST(req: NextRequest) {
     const bytes = await file.arrayBuffer();
     const buffer = Buffer.from(bytes);
     const fileName = `${Date.now()}-${file.name}`;
-    const filePath = join(process.cwd(), 'public/images/resources', fileName);
+    const filePath = join(process.cwd(), '/images/resources', fileName);
 
     await writeFile(filePath, buffer);
     return NextResponse.json({ url: `/images/resources/${fileName}` });

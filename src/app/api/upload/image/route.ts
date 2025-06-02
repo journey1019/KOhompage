@@ -23,7 +23,7 @@ export async function POST(req: NextRequest) {
 
     const safeName = sanitizeFileName(file.name);
     const fileName = `${Date.now()}-${safeName}`;
-    const uploadDir = path.join(process.cwd(), 'public/images/', page);
+    const uploadDir = path.join(process.cwd(), "public", "images", page);
     const uploadPath = path.join(uploadDir, fileName);
 
     await mkdir(uploadDir, { recursive: true });
