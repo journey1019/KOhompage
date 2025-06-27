@@ -58,7 +58,7 @@ export default function SidebarDrawer({ locale }: Props) {
                 onClick={toggleDrawer(true)}
                 className="p-2 bg-blue-500 text-white rounded hover:bg-blue-600"
             >
-                {open ? <IoIosArrowBack /> : <IoIosArrowForward />}
+                {open ? <IoIosArrowBack /> : <IoIosArrowForward className="w-5 h-5"/>}
             </button>
 
             <Drawer

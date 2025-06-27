@@ -2,9 +2,9 @@
 
 import { use } from 'react';
 import { useSession } from "next-auth/react";
-import { useState, useEffect } from 'react';
+import { useEffect } from 'react';
 import { useRouter } from 'next/navigation';
-import SidebarDrawer from '@/components/(Admin)/SidebarDrawer';
+import Link from 'next/link';
 
 interface Props {
     params: Promise<{ locale: string }>;
@@ -30,46 +30,23 @@ export default function AdminPage({ params }: Props) {
         return <div>관리자 계정 검사 로딩 중...</div>;
     }
 
-    // console.log(session)
-    const handleLogout = () => {
-        // JWT 토큰 삭제 및 리다이렉션
-        localStorage.removeItem('token');
-        router.push(`/ko/auth/signin`);
-    };
-
     return (
-        <>
-        </>
-        // <div className="max-w-7xl mx-auto p-6">
-        //     <div className="flex flex-row justify-between items-center">
-        //         <div className="flex flex-col">
-        //             <h1 className="text-3xl font-bold">Welcome to Admin Dashboard</h1>
-        //             <p>You are successfully logged in.</p>
-        //             <p>Test.</p>
-        //         </div>
-        //
-        //         <form action={`/api/auth/logout`} method="POST">
-        //             <button
-        //                 type="submit"
-        //                 className="px-4 py-2 bg-red-500 text-white rounded hover:bg-red-600"
-        //             >
-        //                 Logout
-        //             </button>
-        //         </form>
-        //         {/*<button*/}
-        //         {/*    className="px-4 py-2 bg-red-500 text-white rounded hover:bg-red-600"*/}
-        //         {/*    onClick={handleLogout}*/}
-        //         {/*>*/}
-        //         {/*    Logout*/}
-        //         {/*</button>*/}
-        //     </div>
-        //
-        //     <div className="flex pt-10">
-        //         <button
-        //             className="px-6 py-3 bg-white text-red-700 border-2 border-red-700 hover:bg-neutral-100 rounded-md">
-        //             Resource
-        //         </button>
-        //     </div>
-        // </div>
+        <div className="max-w-7xl mx-auto p-6">
+            <div className="flex flex-col">
+                <div className="flex flex-col">
+                    <h1 className="text-3xl font-bold">Welcome to Admin Dashboard</h1>
+                    <p>You are successfully logged in.</p>
+                </div>
+
+                <div className="flex py-8 space-x-6">
+                    <Link href="admin/resource" className="flex items-center text-xl font-semibold text-purple-500 py-4 px-6 border-purple-500 border-2 rounded-md hover:bg-gray-100 hover:border-purple-600">
+                        Resource
+                    </Link>
+                    <Link href="admin/hardware" className="flex items-center text-xl font-semibold text-blue-500 py-4 px-6 border-blue-500 border-2 rounded-md hover:bg-gray-100 hover:border-blue-600">
+                        Hardware
+                    </Link>
+                </div>
+            </div>
+        </div>
     );
 }
