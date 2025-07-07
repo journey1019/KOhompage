@@ -3,45 +3,43 @@
 import { useEffect, useState } from 'react';
 import { useRouter, usePathname } from 'next/navigation';
 import Link from 'next/link';
+
 import { Resource } from '@/types/resource';
+import { getAllResources, FilterOptions, getFilteredResourcesByQueryAndFilters } from '@/service/resources/resourceData';
+
 import ResourceCardAdmin from "@/components/(Resources)/ResourceCardAdmin";
 import SearchBar from '@/components/(Resources)/SearchBar';
-import {
-    getAllResources,
-    FilterOptions,
-    getFilteredResourcesByQueryAndFilters,
-} from '@/service/resources/resourceData';
 import FilterResource from '@/components/(Resources)/FilterResource';
 import Pagination from '@/components/(Resources)/Pagination';
+
 import { IoMdClose } from "react-icons/io";
 
 
 export default function ResourceListPage() {
-    const [resources, setResources] = useState<Resource[]>([]); // 초기 데이터
     const router = useRouter();
     const pathname = usePathname();
     const locale = pathname.split('/')[1];
+    
+    // Resource Data
+    const [resources, setResources] = useState<Resource[]>([]); // 초기 데이터
     const [isLoading, setIsLoading] = useState<boolean>(true);
 
+    // Search & Filter & Tag
     const [searchQuery, setSearchQuery] = useState<string>(""); // 검색어 상태
     const [filters, setFilters] = useState<FilterOptions>({}); // 필터 상태
     const [totalResourcesCount, setTotalResourcesCount] = useState<number>(resources.length); // 전체 게시글 개수
     const [isDrawerOpen, setIsDrawerOpen] = useState<boolean>(false); // 드로어 상태
 
+    // Resource Page & Page 당 개수
     const [currentPage, setCurrentPage] = useState<number>(1); // 현재 페이지
     const itemsPerPage = 9; // 페이지당 항목 수
 
-    // 리소스 불러오기
-    // useEffect(() => {
-    //     const fetchInitialResources = async () => {
-    //         setIsLoading(true);
-    //         const all = await getAllResources();
-    //         setResources(all);
-    //         setTotalResourcesCount(all.length);
-    //         setIsLoading(false);
-    //     };
-    //     fetchInitialResources();
-    // }, []);
+
+    const handleToggleDrawer = () => {
+        setIsDrawerOpen(!isDrawerOpen); // 드로어 상태 토글
+    };
+    
+    // Resource Data 불러오기
     useEffect(() => {
         const fetchResources = async () => {
             setIsLoading(true);
@@ -61,6 +59,7 @@ export default function ResourceListPage() {
     }, []);
 
 
+    // Resource Search Query 적용 Data
     useEffect(() => {
         setIsLoading(true); // 시작 시 로딩
         const fetchFilteredResources = async () => {
@@ -83,9 +82,7 @@ export default function ResourceListPage() {
         fetchFilteredResources();
     }, [searchQuery, filters]);
 
-    const toggleDrawer = () => {
-        setIsDrawerOpen(!isDrawerOpen); // 드로어 상태 토글
-    };
+    
 
     // 현재 페이지에 표시할 리소스 계산
     const startIndex = (currentPage - 1) * itemsPerPage;
@@ -102,13 +99,16 @@ export default function ResourceListPage() {
         setResources(resources.filter(r => r.id !== id));
     };
 
+
     return (
         <div className="mx-auto max-w-7xl maxWeb:max-w-screen-2xl px-6 py-12 lg:px-8">
+            {/** 리소스 관리 - Title */}
             <div className="flex flex-row justify-between items-center">
                 <h1 className="text-4xl maxWeb:text-5xl font-bold text-gray-800 mb-8">📂 리소스 관리</h1>
                 <Link href={`/${locale}/admin/resource/new`} className="px-4 py-2 rounded-md bg-blue-500 hover:bg-blue-600 text-white">새 리소스 추가</Link>
             </div>
 
+            {/** 콘텐츠 관리 - Search & Resource */}
             <div className="grid grid-cols-1 lg:grid-cols-4 lg:gap-2">
                 <div className="lg:col-span-1 space-y-6">
                     <SearchBar onSearch={setSearchQuery} /> {/* 검색어 전달 */}
@@ -116,7 +116,7 @@ export default function ResourceListPage() {
                     {/* 모바일: Filters 버튼 */}
                     <div className="lg:hidden">
                         <button
-                            onClick={toggleDrawer}
+                            onClick={handleToggleDrawer}
                             className="py-2 mb-5 px-4 bg-white border-red-700 border-2 text-red-700 rounded-md w-full"
                         >
                             Filters
@@ -134,6 +134,7 @@ export default function ResourceListPage() {
                     </div>
                 </div>
 
+                {/** Default Settings */}
                 <div className="lg:col-span-3">
                     <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
                         {isLoading ? (
@@ -165,7 +166,7 @@ export default function ResourceListPage() {
                 <div className="fixed inset-0 bg-black bg-opacity-50 z-50 flex">
                     <div className="bg-white w-3/4 max-w-md p-6 overflow-y-auto">
                         <button
-                            onClick={toggleDrawer}
+                            onClick={handleToggleDrawer}
                             className="text-gray-500 hover:text-gray-800"
                         >
                             <IoMdClose className="w-5 h-5" />
@@ -179,7 +180,7 @@ export default function ResourceListPage() {
                     </div>
                     <div
                         className="flex-1"
-                        onClick={toggleDrawer} // 배경 클릭 시 드로어 닫기
+                        onClick={handleToggleDrawer} // 배경 클릭 시 드로어 닫기
                     ></div>
                 </div>
             )}

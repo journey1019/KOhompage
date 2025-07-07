@@ -1,5 +1,6 @@
 import './globals.css';
 import React from 'react';
+import Script from "next/script";
 import { NextIntlClientProvider } from 'next-intl';
 import { getMessages } from 'next-intl/server';
 import { notFound } from 'next/navigation';
@@ -10,6 +11,7 @@ import { Metadata } from 'next';
 import mainData from '@/service/mainData';
 import PopupWidget from '@/components/PopupWidget';
 import Provider from '@/app/[locale]/_components/Provider';
+import Analytics from '@/components/Analytics';
 
 const sans = Open_Sans({ subsets: ['latin'] });
 
@@ -72,6 +74,28 @@ export default async function LocaleLayout({ children, params }: Props) {
 
     return (
         <html lang={locale} className={sans.className}>
+        <head>
+            {/* Google Tag 삽입 */}
+            <Script
+                async
+                src="https://www.googletagmanager.com/gtag/js?id=G-2NGPZE546T"
+                strategy="afterInteractive"
+            />
+            <Script
+                id="google-analytics"
+                strategy="afterInteractive"
+                dangerouslySetInnerHTML={{
+                    __html: `
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('js', new Date());
+              gtag('config', 'G-2NGPZE546T', {
+                page_path: window.location.pathname,
+              });
+            `,
+                }}
+            />
+        </head>
         <body className="flex flex-col min-h-screen w-full mx-auto vsc-initialized">
         <NextIntlClientProvider messages={messages}>
             <NewNavbar locale={locale} />
@@ -83,6 +107,7 @@ export default async function LocaleLayout({ children, params }: Props) {
             <Footer locale={locale} />
             <PopupWidget />
         </NextIntlClientProvider>
+        <Analytics />
         </body>
         </html>
     );

@@ -1,16 +1,14 @@
 'use client';
 
 import { useState, useEffect } from "react";
-import {
-    getAllResources,
-    getFilteredResourcesByQueryAndFilters,
-    FilterOptions,
-} from "@/service/resources/resourceData";
+
+import { Resource } from '@/types/resource';
+import { getAllResources, getFilteredResourcesByQueryAndFilters, FilterOptions } from "@/service/resources/resourceData";
+
 import ResourceCard from "@/components/(Resources)/ResourceCard";
 import SearchBar from "@/components/(Resources)/SearchBar";
 import FilterResource from "@/components/(Resources)/FilterResource";
 import Pagination from "@/components/(Resources)/Pagination";
-import { Resource } from '@/types/resource';
 import ResourceCardAdmin from '@/components/(Resources)/ResourceCardAdmin';
 
 const ResourcesPage = () => {
@@ -69,7 +67,9 @@ const ResourcesPage = () => {
             //     return new Date(b.date).getTime() - new Date(a.date).getTime();
             // });
             const sortedResources = filteredResources
+                // 1. use == true
                 .filter((item: Resource) => item.use === true)
+                // 2. 날짜 기준 정렬(내림차순)
                 .sort((a, b) => {
                     return new Date(b.date).getTime() - new Date(a.date).getTime();
                 });
