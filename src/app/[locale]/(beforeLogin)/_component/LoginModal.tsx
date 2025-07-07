@@ -56,7 +56,7 @@ export default function LoginModal() {
         const result = await signIn("credentials", {
             username: email,
             password: password,
-            redirect: false,
+            redirect: true, // 자동 리디렉션
             callbackUrl, // router.push 쓰므로 선택사항임
         });
 
@@ -66,20 +66,18 @@ export default function LoginModal() {
             const session = await sessionRes.json();
 
             const role = session?.user?.role;
+            setIsLoading(false);
 
             if (role === "ADMIN") {
-                setIsLoading(false); // 로딩 끝
                 router.push(callbackUrl);
             } else if (role === "USER") {
                 // router.push("/ko/shop");
-                setIsLoading(false); // 로딩 끝
                 setLoginError("이 페이지는 관리자 전용입니다.");
             } else {
                 // console.log(result)
                 // 예외: role 없거나 이상하면 fallback
                 // router.push("/");
                 // setLoginError("로그인 정보는 맞지만 역할 정보가 올바르지 않습니다. 관리자에게 문의해주세요.");
-                setIsLoading(false); // 로딩 끝
                 setLoginError("아이디 또는 비밀번호가 잘못되었습니다.");
             }
         } else {
