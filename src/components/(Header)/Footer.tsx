@@ -177,7 +177,7 @@ export function Footer({locale}: {locale: string}) {
                 </div>
 
                 {/* Under Section */}
-                <div className="flex flex-col md:flex-row justify-between my-10 text-center">
+                <div className="flex flex-col md:flex-row justify-between my-4 text-center">
                     {/* 상단: 모바일에서는 저작권 정보 */}
                     <div className="order-2 md:order-1 text-sm maxWeb:text-lg text-gray-600 dark:text-gray-400">
                         Copyright © {new Date().getFullYear()}.{' '}
