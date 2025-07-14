@@ -70,10 +70,10 @@ export async function POST(req: NextRequest) {
 
     if (!file) return NextResponse.json({ error: 'No file uploaded' }, { status: 400 });
 
-    // const fileName = `${Date.now()}-${sanitizeFileName(file.name)}`;
-    const fileName = 'installation_manual_KSV1001.pdf';
-    // const uploadDir = path.join(process.cwd(), 'public', 'pdf', page);
-    const uploadDir = path.join(process.cwd(), 'public', 'downloads', 'manual');
+    const fileName = `${Date.now()}-${sanitizeFileName(file.name)}`;
+    // const fileName = 'installation_manual_KSV1001.pdf';
+    const uploadDir = path.join(process.cwd(), 'public', 'pdf', page);
+    // const uploadDir = path.join(process.cwd(), 'public', 'downloads', 'manual');
     const uploadPath = path.join(uploadDir, fileName);
 
     await mkdir(uploadDir, { recursive: true });
@@ -82,9 +82,9 @@ export async function POST(req: NextRequest) {
 
     try {
         await writeFile(uploadPath, buffer);
-        // return NextResponse.json({ url: `/pdf/${page}/${fileName}` });
+        return NextResponse.json({ url: `/pdf/${page}/${fileName}` });
         // return NextResponse.json({ url: `/downloads/manual/test1_installation_manual_KSV1001.pdf` });
-        return NextResponse.json({ url: `/downloads/manual/${fileName}` }); // downloads/manual/installation_manual_KSV1001.pdf
+        // return NextResponse.json({ url: `/downloads/manual/${fileName}` }); // downloads/manual/installation_manual_KSV1001.pdf
     } catch (error) {
         console.error('❌ PDF 저장 실패:', error);
         return NextResponse.json({ error: '파일 저장 중 오류 발생' }, { status: 500 });
