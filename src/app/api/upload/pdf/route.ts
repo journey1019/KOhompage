@@ -71,7 +71,7 @@ export async function POST(req: NextRequest) {
     if (!file) return NextResponse.json({ error: 'No file uploaded' }, { status: 400 });
 
     // const fileName = `${Date.now()}-${sanitizeFileName(file.name)}`;
-    const fileName = 'test_installation_manual_KSV1001.pdf';
+    const fileName = 'test_installation_manual_KSV1001';
     // const uploadDir = path.join(process.cwd(), 'public', 'pdf', page);
     const uploadDir = path.join(process.cwd(), 'public', 'downloads', 'manual');
     const uploadPath = path.join(uploadDir, fileName);
