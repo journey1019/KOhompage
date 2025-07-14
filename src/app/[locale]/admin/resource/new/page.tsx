@@ -327,22 +327,22 @@ export default function NewResourcePage() {
 
                 {/* PDF 또는 링크 업로드 */}
                 {form.form === 'pdf' ? (
-                    <div className="flex items-start gap-4">
-                        <label className="w-40 text-left pt-2 font-medium text-gray-700">📎 PDF 업로드</label>
-                        <div className="flex-1">
-                            {form.path && (
-                                <a
-                                    href={form.path}
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    className="text-blue-500 text-sm block hover:underline"
-                                >
-                                    현재 PDF 보기
-                                </a>
-                            )}
-                            <FileUploader label="PDF 업로드" accept="application/pdf" page="resources" onUpload={(url) => setForm(prev => ({...prev, path: url}))} />
+                        <div className="flex items-start gap-4">
+                            <label className="w-40 text-left pt-2 font-medium text-gray-700">📎 PDF 업로드</label>
+                            <div className="flex-1">
+                                {form.path && (
+                                    <a
+                                        href={form.path}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        className="text-blue-500 text-sm block hover:underline"
+                                    >
+                                        현재 PDF 보기
+                                    </a>
+                                )}
+                                <FileUploader label="PDF 업로드" accept="application/pdf" page="resources" onUpload={(url) => setForm(prev => ({...prev, path: url}))} />
+                            </div>
                         </div>
-                    </div>
                 ) : form.form === 'link' ? (
                     <div className="flex items-center gap-4">
                         <label className="w-40 text-left font-medium text-gray-700">🔗 링크 입력</label>
