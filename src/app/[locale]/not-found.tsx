@@ -1,12 +1,12 @@
 import React from 'react';
-import Navbar from '@/components/(Header)/example/Navbar';
+import NewNavbar from "@/components/(Header)/example/NewNavbar";
 import { Footer } from "@/components/(Header)/Footer";
 
 export default function NotFound() {
     return (
         <section className="relative w-full h-screen bg-gray-100">
             {/* Navbar */}
-            <Navbar locale="ko" />
+            <NewNavbar locale="ko" />
 
             {/* Main Content */}
             <div className="relative z-10 flex flex-col items-center justify-center h-[calc(100vh-74px)] pt-[74px] px-5">
