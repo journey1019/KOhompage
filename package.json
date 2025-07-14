@@ -87,7 +87,8 @@
     "slick-carousel": "^1.8.1",
     "swiper": "^11.1.15",
     "tiptap": "^1.32.2",
-    "yup": "^1.4.0"
+    "yup": "^1.4.0",
+    "zustand": "^5.0.6"
   },
   "devDependencies": {
     "@tailwindcss/typography": "^0.5.15",
