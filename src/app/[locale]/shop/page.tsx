@@ -2,6 +2,7 @@ import PageHero from '@/components/PageHero';
 import React from 'react';
 import Payment from '@/components/(Shop)/Payment';
 import AuthComponent from '@/components/(Shop)/Auth';
+import PaymentButton from '@/components/(Payment)/PaymentButton';
 
 const ShopPage = () => {
     return(
@@ -21,6 +22,12 @@ const ShopPage = () => {
                 <Payment/>
 
             </div>
+
+            <div>
+                구분
+            </div>
+
+            <PaymentButton />
         </section>
     )
 }
