@@ -13,6 +13,7 @@
     "clean-meta": "find public/uploads -name '._*' -type f -delete"
   },
   "dependencies": {
+    "@bootpay/client-js": "^5.1.5",
     "@emotion/react": "^11.14.0",
     "@emotion/styled": "^11.14.0",
     "@headlessui/react": "^2.1.9",

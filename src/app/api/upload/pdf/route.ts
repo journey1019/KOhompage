@@ -80,7 +80,8 @@ export async function POST(req: NextRequest) {
 
     try {
         await writeFile(uploadPath, buffer);
-        return NextResponse.json({ url: `/pdf/${page}/${fileName}` });
+        // return NextResponse.json({ url: `/pdf/${page}/${fileName}` });
+        return NextResponse.json({ url: `/downloads/manual/${fileName}` });
     } catch (error) {
         console.error('❌ PDF 저장 실패:', error);
         return NextResponse.json({ error: '파일 저장 중 오류 발생' }, { status: 500 });
