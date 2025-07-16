@@ -38,14 +38,34 @@ export default function AdminPage({ params }: Props) {
                     <p>You are successfully logged in.</p>
                 </div>
 
-                <div className="flex py-8 space-x-6">
-                    <Link href="admin/resource" className="flex items-center text-xl font-semibold text-purple-500 py-4 px-6 border-purple-500 border-2 rounded-md hover:bg-gray-100 hover:border-purple-600">
-                        Resource
-                    </Link>
-                    <Link href="admin/hardware" className="flex items-center text-xl font-semibold text-blue-500 py-4 px-6 border-blue-500 border-2 rounded-md hover:bg-gray-100 hover:border-blue-600">
-                        Hardware
-                    </Link>
+                <div className="flex flex-col py-8">
+                    <span className="text-2xl font-semibold mb-3">Manage</span>
+                    <div className="flex space-x-6 pb-2">
+                        <Link
+                            href="admin/resource"
+                            className="flex items-center text-xl font-semibold text-purple-500 py-4 px-6 border-purple-500 border-2 rounded-md hover:bg-gray-100 hover:border-purple-600"
+                        >
+                            Resource
+                        </Link>
+                        <Link
+                            href="admin/hardware"
+                            className="flex items-center text-xl font-semibold text-blue-500 py-4 px-6 border-blue-500 border-2 rounded-md hover:bg-gray-100 hover:border-blue-600"
+                        >
+                            Hardware
+                        </Link>
+                    </div>
+
+                    <span className="text-2xl font-semibold mb-3">Test</span>
+                    <div className="flex space-x-6">
+                        <Link
+                            href="shop_bootpay_testing"
+                            className="flex items-center text-xl font-semibold text-yellow-500 py-4 px-6 border-yellow-500 border-2 rounded-md hover:bg-gray-100 hover:border-yellow-600"
+                        >
+                            Shop
+                        </Link>
+                    </div>
                 </div>
+
             </div>
         </div>
     );
