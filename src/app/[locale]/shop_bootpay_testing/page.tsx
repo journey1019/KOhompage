@@ -3,7 +3,7 @@ import React from 'react';
 import Payment from '@/components/(Shop)/Payment';
 import AuthComponent from '@/components/(Shop)/Auth';
 import PaymentButton from '@/components/(Payment)/PaymentButton';
-import ProductList from '@/components/(Payment)/ProductList';
+import ProductList from '@/components/(Shop)/ProductList';
 
 const ShopPage = () => {
     return(
