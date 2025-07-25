@@ -64,6 +64,7 @@ const NewNavbar = ({ locale }: { locale: string }) => {
                         height={120}
                         unoptimized
                         className="cursor-pointer maxWeb:w-[200px] h-auto"
+                        priority
                     />
                 </Link>
 

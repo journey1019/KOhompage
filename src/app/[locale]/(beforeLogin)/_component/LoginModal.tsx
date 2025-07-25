@@ -120,6 +120,7 @@ export default function LoginModal() {
                     width={180}
                     height={130}
                     unoptimized
+                    priority
                 />
             </Link>
 

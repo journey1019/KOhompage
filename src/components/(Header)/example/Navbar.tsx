@@ -79,6 +79,7 @@ const Navbar = ({ locale }: { locale: string }) => {
                         height={120}
                         unoptimized
                         className="cursor-pointer"
+                        priority
                     />
                 </Link>
 
@@ -110,7 +111,7 @@ const Navbar = ({ locale }: { locale: string }) => {
 
                 {/* Right Icons */}
                 <div className="flex items-center space-x-4">
-                    <Login />
+                    <Login locale={locale} />
                     <Language />
 
                     {/* Hamburger Menu for Mobile */}

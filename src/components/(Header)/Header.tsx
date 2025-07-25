@@ -48,6 +48,7 @@ export default function Header({ locale }: HeaderProps) {
                         height={130}
                         unoptimized
                         className="cursor-pointer"
+                        priority
                     />
                 </Link>
                 <div id="menu" className={`md:flex ${isMenuOpen ? 'block' : 'hidden'} md:items-center`}>
@@ -66,7 +67,7 @@ export default function Header({ locale }: HeaderProps) {
                     </ul>
                 </div>
                 <div className="flex items-center space-x-2">
-                    {!isMenuOpen && <Login />}
+                    {!isMenuOpen && <Login locale={locale} />}
                     <Language />
                     <button
                         onClick={toggleMenu}

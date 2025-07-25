@@ -57,6 +57,7 @@ export function Footer({locale}: {locale: string}) {
                                     height={32}
                                     className="w-36 h-auto maxWeb:w-40"
                                     unoptimized
+                                    priority
                                 />
                                 {/*<span>Nextly</span>*/}
                             </Link>
