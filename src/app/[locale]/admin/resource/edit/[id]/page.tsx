@@ -134,11 +134,13 @@ export default function EditResourcePage() {
     // Tag+solutionTags 추가 및 삭제
     const handleAddDynamicTag = async ({
                                            type,
+                                           scope,
                                            tagOptions,
                                            setTagOptions,
                                            formField,
                                        }: {
         type: 'tags' | 'solutionTag';
+        scope: 'resource' | 'hardware';
         tagOptions: string[];
         setTagOptions: React.Dispatch<React.SetStateAction<string[]>>;
         formField: 'tags' | 'solutionTag';
@@ -156,7 +158,7 @@ export default function EditResourcePage() {
         const res = await fetch(`/api/tags`, {
             method: "POST",
             headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ name: newTag, type }),
+            body: JSON.stringify({ name: newTag, type, scope: scope }),
         });
 
         if (!res.ok) {
@@ -175,17 +177,19 @@ export default function EditResourcePage() {
     const handleDeleteTag = async ({
                                        name,
                                        type,
+                                       scope,
                                        setOptions,
                                        setFormField,
                                        refresh,
                                    }: {
         name: string;
         type: 'tags' | 'solutionTag';
+        scope: 'resource' | 'hardware';
         setOptions: React.Dispatch<React.SetStateAction<string[]>>;
         setFormField: (updater: (prev: any) => any) => void;
         refresh: () => Promise<void>;
     }) => {
-        const res = await fetch(`/api/tags/${encodeURIComponent(name)}?type=${type}`, {
+        const res = await fetch(`/api/tags/${encodeURIComponent(name)}?type=${type}&scope=${scope}`, {
             method: 'DELETE',
         });
 
@@ -304,6 +308,7 @@ export default function EditResourcePage() {
                                     handleDeleteTag({
                                         name: tag,
                                         type: 'tags',
+                                        scope: 'resource',
                                         setOptions: setSolutionTagOptions,
                                         setFormField: setForm,
                                         refresh: refreshTags,
@@ -319,6 +324,7 @@ export default function EditResourcePage() {
                         onClick={() =>
                             handleAddDynamicTag({
                                 type: 'tags',
+                                scope: 'resource',
                                 tagOptions,
                                 setTagOptions,
                                 formField: 'tags',
@@ -348,6 +354,7 @@ export default function EditResourcePage() {
                                     handleDeleteTag({
                                         name: tag,
                                         type: 'solutionTag',
+                                        scope: 'resource',
                                         setOptions: setSolutionTagOptions,
                                         setFormField: setForm,
                                         refresh: refreshSolutionTag,
@@ -363,6 +370,7 @@ export default function EditResourcePage() {
                         onClick={() =>
                             handleAddDynamicTag({
                                 type: 'solutionTag',
+                                scope: 'resource',
                                 tagOptions: solutionTagOptions,
                                 setTagOptions: setSolutionTagOptions,
                                 formField: 'solutionTag',
