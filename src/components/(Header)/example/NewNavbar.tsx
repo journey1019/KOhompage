@@ -4,7 +4,7 @@ import React, { useState, useRef } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import NewDropdown from './NewDropdown';
-import Login from '../Login';
+import Login from '../Platforms';
 import Language from '../Language';
 import { Bars3Icon, XMarkIcon, ChevronDownIcon, ChevronUpIcon } from '@heroicons/react/24/outline';
 

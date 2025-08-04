@@ -14,7 +14,7 @@ import { RiShipLine } from "react-icons/ri";
 import Link from 'next/link';
 import {signIn, signOut, useSession } from "next-auth/react";
 
-const login = [
+const platforms = [
     { name: 'ORBCOMM Platform', description: 'Fleet Management Solutions', url: 'https://platform.orbcomm.com/', icon: ChartPieIcon },
     { name: 'Maritime Platform', description: 'Driving container tracking', url: 'https://platform.orbcommmaritime.com/', icon: CursorArrowRaysIcon },
     { name: 'NMS', description: "Network Management System", url: 'https://nms.commtrace.com/', icon: PresentationChartBarIcon },
@@ -49,7 +49,7 @@ export default function Login({locale}: Props) {
                     >
                         <div className="w-full md:max-w-md flex-auto overflow-hidden rounded-xl md:rounded-3xl bg-white text-sm leading-6 shadow-lg ring-1 ring-gray-900/5">
                             <div className="p-2 md:p-4">
-                                {login.map((item) => (
+                                {platforms.map((item) => (
                                     <a
                                         key={item.name}
                                         href={item.url}
@@ -96,7 +96,7 @@ export default function Login({locale}: Props) {
                     <PopoverPanel className="md:hidden absolute left-1/4 z-10 mt-5 flex w-screen max-w-max -translate-x-1/2 px-8 transition">
                         <div className="w-full md:max-w-md flex-auto overflow-hidden rounded-xl md:rounded-3xl bg-white text-sm leading-6 shadow-lg ring-1 ring-gray-900/5">
                             <div className="p-2 md:p-4">
-                                {login.map((item) => (
+                                {platforms.map((item) => (
                                     <a
                                         key={item.name}
                                         href={item.url}

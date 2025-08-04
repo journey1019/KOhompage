@@ -48,6 +48,7 @@ export default function Payment() {
         })
     }
 
+
     const updateQuantity = (productId: string, delta: number) => {
         setCart(prev => prev.map(item =>
             item.id === productId

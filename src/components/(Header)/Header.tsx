@@ -4,7 +4,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { useState } from 'react';
 import MenuItem from './MenuItem';
-import Login from './Login';
+import Login from './Platforms';
 import Language from './Language';
 import { useTranslations } from 'next-intl';
 

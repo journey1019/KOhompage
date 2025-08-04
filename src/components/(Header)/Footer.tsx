@@ -49,6 +49,7 @@ export function Footer({locale}: {locale: string}) {
                                     height={32}
                                     className="w-8 h-auto maxWeb:w-10"
                                     unoptimized
+                                    priority
                                 />
                                 <Image
                                     src="/images/KO_SmallLogo.png"

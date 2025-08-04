@@ -5,7 +5,7 @@ import React, { useState, useRef } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import Dropdown from './Dropdown';
-import Login from '../Login';
+import Login from '../Platforms';
 import Language from '../Language';
 import { GlobeAltIcon, UserIcon, Bars3Icon, XMarkIcon, ChevronDownIcon, ChevronUpIcon } from '@heroicons/react/24/outline';
 import hardwareData from '@/data/hardware.json';
