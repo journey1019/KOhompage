@@ -1,17 +1,34 @@
 import { Product } from '@/types/product';
 import { productList } from '@/data/products';
 import { Bootpay } from '@bootpay/client-js';
+import { mockValidateApi } from '@/lib/api/mock/payment';
 
 const ProductCard: React.FC<Product> = ({ id, name, category, price, paymentType, description, image }) => {
+    const useMock = true;
+
+    const validateOrder = async (productId: string) => {
+        if (useMock) {
+            return await mockValidateApi(productId);
+        } else {
+            const res = await fetch('https://your-backend-api.com/api/order/validate', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    receiptId: 'mock-receipt', // 또는 response.receipt_id
+                    productId,
+                    userId: 'user_1234',
+                    quantity: 1,
+                }),
+            });
+            return await res.json();
+        }
+    };
 
     const handlePayment = async () => {
-        if (paymentType === 'subscription') {
-            alert('정기결제 상품은 현재 결제가 불가능합니다.');
-            return;
-        }
-
         try {
-            await Bootpay.requestPayment({
+            const response = await Bootpay.requestPayment({
                 application_id: '68745846285ac508a5ee7a0b',
                 price,
                 order_name: name,
@@ -33,16 +50,54 @@ const ProductCard: React.FC<Product> = ({ id, name, category, price, paymentType
                     },
                 ],
                 extra: {
-                    test_deposit: true,
+                    separately_confirmed: true,
                     redirect_url: 'http://localhost:3000/ko/shop/payment-result',
                 },
             });
 
-            console.log('결제 성공');
-        } catch (err) {
-            console.log('결제 실패', err);
+            switch (response.event) {
+                case 'confirm':
+                    // ✅ [STEP 1] 백엔드 API로 승인 전 검증 요청
+                    const res = await fetch('https://your-backend-api.com/api/order/validate', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify({
+                            receiptId: response.receipt_id,
+                            productId: id,
+                            userId: 'user_1234',
+                            quantity: 1,
+                        }),
+                    });
+
+                    const data = await validateOrder(id);
+                    console.log('response : ', response)
+                    console.log('data : ', data)
+
+                    if (data.success) {
+                        // ✅ [STEP 2] 검증 통과 → 결제 승인
+                        await Bootpay.confirm();
+                    } else {
+                        // ❌ 검증 실패 → 결제 중단
+                        await Bootpay.destroy();
+                        alert(data.message || '결제를 진행할 수 없습니다.');
+                    }
+                    break;
+
+                case 'done':
+                    // ✅ 결제 완료 후 처리
+                    console.log('결제 완료:', response);
+                    break;
+
+                default:
+                    break;
+            }
+        } catch (e) {
+            console.error('결제 실패:', e);
         }
     };
+
 
     return (
         <div className="border rounded-lg shadow hover:shadow-md transition overflow-hidden">

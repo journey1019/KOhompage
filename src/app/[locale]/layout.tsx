@@ -95,6 +95,11 @@ export default async function LocaleLayout({ children, params }: Props) {
             `,
                 }}
             />
+            {/* 카카오 주소 API */}
+            <Script
+                src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"
+                strategy="beforeInteractive"
+            />
         </head>
         <body className="flex flex-col min-h-screen w-full mx-auto vsc-initialized">
         <NextIntlClientProvider messages={messages}>
