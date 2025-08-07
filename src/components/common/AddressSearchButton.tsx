@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect } from 'react';
+import { useEffect, useRef } from 'react';
 
 declare global {
     interface Window {
@@ -16,13 +16,19 @@ interface AddressSearchButtonProps {
 }
 
 const AddressSearchButton: React.FC<AddressSearchButtonProps> = ({ onComplete }) => {
+    const scriptLoaded = useRef(false);
+
     useEffect(() => {
-        if (typeof window !== 'undefined' && !window.daum?.Postcode) {
-            const script = document.createElement('script');
-            script.src = 'https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js';
-            script.async = true;
-            document.body.appendChild(script);
-        }
+        if (typeof window === 'undefined') return;
+        if (scriptLoaded.current || window.daum?.Postcode) return;
+
+        const script = document.createElement('script');
+        script.src = 'https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js';
+        script.async = true;
+        script.onload = () => {
+            scriptLoaded.current = true;
+        };
+        document.body.appendChild(script);
     }, []);
 
     const handleSearch = () => {
@@ -33,15 +39,14 @@ const AddressSearchButton: React.FC<AddressSearchButtonProps> = ({ onComplete })
 
         new window.daum.Postcode({
             oncomplete: (data: any) => {
-                const fullAddress = data.address; // 기본주소
-                const zonecode = data.zonecode;   // 우편번호
+                const fullAddress = data.address;
+                const zonecode = data.zonecode;
                 onComplete({ postalCode: zonecode, addressMain: fullAddress });
             },
         }).open();
     };
 
     return (
-        // AddressSearchButton.tsx
         <button
             type="button"
             onClick={handleSearch}

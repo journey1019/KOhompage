@@ -3,25 +3,40 @@
 import PageHero from '@/components/PageHero';
 import React, { useState, useEffect } from 'react';
 import AuthComponent from '@/components/(Shop)/Auth';
-import { productList } from '@/data/products';
+import { productsList } from '@/data/products';
 import ProductCard from '@/components/(Shop)/ProductCard';
 import { Product } from '@/types/product';
 import { getAllProducts, getFilteredProductsByQueryAndFilters, FilterOptions } from '@/service/shop/shopData'
 import SearchBar from '@/components/(Resources)/SearchBar';
 import FilterResource from '@/components/(Resources)/FilterResource';
 import Pagination from '@/components/(Resources)/Pagination';
+import { FaRegUserCircle } from "react-icons/fa";
+import { RiLogoutCircleRLine } from "react-icons/ri";
+import TokenCountdownTimer from '@/components/(Shop)/TokenCountdownTimer';
+import Link from 'next/link';
+import { useRouter } from "next/navigation";
 
 const ShopPage = () => {
+    const router = useRouter();
     const [searchQuery, setSearchQuery] = useState<string>(""); // 검색어 상태
     const [filters, setFilters] = useState<FilterOptions>({}); // 필터 상태
-    const [products, setProducts] = useState<Product[]>(productList);
-    const [totalProductsCount, setTotalProductsCount] = useState(productList.length);
+    const [products, setProducts] = useState<Product[]>(productsList);
+    const [totalProductsCount, setTotalProductsCount] = useState(productsList.length);
     const [isDrawerOpen, setIsDrawerOpen] = useState<boolean>(false);
     const [isLoading, setIsLoading] = useState<boolean>(false);
 
     const [currentPage, setCurrentPage] = useState<number>(1); // 현재 페이지
     const itemsPerPage = 9; // 페이지당 항목 수
 
+    const [tokenExpired, setTokenExpired] = useState<string | null>(null);
+    useEffect(() => {
+        const stored = localStorage.getItem('paymentUserInfo');
+        if (stored) {
+            const userInfo = JSON.parse(stored);
+            setTokenExpired(userInfo.tokenExpired);
+        }
+    }, []);
+    console.log('s')
     // useEffect(() => {
     //     setIsLoading(true); // 시작 시 로딩
     //     const fetchFilteredProduces = async () => {
@@ -60,7 +75,36 @@ const ShopPage = () => {
             <AuthComponent />
 
             <div className="mx-auto max-w-7xl maxWeb:max-w-screen-2xl px-6 py-12 lg:px-8">
-                <h1 className="text-4xl maxWeb:text-5xl font-bold text-gray-800 mb-8">Shop</h1>
+                <div className="flex flex-row justify-between items-center">
+                    <h1 className="text-4xl maxWeb:text-5xl font-bold text-gray-800 mb-8">Shop</h1>
+                    <div className="flex flex-row items-center space-x-6">
+                        {/* 로그인 토큰 만료시간 */}
+                        {tokenExpired && (
+                            <TokenCountdownTimer
+                                tokenExpired={tokenExpired}
+                            />
+                        )}
+                        {/* 마이페이지 버튼 */}
+                        <div className="relative group">
+                            <button onClick={() => router.push("/ko/myPage")} className="hover:bg-gray-200 p-2 rounded-full transition">
+                                <FaRegUserCircle className="w-6 h-6 text-gray-800" />
+                            </button>
+                            <div className="absolute bottom-full mb-2 left-1/2 -translate-x-1/2 opacity-0 group-hover:opacity-100 transition-opacity bg-black text-white text-xs rounded px-2 py-1 whitespace-nowrap z-10">
+                                마이페이지
+                            </div>
+                        </div>
+
+                        {/* 로그아웃 버튼 */}
+                        <div className="relative group">
+                            <button className="hover:bg-gray-200 p-2 rounded-full transition">
+                                <RiLogoutCircleRLine className="w-6 h-6 text-gray-800" />
+                            </button>
+                            <div className="absolute bottom-full mb-2 left-1/2 -translate-x-1/2 opacity-0 group-hover:opacity-100 transition-opacity bg-black text-white text-xs rounded px-2 py-1 whitespace-nowrap z-10">
+                                로그아웃
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
                 <div className="grid grid-cols-1 lg:grid-cols-4 lg:gap-2">
                     {/* Left Section: SearchBar & Filtering */}
@@ -95,8 +139,8 @@ const ShopPage = () => {
                                 <div className="col-span-full flex justify-center items-center py-20">
                                     <div className="animate-spin rounded-full h-10 w-10 border-t-4 border-blue-500" />
                                 </div>
-                            ) : productList.length > 0 ? (
-                                productList.map((product) => (
+                            ) : productsList.length > 0 ? (
+                                productsList.map((product) => (
                                     <ProductCard key={product.id} {...product} />
                                 ))
                             ) : (

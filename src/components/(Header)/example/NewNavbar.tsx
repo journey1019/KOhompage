@@ -68,7 +68,7 @@ const NewNavbar = ({ locale }: { locale: string }) => {
                     />
                 </Link>
 
-                <ul className="hidden md:flex space-x-8">
+                <ul className="hidden md:flex space-x-2 lg:space-x-8">
                     {menuItems.map((item) => (
                         <li
                             key={item.key}
@@ -76,11 +76,20 @@ const NewNavbar = ({ locale }: { locale: string }) => {
                             onMouseEnter={() => handleMouseEnter(item.key)}
                             onMouseLeave={handleMouseLeave}
                         >
-                            <button className="text-gray-700 hover:text-red-600 px-4 maxWeb:text-2xl font-semibold">
+                            <button className="text-gray-700 hover:text-red-600 md:px-4 maxWeb:text-2xl font-semibold">
                                 {item.label}
                             </button>
                         </li>
                     ))}
+                    {/* Shop 메뉴 - 클릭 시 이동, hover 드롭다운 없음 */}
+                    <li className="relative group">
+                        <Link
+                            href={`/${locale}/shop-test`}
+                            className="text-gray-700 hover:text-red-600 px-4 maxWeb:text-2xl font-semibold"
+                        >
+                            Shop
+                        </Link>
+                    </li>
                 </ul>
 
                 <div className="flex items-center space-x-4">
@@ -99,7 +108,7 @@ const NewNavbar = ({ locale }: { locale: string }) => {
                 </div>
             </nav>
 
-            {openDropdown && (
+            {openDropdown && openDropdown !== 'shop' && (
                 <div onMouseEnter={() => handleMouseEnter(openDropdown)} onMouseLeave={handleMouseLeave}>
                     <NewDropdown menuKey={openDropdown} locale={locale} />
                 </div>
@@ -142,6 +151,15 @@ const NewNavbar = ({ locale }: { locale: string }) => {
                                 )}
                             </li>
                         ))}
+                        <li>
+                            <Link
+                                href={`/${locale}/shop-test`}
+                                className="block py-2 px-4 text-gray-700 hover:text-red-600"
+                                onClick={() => setIsMobileMenuOpen(false)}
+                            >
+                                Shop
+                            </Link>
+                        </li>
                     </ul>
                 </div>
             )}

@@ -6,7 +6,7 @@ import CheckboxField from '@/components/common/CheckboxField';
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 import dynamic from 'next/dynamic';
-import { postJoin, checkUserId, checkUserInfo } from '@/lib/api/authApi';
+import { SignUp, CheckUserId, CheckUserInfo } from '@/lib/api/authApi';
 
 const toYN = (val: boolean): "Y" | "N" => (val ? "Y" : "N");
 
@@ -47,6 +47,7 @@ export default function SignUpPage() {
         }));
     };
 
+    console.log(form)
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
 
@@ -63,14 +64,14 @@ export default function SignUpPage() {
         }
 
         // ID 중복 체크
-        const isUserIdAvailable = await checkUserId(form.userId);
+        const isUserIdAvailable = await CheckUserId(form.userId);
         if (!isUserIdAvailable) {
             alert("이미 사용 중인 아이디입니다.");
             return;
         }
 
         // 이메일/휴대폰 중복 체크
-        const userInfoCheck = await checkUserInfo(form.email, form.phone);
+        const userInfoCheck = await CheckUserInfo(form.email, form.phone);
         if (!userInfoCheck.status) {
             const matched = [];
             if (userInfoCheck.emailUser) matched.push(`이메일 유사: ${userInfoCheck.emailUser}`);
@@ -105,9 +106,10 @@ export default function SignUpPage() {
                 exchangeRefundDate: today,
             },
         };
+        console.log(payload)
 
         try {
-            const res = await postJoin(payload);
+            const res = await SignUp(payload);
             console.log(res);
             alert("회원가입이 완료되었습니다.");
             router.push("/ko/login"); // or your login page

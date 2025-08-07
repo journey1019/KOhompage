@@ -1,3 +1,6 @@
+"use client";
+
+import { usePathname } from 'next/navigation';
 import Link from "next/link";
 import Image from "next/image";
 import React from "react";
@@ -7,6 +10,8 @@ import PDFButton from '@/components/(Header)/PDFButton';
 
 
 export function Footer({locale}: {locale: string}) {
+    const pathname = usePathname();
+
     const solutions = [
         { title: "Container IoT", href: "container-iot" },
         { title: "Global IoT", href: "global-iot" },
@@ -64,11 +69,11 @@ export function Footer({locale}: {locale: string}) {
                             </Link>
                         </div>
 
-                        <div className="text-sm md:text-base flex flex-col max-w-md maxWeb:max-w-lg mt-4 text-gray-500 dark:text-gray-400">
-                            {/*<span>코리아오브컴(주) | 대표 송형진</span>*/}
-                            {/*<span>사업자 등록번호 126-81-40735 | 통신판매업신고번호</span>*/}
+                        <div className="text-sm flex flex-col max-w-md maxWeb:max-w-lg mt-4 text-gray-500 dark:text-gray-400">
+                            <span>코리아오브컴㈜ | 대표 송형진</span>
+                            <span>사업자 등록번호 126-81-40735 | 통신판매업신고번호</span>
                             <span>[06536] 서울특별시 서초구 강남대로 525, 15층 (세영제이타워)</span>
-                            <span>02-3444-7311</span>
+                            <span>TEL. 02-3444-7311</span>
                             <span>sales@orbcomm.co.kr</span>
                         </div>
 
@@ -217,7 +222,15 @@ export function Footer({locale}: {locale: string}) {
                         <PDFButton
                             path="/pdf/support/Noti_TermsOfUse.pdf"
                             label="이용약관 변경에 대한 고지"
+                            className="pr-5"
                         />
+                        {/* 온라인쇼핑몰 교환/환불에 대한 고지 */}
+                        {pathname === '/ko/shop-test' && (
+                            <PDFButton
+                                path="/pdf/support/ExchangeRefundPolicy.pdf"
+                                label="교환/환불에 대한 이용약관"
+                            />
+                        )}
                     </div>
                 </div>
             </div>

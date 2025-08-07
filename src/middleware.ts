@@ -84,7 +84,7 @@ export const config = {
          * - favicon.ico, robots.txt 등
          * - images/, fonts/, videos/: 정적 폴더들
          */
-        // '/', // 루트 경로도 감지ㄴ
+        // '/', // 루트 경로도 감지
         // '/((?!_next/static|_next/image|favicon.ico|robots.txt|sitemap.xml|images/|fonts/|video/).*)',
         // '/((?!api|_next/static|_next/image|favicon.ico|robots.txt|sitemap.xml|images/|fonts/|video/).*)',
         '/',

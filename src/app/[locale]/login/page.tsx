@@ -2,11 +2,10 @@
 
 import { ChangeEventHandler, FormEventHandler, useEffect, useState } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
-import { signIn } from "next-auth/react";
 import Image from 'next/image';
 import Link from 'next/link';
-import { useSession } from "next-auth/react";
-import loginPage from '../../../../../public/images/admin/talk_dark.jpg';
+import { IoIosArrowForward } from "react-icons/io";
+import { Login } from '@/lib/api/authApi';
 
 export default function PaymentLoginPage() {
     const [userId, setUserId] = useState('');
@@ -15,68 +14,44 @@ export default function PaymentLoginPage() {
     const [loginError, setLoginError] = useState<string | null>(null);
     const [isLoading, setIsLoading] = useState(false); // 로그인시 로딩
     const router = useRouter();
-    const searchParams = useSearchParams();
-
-    const callbackUrl = searchParams.get('callbackUrl') || '/ko/login';
 
     // 페이지 열릴 때, localStorage에서 이메일 불러오기
     useEffect(() => {
-        const storedUserId = localStorage.getItem('rememberUserId');
+        const storedUserId = localStorage.getItem('rememberPaymentUserId');
         if (storedUserId) {
             setUserId(storedUserId);
             setRememberMe(true);
         }
     }, []);
+    console.log('l')
 
     const handleSubmit: FormEventHandler<HTMLFormElement> = async (event) => {
         event.preventDefault();
-        setLoginError(null); // 이전 오류 초기화
-        setIsLoading(true); // 로딩 시작
+        setLoginError(null);
+        setIsLoading(true);
 
         if (rememberMe) {
-            localStorage.setItem('rememberUserId', userId);
+            localStorage.setItem('rememberPaymentUserId', userId);
         } else {
-            localStorage.removeItem('rememberUserId');
+            localStorage.removeItem('rememberPaymentUserId');
         }
 
-        // redirect: false => 로그인 성공 여부만 반환
-        const result = await signIn("credentials", {
-            username: userId,
-            password: userPw,
-            redirect: true, // 자동 리디렉션
-            callbackUrl, // router.push 쓰므로 선택사항임
-        });
-
-        if (result?.ok) {
-            // 로그인 성공 후 세션을 확인
-            const sessionRes = await fetch("/api/auth/session");
-            const session = await sessionRes.json();
-
-            const role = session?.user?.role;
-            setIsLoading(false);
-
-            if (role === "ADMIN") {
-                router.push(callbackUrl);
-            } else if (role === "USER") {
-                // router.push("/ko/shop");
-                setLoginError("이 페이지는 관리자 전용입니다.");
+        try {
+            const response = await Login({ userId, userPw }); // /api/payment/login 호출
+            if (response) {
+                localStorage.setItem('paymentUserInfo', JSON.stringify(response));
+                // 로그인 성공 시 이동
+                router.push('/ko/shop_bootpay_testing_full');
             } else {
-                // console.log(result)
-                // 예외: role 없거나 이상하면 fallback
-                // router.push("/");
-                // setLoginError("로그인 정보는 맞지만 역할 정보가 올바르지 않습니다. 관리자에게 문의해주세요.");
-                setLoginError("아이디 또는 비밀번호가 잘못되었습니다.");
+                // 실패 메시지 출력
+                setLoginError("로그인에 실패했습니다.");
             }
-        } else {
-            setIsLoading(false); // 로딩 끝
-            setLoginError("아이디 또는 비밀번호가 잘못되었습니다.");
-            // alert("로그인 실패: 아이디 또는 비밀번호를 확인하세요.");
+        } catch (err) {
+            setLoginError("서버 요청 중 오류가 발생했습니다.");
+            console.error(err);
+        } finally {
+            setIsLoading(false);
         }
-        // console.log(result)
-    };
-
-    const onClickClose = () => {
-        router.back();
     };
 
     const onChangeId: ChangeEventHandler<HTMLInputElement> = (e) => {
@@ -159,18 +134,26 @@ export default function PaymentLoginPage() {
                         </div>
 
                         {/* remember me */}
-                        <div className="flex items-center space-x-2">
-                            <input
-                                id="rememberMe"
-                                type="checkbox"
-                                checked={rememberMe}
-                                onChange={onChangeRememberMe}
-                                className="h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 rounded"
-                            />
-                            <label htmlFor="rememberMe" className="text-sm text-gray-700">
-                                아이디 기억하기
-                            </label>
+                        <div className="flex flex-row justify-between items-center">
+                            <div className="flex items-center space-x-2">
+                                <input
+                                    id="rememberMe"
+                                    type="checkbox"
+                                    checked={rememberMe}
+                                    onChange={onChangeRememberMe}
+                                    className="h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 rounded"
+                                />
+                                <label htmlFor="rememberMe" className="text-sm text-gray-700">
+                                    자동 로그인
+                                </label>
+                            </div>
+                            <Link href="/ko/findIdPw"
+                                className="flex items-center space-x-2 text-sm text-blue-500 group hover:text-blue-600">
+                                <span>아이디 · 비밀번호 찾기</span>
+                                <IoIosArrowForward />
+                            </Link>
                         </div>
+
                     </div>
 
                     {/* 로그인 버튼 */}
@@ -178,22 +161,25 @@ export default function PaymentLoginPage() {
                         <button
                             type="submit"
                             className={`w-full py-2 px-4 rounded-md text-white font-semibold transition
-                            ${userId && userPw && !isLoading ? 'bg-blue-600 hover:bg-blue-700' : 'bg-gray-400 cursor-not-allowed'}
+                                ${userId && userPw && !isLoading ? 'bg-blue-600 hover:bg-blue-700' : 'bg-gray-400 cursor-not-allowed'}
                             `}
                             disabled={!userId || !userPw || isLoading}
                         >
-                            {isLoading ? "로딩 중..." : "로그인하기"}
+                            {isLoading ? '로딩 중...' : '로그인하기'}
                         </button>
 
                         <div className="pt-4">
-                            <Link href="/ko/signup">
-                                <div
-                                    className="w-full rounded-md text-sm text-center hover:underline hover:text-blue-500">
+                            <Link href="/ko/signUp">
+                                <button
+                                    type="button"
+                                    className="w-full py-2 px-4 rounded-md border border-blue-600 text-blue-600 font-semibold text-sm transition hover:bg-blue-50"
+                                >
                                     계정 만들기
-                                </div>
+                                </button>
                             </Link>
                         </div>
                     </div>
+
                 </form>
             </div>
         </div>
