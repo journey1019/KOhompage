@@ -73,7 +73,7 @@ const ProductList = () => {
                                     : 'bg-blue-500 text-white hover:bg-blue-600'
                             }`}
                         >
-                            {product.paymentType === 'subscription' ? '결제불가' : '결제하기'}
+                            {product.paymentType === 'subscription' ? '구매불가' : '구매하기'}
                         </button>
                     </div>
                 </div>
