@@ -225,7 +225,7 @@ export function Footer({locale}: {locale: string}) {
                             className="pr-5"
                         />
                         {/* 온라인쇼핑몰 교환/환불에 대한 고지 */}
-                        {pathname === '/ko/shop-test' && (
+                        {pathname === '/ko/online-store' && (
                             <PDFButton
                                 path="/pdf/support/ExchangeRefundPolicy.pdf"
                                 label="교환/환불에 대한 이용약관"

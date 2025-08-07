@@ -81,13 +81,13 @@ const NewNavbar = ({ locale }: { locale: string }) => {
                             </button>
                         </li>
                     ))}
-                    {/* Shop 메뉴 - 클릭 시 이동, hover 드롭다운 없음 */}
+                    {/* Online-Store 메뉴 - 클릭 시 이동, hover 드롭다운 없음 */}
                     <li className="relative group">
                         <Link
-                            href={`/${locale}/shop-test`}
+                            href={`/${locale}/online-store`}
                             className="text-gray-700 hover:text-red-600 px-4 maxWeb:text-2xl font-semibold"
                         >
-                            Shop
+                            Online-Store
                         </Link>
                     </li>
                 </ul>
@@ -108,7 +108,7 @@ const NewNavbar = ({ locale }: { locale: string }) => {
                 </div>
             </nav>
 
-            {openDropdown && openDropdown !== 'shop' && (
+            {openDropdown && openDropdown !== 'online-Store' && (
                 <div onMouseEnter={() => handleMouseEnter(openDropdown)} onMouseLeave={handleMouseLeave}>
                     <NewDropdown menuKey={openDropdown} locale={locale} />
                 </div>
@@ -153,11 +153,11 @@ const NewNavbar = ({ locale }: { locale: string }) => {
                         ))}
                         <li>
                             <Link
-                                href={`/${locale}/shop-test`}
+                                href={`/${locale}/online-store`}
                                 className="block py-2 px-4 text-gray-700 hover:text-red-600"
                                 onClick={() => setIsMobileMenuOpen(false)}
                             >
-                                Shop
+                                Online-Store
                             </Link>
                         </li>
                     </ul>
