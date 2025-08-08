@@ -23,7 +23,6 @@ export default function PaymentLoginPage() {
             setRememberMe(true);
         }
     }, []);
-    console.log('l')
 
     const handleSubmit: FormEventHandler<HTMLFormElement> = async (event) => {
         event.preventDefault();
@@ -46,7 +45,7 @@ export default function PaymentLoginPage() {
                 localStorage.removeItem('paymentUserInfo');
                 localStorage.setItem('paymentUserInfo', JSON.stringify(response));
                 // 로그인 성공 시 이동
-                router.push('/ko/shop_bootpay_testing_full');
+                router.push('/ko/online-store');
             } else {
                 // 실패 메시지 출력
                 setLoginError("로그인에 실패했습니다.");
