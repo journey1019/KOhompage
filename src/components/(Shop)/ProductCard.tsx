@@ -88,14 +88,14 @@ const ProductCard: React.FC<Product> = ({ id, name, category, price, paymentType
                     break;
 
                 case 'done':
-                    console.log('결제 완료:', response);
+                    // console.log('결제 완료:', response);
                     break;
 
                 default:
                     break;
             }
         } catch (e) {
-            console.error('결제 실패:', e);
+            // console.error('결제 실패:', e);
         }
     };
 

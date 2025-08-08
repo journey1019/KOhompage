@@ -61,6 +61,8 @@ export async function proxyPostQueryFetch(req: NextRequest, targetPath: string) 
         const url = new URL(req.url);
         const fullUrl = `${process.env.NEXT_PUBLIC_API_URL}${targetPath}?${url.searchParams.toString()}`;
 
+        console.log(fullUrl);
+
         const res = await fetch(fullUrl, {
             method: 'POST',
             headers: {

@@ -65,9 +65,9 @@ export default function EditResourcePage() {
                 setForm({
                     ...data,
                     date: data.date?.split('T')[0],
-                    tags: data.tags.split(','),
-                    hideTag: data.hideTag.split(','),
-                    solutionTag: data.solutionTag.split(','),
+                    tags: data.tags.split(',').map(t => t.trim()).filter(Boolean),
+                    hideTag: data.hideTag.split(',').map(t => t.trim()).filter(Boolean),
+                    solutionTag: data.solutionTag.split(',').map(t => t.trim()).filter(Boolean),
                 });
             });
     }, [id, setForm]);

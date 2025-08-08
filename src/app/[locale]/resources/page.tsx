@@ -41,6 +41,7 @@ const ResourcesPage = () => {
         fetchInitialResources();
     }, []);
 
+
     // useEffect(() => {
     //     const fetchFilteredResources = async () => {
     //         const filteredResources = await getFilteredResourcesByQueryAndFilters(searchQuery, filters);
@@ -89,7 +90,6 @@ const ResourcesPage = () => {
     // 현재 페이지에 표시할 리소스 계산
     const startIndex = (currentPage - 1) * itemsPerPage;
     const currentResources = resources.slice(startIndex, startIndex + itemsPerPage);
-
 
     return (
         <div className="mx-auto max-w-7xl maxWeb:max-w-screen-2xl px-6 py-12 lg:px-8">

@@ -52,18 +52,15 @@ const ResourceCard: React.FC<Resource> = ({ id, date, contentType, title, subtit
                 <p className="mt-2 text-sm maxWeb:text-lg text-gray-600 line-clamp-2">{subtitle}</p>
 
                 {/* Tags */}
-                <div className="mt-4 flex flex-wrap gap-2">
-                    {/*{tags.split(',').map((tag) => (*/}
-                    {/*    <span key={tag} className="px-2 py-1 text-xs text-white bg-red-500 rounded-full">*/}
-                    {/*        {tag}*/}
-                    {/*    </span>*/}
-                    {/*))}*/}
-                    {(typeof tags === 'string' ? tags.split(',') : Array.isArray(tags) ? tags : []).map((tag) => (
-                        <span key={tag} className="px-2 py-1 text-xs text-white bg-red-500 rounded-full">
+                {tags && (
+                    <div className="mt-4 flex flex-wrap gap-2">
+                        {(typeof tags === 'string' ? tags.split(',') : Array.isArray(tags) ? tags : []).map((tag) => (
+                            <span key={tag} className="px-2 py-1 text-xs text-white bg-red-500 rounded-full">
                             {tag}
                         </span>
-                    ))}
-                </div>
+                        ))}
+                    </div>
+                )}
             </div>
 
             {/* 버튼 섹션 */}

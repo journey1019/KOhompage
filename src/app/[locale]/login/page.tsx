@@ -6,6 +6,8 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { IoIosArrowForward } from "react-icons/io";
 import { Login } from '@/lib/api/authApi';
+import { IoEye, IoEyeOff } from "react-icons/io5";
+
 
 export default function PaymentLoginPage() {
     const [userId, setUserId] = useState('');
@@ -14,6 +16,8 @@ export default function PaymentLoginPage() {
     const [loginError, setLoginError] = useState<string | null>(null);
     const [isLoading, setIsLoading] = useState(false); // 로그인시 로딩
     const router = useRouter();
+
+    const [showPassword, setShowPassword] = useState(false);
 
     // 페이지 열릴 때, localStorage에서 이메일 불러오기
     useEffect(() => {
@@ -116,32 +120,61 @@ export default function PaymentLoginPage() {
                                 value={userId}
                                 onChange={onChangeId}
                                 className="w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
-                                placeholder="이메일을 입력하세요"
+                                placeholder="아이디를 입력하세요"
                                 autoComplete="off"
                             />
                         </div>
 
                         {/* 비밀번호 입력 */}
-                        <div>
+                        {/*<div>*/}
+                        {/*    <label htmlFor="password" className="block text-sm font-medium text-gray-700 mb-1">*/}
+                        {/*        비밀번호*/}
+                        {/*    </label>*/}
+                        {/*    <input*/}
+                        {/*        id="password"*/}
+                        {/*        type="password"*/}
+                        {/*        value={userPw}*/}
+                        {/*        onChange={onChangePassword}*/}
+                        {/*        onKeyDown={(e) => {*/}
+                        {/*            if (e.key === 'Enter') {*/}
+                        {/*                e.preventDefault(); // 기본 폼 중복 제출 방지*/}
+                        {/*                const form = e.currentTarget.form;*/}
+                        {/*                if (form) form.requestSubmit(); // 폼 제출*/}
+                        {/*            }*/}
+                        {/*        }}*/}
+                        {/*        className="w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"*/}
+                        {/*        placeholder="비밀번호를 입력하세요"*/}
+                        {/*        autoComplete="off"*/}
+                        {/*    />*/}
+                        {/*</div>*/}
+                        <div className="relative">
                             <label htmlFor="password" className="block text-sm font-medium text-gray-700 mb-1">
                                 비밀번호
                             </label>
                             <input
                                 id="password"
-                                type="password"
+                                type={showPassword ? 'text' : 'password'}
                                 value={userPw}
                                 onChange={onChangePassword}
                                 onKeyDown={(e) => {
                                     if (e.key === 'Enter') {
-                                        e.preventDefault(); // 기본 폼 중복 제출 방지
+                                        e.preventDefault();
                                         const form = e.currentTarget.form;
-                                        if (form) form.requestSubmit(); // 폼 제출
+                                        if (form) form.requestSubmit();
                                     }
                                 }}
-                                className="w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+                                className="w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 pr-10"
                                 placeholder="비밀번호를 입력하세요"
                                 autoComplete="off"
                             />
+                            <button
+                                type="button"
+                                onClick={() => setShowPassword(!showPassword)}
+                                className="absolute inset-y-0 right-0 top-6 pr-3 flex items-center text-gray-500"
+                                tabIndex={-1}
+                            >
+                                {showPassword ? <IoEyeOff size={20} /> : <IoEye size={20} />}
+                            </button>
                         </div>
 
                         {/* remember me */}
