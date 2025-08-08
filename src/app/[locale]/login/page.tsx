@@ -39,6 +39,11 @@ export default function PaymentLoginPage() {
         try {
             const response = await Login({ userId, userPw }); // /api/payment/login 호출
             if (response) {
+                // 로그인 성공 시
+                sessionStorage.setItem('userToken', response.userToken);
+                sessionStorage.setItem('tokenExpired', response.tokenExpired);
+
+                localStorage.removeItem('paymentUserInfo');
                 localStorage.setItem('paymentUserInfo', JSON.stringify(response));
                 // 로그인 성공 시 이동
                 router.push('/ko/shop_bootpay_testing_full');
@@ -47,7 +52,7 @@ export default function PaymentLoginPage() {
                 setLoginError("로그인에 실패했습니다.");
             }
         } catch (err) {
-            setLoginError("서버 요청 중 오류가 발생했습니다.");
+            setLoginError("로그인에 실패했습니다.");
             console.error(err);
         } finally {
             setIsLoading(false);
@@ -127,6 +132,13 @@ export default function PaymentLoginPage() {
                                 type="password"
                                 value={userPw}
                                 onChange={onChangePassword}
+                                onKeyDown={(e) => {
+                                    if (e.key === 'Enter') {
+                                        e.preventDefault(); // 기본 폼 중복 제출 방지
+                                        const form = e.currentTarget.form;
+                                        if (form) form.requestSubmit(); // 폼 제출
+                                    }
+                                }}
                                 className="w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
                                 placeholder="비밀번호를 입력하세요"
                                 autoComplete="off"
@@ -147,11 +159,15 @@ export default function PaymentLoginPage() {
                                     자동 로그인
                                 </label>
                             </div>
-                            <Link href="/ko/findIdPw"
-                                className="flex items-center space-x-2 text-sm text-blue-500 group hover:text-blue-600">
+                            {/*<Link href="/ko/findIdPw"*/}
+                            {/*      className="flex items-center space-x-2 text-sm text-blue-500 group hover:text-blue-600">*/}
+                            {/*    <span>아이디 · 비밀번호 찾기</span>*/}
+                            {/*    <IoIosArrowForward />*/}
+                            {/*</Link>*/}
+                            <button disabled className="flex items-center space-x-2 text-sm text-gray-500">
                                 <span>아이디 · 비밀번호 찾기</span>
                                 <IoIosArrowForward />
-                            </Link>
+                            </button>
                         </div>
 
                     </div>
@@ -172,7 +188,9 @@ export default function PaymentLoginPage() {
                             <Link href="/ko/signUp">
                                 <button
                                     type="button"
-                                    className="w-full py-2 px-4 rounded-md border border-blue-600 text-blue-600 font-semibold text-sm transition hover:bg-blue-50"
+                                    className="w-full py-2 px-4 rounded-md border border-gray-600 text-gray-600 font-semibold text-sm bg-gray-300"
+                                    // className="w-full py-2 px-4 rounded-md border border-blue-600 text-blue-600 font-semibold text-sm transition hover:bg-blue-50"
+                                    disabled={true}
                                 >
                                     계정 만들기
                                 </button>

@@ -61,7 +61,7 @@ const ProductList = () => {
                     {/* 상품 정보 */}
                     <div className="p-4">
                         <h2 className="text-lg font-semibold truncate">{product.name}</h2>
-                        <p className="text-sm text-gray-500 mb-1">{product.category}</p>
+                        <p className="text-sm text-gray-500 mb-1">{product.category.toUpperCase()}</p>
                         <p className="text-base font-bold mb-2">{product.price.toLocaleString()}원</p>
 
                         <button

@@ -85,6 +85,7 @@
     "sass": "^1.89.0",
     "sharp": "^0.33.5",
     "slick-carousel": "^1.8.1",
+    "sweetalert2": "^11.22.2",
     "swiper": "^11.1.15",
     "tiptap": "^1.32.2",
     "yup": "^1.4.0",

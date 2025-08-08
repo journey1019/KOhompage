@@ -26,7 +26,7 @@ const ResourceCard: React.FC<Resource> = ({ id, date, contentType, title, subtit
             {/* 이미지 섹션 */}
             <div className="relative overflow-hidden rounded-xl">
                 <Image
-                    src={image}
+                    src={image || "/images/DefaultImage.png"}
                     alt={title}
                     className="w-full h-48 object-cover rounded-t-lg transition-transform duration-500 group-hover:scale-105"
                     width={500}

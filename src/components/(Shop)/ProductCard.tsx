@@ -1,12 +1,14 @@
-import { Product } from '@/types/product';
 import { productList } from '@/data/products';
+import { Product } from '@/types/product';
 import { Bootpay } from '@bootpay/client-js';
 import { mockValidateApi } from '@/lib/api/mock/payment';
+import { useRouter } from 'next/navigation';
 
 const ProductCard: React.FC<Product> = ({ id, name, category, price, paymentType, description, image }) => {
     const useMock = true;
+    const router = useRouter();
 
-    const validateOrder = async (productId: string) => {
+    const validateOrder = async (productId: string, userId: string) => {
         if (useMock) {
             return await mockValidateApi(productId);
         } else {
@@ -18,7 +20,7 @@ const ProductCard: React.FC<Product> = ({ id, name, category, price, paymentType
                 body: JSON.stringify({
                     receiptId: 'mock-receipt', // 또는 response.receipt_id
                     productId,
-                    userId: 'user_1234',
+                    userId,
                     quantity: 1,
                 }),
             });
@@ -26,8 +28,25 @@ const ProductCard: React.FC<Product> = ({ id, name, category, price, paymentType
         }
     };
 
+    // console.log(sessionStorage.getItem('userToken'))
+    // console.log(sessionStorage.getItem('tokenExpired'))
+    // console.log(localStorage.getItem('paymentUserInfo'))
     const handlePayment = async () => {
+        // 1️⃣ 로그인 여부 확인
+        const token = sessionStorage.getItem("userToken");
+        const userInfoStr = localStorage.getItem("paymentUserInfo");
+
+        if (!token || !userInfoStr) {
+            alert("로그인이 필요합니다.");
+            router.push("/ko/login");
+            return;
+        }
+
+        // 2️⃣ 사용자 정보 파싱
+        const userInfo = JSON.parse(userInfoStr);
+
         try {
+            // 3️⃣ 결제 요청
             const response = await Bootpay.requestPayment({
                 application_id: '68745846285ac508a5ee7a0b',
                 price,
@@ -36,10 +55,10 @@ const ProductCard: React.FC<Product> = ({ id, name, category, price, paymentType
                 pg: 'nicepay',
                 method: 'card',
                 user: {
-                    id: 'user_1234',
-                    username: '홍길동',
-                    phone: '01000000000',
-                    email: 'test@test.com',
+                    id: userInfo.userId,
+                    username: userInfo.userNm,
+                    phone: userInfo.phone || '01000000000', // phone 값이 없으면 기본값
+                    email: userInfo.email || 'test@test.com',
                 },
                 items: [
                     {
@@ -55,38 +74,20 @@ const ProductCard: React.FC<Product> = ({ id, name, category, price, paymentType
                 },
             });
 
+            // 4️⃣ 결제 이벤트 처리
             switch (response.event) {
                 case 'confirm':
-                    // ✅ [STEP 1] 백엔드 API로 승인 전 검증 요청
-                    const res = await fetch('https://your-backend-api.com/api/order/validate', {
-                        method: 'POST',
-                        headers: {
-                            'Content-Type': 'application/json',
-                        },
-                        body: JSON.stringify({
-                            receiptId: response.receipt_id,
-                            productId: id,
-                            userId: 'user_1234',
-                            quantity: 1,
-                        }),
-                    });
-
-                    const data = await validateOrder(id);
-                    console.log('response : ', response)
-                    console.log('data : ', data)
+                    const data = await validateOrder(id, userInfo.userId);
 
                     if (data.success) {
-                        // ✅ [STEP 2] 검증 통과 → 결제 승인
                         await Bootpay.confirm();
                     } else {
-                        // ❌ 검증 실패 → 결제 중단
                         await Bootpay.destroy();
                         alert(data.message || '결제를 진행할 수 없습니다.');
                     }
                     break;
 
                 case 'done':
-                    // ✅ 결제 완료 후 처리
                     console.log('결제 완료:', response);
                     break;
 
@@ -101,11 +102,11 @@ const ProductCard: React.FC<Product> = ({ id, name, category, price, paymentType
 
     return (
         <div className="border rounded-lg shadow hover:shadow-md transition overflow-hidden">
-            <img src={image} alt={name} className="w-full h-48 object-cover" />
+            <img src={image} alt={name} className="w-full h-72 object-cover" />
 
             <div className="p-4">
                 <h2 className="text-lg font-semibold truncate">{name}</h2>
-                <p className="text-sm text-gray-500 mb-1">{category}</p>
+                <p className="text-sm text-gray-500 mb-1">{category[0].toUpperCase() + category.slice(1, category.length)}</p>
                 <p className="text-base font-bold mb-2">{price.toLocaleString()}원</p>
 
                 <button
@@ -117,7 +118,7 @@ const ProductCard: React.FC<Product> = ({ id, name, category, price, paymentType
                             : 'bg-blue-500 text-white hover:bg-blue-600'
                     }`}
                 >
-                    {paymentType === 'subscription' ? '결제불가' : '결제하기'}
+                    {paymentType === 'subscription' ? '구매불가' : '구매하기'}
                 </button>
             </div>
         </div>

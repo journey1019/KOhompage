@@ -1,8 +1,13 @@
 // src/lib/client/apiFetch.ts
 export async function apiBodyFetch<T>(url: string, data: unknown): Promise<T> {
+    const paymentToken = sessionStorage.getItem('userToken');
+
     const res = await fetch(url, {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+        headers: {
+            'Content-Type': 'application/json',
+            ...(paymentToken && { Authorization: `Bearer ${paymentToken}` })
+        },
         body: JSON.stringify(data),
     });
 

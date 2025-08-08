@@ -69,7 +69,7 @@ export function Footer({locale}: {locale: string}) {
                             </Link>
                         </div>
 
-                        <div className="text-sm flex flex-col max-w-md maxWeb:max-w-lg mt-4 text-gray-500 dark:text-gray-400">
+                        <div className="text-sm md:text-base flex flex-col max-w-md maxWeb:max-w-lg mt-4 text-gray-500 dark:text-gray-400">
                             <span>코리아오브컴㈜ | 대표 송형진</span>
                             <span>사업자 등록번호 126-81-40735 | 통신판매업신고번호</span>
                             <span>[06536] 서울특별시 서초구 강남대로 525, 15층 (세영제이타워)</span>

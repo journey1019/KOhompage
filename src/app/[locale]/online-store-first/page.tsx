@@ -1,0 +1,31 @@
+import PageHero from '@/components/PageHero';
+import React from 'react';
+import Payment from '@/components/(Shop)/Payment';
+import AuthComponent from '@/components/(Shop)/Auth';
+import PaymentButton from '@/components/(Payment)/PaymentButton';
+import ProductList from '@/components/(Shop)/ProductList';
+
+const OnlineStorePageFirst = () => {
+    return(
+        <section>
+            <PageHero
+                size="py-52"
+                url="/images/shop/shop2.png"
+                intro=""
+                title="온라인 스토어"
+                subtitle=""
+            />
+            {/*<AuthComponent/>*/}
+
+            <div className="mx-auto max-w-7xl maxWeb:max-w-screen-2xl px-6 py-12 lg:px-8">
+                <h1 className="text-4xl maxWeb:text-5xl font-bold text-gray-800 mb-8">제품</h1>
+
+                {/*<Payment/>*/}
+                <ProductList />
+                {/*<PaymentButton />*/}
+            </div>
+        </section>
+    )
+}
+
+export default OnlineStorePageFirst;
