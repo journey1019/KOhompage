@@ -102,7 +102,7 @@ export default function SignUpPage() {
                 privateAgreeDate: today,
                 locationAgreeYn: toYN(form.agree3),
                 locationAgreeDate: today,
-                exchangeRefundYn: "Y", // 또는 명시적으로 타입 선언
+                exchangeRefundYn: "Y", // 명시적으로 타입 제거
                 exchangeRefundDate: today,
             },
         };
