@@ -42,6 +42,12 @@ async function main() {
     }
 
     // --- 하드웨어 데이터 삽입 ---
+
+    // 재발 방지
+    if (process.env.DATABASE_URL === 'production') {
+        console.log('🚫 Production 환경에서는 seed 실행 안 함');
+        process.exit(0);
+    }
     const filePath = path.join(process.cwd(), 'src/data/hardware.json');
     const rawData = fs.readFileSync(filePath, 'utf-8');
     const hardwares = JSON.parse(rawData);

@@ -100,6 +100,13 @@ const ProductCard: React.FC<Product> = ({ id, name, category, price, paymentType
     };
 
 
+    // IT활용능력에 대해서 적어보려고 한다.
+    // 각 IT활용종류와 활용능력 정도 등 기입해줘.
+    //
+    // 워드
+    // 파워포인트
+    // DBMS
+    // 기타
     return (
         <div className="border rounded-lg shadow hover:shadow-md transition overflow-hidden">
             <img src={image} alt={name} className="w-full h-72 object-cover" />
