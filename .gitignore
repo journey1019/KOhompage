@@ -42,8 +42,6 @@ NEXT_PUBLIC_API_URL=http://localhost:3000
 # Admin - Login hashPassword 스크립트 추가 X
 scripts/hashPassword.js
 
-# dev.db 파일 함께 배포
-#!prisma/dev.db
-#!dev.db
+# dev.db 파일 미배포
 .env
 prisma/dev.db
