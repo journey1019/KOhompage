@@ -9,9 +9,12 @@ import { useRouter } from 'next/navigation';
 
 const ResourceCard: React.FC<Resource> = ({ id, date, contentType, title, subtitle, tags, form, image, path, use }) => {
     const router = useRouter();
-    const handleOpenPDF = () => {
+    const handleDownload = () => {
+        const url = `/api/download?path=${encodeURIComponent(path)}`;
         if (form === "pdf") {
             window.open(path, "_blank", "noopener,noreferrer");
+        } else if (form === "hwp") {
+            window.open(url, "_blank", "noopener,noreferrer");
         }
     };
     const handlePageNavigation = (id, form) => {
@@ -85,10 +88,11 @@ const ResourceCard: React.FC<Resource> = ({ id, date, contentType, title, subtit
                     </button>
                 ) : (
                     <button
-                        onClick={handleOpenPDF}
+                        onClick={handleDownload}
+                        disabled={!path}
                         className="flex flex-row w-full items-center justify-end text-red-500 hover:underline text-end pr-2"
                     >
-                        Open PDF
+                        Download {form?.toUpperCase()}
                         <ArrowDownOnSquareIcon aria-hidden="true" className="h-5 w-5 ml-2" />
                     </button>
                 )}
