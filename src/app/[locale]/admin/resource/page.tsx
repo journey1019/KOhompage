@@ -99,8 +99,6 @@ export default function ResourceListPage() {
         setResources(resources.filter(r => r.id !== id));
     };
 
-    console.log(resources)
-
     return (
         <div className="mx-auto max-w-7xl maxWeb:max-w-screen-2xl px-6 py-12 lg:px-8">
             {/** 리소스 관리 - Title */}

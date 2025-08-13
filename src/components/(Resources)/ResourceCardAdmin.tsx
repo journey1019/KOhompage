@@ -13,12 +13,20 @@ interface ResourceCardProps extends Resource {
 }
 const ResourceCardAdmin = ({ id, date, contentType, title, subtitle, tags, form, image, path, use, onDelete, onEdit, isAdmin = false }: ResourceCardProps) => {
     const router = useRouter();
-    const handleOpenPDF = () => {
-        if (form === "pdf") {
-            window.open(path, "_blank", "noopener,noreferrer");
+
+    const isFileForm = form === "pdf" || form === "hwp";
+
+    const handleDownload = () => {
+        if (!path || !isFileForm) return;
+        const url = `/api/download?path=${encodeURIComponent(path)}`;
+        if(form === "pdf") {
+            window.open(path, "_blank", "noopener,noreferrer"); // ✅ 직접 링크
+        } else if (form === "hwp") {
+            window.open(url, "_blank", "noopener,noreferrer"); // ✅ 직접 링크
         }
     };
-    const handlePageNavigation = (id: number, form: "page" | "pdf" | "link") => {
+
+    const handlePageNavigation = (id: number, form: "page" | "pdf" | "hwp" | "link") => {
         if (form === 'page') {
             router.push(`resource/${id}`);
         } else {
@@ -102,15 +110,17 @@ const ResourceCardAdmin = ({ id, date, contentType, title, subtitle, tags, form,
                             Go to Page
                             <ArrowTopRightOnSquareIcon aria-hidden="true" className="h-5 w-5 ml-2" />
                         </button>
-                    ) : (
+                    ) : form === 'pdf' || form === 'hwp' ? (
                         <button
-                            onClick={handleOpenPDF}
-                            className="flex flex-row w-full items-center justify-end text-red-500 hover:underline text-end pr-2"
+                            type="button"
+                            onClick={handleDownload}
+                            disabled={!path}
+                            className="flex flex-row w-full items-center justify-end text-red-500 hover:underline text-end pr-2 disabled:opacity-50"
                         >
-                            Open PDF
-                            <ArrowDownOnSquareIcon aria-hidden="true" className="h-5 w-5 ml-2" />
+                            Download {form?.toUpperCase()}
+                            <ArrowDownOnSquareIcon className="h-5 w-5 ml-2" />
                         </button>
-                    )}
+                    ) : null}
                 </div>
                 {isAdmin && onEdit && onDelete && (
                     <div className="flex flex-row flex-wrap gap-3 mt-4">
@@ -126,7 +136,6 @@ const ResourceCardAdmin = ({ id, date, contentType, title, subtitle, tags, form,
                 )}
             </div>
         </div>
-
     );
 };
 

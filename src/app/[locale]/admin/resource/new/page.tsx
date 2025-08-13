@@ -319,30 +319,43 @@ export default function NewResourcePage() {
                 <div className="flex items-center gap-4">
                     <label className="w-40 text-left font-medium text-gray-700">📄 링크 형식</label>
                     <select name="form" value={form.form} onChange={handleChange} className="flex-1 border p-2 rounded">
-                        <option value="pdf">PDF</option>
+                        <option value="pdf">Download (PDF)</option>
+                        <option value="hwp">Download (HWP)</option>
                         <option value="link">Link</option>
                         <option value="page">Page</option>
                     </select>
                 </div>
 
                 {/* PDF 또는 링크 업로드 */}
-                {form.form === 'pdf' ? (
-                        <div className="flex items-start gap-4">
-                            <label className="w-40 text-left pt-2 font-medium text-gray-700">📎 PDF 업로드</label>
-                            <div className="flex-1">
-                                {form.path && (
-                                    <a
-                                        href={form.path}
-                                        target="_blank"
-                                        rel="noopener noreferrer"
-                                        className="text-blue-500 text-sm block hover:underline"
-                                    >
-                                        현재 PDF 보기
-                                    </a>
-                                )}
-                                <FileUploader label="PDF 업로드" accept="application/pdf" page="resources" onUpload={(url) => setForm(prev => ({...prev, path: url}))} />
-                            </div>
+                {/* 기존: label "PDF 업로드", accept="application/pdf" */}
+                {form.form === 'pdf' || form.form === 'hwp' ? (
+                    <div className="flex items-start gap-4">
+                        <label className="w-40 text-left pt-2 font-medium text-gray-700">
+                            📎 {form.form.toUpperCase()} 업로드
+                        </label>
+                        <div className="flex-1">
+                            {form.path && form.form === 'pdf' && (
+                                <a
+                                    href={form.path}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="text-blue-500 text-sm block hover:underline"
+                                >
+                                    현재 PDF 보기
+                                </a>
+                            )}
+                            <FileUploader
+                                label={`${form.form.toUpperCase()} 업로드`}
+                                accept={
+                                    form.form === 'pdf'
+                                        ? 'application/pdf'
+                                        : '.hwp,application/x-hwp,application/haansofthwp'
+                                }
+                                page="resources"
+                                onUpload={(url) => setForm((prev) => ({ ...prev, path: url }))}
+                            />
                         </div>
+                    </div>
                 ) : form.form === 'link' ? (
                     <div className="flex items-center gap-4">
                         <label className="w-40 text-left font-medium text-gray-700">🔗 링크 입력</label>

@@ -332,7 +332,17 @@ const FileUploader = ({
     page: 'resources' | 'hardware';
     onUpload: (url: string) => void;
 }) => {
-    const endpoint = accept.includes('pdf') ? '/api/upload/pdf' : '/api/upload/image';
+    const isDocument =
+        accept.includes('pdf') ||
+        accept.includes('hwp') ||
+        accept.includes('x-hwp') ||
+        accept.includes('haansofthwp');
+
+    const endpoint = isDocument
+        ? '/api/upload/document'
+        : accept.includes('image')
+            ? '/api/upload/image'
+            : '/api/upload/document'; // fallback 존재 안하면 document로 설정
 
     const acceptedFormats =
         accept === 'image/*'
