@@ -191,15 +191,11 @@ export default function PaymentLoginPage() {
                                     자동 로그인
                                 </label>
                             </div>
-                            {/*<Link href="/ko/findIdPw"*/}
-                            {/*      className="flex items-center space-x-2 text-sm text-blue-500 group hover:text-blue-600">*/}
-                            {/*    <span>아이디 · 비밀번호 찾기</span>*/}
-                            {/*    <IoIosArrowForward />*/}
-                            {/*</Link>*/}
-                            <button disabled className="flex items-center space-x-2 text-sm text-gray-500">
+                            <Link href="/ko/findIdPw"
+                                  className="flex items-center space-x-2 text-sm text-blue-500 group hover:text-blue-600">
                                 <span>아이디 · 비밀번호 찾기</span>
                                 <IoIosArrowForward />
-                            </button>
+                            </Link>
                         </div>
 
                     </div>
@@ -220,8 +216,7 @@ export default function PaymentLoginPage() {
                             <Link href="/ko/signUp">
                                 <button
                                     type="button"
-                                    className="w-full py-2 px-4 rounded-md border border-gray-600 text-gray-600 font-semibold text-sm bg-gray-300"
-                                    // className="w-full py-2 px-4 rounded-md border border-blue-600 text-blue-600 font-semibold text-sm transition hover:bg-blue-50"
+                                    className="w-full cursor-pointer py-2 px-4 rounded-md border border-blue-600 text-blue-600 font-semibold text-sm transition hover:bg-blue-50"
                                     disabled={true}
                                 >
                                     계정 만들기
