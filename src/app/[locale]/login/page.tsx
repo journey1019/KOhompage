@@ -43,8 +43,8 @@ export default function PaymentLoginPage() {
             const response = await Login({ userId, userPw }); // /api/payment/login 호출
             if (response) {
                 // 로그인 성공 시
-                sessionStorage.setItem('userToken', response.userToken);
-                sessionStorage.setItem('tokenExpired', response.tokenExpired);
+                localStorage.setItem('userToken', response.userToken);
+                localStorage.setItem('tokenExpired', response.tokenExpired);
 
                 localStorage.removeItem('paymentUserInfo');
                 localStorage.setItem('paymentUserInfo', JSON.stringify(response));

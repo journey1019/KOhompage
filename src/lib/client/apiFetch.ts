@@ -1,6 +1,5 @@
-// src/lib/client/apiFetch.ts
 export async function apiBodyFetch<T>(url: string, data: unknown): Promise<T> {
-    const paymentToken = sessionStorage.getItem('userToken');
+    const paymentToken = localStorage.getItem('userToken');
 
     const res = await fetch(url, {
         method: 'POST',
@@ -25,14 +24,20 @@ export async function apiBodyFetch<T>(url: string, data: unknown): Promise<T> {
     }
 }
 
-export async function apiQueryFetch<T>(url: string, query: Record<string, string>): Promise<T> {
-    const queryString = new URLSearchParams(query).toString();
-    const fullUrl = `${url}?${queryString}`;
+export async function apiQueryFetch<T>(url: string, query?: Record<string, string>): Promise<T> {
+    const queryString = query ? `?${new URLSearchParams(query).toString()}` : '';
+    const fullUrl = `${url}${queryString}`;
+
+    const token = localStorage.getItem("userToken");
 
     const res = await fetch(fullUrl, {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+        headers: {
+            'Content-Type': 'application/json',
+            ...(token ? { Authorization: `Bearer ${token}` } : {})
+        }
     });
+
 
     const text = await res.text();
     try {

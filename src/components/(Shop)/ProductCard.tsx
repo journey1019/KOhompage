@@ -28,8 +28,8 @@ const ProductCard: React.FC<Product> = ({ id, name, category, price, paymentType
         }
     };
 
-    // console.log(sessionStorage.getItem('userToken'))
-    // console.log(sessionStorage.getItem('tokenExpired'))
+    // console.log(localStorage.getItem('userToken'))
+    // console.log(localStorage.getItem('tokenExpired'))
     // console.log(localStorage.getItem('paymentUserInfo'))
     const handlePayment = async () => {
         // 1️⃣ 로그인 여부 확인

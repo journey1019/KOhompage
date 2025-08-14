@@ -1,4 +1,3 @@
-// src/lib/server/fetchProxy.ts
 import { NextRequest, NextResponse } from 'next/server';
 
 /**
@@ -59,15 +58,16 @@ export async function proxyPostBodyFetch(req: NextRequest, targetPath: string) {
 export async function proxyPostQueryFetch(req: NextRequest, targetPath: string) {
     try {
         const url = new URL(req.url);
-        const fullUrl = `${process.env.NEXT_PUBLIC_API_URL}${targetPath}?${url.searchParams.toString()}`;
-
-        console.log(fullUrl);
+        const queryString = url.searchParams.toString();
+        const fullUrl = `${process.env.NEXT_PUBLIC_API_URL}${targetPath}${queryString ? `?${queryString}` : ''}`;
 
         const res = await fetch(fullUrl, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
+                'Authorization': req.headers.get('Authorization') || '',
             },
+            body: JSON.stringify({}) // logout은 비어있어도 보냄
         });
 
         const result = await res.json().catch(() => ({}));

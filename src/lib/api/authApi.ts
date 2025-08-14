@@ -72,36 +72,34 @@ export interface LoginResponse {
 export async function Login(data: { userId: string; userPw: string }): Promise<LoginResponse> {
     return apiQueryFetch<LoginResponse>('/api/payment/login', data);
 }
-// export async function Login(data: { userId: string; userPw: string }) {
-//     const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/login`, {
-//         method: 'POST',
-//         headers: { 'Content-Type': 'application/json' },
-//         body: JSON.stringify(data),
-//     });
-//     return res.json();
-// }
+
+/**
+ * 로그아웃
+ * */
+export async function LogOut() {
+    return apiQueryFetch('/api/payment/logout');
+}
 
 
 
 /**
  * ID 찾기
  * */
-export interface FindIdRequestBody {
-    birth: number;
-    findKey: string;
-    findValue: string; // email | phone
+export interface FindIdResponse {
+    status: boolean;
+    userId: string;
 }
-export async function FindId(data: FindIdRequestBody): Promise<FindIdRequestBody> {
-    return apiQueryFetch<FindIdRequestBody>('/api/payment/findId', data); // { success: true, message: "...", etc. }
+export async function FindId(data: { birth: number; findKey: string; findValue: string }): Promise<FindIdResponse> {
+    return apiQueryFetch<FindIdResponse>('/api/payment/findId', data); // { success: true, message: "...", etc. }
 }
 
 /**
  * PW 찾기
  * */
 export interface FindPwRequestBody {
-    userId: string;
-    birth: number;
+    status: boolean;
+    email: string;
 }
-export async function FindPw(data: FindPwRequestBody) {
-    return apiQueryFetch('/api/payment/findPw', data); // { success: true, message: "...", etc. }
+export async function FindPw(data: { userId: string; birth: number }): Promise<FindPwRequestBody> {
+    return apiQueryFetch<FindPwRequestBody>('/api/payment/findPw', data); // { success: true, message: "...", etc. }
 }
