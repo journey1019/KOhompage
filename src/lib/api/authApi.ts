@@ -96,10 +96,10 @@ export async function FindId(data: { birth: number; findKey: string; findValue: 
 /**
  * PW 찾기
  * */
-export interface FindPwRequestBody {
+export interface FindPwdRequestBody {
     status: boolean;
     email: string;
 }
-export async function FindPw(data: { userId: string; birth: number }): Promise<FindPwRequestBody> {
-    return apiQueryFetch<FindPwRequestBody>('/api/payment/findPw', data); // { success: true, message: "...", etc. }
+export async function FindPwd(data: { userId: string; birth: number }): Promise<FindPwdRequestBody> {
+    return apiQueryFetch<FindPwdRequestBody>('/api/payment/findPwd', data); // { success: true, message: "...", etc. }
 }
