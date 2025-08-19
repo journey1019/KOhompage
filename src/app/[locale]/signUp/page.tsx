@@ -7,6 +7,7 @@ import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 import dynamic from 'next/dynamic';
 import { SignUp, CheckUserId, CheckUserInfo } from '@/lib/api/authApi';
+import validatePassword from '@/components/(Online-Store)/Auth/ValidatePwd';
 
 const toYN = (val: boolean): "Y" | "N" => (val ? "Y" : "N");
 
@@ -31,9 +32,46 @@ export default function SignUpPage() {
         agree3: false,
     });
 
+    const [userIdCheck, setUserIdCheck] = useState<null | "available" | "unavailable">(null);
+    const [checking, setChecking] = useState(false); // 로딩절차
+
+    const [userPwdCheck, setUserPwdCheck] = useState<null | "valid" | "invalid">(null);
+    const [pwdMatch, setPwdMatch] = useState<null | "consistent" | "inconsistent">(null);
+
     const handleChange = (key: keyof typeof form) => (e: React.ChangeEvent<HTMLInputElement>) => {
         const value = e.target.type === 'checkbox' ? e.target.checked : e.target.value;
         setForm((prev) => ({ ...prev, [key]: value }));
+        if (key === "userId") {
+            setUserIdCheck(null); // ID 입력 바뀌면 중복체크 초기화
+        }
+
+        if (key === "password") {
+            setUserPwdCheck(validatePassword(value) ? "valid" : "invalid");
+
+            // passwordConfirm과 즉시 비교
+            setPwdMatch(form.passwordConfirm
+                ? (value === form.passwordConfirm ? "consistent" : "inconsistent")
+                : null
+            );
+        }
+
+        if (key === "passwordConfirm") {
+            setPwdMatch(value === form.password ? "consistent" : "inconsistent");
+        }
+    };
+
+    const handleUserIdCheck = async () => {
+        if (!form.userId) return;
+        setChecking(true);
+        try {
+            const available = await CheckUserId(form.userId);
+            setUserIdCheck(available ? "available" : "unavailable");
+        } catch (err) {
+            console.error("ID 중복확인 실패", err);
+            setUserIdCheck("unavailable");
+        } finally {
+            setChecking(false);
+        }
     };
 
     const handleAgreeAll = () => {
@@ -79,7 +117,7 @@ export default function SignUpPage() {
             alert(`이미 등록된 계정 정보입니다.\n${matched.join('\n')}`);
             return;
         }
-        
+
         const today = new Date().toISOString().slice(0, 19).replace("T", " "); // YYYY-MM-DD hh:mm:ss
 
         const payload = {
@@ -138,12 +176,45 @@ export default function SignUpPage() {
 
                 <form onSubmit={handleSubmit} className="space-y-6">
                     {/* 계정 정보 */}
-                    <InputField id="userId" label="아이디" value={form.userId} onChange={handleChange('userId')}
-                                required />
-                    <InputField id="password" label="비밀번호" type="password" value={form.password}
-                                onChange={handleChange('password')} required />
-                    <InputField id="passwordConfirm" label="비밀번호 확인" type="password" value={form.passwordConfirm}
-                                onChange={handleChange('passwordConfirm')} required />
+                    <div className="flex flex-row items-center space-x-4">
+                        <div className="flex-1">
+                            <InputField id="userId" label="아이디" value={form.userId} onChange={handleChange('userId')} required />
+                            {/* ✅ 메시지 표시 */}
+                            {userIdCheck === "available" && (
+                                <p className="mt-1 text-sm text-green-600">✔ 사용 가능한 아이디입니다.</p>
+                            )}
+                            {userIdCheck === "unavailable" && (
+                                <p className="mt-1 text-sm text-red-600">✘ 이미 사용 중인 아이디입니다.</p>
+                            )}
+                        </div>
+                        <button
+                            type="button" onClick={handleUserIdCheck} disabled={!form.userId || checking}
+                            className={`rounded-md py-3 px-4 text-sm text-white whitespace-nowrap transition ${
+                                form.userId && !checking ? 'bg-blue-500 hover:bg-blue-600' : 'bg-gray-400'
+                            }`}
+                        >
+                            {checking ? '확인 중...' : 'ID 중복확인'}
+                        </button>
+                    </div>
+                    <div>
+                        <InputField id="password" label="비밀번호" type="password" value={form.password} onChange={handleChange('password')} required />
+                        {userPwdCheck === 'invalid' && (
+                            <p className="mt-1 text-sm text-red-600">
+                                비밀번호는 영문, 숫자, 특수문자 중 2종류 이상 조합 시 10자리 이상,
+                                3종류 이상 조합 시 8자리 이상이어야 합니다.
+                            </p>
+                        )}
+                    </div>
+
+                    <div>
+                        <InputField id="passwordConfirm" label="비밀번호 확인" type="password" value={form.passwordConfirm} onChange={handleChange('passwordConfirm')} required />
+                        {pwdMatch === 'inconsistent' && (
+                            <p className="mt-1 text-sm text-red-600">비밀번호가 일치하지 않습니다.</p>
+                        )}
+                        {pwdMatch === 'consistent' && form.password && (
+                            <p className="mt-1 text-sm text-green-600">비밀번호가 일치합니다.</p>
+                        )}
+                    </div>
 
                     {/* 개인정보 */}
                     <InputField id="name" label="이름" value={form.name} onChange={handleChange('name')} required />

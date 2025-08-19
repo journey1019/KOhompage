@@ -126,27 +126,6 @@ export default function PaymentLoginPage() {
                         </div>
 
                         {/* 비밀번호 입력 */}
-                        {/*<div>*/}
-                        {/*    <label htmlFor="password" className="block text-sm font-medium text-gray-700 mb-1">*/}
-                        {/*        비밀번호*/}
-                        {/*    </label>*/}
-                        {/*    <input*/}
-                        {/*        id="password"*/}
-                        {/*        type="password"*/}
-                        {/*        value={userPw}*/}
-                        {/*        onChange={onChangePassword}*/}
-                        {/*        onKeyDown={(e) => {*/}
-                        {/*            if (e.key === 'Enter') {*/}
-                        {/*                e.preventDefault(); // 기본 폼 중복 제출 방지*/}
-                        {/*                const form = e.currentTarget.form;*/}
-                        {/*                if (form) form.requestSubmit(); // 폼 제출*/}
-                        {/*            }*/}
-                        {/*        }}*/}
-                        {/*        className="w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"*/}
-                        {/*        placeholder="비밀번호를 입력하세요"*/}
-                        {/*        autoComplete="off"*/}
-                        {/*    />*/}
-                        {/*</div>*/}
                         <div className="relative">
                             <label htmlFor="password" className="block text-sm font-medium text-gray-700 mb-1">
                                 비밀번호

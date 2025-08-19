@@ -42,6 +42,12 @@ export async function CheckUserId(userId: string): Promise<boolean> {
     const data = await res.json();
     return data.status === true; // 사용 가능 시 true
 }
+export interface CheckUserId {
+    status: boolean;
+}
+// export async function CheckUserId(data: { userId: string }) {
+//     return apiQueryFetch<CheckUserId>(`/api/payment/userIdCheck?userId=${data}`);
+// }
 
 /**
  * 계정 정보 중복 체크
@@ -56,6 +62,7 @@ export async function CheckUserInfo(email: string, phone: string): Promise<Check
     if (!res.ok) throw new Error('계정 중복 확인 실패');
     return res.json();
 }
+
 
 /**
  * 로그인
@@ -89,8 +96,8 @@ export interface FindIdResponse {
     status: boolean;
     userId: string;
 }
-export async function FindId(data: { birth: number; findKey: string; findValue: string }): Promise<FindIdResponse> {
-    return apiQueryFetch<FindIdResponse>('/api/payment/findId', data); // { success: true, message: "...", etc. }
+export async function FindId(data: { birth: number; findKey: string; findValue: string }) {
+    return apiQueryFetch<FindIdResponse>('/api/payment/findId', data);
 }
 
 /**
@@ -100,6 +107,6 @@ export interface FindPwdRequestBody {
     status: boolean;
     email: string;
 }
-export async function FindPwd(data: { userId: string; birth: number }): Promise<FindPwdRequestBody> {
-    return apiQueryFetch<FindPwdRequestBody>('/api/payment/findPwd', data); // { success: true, message: "...", etc. }
+export async function FindPwd(data: { userId: string; birth: number }) {
+    return apiQueryFetch<FindPwdRequestBody>('/api/payment/findPwd', data);
 }
