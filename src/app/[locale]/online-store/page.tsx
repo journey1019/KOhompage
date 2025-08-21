@@ -1,11 +1,12 @@
-'use client';
+"use client";
 
 import PageHero from '@/components/PageHero';
 import React, { useState, useEffect } from 'react';
 import AuthComponent from '@/components/(Shop)/Auth';
 import { productsList } from '@/data/products';
-import ProductCard from '@/components/(Shop)/ProductCard';
-import { Product } from '@/types/product';
+// import ProductCard from '@/components/(Shop)/ProductCard';
+import ProductCard from '@/components/(Payment)/ProductCard';
+// import { Product } from '@/types/product';
 import { getAllProducts, getFilteredProductsByQueryAndFilters, FilterOptions } from '@/service/shop/shopData'
 import SearchBar from '@/components/(Resources)/SearchBar';
 import FilterResource from '@/components/(Resources)/FilterResource';
@@ -16,6 +17,8 @@ import TokenCountdownTimer from '@/components/(Shop)/TokenCountdownTimer';
 import Link from 'next/link';
 import { useRouter } from "next/navigation";
 import { LogOut } from '@/lib/api/authApi';
+import { ProductList, Product } from '@/lib/api/productApi';
+
 
 import Swal from "sweetalert2";
 
@@ -24,6 +27,9 @@ const OnlineStorePage = () => {
 
     useEffect(() => {
         const token = localStorage.getItem("userToken");
+        const tokenExpired = localStorage.getItem("tokenExpired");
+        console.log(token)
+        console.log(tokenExpired)
         if (!token) {
             router.push("/ko/login");
             // Swal.fire({
@@ -45,6 +51,7 @@ const OnlineStorePage = () => {
             localStorage.removeItem("userToken");
             localStorage.removeItem("tokenExpired");
             sessionStorage.clear();
+            localStorage.clear();
 
             // 로그인 페이지로 이동
             router.push("/ko/login");
@@ -56,8 +63,8 @@ const OnlineStorePage = () => {
 
     const [searchQuery, setSearchQuery] = useState<string>(""); // 검색어 상태
     const [filters, setFilters] = useState<FilterOptions>({}); // 필터 상태
-    const [products, setProducts] = useState<Product[]>(productsList);
-    const [totalProductsCount, setTotalProductsCount] = useState(productsList.length);
+    const [products, setProducts] = useState<Product[]>([]);
+    const [totalProductsCount, setTotalProductsCount] = useState(products.length);
     const [isDrawerOpen, setIsDrawerOpen] = useState<boolean>(false);
     const [isLoading, setIsLoading] = useState<boolean>(false);
 
@@ -65,6 +72,7 @@ const OnlineStorePage = () => {
     const itemsPerPage = 9; // 페이지당 항목 수
 
     const [tokenExpired, setTokenExpired] = useState<string | null>(null);
+
     useEffect(() => {
         const stored = localStorage.getItem('paymentUserInfo');
         if (stored) {
@@ -72,6 +80,25 @@ const OnlineStorePage = () => {
             setTokenExpired(userInfo.tokenExpired);
         }
     }, []);
+
+    // ✅ 상품 목록 API 호출
+    useEffect(() => {
+        const fetchProducts = async () => {
+            try {
+                setIsLoading(true);
+                const data = await ProductList();
+                setProducts(data);
+                setTotalProductsCount(data.length); // ⚠️ total count는 API에서 totalCount를 내려주면 거기 값 사용
+            } catch (error) {
+                console.error("상품 불러오기 실패:", error);
+                setProducts([]);
+                setTotalProductsCount(0);
+            } finally {
+                setIsLoading(false);
+            }
+        };
+        fetchProducts();
+    }, [currentPage]);
 
     // useEffect(() => {
     //     setIsLoading(true); // 시작 시 로딩
@@ -177,9 +204,13 @@ const OnlineStorePage = () => {
                                 <div className="col-span-full flex justify-center items-center py-20">
                                     <div className="animate-spin rounded-full h-10 w-10 border-t-4 border-blue-500" />
                                 </div>
-                            ) : productsList.length > 0 ? (
-                                productsList.map((product) => (
-                                    <ProductCard key={product.id} {...product} />
+                            // ) : productsList.length > 0 ? (
+                            //     productsList.map((product) => (
+                            //         <ProductCard key={product.id} {...product} />
+                            //     ))
+                            ) : products.length > 0 ? (
+                                products.map((product) => (
+                                    <ProductCard key={product.productId} {...product} />
                                 ))
                             ) : (
                                 <p className="text-gray-500 col-span-full text-center py-10">

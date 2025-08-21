@@ -6,17 +6,31 @@ import { NextRequest, NextResponse } from 'next/server';
 export async function proxyGetFetch(req: NextRequest, targetPath: string) {
     try {
         const url = new URL(req.url);
-        const fullUrl = `${process.env.NEXT_PUBLIC_API_URL}${targetPath}?${url.searchParams.toString()}`;
+        const qs = url.searchParams.toString();
+        const fullUrl = `${process.env.NEXT_PUBLIC_API_URL}${targetPath}${qs ? `?${qs}` : ''}`;
 
-        const res = await fetch(fullUrl, {
+        const auth = req.headers.get('authorization') || ''; // 👈 추가
+
+        const upstreamRes = await fetch(fullUrl, {
             method: 'GET',
-            headers: { 'Content-Type': 'application/json' },
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+                ...(auth ? { Authorization: auth } : {}), // 👈 추가
+            },
+            cache: 'no-store',
         });
 
-        const data = await res.json().catch(() => ({}));
+        const text = await upstreamRes.text();
+        const isJson = upstreamRes.headers.get('content-type')?.includes('application/json');
+        const data = isJson && text ? JSON.parse(text) : (text || {});
 
-        if (!res.ok) {
-            return NextResponse.json({ message: data?.message || '요청 실패' }, { status: res.status });
+        if (!upstreamRes.ok) {
+            // 업스트림 에러 메시지를 그대로 전달해 디버깅 용이
+            return NextResponse.json(
+                typeof data === 'string' ? { message: data } : data,
+                { status: upstreamRes.status }
+            );
         }
 
         return NextResponse.json(data);

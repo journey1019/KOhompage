@@ -15,7 +15,7 @@ export default function MyPageLayout({ children }: { children: React.ReactNode }
                 size="py-52"
                 url="/images/shop/shop2.png"
                 intro=""
-                title="MY PAGE"
+                title="마이페이지"
                 subtitle=""
             />
             <div className="mx-auto max-w-7xl maxWeb:max-w-screen-2xl px-6 py-8 lg:px-8">

@@ -18,7 +18,7 @@ export default function MyPageSidebar() {
         <aside className="w-64 min-h-[600px] bg-gray-50 border-r border-gray-200 py-8 px-4">
             <nav className="space-y-2">
                 {menuItems.map((item) => {
-                    const isActive = pathname.endsWith(item.path);
+                    const isActive = pathname.startsWith(item.path);
                     return (
                         <button
                             key={item.path}
