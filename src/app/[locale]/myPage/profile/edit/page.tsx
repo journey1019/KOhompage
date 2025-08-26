@@ -34,6 +34,7 @@ const ProfileEditPage = () => {
     const { locale } = useParams() as { locale: string };
 
     const stored = localStorage.getItem('paymentUserInfo');
+    console.log(stored);
     const userInfo = JSON.parse(stored);
     console.log(userInfo);
 

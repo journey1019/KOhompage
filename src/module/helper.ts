@@ -1,3 +1,8 @@
+
+/**
+ * 생년월일 변환 함수
+ * '20001010' -> '2000-10-19'
+ * */
 export const toInputBirth = (yyyymmdd?: string) =>
     yyyymmdd && yyyymmdd.length === 8
         ? `${yyyymmdd.slice(0, 4)}-${yyyymmdd.slice(4, 6)}-${yyyymmdd.slice(6, 8)}`
@@ -6,6 +11,10 @@ export const toInputBirth = (yyyymmdd?: string) =>
 export const toPayloadBirth = (yyyy_mm_dd?: string) =>
     yyyy_mm_dd ? yyyy_mm_dd.replaceAll('-', '') : '';
 
+/**
+ * 시간 변환 함수
+ *
+ * */
 export const nowKST = () => {
     const now = new Date();
     // 서버가 KST 문자열을 기대한다면 간단히 로컬 시각 기준으로 포맷팅
@@ -22,6 +31,8 @@ export const nowKST = () => {
 /**
  * 한국 전화번호 하이픈 포맷 정규화
  * 문자열로 입력받는 걸 권장함 (선행 0 보존이 중요)
+ *
+ * 01012345678 -> 010-1234-5678
  * */
 export function formatKRPhone(input: string | number): string {
     const originalType = typeof input;
@@ -88,7 +99,7 @@ export function formatKRPhone(input: string | number): string {
 
 
 /**
- * 생년월일 포맷팅 함수
+ * === 생년월일 포맷팅 함수 ===
  * '20000101' -> '2000. 01. 01.'
  * */
 export function formatBirthDate(input: string | number): string {
@@ -107,3 +118,15 @@ export function formatBirthDate(input: string | number): string {
     // 3) 최종 포맷팅
     return `${year}. ${month}. ${day}.`;
 }
+
+
+/**
+ * === Format helpers ===
+ * */
+const onlyDigits = (s?: string) => (s || '').replace(/\D+/g, '');
+export function formatPhone(raw?: string) {
+    const d = onlyDigits(raw);
+    if (d.length === 11) return `${d.slice(0,3)}-${d.slice(3,7)}-${d.slice(7)}`;
+    if (d.length === 10) return `${d.slice(0,3)}-${d.slice(3,6)}-${d.slice(6)}`;
+    return raw || '';
+};

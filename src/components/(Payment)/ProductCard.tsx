@@ -7,7 +7,16 @@ import { mockValidateApi } from '@/lib/api/mock/payment';
 import { useRouter } from 'next/navigation';
 import { ProductList, Product } from '@/lib/api/productApi';
 import { getProductImageUrl, fetchProductImageObjectUrl } from '@/lib/api/resourceApi';
-import { createOrder, CreateOrderRequest, PaymentInfo } from '@/lib/api/paidApi';
+import { createOrderDraft, CreateOrderDraftRequest, normalizeOptions, toOrderOption, OptionGroup, OrderOption, createOrder, CreateOrderRequest, PaymentInfo } from '@/lib/api/paidApi';
+import QuantitySelector from '@/components/(Payment)/QuantitySelector';
+import OptionPicker from '@/components/(Payment)/OptionPicker';
+import { useCartStore } from '@/stores/cartStore';
+import { ensureDeliveryInfoFromAPI, isValidDelivery, readDeliveryFromStorage } from '@/lib/api/delivery';
+import { useCheckoutStore } from '@/stores/checkoutStore';
+import { savePendingOrderDraft } from '@/lib/payment/pending';
+import { addWindowFocusTracking } from '@react-aria/interactions';
+import { toTaxYN, toTaxType } from '@/lib/payment/typeGuards';
+
 
 /**
  * ProductCard
@@ -26,12 +35,110 @@ import { createOrder, CreateOrderRequest, PaymentInfo } from '@/lib/api/paidApi'
  * @param {TextInputProps} [...props] - 추가 TextInput 속성
  * @returns {JSX.Element}
  */
-
+/** src/components/(Payment)/ProductCard.tsx */
 const ProductCard: React.FC<Product> = ({ productId, productNm, productCategory, productType, useYn, mainDesc, mainImagePath, mainImageFileNm, productPrice, taxAddYn, taxAddType, taxAddValue = 0, stockQuantity, finalPrice, availablePurchase, codeOption }) => {
     const useMock = true;
     const router = useRouter();
     const fallbackSrc = '/images/DefaultImage.png';
     const [imageUrl, setImageUrl] = useState<string>(fallbackSrc)
+
+    const addItem = useCartStore(s => s.addItem);
+    const [qty, setQty] = useState(1);
+    const [groups] = useState<OptionGroup[]>(normalizeOptions(codeOption));
+    const [selected, setSelected] = useState<Record<string, string[]>>({}); // groupId -> key[]
+    const setDraft = useCheckoutStore(s => s.setDraft);
+
+    const maxPurchase = Math.max(1, availablePurchase ?? (availablePurchase as any) ?? stockQuantity ?? 99);
+    const canBuy =
+        (groups.every(g => !g.required || (selected[g.id]?.length ?? 0) > 0)) &&
+        qty >= 1 && qty <= maxPurchase;
+
+    const onAddToCart = () => {
+        if (!canBuy) return alert('필수 옵션/수량을 확인해 주세요.');
+        addItem({
+            productId,
+            productNm,
+            productPrice,
+            finalPrice,
+            taxAddYn,
+            taxAddType,
+            taxAddValue: taxAddValue ?? 0,
+            imageUrl: undefined, // 필요 시 getProductImageUrl 사용해서 저장
+            quantity: qty,
+            selectedOptions: selected,
+            stockQuantity,
+            availablePurchase: availablePurchase ?? (availablePurchase as any),
+        });
+        alert('장바구니에 담았습니다.');
+    };
+
+    const onBuyNow = async () => {
+        // 옵션 수량
+        if (!canBuy) return alert("필수 옵션/수량을 확인해 주세요.");
+
+        // 로그인 확인
+        const token = localStorage.getItem("userToken");
+        const userInfoStr = localStorage.getItem("paymentUserInfo");
+        if (!token || !userInfoStr) return router.push("/ko/login");
+
+        // 배송지 확보
+        const delivery = await ensureDeliveryInfoFromAPI();
+        if (!isValidDelivery(delivery)) {
+            alert("배송지 정보를 입력해 주세요.");
+            return router.push("/ko/mypage/delivery");
+        }
+
+        const body: CreateOrderDraftRequest = {
+            productId,
+            productNm,
+            finalPrice,
+            purchaseQuantity: qty,
+            productPrice,
+            taxAddYn: toTaxYN(taxAddYn),
+            taxAddType: toTaxType(taxAddType),
+            taxAddValue,
+            orderOption: toOrderOption(groups, selected), // 이미 있는 헬퍼 활용
+            deliveryInfo: {
+                ...delivery,
+                postalCode: String(delivery.postalCode),
+                phone: delivery.phone?.replace(/-/g, ""), // 서버 스펙에 맞춰 정규화
+            },
+        };
+
+        try {
+            const draft = await createOrderDraft(body); // ✅ 1) 서버 잠금/검증
+            savePendingOrderDraft({
+                orderId: draft.orderId,
+                userId: JSON.parse(userInfoStr).userId,
+                product: {
+                    productId,
+                    productNm,
+                    productPrice,
+                    finalPrice,
+                    taxAddYn: toTaxYN(taxAddYn),
+                    taxAddType: toTaxType(taxAddType),
+                    taxAddValue
+                },
+                quantity: qty,
+                orderOptionList: body.orderOption ?? [],
+                amount: draft.paidPrice,          // 서버가 계산한 최종 결제금액
+                expiredDate: draft.expiredDate,   // 있으면 저장
+                purchaseIndex: draft.purchaseIndex
+            });
+
+            useCheckoutStore.getState().setDraft(draft); //    2) 초안 보관
+            router.push("/ko/order/checkout"); //    3) 체크아웃 이동
+        } catch (e: any) {
+            if (e?.message === "HTTP 403") {
+                alert("로그인 세션이 만료되었습니다. 로그인 페이지로 이동합니다.");
+                router.push("/ko/login");
+            } else {
+                console.error("주문 생성 오류:", e);
+                alert("주문 생성 중 오류가 발생했습니다. 잠시 후 다시 시도해 주세요.");
+            }
+        }
+    };
+
 
     // 이미지 로드 (보호 API 대응)
     useEffect(() => {
@@ -54,171 +161,6 @@ const ProductCard: React.FC<Product> = ({ productId, productNm, productCategory,
         return () => { if (revoked) URL.revokeObjectURL(revoked); };
     }, [productId, mainImageFileNm]);
 
-    // 주문 옵션/배송지 구성 헬퍼
-    const buildOrderPayload = (userInfo: any, orderId: string): CreateOrderRequest => {
-        const purchaseQuantity = 1; // 단건구매 기준 (필요하면 UI에서 선택)
-        const optionList =
-            (codeOption || []).map((code, idx) => ({
-                codeId: String(idx + 1),
-                key: 'DEFAULT',
-                value: code,
-                codeNm: code,
-            })) || [];
-
-        // 배송지 정보는 localStorage에 저장해뒀다고 가정
-        const delivery =
-            JSON.parse(localStorage.getItem('paymentDeliveryInfo') || 'null') || null;
-
-        if (!delivery?.recipient || !delivery?.addressMain || !delivery?.postalCode || !delivery?.phone) {
-            throw new Error('배송지 정보가 없습니다. 마이페이지에서 배송지 등록 후 다시 시도해 주세요.');
-        }
-
-        const payment: PaymentInfo = {
-            orderId,
-            pg: 'nicepay',
-            method: 'card',
-            amount: finalPrice,
-        };
-
-        return {
-            userId: userInfo.userId,
-            productId,
-            productNm,
-            productPrice,
-            finalPrice,
-            purchaseQuantity,
-            taxAddYn,
-            taxAddType,
-            taxAddValue,
-            orderOption: optionList,
-            deliveryInfo: {
-                recipient: delivery.recipient,
-                addressMain: delivery.addressMain,
-                addressSub: delivery.addressSub || '',
-                postalCode: Number(delivery.postalCode),
-                phone: delivery.phone,
-            },
-            payment,
-        };
-    };
-
-    const validateOrder = async (id: number, userId: string) => {
-        if (useMock) {
-            return await mockValidateApi(id);
-        } else {
-            // 실제 검증 API가 있다면 여기에 연결
-            const res = await fetch('/api/payment/order/validate', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ productId: id, userId, quantity: 1 }),
-            });
-            return await res.json();
-        }
-    };
-
-    const handlePayment = async () => {
-        // 1) 로그인 여부 확인
-        const token = localStorage.getItem("userToken");
-        const userInfoStr = localStorage.getItem("paymentUserInfo");
-
-        if (!token || !userInfoStr) {
-            alert("로그인이 필요합니다.");
-            router.push("/ko/login");
-            return;
-        }
-
-        // 사용자 정보 파싱
-        const userInfo = JSON.parse(userInfoStr);
-
-        if (useYn === 'N' || stockQuantity <= 0) {
-            alert('현재 구매할 수 없는 상품입니다.');
-            return;
-        }
-
-        // 2) order_id 생성(서버 선생성 방식 가능하나, 여기선 클라 생성)
-        const orderId = `order_${Date.now()}_${productId}`;
-
-
-        // 3) Bootpay 결제 요청
-        try {
-            const response = await Bootpay.requestPayment({
-                application_id: '68745846285ac508a5ee7a0b',
-                price: finalPrice, // ✅ Bootpay는 price를 사용
-                order_name: productNm,
-                order_id: orderId,
-                pg: 'nicepay',
-                method: 'card',
-                user: {
-                    id: userInfo.userId,
-                    username: userInfo.userNm,
-                    phone: userInfo.phone || '01000000000',
-                    email: userInfo.email || 'test@test.com',
-                },
-                items: [
-                    {
-                        id: String(productId),      // ✅ 권장 키
-                        name: productNm,
-                        qty: 1,
-                        price: finalPrice,
-                    },
-                ],
-                extra: {
-                    separately_confirmed: true, // confirm 이벤트에서 서버 검증 후 승인
-                    redirect_url: 'http://localhost:3000/ko/shop/payment-result',
-                },
-            });
-
-            // 4) 결제 이벤트 처리
-            switch (response.event) {
-                case 'confirm': {
-                    // 서버 재고/한도 검증 (현재는 mock)
-                    const ok = await validateOrder(productId, userInfo.userId);
-                    if (ok?.success) {
-                        await Bootpay.confirm();
-                    } else {
-                        await Bootpay.destroy();
-                        alert(ok?.message || '결제를 진행할 수 없습니다.');
-                    }
-                    break;
-                }
-                case 'done': {
-                    // 결제 완료 → 서버에 주문 저장
-                    try {
-                        const receiptId =
-                            (response.data && (response.data.receipt_id || response.data.receiptId)) ||
-                            (response as any).receipt_id || (response as any).receiptId || '';
-
-                        const payload = buildOrderPayload(userInfo, orderId);
-                        payload.payment.receiptId = receiptId;
-
-                        await createOrder(payload);
-
-                        router.push(`/ko/shop/payment-result?orderId=${encodeURIComponent(orderId)}&status=success`);
-                    } catch (err: any) {
-                        console.error('주문 저장 실패:', err);
-                        alert(err?.message || '주문 저장에 실패했습니다. 문의해 주세요.');
-                        router.push(`/ko/shop/payment-result?orderId=${encodeURIComponent(orderId)}&status=fail`);
-                    }
-                    break;
-                }
-                case 'cancel': {
-                    alert('결제가 취소되었습니다.');
-                    break;
-                }
-                case 'error': {
-                    alert('결제 중 오류가 발생했습니다.');
-                    break;
-                }
-                default:
-                    break;
-            }
-        } catch (e) {
-            console.error('결제 실패:', e);
-            alert('결제 요청에 실패했습니다.');
-        }
-    };
-
-
     return (
         <div className="border rounded-lg shadow hover:shadow-md transition overflow-hidden">
             <img src={imageUrl} alt={productNm} className="w-full h-72 object-cover" onError={(e) => {
@@ -235,8 +177,8 @@ const ProductCard: React.FC<Product> = ({ productId, productNm, productCategory,
                 </div>
 
                 <button
-                    onClick={handlePayment}
-                    disabled={useYn === 'N' || stockQuantity <= 0}
+                    onClick={onBuyNow}
+                    disabled={!canBuy}
                     className={`w-full py-2 rounded text-sm font-medium ${
                         useYn === 'N' || stockQuantity <= 0
                             ? 'bg-gray-300 text-gray-500 cursor-not-allowed'
@@ -245,6 +187,27 @@ const ProductCard: React.FC<Product> = ({ productId, productNm, productCategory,
                 >
                     {useYn === 'N' || stockQuantity <= 0 ? '구매불가' : '구매하기'}
                 </button>
+            </div>
+
+            <div className="p-4 space-y-3">
+                <OptionPicker groups={groups} value={selected} onChange={setSelected} />
+                <div className="flex items-center justify-between">
+                    <QuantitySelector value={qty} onChange={setQty} min={1} max={maxPurchase} />
+                    <div className="text-base font-bold">{(finalPrice * qty).toLocaleString()}원</div>
+                </div>
+
+                <div className="grid grid-cols-2 gap-2">
+                    <button onClick={onAddToCart} className="w-full py-2 rounded border text-gray-700 hover:bg-gray-50">
+                        장바구니
+                    </button>
+                    <button
+                        onClick={onBuyNow}
+                        className="w-full py-2 rounded bg-blue-600 text-white hover:bg-blue-700 disabled:bg-gray-300"
+                        disabled={!canBuy}
+                    >
+                        바로구매
+                    </button>
+                </div>
             </div>
         </div>
     );

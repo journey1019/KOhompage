@@ -41,6 +41,7 @@ export default function ProfilePage() {
 
             // (선택) 최신 사용자 정보 갱신 저장
             localStorage.setItem("paymentUserInfo", JSON.stringify(user));
+            console.log('paymentUserInfo', localStorage.getItem("paymentUserInfo"))
 
             // ✅ 성공: 회원정보 수정 페이지로 이동
             router.push(`/${locale}/myPage/profile/edit`);
