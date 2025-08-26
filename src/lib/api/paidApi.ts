@@ -1,74 +1,109 @@
-import { apiBodyFetch, apiQueryFetch, apiGetFetch } from '@/lib/client/apiFetch';
-import { JoinRequestBody } from '@/lib/api/authApi';
+// src/lib/api/paidApi.ts
+import { apiBodyFetch } from '@/lib/client/apiFetch';
 
-export interface UserInfo {
-    userId: string;
-    userNm: string;
-    useYn: string;
-    delYn: string;
-    roleId: string;
-    roleNm: string;
-    privateInfo: string;
-    birth: string;
-    email: string;
-    phone: string;
-    telNo: string;
-    addressSub: string;
-    postalCode: string;
-    addressMain: string;
-    termsAgreeYn: string;
-    termsAgreeDate: string[];
-    privateAgreeYn: string;
-    privateAgreeDate: string;
-    locationAgreeYn: string;
-    exchangeRefundYn: string;
-    exchangeRefundDate: string;
-    userExpired: string;
-    subscribeDate: string;
-    updateDate: string;
-}
-
-
-interface orderOption {
+/** 서버 사양에 맞춘 타입 별도 분리: 주문 임시생성 */
+export interface OrderOptionItem {
     codeId: string;
     key: string;
     value: string;
     codeNm: string;
 }
-interface deliveryInfo {
-    recipient: string;
-    addressMain: string;
-    addressSub: string;
-    postalCode: number;
-    phone: string;
-}
-export interface OrderProps {
-    productId: number;
+
+// /paid/order 의 Request: (postalCode, phone은 문자열 권장)
+export interface CreateOrderDraftRequest {
+    productId: string | number;
     productNm: string;
     finalPrice: number;
     purchaseQuantity: number;
     productPrice: number;
-    taxAddYn: string;
-    taxAddType: string;
+    taxAddYn: 'Y' | 'N';
+    taxAddType: 'percent' | 'fee';
     taxAddValue: number;
-    orderOption: orderOption[];
-    deliveryInfo: deliveryInfo;
+    orderOption: OrderOptionItem[];
+    deliveryInfo: {
+        recipient: string;
+        addressMain: string;
+        addressSub?: string;
+        postalCode: string; // 서버 예시가 문자열
+        phone: string;      // 하이픈 제거된 문자열
+    };
 }
 
-export interface PaymentInfo {
-    orderId: string;      // 우리가 생성한 주문번호 (Bootpay order_id와 동일)
-    pg: string;           // 'nicepay'
-    method: string;       // 'card'
-    amount: number;       // 결제금액
-    receiptId?: string;   // Bootpay 영수증 ID
+// /paid/order 의 Response
+export interface CreateOrderDraftResponse {
+    productId: number;
+    productNm: string;
+    finalPrice: number;
+    orderStatus: boolean;
+    purchaseQuantity: number;
+    productPrice: number;
+    taxAddYn: 'Y' | 'N';
+    taxAddType: 'percent' | 'fee';
+    taxAddValue: number;
+    paidPrice: number;
+    orderOption: Array<{ codeId: string; key: string; value: string }>;
+    expiredDate: string;         // "YYYY-MM-DD HH:mm:ss"
+    purchaseIndex: number;
+    orderId: string;             // ex) jmpark_1_20250808101043
+    deliveryInfo: {
+        recipient: string;
+        addressMain: string;
+        addressSub: string;
+        postalCode: string;
+        phone: string;             // 하이픈 없는 문자열
+        deliveryDesc?: string;
+        telNo?: string;
+        deliveryStatus: 'W' | 'P' | 'D';
+    };
 }
 
-export interface CreateOrderRequest extends OrderProps {
-    userId: string;
-    payment: PaymentInfo;
+// 실제 결제 확정 요청(/paid/serverPaid)
+export interface ServerPaidRequest {
+    productId: number;
+    productNm: string;
+    finalPrice: number;
+    orderStatus: boolean;
+    purchaseQuantity: number;
+    productPrice: number;
+    taxAddYn: 'Y' | 'N';
+    taxAddType: 'percent' | 'fee';
+    taxAddValue: number;
+    paidPrice: number;
+    expiredDate: string;
+    purchaseIndex: number;
+    orderId: string;
+    deliveryInfo: {
+        recipient: string;
+        addressMain: string;
+        addressSub?: string;
+        postalCode: string;
+        phone: string;
+        deliveryStatus: 'W' | 'P' | 'D';
+    };
+    receiptId: string;     // ✅ Bootpay에서 받은 영수증 ID
+    billingPrice: number;  // ✅ 실청구 금액(대개 paidPrice)
 }
 
-/** 주문 생성(결제 후 저장) */
-export async function createOrder(data: CreateOrderRequest) {
-    return apiBodyFetch('/api/payment/order', data);
+export interface ServerPaidResponse {
+    status: boolean;
+    orderMessage: string; // "done"
+}
+
+/** 1) 주문 임시생성(재고확인 + 주문/결제기본정보 발급) */
+export async function createOrderDraft(
+    data: CreateOrderDraftRequest
+): Promise<CreateOrderDraftResponse> {
+    // 프록시 응답이 { ok, data } 형태이므로 data.data 방어적으로 언래핑
+    const res = await apiBodyFetch<{ ok: boolean; data: any }>('/api/payment/order', data);
+    if (!res?.ok) throw new Error(res?.data?.message ?? '주문 생성 실패'); // 'throw new Error': 주문 생성 실패
+    return res.data as CreateOrderDraftResponse;
+}
+
+/** 2) 실제 결제 확정(서버 결제 처리) */
+export async function serverPaid(
+    data: ServerPaidRequest
+): Promise<ServerPaidResponse> {
+    const res = await apiBodyFetch<{ ok: boolean; data: any }>('/api/payment/serverPaid', data);
+    if (!res?.ok) throw new Error(res?.data?.message ?? '결제 확정 실패');
+    return res.data as ServerPaidResponse;
 }

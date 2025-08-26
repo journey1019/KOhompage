@@ -1,13 +1,18 @@
 "use client";
 
 import { useState, useEffect } from 'react';
-
+import { useRouter } from 'next/navigation';
 import { Bootpay } from '@bootpay/client-js';
 import { mockValidateApi } from '@/lib/api/mock/payment';
-import { useRouter } from 'next/navigation';
 import { ProductList, Product } from '@/lib/api/productApi';
+
 import { getProductImageUrl, fetchProductImageObjectUrl } from '@/lib/api/resourceApi';
-import { createOrder, CreateOrderRequest, PaymentInfo } from '@/lib/api/paidApi';
+import {
+    createOrderDraft,
+    serverPaid,
+    CreateOrderDraftRequest,
+    OrderOptionItem
+} from '@/lib/api/paidApi';
 
 /**
  * ProductCard
@@ -28,7 +33,6 @@ import { createOrder, CreateOrderRequest, PaymentInfo } from '@/lib/api/paidApi'
  */
 
 const ProductCard: React.FC<Product> = ({ productId, productNm, productCategory, productType, useYn, mainDesc, mainImagePath, mainImageFileNm, productPrice, taxAddYn, taxAddType, taxAddValue = 0, stockQuantity, finalPrice, availablePurchase, codeOption }) => {
-    const useMock = true;
     const router = useRouter();
     const fallbackSrc = '/images/DefaultImage.png';
     const [imageUrl, setImageUrl] = useState<string>(fallbackSrc)
@@ -36,98 +40,86 @@ const ProductCard: React.FC<Product> = ({ productId, productNm, productCategory,
     // 이미지 로드 (보호 API 대응)
     useEffect(() => {
         let revoked: string | null = null;
-        async function load() {
+        (async () => {
             try {
                 if (mainImageFileNm) {
-                    const objUrl = await fetchProductImageObjectUrl(productId, mainImageFileNm);
-                    setImageUrl(objUrl);
-                    revoked = objUrl;
-                } else {
-                    setImageUrl(fallbackSrc);
-                }
+                    const obj = await fetchProductImageObjectUrl(productId, mainImageFileNm);
+                    setImageUrl(obj); revoked = obj;
+                } else setImageUrl(fallbackSrc);
             } catch {
-                // 공개라면 경로로 재시도
                 setImageUrl(getProductImageUrl(productId, mainImageFileNm) || fallbackSrc);
             }
-        }
-        load();
+        })();
         return () => { if (revoked) URL.revokeObjectURL(revoked); };
     }, [productId, mainImageFileNm]);
 
-    // 주문 옵션/배송지 구성 헬퍼
-    const buildOrderPayload = (userInfo: any, orderId: string): CreateOrderRequest => {
-        const purchaseQuantity = 1; // 단건구매 기준 (필요하면 UI에서 선택)
-        const optionList =
-            (codeOption || []).map((code, idx) => ({
-                codeId: String(idx + 1),
-                key: 'DEFAULT',
-                value: code,
-                codeNm: code,
-            })) || [];
+    const onClickBuy = async () => {
+        // 로그인 체크
+        const token = localStorage.getItem('userToken');
+        const userInfoStr = localStorage.getItem('paymentUserInfo');
+        if (!token || !userInfoStr) return router.push('/ko/login');
+        if (useYn === 'N' || stockQuantity <= 0) return alert('현재 구매할 수 없는 상품입니다.');
 
-        // 배송지 정보는 localStorage에 저장해뒀다고 가정
-        const delivery =
-            JSON.parse(localStorage.getItem('paymentDeliveryInfo') || 'null') || null;
-
+        // 배송지 확보(현 구조: localStorage)
+        const delivery = JSON.parse(localStorage.getItem('paymentDeliveryInfo') || 'null');
         if (!delivery?.recipient || !delivery?.addressMain || !delivery?.postalCode || !delivery?.phone) {
-            throw new Error('배송지 정보가 없습니다. 마이페이지에서 배송지 등록 후 다시 시도해 주세요.');
+            alert('배송지 정보가 없습니다. 마이페이지에서 배송지 등록 후 다시 시도해 주세요.');
+            return router.push('/ko/mypage/delivery');
         }
 
-        const payment: PaymentInfo = {
-            orderId,
-            pg: 'nicepay',
-            method: 'card',
-            amount: finalPrice,
-        };
+        try {
+            // 1) 사전 주문 생성 → draft 생성
+            const payload: CreateOrderDraftRequest = {
+                productId,
+                productNm,
+                finalPrice,
+                purchaseQuantity: 1,
+                productPrice,
+                taxAddYn,
+                taxAddType,
+                taxAddValue,
+                orderOption: toOptions(),
+                deliveryInfo: {
+                    recipient: String(delivery.recipient),
+                    addressMain: String(delivery.addressMain),
+                    addressSub: String(delivery.addressSub || ''),
+                    postalCode: String(delivery.postalCode),
+                    phone: String(delivery.phone).replace(/[^0-9]/g, ''),
+                },
+            };
 
-        return {
-            userId: userInfo.userId,
-            productId,
-            productNm,
-            productPrice,
-            finalPrice,
-            purchaseQuantity,
-            taxAddYn,
-            taxAddType,
-            taxAddValue,
-            orderOption: optionList,
-            deliveryInfo: {
-                recipient: delivery.recipient,
-                addressMain: delivery.addressMain,
-                addressSub: delivery.addressSub || '',
-                postalCode: Number(delivery.postalCode),
-                phone: delivery.phone,
-            },
-            payment,
-        };
-    };
+            const draftRes = await createOrderDraft(payload);
+            if (!draftRes.orderStatus) return alert('현재 구매할 수 없는 상품입니다.');
 
-    const validateOrder = async (id: number, userId: string) => {
-        if (useMock) {
-            return await mockValidateApi(id);
-        } else {
-            // 실제 검증 API가 있다면 여기에 연결
-            const res = await fetch('/api/payment/order/validate', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ productId: id, userId, quantity: 1 }),
-            });
-            return await res.json();
+            // 2) draft를 sessionStorage에 저장 → 주문서 페이지에서 사용
+            sessionStorage.setItem(`order-draft:${draftRes.orderId}`, JSON.stringify(draftRes));
+
+            // 3) 주문서로 이동
+            router.push(`/ko/online-store/order/${encodeURIComponent(draftRes.orderId)}`);
+        } catch (e: any) {
+            console.error(e);
+            alert(e?.message || '주문 생성에 실패했습니다.');
         }
     };
+
+    const sanitizePhone = (v: string) => (v || '').replace(/[^0-9]/g, '');
+    const toOptions = (): OrderOptionItem[] =>
+        (codeOption || []).map((nm, i) => ({
+            codeId: 'productOption', // 서버 예시 기준
+            key: 'device_id',
+            value: String(nm),
+            codeNm: String(nm),
+        }));
 
     const handlePayment = async () => {
-        // 1) 로그인 여부 확인
-        const token = localStorage.getItem("userToken");
-        const userInfoStr = localStorage.getItem("paymentUserInfo");
-
+        // 0) 로그인 체크
+        const token = localStorage.getItem('userToken');
+        const userInfoStr = localStorage.getItem('paymentUserInfo');
         if (!token || !userInfoStr) {
-            alert("로그인이 필요합니다.");
-            router.push("/ko/login");
+            alert('로그인이 필요합니다.');
+            router.push('/ko/login');
             return;
         }
-
-        // 사용자 정보 파싱
         const userInfo = JSON.parse(userInfoStr);
 
         if (useYn === 'N' || stockQuantity <= 0) {
@@ -135,70 +127,109 @@ const ProductCard: React.FC<Product> = ({ productId, productNm, productCategory,
             return;
         }
 
-        // 2) order_id 생성(서버 선생성 방식 가능하나, 여기선 클라 생성)
-        const orderId = `order_${Date.now()}_${productId}`;
+        // 1) 배송지 확보 (예: localStorage, 추후 API로 교체 가능)
+        const delivery = JSON.parse(localStorage.getItem('paymentDeliveryInfo') || 'null');
+        if (!delivery?.recipient || !delivery?.addressMain || !delivery?.postalCode || !delivery?.phone) {
+            alert('배송지 정보가 없습니다. 마이페이지에서 배송지 등록 후 다시 시도해 주세요.');
+            router.push('/ko/mypage/delivery');
+            return;
+        }
 
-
-        // 3) Bootpay 결제 요청
         try {
-            const response = await Bootpay.requestPayment({
+            // 2) 서버에 주문 임시생성(재고확인 + 결제기본정보 발급)
+            const draftReq: CreateOrderDraftRequest = {
+                productId,
+                productNm,
+                finalPrice,               // 화면 표시 최종가
+                purchaseQuantity: 1,
+                productPrice,
+                taxAddYn,
+                taxAddType,
+                taxAddValue,
+                orderOption: toOptions(),
+                deliveryInfo: {
+                    recipient: String(delivery.recipient),
+                    addressMain: String(delivery.addressMain),
+                    addressSub: String(delivery.addressSub || ''),
+                    postalCode: String(delivery.postalCode),
+                    phone: sanitizePhone(String(delivery.phone)),
+                }
+            };
+
+            const draftRes = await createOrderDraft(draftReq);
+            if (!draftRes.orderStatus) {
+                alert('현재 구매할 수 없는 상품입니다.');
+                return;
+            }
+
+            // 3) Bootpay 결제 요청 (서버가 확정한 값 사용)
+            const bootRes = await Bootpay.requestPayment({
                 application_id: '68745846285ac508a5ee7a0b',
-                price: finalPrice, // ✅ Bootpay는 price를 사용
-                order_name: productNm,
-                order_id: orderId,
+                price: draftRes.paidPrice,           // ✅ 서버가 산정한 결제금액
+                order_name: draftRes.productNm,
+                order_id: draftRes.orderId,          // ✅ 서버 발급 orderId로 통일
                 pg: 'nicepay',
                 method: 'card',
                 user: {
                     id: userInfo.userId,
                     username: userInfo.userNm,
-                    phone: userInfo.phone || '01000000000',
+                    phone: sanitizePhone(userInfo.phone || '01000000000'),
                     email: userInfo.email || 'test@test.com',
                 },
                 items: [
-                    {
-                        id: String(productId),      // ✅ 권장 키
-                        name: productNm,
-                        qty: 1,
-                        price: finalPrice,
-                    },
+                    { id: String(draftRes.productId), name: draftRes.productNm, qty: draftRes.purchaseQuantity, price: draftRes.paidPrice }
                 ],
                 extra: {
                     separately_confirmed: true, // confirm 이벤트에서 서버 검증 후 승인
-                    redirect_url: 'http://localhost:3000/ko/shop/payment-result',
+                    redirect_url: 'http://localhost:3000/ko/online-store/payment-result',
                 },
             });
 
-            // 4) 결제 이벤트 처리
-            switch (response.event) {
+            // 4) Bootpay 이벤트 처리
+            switch (bootRes.event) {
                 case 'confirm': {
-                    // 서버 재고/한도 검증 (현재는 mock)
-                    const ok = await validateOrder(productId, userInfo.userId);
-                    if (ok?.success) {
-                        await Bootpay.confirm();
-                    } else {
-                        await Bootpay.destroy();
-                        alert(ok?.message || '결제를 진행할 수 없습니다.');
-                    }
+                    // 이 시점에 재고는 서버가 이미 확인했으므로 즉시 승인
+                    await Bootpay.confirm();
                     break;
                 }
                 case 'done': {
-                    // 결제 완료 → 서버에 주문 저장
-                    try {
-                        const receiptId =
-                            (response.data && (response.data.receipt_id || response.data.receiptId)) ||
-                            (response as any).receipt_id || (response as any).receiptId || '';
+                    // 5) 결제완료: receiptId 수령 → 서버 결제 확정 호출
+                    const receiptId =
+                        (bootRes.data && (bootRes.data.receipt_id || bootRes.data.receiptId)) ||
+                        (bootRes as any).receipt_id || (bootRes as any).receiptId || '';
 
-                        const payload = buildOrderPayload(userInfo, orderId);
-                        payload.payment.receiptId = receiptId;
-
-                        await createOrder(payload);
-
-                        router.push(`/ko/shop/payment-result?orderId=${encodeURIComponent(orderId)}&status=success`);
-                    } catch (err: any) {
-                        console.error('주문 저장 실패:', err);
-                        alert(err?.message || '주문 저장에 실패했습니다. 문의해 주세요.');
-                        router.push(`/ko/shop/payment-result?orderId=${encodeURIComponent(orderId)}&status=fail`);
+                    if (!receiptId) {
+                        alert('영수증 번호 수신 실패');
+                        break;
                     }
+
+                    await serverPaid({
+                        productId: draftRes.productId,
+                        productNm: draftRes.productNm,
+                        finalPrice: draftRes.finalPrice,
+                        orderStatus: draftRes.orderStatus,
+                        purchaseQuantity: draftRes.purchaseQuantity,
+                        productPrice: draftRes.productPrice,
+                        taxAddYn: draftRes.taxAddYn,
+                        taxAddType: draftRes.taxAddType,
+                        taxAddValue: draftRes.taxAddValue,
+                        paidPrice: draftRes.paidPrice,
+                        expiredDate: draftRes.expiredDate,
+                        purchaseIndex: draftRes.purchaseIndex,
+                        orderId: draftRes.orderId,
+                        deliveryInfo: {
+                            recipient: draftRes.deliveryInfo.recipient,
+                            addressMain: draftRes.deliveryInfo.addressMain,
+                            addressSub: draftRes.deliveryInfo.addressSub,
+                            postalCode: draftRes.deliveryInfo.postalCode,
+                            phone: draftRes.deliveryInfo.phone,
+                            deliveryStatus: draftRes.deliveryInfo.deliveryStatus,
+                        },
+                        receiptId,
+                        billingPrice: draftRes.paidPrice, // 서버 청구가와 일치
+                    });
+
+                    router.push(`/ko/online-store/payment-result?orderId=${encodeURIComponent(draftRes.orderId)}&status=success`);
                     break;
                 }
                 case 'cancel': {
@@ -212,30 +243,32 @@ const ProductCard: React.FC<Product> = ({ productId, productNm, productCategory,
                 default:
                     break;
             }
-        } catch (e) {
-            console.error('결제 실패:', e);
-            alert('결제 요청에 실패했습니다.');
+        } catch (e: any) {
+            console.error('결제 플로우 실패:', e);
+            alert(e?.message || '결제 처리에 실패했습니다.');
+            router.push(`/ko/online-store/payment-result?orderId=${encodeURIComponent(String(productId))}&status=fail`);
         }
     };
 
-
     return (
         <div className="border rounded-lg shadow hover:shadow-md transition overflow-hidden">
-            <img src={imageUrl} alt={productNm} className="w-full h-72 object-cover" onError={(e) => {
-                const target = e.currentTarget as HTMLImageElement;
-                if (target.src !== fallbackSrc) target.src = fallbackSrc;
-            }} />
-
+            <img
+                src={imageUrl}
+                alt={productNm}
+                className="w-full h-72 object-cover"
+                onError={(e) => { const t = e.currentTarget as HTMLImageElement; if (t.src !== fallbackSrc) t.src = fallbackSrc; }}
+            />
             <div className="p-4">
                 <h2 className="text-lg font-semibold truncate">{productNm}</h2>
-                <p className="text-sm text-gray-500 mb-1">{productType[0].toUpperCase() + productType.slice(1, productType.length)}</p>
-                <div className="flex flex-row justify-between">
+                <p className="text-sm text-gray-500 mb-1">
+                    {productType[0].toUpperCase() + productType.slice(1)}
+                </p>
+                <div className="flex justify-between">
                     <p className="text-base font-bold mb-2">{finalPrice.toLocaleString()}원</p>
-                    <span className="text-sm 2xl:text-base text-gray-500">상품 재고: {stockQuantity}</span>
+                    <span className="text-sm text-gray-500">재고: {stockQuantity}</span>
                 </div>
-
                 <button
-                    onClick={handlePayment}
+                    onClick={onClickBuy}
                     disabled={useYn === 'N' || stockQuantity <= 0}
                     className={`w-full py-2 rounded text-sm font-medium ${
                         useYn === 'N' || stockQuantity <= 0
@@ -248,6 +281,6 @@ const ProductCard: React.FC<Product> = ({ productId, productNm, productCategory,
             </div>
         </div>
     );
-}
+};
 
 export default ProductCard;
