@@ -48,23 +48,32 @@ export async function proxyGetFetch(req: NextRequest, targetPath: string) {
 export async function proxyPostBodyFetch(req: NextRequest, targetPath: string) {
     try {
         const body = await req.json();
-
-        const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}${targetPath}`, {
+        const auth = req.headers.get('authorization') || '';
+        const upstream = await fetch(`${process.env.NEXT_PUBLIC_API_URL}${targetPath}`, {
             method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
+            headers: {
+                'Content-Type': 'application/json',
+                ...(auth ? { Authorization: auth } : {}),
+            },
             body: JSON.stringify(body),
+            cache: 'no-store'
         });
 
-        const result = await res.json().catch(() => ({}));
+        const text = await upstream.text();
+        const isJson = upstream.headers.get('content-type')?.includes('application/json');
+        const data = isJson && text ? JSON.parse(text) : (text || {});
 
-        if (!res.ok) {
-            return NextResponse.json({ message: result?.message || '요청 실패' }, { status: res.status });
+        if (!upstream.ok) {
+            return NextResponse.json(
+                typeof data === 'string' ? { ok: false, message: data } : { ok: false, ...data },
+                { status: upstream.status },
+            );
         }
-
-        return NextResponse.json(result);
-    } catch (error) {
-        console.error(`[proxyFetch error] ${targetPath}`, error);
-        return NextResponse.json({ message: '서버 내부 오류' }, { status: 500 });
+        // 백엔드 응답에 따라 ok 판정 키 조정
+        const ok = !!(data?.ok ?? data?.verified ?? (data?.status === 'DONE'));
+        return NextResponse.json({ ok, data });
+    } catch (e) {
+        return NextResponse.json({ ok: false, message: 'verify route error' }, { status: 500 });
     }
 }
 
