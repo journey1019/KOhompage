@@ -7,6 +7,7 @@ import Link from 'next/link';
 import { IoIosArrowForward } from "react-icons/io";
 import { Login } from '@/lib/api/authApi';
 import { IoEye, IoEyeOff } from "react-icons/io5";
+import { saveDeliveryToStorage, ensureDeliveryInfoFromAPI } from '@/lib/api/delivery';
 
 
 export default function PaymentLoginPage() {
@@ -15,9 +16,9 @@ export default function PaymentLoginPage() {
     const [rememberMe, setRememberMe] = useState(false);
     const [loginError, setLoginError] = useState<string | null>(null);
     const [isLoading, setIsLoading] = useState(false); // 로그인시 로딩
+    const [showPassword, setShowPassword] = useState(false);
     const router = useRouter();
 
-    const [showPassword, setShowPassword] = useState(false);
 
     // 페이지 열릴 때, localStorage에서 이메일 불러오기
     useEffect(() => {
@@ -40,23 +41,24 @@ export default function PaymentLoginPage() {
         }
 
         try {
+            // 1) 로그인
             const response = await Login({ userId, userPw }); // /api/payment/login 호출
-            if (response) {
-                // 로그인 성공 시
-                localStorage.setItem('userToken', response.userToken);
-                localStorage.setItem('tokenExpired', response.tokenExpired);
 
-                localStorage.removeItem('paymentUserInfo');
-                localStorage.setItem('paymentUserInfo', JSON.stringify(response));
-                // 로그인 성공 시 이동
-                router.push('/ko/online-store');
-            } else {
-                // 실패 메시지 출력
-                setLoginError("로그인에 실패했습니다.");
-            }
+            // 2) 토큰/유저 저장
+            localStorage.setItem('userToken', response.userToken);
+            localStorage.setItem('tokenExpired', response.tokenExpired);
+
+            localStorage.setItem('paymentUserInfo', JSON.stringify(response));
+            console.log(JSON.stringify(response))
+
+            // 3) 여기서 배송지 자동 생성/저장 (Hook 금지, 일반 함수로 처리)
+            await ensureDeliveryInfoFromAPI(); // 없으면 API에서 기본 배송지 저장
+
+            // 4) 이동
+            router.push('/ko/online-store');
         } catch (err) {
-            setLoginError("로그인에 실패했습니다.");
             console.error(err);
+            setLoginError('로그인에 실패했습니다.');
         } finally {
             setIsLoading(false);
         }

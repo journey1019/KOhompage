@@ -107,3 +107,18 @@ export async function serverPaid(
     if (!res?.ok) throw new Error(res?.data?.message ?? '결제 확정 실패');
     return res.data as ServerPaidResponse;
 }
+
+// 표준화된 옵션 구조 (FE 내부에서만 사용)
+export interface OptionValue { key: string; label: string }       // key: 서버전달값, label: 표시명
+export interface OptionGroup { id: string; name: string; required: boolean; multi?: boolean; values: OptionValue[] }
+
+export function normalizeOptions(codeOption?: string[]): OptionGroup[] {
+    if (!codeOption || codeOption.length === 0) return [];
+    return [{
+        id: 'DEFAULT',
+        name: '옵션',
+        required: false,
+        multi: false,
+        values: codeOption.map((v, i) => ({ key: v, label: v })),
+    }];
+}

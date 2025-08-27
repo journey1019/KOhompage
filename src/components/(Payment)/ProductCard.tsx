@@ -64,7 +64,7 @@ const ProductCard: React.FC<Product> = ({ productId, productNm, productCategory,
         const delivery = JSON.parse(localStorage.getItem('paymentDeliveryInfo') || 'null');
         if (!delivery?.recipient || !delivery?.addressMain || !delivery?.postalCode || !delivery?.phone) {
             alert('배송지 정보가 없습니다. 마이페이지에서 배송지 등록 후 다시 시도해 주세요.');
-            return router.push('/ko/mypage/delivery');
+            return router.push('/ko/myPage/delivery');
         }
 
         try {
@@ -131,7 +131,7 @@ const ProductCard: React.FC<Product> = ({ productId, productNm, productCategory,
         const delivery = JSON.parse(localStorage.getItem('paymentDeliveryInfo') || 'null');
         if (!delivery?.recipient || !delivery?.addressMain || !delivery?.postalCode || !delivery?.phone) {
             alert('배송지 정보가 없습니다. 마이페이지에서 배송지 등록 후 다시 시도해 주세요.');
-            router.push('/ko/mypage/delivery');
+            // router.push('/ko/myPage/delivery');
             return;
         }
 
