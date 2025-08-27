@@ -6,6 +6,8 @@ import { Bootpay } from '@bootpay/client-js';
 import { mockValidateApi } from '@/lib/api/mock/payment';
 import { ProductList, Product } from '@/lib/api/productApi';
 
+import { ensureDeliveryInfoFromAPI, isValidDelivery } from '@/lib/api/delivery';
+import { useCheckoutStore } from '@/stores/checkoutStore';
 import { getProductImageUrl, fetchProductImageObjectUrl } from '@/lib/api/resourceApi';
 import {
     createOrderDraft,
@@ -40,16 +42,21 @@ const ProductCard: React.FC<Product> = ({ productId, productNm, productCategory,
     // 이미지 로드 (보호 API 대응)
     useEffect(() => {
         let revoked: string | null = null;
-        (async () => {
+        async function load() {
             try {
                 if (mainImageFileNm) {
-                    const obj = await fetchProductImageObjectUrl(productId, mainImageFileNm);
-                    setImageUrl(obj); revoked = obj;
-                } else setImageUrl(fallbackSrc);
+                    const objUrl = await fetchProductImageObjectUrl(productId, mainImageFileNm);
+                    setImageUrl(objUrl);
+                    revoked = objUrl;
+                } else {
+                    setImageUrl(fallbackSrc);
+                }
             } catch {
+                // 공개라면 경로로 재시도
                 setImageUrl(getProductImageUrl(productId, mainImageFileNm) || fallbackSrc);
             }
-        })();
+        }
+        load();
         return () => { if (revoked) URL.revokeObjectURL(revoked); };
     }, [productId, mainImageFileNm]);
 
@@ -78,7 +85,7 @@ const ProductCard: React.FC<Product> = ({ productId, productNm, productCategory,
                 taxAddYn,
                 taxAddType,
                 taxAddValue,
-                orderOption: toOptions(),
+                orderOption: toOrderOption(normalizeOptions(codeOption), { /* 선택 옵션 있으면 전달 */ }),
                 deliveryInfo: {
                     recipient: String(delivery.recipient),
                     addressMain: String(delivery.addressMain),

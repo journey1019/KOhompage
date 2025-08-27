@@ -93,10 +93,13 @@ export interface ServerPaidResponse {
 export async function createOrderDraft(
     data: CreateOrderDraftRequest
 ): Promise<CreateOrderDraftResponse> {
-    // 프록시 응답이 { ok, data } 형태이므로 data.data 방어적으로 언래핑
-    const res = await apiBodyFetch<{ ok: boolean; data: any }>('/api/payment/order', data);
-    if (!res?.ok) throw new Error(res?.data?.message ?? '주문 생성 실패'); // 'throw new Error': 주문 생성 실패
-    return res.data as CreateOrderDraftResponse;
+    // 프록시가 { ok, data } 또는 그냥 원본(JSON)을 반환해도 동작하도록 처리
+    const res = await apiBodyFetch<any>('/api/payment/order', data);
+    const payload = res?.data ?? res;                  // 둘 다 대응
+    if (!payload?.orderId) {
+        throw new Error(payload?.message ?? '주문 생성 실패');
+    }
+    return payload as CreateOrderDraftResponse;
 }
 
 /** 2) 실제 결제 확정(서버 결제 처리) */
