@@ -5,7 +5,7 @@ import { useEffect, useMemo, useState } from 'react';
 import { useParams, useRouter, useSearchParams } from 'next/navigation';
 import { Bootpay } from '@bootpay/client-js';
 import { formatCurrency } from '@/lib/utils/payment';
-import { serverPaid, CreateOrderDraftResponse } from '@/lib/api/paidApi';
+import { serverPaid, CreateOrderDraftResponse, clearPendingOrderDraft } from '@/lib/api/paidApi';
 
 export default function OrderSummaryPage() {
     const router = useRouter();
@@ -61,31 +61,49 @@ export default function OrderSummaryPage() {
         if (!draft || submitting) return;
         setSubmitting(true);
         try {
-            // Bootpay 결제
+            // Redirect URL은 항상 지정 (PC라도 카카오 등 간편결제 선택 시 redirect가 될 수 있음)
+            const baseUrl =
+                (typeof window !== 'undefined' ? window.location.origin : '') ||
+                process.env.NEXT_PUBLIC_SITE_URL ||
+                'http://localhost:3000'; // 개발 기본값
+
             const bootRes = await Bootpay.requestPayment({
                 application_id: '68745846285ac508a5ee7a0b',
                 price: draft.paidPrice,
                 order_name: draft.productNm,
-                order_id: draft.orderId,         // 서버 발급 orderId
+                order_id: draft.orderId,
                 pg: 'nicepay',
-                method: 'card',
-                user: {},                        // (선택) 사용자 정보 추가 가능
-                items: [{ id: String(draft.productId), name: draft.productNm, qty: draft.purchaseQuantity, price: draft.paidPrice }],
+                method: 'card', // 사용 중 카드라도, 결제창에서 카카오로 전환되면 redirect가 발생할 수 있음
+                user: {},
+                items: [
+                    {
+                        id: String(draft.productId),
+                        name: draft.productNm,
+                        qty: draft.purchaseQuantity,
+                        price: draft.paidPrice
+                    }
+                ],
                 extra: {
+                    // ✅ 자동 승인 모드
                     separately_confirmed: false,
-                    redirect_url: `${location.origin}/ko/online-store/payment-result`,
-                },
+                    // ✅ 항상 redirect_url 지정 (카카오/간편결제 등 redirect 강제 시 필수)
+                    redirect_url: `${baseUrl}/ko/online-store/payment-result`
+                }
             });
 
             switch (bootRes.event) {
                 case 'confirm': {
-                    await Bootpay.confirm();
+                    // 자동 승인 모드에선 보통 필요 없음
+                    // await Bootpay.confirm();
                     break;
                 }
                 case 'done': {
+                    // 데스크톱 환경에서도 done 이벤트가 올 수 있음 (리다이렉트 없이 팝업 내 완료)
                     const receiptId =
                         (bootRes.data && (bootRes.data.receipt_id || bootRes.data.receiptId)) ||
-                        (bootRes as any).receipt_id || (bootRes as any).receiptId || '';
+                        (bootRes as any).receipt_id ||
+                        (bootRes as any).receiptId ||
+                        '';
 
                     if (!receiptId) {
                         alert('영수증 번호 수신 실패');
@@ -113,28 +131,57 @@ export default function OrderSummaryPage() {
                             addressSub: draft.deliveryInfo.addressSub,
                             postalCode: draft.deliveryInfo.postalCode,
                             phone: draft.deliveryInfo.phone,
-                            deliveryStatus: draft.deliveryInfo.deliveryStatus,
+                            deliveryStatus: draft.deliveryInfo.deliveryStatus
                         },
                         receiptId,
-                        billingPrice: draft.paidPrice,
+                        billingPrice: draft.paidPrice
                     });
 
-                    // 결제결과 페이지 이동
-                    sessionStorage.setItem('last-paid', JSON.stringify({
-                        orderId: draft.orderId,
-                        receiptId,
-                        paidPrice: draft.paidPrice,
-                        productNm: draft.productNm,
-                    }));
-                    router.push(`/ko/online-store/payment-result?orderId=${encodeURIComponent(draft.orderId)}&status=success`);
+                    // serverPaid 성공 직후 - 임시 데이터 정리
+                    clearPendingOrderDraft();
+                    sessionStorage.removeItem(`order-draft:${draft.orderId}`);
+
+                    // 결과 표시용 저장
+                    sessionStorage.setItem(
+                        'last-paid',
+                        JSON.stringify({
+                            orderId: draft.orderId,
+                            receiptId,
+                            paidPrice: draft.paidPrice,
+                            productNm: draft.productNm
+                        })
+                    );
+
+                    // router.push(
+                    //     `/ko/online-store/payment-result?orderId=${encodeURIComponent(draft.orderId)}&status=success`
+                    // );
+                    // router.push(
+                    //     `/ko/online-store/payment-result` +
+                    //     `?event=done` +
+                    //     `&order_id=${encodeURIComponent(draft.orderId)}` +
+                    //     `&receipt_id=${encodeURIComponent(receiptId)}` +
+                    //     `&status=success`,
+                    // );
+                    router.push(
+                        `/ko/online-store/payment-result?event=done&order_id=${encodeURIComponent(draft.orderId)}&receipt_id=${encodeURIComponent(receiptId)}&status=success`
+                    );
+
                     break;
                 }
                 case 'cancel': {
                     alert('결제가 취소되었습니다.');
+                    router.push(
+                        `/ko/online-store/payment-result?orderId=${encodeURIComponent(draft.orderId)}&status=fail`
+                    );
                     break;
                 }
                 case 'error': {
-                    alert('결제 중 오류가 발생했습니다.');
+                    // 여기서 RC_REDIRECT_URL_INVALID 등 에러를 바로 확인 가능
+                    console.error('Bootpay error:', bootRes);
+                    alert(bootRes?.message || '결제 중 오류가 발생했습니다.');
+                    router.push(
+                        `/ko/online-store/payment-result?orderId=${encodeURIComponent(draft.orderId)}&status=fail`
+                    );
                     break;
                 }
                 default:

@@ -1,11 +1,11 @@
 /** src/app/[locale]/online-store/payment-result/page.tsx */
 'use client';
 
-import { useEffect, useMemo, useState, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { useSearchParams, useRouter } from 'next/navigation';
 import { formatCurrency } from '@/lib/utils/payment';
+import { serverPaid, readPendingOrderDraft, PendingOrderDraft, CreateOrderDraftResponse } from '@/lib/api/paidApi';
 import { useCheckoutStore } from '@/stores/checkoutStore';
-import { serverPaid, CreateOrderDraftResponse, readPendingOrderDraft, PendingOrderDraft } from '@/lib/api/paidApi';
 
 type PaidSummary = {
     orderId: string;
@@ -18,11 +18,9 @@ export default function PaymentResultPage() {
     const router = useRouter();
     const sp = useSearchParams();
 
-    // 화면 표시/로직용 상태
-    const [phase, setPhase] = useState<'pending' | 'success' | 'error'>();
+    const [phase, setPhase] = useState<'pending' | 'success' | 'error' | 'unknown'>('unknown');
     const [msg, setMsg] = useState<string>();
     const [displayOrderId, setDisplayOrderId] = useState('');
-    const [pendingSnapshot, setPendingSnapshot] = useState<PendingOrderDraft | null>(null);
     const [paid, setPaid] = useState<PaidSummary | null>(null);
     const called = useRef(false);
 
@@ -37,92 +35,129 @@ export default function PaymentResultPage() {
         }
     }, [router]);
 
-    // 1) 표시용 주문번호 & pending 스냅샷 확정
+    // 1) 결과 판단 로직
     useEffect(() => {
-        const qOrderId = sp.get('order_id') || sp.get('orderId') || '';
-        const pending = readPendingOrderDraft();
-        const draft = useCheckoutStore.getState().draft;
+        const event = sp.get('event'); // done | confirm | cancel | error | null
+        const urlOrderId = sp.get('order_id') || sp.get('orderId') || '';
+        const urlReceiptId = sp.get('receipt_id') || sp.get('receiptId') || '';
+        const status = sp.get('status'); // success | fail | 2(승인대기) ...
 
-        setDisplayOrderId(qOrderId || pending?.orderId || draft?.orderId || '');
-        setPendingSnapshot(pending || null);
-    }, [sp]);
+        setDisplayOrderId(urlOrderId);
 
-    // 2) 결제 결과 처리 (done일 때만 serverPaid)
-    useEffect(() => {
-        const event = sp.get('event'); // confirm | done | cancel | error
-        const qOrderId = sp.get('order_id') || sp.get('orderId') || '';
-        const receiptId = sp.get('receipt_id') || sp.get('receiptId') || '';
-
-        // done 아니면 확정 저장 금지
-        if (event !== 'done') {
-            setPhase('pending');
-            setMsg('승인 대기 중입니다. 결제가 확정되면 자동으로 완료됩니다.');
-            return;
-        }
-        if (!receiptId) {
-            setPhase('error');
-            setMsg('영수증 번호가 없습니다. 다시 시도해 주세요.');
-            return;
-        }
-
-        const pending = readPendingOrderDraft();
-        if (!pending || !pending.orderId || (qOrderId && qOrderId !== pending.orderId)) {
-            setPhase('error');
-            setMsg('주문 정보가 일치하지 않아 저장할 수 없습니다.');
-            return;
-        }
-
-        if (called.current) return;
-        called.current = true;
-
-        (async () => {
+        // A. JS 팝업 경로에서 미리 저장해둔 last-paid가 있으면 그대로 표시 (이미 serverPaid 수행됨)
+        const lastRaw = sessionStorage.getItem('last-paid');
+        if (lastRaw) {
             try {
-                await serverPaid({
-                    productId: pending.product.productId,
-                    productNm: pending.product.productNm,
-                    finalPrice: pending.product.finalPrice,
-                    orderStatus: true,
-                    purchaseQuantity: pending.quantity,
-                    productPrice: pending.product.productPrice,
-                    taxAddYn: pending.product.taxAddYn,
-                    taxAddType: pending.product.taxAddType || 'percent',
-                    taxAddValue: pending.product.taxAddValue ?? 0,
-                    paidPrice: pending.amount,
-                    expiredDate: useCheckoutStore.getState().draft?.expiredDate || '',
-                    purchaseIndex: useCheckoutStore.getState().draft?.purchaseIndex || 0,
-                    orderId: pending.orderId,
-                    deliveryInfo: JSON.parse(localStorage.getItem('paymentDeliveryInfo') || 'null'),
-                    receiptId,
-                    billingPrice: pending.amount
-                });
-
-                setPaid({
-                    orderId: pending.orderId,
-                    receiptId,
-                    paidPrice: pending.amount,
-                    productNm: pending.product.productNm
-                });
-
+                const last: PaidSummary = JSON.parse(lastRaw);
+                setPaid(last);
+                setDisplayOrderId(last.orderId || urlOrderId);
                 setPhase('success');
                 setMsg('결제가 완료되었습니다!');
-                // 필요하면 여기서 clearPendingOrderDraft(); 등 정리
-            } catch (e) {
-                setPhase('error');
-                setMsg('결제 확정(서버) 처리에 실패했습니다.');
+                return;
+            } catch {
+                // 무시하고 아래 로직 진행
             }
-        })();
+        }
+
+        // B. 사용자가 직접 취소하거나 에러 케이스
+        if (status === 'fail' || event === 'cancel' || event === 'error') {
+            setPhase('error');
+            setMsg('결제에 실패했거나 취소되었습니다.');
+            return;
+        }
+
+        // C. 리다이렉트(done) 경로: URL에 receipt_id가 반드시 있어야 serverPaid 호출 가능
+        if (event === 'done') {
+            if (!urlReceiptId || String(urlReceiptId).trim().length === 0) {
+                setPhase('pending');
+                setMsg('결제는 완료되었지만 영수증 확인이 지연되고 있습니다. 잠시 후 새로고침하거나 주문내역에서 확인해 주세요.');
+                return;
+            }
+            if (called.current) return;
+            called.current = true;
+
+            (async () => {
+                try {
+                    const draftRaw = urlOrderId ? sessionStorage.getItem(`order-draft:${urlOrderId}`) : null;
+                    const draft: CreateOrderDraftResponse | null = draftRaw ? JSON.parse(draftRaw) : null;
+
+                    if (!draft) {
+                        setPhase('error');
+                        setMsg('주문 정보(draft)를 찾지 못해 결제 확정 저장에 실패했습니다.');
+                        return;
+                    }
+
+                    // ✅ 빈 receiptId 금지
+                    const rid = String(urlReceiptId).trim();
+                    if (!rid) {
+                        setPhase('error');
+                        setMsg('영수증 번호가 유효하지 않습니다.');
+                        return;
+                    }
+
+                    await serverPaid({
+                        productId: draft.productId,
+                        productNm: draft.productNm,
+                        finalPrice: draft.finalPrice,
+                        orderStatus: draft.orderStatus,
+                        purchaseQuantity: draft.purchaseQuantity,
+                        productPrice: draft.productPrice,
+                        taxAddYn: draft.taxAddYn,
+                        taxAddType: draft.taxAddType,
+                        taxAddValue: draft.taxAddValue,
+                        paidPrice: draft.paidPrice,
+                        expiredDate: draft.expiredDate,
+                        purchaseIndex: draft.purchaseIndex,
+                        orderId: draft.orderId,
+                        deliveryInfo: {
+                            recipient: draft.deliveryInfo.recipient,
+                            addressMain: draft.deliveryInfo.addressMain,
+                            addressSub: draft.deliveryInfo.addressSub,
+                            postalCode: draft.deliveryInfo.postalCode,
+                            phone: draft.deliveryInfo.phone,
+                            deliveryStatus: draft.deliveryInfo.deliveryStatus,
+                        },
+                        receiptId: rid,               // 👈 camelCase만
+                        billingPrice: draft.paidPrice,
+                    });
+
+                    // ...
+                } catch (e) {
+                    setPhase('error');
+                    setMsg('결제 확정(서버) 처리에 실패했습니다.');
+                }
+            })();
+            return;
+        }
+
+        // D. 승인 대기
+        if (event === 'confirm' || status === '2') {
+            setPhase('pending');
+            setMsg('승인 대기 중입니다. 잠시 후 결제가 확정됩니다.');
+            return;
+        }
+
+        // E. 상태 불명확
+        setPhase('unknown');
+        setMsg('결제 결과를 확인할 수 없습니다. 주문내역에서 상태를 확인해 주세요.');
     }, [sp]);
 
     const isSuccess = phase === 'success';
-
-    // 화면 표시용 파생값 (paid가 없을 때는 pendingSnapshot으로 대체)
-    const productNm = paid?.productNm ?? pendingSnapshot?.product.productNm ?? '';
-    const paidPrice = paid?.paidPrice ?? pendingSnapshot?.amount;
+    const amount = typeof paid?.paidPrice === 'number' ? paid.paidPrice : undefined;
+    const productNm = paid?.productNm || '';
 
     return (
         <div className="max-w-3xl mx-auto p-6">
-            <h1 className={`text-xl font-semibold mb-4 ${isSuccess ? 'text-green-600' : 'text-red-600'}`}>
-                {isSuccess ? '결제가 완료되었습니다.' : phase === 'pending' ? '승인 대기 중' : '결제에 실패했습니다.'}
+            <h1 className={`text-xl font-semibold mb-4 ${
+                isSuccess ? 'text-green-600'
+                    : phase === 'pending' ? 'text-yellow-600'
+                        : phase === 'error' ? 'text-red-600'
+                            : 'text-gray-700'
+            }`}>
+                {isSuccess ? '결제가 완료되었습니다.'
+                    : phase === 'pending' ? '승인 대기 중'
+                        : phase === 'error' ? '결제에 실패했습니다.'
+                            : '결제 상태 확인'}
             </h1>
 
             {msg && <p className="mb-4 text-sm text-gray-600">{msg}</p>}
@@ -147,18 +182,23 @@ export default function PaymentResultPage() {
                     </div>
                 )}
 
-                {typeof paidPrice === 'number' && (
+                {typeof amount === 'number' && (
                     <div className="flex justify-between p-4">
                         <span className="text-gray-600">결제금액</span>
-                        <span className="font-medium">{formatCurrency(paidPrice)}</span>
+                        <span className="font-medium">{formatCurrency(amount)}</span>
                     </div>
                 )}
 
                 <div className="flex justify-between p-4">
                     <span className="text-gray-600">상태</span>
-                    <span className={`font-medium ${isSuccess ? 'text-green-600' : phase === 'pending' ? 'text-yellow-600' : 'text-red-600'}`}>
-                        {isSuccess ? '성공' : phase === 'pending' ? '승인 대기' : '실패'}
-                    </span>
+                    <span className={`font-medium ${
+                        isSuccess ? 'text-green-600'
+                            : phase === 'pending' ? 'text-yellow-600'
+                                : phase === 'error' ? 'text-red-600'
+                                    : 'text-gray-700'
+                    }`}>
+            {isSuccess ? '성공' : phase === 'pending' ? '승인 대기' : phase === 'error' ? '실패' : '확인 필요'}
+          </span>
                 </div>
             </div>
 
@@ -167,7 +207,10 @@ export default function PaymentResultPage() {
                     계속 쇼핑
                 </button>
                 {isSuccess && (
-                    <button onClick={() => router.push('/ko/mypage/orders')} className="px-4 py-2 rounded bg-blue-600 text-white hover:bg-blue-700">
+                    <button
+                        onClick={() => router.push('/ko/myPage/orders')}
+                        className="px-4 py-2 rounded bg-blue-600 text-white hover:bg-blue-700"
+                    >
                         주문 내역 보기
                     </button>
                 )}
