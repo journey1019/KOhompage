@@ -69,7 +69,7 @@ const ProductCard: React.FC<Product> = ({ id, name, category, price, paymentType
                     },
                 ],
                 extra: {
-                    separately_confirmed: true,
+                    separately_confirmed: false,
                     redirect_url: 'http://localhost:3000/ko/shop/payment-result',
                 },
             });

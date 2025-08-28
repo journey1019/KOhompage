@@ -34,7 +34,7 @@ export default function OrderConfirmPage() {
                     price: draft.finalPrice,
                 }],
                 extra: {
-                    separately_confirmed: true,
+                    separately_confirmed: false,
                     redirect_url: 'http://localhost:3000/ko/shop/payment-result',
                 },
             });

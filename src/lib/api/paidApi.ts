@@ -1,4 +1,4 @@
-// src/lib/api/paidApi.ts
+/** src/lib/api/paidApi.ts */
 import { apiBodyFetch } from '@/lib/client/apiFetch';
 
 /** 서버 사양에 맞춘 타입 별도 분리: 주문 임시생성 */
@@ -44,7 +44,7 @@ export interface CreateOrderDraftResponse {
     orderOption: Array<{ codeId: string; key: string; value: string }>;
     expiredDate: string;         // "YYYY-MM-DD HH:mm:ss"
     purchaseIndex: number;
-    orderId: string;             // ex) jmpark_1_20250808101043
+    orderId: string;             // ex) jhlee_1_20250808101043
     deliveryInfo: {
         recipient: string;
         addressMain: string;
@@ -80,8 +80,9 @@ export interface ServerPaidRequest {
         phone: string;
         deliveryStatus: 'W' | 'P' | 'D';
     };
-    receiptId: string;     // ✅ Bootpay에서 받은 영수증 ID
-    billingPrice: number;  // ✅ 실청구 금액(대개 paidPrice)
+    receipt_id?: string;
+    receiptId: string;     // Bootpay에서 받은 영수증 ID
+    billingPrice: number;  // 실청구 금액(대개 paidPrice)
 }
 
 export interface ServerPaidResponse {
@@ -102,13 +103,22 @@ export async function createOrderDraft(
     return payload as CreateOrderDraftResponse;
 }
 
+
 /** 2) 실제 결제 확정(서버 결제 처리) */
-export async function serverPaid(
-    data: ServerPaidRequest
-): Promise<ServerPaidResponse> {
-    const res = await apiBodyFetch<{ ok: boolean; data: any }>('/api/payment/serverPaid', data);
-    if (!res?.ok) throw new Error(res?.data?.message ?? '결제 확정 실패');
-    return res.data as ServerPaidResponse;
+export async function serverPaid(data: ServerPaidRequest): Promise<ServerPaidResponse> {
+    const payload = {
+        ...data,
+        // 안전하게 동기화
+        receipt_id: data.receipt_id ?? data.receiptId,
+        receiptId : data.receiptId  ?? data.receipt_id,
+    };
+    const res = await apiBodyFetch<any>('/api/payment/serverPaid', payload);
+
+    // 업스트림 형식이 {status, orderMessage} 라는 전제
+    if (res?.status === false) {
+        throw new Error(res?.orderMessage ?? '결제 확정 실패');
+    }
+    return res as ServerPaidResponse;
 }
 
 // 표준화된 옵션 구조 (FE 내부에서만 사용)
@@ -124,4 +134,59 @@ export function normalizeOptions(codeOption?: string[]): OptionGroup[] {
         multi: false,
         values: codeOption.map((v, i) => ({ key: v, label: v })),
     }];
+}
+
+// paidApi.ts의 orderOption 규격에 맞춤
+export function toOrderOption(groups: OptionGroup[], selected: Record<string, string[]>): OrderOptionItem[] {
+    // selected[groupId] = ['key1', 'key2', ...]
+    const list: OrderOptionItem[] = [];
+    groups.forEach((g, idx) => {
+        const keys = selected[g.id] || [];
+        keys.forEach((k) => {
+            const v = g.values.find(v => v.key === k);
+            list.push({
+                codeId: String(idx + 1),
+                key: g.id,             // 그룹 ID
+                value: k,              // 선택된 값 key
+                codeNm: v?.label ?? k, // 표시명
+            });
+        });
+    });
+    return list;
+}
+
+//
+export interface PendingOrderDraft {
+    orderId: string;
+    userId: string;
+    product: {
+        productId: number;
+        productNm: string;
+        productPrice: number;
+        finalPrice: number;
+        taxAddYn: 'Y' | 'N';
+        taxAddType?: 'percent' | 'fee';
+        taxAddValue?: number;
+    };
+    quantity: number;
+    orderOptionList: Array<{ codeId: string; key: string; value: string; codeNm: string }>;
+    amount: number; // finalPrice * quantity
+    expiredDate?: string;
+    purchaseIndex?: number;
+}
+
+const KEY = 'pendingOrderDraft';
+
+export function savePendingOrderDraft(d: PendingOrderDraft) {
+    localStorage.setItem(KEY, JSON.stringify(d));
+}
+
+export function readPendingOrderDraft(): PendingOrderDraft | null {
+    try {
+        return JSON.parse(localStorage.getItem(KEY) || 'null');
+    } catch { return null; }
+}
+
+export function clearPendingOrderDraft() {
+    localStorage.removeItem(KEY);
 }

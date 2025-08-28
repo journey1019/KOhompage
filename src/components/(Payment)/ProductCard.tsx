@@ -13,7 +13,10 @@ import {
     createOrderDraft,
     serverPaid,
     CreateOrderDraftRequest,
-    OrderOptionItem
+    OrderOptionItem,
+    toOrderOption,
+    normalizeOptions,
+    savePendingOrderDraft
 } from '@/lib/api/paidApi';
 
 /**
@@ -34,10 +37,13 @@ import {
  * @returns {JSX.Element}
  */
 
+/** src/components/(Payment)/ProductCard.tsx */
 const ProductCard: React.FC<Product> = ({ productId, productNm, productCategory, productType, useYn, mainDesc, mainImagePath, mainImageFileNm, productPrice, taxAddYn, taxAddType, taxAddValue = 0, stockQuantity, finalPrice, availablePurchase, codeOption }) => {
     const router = useRouter();
     const fallbackSrc = '/images/DefaultImage.png';
     const [imageUrl, setImageUrl] = useState<string>(fallbackSrc)
+
+    const userInfo = JSON.parse(localStorage.getItem('paymentUserInfo')!);
 
     // 이미지 로드 (보호 API 대응)
     useEffect(() => {
@@ -98,6 +104,29 @@ const ProductCard: React.FC<Product> = ({ productId, productNm, productCategory,
             const draftRes = await createOrderDraft(payload);
             if (!draftRes.orderStatus) return alert('현재 구매할 수 없는 상품입니다.');
 
+            const userInfo = JSON.parse(userInfoStr);
+            savePendingOrderDraft({
+                orderId: draftRes.orderId,
+                userId: userInfo.userId,
+                product: {
+                    productId,
+                    productNm,
+                    productPrice,
+                    finalPrice,
+                    taxAddYn,
+                    taxAddType,
+                    taxAddValue,
+                },
+                quantity: 1,
+                orderOptionList: payload.orderOption,
+                amount: draftRes.paidPrice,
+                expiredDate: draftRes.expiredDate,
+                purchaseIndex: draftRes.purchaseIndex,
+            });
+
+            // 주문서에서 재사용할 초안도 저장
+            useCheckoutStore.getState().setDraft(draftRes);
+
             // 2) draft를 sessionStorage에 저장 → 주문서 페이지에서 사용
             sessionStorage.setItem(`order-draft:${draftRes.orderId}`, JSON.stringify(draftRes));
 
@@ -106,154 +135,6 @@ const ProductCard: React.FC<Product> = ({ productId, productNm, productCategory,
         } catch (e: any) {
             console.error(e);
             alert(e?.message || '주문 생성에 실패했습니다.');
-        }
-    };
-
-    const sanitizePhone = (v: string) => (v || '').replace(/[^0-9]/g, '');
-    const toOptions = (): OrderOptionItem[] =>
-        (codeOption || []).map((nm, i) => ({
-            codeId: 'productOption', // 서버 예시 기준
-            key: 'device_id',
-            value: String(nm),
-            codeNm: String(nm),
-        }));
-
-    const handlePayment = async () => {
-        // 0) 로그인 체크
-        const token = localStorage.getItem('userToken');
-        const userInfoStr = localStorage.getItem('paymentUserInfo');
-        if (!token || !userInfoStr) {
-            alert('로그인이 필요합니다.');
-            router.push('/ko/login');
-            return;
-        }
-        const userInfo = JSON.parse(userInfoStr);
-
-        if (useYn === 'N' || stockQuantity <= 0) {
-            alert('현재 구매할 수 없는 상품입니다.');
-            return;
-        }
-
-        // 1) 배송지 확보 (예: localStorage, 추후 API로 교체 가능)
-        const delivery = JSON.parse(localStorage.getItem('paymentDeliveryInfo') || 'null');
-        if (!delivery?.recipient || !delivery?.addressMain || !delivery?.postalCode || !delivery?.phone) {
-            alert('배송지 정보가 없습니다. 마이페이지에서 배송지 등록 후 다시 시도해 주세요.');
-            // router.push('/ko/myPage/delivery');
-            return;
-        }
-
-        try {
-            // 2) 서버에 주문 임시생성(재고확인 + 결제기본정보 발급)
-            const draftReq: CreateOrderDraftRequest = {
-                productId,
-                productNm,
-                finalPrice,               // 화면 표시 최종가
-                purchaseQuantity: 1,
-                productPrice,
-                taxAddYn,
-                taxAddType,
-                taxAddValue,
-                orderOption: toOptions(),
-                deliveryInfo: {
-                    recipient: String(delivery.recipient),
-                    addressMain: String(delivery.addressMain),
-                    addressSub: String(delivery.addressSub || ''),
-                    postalCode: String(delivery.postalCode),
-                    phone: sanitizePhone(String(delivery.phone)),
-                }
-            };
-
-            const draftRes = await createOrderDraft(draftReq);
-            if (!draftRes.orderStatus) {
-                alert('현재 구매할 수 없는 상품입니다.');
-                return;
-            }
-
-            // 3) Bootpay 결제 요청 (서버가 확정한 값 사용)
-            const bootRes = await Bootpay.requestPayment({
-                application_id: '68745846285ac508a5ee7a0b',
-                price: draftRes.paidPrice,           // ✅ 서버가 산정한 결제금액
-                order_name: draftRes.productNm,
-                order_id: draftRes.orderId,          // ✅ 서버 발급 orderId로 통일
-                pg: 'nicepay',
-                method: 'card',
-                user: {
-                    id: userInfo.userId,
-                    username: userInfo.userNm,
-                    phone: sanitizePhone(userInfo.phone || '01000000000'),
-                    email: userInfo.email || 'test@test.com',
-                },
-                items: [
-                    { id: String(draftRes.productId), name: draftRes.productNm, qty: draftRes.purchaseQuantity, price: draftRes.paidPrice }
-                ],
-                extra: {
-                    separately_confirmed: true, // confirm 이벤트에서 서버 검증 후 승인
-                    redirect_url: 'http://localhost:3000/ko/online-store/payment-result',
-                },
-            });
-
-            // 4) Bootpay 이벤트 처리
-            switch (bootRes.event) {
-                case 'confirm': {
-                    // 이 시점에 재고는 서버가 이미 확인했으므로 즉시 승인
-                    await Bootpay.confirm();
-                    break;
-                }
-                case 'done': {
-                    // 5) 결제완료: receiptId 수령 → 서버 결제 확정 호출
-                    const receiptId =
-                        (bootRes.data && (bootRes.data.receipt_id || bootRes.data.receiptId)) ||
-                        (bootRes as any).receipt_id || (bootRes as any).receiptId || '';
-
-                    if (!receiptId) {
-                        alert('영수증 번호 수신 실패');
-                        break;
-                    }
-
-                    await serverPaid({
-                        productId: draftRes.productId,
-                        productNm: draftRes.productNm,
-                        finalPrice: draftRes.finalPrice,
-                        orderStatus: draftRes.orderStatus,
-                        purchaseQuantity: draftRes.purchaseQuantity,
-                        productPrice: draftRes.productPrice,
-                        taxAddYn: draftRes.taxAddYn,
-                        taxAddType: draftRes.taxAddType,
-                        taxAddValue: draftRes.taxAddValue,
-                        paidPrice: draftRes.paidPrice,
-                        expiredDate: draftRes.expiredDate,
-                        purchaseIndex: draftRes.purchaseIndex,
-                        orderId: draftRes.orderId,
-                        deliveryInfo: {
-                            recipient: draftRes.deliveryInfo.recipient,
-                            addressMain: draftRes.deliveryInfo.addressMain,
-                            addressSub: draftRes.deliveryInfo.addressSub,
-                            postalCode: draftRes.deliveryInfo.postalCode,
-                            phone: draftRes.deliveryInfo.phone,
-                            deliveryStatus: draftRes.deliveryInfo.deliveryStatus,
-                        },
-                        receiptId,
-                        billingPrice: draftRes.paidPrice, // 서버 청구가와 일치
-                    });
-
-                    router.push(`/ko/online-store/payment-result?orderId=${encodeURIComponent(draftRes.orderId)}&status=success`);
-                    break;
-                }
-                case 'cancel': {
-                    alert('결제가 취소되었습니다.');
-                    break;
-                }
-                case 'error': {
-                    alert('결제 중 오류가 발생했습니다.');
-                    break;
-                }
-                default:
-                    break;
-            }
-        } catch (e: any) {
-            console.error('결제 플로우 실패:', e);
-            alert(e?.message || '결제 처리에 실패했습니다.');
-            router.push(`/ko/online-store/payment-result?orderId=${encodeURIComponent(String(productId))}&status=fail`);
         }
     };
 

@@ -25,21 +25,17 @@ import Swal from "sweetalert2";
 const OnlineStorePage = () => {
     const router = useRouter();
 
+    /** Login 토큰 만료시 Login Page 이동 */
     useEffect(() => {
         const token = localStorage.getItem("userToken");
         const tokenExpired = localStorage.getItem("tokenExpired");
-        console.log(token)
-        console.log(tokenExpired)
-        if (!token) {
+        // 현재 시간
+        const now = new Date();
+        // tokenExpired 문자열 → Date 객체 변환
+        const expiredAt = tokenExpired ? new Date(tokenExpired.replace(" ", "T")) : null;
+
+        if (!token || !expiredAt || expiredAt.getTime() < now.getTime()) {
             router.push("/ko/login");
-            // Swal.fire({
-            //     icon: "warning",
-            //     title: "로그인이 필요합니다.",
-            //     text: "로그인 페이지로 이동합니다.",
-            //     confirmButtonText: "확인",
-            // }).then(() => {
-            //     router.push("/ko/login");
-            // });
         }
     }, [router]);
 

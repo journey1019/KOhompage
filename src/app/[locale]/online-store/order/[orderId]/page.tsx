@@ -9,6 +9,21 @@ import { serverPaid, CreateOrderDraftResponse } from '@/lib/api/paidApi';
 
 export default function OrderSummaryPage() {
     const router = useRouter();
+
+    /** Login 토큰 만료시 Login Page 이동 */
+    useEffect(() => {
+        const token = localStorage.getItem("userToken");
+        const tokenExpired = localStorage.getItem("tokenExpired");
+        // 현재 시간
+        const now = new Date();
+        // tokenExpired 문자열 → Date 객체 변환
+        const expiredAt = tokenExpired ? new Date(tokenExpired.replace(" ", "T")) : null;
+
+        if (!token || !expiredAt || expiredAt.getTime() < now.getTime()) {
+            router.push("/ko/login");
+        }
+    }, [router]);
+
     const params = useParams<{ orderId: string }>();
     const orderId = decodeURIComponent(params.orderId);
     const [draft, setDraft] = useState<CreateOrderDraftResponse | null>(null);
@@ -57,7 +72,7 @@ export default function OrderSummaryPage() {
                 user: {},                        // (선택) 사용자 정보 추가 가능
                 items: [{ id: String(draft.productId), name: draft.productNm, qty: draft.purchaseQuantity, price: draft.paidPrice }],
                 extra: {
-                    separately_confirmed: true,
+                    separately_confirmed: false,
                     redirect_url: `${location.origin}/ko/online-store/payment-result`,
                 },
             });
