@@ -172,8 +172,10 @@ export default function PaymentLoginPage() {
                                     자동 로그인
                                 </label>
                             </div>
-                            <Link href="/ko/findIdPw"
-                                  className="flex items-center space-x-2 text-sm text-blue-500 group hover:text-blue-600">
+                            <Link
+                                href="/ko/login"
+                                // href="/ko/findIdPw"
+                                className="flex items-center space-x-2 text-sm text-blue-500 group hover:text-blue-600">
                                 <span>아이디 · 비밀번호 찾기</span>
                                 <IoIosArrowForward />
                             </Link>

@@ -10,6 +10,8 @@ import { serverPaid, CreateOrderDraftResponse, clearPendingOrderDraft, serverPai
 export default function OrderSummaryPage() {
     const router = useRouter();
 
+    const [payMethod, setPayMethod] = useState<'card'|'bank'>('card'); // 기본 카드
+
     /** Login 토큰 만료시 Login Page 이동 */
     useEffect(() => {
         const token = localStorage.getItem("userToken");
@@ -75,7 +77,7 @@ export default function OrderSummaryPage() {
                 order_name: draft.productNm,
                 order_id: draft.orderId,
                 pg: 'nicepay',
-                method: 'card',
+                method: payMethod,
                 user: {},
                 items: [
                     {
@@ -201,6 +203,13 @@ export default function OrderSummaryPage() {
                 }
 
                 case 'cancel': {
+                    console.info('[PAY CANCEL]', {
+                        event: bootRes.event,
+                        error_code: (bootRes as any)?.error_code,
+                        pg_error_code: (bootRes as any)?.pg_error_code, // 비어있으면 PG 이전
+                        message: (bootRes as any)?.message
+                    });
+
                     // 팝업 정리
                     try { await Bootpay.destroy(); } catch {}
                     alert('결제가 취소되었습니다.');
@@ -211,6 +220,8 @@ export default function OrderSummaryPage() {
                 }
 
                 case 'error': {
+                    console.error('[PAY ERROR]', bootRes);
+
                     // 팝업 정리
                     try { await Bootpay.destroy(); } catch {}
                     console.error('Bootpay error:', bootRes);
@@ -260,6 +271,17 @@ export default function OrderSummaryPage() {
                         <span className="font-medium">{v}</span>
                     </div>
                 ))}
+            </div>
+
+            {/* 주문서 UI ... */}
+            <div className="mt-4 border rounded p-4">
+                <div className="font-medium mb-2">결제수단</div>
+                <label className="mr-4">
+                    <input type="radio" name="pm" checked={payMethod==='card'} onChange={() => setPayMethod('card')} /> 카드
+                </label>
+                <label>
+                    <input type="radio" name="pm" checked={payMethod==='bank'} onChange={() => setPayMethod('bank')} /> 계좌이체
+                </label>
             </div>
 
             <div className="mt-6 flex justify-end gap-3">

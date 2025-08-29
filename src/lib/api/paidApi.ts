@@ -88,6 +88,7 @@ export interface ServerPaidRequest {
 export interface ServerPaidResponse {
     status: boolean;
     orderMessage: string; // "done"
+    purchaseId?: number;
 }
 
 /** 1) 주문 임시생성(재고확인 + 주문/결제기본정보 발급) */

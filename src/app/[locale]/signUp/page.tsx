@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import InputField from '@/components/common/InputField';
 import CheckboxField from '@/components/common/CheckboxField';
 import Image from 'next/image';
@@ -13,6 +13,10 @@ const toYN = (val: boolean): "Y" | "N" => (val ? "Y" : "N");
 
 export default function SignUpPage() {
     const router = useRouter();
+    useEffect(() => {
+        router.replace("/ko/login"); // 뒤로가기 눌러도 signup 안 나오게 replace 사용
+    }, [router]);
+
 
     const [form, setForm] = useState({
         userId: '',

@@ -210,7 +210,20 @@ export default function PaymentResultPage() {
                 </button>
                 {isSuccess && (
                     <button
-                        onClick={() => router.push('/ko/myPage/orders')}
+                        onClick={() => {
+                            try {
+                                const raw = sessionStorage.getItem('last-paid');
+                                if (!raw) return router.push('/ko/myPage/orders');
+                                const last = JSON.parse(raw);
+                                if (last?.purchaseIndex) {
+                                    router.push(`/ko/myPage/orders/${encodeURIComponent(last.purchaseIndex)}`);
+                                } else {
+                                    router.push('/ko/myPage/orders');
+                                }
+                            } catch {
+                                router.push('/ko/myPage/orders');
+                            }
+                        }}
                         className="px-4 py-2 rounded bg-blue-600 text-white hover:bg-blue-700"
                     >
                         주문 내역 보기
