@@ -177,6 +177,7 @@ async function baseFetch<T>(url: string, options?: FetchOptions): Promise<T> {
             'Content-Type': 'application/json',
             ...(paymentToken ? { Authorization: `Bearer ${paymentToken}` } : {}),
         },
+        credentials: 'include', // ✅ 세션 쿠키 포함
         ...(options && 'body' in options && options.body
             ? { body: JSON.stringify(options.body) }
             : {}),

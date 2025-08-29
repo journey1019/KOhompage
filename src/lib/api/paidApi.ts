@@ -103,6 +103,11 @@ export async function createOrderDraft(
     return payload as CreateOrderDraftResponse;
 }
 
+// Front Confirm 단계에서 최소한의 데이터 전송 (receiptId!)
+export async function serverPaidConfirmOnly(orderId: string, receiptId: string, billingPrice?: number) {
+    const payload = { orderId, receiptId, billingPrice }; // 최소화
+    return apiBodyFetch<any>('/api/payment/serverPaid?mode=confirm', payload);
+}
 
 /** 2) 실제 결제 확정(서버 결제 처리) */
 export async function serverPaid(data: ServerPaidRequest): Promise<ServerPaidResponse> {

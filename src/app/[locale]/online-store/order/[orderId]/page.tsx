@@ -1,11 +1,11 @@
 /** src/app/[locale]/online-store/order/[orderId]/page.tsx */
 'use client';
 
-import { useEffect, useMemo, useState } from 'react';
+import { useEffect, useMemo, useState, useRef } from 'react';
 import { useParams, useRouter, useSearchParams } from 'next/navigation';
 import { Bootpay } from '@bootpay/client-js';
 import { formatCurrency } from '@/lib/utils/payment';
-import { serverPaid, CreateOrderDraftResponse, clearPendingOrderDraft } from '@/lib/api/paidApi';
+import { serverPaid, CreateOrderDraftResponse, clearPendingOrderDraft, serverPaidConfirmOnly } from '@/lib/api/paidApi';
 
 export default function OrderSummaryPage() {
     const router = useRouter();
@@ -28,6 +28,9 @@ export default function OrderSummaryPage() {
     const orderId = decodeURIComponent(params.orderId);
     const [draft, setDraft] = useState<CreateOrderDraftResponse | null>(null);
     const [submitting, setSubmitting] = useState(false);
+
+    // confirm 단계 중복 호출 방지
+    const confirmingRef = useRef(false);
 
     // 1) draft 로드
     useEffect(() => {
@@ -61,11 +64,10 @@ export default function OrderSummaryPage() {
         if (!draft || submitting) return;
         setSubmitting(true);
         try {
-            // Redirect URL은 항상 지정 (PC라도 카카오 등 간편결제 선택 시 redirect가 될 수 있음)
             const baseUrl =
                 (typeof window !== 'undefined' ? window.location.origin : '') ||
                 process.env.NEXT_PUBLIC_SITE_URL ||
-                'http://localhost:3000'; // 개발 기본값
+                'http://localhost:3000';
 
             const bootRes = await Bootpay.requestPayment({
                 application_id: '68745846285ac508a5ee7a0b',
@@ -73,33 +75,27 @@ export default function OrderSummaryPage() {
                 order_name: draft.productNm,
                 order_id: draft.orderId,
                 pg: 'nicepay',
-                method: 'card', // 사용 중 카드라도, 결제창에서 카카오로 전환되면 redirect가 발생할 수 있음
+                method: 'card',
                 user: {},
                 items: [
                     {
-                        id: String(draft.productId),
+                        id: String(draft.productId), // 문자열 권장
                         name: draft.productNm,
                         qty: draft.purchaseQuantity,
-                        price: draft.paidPrice
-                    }
+                        price: draft.paidPrice,
+                    },
                 ],
                 extra: {
-                    // ✅ 자동 승인 모드
-                    separately_confirmed: false,
-                    // ✅ 항상 redirect_url 지정 (카카오/간편결제 등 redirect 강제 시 필수)
+                    open_type: 'popup',
+                    popup: { width: 800, height: 600 },
+                    separately_confirmed: true, // 수동 승인 플로우
                     redirect_url: `${baseUrl}/ko/online-store/payment-result`,
-                    card_quota: "0,2,3"
-                }
+                    card_quota: '0,2,3',
+                },
             });
 
             switch (bootRes.event) {
                 case 'confirm': {
-                    // 자동 승인 모드에선 보통 필요 없음
-                    // await Bootpay.confirm();
-                    break;
-                }
-                case 'done': {
-                    // 데스크톱 환경에서도 done 이벤트가 올 수 있음 (리다이렉트 없이 팝업 내 완료)
                     const receiptId =
                         (bootRes.data && (bootRes.data.receipt_id || bootRes.data.receiptId)) ||
                         (bootRes as any).receipt_id ||
@@ -107,85 +103,127 @@ export default function OrderSummaryPage() {
                         '';
 
                     if (!receiptId) {
-                        alert('영수증 번호 수신 실패');
+                        alert('영수증 번호를 확인할 수 없습니다.');
+                        // 안전차원: 팝업 정리
+                        try { await Bootpay.destroy(); } catch {}
                         break;
                     }
 
-                    // 서버 결제 확정
-                    await serverPaid({
-                        productId: draft.productId,
-                        productNm: draft.productNm,
-                        finalPrice: draft.finalPrice,
-                        orderStatus: draft.orderStatus,
-                        purchaseQuantity: draft.purchaseQuantity,
-                        productPrice: draft.productPrice,
-                        taxAddYn: draft.taxAddYn,
-                        taxAddType: draft.taxAddType,
-                        taxAddValue: draft.taxAddValue,
-                        paidPrice: draft.paidPrice,
-                        expiredDate: draft.expiredDate,
-                        purchaseIndex: draft.purchaseIndex,
-                        orderId: draft.orderId,
-                        deliveryInfo: {
-                            recipient: draft.deliveryInfo.recipient,
-                            addressMain: draft.deliveryInfo.addressMain,
-                            addressSub: draft.deliveryInfo.addressSub,
-                            postalCode: draft.deliveryInfo.postalCode,
-                            phone: draft.deliveryInfo.phone,
-                            deliveryStatus: draft.deliveryInfo.deliveryStatus
-                        },
-                        receiptId,
-                        billingPrice: draft.paidPrice
-                    });
+                    if (confirmingRef.current) break; // 중복 가드
+                    confirmingRef.current = true;
 
-                    // serverPaid 성공 직후 - 임시 데이터 정리
-                    clearPendingOrderDraft();
-                    sessionStorage.removeItem(`order-draft:${draft.orderId}`);
-
-                    // 결과 표시용 저장
-                    sessionStorage.setItem(
-                        'last-paid',
-                        JSON.stringify({
-                            orderId: draft.orderId,
-                            receiptId,
+                    try {
+                        // 1) 서버 결제 확정(재고/검증 등)
+                        const res = await serverPaid({
+                            productId: draft.productId,
+                            productNm: draft.productNm,
+                            finalPrice: draft.finalPrice,
+                            orderStatus: draft.orderStatus,
+                            purchaseQuantity: draft.purchaseQuantity,
+                            productPrice: draft.productPrice,
+                            taxAddYn: draft.taxAddYn,
+                            taxAddType: draft.taxAddType,
+                            taxAddValue: draft.taxAddValue,
                             paidPrice: draft.paidPrice,
-                            productNm: draft.productNm
-                        })
-                    );
+                            expiredDate: draft.expiredDate,
+                            purchaseIndex: draft.purchaseIndex,
+                            orderId: draft.orderId,
+                            deliveryInfo: draft.deliveryInfo,
+                            receiptId,
+                            billingPrice: draft.paidPrice,
+                        });
 
-                    // router.push(
-                    //     `/ko/online-store/payment-result?orderId=${encodeURIComponent(draft.orderId)}&status=success`
-                    // );
-                    // router.push(
-                    //     `/ko/online-store/payment-result` +
-                    //     `?event=done` +
-                    //     `&order_id=${encodeURIComponent(draft.orderId)}` +
-                    //     `&receipt_id=${encodeURIComponent(receiptId)}` +
-                    //     `&status=success`,
-                    // );
-                    router.push(
-                        `/ko/online-store/payment-result?event=done&order_id=${encodeURIComponent(draft.orderId)}&receipt_id=${encodeURIComponent(receiptId)}&status=success`
-                    );
+                        if (res?.status === true && res?.orderMessage === 'done') {
+                            // 2) Bootpay에 최종 승인 (200이어야 한다고 가정)
+                            try {
+                                await Bootpay.confirm();  // 정상 완료
+                            } catch (e) {
+                                console.error('Bootpay.confirm error:', e);
+                                // confirm 실패해도 팝업을 닫아 UX 이상 방지
+                            } finally {
+                                // ✅ confirm 이후 팝업 강제 정리
+                                try { await Bootpay.destroy(); } catch {}
+                            }
 
+                            // 3) 임시 데이터 정리 및 완료 페이지 이동
+                            clearPendingOrderDraft();
+                            sessionStorage.removeItem(`order-draft:${draft.orderId}`);
+
+                            // 결과 표시용 저장 (선택)
+                            sessionStorage.setItem(
+                                'last-paid',
+                                JSON.stringify({
+                                    orderId: draft.orderId,
+                                    receiptId,
+                                    paidPrice: draft.paidPrice,
+                                    productNm: draft.productNm,
+                                }),
+                            );
+
+                            // done 이벤트를 기다리지 않고 바로 이동 (popup 모드에서 더 안정적)
+                            router.push(
+                                `/ko/online-store/payment-result?event=done&order_id=${encodeURIComponent(
+                                    draft.orderId,
+                                )}&receipt_id=${encodeURIComponent(receiptId)}&status=success`,
+                            );
+                        } else {
+                            alert(res?.orderMessage || '재고 부족 등 사유로 결제를 승인할 수 없습니다.');
+                            try { await Bootpay.destroy(); } catch {}
+                        }
+                    } catch (e: any) {
+                        console.error('serverPaid error at confirm:', e);
+                        alert(e?.message || '결제 승인에 실패했습니다.');
+                        // 승인 실패 시 팝업 닫기
+                        try { await Bootpay.destroy(); } catch {}
+                    } finally {
+                        confirmingRef.current = false;
+                    }
                     break;
                 }
+
+                case 'done': {
+                    // 일부 케이스에선 confirm 후 done 이벤트가 들어올 수 있음
+                    const receiptId =
+                        (bootRes.data && (bootRes.data.receipt_id || bootRes.data.receiptId)) ||
+                        (bootRes as any).receipt_id ||
+                        (bootRes as any).receiptId ||
+                        '';
+
+                    // 팝업 정리
+                    try { await Bootpay.destroy(); } catch {}
+
+                    router.push(
+                        `/ko/online-store/payment-result?event=done&order_id=${encodeURIComponent(
+                            draft.orderId,
+                        )}&receipt_id=${encodeURIComponent(receiptId)}&status=success`,
+                    );
+                    break;
+                }
+
                 case 'cancel': {
+                    // 팝업 정리
+                    try { await Bootpay.destroy(); } catch {}
                     alert('결제가 취소되었습니다.');
                     router.push(
-                        `/ko/online-store/payment-result?orderId=${encodeURIComponent(draft.orderId)}&status=fail`
+                        `/ko/online-store/payment-result?orderId=${encodeURIComponent(draft.orderId)}&status=fail`,
                     );
                     break;
                 }
+
                 case 'error': {
-                    // 여기서 RC_REDIRECT_URL_INVALID 등 에러를 바로 확인 가능
+                    // 팝업 정리
+                    try { await Bootpay.destroy(); } catch {}
                     console.error('Bootpay error:', bootRes);
                     alert(bootRes?.message || '결제 중 오류가 발생했습니다.');
                     router.push(
-                        `/ko/online-store/payment-result?orderId=${encodeURIComponent(draft.orderId)}&status=fail`
+                        `/ko/online-store/payment-result?orderId=${encodeURIComponent(draft.orderId)}&status=fail`,
                     );
                     break;
                 }
+
                 default:
+                    // 예외 케이스에서도 팝업 정리 시도
+                    try { await Bootpay.destroy(); } catch {}
                     break;
             }
         } catch (e: any) {
