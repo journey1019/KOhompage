@@ -115,6 +115,7 @@ export async function serverPaid(data: ServerPaidRequest): Promise<ServerPaidRes
         receiptId,
         receipt_id: receiptId, // ← snake_case 동시 포함
     };
+    console.log(payload);
 
     const res = await apiBodyFetch<any>('/api/payment/serverPaid', payload);
     if (res?.status === false) throw new Error(res?.orderMessage ?? '결제 확정 실패');
