@@ -14,7 +14,7 @@ export default withAuth(
 
         const locales = ['en', 'ko'];
         const pathname = req.nextUrl.pathname;
-        if (pathname.startsWith('/images') || pathname.startsWith('/pdf')) {
+        if (pathname.startsWith('/images') || pathname.startsWith('/pdf') || pathname.startsWith('/api')) {
             return NextResponse.next();
         }
         const locale = locales.find((locale) => pathname.startsWith(`/${locale}`));
@@ -83,12 +83,16 @@ export const config = {
          * - _next/image: 이미지 최적화
          * - favicon.ico, robots.txt 등
          * - images/, fonts/, videos/: 정적 폴더들
+         * - serverPaid 통과
          */
         // '/', // 루트 경로도 감지
         // '/((?!_next/static|_next/image|favicon.ico|robots.txt|sitemap.xml|images/|fonts/|video/).*)',
         // '/((?!api|_next/static|_next/image|favicon.ico|robots.txt|sitemap.xml|images/|fonts/|video/).*)',
         '/',
         '/((?!api|_next/static|_next/image|favicon.ico|robots.txt|sitemap.xml|images/|fonts/|video|downloads/|pdf/|docs/|images/|uploads/|pdfs/).*)',
-        '/(ko|en)/auth/signin'
+        '/(ko|en)/auth/signin',
+        // '/((?!api/payment/serverPaid).*)' // serverPaid는 통과
+        '/((?!api/payment/serverPaid|api/payment/order|api/auth|_next/static|_next/image|favicon.ico).*)',
+        // '/((?!lib/api).*)'
     ],
 }

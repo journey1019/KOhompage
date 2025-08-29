@@ -87,7 +87,8 @@ export default function OrderSummaryPage() {
                     // ✅ 자동 승인 모드
                     separately_confirmed: false,
                     // ✅ 항상 redirect_url 지정 (카카오/간편결제 등 redirect 강제 시 필수)
-                    redirect_url: `${baseUrl}/ko/online-store/payment-result`
+                    redirect_url: `${baseUrl}/ko/online-store/payment-result`,
+                    card_quota: "0,2,3"
                 }
             });
 

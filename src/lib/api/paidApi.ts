@@ -106,21 +106,18 @@ export async function createOrderDraft(
 
 /** 2) 실제 결제 확정(서버 결제 처리) */
 export async function serverPaid(data: ServerPaidRequest): Promise<ServerPaidResponse> {
-    const rid = (data as any).receiptId || (data as any).receipt_id;
-    if (!rid || String(rid).trim().length === 0) {
-        throw new Error('receiptId is required');
-    }
+    const rid = (data as any).receiptId ?? (data as any).receipt_id;
+    const receiptId = String(rid ?? '').trim();
+    if (!receiptId) throw new Error('receiptId is required');
 
-    const payload: any = {
+    const payload = {
         ...data,
-        receiptId: String(rid).trim(), // camelCase만
+        receiptId,
+        receipt_id: receiptId, // ← snake_case 동시 포함
     };
-    delete payload.receipt_id;
 
     const res = await apiBodyFetch<any>('/api/payment/serverPaid', payload);
-    if (res?.status === false) {
-        throw new Error(res?.orderMessage ?? '결제 확정 실패');
-    }
+    if (res?.status === false) throw new Error(res?.orderMessage ?? '결제 확정 실패');
     return res as ServerPaidResponse;
 }
 

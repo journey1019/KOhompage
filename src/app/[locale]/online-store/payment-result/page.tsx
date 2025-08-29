@@ -27,6 +27,8 @@ export default function PaymentResultPage() {
     // 0) 토큰 만료 체크
     useEffect(() => {
         const token = localStorage.getItem('userToken');
+        console.log(token);
+        console.log(typeof (token));
         const tokenExpired = localStorage.getItem('tokenExpired');
         const now = new Date();
         const expiredAt = tokenExpired ? new Date(tokenExpired.replace(' ', 'T')) : null;
