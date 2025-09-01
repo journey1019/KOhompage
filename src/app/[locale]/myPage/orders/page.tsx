@@ -1,3 +1,4 @@
+/** src/app/[locale]/myPage/orders/page.tsx */
 import React from 'react';
 
 export default function OrdersPage() {

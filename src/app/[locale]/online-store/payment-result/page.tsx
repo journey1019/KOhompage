@@ -48,14 +48,18 @@ export default function PaymentResultPage() {
 
         // A. JS 팝업 경로에서 미리 저장해둔 last-paid가 있으면 그대로 표시 (이미 serverPaid 수행됨)
         const lastRaw = sessionStorage.getItem('last-paid');
-        if (lastRaw) {
+        if (lastRaw && event === 'done' && status === 'success') {
             try {
                 const last: PaidSummary = JSON.parse(lastRaw);
-                setPaid(last);
-                setDisplayOrderId(last.orderId || urlOrderId);
-                setPhase('success');
-                setMsg('결제가 완료되었습니다!');
-                return;
+
+                // ✅ URL의 order_id와 last-paid의 orderId가 일치할 때만 성공처리
+                if (last.orderId && urlOrderId && last.orderId === urlOrderId) {
+                    setPaid(last);
+                    setDisplayOrderId(last.orderId);
+                    setPhase('success');
+                    setMsg('결제가 완료되었습니다!');
+                    return;
+                }
             } catch {
                 // 무시하고 아래 로직 진행
             }

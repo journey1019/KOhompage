@@ -63,11 +63,20 @@ export default function OrderSummaryPage() {
     const pay = async () => {
         if (!draft || submitting) return;
         setSubmitting(true);
+
+        // 이전 성공 캐시 제거 (가장 먼저)
+        sessionStorage.removeItem('last-paid');
+
         try {
             const baseUrl =
                 (typeof window !== 'undefined' ? window.location.origin : '') ||
                 process.env.NEXT_PUBLIC_SITE_URL ||
                 'http://localhost:3000';
+
+            // 간단한 모바일 브라우저 체크
+            const isMobile =
+                typeof navigator !== 'undefined' &&
+                /Android|iPhone|iPad|iPod|Opera Mini|IEMobile|WPDesktop/i.test(navigator.userAgent);
 
             const bootRes = await Bootpay.requestPayment({
                 application_id: '68745846285ac508a5ee7a0b',
@@ -75,7 +84,8 @@ export default function OrderSummaryPage() {
                 order_name: draft.productNm,
                 order_id: draft.orderId,
                 pg: 'nicepay',
-                method: 'card',
+                // method: 'card',
+                methods: ['card', 'bank', 'vbank'], // 카드/계좌이체/가상계좌 허용
                 user: {},
                 items: [
                     {
@@ -86,7 +96,7 @@ export default function OrderSummaryPage() {
                     },
                 ],
                 extra: {
-                    open_type: 'popup',
+                    open_type: isMobile ? 'redirect' : 'popup', // 모바일은 redirect 권장
                     popup: { width: 800, height: 600 },
                     separately_confirmed: true, // 수동 승인 플로우
                     redirect_url: `${baseUrl}/ko/online-store/payment-result`,
@@ -203,6 +213,10 @@ export default function OrderSummaryPage() {
                 case 'cancel': {
                     // 팝업 정리
                     try { await Bootpay.destroy(); } catch {}
+
+                    // 취소 시에도 확실히 제거
+                    sessionStorage.removeItem('last-paid');
+
                     alert('결제가 취소되었습니다.');
                     router.push(
                         `/ko/online-store/payment-result?orderId=${encodeURIComponent(draft.orderId)}&status=fail`,
@@ -213,7 +227,10 @@ export default function OrderSummaryPage() {
                 case 'error': {
                     // 팝업 정리
                     try { await Bootpay.destroy(); } catch {}
-                    console.error('Bootpay error:', bootRes);
+
+                    // 에러 시에도 제거
+                    sessionStorage.removeItem('last-paid');
+
                     alert(bootRes?.message || '결제 중 오류가 발생했습니다.');
                     router.push(
                         `/ko/online-store/payment-result?orderId=${encodeURIComponent(draft.orderId)}&status=fail`,
@@ -227,7 +244,9 @@ export default function OrderSummaryPage() {
                     break;
             }
         } catch (e: any) {
-            console.error(e);
+            // 예외 발생 시에도 제거
+            sessionStorage.removeItem('last-paid');
+
             alert(e?.message || '결제 처리에 실패했습니다.');
             router.push(`/ko/online-store/payment-result?orderId=${encodeURIComponent(orderId)}&status=fail`);
         } finally {
