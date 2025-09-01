@@ -152,6 +152,15 @@ export default function PaymentResultPage() {
     const amount = typeof paid?.paidPrice === 'number' ? paid.paidPrice : undefined;
     const productNm = paid?.productNm || '';
 
+    // isSuccess === true 조건에서 버튼 렌더 시
+    const lastRaw = (typeof window !== 'undefined') ? sessionStorage.getItem('last-paid') : null;
+    console.log(lastRaw)
+    const lastPaid = lastRaw ? JSON.parse(lastRaw) as PaidSummary & { purchaseId?: number } : null;
+    console.log(lastPaid)
+    const link = lastPaid?.purchaseId
+        ? `/ko/myPage/orders?purchaseId=${encodeURIComponent(String(lastPaid.purchaseId))}`
+        : '/ko/myPage/orders';
+
     return (
         <div className="max-w-3xl mx-auto p-6">
             <h1 className={`text-xl font-semibold mb-4 ${
@@ -203,8 +212,8 @@ export default function PaymentResultPage() {
                                 : phase === 'error' ? 'text-red-600'
                                     : 'text-gray-700'
                     }`}>
-            {isSuccess ? '성공' : phase === 'pending' ? '승인 대기' : phase === 'error' ? '실패' : '확인 필요'}
-          </span>
+                        {isSuccess ? '성공' : phase === 'pending' ? '승인 대기' : phase === 'error' ? '실패' : '확인 필요'}
+                    </span>
                 </div>
             </div>
 
@@ -214,7 +223,7 @@ export default function PaymentResultPage() {
                 </button>
                 {isSuccess && (
                     <button
-                        onClick={() => router.push('/ko/myPage/orders')}
+                        onClick={() => router.push(link)}
                         className="px-4 py-2 rounded bg-blue-600 text-white hover:bg-blue-700"
                     >
                         주문 내역 보기

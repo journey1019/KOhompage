@@ -85,7 +85,8 @@ export default function OrderSummaryPage() {
                 order_id: draft.orderId,
                 pg: 'nicepay',
                 // method: 'card',
-                methods: ['card', 'bank', 'vbank'], // 카드/계좌이체/가상계좌 허용
+                methods: ['card', 'bank'],
+                // methods: ['card', 'bank', 'vbank'], // 카드/계좌이체/가상계좌 허용
                 user: {},
                 items: [
                     {
@@ -167,8 +168,10 @@ export default function OrderSummaryPage() {
                                     receiptId,
                                     paidPrice: draft.paidPrice,
                                     productNm: draft.productNm,
+                                    purchaseId: draft.purchaseIndex,
                                 }),
                             );
+                            console.log(draft)
 
                             // done 이벤트를 기다리지 않고 바로 이동 (popup 모드에서 더 안정적)
                             router.push(
@@ -253,6 +256,7 @@ export default function OrderSummaryPage() {
             setSubmitting(false);
         }
     };
+    console.log(draft)
 
     if (!draft) {
         return (

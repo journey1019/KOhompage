@@ -130,3 +130,14 @@ export function formatPhone(raw?: string) {
     if (d.length === 10) return `${d.slice(0,3)}-${d.slice(3,6)}-${d.slice(6)}`;
     return raw || '';
 };
+
+
+
+/**
+ * 주문 내역 조회를 위한 날짜 번들러
+ * */
+// YYYYMMDD ↔︎ YYYY-MM-DD 변환 헬퍼
+export const toDash = (yyyymmdd: string) =>
+    yyyymmdd?.replace(/^(\d{4})(\d{2})(\d{2})$/, '$1-$2-$3') ?? '';
+
+export const fromDash = (yyyy_mm_dd: string) => (yyyy_mm_dd ?? '').replace(/-/g, '');
