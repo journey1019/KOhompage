@@ -89,7 +89,7 @@ export const config = {
         // '/((?!_next/static|_next/image|favicon.ico|robots.txt|sitemap.xml|images/|fonts/|video/).*)',
         // '/((?!api|_next/static|_next/image|favicon.ico|robots.txt|sitemap.xml|images/|fonts/|video/).*)',
         '/',
-        '/((?!api|_next/static|_next/image|favicon.ico|robots.txt|sitemap.xml|images/|fonts/|video|downloads/|pdf/|docs/|images/|uploads/|pdfs/).*)',
+        '/((?!api|_next/static|_next/image|favicon.ico|robots.txt|sitemap.xml|images/|fonts/|video/|downloads/|pdf/|docs/|images/|uploads/|pdfs/).*)',
         '/(ko|en)/auth/signin',
         // '/((?!api/payment/serverPaid).*)' // serverPaid는 통과
         '/((?!api/payment/serverPaid|api/payment/order|api/auth|_next/static|_next/image|favicon.ico).*)',
