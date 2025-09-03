@@ -44,5 +44,16 @@ scripts/hashPassword.js
 
 
 # dev.db 파일 미배포
-.env
 prisma/dev.db
+
+# Prisma / SQLite
+*.db
+*.db-journal
+prisma/*.db
+prisma/*.db-journal
+prisma/backup/**
+
+# env (샘플만 버전관리)
+.env
+.env.*
+!.env.example
