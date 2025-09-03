@@ -38,7 +38,7 @@ export function formatKRPhone(input: string | number): string {
     const originalType = typeof input;
 
     // 1) 문자열화 + 숫자만 추출
-    let digits = String(input).replace(/\D/g, '');
+    const digits = String(input).replace(/\D/g, '');
 
     // 2) number로 들어오면 선행 0이 이미 사라졌을 수 있음: 복원 불가
     //    => 가능하면 string으로 넘기세요.

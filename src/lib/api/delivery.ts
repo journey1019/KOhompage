@@ -78,7 +78,7 @@ export function clearDeliveryInStorage() {
 // === “API로 확보” 보장 함수 ===
 // localStorage에 없으면 API에서 목록을 가져와 기본 배송지를 저장한 뒤 반환
 export async function ensureDeliveryInfoFromAPI(): Promise<DeliveryInfo | null> {
-    let d = readDeliveryFromStorage();
+    const d = readDeliveryFromStorage();
     if (isValidDelivery(d)) return d;
 
     const list = await fetchDeliveryList();
