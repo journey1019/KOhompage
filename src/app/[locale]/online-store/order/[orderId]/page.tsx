@@ -44,6 +44,7 @@ export default function OrderSummaryPage() {
         }
     }, [orderId]);
 
+    console.log(draft)
     const rows = useMemo(() => {
         if (!draft) return [];
         return [
@@ -51,6 +52,7 @@ export default function OrderSummaryPage() {
             { k: '수량', v: String(draft.purchaseQuantity) },
             { k: '제품단가', v: formatCurrency(draft.productPrice) },
             { k: '부가세', v: `${draft.taxAddYn === 'Y' ? draft.taxAddValue + (draft.taxAddType === 'percent' ? '%' : '원') : '미부과'}` },
+            { k: '개당 최종가(부가세포함)', v: formatCurrency(draft.finalPrice) }, // 개당 최종가
             { k: '결제 예정금액', v: formatCurrency(draft.paidPrice) },
             { k: '주문만료', v: draft.expiredDate },
             { k: '수령인', v: draft.deliveryInfo.recipient },
@@ -78,13 +80,15 @@ export default function OrderSummaryPage() {
                 typeof navigator !== 'undefined' &&
                 /Android|iPhone|iPad|iPod|Opera Mini|IEMobile|WPDesktop/i.test(navigator.userAgent);
 
+            // 서버가 내려준 총액만 신뢰 (최우선: finalPrice, 없으면 paidPrice)
+            const TOTAL = Number(draft.finalPrice ?? draft.paidPrice);
+
             const bootRes = await Bootpay.requestPayment({
                 application_id: '68745846285ac508a5ee7a0b',
-                price: draft.paidPrice,
+                price: Number(draft.paidPrice),
                 order_name: draft.productNm,
                 order_id: draft.orderId,
                 pg: 'nicepay',
-                // method: 'card',
                 methods: ['card', 'bank'],
                 // methods: ['card', 'bank', 'vbank'], // 카드/계좌이체/가상계좌 허용
                 user: {},
@@ -92,8 +96,8 @@ export default function OrderSummaryPage() {
                     {
                         id: String(draft.productId), // 문자열 권장
                         name: draft.productNm,
-                        qty: draft.purchaseQuantity,
-                        price: draft.paidPrice,
+                        qty: Number(draft.purchaseQuantity),
+                        price: Number(draft.finalPrice),
                     },
                 ],
                 extra: {
@@ -128,20 +132,20 @@ export default function OrderSummaryPage() {
                         const res = await serverPaid({
                             productId: draft.productId,
                             productNm: draft.productNm,
-                            finalPrice: draft.finalPrice,
+                            finalPrice: Number(draft.paidPrice),      // 총액
                             orderStatus: draft.orderStatus,
-                            purchaseQuantity: draft.purchaseQuantity,
-                            productPrice: draft.productPrice,
+                            purchaseQuantity: Number(draft.purchaseQuantity),
+                            productPrice: Number(draft.productPrice),
                             taxAddYn: draft.taxAddYn,
                             taxAddType: draft.taxAddType,
                             taxAddValue: draft.taxAddValue,
-                            paidPrice: draft.paidPrice,
+                            paidPrice: Number(draft.paidPrice),
                             expiredDate: draft.expiredDate,
                             purchaseIndex: draft.purchaseIndex,
                             orderId: draft.orderId,
                             deliveryInfo: draft.deliveryInfo,
                             receiptId,
-                            billingPrice: draft.paidPrice,
+                            billingPrice: Number(draft.paidPrice),
                         });
 
                         if (res?.status === true && res?.orderMessage === 'done') {

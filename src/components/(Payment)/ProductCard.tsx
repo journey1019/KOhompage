@@ -80,11 +80,22 @@ const ProductCard: React.FC<Product> = ({
             return router.push('/ko/myPage/delivery');
         }
 
+        // ① 개당 최종가(부가세 포함 1개 기준)
+        const unitFinal =
+            taxAddYn === 'Y'
+                ? (taxAddType === 'percent'
+                    ? Math.round(productPrice * (1 + (taxAddValue ?? 0) / 100))
+                    : productPrice + (taxAddValue ?? 0))
+                : productPrice;
+
+        // ② 총 결제 금액(finalFee) = 개당 최종가 × 수량
+        const finalFee = unitFinal * qty;
+
         try {
             const payload: CreateOrderDraftRequest = {
                 productId,
                 productNm,
-                finalPrice,
+                finalPrice: unitFinal,              // ✅ "개당 최종가"를 보냄
                 purchaseQuantity: qty, // ✅ 선택한 수량 반영
                 productPrice,
                 taxAddYn,
@@ -128,6 +139,7 @@ const ProductCard: React.FC<Product> = ({
     // 최대 구매 가능 수량 (재고 vs availablePurchase 중 작은 값)
     const maxQty = Math.min(stockQuantity, availablePurchase ?? stockQuantity);
 
+    console.log(productNm, stockQuantity)
     return (
         <div className="border rounded-lg shadow hover:shadow-md transition overflow-hidden">
             <img src={imageUrl} alt={productNm} className="w-full h-72 object-cover"

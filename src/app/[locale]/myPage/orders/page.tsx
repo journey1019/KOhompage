@@ -7,13 +7,51 @@ import { getPaidDetail, PaidDetailResponse, getPaidList, PaidListResponse } from
 import { formatCurrency } from '@/lib/utils/payment';
 import { toDash, fromDash } from '@/module/helper';
 
+/* --------------------- UI Utils --------------------- */
+function statusClassByLocale(locale: string) {
+    // 결제완료/승인대기/취소/실패 등 일부 키워드 기준으로 색상 매핑
+    if (/완료|성공/i.test(locale)) return 'bg-green-600';
+    if (/대기/i.test(locale)) return 'bg-amber-600';
+    if (/취소|실패|거절/i.test(locale)) return 'bg-red-600';
+    return 'bg-gray-600';
+}
+
+function StatusBadge({ text, size = 'lg' }: { text: string; size?: 'sm' | 'md' | 'lg' }) {
+    const base = 'inline-flex items-center rounded-full text-white font-extrabold';
+    const pad = size === 'lg' ? 'px-4 py-1.5 text-base' : size === 'md' ? 'px-3 py-1 text-sm' : 'px-2 py-0.5 text-xs';
+    return <span className={`${base} ${pad} ${statusClassByLocale(text)}`}>{text}</span>;
+}
+
+function Card({ children, className = '' }: { children: React.ReactNode; className?: string }) {
+    return <div className={`border rounded-md ${className}`}>{children}</div>;
+}
+
+function Row({ k, v }: { k: string; v: React.ReactNode }) {
+    return (
+        <div className="flex justify-between p-4">
+            <span className="text-gray-600">{k}</span>
+            <span className="font-medium text-right">{v}</span>
+        </div>
+    );
+}
+
+function deliveryStatusLabel(s: 'W' | 'P' | 'D') {
+    switch (s) {
+        case 'W': return '배송대기';
+        case 'P': return '배송중';
+        case 'D': return '배송완료';
+        default: return s;
+    }
+}
+
+/* --------------------- Page --------------------- */
 export default function OrdersPage() {
     const router = useRouter();
     const sp = useSearchParams();
     const purchaseIdParam = sp.get('purchaseId');
     const purchaseId = purchaseIdParam ? Number(purchaseIdParam) : undefined;
 
-    // 공통: 토큰 만료 체크
+    /* 토큰 만료 체크 */
     useEffect(() => {
         const token = localStorage.getItem('userToken');
         const tokenExpired = localStorage.getItem('tokenExpired');
@@ -24,7 +62,7 @@ export default function OrdersPage() {
         }
     }, [router]);
 
-    // ========= 리스트 모드 상태 =========
+    /* ===== 리스트 모드 상태 ===== */
     const [listLoading, setListLoading] = useState<boolean>(!purchaseId);
     const [listError, setListError] = useState<string | null>(null);
     const [items, setItems] = useState<PaidListResponse[]>([]);
@@ -36,24 +74,53 @@ export default function OrdersPage() {
         return { start: fmt(start), end: fmt(end) };
     });
 
+    // DatePicker UI용 상태
+    const [uiRange, setUiRange] = useState<{ start: string; end: string }>(() => ({
+        start: toDash(dateRange.start),
+        end: toDash(dateRange.end),
+    }));
+    const onChangeUiDate =
+        (k: 'start' | 'end') =>
+            (e: React.ChangeEvent<HTMLInputElement>) => {
+                setUiRange((s) => ({ ...s, [k]: e.target.value }));
+            };
+    const applyRange = () => {
+        if (!uiRange.start || !uiRange.end) {
+            alert('날짜를 모두 선택해 주세요.');
+            return;
+        }
+        let startDash = uiRange.start;
+        let endDash = uiRange.end;
+        if (startDash > endDash) [startDash, endDash] = [endDash, startDash];
+        setUiRange({ start: startDash, end: endDash });
+        setDateRange({ start: fromDash(startDash), end: fromDash(endDash) });
+    };
+    const todayDash = (() => {
+        const d = new Date();
+        const pad = (n: number) => String(n).padStart(2, '0');
+        return `${d.getFullYear()}-${pad(d.getMonth() + 1)}-${pad(d.getDate())}`;
+    })();
+
     useEffect(() => {
-        if (purchaseId) return; // 상세 모드일 땐 리스트 자동 로드 안함
+        if (purchaseId) return;
         setListLoading(true);
         setListError(null);
         getPaidList(dateRange.start, dateRange.end)
-            .then((rows) => {
-                const sorted = [...rows].sort((a, b) => {
-                    const aT = new Date(a.purchasedAt || a.purchaseDate).getTime();
-                    const bT = new Date(b.purchasedAt || b.purchaseDate).getTime();
-                    return bT - aT; // 최신 우선
-                });
-                setItems(sorted);
-            })
+            .then((rows) => setItems(rows))
             .catch((e) => setListError(e?.message ?? '주문 내역을 불러오지 못했습니다.'))
             .finally(() => setListLoading(false));
     }, [purchaseId, dateRange]);
 
-    // ========= 상세 모드 상태 =========
+    // 최신순 정렬은 렌더 시 계산(가독성 ↑)
+    const sortedItems = useMemo(() => {
+        return [...items].sort((a, b) => {
+            const aT = new Date(a.purchasedAt || a.purchaseDate).getTime();
+            const bT = new Date(b.purchasedAt || b.purchaseDate).getTime();
+            return bT - aT;
+        });
+    }, [items]);
+
+    /* ===== 상세 모드 상태 ===== */
     const [detailLoading, setDetailLoading] = useState<boolean>(!!purchaseId);
     const [detailError, setDetailError] = useState<string | null>(null);
     const [data, setData] = useState<PaidDetailResponse | null>(null);
@@ -72,48 +139,7 @@ export default function OrdersPage() {
         if (!data?.productInfo?.mainImagePath || !data?.productInfo?.mainImageFileNm) return null;
         return data.productInfo.mainImagePath;
     }, [data]);
-
-
-// DatePicker 표시용 UI 상태 (초깃값은 기존 dateRange를 하이픈 포맷으로)
-    const [uiRange, setUiRange] = useState<{ start: string; end: string }>(() => ({
-        start: toDash(dateRange.start),
-        end: toDash(dateRange.end),
-    }));
-
-    const onChangeUiDate =
-        (k: 'start' | 'end') =>
-            (e: React.ChangeEvent<HTMLInputElement>) => {
-                setUiRange((s) => ({ ...s, [k]: e.target.value }));
-            };
-
-// 적용 버튼: UI값 검증 → API 포맷으로 변환 → 기존 dateRange 갱신 (→ fetch 트리거)
-    const applyRange = () => {
-        if (!uiRange.start || !uiRange.end) {
-            alert('날짜를 모두 선택해 주세요.');
-            return;
-        }
-
-        // 시작일 > 종료일이면 자동 스왑
-        let startDash = uiRange.start;
-        let endDash = uiRange.end;
-        if (startDash > endDash) [startDash, endDash] = [endDash, startDash];
-
-        setUiRange({ start: startDash, end: endDash });
-
-        // API가 요구하는 YYYYMMDD로 변환하여 상태 업데이트 (useEffect가 재조회)
-        setDateRange({
-            start: fromDash(startDash),
-            end: fromDash(endDash),
-        });
-    };
-
-// 오늘(로컬) YYYY-MM-DD (max 제한에 사용)
-    const todayDash = (() => {
-        const d = new Date();
-        // 로컬 기준으로 yyyy-mm-dd 만들기
-        const pad = (n: number) => String(n).padStart(2, '0');
-        return `${d.getFullYear()}-${pad(d.getMonth() + 1)}-${pad(d.getDate())}`;
-    })();
+    console.log(data)
 
     return (
         <div className="max-w-4xl mx-auto p-6">
@@ -149,21 +175,24 @@ export default function OrdersPage() {
                         </button>
                     </div>
 
-
                     {/* 리스트 */}
                     {listLoading && <div className="p-6 border rounded bg-gray-50">불러오는 중…</div>}
                     {listError && <div className="p-6 border rounded bg-red-50 text-red-700">{listError}</div>}
-                    {!listLoading && !listError && items.length === 0 && (
+                    {!listLoading && !listError && sortedItems.length === 0 && (
                         <div className="p-6 border rounded bg-gray-50">해당 기간에 주문내역이 없습니다.</div>
                     )}
 
                     <div className="space-y-3">
-                        {items.map((it) => (
+                        {sortedItems.map((it) => (
                             <OrderListItem
                                 key={it.purchaseId}
                                 item={it}
-                                onDetail={() => router.push(`/ko/myPage/orders?purchaseId=${encodeURIComponent(String(it.purchaseId))}`)}
-                                onTrace={() => router.push(`/ko/myPage/orders?purchaseId=${encodeURIComponent(String(it.purchaseId))}`)} // 추후 직접 추적 링크 사용
+                                onDetail={() =>
+                                    router.push(`/ko/myPage/orders?purchaseId=${encodeURIComponent(String(it.purchaseId))}`)
+                                }
+                                onTrace={() =>
+                                    router.push(`/ko/myPage/orders?purchaseId=${encodeURIComponent(String(it.purchaseId))}`)
+                                }
                                 onExchange={() => alert('교환/반품 신청 기능은 준비 중입니다.')}
                             />
                         ))}
@@ -188,38 +217,47 @@ export default function OrdersPage() {
 
                     {data && (
                         <div className="space-y-6">
-                            {/* 주문 요약 */}
-                            <div className="border rounded-md">
-                                <div className="flex items-center gap-4 p-4">
-                                    {productImgUrl && (
-                                        <img
-                                            src={productImgUrl}
-                                            alt={data.productInfo.productNm}
-                                            className="w-24 h-24 object-cover rounded"
-                                        />
-                                    )}
-                                    <div className="flex-1">
-                                        <div className="text-sm text-gray-600">주문번호</div>
-                                        <div className="text-base font-semibold">{data.orderId}</div>
-                                        <div className="mt-1 text-sm text-gray-600">
-                                            주문상태: <span className="font-medium">{data.purchaseDetailInfo.statusLocale}</span>
+                            {/* 주문 요약 (statusLocale 최상단 + 강조) */}
+                            <Card>
+                                <div className="p-4 flex flex-col gap-3">
+                                    {/* ✅ 상태 배지: 가장 상단 & 눈에 띄게 */}
+                                    <div>
+                                        <StatusBadge text={data.purchaseDetailInfo.statusLocale} size="lg" />
+                                    </div>
+
+                                    <div className="flex items-center gap-4">
+                                        {productImgUrl ? (
+                                            <img
+                                                src={productImgUrl}
+                                                alt={data.productInfo.productNm}
+                                                className="w-24 h-24 object-cover rounded"
+                                            />
+                                        ) : (
+                                            <div className="w-24 h-24 bg-gray-100 rounded flex items-center justify-center text-xs text-gray-500">
+                                                NO IMG
+                                            </div>
+                                        )}
+
+                                        <div className="flex-1 min-w-0">
+                                            <div className="text-sm text-gray-600">주문번호</div>
+                                            <div className="text-base font-semibold break-all">{data.orderId}</div>
+                                        </div>
+
+                                        <div className="text-right">
+                                            <div className="text-sm text-gray-600">결제금액</div>
+                                            <div className="text-2xl font-extrabold">{formatCurrency(data.purchaseFee)}</div>
                                         </div>
                                     </div>
-                                    <div className="text-right">
-                                        <div className="text-sm text-gray-600">결제금액</div>
-                                        <div className="text-lg font-bold">{formatCurrency(data.purchaseFee)}</div>
-                                    </div>
                                 </div>
-                            </div>
+                            </Card>
 
-                            {/* 결제 정보 / 배송 정보 / 상품 정보 ... (기존 코드 그대로) */}
-                            {/* --- 결제 정보 --- */}
-                            <div className="border rounded-md">
+                            {/* 결제 정보 */}
+                            <Card>
                                 <div className="p-4 font-semibold">결제 정보</div>
                                 <div className="divide-y">
                                     <Row k="결제수단" v={data.purchaseDetailInfo.methodSymbol.toUpperCase()} />
                                     <Row k="PG사" v={data.purchaseDetailInfo.pgCompany} />
-                                    <Row k="결제상태" v={data.purchaseDetailInfo.statusLocale} />
+                                    <Row k="결제상태" v={<StatusBadge text={data.purchaseDetailInfo.statusLocale} size="sm" />} />
                                     <Row k="승인일시" v={data.purchaseDetailInfo.purchasedAt} />
                                     <Row k="요청일시" v={data.purchaseDetailInfo.requestedAt} />
                                     {data.purchaseDetailInfo.cardCompany && (
@@ -237,61 +275,81 @@ export default function OrdersPage() {
                                         <Row
                                             k="영수증"
                                             v={
-                                                <a className="text-blue-600 underline" href={data.purchaseDetailInfo.receiptUrl} target="_blank" rel="noreferrer">
+                                                <a
+                                                    className="text-blue-600 underline"
+                                                    href={data.purchaseDetailInfo.receiptUrl}
+                                                    target="_blank"
+                                                    rel="noreferrer"
+                                                >
                                                     영수증 보기
                                                 </a>
                                             }
                                         />
                                     )}
                                 </div>
-                            </div>
+                            </Card>
 
-                            {/* --- 배송 정보 --- */}
-                            <div className="border rounded-md">
+                            {/* 배송 정보 */}
+                            <Card>
                                 <div className="p-4 font-semibold">배송 정보</div>
                                 <div className="divide-y">
                                     <Row k="수령인" v={data.purchaseDelivery.recipient} />
                                     <Row k="연락처" v={data.purchaseDelivery.phone} />
-                                    <Row k="주소" v={`${data.purchaseDelivery.addressMain} ${data.purchaseDelivery.addressSub ?? ''}`.trim()} />
+                                    <Row
+                                        k="주소"
+                                        v={`${data.purchaseDelivery.addressMain} ${data.purchaseDelivery.addressSub ?? ''}`.trim()}
+                                    />
                                     <Row k="우편번호" v={data.purchaseDelivery.postalCode} />
                                     <Row k="배송상태" v={deliveryStatusLabel(data.purchaseDelivery.deliveryStatus)} />
-                                    {data.purchaseDelivery.deliveryCompany && <Row k="택배사" v={data.purchaseDelivery.companyName ?? data.purchaseDelivery.deliveryCompany} />}
+                                    {data.purchaseDelivery.deliveryCompany && (
+                                        <Row k="택배사" v={data.purchaseDelivery.companyName ?? data.purchaseDelivery.deliveryCompany} />
+                                    )}
                                     {data.purchaseDelivery.deliveryCode && <Row k="송장번호" v={data.purchaseDelivery.deliveryCode} />}
                                     {data.purchaseDelivery.linkUrl && (
                                         <Row
                                             k="배송조회"
                                             v={
-                                                <a className="text-blue-600 underline" href={data.purchaseDelivery.linkUrl} target="_blank" rel="noreferrer">
+                                                <a
+                                                    className="text-blue-600 underline"
+                                                    href={data.purchaseDelivery.linkUrl}
+                                                    target="_blank"
+                                                    rel="noreferrer"
+                                                >
                                                     배송추적 링크
                                                 </a>
                                             }
                                         />
                                     )}
                                 </div>
-                            </div>
+                            </Card>
 
-                            {/* --- 상품 / 과금 정보 --- */}
-                            <div className="border rounded-md">
+                            {/* 상품 / 과금 정보 */}
+                            <Card>
                                 <div className="p-4 font-semibold">상품 / 과금 정보</div>
                                 <div className="divide-y">
                                     <Row k="상품명" v={data.productInfo.productNm} />
                                     <Row k="상품분류" v={`${data.productInfo.productCategory} / ${data.productInfo.productType}`} />
                                     <Row k="구매수량" v={String(data.purchaseQuantity)} />
                                     <Row k="상품단가" v={formatCurrency(data.productPrice)} />
-                                    <Row k="부가세" v={data.taxYn === 'Y' ? `${data.taxAddValue}${data.taxAddType === 'percent' ? '%' : '원'}` : '미부과'} />
-                                    <Row k="결제금액(총)" v={formatCurrency(data.purchaseFee)} />
+                                    <Row
+                                        k="부가세"
+                                        v={data.taxYn === 'Y' ? `${data.taxAddValue}${data.taxAddType === 'percent' ? '%' : '원'}` : '미부과'}
+                                    />
+                                    <Row k="결제금액(총)" v={<span className="font-extrabold">{formatCurrency(data.purchaseFee)}</span>} />
                                     {data.orderOption?.length > 0 && (
                                         <div className="flex justify-between p-4">
                                             <span className="text-gray-600">옵션</span>
                                             <div className="text-right">
                                                 {data.orderOption.map((o) => (
-                                                    <div key={`${o.codeId}:${o.key}:${o.value}`}>{o.key}: {o.value}</div>
+                                                    <div key={`${o.codeId}:${o.key}:${o.value}`}>
+                                                        {o.key}: {o.value}
+                                                    </div>
                                                 ))}
                                             </div>
                                         </div>
                                     )}
                                 </div>
-                            </div>
+                            </Card>
                         </div>
                     )}
                 </>
@@ -300,7 +358,7 @@ export default function OrdersPage() {
     );
 }
 
-/* ===== 리스트 아이템 컴포넌트 ===== */
+/* --------------------- List Item --------------------- */
 function OrderListItem({
                            item,
                            onDetail,
@@ -309,59 +367,49 @@ function OrderListItem({
                        }: {
     item: PaidListResponse;
     onDetail: () => void;
-    onTrace: () => void;   // TODO: 추후 실제 배송조회 링크로 교체
-    onExchange: () => void; // TODO: 추후 교환/반품 플로우로 교체
+    onTrace: () => void;
+    onExchange: () => void;
 }) {
     const dateStr = item.purchasedAt || item.purchaseDate || '';
-    return (
-        <div className="border rounded-md p-4 flex gap-4 items-center">
-            {/* 썸네일 */}
-            {item.mainImagePath ? (
-                <img src={item.mainImagePath} alt={item.productNm} className="w-16 h-16 object-cover rounded" />
-            ) : (
-                <div className="w-16 h-16 bg-gray-100 rounded flex items-center justify-center text-xs text-gray-500">NO IMG</div>
-            )}
 
-            {/* 본문 */}
-            <div className="flex-1 min-w-0">
-                <div className="text-sm text-gray-600">{dateStr}</div>
-                <div className="font-semibold truncate">{item.productNm}</div>
-                <div className="text-sm text-gray-600">
-                    수량 {item.purchaseQuantity} · 총 {formatCurrency(item.purchaseFee)}
+    return (
+        <Card className="p-4">
+            {/* ✅ statusLocale를 최상단에 크게 강조 */}
+            <div className="mb-3">
+                <StatusBadge text={item.statusLocale} size="md" />
+            </div>
+
+            <div className="flex gap-4 items-center">
+                {/* 썸네일 */}
+                {item.mainImagePath ? (
+                    <img src={item.mainImagePath} alt={item.productNm} className="w-16 h-16 object-cover rounded" />
+                ) : (
+                    <div className="w-16 h-16 bg-gray-100 rounded flex items-center justify-center text-xs text-gray-500">NO IMG</div>
+                )}
+
+                {/* 본문 */}
+                <div className="flex-1 min-w-0">
+                    <div className="text-sm text-gray-600">{dateStr}</div>
+                    <div className="font-semibold truncate">{item.productNm}</div>
+                    <div className="text-sm text-gray-600">
+                        수량 {item.purchaseQuantity} · 총{' '}
+                        <span className="font-bold text-gray-900">{formatCurrency(item.purchaseFee)}</span>
+                    </div>
                 </div>
-                <div className="text-xs text-gray-500 mt-1">상태: {item.statusLocale}</div>
+
+                {/* 액션 */}
+                <div className="flex flex-col gap-2">
+                    <button onClick={onDetail} className="px-3 py-2 rounded bg-blue-600 text-white hover:bg-blue-700">
+                        주문 상세보기
+                    </button>
+                    <button onClick={onTrace} className="px-3 py-2 rounded border">
+                        배송조회
+                    </button>
+                    <button onClick={onExchange} className="px-3 py-2 rounded border">
+                        교환·반품 신청
+                    </button>
+                </div>
             </div>
-
-            {/* 액션 */}
-            <div className="flex flex-col gap-2">
-                <button onClick={onDetail} className="px-3 py-2 rounded bg-blue-600 text-white hover:bg-blue-700">
-                    주문 상세보기
-                </button>
-                <button onClick={onTrace} className="px-3 py-2 rounded border">
-                    배송조회
-                </button>
-                <button onClick={onExchange} className="px-3 py-2 rounded border">
-                    교환·반품 신청
-                </button>
-            </div>
-        </div>
+        </Card>
     );
-}
-
-function Row({ k, v }: { k: string; v: React.ReactNode }) {
-    return (
-        <div className="flex justify-between p-4">
-            <span className="text-gray-600">{k}</span>
-            <span className="font-medium text-right">{v}</span>
-        </div>
-    );
-}
-
-function deliveryStatusLabel(s: 'W' | 'P' | 'D') {
-    switch (s) {
-        case 'W': return '배송대기';
-        case 'P': return '배송중';
-        case 'D': return '배송완료';
-        default: return s;
-    }
 }
