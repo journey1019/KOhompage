@@ -142,219 +142,220 @@ export default function OrdersPage() {
     console.log(data)
 
     return (
-        <div className="max-w-4xl mx-auto p-6">
-            <h2 className="text-xl font-semibold mb-4">주문내역 / 배송정보</h2>
-
-            {/* ===== 리스트 모드 ===== */}
-            {!purchaseId && (
-                <>
-                    {/* 필터 영역 */}
-                    <div className="mb-4 p-4 border rounded-md flex items-end gap-3">
-                        <div>
-                            <label className="block text-sm text-gray-600 mb-1">시작일</label>
-                            <input
-                                type="date"
-                                className="border rounded px-3 py-2 w-44"
-                                value={uiRange.start}
-                                onChange={onChangeUiDate('start')}
-                                max={todayDash}
-                            />
-                        </div>
-                        <div>
-                            <label className="block text-sm text-gray-600 mb-1">종료일</label>
-                            <input
-                                type="date"
-                                className="border rounded px-3 py-2 w-44"
-                                value={uiRange.end}
-                                onChange={onChangeUiDate('end')}
-                                max={todayDash}
-                            />
-                        </div>
-                        <button onClick={applyRange} className="px-4 h-[42px] rounded bg-gray-800 text-white">
-                            적용
-                        </button>
-                    </div>
-
-                    {/* 리스트 */}
-                    {listLoading && <div className="p-6 border rounded bg-gray-50">불러오는 중…</div>}
-                    {listError && <div className="p-6 border rounded bg-red-50 text-red-700">{listError}</div>}
-                    {!listLoading && !listError && sortedItems.length === 0 && (
-                        <div className="p-6 border rounded bg-gray-50">해당 기간에 주문내역이 없습니다.</div>
-                    )}
-
-                    <div className="space-y-3">
-                        {sortedItems.map((it) => (
-                            <OrderListItem
-                                key={it.purchaseId}
-                                item={it}
-                                onDetail={() =>
-                                    router.push(`/ko/myPage/orders?purchaseId=${encodeURIComponent(String(it.purchaseId))}`)
-                                }
-                                onTrace={() =>
-                                    router.push(`/ko/myPage/orders?purchaseId=${encodeURIComponent(String(it.purchaseId))}`)
-                                }
-                                onExchange={() => alert('교환/반품 신청 기능은 준비 중입니다.')}
-                            />
-                        ))}
-                    </div>
-                </>
-            )}
-
-            {/* ===== 상세 모드 ===== */}
-            {purchaseId && (
-                <>
-                    <div className="mb-4">
-                        <button
-                            onClick={() => router.push('/ko/myPage/orders')}
-                            className="px-3 py-2 rounded border"
-                        >
-                            ← 주문 목록으로
-                        </button>
-                    </div>
-
-                    {detailLoading && <div className="p-6 border rounded bg-gray-50">불러오는 중…</div>}
-                    {detailError && <div className="p-6 border rounded bg-red-50 text-red-700">{detailError}</div>}
-
-                    {data && (
-                        <div className="space-y-6">
-                            {/* 주문 요약 (statusLocale 최상단 + 강조) */}
-                            <Card>
-                                <div className="p-4 flex flex-col gap-3">
-                                    {/* ✅ 상태 배지: 가장 상단 & 눈에 띄게 */}
-                                    <div>
-                                        <StatusBadge text={data.purchaseDetailInfo.statusLocale} size="lg" />
-                                    </div>
-
-                                    <div className="flex items-center gap-4">
-                                        {productImgUrl ? (
-                                            <img
-                                                src={productImgUrl}
-                                                alt={data.productInfo.productNm}
-                                                className="w-24 h-24 object-cover rounded"
-                                            />
-                                        ) : (
-                                            <div className="w-24 h-24 bg-gray-100 rounded flex items-center justify-center text-xs text-gray-500">
-                                                NO IMG
-                                            </div>
-                                        )}
-
-                                        <div className="flex-1 min-w-0">
-                                            <div className="text-sm text-gray-600">주문번호</div>
-                                            <div className="text-base font-semibold break-all">{data.orderId}</div>
-                                        </div>
-
-                                        <div className="text-right">
-                                            <div className="text-sm text-gray-600">결제금액</div>
-                                            <div className="text-2xl font-extrabold">{formatCurrency(data.purchaseFee)}</div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </Card>
-
-                            {/* 결제 정보 */}
-                            <Card>
-                                <div className="p-4 font-semibold">결제 정보</div>
-                                <div className="divide-y">
-                                    <Row k="결제수단" v={data.purchaseDetailInfo.methodSymbol.toUpperCase()} />
-                                    <Row k="PG사" v={data.purchaseDetailInfo.pgCompany} />
-                                    <Row k="결제상태" v={<StatusBadge text={data.purchaseDetailInfo.statusLocale} size="sm" />} />
-                                    <Row k="승인일시" v={data.purchaseDetailInfo.purchasedAt} />
-                                    <Row k="요청일시" v={data.purchaseDetailInfo.requestedAt} />
-                                    {data.purchaseDetailInfo.cardCompany && (
-                                        <Row
-                                            k="카드사"
-                                            v={`${data.purchaseDetailInfo.cardCompany} (${data.purchaseDetailInfo.cardType}/${data.purchaseDetailInfo.cardOwnerType})`}
-                                        />
-                                    )}
-                                    {data.purchaseDetailInfo.cardNo && <Row k="카드번호" v={data.purchaseDetailInfo.cardNo} />}
-                                    {typeof data.purchaseDetailInfo.taxFree === 'number' && (
-                                        <Row k="면세금액" v={formatCurrency(data.purchaseDetailInfo.taxFree)} />
-                                    )}
-                                    {data.purchaseDetailInfo.receiptId && <Row k="영수증 ID" v={data.purchaseDetailInfo.receiptId} />}
-                                    {data.purchaseDetailInfo.receiptUrl && (
-                                        <Row
-                                            k="영수증"
-                                            v={
-                                                <a
-                                                    className="text-blue-600 underline"
-                                                    href={data.purchaseDetailInfo.receiptUrl}
-                                                    target="_blank"
-                                                    rel="noreferrer"
-                                                >
-                                                    영수증 보기
-                                                </a>
-                                            }
-                                        />
-                                    )}
-                                </div>
-                            </Card>
-
-                            {/* 배송 정보 */}
-                            <Card>
-                                <div className="p-4 font-semibold">배송 정보</div>
-                                <div className="divide-y">
-                                    <Row k="수령인" v={data.purchaseDelivery.recipient} />
-                                    <Row k="연락처" v={data.purchaseDelivery.phone} />
-                                    <Row
-                                        k="주소"
-                                        v={`${data.purchaseDelivery.addressMain} ${data.purchaseDelivery.addressSub ?? ''}`.trim()}
-                                    />
-                                    <Row k="우편번호" v={data.purchaseDelivery.postalCode} />
-                                    <Row k="배송상태" v={deliveryStatusLabel(data.purchaseDelivery.deliveryStatus)} />
-                                    {data.purchaseDelivery.deliveryCompany && (
-                                        <Row k="택배사" v={data.purchaseDelivery.companyName ?? data.purchaseDelivery.deliveryCompany} />
-                                    )}
-                                    {data.purchaseDelivery.deliveryCode && <Row k="송장번호" v={data.purchaseDelivery.deliveryCode} />}
-                                    {data.purchaseDelivery.linkUrl && (
-                                        <Row
-                                            k="배송조회"
-                                            v={
-                                                <a
-                                                    className="text-blue-600 underline"
-                                                    href={data.purchaseDelivery.linkUrl}
-                                                    target="_blank"
-                                                    rel="noreferrer"
-                                                >
-                                                    배송추적 링크
-                                                </a>
-                                            }
-                                        />
-                                    )}
-                                </div>
-                            </Card>
-
-                            {/* 상품 / 과금 정보 */}
-                            <Card>
-                                <div className="p-4 font-semibold">상품 / 과금 정보</div>
-                                <div className="divide-y">
-                                    <Row k="상품명" v={data.productInfo.productNm} />
-                                    <Row k="상품분류" v={`${data.productInfo.productCategory} / ${data.productInfo.productType}`} />
-                                    <Row k="구매수량" v={String(data.purchaseQuantity)} />
-                                    <Row k="상품단가" v={formatCurrency(data.productPrice)} />
-                                    <Row
-                                        k="부가세"
-                                        v={data.taxYn === 'Y' ? `${data.taxAddValue}${data.taxAddType === 'percent' ? '%' : '원'}` : '미부과'}
-                                    />
-                                    <Row k="결제금액(총)" v={<span className="font-extrabold">{formatCurrency(data.purchaseFee)}</span>} />
-                                    {data.orderOption?.length > 0 && (
-                                        <div className="flex justify-between p-4">
-                                            <span className="text-gray-600">옵션</span>
-                                            <div className="text-right">
-                                                {data.orderOption.map((o) => (
-                                                    <div key={`${o.codeId}:${o.key}:${o.value}`}>
-                                                        {o.key}: {o.value}
-                                                    </div>
-                                                ))}
-                                            </div>
-                                        </div>
-                                    )}
-                                </div>
-                            </Card>
-                        </div>
-                    )}
-                </>
-            )}
-        </div>
+        <span className="text-2xl">준비중</span>
+        // <div className="max-w-4xl mx-auto p-6">
+        //     <h2 className="text-xl font-semibold mb-4">주문내역 / 배송정보</h2>
+        //
+        //     {/* ===== 리스트 모드 ===== */}
+        //     {!purchaseId && (
+        //         <>
+        //             {/* 필터 영역 */}
+        //             <div className="mb-4 p-4 border rounded-md flex items-end gap-3">
+        //                 <div>
+        //                     <label className="block text-sm text-gray-600 mb-1">시작일</label>
+        //                     <input
+        //                         type="date"
+        //                         className="border rounded px-3 py-2 w-44"
+        //                         value={uiRange.start}
+        //                         onChange={onChangeUiDate('start')}
+        //                         max={todayDash}
+        //                     />
+        //                 </div>
+        //                 <div>
+        //                     <label className="block text-sm text-gray-600 mb-1">종료일</label>
+        //                     <input
+        //                         type="date"
+        //                         className="border rounded px-3 py-2 w-44"
+        //                         value={uiRange.end}
+        //                         onChange={onChangeUiDate('end')}
+        //                         max={todayDash}
+        //                     />
+        //                 </div>
+        //                 <button onClick={applyRange} className="px-4 h-[42px] rounded bg-gray-800 text-white">
+        //                     적용
+        //                 </button>
+        //             </div>
+        //
+        //             {/* 리스트 */}
+        //             {listLoading && <div className="p-6 border rounded bg-gray-50">불러오는 중…</div>}
+        //             {listError && <div className="p-6 border rounded bg-red-50 text-red-700">{listError}</div>}
+        //             {!listLoading && !listError && sortedItems.length === 0 && (
+        //                 <div className="p-6 border rounded bg-gray-50">해당 기간에 주문내역이 없습니다.</div>
+        //             )}
+        //
+        //             <div className="space-y-3">
+        //                 {sortedItems.map((it) => (
+        //                     <OrderListItem
+        //                         key={it.purchaseId}
+        //                         item={it}
+        //                         onDetail={() =>
+        //                             router.push(`/ko/myPage/orders?purchaseId=${encodeURIComponent(String(it.purchaseId))}`)
+        //                         }
+        //                         onTrace={() =>
+        //                             router.push(`/ko/myPage/orders?purchaseId=${encodeURIComponent(String(it.purchaseId))}`)
+        //                         }
+        //                         onExchange={() => alert('교환/반품 신청 기능은 준비 중입니다.')}
+        //                     />
+        //                 ))}
+        //             </div>
+        //         </>
+        //     )}
+        //
+        //     {/* ===== 상세 모드 ===== */}
+        //     {purchaseId && (
+        //         <>
+        //             <div className="mb-4">
+        //                 <button
+        //                     onClick={() => router.push('/ko/myPage/orders')}
+        //                     className="px-3 py-2 rounded border"
+        //                 >
+        //                     ← 주문 목록으로
+        //                 </button>
+        //             </div>
+        //
+        //             {detailLoading && <div className="p-6 border rounded bg-gray-50">불러오는 중…</div>}
+        //             {detailError && <div className="p-6 border rounded bg-red-50 text-red-700">{detailError}</div>}
+        //
+        //             {data && (
+        //                 <div className="space-y-6">
+        //                     {/* 주문 요약 (statusLocale 최상단 + 강조) */}
+        //                     <Card>
+        //                         <div className="p-4 flex flex-col gap-3">
+        //                             {/* ✅ 상태 배지: 가장 상단 & 눈에 띄게 */}
+        //                             <div>
+        //                                 <StatusBadge text={data.purchaseDetailInfo.statusLocale} size="lg" />
+        //                             </div>
+        //
+        //                             <div className="flex items-center gap-4">
+        //                                 {productImgUrl ? (
+        //                                     <img
+        //                                         src={productImgUrl}
+        //                                         alt={data.productInfo.productNm}
+        //                                         className="w-24 h-24 object-cover rounded"
+        //                                     />
+        //                                 ) : (
+        //                                     <div className="w-24 h-24 bg-gray-100 rounded flex items-center justify-center text-xs text-gray-500">
+        //                                         NO IMG
+        //                                     </div>
+        //                                 )}
+        //
+        //                                 <div className="flex-1 min-w-0">
+        //                                     <div className="text-sm text-gray-600">주문번호</div>
+        //                                     <div className="text-base font-semibold break-all">{data.orderId}</div>
+        //                                 </div>
+        //
+        //                                 <div className="text-right">
+        //                                     <div className="text-sm text-gray-600">결제금액</div>
+        //                                     <div className="text-2xl font-extrabold">{formatCurrency(data.purchaseFee)}</div>
+        //                                 </div>
+        //                             </div>
+        //                         </div>
+        //                     </Card>
+        //
+        //                     {/* 결제 정보 */}
+        //                     <Card>
+        //                         <div className="p-4 font-semibold">결제 정보</div>
+        //                         <div className="divide-y">
+        //                             <Row k="결제수단" v={data.purchaseDetailInfo.methodSymbol.toUpperCase()} />
+        //                             <Row k="PG사" v={data.purchaseDetailInfo.pgCompany} />
+        //                             <Row k="결제상태" v={<StatusBadge text={data.purchaseDetailInfo.statusLocale} size="sm" />} />
+        //                             <Row k="승인일시" v={data.purchaseDetailInfo.purchasedAt} />
+        //                             <Row k="요청일시" v={data.purchaseDetailInfo.requestedAt} />
+        //                             {data.purchaseDetailInfo.cardCompany && (
+        //                                 <Row
+        //                                     k="카드사"
+        //                                     v={`${data.purchaseDetailInfo.cardCompany} (${data.purchaseDetailInfo.cardType}/${data.purchaseDetailInfo.cardOwnerType})`}
+        //                                 />
+        //                             )}
+        //                             {data.purchaseDetailInfo.cardNo && <Row k="카드번호" v={data.purchaseDetailInfo.cardNo} />}
+        //                             {typeof data.purchaseDetailInfo.taxFree === 'number' && (
+        //                                 <Row k="면세금액" v={formatCurrency(data.purchaseDetailInfo.taxFree)} />
+        //                             )}
+        //                             {data.purchaseDetailInfo.receiptId && <Row k="영수증 ID" v={data.purchaseDetailInfo.receiptId} />}
+        //                             {data.purchaseDetailInfo.receiptUrl && (
+        //                                 <Row
+        //                                     k="영수증"
+        //                                     v={
+        //                                         <a
+        //                                             className="text-blue-600 underline"
+        //                                             href={data.purchaseDetailInfo.receiptUrl}
+        //                                             target="_blank"
+        //                                             rel="noreferrer"
+        //                                         >
+        //                                             영수증 보기
+        //                                         </a>
+        //                                     }
+        //                                 />
+        //                             )}
+        //                         </div>
+        //                     </Card>
+        //
+        //                     {/* 배송 정보 */}
+        //                     <Card>
+        //                         <div className="p-4 font-semibold">배송 정보</div>
+        //                         <div className="divide-y">
+        //                             <Row k="수령인" v={data.purchaseDelivery.recipient} />
+        //                             <Row k="연락처" v={data.purchaseDelivery.phone} />
+        //                             <Row
+        //                                 k="주소"
+        //                                 v={`${data.purchaseDelivery.addressMain} ${data.purchaseDelivery.addressSub ?? ''}`.trim()}
+        //                             />
+        //                             <Row k="우편번호" v={data.purchaseDelivery.postalCode} />
+        //                             <Row k="배송상태" v={deliveryStatusLabel(data.purchaseDelivery.deliveryStatus)} />
+        //                             {data.purchaseDelivery.deliveryCompany && (
+        //                                 <Row k="택배사" v={data.purchaseDelivery.companyName ?? data.purchaseDelivery.deliveryCompany} />
+        //                             )}
+        //                             {data.purchaseDelivery.deliveryCode && <Row k="송장번호" v={data.purchaseDelivery.deliveryCode} />}
+        //                             {data.purchaseDelivery.linkUrl && (
+        //                                 <Row
+        //                                     k="배송조회"
+        //                                     v={
+        //                                         <a
+        //                                             className="text-blue-600 underline"
+        //                                             href={data.purchaseDelivery.linkUrl}
+        //                                             target="_blank"
+        //                                             rel="noreferrer"
+        //                                         >
+        //                                             배송추적 링크
+        //                                         </a>
+        //                                     }
+        //                                 />
+        //                             )}
+        //                         </div>
+        //                     </Card>
+        //
+        //                     {/* 상품 / 과금 정보 */}
+        //                     <Card>
+        //                         <div className="p-4 font-semibold">상품 / 과금 정보</div>
+        //                         <div className="divide-y">
+        //                             <Row k="상품명" v={data.productInfo.productNm} />
+        //                             <Row k="상품분류" v={`${data.productInfo.productCategory} / ${data.productInfo.productType}`} />
+        //                             <Row k="구매수량" v={String(data.purchaseQuantity)} />
+        //                             <Row k="상품단가" v={formatCurrency(data.productPrice)} />
+        //                             <Row
+        //                                 k="부가세"
+        //                                 v={data.taxYn === 'Y' ? `${data.taxAddValue}${data.taxAddType === 'percent' ? '%' : '원'}` : '미부과'}
+        //                             />
+        //                             <Row k="결제금액(총)" v={<span className="font-extrabold">{formatCurrency(data.purchaseFee)}</span>} />
+        //                             {data.orderOption?.length > 0 && (
+        //                                 <div className="flex justify-between p-4">
+        //                                     <span className="text-gray-600">옵션</span>
+        //                                     <div className="text-right">
+        //                                         {data.orderOption.map((o) => (
+        //                                             <div key={`${o.codeId}:${o.key}:${o.value}`}>
+        //                                                 {o.key}: {o.value}
+        //                                             </div>
+        //                                         ))}
+        //                                     </div>
+        //                                 </div>
+        //                             )}
+        //                         </div>
+        //                     </Card>
+        //                 </div>
+        //             )}
+        //         </>
+        //     )}
+        // </div>
     );
 }
 
