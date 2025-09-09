@@ -68,12 +68,16 @@ const OnlineStorePage = () => {
     const itemsPerPage = 9; // 페이지당 항목 수
 
     const [tokenExpired, setTokenExpired] = useState<string | null>(null);
+    const [isAdmin, setIsAdmin] = useState(false);
 
     useEffect(() => {
         const stored = localStorage.getItem('paymentUserInfo');
         if (stored) {
-            const userInfo = JSON.parse(stored);
-            setTokenExpired(userInfo.tokenExpired);
+            try {
+                const userInfo = JSON.parse(stored);
+                setTokenExpired(userInfo.tokenExpired);
+                setIsAdmin(userInfo.roleId === 'admin');
+            } catch {}
         }
     }, []);
 
@@ -143,6 +147,19 @@ const OnlineStorePage = () => {
                                 tokenExpired={tokenExpired}
                             />
                         )}
+                        {/* 🔹 Admin 전용 버튼 */}
+                        {isAdmin && (
+                            <div className="relative group">
+                                <Link href="/ko/online-store/superAdmin">
+                                    <button className="hover:bg-gray-200 px-3 py-2 rounded-md text-sm font-semibold text-white bg-indigo-600 hover:bg-indigo-700">
+                                        관리자 페이지
+                                    </button>
+                                </Link>
+                                <div className="absolute bottom-full mb-2 left-1/2 -translate-x-1/2 opacity-0 group-hover:opacity-100 transition-opacity bg-black text-white text-xs rounded px-2 py-1 whitespace-nowrap z-10">
+                                    Admin Only
+                                </div>
+                            </div>
+                        )}
                         {/*마이페이지 버튼*/}
                         <div className="relative group">
                             <button onClick={() => router.push('/ko/myPage')}
@@ -200,10 +217,10 @@ const OnlineStorePage = () => {
                                 <div className="col-span-full flex justify-center items-center py-20">
                                     <div className="animate-spin rounded-full h-10 w-10 border-t-4 border-blue-500" />
                                 </div>
-                            // ) : productsList.length > 0 ? (
-                            //     productsList.map((product) => (
-                            //         <ProductCard key={product.id} {...product} />
-                            //     ))
+                                // ) : productsList.length > 0 ? (
+                                //     productsList.map((product) => (
+                                //         <ProductCard key={product.id} {...product} />
+                                //     ))
                             ) : products.length > 0 ? (
                                 products.map((product) => (
                                     <ProductCard key={product.productId} {...product} />

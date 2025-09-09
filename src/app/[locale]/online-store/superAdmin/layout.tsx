@@ -2,7 +2,7 @@
 
 import React, { useEffect, useState } from 'react';
 import PageHero from '@/components/PageHero';
-import MyPageSidebar from '@/components/(MyPage)/MyPageSidebar';
+import AdminPageSidebar from '@/components/(Online-Store)/Admin/AdminPageSidebar';
 import { IoIosArrowBack } from "react-icons/io";
 import { useRouter } from 'next/navigation';
 import TokenCountdownTimer from '@/components/(Shop)/TokenCountdownTimer';
@@ -12,7 +12,7 @@ import { RiLogoutCircleRLine } from 'react-icons/ri';
 import { LogOut } from '@/lib/api/authApi';
 
 
-export default function MyPageLayout({ children }: { children: React.ReactNode }) {
+export default function AdminPageLayout({ children }: { children: React.ReactNode }) {
     const router = useRouter();
 
     const [tokenExpired, setTokenExpired] = useState<string | null>(null);
@@ -49,13 +49,6 @@ export default function MyPageLayout({ children }: { children: React.ReactNode }
 
     return (
         <section>
-            <PageHero
-                size="py-52"
-                url="/images/shop/shop2.png"
-                intro=""
-                title="마이페이지"
-                subtitle=""
-            />
             <div className="mx-auto max-w-7xl maxWeb:max-w-screen-2xl px-6 py-8 lg:px-8">
                 <div className="flex flex-row justify-between items-center">
                     <button
@@ -74,6 +67,7 @@ export default function MyPageLayout({ children }: { children: React.ReactNode }
                                     tokenExpired={tokenExpired}
                                 />
                             )}
+
                             {/* 🔹 Admin 전용 버튼 */}
                             {isAdmin && (
                                 <div className="relative group">
@@ -89,6 +83,7 @@ export default function MyPageLayout({ children }: { children: React.ReactNode }
                                     </div>
                                 </div>
                             )}
+
                             {/*마이페이지 버튼*/}
                             <div className="relative group">
                                 <button onClick={() => router.push('/ko/myPage')}
@@ -116,14 +111,14 @@ export default function MyPageLayout({ children }: { children: React.ReactNode }
                     </div>
                 </div>
 
-                <h1 className="text-4xl maxWeb:text-5xl font-bold text-gray-800 mb-8">제품</h1>
+                <h1 className="text-4xl maxWeb:text-5xl font-bold text-gray-800 mb-8">관리자 페이지</h1>
 
                 <div className="flex">
                     {/* 좌측 사이드바 */}
-                    <MyPageSidebar />
+                    <AdminPageSidebar />
 
                     {/* 우측 컨텐츠 */}
-                    <div className="flex-1 bg-white p-6 min-h-[600px]">
+                    <div className="flex-1 min-w-0 bg-white p-6 min-h-[600px] overflow-x-hidden">
                         {children}
                     </div>
                 </div>

@@ -48,8 +48,13 @@ export default function PaymentLoginPage() {
             localStorage.setItem('userToken', response.userToken);
             localStorage.setItem('tokenExpired', response.tokenExpired);
 
+            // 전체 유저 정보
             localStorage.setItem('paymentUserInfo', JSON.stringify(response));
             console.log(JSON.stringify(response))
+
+            // 역할만 따로도 저장(선택)
+            localStorage.setItem('roleId', response.roleId || 'user');
+            localStorage.setItem('roleNm', response.roleNm || '');
 
             // 3) 여기서 배송지 자동 생성/저장 (Hook 금지, 일반 함수로 처리)
             await ensureDeliveryInfoFromAPI(); // 없으면 API에서 기본 배송지 저장
