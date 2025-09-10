@@ -325,13 +325,17 @@ export interface ProductRequestBody {
     productPriceList: ProductPriceItem[];
     codeOption?: string[];
     stockQuantity: number;
-    /** ⚠️ 백엔드 오탈자 호환 */
     availablePurchase: number;
 }
 
-/** 기본 경로가 오탈자일 가능성 방어: 먼저 Ad 시도 → 안되면 Add로 재시도 */
+/** 관리자 상품 추가 */
 export async function postProductAdd(data: ProductRequestBody) {
     return await apiBodyFetch('/api/payment/adminProductAdd', data);
+}
+
+/** 관리자 상품 수정 */
+export async function postProductEdit(data: ProductRequestBody) {
+    return await apiBodyFetch('/api/payment/adminProductEdit', data);
 }
 
 
