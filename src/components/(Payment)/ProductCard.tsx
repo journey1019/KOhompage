@@ -139,7 +139,6 @@ const ProductCard: React.FC<Product> = ({
     // 최대 구매 가능 수량 (재고 vs availablePurchase 중 작은 값)
     const maxQty = Math.min(stockQuantity, availablePurchase ?? stockQuantity);
 
-    console.log(productNm, stockQuantity)
     return (
         <div className="border rounded-lg shadow hover:shadow-md transition overflow-hidden">
             <img src={imageUrl} alt={productNm} className="w-full h-72 object-cover"

@@ -253,6 +253,88 @@ export async function ProductList(): Promise<Product[]> {
     return apiGetFetch<Product[]>('/api/payment/adminProductList');
 }
 
+/**
+ * 상품 상세 조회
+ * */
+// 프록시 라우트: /api/payment/adminPaidDetail -> /admin/product/detail
+/** 가격 리스트 아이템 */
+export interface ProductPriceItem {
+    roleId: string;                        // 'user' | 'admin' 등
+    productPrice: number;                  // 기본 금액
+    taxAddYn: 'Y' | 'N';                   // 부가세 포함 여부
+    taxAddType: 'percent' | 'fee';         // percent: 비율, fee: 금액
+    taxAddValue: number;                   // taxAddType에 대한 값
+    finalfee: number;                      // 최종 요금
+}
+
+/** 구매 대기 목록 아이템 */
+export interface PurchaseWaitingItem {
+    purchaseIndex: number;                 // 구매대기 idx
+    userId: string;                        // 구매자 ID
+    purchaseYn: 'W' | 'Y' | 'N' | string;  // 구매 상태 (예: 'W')
+    purchaseQuantity: number;              // 구매 수량
+    purchaseExpired: string;               // 'YYYY-MM-DD HH:mm:ss'
+    expiredIndex: string;                  // 'YYYYMMDDHH'
+}
+
+/** 상품 상세 응답 */
+export interface ProductDetailResponse {
+    productId: number;                     // 상품 ID
+    productNm: string;                     // 상품명
+    productCategory: string;               // 상품 범주
+    productType: 'device' | 'service' | string; // 상품 타입
+    useYn: 'Y' | 'N';                      // 사용 여부
+    mainDesc?: string | null;              // 상품 설명
+    mainImagePath?: string | null;         // 메인 이미지 경로(서버 경로일 수 있음)
+    mainImageFileNm?: string | null;       // 메인 이미지 파일명
+    productPriceList: ProductPriceItem[];  // 가격 리스트
+    stockQuantity: number;                 // 구매 가능 수량
+    /** ⚠️ 서버 응답 오탈자 주의: avaliablePurchase */
+    avaliablePurchase?: number;            // 구매 제한 수량 (오탈자)
+    availablePurchase?: number;            // 혹시 백엔드 수정 시
+    purchaseWatingList?: PurchaseWaitingItem[]; // 구매 대기 목록 (오탈자: Wating)
+    codeOption?: string[];                 // 상품 옵션 codeId List
+    createDate: string;                    // 생성 시간 'YYYY-MM-DD HH:mm:ss'
+    createId: string;                      // 생성자
+    updateDate: string;                    // 수정 시간
+    updateId: string;                      // 수정자
+}
+export function getProductDetail(productId: number) {
+    return apiGetFetch<ProductDetailResponse>('/api/payment/adminProductDetail', { productId });
+}
+
+/**
+ * 상품 추가
+ * */
+export interface ProductPriceItem {
+    roleId: string;                 // 'user' | 'admin' ...
+    productPrice: number;           // 기본 금액
+    taxAddYn: 'Y' | 'N';            // 부가세 포함 여부
+    taxAddType: 'percent' | 'fee';  // percent: 비율, fee: 금액
+    taxAddValue: number;            // 부가세 값
+    finalfee: number;               // 최종 요금
+}
+
+export interface ProductRequestBody {
+    // 신규 생성 시 보통 서버가 부여 → 선택적으로 둡니다.
+    productId?: number;
+    productNm: string;
+    productCategory: string;
+    productType: 'device' | 'service' | string;
+    useYn: 'Y' | 'N';
+    productPriceList: ProductPriceItem[];
+    codeOption?: string[];
+    stockQuantity: number;
+    /** ⚠️ 백엔드 오탈자 호환 */
+    availablePurchase: number;
+}
+
+/** 기본 경로가 오탈자일 가능성 방어: 먼저 Ad 시도 → 안되면 Add로 재시도 */
+export async function postProductAdd(data: ProductRequestBody) {
+    return await apiBodyFetch('/api/payment/adminProductAdd', data);
+}
+
+
 
 /**
  * 결제 리스트 조회 (GET)
@@ -299,6 +381,17 @@ export async function PaidDeliveryUpdate(data: DeliveryRequestBody) {
     return apiBodyFetch('/api/payment/adminPaidDeliveryUpdate', data);
 }
 
+
+/**
+ * 결제 취소
+ * */
+export interface PaidCancelResponse {
+    status: boolean;
+    orderMessage: string;
+}
+export async function PaidCancel(data: { purchaseId: number; receiptId: string; cancelMessage: string; }): Promise<PaidCancelResponse> {
+    return apiQueryFetch<PaidCancelResponse>('/api/payment/adminPaidCancel', data);
+}
 
 
 /**
