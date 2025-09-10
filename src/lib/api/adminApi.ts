@@ -1,4 +1,4 @@
-import { apiBodyFetch, apiQueryFetch, apiGetFetch } from '@/lib/client/apiFetch';
+import { apiBodyFetch, apiQueryFetch, apiGetFetch, apiFormFetch } from '@/lib/client/apiFetch';
 
 export interface Product {
     productId: number;
@@ -302,6 +302,35 @@ export interface ProductDetailResponse {
 export function getProductDetail(productId: number) {
     return apiGetFetch<ProductDetailResponse>('/api/payment/adminProductDetail', { productId });
 }
+
+/**
+ * 상품 이미지 추가/수정
+ * */
+/** 상품 메인이미지 업로드 (프록시 라우트) */
+/** 서버는 /admin/product/image/upload/{productId} 를 받는다고 했음 */
+export interface UploadImageResponse {
+    productId: number;
+    mainImageFileNm?: string | null;
+    mainDesc?: string | null;
+}
+
+export async function uploadProductMainImage(
+    productId: number,
+    file: File,
+    desc?: string
+): Promise<UploadImageResponse> {
+    const fd = new FormData();
+    if (desc !== undefined) fd.append("mainDesc", desc);
+    fd.append("mainImageFile", file);
+
+    // 프록시로 호출
+    return await apiFormFetch<UploadImageResponse>(
+        `/api/payment/adminProductImageUpload/${productId}`,
+        fd,
+        { method: "POST" }
+    );
+}
+
 
 /**
  * 상품 추가

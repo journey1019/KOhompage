@@ -1,5 +1,6 @@
-import { postProductAdd, ProductPriceItem, ProductRequestBody } from '@/lib/api/adminApi';
+import { postProductAdd, ProductPriceItem, ProductRequestBody, uploadProductMainImage } from '@/lib/api/adminApi';
 import { useState } from 'react';
+import { AdminImagePicker } from '@/components/(Online-Store)/Admin/AdminImagePicker';
 
 // 최종가 계산 유틸
 function calcFinalfee(row: ProductPriceItem) {
@@ -40,6 +41,10 @@ export function CreateProductForm({
     const [prices, setPrices] = useState<ProductPriceItem[]>([
         { roleId: "user", productPrice: 0, taxAddYn: "N", taxAddType: "percent", taxAddValue: 10, finalfee: 0 },
     ]);
+
+    // 컴포넌트 내부 이미지 state 추가
+    const [imageFile, setImageFile] = useState<File | null>(null);
+    const [imageDesc, setImageDesc] = useState("");
 
     const updatePrice = (idx: number, patch: Partial<ProductPriceItem>) => {
         setPrices((prev) => {
@@ -94,11 +99,18 @@ export function CreateProductForm({
 
         try {
             setSaving(true);
-            await postProductAdd(payload);
-            await onCreated();
-        } catch (e: any) {
-            console.error(e);
-            setErrorMsg(e?.message || "상품 생성 중 오류가 발생했습니다.");
+            // 1) 기본 상품 생성
+            const created = await postProductAdd(payload);
+            const newId = (created as any)?.productId;
+            if (!newId) throw new Error("상품 ID 반환이 없습니다.");
+
+            if (imageFile) {
+                await uploadProductMainImage(newId, imageFile, imageDesc);
+            }
+
+            await onCreated(); // refreshList + 모달 닫기
+        } catch (e:any) {
+            setErrorMsg(e.message || "생성 실패");
         } finally {
             setSaving(false);
         }
@@ -201,6 +213,14 @@ export function CreateProductForm({
                         )}
                     </div>
                 </div>
+
+                {/* 이미지 */}
+                <AdminImagePicker
+                    initialImageUrl={undefined}
+                    initialDesc=""
+                    onFileChange={setImageFile}
+                    onDescChange={setImageDesc}
+                />
 
                 {/* 가격 리스트 */}
                 <div className="border-t pt-4">

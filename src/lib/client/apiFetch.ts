@@ -245,6 +245,29 @@ async function baseGetFetch<T>(url: string, query?: Record<string, string | numb
     return result;
 }
 
+/** Admin 이미지 삽입/수정 */
+export async function apiFormFetch<T>(url: string, form: FormData, init?: { method?: "POST" | "PUT" }) {
+    const paymentToken = localStorage.getItem("userToken") ?? "";
+    const res = await fetch(url, {
+        method: init?.method ?? "POST",
+        body: form,
+        credentials: "include",
+        headers: {
+            ...(paymentToken ? { Authorization: `Bearer ${paymentToken}` } : {}),
+            // ⚠️ Content-Type 넣지 말 것!
+        },
+    });
+
+    const text = await res.text();
+    let data: any = null;
+    try { data = text ? JSON.parse(text) : null; } catch {}
+    if (!res.ok) {
+        const msg = data?.message || data?.error || text || "요청 실패";
+        throw new Error(msg);
+    }
+    return (data ?? (text as any)) as T;
+}
+
 
 // 🚀 최종적으로 export할 함수들
 export const apiBodyFetch = <T>(url: string, body: Record<string, any>) =>

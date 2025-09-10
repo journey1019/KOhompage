@@ -452,10 +452,10 @@ export default function ProductPage() {
 
                                     // Drawer가 열려 있으면 상세도 갱신(선택)
                                     if (drawerOpen && selected?.productId) {
+                                        setDetailLoading(true);
                                         try {
-                                            setDetailLoading(true);
                                             const res = await getProductDetail(selected.productId);
-                                            const normalized: ProductDetailResponse = {
+                                            const normalized = {
                                                 ...res,
                                                 availablePurchase: res.availablePurchase ?? (res as any).avaliablePurchase ?? 0,
                                                 purchaseWatingList: res.purchaseWatingList ?? (res as any).purchaseWatingList,

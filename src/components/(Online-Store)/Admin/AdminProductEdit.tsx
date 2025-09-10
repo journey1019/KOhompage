@@ -2,8 +2,11 @@
 
 import { useEffect, useMemo, useState } from "react";
 
-import { postProductEdit, type Product, ProductDetailResponse, ProductPriceItem, ProductRequestBody } from '@/lib/api/adminApi';
+import { postProductEdit, type Product, ProductDetailResponse, ProductPriceItem, ProductRequestBody, uploadProductMainImage } from '@/lib/api/adminApi';
 import { calcFinalfee } from '@/module/pgAdminHelper';
+import { AdminImagePicker } from '@/components/(Online-Store)/Admin/AdminImagePicker';
+import { fetchProductImageObjectUrl, getProductImageUrl } from "@/lib/api/resourceApi";
+
 
 function AdminProductEdit({
                              selected,
@@ -44,6 +47,30 @@ function AdminProductEdit({
         ]
     );
 
+    // state
+    const [imageFile, setImageFile] = useState<File | null>(null);
+    const [imageDesc, setImageDesc] = useState(detail?.mainDesc ?? "");
+    const [initialImageUrl, setInitialImageUrl] = useState<string | undefined>(undefined);
+
+    useEffect(() => {
+        let revoked: string | null = null;
+        (async () => {
+            if (detail?.productId && detail?.mainImageFileNm) {
+                try {
+                    const obj = await fetchProductImageObjectUrl(detail.productId, detail.mainImageFileNm);
+                    setInitialImageUrl(obj);
+                    revoked = obj;
+                } catch {
+                    setInitialImageUrl(getProductImageUrl(detail?.productId!, detail?.mainImageFileNm!));
+                }
+            } else {
+                setInitialImageUrl(undefined);
+            }
+        })();
+        return () => { if (revoked) URL.revokeObjectURL(revoked); };
+    }, [detail?.productId, detail?.mainImageFileNm]);
+
+
     const updatePrice = (idx: number, patch: Partial<ProductPriceItem>) => {
         setPrices((prev) => {
             const next = [...prev];
@@ -74,14 +101,13 @@ function AdminProductEdit({
         return null;
     };
 
+    // 저장 핸들러
     const handleSubmit = async () => {
         const v = validate();
         if (v) return setErrorMsg(v);
 
-        setErrorMsg(null);
-
         const payload: ProductRequestBody = {
-            productId: selected.productId,                    // 수정 시 필수
+            productId: selected.productId,
             productNm: productNm.trim(),
             productCategory: productCategory.trim(),
             productType,
@@ -89,16 +115,18 @@ function AdminProductEdit({
             productPriceList: prices.map((r) => ({ ...r, finalfee: calcFinalfee(r) })),
             codeOption,
             stockQuantity: Number(stockQuantity) || 0,
-            availablePurchase: Number(availablePurchase) || 0, // 정상 키 사용
+            availablePurchase: Number(availablePurchase) || 0,
         };
 
+        setSaving(true);
         try {
-            setSaving(true);
             await postProductEdit(payload);
-            await onSaved();
-        } catch (e: any) {
-            console.error(e);
-            setErrorMsg(e?.message || "상품 수정 중 오류가 발생했습니다.");
+            if (imageFile) {
+                await uploadProductMainImage(selected.productId, imageFile, imageDesc);
+            }
+            await onSaved(); // refreshList + 모달 닫기 + (필요시) Drawer detail 재조회
+        } catch (e:any) {
+            setErrorMsg(e.message || "수정 실패");
         } finally {
             setSaving(false);
         }
@@ -173,6 +201,14 @@ function AdminProductEdit({
                         )}
                     </div>
                 </div>
+
+                {/* 상품 이미지 추가/수정 */}
+                <AdminImagePicker
+                    initialImageUrl={initialImageUrl}
+                    initialDesc={imageDesc}
+                    onFileChange={setImageFile}
+                    onDescChange={setImageDesc}
+                />
 
                 {/* 가격 리스트 */}
                 <div className="border-t pt-4">
