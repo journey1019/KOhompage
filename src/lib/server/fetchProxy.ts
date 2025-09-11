@@ -105,3 +105,42 @@ export async function proxyPostQueryFetch(req: NextRequest, targetPath: string) 
         return NextResponse.json({ message: '서버 내부 오류' }, { status: 500 });
     }
 }
+
+/**
+ * Del
+ * */
+export async function proxyDeleteQueryFetch(req: NextRequest, targetPath: string) {
+    try {
+        const url = new URL(req.url);
+        const qs = url.searchParams.toString();
+        const fullUrl = `${process.env.NEXT_PUBLIC_API_URL}${targetPath}${qs ? `?${qs}` : ''}`;
+
+        const auth = req.headers.get('authorization') || '';
+
+        const upstream = await fetch(fullUrl, {
+            method: 'DELETE',
+            headers: {
+                'Accept': 'application/json',
+                ...(auth ? { Authorization: auth } : {}),
+            },
+            cache: 'no-store',
+            credentials: 'include',
+        });
+
+        const text = await upstream.text();
+        const isJson = upstream.headers.get('content-type')?.includes('application/json');
+        const data = isJson && text ? JSON.parse(text) : (text || {});
+
+        if (!upstream.ok) {
+            return NextResponse.json(
+                typeof data === 'string' ? { message: data } : data,
+                { status: upstream.status }
+            );
+        }
+
+        return NextResponse.json(data);
+    } catch (error) {
+        console.error(`[proxyDeleteQueryFetch error] ${targetPath}`, error);
+        return NextResponse.json({ message: '서버 내부 오류' }, { status: 500 });
+    }
+}

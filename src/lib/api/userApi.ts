@@ -1,4 +1,4 @@
-import { apiBodyFetch, apiQueryFetch, apiGetFetch } from '@/lib/client/apiFetch';
+import { apiBodyFetch, apiQueryFetch, apiGetFetch, apiDeleteQueryFetch } from '@/lib/client/apiFetch';
 
 export interface UserInfo {
     userId: string;
@@ -65,4 +65,18 @@ export interface UserInfoChangeRequestBody {
 
 export async function UserInfoChange(data: UserInfoChangeRequestBody) {
     return await apiBodyFetch('/api/payment/userInfoChange', data);
+}
+
+
+/**
+ * 사용자 계정 삭제
+ * */
+export interface UserRemoveResponse {
+    status?: boolean;
+    use?: string;
+}
+
+export async function RemoveUserAccount(userPw: string): Promise<UserRemoveResponse> {
+    // 프론트는 프록시 경로를 친다
+    return apiDeleteQueryFetch<UserRemoveResponse>('/api/payment/userRemove', { userPw });
 }
