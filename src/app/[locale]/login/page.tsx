@@ -203,7 +203,6 @@ export default function PaymentLoginPage() {
                                 <button
                                     type="button"
                                     className="w-full cursor-pointer py-2 px-4 rounded-md border border-blue-600 text-blue-600 font-semibold text-sm transition hover:bg-blue-50"
-                                    disabled={true}
                                 >
                                     계정 만들기
                                 </button>
