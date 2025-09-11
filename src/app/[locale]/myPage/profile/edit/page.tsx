@@ -3,10 +3,11 @@
 
 import React, { useEffect, useState, useRef } from 'react';
 import { useParams, useRouter } from 'next/navigation';
-import { UserInfoChange, PwdChange } from '@/lib/api/userApi';
+import { UserInfoChange, PwdChange, RemoveUserAccount } from '@/lib/api/userApi';
 import { formatKRPhone, formatBirthDate } from '@/module/helper';
 import Agreement from '@/components/(Online-Store)/MyPage/Agreement';
 import DaumPostcodeModal from "@/components/common/DaumPostcodeModal";
+import Withdraw from '@/app/[locale]/myPage/_components/Withdraw';
 
 
 function onlyDigits(s: string) { return (s || '').replace(/\D/g, ''); }
@@ -369,14 +370,15 @@ const ProfileEditPage = () => {
             />
 
 
-            <div className="mt-auto pt-4 flex justify-end items-center text-center gap-2 bottom-0 float-end">
-                <p className="text-xs text-gray-400">
-                    탈퇴를 원하시면 우측의 회원탈퇴 버튼을 눌러주세요.
-                </p>
-                <button className="bg-gray-400 text-xs text-white rounded-md border-black py-1 px-2">
-                    회원탈퇴
-                </button>
-            </div>
+            {/*<div className="mt-auto pt-4 flex justify-end items-center text-center gap-2 bottom-0 float-end">*/}
+            {/*    <p className="text-xs text-gray-400">*/}
+            {/*        탈퇴를 원하시면 우측의 회원탈퇴 버튼을 눌러주세요.*/}
+            {/*    </p>*/}
+            {/*    <button className="bg-gray-400 text-xs text-white rounded-md border-black py-1 px-2">*/}
+            {/*        회원탈퇴*/}
+            {/*    </button>*/}
+            {/*</div>*/}
+            <Withdraw/>
         </div>
     );
 };
