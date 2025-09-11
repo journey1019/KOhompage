@@ -3,19 +3,18 @@
 import { useEffect, useState } from 'react';
 import InputField from '@/components/common/InputField';
 import CheckboxField from '@/components/common/CheckboxField';
+import PdfModal from '@/components/common/PdfModal';
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 import dynamic from 'next/dynamic';
 import { SignUp, CheckUserId, CheckUserInfo } from '@/lib/api/authApi';
 import validatePassword from '@/components/(Online-Store)/Auth/ValidatePwd';
 
+
 const toYN = (val: boolean): "Y" | "N" => (val ? "Y" : "N");
 
 export default function SignUpPage() {
     const router = useRouter();
-    useEffect(() => {
-        router.replace("/ko/login"); // 뒤로가기 눌러도 signup 안 나오게 replace 사용
-    }, [router]);
 
     const [form, setForm] = useState({
         userId: '',
@@ -40,6 +39,16 @@ export default function SignUpPage() {
 
     const [userPwdCheck, setUserPwdCheck] = useState<null | "valid" | "invalid">(null);
     const [pwdMatch, setPwdMatch] = useState<null | "consistent" | "inconsistent">(null);
+
+    // PDF 모달 상태
+    const [pdfOpen, setPdfOpen] = useState(false);
+    const [pdfInfo, setPdfInfo] = useState<{ title: string; src: string } | null>(null);
+
+    const openPdf = (src: string, title: string) => {
+        setPdfInfo({ src, title });
+        setPdfOpen(true);
+    };
+    const closePdf = () => setPdfOpen(false);
 
     const handleChange = (key: keyof typeof form) => (e: React.ChangeEvent<HTMLInputElement>) => {
         const value = e.target.type === 'checkbox' ? e.target.checked : e.target.value;
@@ -181,7 +190,8 @@ export default function SignUpPage() {
                     {/* 계정 정보 */}
                     <div className="flex flex-row items-center space-x-4">
                         <div className="flex-1">
-                            <InputField id="userId" label="아이디" value={form.userId} onChange={handleChange('userId')} required />
+                            <InputField id="userId" label="아이디" value={form.userId} onChange={handleChange('userId')}
+                                        required />
                             {/* ✅ 메시지 표시 */}
                             {userIdCheck === "available" && (
                                 <p className="mt-1 text-sm text-green-600">✔ 사용 가능한 아이디입니다.</p>
@@ -200,7 +210,8 @@ export default function SignUpPage() {
                         </button>
                     </div>
                     <div>
-                        <InputField id="password" label="비밀번호" type="password" value={form.password} onChange={handleChange('password')} required />
+                        <InputField id="password" label="비밀번호" type="password" value={form.password}
+                                    onChange={handleChange('password')} required />
                         {userPwdCheck === 'invalid' && (
                             <p className="mt-1 text-sm text-red-600">
                                 비밀번호는 영문, 숫자, 특수문자 중 2종류 이상 조합 시 10자리 이상,
@@ -210,7 +221,8 @@ export default function SignUpPage() {
                     </div>
 
                     <div>
-                        <InputField id="passwordConfirm" label="비밀번호 확인" type="password" value={form.passwordConfirm} onChange={handleChange('passwordConfirm')} required />
+                        <InputField id="passwordConfirm" label="비밀번호 확인" type="password" value={form.passwordConfirm}
+                                    onChange={handleChange('passwordConfirm')} required />
                         {pwdMatch === 'inconsistent' && (
                             <p className="mt-1 text-sm text-red-600">비밀번호가 일치하지 않습니다.</p>
                         )}
@@ -270,14 +282,68 @@ export default function SignUpPage() {
 
 
                     {/* 약관 */}
-                    <div className="border-t pt-4 space-y-2">
-                        <CheckboxField id="agreeAll" label="전체 동의" checked={form.agreeAll} onChange={handleAgreeAll} />
-                        <CheckboxField id="agree1" label="[필수] 이용약관 동의" checked={form.agree1}
-                                       onChange={handleChange('agree1')} required />
-                        <CheckboxField id="agree2" label="[필수] 개인정보 처리방침 동의" checked={form.agree2}
-                                       onChange={handleChange('agree2')} required />
-                        <CheckboxField id="agree3" label="[선택] 마케팅 수신 동의" checked={form.agree3}
-                                       onChange={handleChange('agree3')} />
+                    <div className="border-t pt-4 space-y-3">
+                        <CheckboxField
+                            id="agreeAll"
+                            label="전체 동의"
+                            checked={form.agreeAll}
+                            onChange={handleAgreeAll}
+                        />
+
+                        {/* 이용약관 */}
+                        <div className="flex items-center justify-between">
+                            <CheckboxField
+                                id="agree1"
+                                label="[필수] 이용약관 동의"
+                                checked={form.agree1}
+                                onChange={handleChange("agree1")}
+                                required
+                            />
+                            <button
+                                type="button"
+                                onClick={() => openPdf("/pdf/support/TermsOfUse.pdf", "이용약관")}
+                                className="text-xs text-blue-600 underline hover:opacity-80"
+                            >
+                                보기
+                            </button>
+                        </div>
+
+                        {/* 개인정보 처리방침 */}
+                        <div className="flex items-center justify-between">
+                            <CheckboxField
+                                id="agree2"
+                                label="[필수] 개인정보 처리방침 동의"
+                                checked={form.agree2}
+                                onChange={handleChange("agree2")}
+                                required
+                            />
+                            <button
+                                type="button"
+                                onClick={() => openPdf("/pdf/support/PrivacyPolicy.pdf", "개인정보 처리방침")}
+                                className="text-xs text-blue-600 underline hover:opacity-80"
+                            >
+                                보기
+                            </button>
+                        </div>
+
+                        {/* 마케팅 수신 동의 */}
+                        <CheckboxField
+                            id="agree3"
+                            label="[선택] 마케팅 수신 동의"
+                            checked={form.agree3}
+                            onChange={handleChange("agree3")}
+                        />
+
+                        {/* 공지(체크박스는 없고 보기만) */}
+                        <div className="flex items-center justify-end">
+                            <button
+                                type="button"
+                                onClick={() => openPdf("/pdf/support/Noti_TermsOfUse.pdf", "기본약관 변경에 대한 고지")}
+                                className="text-xs text-gray-600 underline hover:text-gray-800"
+                            >
+                                기본약관 변경에 대한 고지 보기
+                            </button>
+                        </div>
                     </div>
 
                     {/* 제출 */}
@@ -288,6 +354,13 @@ export default function SignUpPage() {
                     >
                         회원가입
                     </button>
+
+                    <PdfModal
+                        open={pdfOpen}
+                        title={pdfInfo?.title ?? ""}
+                        src={pdfInfo?.src ?? null}
+                        onClose={closePdf}
+                    />
                 </form>
             </div>
         </div>
