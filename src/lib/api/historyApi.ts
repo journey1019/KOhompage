@@ -118,3 +118,13 @@ export function getPaidDetail(purchaseId: number) {
     return apiGetFetch<PaidDetailResponse>('/api/payment/historyDetail', { purchaseId });
 }
 
+// 프록시 라우트: /api/payment/historyList -> /history/paid/list
+export function getPaidList(startDate?: string, endDate?: string) {
+    // 기본: 최근 30일
+    const end = endDate ?? fmtYmd(new Date());
+    const s = new Date();
+    s.setDate(s.getDate() - 30);
+    const start = startDate ?? fmtYmd(s);
+
+    return apiGetFetch<PaidListResponse[]>('/api/payment/historyList', { startDate: start, endDate: end });
+}

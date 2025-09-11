@@ -33,3 +33,36 @@ export interface UserInfo {
 export async function UserInfo(query: { userPw: string }) {
     return apiQueryFetch<UserInfo>('/api/payment/userInfo', query);
 }
+
+
+/**
+ * 비밀번호 변경
+ * */
+export interface PwdChangeResponse {
+    status: boolean;
+    password: string;
+}
+export async function PwdChange(data: { beforeUserPw: string; newUserPw: string }): Promise<PwdChangeResponse> {
+    return apiQueryFetch<PwdChangeResponse>('/api/payment/userPwChange', data);
+}
+
+
+/**
+ * 사용자 정보 변경
+ * */
+export interface UserInfoChangeRequestBody {
+    userNm: string;
+    userPrivateDTO:{
+        birth: string;
+        email: string;
+        phone: string;
+        telNo: string;
+        addressMain: string;
+        addressSub : string;
+        postalCode: string;
+    }
+}
+
+export async function UserInfoChange(data: UserInfoChangeRequestBody) {
+    return await apiBodyFetch('/api/payment/userInfoChange', data);
+}
