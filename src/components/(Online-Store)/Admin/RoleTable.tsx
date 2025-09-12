@@ -7,6 +7,7 @@ import {
     postRoleAdd,
     postRoleEdit,
 } from "@/lib/api/adminApi";
+import { TiPlus } from 'react-icons/ti';
 
 type Props = {
     className?: string;
@@ -225,17 +226,20 @@ export default function RoleTable({ className, onAfterChange }: Props) {
 
     return (
         <div className={className}>
-            <div className="mb-3 flex items-center justify-between">
+            <div className="flex items-end justify-between gap-2 p-4">
                 <div>
                     <h2 className="text-base font-semibold">권한 관리</h2>
-                    <p className="text-xs text-gray-500">권한 종류를 조회/추가/수정합니다.</p>
+                    <p className="mt-1 text-xs text-gray-600">권한 종류를 조회/추가/수정합니다.</p>
                 </div>
-                <button
-                    onClick={() => setAddOpen((v) => !v)}
-                    className="rounded-md border px-3 py-1 text-sm hover:bg-gray-50"
-                >
-                    {addOpen ? "추가 취소" : "새 권한 추가"}
-                </button>
+                <div className="flex items-center gap-2">
+                    <button
+                        onClick={() => setAddOpen((v) => !v)}
+                        className="inline-flex items-center gap-1 rounded-lg border border-gray-300 px-3 py-2 text-sm hover:bg-gray-50"
+                        title="권한 추가"
+                    >
+                        {addOpen ? "추가 취소" : "새 권한 추가"}
+                    </button>
+                </div>
             </div>
 
             {/* 추가 폼 */}
@@ -358,7 +362,8 @@ export default function RoleTable({ className, onAfterChange }: Props) {
                                     {/* 사용 여부 */}
                                     <td className="p-3">
                                         {!isEdit ? (
-                                            r.useYn === "Y" ? <Badge tone="green">Y</Badge> : <Badge tone="red">N</Badge>
+                                            r.useYn === "Y" ? <Badge tone="green">Y</Badge> :
+                                                <Badge tone="red">N</Badge>
                                         ) : (
                                             <select
                                                 value={editUseYn}
@@ -380,7 +385,8 @@ export default function RoleTable({ className, onAfterChange }: Props) {
                           </pre>
                                             </div>
                                         ) : (
-                                            <JsonEditor value={editInfo} onChange={setEditInfo} disabled={busy} rows={6} />
+                                            <JsonEditor value={editInfo} onChange={setEditInfo} disabled={busy}
+                                                        rows={6} />
                                         )}
                                     </td>
 

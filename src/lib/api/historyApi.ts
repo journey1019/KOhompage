@@ -1,5 +1,5 @@
 /** src/lib/api/historyApi.ts */
-import { apiGetFetch } from '@/lib/client/apiFetch';
+import { apiGetFetch, apiBodyFetch } from '@/lib/client/apiFetch';
 
 // ====== 타입 ======
 export interface PaidDetailResponse {
@@ -127,4 +127,49 @@ export function getPaidList(startDate?: string, endDate?: string) {
     const start = startDate ?? fmtYmd(s);
 
     return apiGetFetch<PaidListResponse[]>('/api/payment/historyList', { startDate: start, endDate: end });
+}
+
+
+/**
+ * 배송 이력 조회
+ * */
+// 배송 이력 한 건
+export interface DeliveryHistoryItem {
+    purchaseId: number;
+    processType: "purchase" | "update" | "change";
+    recipient: string;
+    addressMain: string;
+    addressSub: string | null;
+    postalCode: string;
+    phone: string;
+    telNo: string | null;
+    deliveryDesc: string | null;
+    deliveryCompany: string | null;
+    deliveryCode: string | null;
+    deliveryStatus: "W" | "P" | "D" | "C" | "S" | "I" | string; // 백엔드 확장 대응
+    companyName: string | null;
+    fullUrl: string | null;
+    linkUrl: string | null;
+    updateDate: string; // "YYYY-MM-DD HH:mm:ss"
+}
+export function getDeliveryHistory(purchaseId: number) {
+    return apiGetFetch<DeliveryHistoryItem[]>('/api/payment/historyDelivery', { purchaseId });
+}
+
+
+/**
+ * 배송지 변경
+ * */
+export interface DeliveryChangeRequestBody {
+    purchaseId: number; //구매 번호
+    recipient: string; //받는사람
+    addressMain: string; //메인주소
+    addressSub: string; //서브 주소
+    postalCode: string; //우편번호
+    phone: string; // 전화번호
+    telNo: string | null;
+    deliveryDesc: string | null;
+}
+export async function postDeliveryChange(data: DeliveryChangeRequestBody) {
+    return apiBodyFetch('/api/payment/historyDeliveryChange', data); // { success: true, message: "...", etc. }
 }

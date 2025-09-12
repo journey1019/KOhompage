@@ -201,6 +201,7 @@ export default function SignUpPage() {
                             )}
                         </div>
                         <button
+                            disabled={checking}
                             type="button" onClick={handleUserIdCheck} disabled={!form.userId || checking}
                             className={`rounded-md py-3 px-4 text-sm text-white whitespace-nowrap transition ${
                                 form.userId && !checking ? 'bg-blue-500 hover:bg-blue-600' : 'bg-gray-400'

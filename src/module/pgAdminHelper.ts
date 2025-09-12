@@ -26,3 +26,13 @@ export function calcFinalfee(row: ProductPriceItem) {
     return base;
 }
 
+
+export const fmtKST = (s?: string | null) => {
+    if (!s) return "-";
+    const d = new Date(String(s).replace(" ", "T") + "+09:00");
+    if (Number.isNaN(d.getTime())) return s as string;
+    const pad = (n: number) => String(n).padStart(2, "0");
+    return `${d.getFullYear()}-${pad(d.getMonth() + 1)}-${pad(d.getDate())} ${pad(
+        d.getHours()
+    )}:${pad(d.getMinutes())}:${pad(d.getSeconds())}`;
+};

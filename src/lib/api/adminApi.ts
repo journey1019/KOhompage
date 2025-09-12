@@ -1,4 +1,4 @@
-import { apiBodyFetch, apiQueryFetch, apiGetFetch, apiFormFetch } from '@/lib/client/apiFetch';
+import { apiBodyFetch, apiQueryFetch, apiGetFetch, apiFormFetch, apiDeleteQueryFetch } from '@/lib/client/apiFetch';
 
 export interface Product {
     productId: number;
@@ -577,3 +577,15 @@ export async function DeliveryUpdate(data: DeliveryMinimum) {
     return apiBodyFetch('/api/payment/adminDeliveryUpdate', data);
 }
 
+
+/**
+ * 배송지 회사 삭제
+ * */
+export interface DeliveryCompanyResponse {
+    status?: boolean;
+}
+
+export async function RemoveDeliveryCompany(deliveryCompany: string): Promise<DeliveryCompanyResponse> {
+    // 프론트는 프록시 경로를 친다
+    return apiDeleteQueryFetch<DeliveryCompanyResponse>('/api/payment/userRemove', { deliveryCompany });
+}

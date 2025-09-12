@@ -7,21 +7,14 @@ import {
     DeliveryAdd,
     DeliveryUpdate,
     type DeliveryMinimum,
+    RemoveDeliveryCompany,
 } from "@/lib/api/adminApi";
 import { TiPlus } from "react-icons/ti";
+import { fmtKST } from '@/module/pgAdminHelper'
 
 function classNames(...xs: (string | false | null | undefined)[]) {
     return xs.filter(Boolean).join(" ");
 }
-const fmtKST = (s?: string | null) => {
-    if (!s) return "-";
-    const d = new Date(String(s).replace(" ", "T") + "+09:00");
-    if (Number.isNaN(d.getTime())) return s as string;
-    const pad = (n: number) => String(n).padStart(2, "0");
-    return `${d.getFullYear()}-${pad(d.getMonth() + 1)}-${pad(d.getDate())} ${pad(
-        d.getHours()
-    )}:${pad(d.getMinutes())}:${pad(d.getSeconds())}`;
-};
 
 type FormMode = "add" | "edit";
 
@@ -45,6 +38,13 @@ export default function DeliveryCompanies() {
     const [mainDomainUrl, setMainDomainUrl] = useState("");
     const [fullUrl, setFullUrl] = useState("");
     const [codeLength, setCodeLength] = useState<number | "">("");
+
+    // 삭제 확인 모달 상태
+    const [removeOpen, setRemoveOpen] = useState(false);
+    const [removeTarget, setRemoveTarget] = useState<Delivery | null>(null);
+    const [removing, setRemoving] = useState(false);
+    const [removeErr, setRemoveErr] = useState<string | null>(null);
+
 
     useEffect(() => {
         (async () => {
@@ -192,6 +192,39 @@ export default function DeliveryCompanies() {
         }
     };
 
+    /** 삭제 확인 모달 열기 */
+    const openRemove = (r: Delivery) => {
+        setRemoveTarget(r);
+        setRemoveErr(null);
+        setRemoveOpen(true);
+    };
+    const closeRemove = () => {
+        if (removing) return;
+        setRemoveOpen(false);
+        setRemoveTarget(null);
+        setRemoveErr(null);
+    };
+
+    /** 실제 삭제 처리 */
+    const doRemove = async () => {
+        if (!removeTarget) return;
+        try {
+            setRemoving(true);
+            setRemoveErr(null);
+            const res = await RemoveDeliveryCompany(removeTarget.deliveryCompany);
+            if (res && res.status === false) {
+                throw new Error("삭제 요청이 거절되었습니다.");
+            }
+            // 낙관적 갱신
+            setRows((prev) => prev.filter((x) => x.deliveryCompany !== removeTarget.deliveryCompany));
+            closeRemove();
+        } catch (e: any) {
+            setRemoveErr(e?.message || "삭제 중 오류가 발생했습니다.");
+        } finally {
+            setRemoving(false);
+        }
+    };
+
     return (
         <section className="rounded-xl border border-gray-200 bg-white shadow-sm">
             {/* Header / Controls */}
@@ -230,7 +263,7 @@ export default function DeliveryCompanies() {
                         <th className="p-3 w-[160px]">코드 길이</th>
                         <th className="p-3 w-[200px]">생성자/일자</th>
                         <th className="p-3 w-[200px]">수정자/일자</th>
-                        <th className="p-3 w-[180px]">동작</th>
+                        <th className="p-3 w-[200px]">동작</th>
                     </tr>
                     </thead>
                     <tbody className="divide-y divide-gray-100 text-sm whitespace-nowrap">
@@ -311,7 +344,7 @@ export default function DeliveryCompanies() {
                                     <div className="truncate">{r.updateId ?? "-"}</div>
                                     <div className="text-xs text-gray-500">{fmtKST(r.updateDate)}</div>
                                 </td>
-                                <td className="p-3 w-[180px]">
+                                <td className="p-3 w-[200px]">
                                     <div className="flex gap-2">
                                         <button
                                             onClick={() => {
@@ -337,6 +370,13 @@ export default function DeliveryCompanies() {
                                                 추적
                                             </a>
                                         )}
+                                        <button
+                                            onClick={() => openRemove(r)}
+                                            className="rounded-md border border-red-300 px-2 py-1 text-xs text-red-600 hover:bg-red-50"
+                                            title="배송사 삭제"
+                                        >
+                                            삭제
+                                        </button>
                                     </div>
                                 </td>
                             </tr>
@@ -414,7 +454,7 @@ export default function DeliveryCompanies() {
 
                             <div className="sm:col-span-1">
                                 <label className="mb-1 block text-xs font-medium text-gray-600">
-                                    코드 길이 (codeLength) *
+                                    송장 번호 자릿수 (codeLength) *
                                 </label>
                                 <input
                                     type="number"

@@ -6,7 +6,7 @@ import classNames from "classnames";
 
 const menuItems = [
     { label: "주문내역/배송정보", path: "/ko/myPage/orders" },
-    { label: "취소/반품/교환/환불내역", path: "/ko/myPage/cancellations" },
+    // { label: "취소/반품/교환/환불내역", path: "/ko/myPage/cancellations" },
     { label: "내 정보", path: "/ko/myPage/profile" },
 ];
 

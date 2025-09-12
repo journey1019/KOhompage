@@ -5,7 +5,7 @@ import { useParams, useRouter } from "next/navigation";
 import { getPaidDetail } from "@/lib/api/historyApi";
 import type { PaidDetail } from "@/lib/api/adminApi"; // 아래 타입 참고(이미 있다면 이 줄만 맞춰서)
 import { PaidDeliveryUpdate, DeliveryList, type Delivery } from "@/lib/api/adminApi";
-
+import AdminPaidCancel from '@/components/(Online-Store)/Admin/AdminPaidCancel';
 
 function Badge({ children, tone = "gray" }: { children: React.ReactNode; tone?: "green"|"red"|"yellow"|"blue"|"gray" }) {
     const map: Record<string, string> = {
@@ -58,24 +58,26 @@ export default function PaidDetailPage() {
     const [fCompany, setFCompany] = useState<string>("");
     const [fCode, setFCode] = useState<string>("");
 
-    useEffect(() => {
-        if (!purchaseId || Number.isNaN(purchaseId)) {
+    async function reload() {
+        if(!purchaseId || Number.isNaN(purchaseId)) {
             setErr("유효하지 않은 결제 ID 입니다.");
             setLoading(false);
             return;
         }
-        (async () => {
-            try {
-                setLoading(true);
-                setErr(null);
-                const res = await getPaidDetail(purchaseId);
-                setData(res);
-            } catch (e: any) {
-                setErr(e?.message || "결제 상세 조회에 실패했습니다.");
-            } finally {
-                setLoading(false);
-            }
-        })();
+        try {
+            setLoading(true);
+            setErr(null);
+            const res = await getPaidDetail(purchaseId);
+            setData(res);
+        } catch (e: any) {
+            setErr(e?.message || "결제 상세 조회에 실패했습니다.");
+        } finally {
+            setLoading(false);
+        }
+    };
+
+    useEffect(() => {
+        reload();
     }, [purchaseId]);
 
     // 배송사 리스트 로드(편집 열릴 때 최초 1회 or 페이지 진입 시)
@@ -398,8 +400,21 @@ export default function PaidDetailPage() {
             </section>
 
             <div className="flex flex-row pt-2 justify-between items-center">
-                <button onClick={() => router.back()} className="rounded-md border px-3 py-2 text-sm hover:bg-gray-50">뒤로</button>
-                <button onClick={() => console.log('결제 취소')} className="rounded-md border px-3 py-2 text-sm hover:bg-gray-50">결제 취소</button>
+                <button onClick={() => router.back()} className="rounded-md border px-3 py-2 text-sm hover:bg-gray-50">
+                    뒤로
+                </button>
+
+                <AdminPaidCancel
+                    purchaseId={pid}
+                    receiptId={purchaseDetailInfo?.receiptId || ""}
+                    defaultMessage="관리자 수동 취소"
+                    onSuccess={async () => {
+                        // 성공 후 UI 즉시 갱신이 필요하면 재조회
+                        await reload();
+                    }}
+                    // 예: 이미 취소된 건이면 비활성화
+                    disabled={purchaseDetailInfo?.cancelledPrice && purchaseDetailInfo.cancelledPrice > 0}
+                />
             </div>
 
         </div>

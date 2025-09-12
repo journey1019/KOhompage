@@ -1,5 +1,5 @@
 /** src/lib/api/paidApi.ts */
-import { apiBodyFetch } from '@/lib/client/apiFetch';
+import { apiBodyFetch, apiQueryFetch } from '@/lib/client/apiFetch';
 
 /** 서버 사양에 맞춘 타입 별도 분리: 주문 임시생성 */
 export interface OrderOptionItem {
@@ -195,4 +195,16 @@ export function readPendingOrderDraft(): PendingOrderDraft | null {
 
 export function clearPendingOrderDraft() {
     localStorage.removeItem(KEY);
+}
+
+
+/**
+ * 결제 취소
+ * */
+export interface PaidCancelResponse {
+    status: boolean;
+    orderMessage: string;
+}
+export async function PaidCancel(data: { purchaseId: number; receiptId: string; cancelMessage: string; }): Promise<PaidCancelResponse> {
+    return apiQueryFetch<PaidCancelResponse>('/api/payment/paidCancel', data);
 }

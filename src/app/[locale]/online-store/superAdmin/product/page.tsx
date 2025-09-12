@@ -285,7 +285,7 @@ export default function ProductPage() {
                                 <th className="p-3 w-[200px]">생성일</th>
                                 <th className="p-3 w-[140px]">수정자</th>
                                 <th className="p-3 w-[200px]">최종수정</th>
-                                <th className="p-3 w-[280px]">동작</th>
+                                <th className="p-3 w-[200px]">동작</th>
                             </tr>
                             </thead>
                             <tbody className="divide-y divide-gray-100 text-sm whitespace-nowrap">
@@ -311,12 +311,12 @@ export default function ProductPage() {
                                     <td className="p-3 w-[140px]">{p.updateId}</td>
                                     <td className="p-3 w-[200px] text-gray-700">{formatKST(p.updateDate)}</td>
 
-                                    <td className="p-3 w-[280px]">
+                                    <td className="p-3 w-[200px]">
                                         <div className="flex flex-wrap gap-2">
                                             <button onClick={() => { setSelected(p); setModalMode("edit"); }} className="rounded-md border border-gray-300 px-2 py-1 text-xs hover:bg-gray-50">수정</button>
                                             <button onClick={() => { setSelected(p); setModalMode("deleteConfirm"); }} className="rounded-md border border-red-300 px-2 py-1 text-xs text-red-600 hover:bg-red-50">삭제</button>
                                             <button onClick={() => openDrawer(p)} className="rounded-md border border-gray-300 px-2 py-1 text-xs hover:bg-gray-50">상세</button>
-                                            <button className={classNames("rounded-md px-2 py-1 text-xs", p.useYn === "Y" ? "border border-yellow-300 hover:bg-yellow-50" : "border border-green-300 hover:bg-green-50")}>{p.useYn === "Y" ? "사용중지" : "사용재개"}</button>
+                                            {/*<button className={classNames("rounded-md px-2 py-1 text-xs", p.useYn === "Y" ? "border border-yellow-300 hover:bg-yellow-50" : "border border-green-300 hover:bg-green-50")}>{p.useYn === "Y" ? "사용중지" : "사용재개"}</button>*/}
                                         </div>
                                     </td>
                                 </tr>
