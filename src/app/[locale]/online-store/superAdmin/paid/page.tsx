@@ -6,7 +6,7 @@ import { useSearchParams, useRouter } from "next/navigation";
 import { PaidList, type Paid } from "@/lib/api/adminApi";
 import { formatCurrency } from "@/lib/utils/payment";
 import { toDash, fromDash } from "@/module/helper";
-
+import { formatKST } from '@/module/pgAdminHelper';
 // ————————————————————————————————————————————————
 // Small atoms
 // ————————————————————————————————————————————————
@@ -22,20 +22,6 @@ function Badge({ children, tone = "gray" }: { children: React.ReactNode; tone?: 
 }
 
 function classNames(...xs: (string | false | null | undefined)[]) { return xs.filter(Boolean).join(" "); }
-
-function formatKST(datetimeStr?: string) {
-    if (!datetimeStr) return "-";
-    const iso = datetimeStr.replace(" ", "T") + "+09:00";
-    const d = new Date(iso);
-    if (Number.isNaN(d.getTime())) return datetimeStr;
-    const yyyy = d.getFullYear();
-    const mm = String(d.getMonth() + 1).padStart(2, "0");
-    const dd = String(d.getDate()).padStart(2, "0");
-    const hh = String(d.getHours()).padStart(2, "0");
-    const min = String(d.getMinutes()).padStart(2, "0");
-    const ss = String(d.getSeconds()).padStart(2, "0");
-    return `${yyyy}-${mm}-${dd} ${hh}:${min}:${ss}`;
-}
 
 function ymdToInput(ymd: string) {
     // "20250813" -> "2025-08-13"

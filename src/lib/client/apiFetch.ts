@@ -162,7 +162,7 @@ async function baseDeleteFetch<T>(url: string, query?: Record<string, string | n
 export const apiBodyFetch = <T>(url: string, body: Record<string, any>) =>
     baseFetch<T>(url, { body });
 
-export const apiQueryFetch = <T>(url: string, query?: Record<string, string | number>) =>
+export const apiQueryFetch = <T>(url: string, query?: Record<string, any>) =>
     baseFetch<T>(url, query ? { query } : undefined);
 
 export const apiGetFetch = <T>(url: string, query?: Record<string, string | number>) =>

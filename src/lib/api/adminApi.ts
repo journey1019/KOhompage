@@ -282,6 +282,47 @@ export function getUserDetail(userId: string) {
     return apiGetFetch<UserDetailResponse>('/api/payment/adminUserDetail', { userId });
 }
 
+/**
+ * 유저 비밀번호 변경
+ * */
+export interface ChangePwdResponse {
+    status: boolean
+    password: string;
+}
+export async function UserChangePwd(data: { userId: string; userPw: string }): Promise<ChangePwdResponse> {
+    return apiQueryFetch<ChangePwdResponse>('/api/payment/adminUserChangePwd', data);
+}
+/**
+ * 유저 권한 변경
+ * */
+export interface RoleResponse {
+    status: boolean
+    role: string;
+}
+export async function UserRole(data: { userId: string; roleId: string }): Promise<RoleResponse> {
+    return apiQueryFetch<RoleResponse>('/api/payment/adminUserRole', data);
+}
+/**
+ * 계정 사용 여부
+ * */
+export interface UseResponse {
+    status: boolean
+    account: string;
+}
+export async function UserUse(data: { userId: string; useYn: boolean }): Promise<UseResponse> {
+    return apiQueryFetch<UseResponse>('/api/payment/adminUserUse', data);
+}
+/**
+ * 계정 사용 기간 연장
+ * */
+export interface ExpiredResponse {
+    status: boolean
+    userExpired: string;
+}
+// userExpired 예시: 2026-12-31 23:59:59
+export async function UserExpired(data: { userId: string; userExpired: string }): Promise<ExpiredResponse> {
+    return apiQueryFetch<ExpiredResponse>('/api/payment/adminUserExpired', data);
+}
 
 
 /**

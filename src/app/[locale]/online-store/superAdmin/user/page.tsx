@@ -2,8 +2,9 @@
 "use client";
 
 import { useEffect, useMemo, useState } from "react";
-import { UserList, type User } from "@/lib/api/adminApi";
+import { UserList, type User, UserRole, UserUse } from "@/lib/api/adminApi";
 import AdminUserDetail from '@/app/[locale]/online-store/superAdmin/user/_components/AdminUserDetail';
+import { formatKST } from '@/module/pgAdminHelper';
 
 // ————————————————————————————————————————————————————————
 // Small UI atoms (pure Tailwind, no external deps)
@@ -41,21 +42,6 @@ function SkeletonRow() {
     );
 }
 
-function formatKST(datetimeStr?: string) {
-    if (!datetimeStr) return "-";
-    // Input is like "2025-09-08 16:23:30" (KST). Make it ISO with KST offset
-    const iso = datetimeStr.replace(" ", "T") + "+09:00";
-    const d = new Date(iso);
-    if (Number.isNaN(d.getTime())) return datetimeStr; // fallback
-    const yyyy = d.getFullYear();
-    const mm = String(d.getMonth() + 1).padStart(2, "0");
-    const dd = String(d.getDate()).padStart(2, "0");
-    const hh = String(d.getHours()).padStart(2, "0");
-    const min = String(d.getMinutes()).padStart(2, "0");
-    const ss = String(d.getSeconds()).padStart(2, "0");
-    return `${yyyy}-${mm}-${dd} ${hh}:${min}:${ss}`;
-}
-
 function classNames(...xs: (string | false | null | undefined)[]) {
     return xs.filter(Boolean).join(" ");
 }
@@ -86,6 +72,9 @@ export default function UserPage() {
     const [page, setPage] = useState(1);
     const PAGE_SIZE = 10;
 
+    // 행 단위 로딩 상태
+    const [rowBusy, setRowBusy] = useState<Record<string, boolean>>({});
+
     useEffect(() => {
         (async () => {
             try {
@@ -102,6 +91,56 @@ export default function UserPage() {
             }
         })();
     }, []);
+
+    // 권한 토글 (admin <-> user)
+    async function toggleRole(u: User) {
+        if (!u?.userId) return;
+        const userId = u.userId;
+        const nextRole = u.roleId === "admin" ? "user" : "admin";
+
+        setRowBusy((m) => ({ ...m, [userId]: true }));
+        // 낙관적 업데이트
+        setUsers((list) =>
+            list.map((x) => (x.userId === userId ? { ...x, roleId: nextRole } : x))
+        );
+        try {
+            await UserRole({ userId, roleId: nextRole });
+            // 성공 시 그대로 유지
+            alert(`"${nextRole}"로 권한 변경 성공`);
+        } catch (e: any) {
+            // 실패 시 롤백
+            setUsers((list) =>
+                list.map((x) => (x.userId === userId ? { ...x, roleId: u.roleId } : x))
+            );
+            alert(e?.message || "권한 변경 실패");
+        } finally {
+            setRowBusy((m) => ({ ...m, [userId]: false }));
+        }
+    }
+
+    // 사용여부 토글 (Y <-> N)
+    async function toggleUse(u: User) {
+        if (!u?.userId) return;
+        const userId = u.userId;
+        const nextUseYn = u.useYn === "Y" ? "N" : "Y";
+
+        setRowBusy((m) => ({ ...m, [userId]: true }));
+        // 낙관적 업데이트
+        setUsers((list) =>
+            list.map((x) => (x.userId === userId ? { ...x, useYn: nextUseYn } : x))
+        );
+        try {
+            await UserUse({ userId, useYn: nextUseYn === "Y" });
+        } catch (e: any) {
+            // 실패 시 롤백
+            setUsers((list) =>
+                list.map((x) => (x.userId === userId ? { ...x, useYn: u.useYn } : x))
+            );
+            alert(e?.message || "계정 사용 여부 변경 실패");
+        } finally {
+            setRowBusy((m) => ({ ...m, [userId]: false }));
+        }
+    }
 
     // Derived list: filter + sort
     const filtered = useMemo(() => {
@@ -333,67 +372,84 @@ export default function UserPage() {
                             )}
 
                             {!isLoading &&
-                                pageData.map((u) => (
-                                    <tr key={u.userId} className="hover:bg-gray-50">
-                                        {/* sticky 셀에도 bg + 동일한 left + 고정폭 */}
-                                        <td className="p-3 sticky left-0 z-20 bg-white w-[160px] truncate">
-                                            {u.userId}
-                                        </td>
-                                        <td className="p-3 sticky left-[160px] z-20 bg-white w-[200px] truncate">
-                                            {u.userNm}
-                                        </td>
+                                pageData.map((u) => {
+                                    const busy = !!rowBusy[u.userId];
+                                    return (
+                                        <tr key={u.userId} className="hover:bg-gray-50">
+                                            <td className="p-3 sticky left-0 z-20 bg-white w-[160px] truncate">
+                                                {u.userId}
+                                            </td>
+                                            <td className="p-3 sticky left-[160px] z-20 bg-white w-[200px] truncate">
+                                                {u.userNm}
+                                            </td>
 
-                                        <td className="p-3 w-[120px]">
-                                            {u.roleId === "admin" ? (
-                                                <Badge tone="blue">관리자</Badge>
-                                            ) : (
-                                                <Badge tone="gray">일반사용자</Badge>
-                                            )}
-                                        </td>
-                                        <td className="p-3 w-[96px]">
-                                            {u.useYn === "Y" ? <Badge tone="green">Y</Badge> :
-                                                <Badge tone="red">N</Badge>}
-                                        </td>
-                                        <td className="p-3 w-[96px]">
-                                            {u.delYn === "Y" ? <Badge tone="red">Y</Badge> :
-                                                <Badge tone="gray">N</Badge>}
-                                        </td>
-                                        <td className="p-3 w-[200px] text-gray-700">
-                                            {formatKST(u.subscribeDate)}
-                                        </td>
-                                        <td className="p-3 w-[200px] text-gray-700">
-                                            {formatKST(u.updateDate)}
-                                        </td>
-                                        <td className="p-3 w-[260px]">
-                                            <div className="flex gap-2">
-                                                <button
-                                                    type="button"
-                                                    onClick={() => openDrawer(u)}
-                                                    className="rounded-md border border-gray-300 px-2 py-1 text-xs hover:bg-gray-50"
-                                                >
-                                                    상세
-                                                </button>
-                                                <button
-                                                    type="button"
-                                                    className="rounded-md border border-gray-300 px-2 py-1 text-xs hover:bg-gray-50"
-                                                >
-                                                    편집
-                                                </button>
-                                                <button
-                                                    type="button"
-                                                    className={classNames(
-                                                        "rounded-md px-2 py-1 text-xs",
-                                                        u.useYn === "Y"
-                                                            ? "border border-yellow-300 hover:bg-yellow-50"
-                                                            : "border border-green-300 hover:bg-green-50"
-                                                    )}
-                                                >
-                                                    {u.useYn === "Y" ? "사용중지" : "사용재개"}
-                                                </button>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                ))}
+                                            <td className="p-3 w-[120px]">
+                                                {u.roleId === 'admin' ? (
+                                                    <Badge tone="blue">관리자</Badge>
+                                                ) : (
+                                                    <Badge tone="gray">일반사용자</Badge>
+                                                )}
+                                            </td>
+                                            <td className="p-3 w-[96px]">
+                                                {u.useYn === 'Y' ? (
+                                                    <Badge tone="green">Y</Badge>
+                                                ) : (
+                                                    <Badge tone="red">N</Badge>
+                                                )}
+                                            </td>
+                                            <td className="p-3 w-[96px]">
+                                                {u.delYn === 'Y' ? (
+                                                    <Badge tone="red">Y</Badge>
+                                                ) : (
+                                                    <Badge tone="gray">N</Badge>
+                                                )}
+                                            </td>
+                                            <td className="p-3 w-[200px] text-gray-700">
+                                                {formatKST(u.subscribeDate)}
+                                            </td>
+                                            <td className="p-3 w-[200px] text-gray-700">
+                                                {formatKST(u.updateDate)}
+                                            </td>
+                                            <td className="p-3 w-[360px]">
+                                                <div className="flex flex-wrap gap-2">
+                                                    <button
+                                                        type="button"
+                                                        onClick={() => openDrawer(u)}
+                                                        className="rounded-md border border-gray-300 px-2 py-1 text-xs hover:bg-gray-50"
+                                                    >
+                                                        상세
+                                                    </button>
+
+                                                    {/* 권한 전환 버튼 */}
+                                                    <button
+                                                        type="button"
+                                                        disabled={busy}
+                                                        onClick={() => toggleRole(u)}
+                                                        className="rounded-md border border-gray-300 px-2 py-1 text-xs hover:bg-gray-50 disabled:opacity-50"
+                                                        title="관리자/일반사용자 전환"
+                                                    >
+                                                        권한전환
+                                                    </button>
+
+                                                    {/* 사용/중지 토글 */}
+                                                    <button
+                                                        type="button"
+                                                        disabled={busy}
+                                                        onClick={() => toggleUse(u)}
+                                                        className={classNames(
+                                                            'rounded-md px-2 py-1 text-xs disabled:opacity-50',
+                                                            u.useYn === 'Y'
+                                                                ? 'border border-yellow-300 hover:bg-yellow-50'
+                                                                : 'border border-green-300 hover:bg-green-50',
+                                                        )}
+                                                    >
+                                                        {u.useYn === 'Y' ? '사용중지' : '사용재개'}
+                                                    </button>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    )
+                                })}
                             </tbody>
                         </table>
                     </div>
@@ -431,7 +487,7 @@ export default function UserPage() {
 
 
             {/* Scroller view: single-line chips per row with horizontal scroll & snap */}
-            {viewMode === "scroller" && (
+            {viewMode === 'scroller' && (
                 <section className="space-y-2">
                     {isLoading && (
                         <div className="rounded-xl border border-gray-200 bg-white p-4 shadow-sm">로딩 중…</div>
@@ -442,65 +498,49 @@ export default function UserPage() {
                             조건에 해당하는 사용자가 없습니다.</div>
                     )}
 
-                    {!isLoading && pageData.map((u) => (
-                        <div key={u.userId} className="group rounded-xl border border-gray-200 bg-white shadow-sm">
-                            <div className="flex items-center gap-2 border-b p-2 text-xs text-gray-600">
-                                <span className="font-medium text-gray-900">{u.userId}</span>
-                                <span className="text-gray-300">•</span>
-                                <span>{u.userNm}</span>
-                                <span className="ml-auto hidden pr-2 group-hover:block">
-                  <button onClick={() => openDrawer(u)} className="rounded-md border px-2 py-1">상세</button>
-                </span>
-                            </div>
-                            <div
-                                className="flex snap-x snap-mandatory overflow-x-auto px-2 py-2 [scrollbar-width:none] [-ms-overflow-style:none]"
-                                style={{ scrollbarWidth: "none" }}>
-                                <style jsx global>{`
-                                    .no-scrollbar::-webkit-scrollbar {
-                                        display: none
-                                    }
+                    {!isLoading && pageData.map((u) => {
+                        const busy = !!rowBusy[u.userId];
+                        return (
+                            <div key={u.userId} className="group rounded-xl border border-gray-200 bg-white shadow-sm">
+                                <div className="flex items-center gap-2 border-b p-2 text-xs text-gray-600">
+                                    <span className="font-medium text-gray-900">{u.userId}</span>
+                                    <span className="text-gray-300">•</span>
+                                    <span>{u.userNm}</span>
+                                    <span className="ml-auto hidden pr-2 group-hover:block">
+                      <button onClick={() => openDrawer(u)} className="rounded-md border px-2 py-1">상세</button>
+                    </span>
+                                </div>
+                                <div className="flex snap-x snap-mandatory overflow-x-auto px-2 py-2 [scrollbar-width:none] [-ms-overflow-style:none]">
+                                    {/* ... 칩 정보 그대로 ... */}
 
-                                    .no-scrollbar {
-                                        -ms-overflow-style: none;
-                                        scrollbar-width: none
-                                    }
-                                `}</style>
-                                {[{ label: "권한",
-                                    node: u.roleId === "admin" ? <Badge tone="blue">관리자</Badge> :
-                                        <Badge tone="gray">일반사용자</Badge>
-                                },
-                                    { label: "사용",
-                                        node: u.useYn === "Y" ? <Badge tone="green">Y</Badge> :
-                                            <Badge tone="red">N</Badge>
-                                    },
-                                    { label: "삭제",
-                                        node: u.delYn === "Y" ? <Badge tone="red">Y</Badge> :
-                                            <Badge tone="gray">N</Badge>
-                                    },
-                                    { label: "가입일", node: formatKST(u.subscribeDate) },
-                                    { label: "최종수정", node: formatKST(u.updateDate) },
-                                ].map((item, idx) => (
-                                    <div key={idx} className="snap-start">
-                                        <div
-                                            className="mx-1 inline-flex min-w-[160px] items-center justify-between rounded-lg border px-3 py-2 text-sm">
-                                            <span className="text-gray-500">{item.label}</span>
-                                            <span className="ml-3 font-medium text-gray-900">{item.node as any}</span>
-                                        </div>
+                                    <div className="ml-2 inline-flex items-center gap-2">
+                                        {/* 권한 전환 */}
+                                        <button
+                                            disabled={busy}
+                                            onClick={() => toggleRole(u)}
+                                            className="rounded-md border border-gray-300 px-2 py-1 text-xs hover:bg-gray-50 disabled:opacity-50"
+                                        >
+                                            권한전환
+                                        </button>
+
+                                        {/* 사용/중지 토글 */}
+                                        <button
+                                            disabled={busy}
+                                            onClick={() => toggleUse(u)}
+                                            className={classNames(
+                                                "rounded-md px-2 py-1 text-xs disabled:opacity-50",
+                                                u.useYn === "Y"
+                                                    ? "border border-yellow-300 hover:bg-yellow-50"
+                                                    : "border border-green-300 hover:bg-green-50"
+                                            )}
+                                        >
+                                            {u.useYn === "Y" ? "사용중지" : "사용재개"}
+                                        </button>
                                     </div>
-                                ))}
-                                <div className="ml-2 inline-flex items-center gap-2">
-                                    <button
-                                        className="rounded-md border border-gray-300 px-2 py-1 text-xs hover:bg-gray-50">편집
-                                    </button>
-                                    <button
-                                        className={classNames("rounded-md px-2 py-1 text-xs", u.useYn === "Y" ? "border border-yellow-300 hover:bg-yellow-50" : "border border-green-300 hover:bg-green-50")}>{u.useYn === "Y" ? "사용중지" : "사용재개"}</button>
-                                    <button
-                                        className="rounded-md border border-red-300 px-2 py-1 text-xs text-red-600 hover:bg-red-50">삭제처리
-                                    </button>
                                 </div>
                             </div>
-                        </div>
-                    ))}
+                        );
+                    })}
 
                     {/* pager for scroller view */}
                     <div className="flex items-center justify-between gap-2 p-1 text-sm">
@@ -527,20 +567,33 @@ export default function UserPage() {
                 aria-hidden={!isDrawerOpen}
             >
                 {/* Header */}
-                <div className="flex items-center justify-between border-b p-4">
-                    <h2 className="text-base font-semibold">사용자 상세</h2>
-                    <button onClick={closeDrawer} className="rounded-md border px-2 py-1 text-sm hover:bg-gray-50">
-                        닫기
-                    </button>
-                </div>
+                <div className="flex h-full flex-col">
+                    <div className="flex items-center justify-between border-b p-4">
+                        <h2 className="text-base font-semibold">사용자 상세</h2>
+                        <button onClick={closeDrawer} className="rounded-md border px-2 py-1 text-sm hover:bg-gray-50">
+                            닫기
+                        </button>
+                    </div>
 
-                {/* Body */}
-                <div className="p-4">
-                    {!selected ? (
-                        <p className="text-sm text-gray-500">선택된 사용자가 없습니다.</p>
-                    ) : (
-                        <AdminUserDetail key={selected.userId} userId={selected.userId} />
-                    )}
+                    {/* Body */}
+                    <div className="p-4">
+                        {!selected ? (
+                            <p className="text-sm text-gray-500">선택된 사용자가 없습니다.</p>
+                        ) : (
+                            <AdminUserDetail
+                                key={selected.userId}
+                                userId={selected.userId}
+                                onAfterChange={async () => {
+                                    // 간단 재조회 (필요 시 debounce)
+                                    try {
+                                        const data = await UserList();
+                                        setUsers(Array.isArray(data) ? data : []);
+                                    } catch {/* ignore */
+                                    }
+                                }}
+                            />
+                        )}
+                    </div>
                 </div>
             </div>
 
