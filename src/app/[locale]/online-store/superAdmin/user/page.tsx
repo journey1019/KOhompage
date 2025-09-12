@@ -3,6 +3,7 @@
 
 import { useEffect, useMemo, useState } from "react";
 import { UserList, type User } from "@/lib/api/adminApi";
+import AdminUserDetail from '@/app/[locale]/online-store/superAdmin/user/_components/AdminUserDetail';
 
 // ————————————————————————————————————————————————————————
 // Small UI atoms (pure Tailwind, no external deps)
@@ -175,8 +176,8 @@ export default function UserPage() {
                 <div className="flex items-center gap-2">
                     <div className="flex items-center gap-2 text-sm">
                         <Badge tone="blue">총 {users.length}명</Badge>
-                        <Badge tone="green">활성 {users.filter(u=>u.useYn==="Y").length}</Badge>
-                        <Badge tone="red">삭제 {users.filter(u=>u.delYn==="Y").length}</Badge>
+                        <Badge tone="green">활성 {users.filter(u => u.useYn === "Y").length}</Badge>
+                        <Badge tone="red">삭제 {users.filter(u => u.delYn === "Y").length}</Badge>
                     </div>
                     <div className="ml-2 inline-flex overflow-hidden rounded-lg border">
                         <button
@@ -204,7 +205,10 @@ export default function UserPage() {
                         <label className="mb-1 block text-xs font-medium text-gray-600">검색</label>
                         <input
                             value={query}
-                            onChange={(e) => { setPage(1); setQuery(e.target.value); }}
+                            onChange={(e) => {
+                                setPage(1);
+                                setQuery(e.target.value);
+                            }}
                             placeholder="ID, 이름으로 검색"
                             className="w-full rounded-lg border border-gray-300 px-3 py-2 text-sm focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-200"
                         />
@@ -213,7 +217,10 @@ export default function UserPage() {
                         <label className="mb-1 block text-xs font-medium text-gray-600">권한</label>
                         <select
                             value={role}
-                            onChange={(e) => { setPage(1); setRole(e.target.value as any); }}
+                            onChange={(e) => {
+                                setPage(1);
+                                setRole(e.target.value as any);
+                            }}
                             className="w-full rounded-lg border border-gray-300 px-3 py-2 text-sm focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-200"
                         >
                             <option value="all">전체</option>
@@ -225,7 +232,10 @@ export default function UserPage() {
                         <label className="mb-1 block text-xs font-medium text-gray-600">사용 여부</label>
                         <select
                             value={useYn}
-                            onChange={(e) => { setPage(1); setUseYn(e.target.value as any); }}
+                            onChange={(e) => {
+                                setPage(1);
+                                setUseYn(e.target.value as any);
+                            }}
                             className="w-full rounded-lg border border-gray-300 px-3 py-2 text-sm focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-200"
                         >
                             <option value="all">전체</option>
@@ -237,7 +247,10 @@ export default function UserPage() {
                         <label className="mb-1 block text-xs font-medium text-gray-600">삭제 여부</label>
                         <select
                             value={delYn}
-                            onChange={(e) => { setPage(1); setDelYn(e.target.value as any); }}
+                            onChange={(e) => {
+                                setPage(1);
+                                setDelYn(e.target.value as any);
+                            }}
                             className="w-full rounded-lg border border-gray-300 px-3 py-2 text-sm focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-200"
                         >
                             <option value="all">전체</option>
@@ -338,10 +351,12 @@ export default function UserPage() {
                                             )}
                                         </td>
                                         <td className="p-3 w-[96px]">
-                                            {u.useYn === "Y" ? <Badge tone="green">Y</Badge> : <Badge tone="red">N</Badge>}
+                                            {u.useYn === "Y" ? <Badge tone="green">Y</Badge> :
+                                                <Badge tone="red">N</Badge>}
                                         </td>
                                         <td className="p-3 w-[96px]">
-                                            {u.delYn === "Y" ? <Badge tone="red">Y</Badge> : <Badge tone="gray">N</Badge>}
+                                            {u.delYn === "Y" ? <Badge tone="red">Y</Badge> :
+                                                <Badge tone="gray">N</Badge>}
                                         </td>
                                         <td className="p-3 w-[200px] text-gray-700">
                                             {formatKST(u.subscribeDate)}
@@ -374,12 +389,6 @@ export default function UserPage() {
                                                     )}
                                                 >
                                                     {u.useYn === "Y" ? "사용중지" : "사용재개"}
-                                                </button>
-                                                <button
-                                                    type="button"
-                                                    className="rounded-md border border-red-300 px-2 py-1 text-xs text-red-600 hover:bg-red-50"
-                                                >
-                                                    삭제처리
                                                 </button>
                                             </div>
                                         </td>
@@ -428,7 +437,9 @@ export default function UserPage() {
                         <div className="rounded-xl border border-gray-200 bg-white p-4 shadow-sm">로딩 중…</div>
                     )}
                     {!isLoading && pageData.length === 0 && (
-                        <div className="rounded-xl border border-gray-200 bg-white p-6 text-center text-gray-500 shadow-sm">검색/필터 조건에 해당하는 사용자가 없습니다.</div>
+                        <div
+                            className="rounded-xl border border-gray-200 bg-white p-6 text-center text-gray-500 shadow-sm">검색/필터
+                            조건에 해당하는 사용자가 없습니다.</div>
                     )}
 
                     {!isLoading && pageData.map((u) => (
@@ -441,28 +452,51 @@ export default function UserPage() {
                   <button onClick={() => openDrawer(u)} className="rounded-md border px-2 py-1">상세</button>
                 </span>
                             </div>
-                            <div className="flex snap-x snap-mandatory overflow-x-auto px-2 py-2 [scrollbar-width:none] [-ms-overflow-style:none]" style={{scrollbarWidth:"none"}}>
+                            <div
+                                className="flex snap-x snap-mandatory overflow-x-auto px-2 py-2 [scrollbar-width:none] [-ms-overflow-style:none]"
+                                style={{ scrollbarWidth: "none" }}>
                                 <style jsx global>{`
-                  .no-scrollbar::-webkit-scrollbar{ display:none }
-                  .no-scrollbar{ -ms-overflow-style:none; scrollbar-width:none }
-                `}</style>
-                                {[{label:"권한",node:u.roleId === "admin" ? <Badge tone="blue">관리자</Badge> : <Badge tone="gray">일반사용자</Badge>},
-                                    {label:"사용",node:u.useYn === "Y" ? <Badge tone="green">Y</Badge> : <Badge tone="red">N</Badge>},
-                                    {label:"삭제",node:u.delYn === "Y" ? <Badge tone="red">Y</Badge> : <Badge tone="gray">N</Badge>},
-                                    {label:"가입일",node:formatKST(u.subscribeDate)},
-                                    {label:"최종수정",node:formatKST(u.updateDate)},
+                                    .no-scrollbar::-webkit-scrollbar {
+                                        display: none
+                                    }
+
+                                    .no-scrollbar {
+                                        -ms-overflow-style: none;
+                                        scrollbar-width: none
+                                    }
+                                `}</style>
+                                {[{ label: "권한",
+                                    node: u.roleId === "admin" ? <Badge tone="blue">관리자</Badge> :
+                                        <Badge tone="gray">일반사용자</Badge>
+                                },
+                                    { label: "사용",
+                                        node: u.useYn === "Y" ? <Badge tone="green">Y</Badge> :
+                                            <Badge tone="red">N</Badge>
+                                    },
+                                    { label: "삭제",
+                                        node: u.delYn === "Y" ? <Badge tone="red">Y</Badge> :
+                                            <Badge tone="gray">N</Badge>
+                                    },
+                                    { label: "가입일", node: formatKST(u.subscribeDate) },
+                                    { label: "최종수정", node: formatKST(u.updateDate) },
                                 ].map((item, idx) => (
                                     <div key={idx} className="snap-start">
-                                        <div className="mx-1 inline-flex min-w-[160px] items-center justify-between rounded-lg border px-3 py-2 text-sm">
+                                        <div
+                                            className="mx-1 inline-flex min-w-[160px] items-center justify-between rounded-lg border px-3 py-2 text-sm">
                                             <span className="text-gray-500">{item.label}</span>
                                             <span className="ml-3 font-medium text-gray-900">{item.node as any}</span>
                                         </div>
                                     </div>
                                 ))}
                                 <div className="ml-2 inline-flex items-center gap-2">
-                                    <button className="rounded-md border border-gray-300 px-2 py-1 text-xs hover:bg-gray-50">편집</button>
-                                    <button className={classNames("rounded-md px-2 py-1 text-xs", u.useYn === "Y" ? "border border-yellow-300 hover:bg-yellow-50" : "border border-green-300 hover:bg-green-50")}>{u.useYn === "Y" ? "사용중지" : "사용재개"}</button>
-                                    <button className="rounded-md border border-red-300 px-2 py-1 text-xs text-red-600 hover:bg-red-50">삭제처리</button>
+                                    <button
+                                        className="rounded-md border border-gray-300 px-2 py-1 text-xs hover:bg-gray-50">편집
+                                    </button>
+                                    <button
+                                        className={classNames("rounded-md px-2 py-1 text-xs", u.useYn === "Y" ? "border border-yellow-300 hover:bg-yellow-50" : "border border-green-300 hover:bg-green-50")}>{u.useYn === "Y" ? "사용중지" : "사용재개"}</button>
+                                    <button
+                                        className="rounded-md border border-red-300 px-2 py-1 text-xs text-red-600 hover:bg-red-50">삭제처리
+                                    </button>
                                 </div>
                             </div>
                         </div>
@@ -472,8 +506,13 @@ export default function UserPage() {
                     <div className="flex items-center justify-between gap-2 p-1 text-sm">
                         <span className="text-gray-600">총 <b>{total}</b>건 · 페이지 <b>{page}</b> / {totalPages}</span>
                         <div className="flex items-center gap-2">
-                            <button disabled={page <= 1} onClick={() => setPage((p) => Math.max(1, p - 1))} className="rounded-md border border-gray-300 px-3 py-1 disabled:cursor-not-allowed disabled:opacity-50">이전</button>
-                            <button disabled={page >= totalPages} onClick={() => setPage((p) => Math.min(totalPages, p + 1))} className="rounded-md border border-gray-300 px-3 py-1 disabled:cursor-not-allowed disabled:opacity-50">다음</button>
+                            <button disabled={page <= 1} onClick={() => setPage((p) => Math.max(1, p - 1))}
+                                    className="rounded-md border border-gray-300 px-3 py-1 disabled:cursor-not-allowed disabled:opacity-50">이전
+                            </button>
+                            <button disabled={page >= totalPages}
+                                    onClick={() => setPage((p) => Math.min(totalPages, p + 1))}
+                                    className="rounded-md border border-gray-300 px-3 py-1 disabled:cursor-not-allowed disabled:opacity-50">다음
+                            </button>
                         </div>
                     </div>
                 </section>
@@ -487,59 +526,20 @@ export default function UserPage() {
                 )}
                 aria-hidden={!isDrawerOpen}
             >
+                {/* Header */}
                 <div className="flex items-center justify-between border-b p-4">
                     <h2 className="text-base font-semibold">사용자 상세</h2>
                     <button onClick={closeDrawer} className="rounded-md border px-2 py-1 text-sm hover:bg-gray-50">
                         닫기
                     </button>
                 </div>
-                <div className="space-y-3 p-4 text-sm">
-                    {!selected ? (
-                        <p className="text-gray-500">선택된 사용자가 없습니다.</p>
-                    ) : (
-                        <>
-                            <div>
-                                <div className="text-xs text-gray-500">아이디</div>
-                                <div className="font-medium">{selected.userId}</div>
-                            </div>
-                            <div>
-                                <div className="text-xs text-gray-500">이름</div>
-                                <div>{selected.userNm}</div>
-                            </div>
-                            <div className="flex gap-2">
-                                <div>
-                                    <div className="text-xs text-gray-500">권한</div>
-                                    <div>{selected.roleNm || selected.roleId}</div>
-                                </div>
-                                <div>
-                                    <div className="text-xs text-gray-500">사용</div>
-                                    <div>{selected.useYn}</div>
-                                </div>
-                                <div>
-                                    <div className="text-xs text-gray-500">삭제</div>
-                                    <div>{selected.delYn}</div>
-                                </div>
-                            </div>
-                            <div>
-                                <div className="text-xs text-gray-500">가입일</div>
-                                <div>{formatKST(selected.subscribeDate)}</div>
-                            </div>
-                            <div>
-                                <div className="text-xs text-gray-500">최종수정</div>
-                                <div>{formatKST(selected.updateDate)}</div>
-                            </div>
 
-                            <div className="pt-2">
-                                <div className="text-xs text-gray-500">빠른 작업</div>
-                                <div className="mt-2 flex flex-wrap gap-2">
-                                    <button className="rounded-md border border-gray-300 px-3 py-1 hover:bg-gray-50">권한 변경</button>
-                                    <button className="rounded-md border border-yellow-300 px-3 py-1 hover:bg-yellow-50">
-                                        {selected.useYn === "Y" ? "사용중지" : "사용재개"}
-                                    </button>
-                                    <button className="rounded-md border border-red-300 px-3 py-1 text-red-600 hover:bg-red-50">삭제처리</button>
-                                </div>
-                            </div>
-                        </>
+                {/* Body */}
+                <div className="p-4">
+                    {!selected ? (
+                        <p className="text-sm text-gray-500">선택된 사용자가 없습니다.</p>
+                    ) : (
+                        <AdminUserDetail key={selected.userId} userId={selected.userId} />
                     )}
                 </div>
             </div>

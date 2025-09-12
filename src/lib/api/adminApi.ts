@@ -247,6 +247,44 @@ export async function UserList(): Promise<User[]> {
 }
 
 /**
+ * 유저 상세 조회 (GET)
+ * */
+/** 유저 상세 응답 */
+export interface UserDetailResponse {
+    userId: string; //계정 ID
+    userNm: string; // 사용자 이름
+    useYn: string; // 사용 여부
+    delYn: string; // 삭제 여부
+    roleId: string; // 권한 ID
+    roleNm: string; // 권한 이름
+    privateInfo: {
+        birth: string; // 생년 월일
+        email: string; // email
+        phone: string; // 전화번호
+        telNo: string; // 보조 번호
+        addressSub: string; //주소2
+        postalCode: string; // 우편 번호
+        addressMain: string; // 주소1
+    };
+    termsAgreeYn: string; // 약관 동의
+    termsAgreeDate: string;
+    privateAgreeYn: string; // 개인 정보 동의
+    privateAgreeDate: string;
+    locationAgreeYn: string; // 개인 위치 정보 동의
+    locationAgreeDate: string;
+    exchangeRefundYn: string; // 교환/환불 동의 여부
+    exchangeRefundDate: string;
+    userExpired: string; // 사용자 만료
+    subscribeDate: string; // 가입일
+    updateDate: string; // 수정일자
+}
+export function getUserDetail(userId: string) {
+    return apiGetFetch<UserDetailResponse>('/api/payment/adminUserDetail', { userId });
+}
+
+
+
+/**
  * 상품 리스트 조회 (GET)
  */
 export async function ProductList(): Promise<Product[]> {
@@ -289,7 +327,7 @@ export interface ProductDetailResponse {
     mainImageFileNm?: string | null;       // 메인 이미지 파일명
     productPriceList: ProductPriceItem[];  // 가격 리스트
     stockQuantity: number;                 // 구매 가능 수량
-    /** ⚠️ 서버 응답 오탈자 주의: avaliablePurchase */
+    /** ⚠️ 서버 응답 오탈자 주의: availablePurchase */
     avaliablePurchase?: number;            // 구매 제한 수량 (오탈자)
     availablePurchase?: number;            // 혹시 백엔드 수정 시
     purchaseWatingList?: PurchaseWaitingItem[]; // 구매 대기 목록 (오탈자: Wating)
