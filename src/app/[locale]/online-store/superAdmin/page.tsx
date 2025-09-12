@@ -9,7 +9,7 @@ import { FaRegUserCircle } from 'react-icons/fa';
 import { RiLogoutCircleRLine } from 'react-icons/ri';
 import { LogOut } from '@/lib/api/authApi';
 import DeliveryCompanies from "@/components/(Online-Store)/Admin/DeliveryCompanies";
-
+import RoleTable from '@/components/(Online-Store)/Admin/RoleTable';
 
 export default function PaymentAdminHomePage() {
     const router = useRouter();
@@ -102,6 +102,7 @@ export default function PaymentAdminHomePage() {
             <div className="mt-6 space-y-6">
                 {/* 배송사 섹션 */}
                 <DeliveryCompanies />
+                <RoleTable />
             </div>
         </div>
     );

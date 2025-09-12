@@ -346,6 +346,41 @@ export interface ProductPriceItem {
     finalfee: number;                      // 최종 요금
 }
 
+
+/**
+ * Role 권한 조회
+ * */
+export interface Role {
+    roleId: string;
+    roleNm: string;
+    useYn: string;
+    roleUsedInfo: object
+}
+export async function RoleList(): Promise<Role[]> {
+    return apiGetFetch<Role[]>('/api/payment/adminRoleList');
+}
+
+/**
+ * 권한 추가
+ * */
+export interface RoleRequestBody {
+    roleId: string; // 권한 추가
+    useYn: string; //권한 사용 여부
+    roleUsedInfo: object; //권한 설정 값
+    roleNm: string; //권한 이름
+}
+
+/** 관리자 권한 추가 */
+export async function postRoleAdd(data: RoleRequestBody) {
+    return await apiBodyFetch('/api/payment/adminRoleAdd', data);
+}
+/** 관리자 권한 수정 */
+export async function postRoleEdit(data: RoleRequestBody) {
+    return await apiBodyFetch('/api/payment/adminRoleEdit', data);
+}
+
+
+
 /** 구매 대기 목록 아이템 */
 export interface PurchaseWaitingItem {
     purchaseIndex: number;                 // 구매대기 idx
