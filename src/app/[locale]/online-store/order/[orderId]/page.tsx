@@ -9,9 +9,35 @@ import { serverPaid, CreateOrderDraftResponse, clearPendingOrderDraft, serverPai
 import { Badge } from '@/components/(Online-Store)/MyPage/Badge';
 import { formatDateTimeKST } from '@/lib/utils/dateUtils';
 import { SectionCard, KV } from '@/components/(Online-Store)/MyPage/SectionCard';
+import { DeliveryManageListItem } from '@/lib/api/delivery';
+import DeliverySelectModal from '@/components/(Online-Store)/Order/DeliverySelectModal';
+import { toDraftDeliveryInfo } from '@/lib/utils/DeliveryManageListItem';
 
 export default function OrderSummaryPage() {
     const router = useRouter();
+
+    // 배송지 변경 모달
+    const [addrModalOpen, setAddrModalOpen] = useState(false);
+
+    function openAddrModal() {
+        setAddrModalOpen(true);
+    }
+    function closeAddrModal() {
+        setAddrModalOpen(false);
+    }
+
+    function applySelectedAddress(item: DeliveryManageListItem) {
+        setDraft(prev => {
+            if (!prev) return prev;
+            const next = {
+                ...prev,
+                deliveryInfo: { ...prev.deliveryInfo, ...toDraftDeliveryInfo(item) }
+            };
+            // ✅ 세션에 즉시 반영 (결제 직전까지 주문서의 배송지는 로컬에서 유지)
+            sessionStorage.setItem(`order-draft:${orderId}`, JSON.stringify(next));
+            return next;
+        });
+    }
 
     /** Login 토큰 만료시 Login Page 이동 */
     useEffect(() => {
@@ -328,7 +354,17 @@ export default function OrderSummaryPage() {
                         </div>
                     </SectionCard>
 
-                    <SectionCard title="배송 정보">
+                    <SectionCard
+                        title="배송 정보"
+                        right={
+                            <button
+                                onClick={openAddrModal}
+                                className="rounded-md bg-indigo-600 px-3 py-1.5 text-xs font-semibold text-white hover:bg-indigo-700"
+                            >
+                                배송지 변경
+                            </button>
+                        }
+                    >
                         <div className="grid grid-cols-2 gap-3">
                             <KV k="수령인" v={draft.deliveryInfo.recipient} />
                             <KV k="연락처" v={draft.deliveryInfo.phone} />
@@ -352,6 +388,13 @@ export default function OrderSummaryPage() {
                             </div>
                         )}
                     </SectionCard>
+
+                    {/* 배송지 변경 */}
+                    <DeliverySelectModal
+                        open={addrModalOpen}
+                        onClose={closeAddrModal}
+                        onSelect={applySelectedAddress}
+                    />
 
                     {hasOption && (
                         <SectionCard title="옵션 정보" right={<span

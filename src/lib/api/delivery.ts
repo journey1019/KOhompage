@@ -13,7 +13,7 @@ export type DeliveryInfo = {
 };
 
 /**
- * 배송지 목로 조회
+ * 배송지 목록 조회
  */
 export type DeliveryManageListItem = {
     addressIndex: number
