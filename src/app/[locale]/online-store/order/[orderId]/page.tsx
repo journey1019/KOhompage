@@ -6,6 +6,9 @@ import { useParams, useRouter, useSearchParams } from 'next/navigation';
 import { Bootpay } from '@bootpay/client-js';
 import { formatCurrency } from '@/lib/utils/payment';
 import { serverPaid, CreateOrderDraftResponse, clearPendingOrderDraft, serverPaidConfirmOnly } from '@/lib/api/paidApi';
+import { Badge } from '@/components/(Online-Store)/MyPage/Badge';
+import { formatDateTimeKST } from '@/lib/utils/dateUtils';
+import { SectionCard, KV } from '@/components/(Online-Store)/MyPage/SectionCard';
 
 export default function OrderSummaryPage() {
     const router = useRouter();
@@ -44,7 +47,6 @@ export default function OrderSummaryPage() {
         }
     }, [orderId]);
 
-    console.log(draft)
     const rows = useMemo(() => {
         if (!draft) return [];
         return [
@@ -260,7 +262,6 @@ export default function OrderSummaryPage() {
             setSubmitting(false);
         }
     };
-    console.log(draft)
 
     if (!draft) {
         return (
@@ -276,34 +277,158 @@ export default function OrderSummaryPage() {
         );
     }
 
-    return (
-        <div className="max-w-3xl mx-auto p-6">
-            <h1 className="text-xl font-semibold mb-4">주문서 확인</h1>
+    const hasOption = Array.isArray(draft.orderOption) && draft.orderOption.length > 0;
+    const taxLabel = draft.taxAddYn === 'Y'
+        ? `${draft.taxAddValue}${draft.taxAddType === 'percent' ? '%' : '원'}`
+        : '미부과';
 
-            <div className="border rounded-md divide-y">
-                {rows.map(({ k, v }) => (
-                    <div key={k} className="flex justify-between p-4">
-                        <span className="text-gray-600">{k}</span>
-                        <span className="font-medium">{v}</span>
+
+    return (
+        <div className="mx-auto max-w-6xl p-6">
+            {/* 헤더: 상품명 / 주문번호 / 만료 */}
+            <div className="mb-6">
+                <div className="flex items-start justify-between gap-3">
+                    <div className="min-w-0">
+                        <h1 className="text-2xl font-bold tracking-tight text-gray-900">{draft.productNm}</h1>
+                        <div className="mt-2 flex flex-wrap items-center gap-2">
+                            <Badge tone="blue">주문번호: {draft.orderId}</Badge>
+                            <Badge tone="yellow">주문 만료: {formatDateTimeKST(draft.expiredDate)}</Badge>
+                        </div>
                     </div>
-                ))}
+                    <div className="text-right">
+                        <div className="text-sm text-gray-600">결제 예정금액</div>
+                        <div className="text-3xl font-extrabold">{formatCurrency(Number(draft.paidPrice))}</div>
+                    </div>
+                </div>
             </div>
 
-            <div className="mt-6 flex justify-end gap-3">
-                <button
-                    onClick={() => router.push('/ko/online-store')}
-                    className="px-4 py-2 rounded border"
-                    disabled={submitting}
-                >
-                    계속 쇼핑
-                </button>
-                <button
-                    onClick={pay}
-                    className={`px-4 py-2 rounded text-white ${submitting ? 'bg-blue-300' : 'bg-blue-600 hover:bg-blue-700'}`}
-                    disabled={submitting}
-                >
-                    {submitting ? '결제 중…' : '결제하기'}
-                </button>
+            {/* 본문: 좌측 정보 · 우측 금액 요약 */}
+            <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
+                {/* 좌측(2칸): 상품/주문/배송/옵션 */}
+                <div className="space-y-6 md:col-span-2">
+                    <SectionCard title="상품 정보">
+                        <div className="grid grid-cols-2 gap-3">
+                            <KV k="상품명" v={draft.productNm} />
+                            <KV k="수량" v={String(draft.purchaseQuantity)} />
+                            <KV k="제품 단가" v={formatCurrency(Number(draft.productPrice))} />
+                            <KV k="부가세" v={<>{draft.taxAddYn === 'Y' ? <Badge tone="green">{taxLabel}</Badge> :
+                                <Badge tone="gray">미부과</Badge>}</>} />
+                            <KV k="개당 최종가(부가세 포함)"
+                                v={<span className="font-semibold">{formatCurrency(Number(draft.finalPrice))}</span>} />
+                        </div>
+                    </SectionCard>
+
+                    <SectionCard title="주문 정보">
+                        <div className="grid grid-cols-2 gap-3">
+                            <KV k="주문번호" v={<span className="font-mono">{draft.orderId}</span>} mono />
+                            {/*<KV k="구매 Index" v={String(draft.purchaseIndex)} />*/}
+                            <KV k="주문 가능 여부"
+                                v={draft.orderStatus ? <Badge tone="green">가능</Badge> : <Badge tone="red">불가</Badge>} />
+                            <KV k="만료일시" v={formatDateTimeKST(draft.expiredDate)} />
+                        </div>
+                    </SectionCard>
+
+                    <SectionCard title="배송 정보">
+                        <div className="grid grid-cols-2 gap-3">
+                            <KV k="수령인" v={draft.deliveryInfo.recipient} />
+                            <KV k="연락처" v={draft.deliveryInfo.phone} />
+                            <KV k="우편번호" v={draft.deliveryInfo.postalCode} />
+                            <KV k="상태" v={
+                                draft.deliveryInfo.deliveryStatus === 'W' ? <Badge tone="gray">대기</Badge> :
+                                    draft.deliveryInfo.deliveryStatus === 'P' ? <Badge tone="blue">배송중</Badge> :
+                                        draft.deliveryInfo.deliveryStatus === 'D' ?
+                                            <Badge tone="green">완료</Badge> : draft.deliveryInfo.deliveryStatus
+                            } />
+                        </div>
+                        <div className="mt-2">
+                            <div className="text-gray-500 text-sm">주소</div>
+                            <div
+                                className="font-medium">{`${draft.deliveryInfo.addressMain} ${draft.deliveryInfo.addressSub ?? ''}`.trim()}</div>
+                        </div>
+                        {(draft.deliveryInfo.deliveryDesc || draft.deliveryInfo.telNo) && (
+                            <div className="mt-2 grid grid-cols-2 gap-3">
+                                {draft.deliveryInfo.deliveryDesc && <KV k="배송메모" v={draft.deliveryInfo.deliveryDesc} />}
+                                {draft.deliveryInfo.telNo && <KV k="TEL" v={draft.deliveryInfo.telNo} />}
+                            </div>
+                        )}
+                    </SectionCard>
+
+                    {hasOption && (
+                        <SectionCard title="옵션 정보" right={<span
+                            className="text-xs text-gray-500">{draft.orderOption?.length}개</span>}>
+                            <div className="flex flex-wrap gap-2">
+                                {draft.orderOption!.map((o) => (
+                                    <span
+                                        key={`${o.codeId}:${o.key}:${o.value}`}
+                                        className="inline-flex items-center gap-1 rounded-full border border-gray-200 bg-gray-50 px-3 py-1 text-xs"
+                                    >
+                  <span className="text-gray-500">{o.key}</span>
+                  <span className="text-gray-900 font-medium">{o.value}</span>
+                </span>
+                                ))}
+                            </div>
+                        </SectionCard>
+                    )}
+                </div>
+
+                {/* 우측(1칸): 가격 요약 */}
+                <div className="md:col-span-1 space-y-6">
+                    <SectionCard title="결제 요약">
+                        <div className="space-y-2">
+                            <div className="flex items-center justify-between">
+                                <span className="text-gray-600">제품 단가</span>
+                                <span className="font-medium">{formatCurrency(Number(draft.productPrice))}</span>
+                            </div>
+                            <div className="flex items-center justify-between">
+                                <span className="text-gray-600">부가세</span>
+                                <span className="font-medium">
+                                    {draft.taxAddYn === 'Y'
+                                        ? `${draft.taxAddType === 'percent' ? `${draft.taxAddValue}%` : `${formatCurrency(Number(draft.taxAddValue))}`}`
+                                        : '미부과'
+                                    }
+                                </span>
+                            </div>
+                            <div className="flex items-center justify-between">
+                                <span className="text-gray-600">개당 최종가</span>
+                                <span className="font-medium">{formatCurrency(Number(draft.finalPrice))}</span>
+                            </div>
+                            <div className="flex items-center justify-between">
+                                <span className="text-gray-600">수량</span>
+                                <span className="font-medium">{Number(draft.purchaseQuantity)}</span>
+                            </div>
+                            <div className="border-t my-2"></div>
+                            <div className="flex items-center justify-between text-lg">
+                                <span className="text-gray-800 font-semibold">결제 예정 총액</span>
+                                <span
+                                    className="font-extrabold text-gray-900">{formatCurrency(Number(draft.paidPrice))}</span>
+                            </div>
+                        </div>
+                    </SectionCard>
+
+                    {/* 액션 영역 */}
+                    <div className="rounded-xl border border-gray-200 bg-white p-4 shadow-sm">
+                        <div className="flex flex-col gap-3">
+                            <button
+                                onClick={pay}
+                                className={`w-full rounded-md py-3 text-white text-sm font-semibold ${submitting ? 'bg-blue-300' : 'bg-blue-600 hover:bg-blue-700'}`}
+                                disabled={submitting}
+                            >
+                                {submitting ? '결제 중…' : '결제하기'}
+                            </button>
+                            <button
+                                onClick={() => router.push('/ko/online-store')}
+                                className="w-full rounded-md border py-3 text-sm"
+                                disabled={submitting}
+                            >
+                                계속 쇼핑
+                            </button>
+                        </div>
+                        {/* 유의사항/안내가 필요하면 아래에 간단히 추가 */}
+                        <p className="mt-3 text-xs text-gray-500">
+                            결제 완료 후, 마이페이지 &gt; 주문내역에서 영수증 및 배송 상태를 확인할 수 있습니다.
+                        </p>
+                    </div>
+                </div>
             </div>
         </div>
     );

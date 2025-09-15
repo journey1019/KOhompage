@@ -1,4 +1,4 @@
-import { apiGetFetch } from '@/lib/client/apiFetch';
+import { apiGetFetch, apiBodyFetch, apiDeleteQueryFetch } from '@/lib/client/apiFetch';
 import { formatPhone } from '@/module/helper';
 
 /**
@@ -12,6 +12,9 @@ export type DeliveryInfo = {
     phone: string;     // 하이픈 포함 형식
 };
 
+/**
+ * 배송지 목로 조회
+ */
 export type DeliveryManageListItem = {
     addressIndex: number
     userId: string;
@@ -28,6 +31,47 @@ export type DeliveryManageListItem = {
 // 배송지 목록 조회
 export async function fetchDeliveryList(): Promise<DeliveryManageListItem[]> {
     return apiGetFetch<DeliveryManageListItem[]>('/api/payment/delivery');
+}
+
+/**
+ * 배송지 기본 구조
+ */
+export interface DeliveryBaseBody {
+    alias: string;
+    useYn: string;
+    recipient: string;
+    addressMain: string;
+    addressSub: string;
+    postalCode: string;
+    phone: string;
+    telNo: string;
+    deliveryDesc: string | null;
+}
+export async function postDeliveryAdd(data: DeliveryBaseBody) {
+    return apiBodyFetch('/api/payment/deliveryInsert', data);
+}
+
+/**
+ * 배송지 수정
+ * */
+export interface DeliveryEditRequestBody extends DeliveryBaseBody {
+    addressIndex: number;
+}
+export async function postDeliveryEdit(data: DeliveryEditRequestBody) {
+    return apiBodyFetch('/api/payment/deliveryUpdate', data);
+}
+
+/**
+ * 배송지 삭제
+ * */
+export interface DeliveryRemoveResponse {
+    status?: boolean;
+    addressIndex?: number;
+}
+
+export async function RemoveDeliveryInfo(addressIndex: number): Promise<DeliveryRemoveResponse> {
+    // 프론트는 프록시 경로를 친다
+    return apiDeleteQueryFetch<DeliveryRemoveResponse>('/api/payment/deliveryRemove', { addressIndex });
 }
 
 

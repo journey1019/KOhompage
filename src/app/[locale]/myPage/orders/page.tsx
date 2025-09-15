@@ -116,16 +116,34 @@ export default function OrdersPage() {
         setListLoading(true);
         setListError(null);
         getPaidList(dateRange.start, dateRange.end)
-            .then((rows) => setItems(rows))
-            .catch((e) => setListError(e?.message ?? '주문 내역을 불러오지 못했습니다.'))
+            .then((rows) => {
+                // rows가 배열인지 확인하고 아닐 경우 빈 배열로
+                setItems(Array.isArray(rows) ? rows : []);
+            })
+            .catch((e) => {
+                setListError(e?.message ?? '주문 내역을 불러오지 못했습니다.');
+                // 실패 시에도 items는 빈 배열 유지
+                setItems([]);
+            })
             .finally(() => setListLoading(false));
     }, [purchaseId, dateRange]);
 
+
+
     // 최신순 정렬은 렌더 시 계산(가독성 ↑)
     const sortedItems = useMemo(() => {
-        return [...items].sort((a, b) => {
-            const aT = new Date(a.purchasedAt || a.purchaseDate).getTime();
-            const bT = new Date(b.purchasedAt || b.purchaseDate).getTime();
+        const arr = Array.isArray(items) ? items : [];
+        const safeTime = (s?: string) => {
+            if (!s) return 0;
+            // 백엔드 포맷 → ISO(+09:00)로 보정
+            const iso = s.includes('T') ? s : s.replace(' ', 'T') + '+09:00';
+            const t = Date.parse(iso);
+            return Number.isNaN(t) ? 0 : t;
+        };
+
+        return [...arr].sort((a, b) => {
+            const aT = safeTime(a.purchasedAt || a.purchaseDate);
+            const bT = safeTime(b.purchasedAt || b.purchaseDate);
             return bT - aT;
         });
     }, [items]);

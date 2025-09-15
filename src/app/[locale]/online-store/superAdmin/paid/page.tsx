@@ -7,35 +7,10 @@ import { PaidList, type Paid } from "@/lib/api/adminApi";
 import { formatCurrency } from "@/lib/utils/payment";
 import { toDash, fromDash } from "@/module/helper";
 import { formatKST } from '@/module/pgAdminHelper';
-// ————————————————————————————————————————————————
-// Small atoms
-// ————————————————————————————————————————————————
-function Badge({ children, tone = "gray" }: { children: React.ReactNode; tone?: "green" | "red" | "yellow" | "blue" | "gray" }) {
-    const map: Record<string, string> = {
-        green: "bg-green-50 text-green-700 ring-green-600/20",
-        red: "bg-red-50 text-red-700 ring-red-600/20",
-        yellow: "bg-yellow-50 text-yellow-800 ring-yellow-600/20",
-        blue: "bg-blue-50 text-blue-700 ring-blue-600/20",
-        gray: "bg-gray-50 text-gray-700 ring-gray-600/20",
-    };
-    return <span className={`inline-flex items-center rounded-md px-2 py-1 text-xs font-medium ring-1 ring-inset ${map[tone]}`}>{children}</span>;
-}
+import { fmtInputKST, ymdToInput, inputToYmd} from '@/lib/utils/dateUtils';
+import { Badge } from '@/components/(Online-Store)/MyPage/Badge';
+import { toneByStatus, toneByCategory, toneByMethod, toneByType } from '@/lib/utils/toneMapping';
 
-function classNames(...xs: (string | false | null | undefined)[]) { return xs.filter(Boolean).join(" "); }
-
-function ymdToInput(ymd: string) {
-    // "20250813" -> "2025-08-13"
-    try { return toDash(ymd); } catch { return ""; }
-}
-function inputToYmd(input: string) {
-    // "2025-08-13" -> "20250813"
-    try { return fromDash(input); } catch { return ""; }
-}
-
-// KST 기준으로 input[type=date] 형식(YYYY-MM-DD) 만들기
-const fmtInputKST = (d: Date) =>
-    new Intl.DateTimeFormat("en-CA", { timeZone: "Asia/Seoul", year: "numeric", month: "2-digit", day: "2-digit" })
-        .format(d);
 
 // ————————————————————————————————————————————————
 // Page
@@ -150,8 +125,6 @@ export default function PaidPage() {
     const totalPages = Math.max(1, Math.ceil(total / PAGE_SIZE));
     const pageData = sorted.slice((page - 1) * PAGE_SIZE, page * PAGE_SIZE);
 
-    console.log(rows);
-
     return (
         <div className="mx-auto max-w-6xl p-6 overflow-x-hidden">{/* 페이지 수준 가로 스크롤 차단 */}
             {/* Header */}
@@ -223,20 +196,20 @@ export default function PaidPage() {
                     <table className="w-max min-w-max divide-y divide-gray-200 table-auto">
                         <thead className="bg-gray-50">
                         <tr className="text-left text-xs font-semibold text-gray-600 whitespace-nowrap">
-                            <th className="p-3 sticky left-0 z-30 bg-gray-50 w-[140px]">구매ID</th>
-                            <th className="p-3 sticky left-[140px] z-30 bg-gray-50 w-[180px]">계정ID</th>
+                            <th className="p-3 sticky left-0 z-30 bg-gray-50 w-[80px]">구매ID</th>
+                            <th className="p-3 sticky left-[80px] z-30 bg-gray-50 w-[150px]">계정ID</th>
                             <th className="p-3 w-[180px]">주문ID</th>
                             <th className="p-3 w-[180px]">결제ID</th>
                             <th className="p-3 w-[120px]">상태</th>
-                            <th className="p-3 w-[160px]">결제수단</th>
+                            <th className="p-3 w-[100px]">결제수단</th>
                             <th className="p-3 w-[160px]">결제금액</th>
                             <th className="p-3 w-[160px]">취소금액</th>
-                            <th className="p-3 w-[220px]">결제일시</th>
-                            <th className="p-3 w-[160px]">상품ID</th>
-                            <th className="p-3 w-[260px]">상품명</th>
+                            <th className="p-3 w-[200px]">결제일시</th>
+                            <th className="p-3 w-[80px]">상품ID</th>
+                            <th className="p-3 w-[150px]">상품명</th>
                             <th className="p-3 w-[160px]">분류</th>
                             <th className="p-3 w-[160px]">타입</th>
-                            <th className="p-3 w-[160px]">상세정보</th>
+                            <th className="p-3 w-[100px]">상세정보</th>
                         </tr>
                         </thead>
                         <tbody className="divide-y divide-gray-100 text-sm whitespace-nowrap">
@@ -255,21 +228,38 @@ export default function PaidPage() {
                         )}
 
                         {!isLoading && pageData.map((r) => (
-                            <tr key={`${r.purchaseId}-${r.orderId}`} className="hover:bg-gray-50 cursor-pointer" onClick={() => goDetail(r.purchaseId)}>
-                                <td className="p-3 sticky left-0 z-20 bg-white w-[140px] truncate">{r.purchaseId}</td>
-                                <td className="p-3 sticky left-[140px] z-20 bg-white w-[180px] truncate">{r.userId}</td>
+                            <tr key={`${r.purchaseId}-${r.orderId}`} className="hover:bg-gray-50 cursor-pointer"
+                                onClick={() => goDetail(r.purchaseId)}>
+                                <td className="p-3 sticky left-0 z-20 bg-white w-[80px] truncate">{r.purchaseId}</td>
+                                <td className="p-3 sticky left-[80px] z-20 bg-white w-[150px] truncate">{r.userId}</td>
                                 <td className="p-3 w-[180px] truncate">{r.orderId}</td>
                                 <td className="p-3 w-[180px] truncate">{r.receiptId}</td>
-                                <td className="p-3 w-[120px]">{r.statusLocale || r.purchaseStatus}</td>
-                                <td className="p-3 w-[160px]">{r.methodSymbol}</td>
+                                <td className="p-3 w-[120px]">
+                                    <Badge tone={toneByStatus(r.statusLocale, r.purchaseStatus, r.cancelledPrice)}>
+                                        {r.statusLocale || r.purchaseStatus || '상태미확인'}
+                                    </Badge>
+                                </td>
+                                <td className="p-3 w-[100px]">
+                                    <Badge tone={toneByMethod(r.methodSymbol)}>
+                                        {r.methodSymbol?.toUpperCase() || '-'}
+                                    </Badge>
+                                </td>
                                 <td className="p-3 w-[160px] font-medium">{formatCurrency(r.price || 0)}</td>
                                 <td className="p-3 w-[160px]">{formatCurrency(r.cancelledPrice || 0)}</td>
-                                <td className="p-3 w-[220px] text-gray-700">{formatKST(r.purchasedAt)}</td>
-                                <td className="p-3 w-[160px]">{r.productId}</td>
-                                <td className="p-3 w-[260px] truncate">{r.productNm}</td>
-                                <td className="p-3 w-[160px]">{r.productCategory}</td>
-                                <td className="p-3 w-[160px]">{r.productType}</td>
+                                <td className="p-3 w-[200px] text-gray-700">{formatKST(r.purchasedAt)}</td>
+                                <td className="p-3 w-[80px]">{r.productId}</td>
+                                <td className="p-3 w-[150px] truncate">{r.productNm}</td>
                                 <td className="p-3 w-[160px]">
+                                    <Badge tone={toneByCategory(r.productCategory)}>
+                                        {r.productCategory || '-'}
+                                    </Badge>
+                                </td>
+                                <td className="p-3 w-[160px]">
+                                    <Badge tone={toneByType(r.productType)}>
+                                        {r.productType || '-'}
+                                    </Badge>
+                                </td>
+                                <td className="p-3 w-[100px]">
                                     <button onClick={() => goDetail(r.purchaseId)}
                                             className="rounded-md border px-2 py-1 text-xs hover:bg-gray-50">
                                         보러가기

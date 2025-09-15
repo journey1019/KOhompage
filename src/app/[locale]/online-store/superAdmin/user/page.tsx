@@ -330,9 +330,9 @@ export default function UserPage() {
                             <thead className="bg-gray-50">
                             <tr className="text-left text-xs font-semibold text-gray-600 whitespace-nowrap">
                                 {/* sticky 1: ID */}
-                                <th className="p-3 sticky left-0 z-30 bg-gray-50 w-[160px]">아이디</th>
+                                <th className="p-3 sticky left-0 z-30 bg-gray-50 w-[100px]">아이디</th>
                                 {/* sticky 2: 이름 (left는 ID의 폭과 일치) */}
-                                <th className="p-3 sticky left-[160px] z-30 bg-gray-50 w-[200px]">이름</th>
+                                <th className="p-3 sticky left-[100px] z-30 bg-gray-50 w-[150px]">이름</th>
 
                                 <th className="p-3 w-[120px]">권한</th>
                                 <th className="p-3 w-[96px]">사용</th>
@@ -349,7 +349,7 @@ export default function UserPage() {
                                 >
                                     최종수정
                                 </th>
-                                <th className="p-3 w-[260px]">동작</th>
+                                <th className="p-3 w-[200px]">동작</th>
                             </tr>
                             </thead>
 
@@ -376,10 +376,10 @@ export default function UserPage() {
                                     const busy = !!rowBusy[u.userId];
                                     return (
                                         <tr key={u.userId} className="hover:bg-gray-50">
-                                            <td className="p-3 sticky left-0 z-20 bg-white w-[160px] truncate">
+                                            <td className="p-3 sticky left-0 z-20 bg-white w-[100px] truncate">
                                                 {u.userId}
                                             </td>
-                                            <td className="p-3 sticky left-[160px] z-20 bg-white w-[200px] truncate">
+                                            <td className="p-3 sticky left-[100px] z-20 bg-white w-[150px] truncate">
                                                 {u.userNm}
                                             </td>
 
@@ -410,7 +410,7 @@ export default function UserPage() {
                                             <td className="p-3 w-[200px] text-gray-700">
                                                 {formatKST(u.updateDate)}
                                             </td>
-                                            <td className="p-3 w-[360px]">
+                                            <td className="p-3 w-[200px]">
                                                 <div className="flex flex-wrap gap-2">
                                                     <button
                                                         type="button"
