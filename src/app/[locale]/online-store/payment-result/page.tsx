@@ -14,6 +14,9 @@ type PaidSummary = {
     productNm: string;
 };
 
+/**
+ * PaymentResultPage: 결제 결과 페이지
+ * */
 export default function PaymentResultPage() {
     const router = useRouter();
     const sp = useSearchParams();
@@ -183,12 +186,12 @@ export default function PaymentResultPage() {
                     <span className="font-medium">{displayOrderId}</span>
                 </div>
 
-                {paid?.receiptId && (
-                    <div className="flex justify-between p-4">
-                        <span className="text-gray-600">영수증 번호</span>
-                        <span className="font-medium">{paid.receiptId}</span>
-                    </div>
-                )}
+                {/*{paid?.receiptId && (*/}
+                {/*    <div className="flex justify-between p-4">*/}
+                {/*        <span className="text-gray-600">영수증 번호</span>*/}
+                {/*        <span className="font-medium">{paid.receiptId}</span>*/}
+                {/*    </div>*/}
+                {/*)}*/}
 
                 {productNm && (
                     <div className="flex justify-between p-4">

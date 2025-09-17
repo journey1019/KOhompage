@@ -44,6 +44,23 @@ export default withAuth(
             return NextResponse.redirect(url);
         }
 
+        // ✅ 온라인 스토어 보호(로컬 토큰 기반)
+        if (pathname.startsWith(`/${locale}/online-store`) && !pathname.startsWith(`/${locale}/online-store/login`)) {
+            const exp = req.cookies.get('payment_token_exp')?.value;
+            const tok = req.cookies.get('payment_token')?.value;
+
+            // 쿠키 없거나, 만료면 리디렉션
+            if (!exp || !tok) {
+                url.pathname = `/${locale}/online-store/login`;
+                return NextResponse.redirect(url);
+            }
+            const expMs = Date.parse(exp);
+            if (Number.isNaN(expMs) || Date.now() >= expMs - 60_000) {
+                url.pathname = `/${locale}/online-store/login`;
+                return NextResponse.redirect(url);
+            }
+        }
+
         return NextResponse.next();
     },
     {
@@ -51,15 +68,12 @@ export default withAuth(
             signIn: '/ko/auth/signin', // 공통 로그인 페이지
         },
         callbacks: {
-            // authorized: ({ token }) => {
-            //     return token?.role === 'ADMIN';
-            // },
             authorized: ({ token, req }) => {
                 const url = req.nextUrl.pathname
 
                 if (url === '/' || url === '/ko' || url === '/en') return true;
 
-                // 관리자 페이지만 보호
+                // 관리자 페이지만 NextAuth 보호 (기존)
                 const isAdminPath = url.startsWith('/ko/admin') || url.startsWith('/en/admin');
 
                 if (isAdminPath) {

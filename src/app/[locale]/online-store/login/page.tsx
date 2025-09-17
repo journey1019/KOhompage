@@ -47,14 +47,20 @@ export default function PaymentLoginPage() {
             // 2) 토큰/유저 저장
             localStorage.setItem('userToken', response.userToken);
             localStorage.setItem('tokenExpired', response.tokenExpired);
-
             // 전체 유저 정보
             localStorage.setItem('paymentUserInfo', JSON.stringify(response));
             console.log(JSON.stringify(response))
-
             // 역할만 따로도 저장(선택)
             localStorage.setItem('roleId', response.roleId || 'user');
             localStorage.setItem('roleNm', response.roleNm || '');
+
+            // 3) 쿠키에도 기록(미들웨어용). expires는 서버에서 받은 만료시각 그대로.
+            //    - SameSite=Lax 로 기본 내비게이션 보호
+            //    - path=/ 로 전역 접근
+            const exp = new Date(response.tokenExpired); // ISO string 가정
+            document.cookie = `payment_token=${response.userToken}; Path=/; SameSite=Lax; Expires=${exp.toUTCString()}`;
+            document.cookie = `payment_token_exp=${exp.toISOString()}; Path=/; SameSite=Lax; Expires=${exp.toUTCString()}`;
+
 
             // 3) 여기서 배송지 자동 생성/저장 (Hook 금지, 일반 함수로 처리)
             await ensureDeliveryInfoFromAPI(); // 없으면 API에서 기본 배송지 저장

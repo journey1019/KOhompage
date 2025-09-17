@@ -12,7 +12,7 @@ import { RiLogoutCircleRLine } from "react-icons/ri";
 import TokenCountdownTimer from '@/components/(Shop)/TokenCountdownTimer';
 import Link from 'next/link';
 import { useRouter } from "next/navigation";
-import { LogOut } from '@/lib/api/authApi';
+import { LogOut, SafeLogOut } from '@/lib/api/authApi';
 import { ProductList, Product } from '@/lib/api/productApi';
 
 
@@ -153,7 +153,7 @@ const OnlineStorePage = () => {
                         {/* 로그아웃 버튼 */}
                         <div className="relative group">
                             <button
-                                onClick={handleLogout}
+                                onClick={SafeLogOut}
                                 className="hover:bg-gray-200 p-2 rounded-full transition"
                             >
                                 <RiLogoutCircleRLine className="w-6 h-6 text-gray-800" />

@@ -1,4 +1,5 @@
 import { apiBodyFetch, apiQueryFetch } from '@/lib/client/apiFetch';
+import { clearPaymentSession } from '@/lib/api/paymentSession';
 
 /**
  * 회원 가입
@@ -85,6 +86,11 @@ export async function Login(data: { userId: string; userPw: string }): Promise<L
  * */
 export async function LogOut() {
     return apiQueryFetch('/api/payment/logout');
+}
+
+export async function SafeLogOut() {
+    try { await LogOut(); } catch {}
+    clearPaymentSession();
 }
 
 
