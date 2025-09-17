@@ -2,6 +2,8 @@
 
 import { useEffect, useState } from "react";
 import { PaidCancel as callPaidCancel, type PaidCancelResponse } from "@/lib/api/paidApi";
+import Swal from 'sweetalert2'
+import 'sweetalert2/dist/sweetalert2.min.css'
 
 type Props = {
     purchaseId: number;
@@ -65,23 +67,52 @@ export default function PaidCancelUser({
         try {
             setBusy(true);
             setErr(null);
+
+            // (선택) 최종 확인 팝업: SweetAlert2 confirm
+            const confirm = await Swal.fire({
+                icon: 'warning',
+                title: '결제를 정말 취소할까요?',
+                text: '취소 후 되돌릴 수 없습니다.',
+                showCancelButton: true,
+                confirmButtonText: '네, 취소할게요',
+                cancelButtonText: '아니오',
+                reverseButtons: true,
+            });
+            if (!confirm.isConfirmed) return;
+
             const resp = await callPaidCancel({
                 purchaseId,
                 receiptId: formReceiptId.trim(),
                 cancelMessage: message.trim(),
             });
-            setToast({ msg: resp.orderMessage || "결제가 취소되었습니다.", tone: resp.status ? "success" : "info" });
+
+            // 성공 / 상태 메시지
+            await Swal.fire({
+                icon: resp.status ? 'success' : 'info',
+                title: resp.status ? '취소 완료' : '처리 알림',
+                text: resp.orderMessage || (resp.status ? '결제가 취소되었습니다.' : '요청이 처리되었습니다.'),
+                confirmButtonText: '확인',
+            });
+
             setOpen(false);
             await onSuccess?.(resp);
         } catch (e: any) {
-            setErr(e?.message || "결제 취소에 실패했습니다.");
-            setToast({ msg: e?.message || "결제 취소에 실패했습니다.", tone: "error" });
+            const msg = e?.message || '결제 취소에 실패했습니다.';
+            setErr(msg);
+
+            await Swal.fire({
+                icon: 'error',
+                title: '취소 실패',
+                text: msg,
+                confirmButtonText: '확인',
+            });
+
             onError?.(e);
         } finally {
             setBusy(false);
-            setTimeout(() => setToast(null), 1800);
         }
     }
+
 
     return (
         <>

@@ -40,7 +40,7 @@ export default function MyPageLayout({ children }: { children: React.ReactNode }
             localStorage.clear();
 
             // 로그인 페이지로 이동
-            router.push("/ko/login");
+            router.push("/ko/online-store/login");
         } catch (error) {
             console.error("로그아웃 실패:", error);
             alert("로그아웃 중 오류가 발생했습니다.");
@@ -91,7 +91,7 @@ export default function MyPageLayout({ children }: { children: React.ReactNode }
                             )}
                             {/*마이페이지 버튼*/}
                             <div className="relative group">
-                                <button onClick={() => router.push('/ko/myPage')}
+                                <button onClick={() => router.push('/ko/online-store/myPage/orders')}
                                         className="hover:bg-gray-200 p-2 rounded-full transition">
                                     <FaRegUserCircle className="w-6 h-6 text-gray-800" />
                                 </button>
@@ -116,7 +116,7 @@ export default function MyPageLayout({ children }: { children: React.ReactNode }
                     </div>
                 </div>
 
-                <h1 className="text-4xl maxWeb:text-5xl font-bold text-gray-800 mb-8">제품</h1>
+                <h1 className="text-4xl maxWeb:text-5xl font-bold text-gray-800 mb-8">My Page</h1>
 
                 <div className="flex">
                     {/* 좌측 사이드바 */}

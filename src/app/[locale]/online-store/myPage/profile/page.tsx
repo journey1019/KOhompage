@@ -43,7 +43,7 @@ export default function ProfilePage() {
             localStorage.setItem("paymentUserInfo", JSON.stringify(user));
 
             // ✅ 성공: 회원정보 수정 페이지로 이동
-            router.push(`/${locale}/myPage/profile/edit`);
+            router.push(`/${locale}/online-store/myPage/profile/edit`);
         } catch (err: any) {
             // ❌ 실패: 에러 메시지 표시
             setErrorMsg("비밀번호가 일치하지 않습니다.");

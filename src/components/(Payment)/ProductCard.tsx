@@ -77,7 +77,7 @@ const ProductCard: React.FC<Product> = ({
         const delivery = JSON.parse(localStorage.getItem('paymentDeliveryInfo') || 'null');
         if (!delivery?.recipient || !delivery?.addressMain || !delivery?.postalCode || !delivery?.phone) {
             alert('배송지 정보가 없습니다. 마이페이지에서 배송지 등록 후 다시 시도해 주세요.');
-            return router.push('/ko/myPage/delivery');
+            return router.push('/ko/online-store/myPage/delivery');
         }
 
         // ① 개당 최종가(부가세 포함 1개 기준)

@@ -19,7 +19,7 @@ const FindIdPwPage = () => {
                 backgroundPosition: 'center',
             }}
         >
-            <Link href="/ko/login" className="flex items-center mb-8 text-2xl font-semibold text-gray-900">
+            <Link href="/ko/online-store/login" className="flex items-center mb-8 text-2xl font-semibold text-gray-900">
                 <Image
                     src="/images/KO_SmallLogo.png"
                     alt="KO Logo"
@@ -87,7 +87,8 @@ const FindIdForm = () => {
         const payload = {
             birth: birth,
             findKey: findKey,
-            findValue: findKey==='phone' ? Number(findValue) : findValue,
+            findValue: findValue,
+            // findValue: findKey==='phone' ? Number(findValue) : findValue,
         };
 
         try {
@@ -115,7 +116,7 @@ const FindIdForm = () => {
 
                     <button
                         type="button"
-                        onClick={() => router.push(`/ko/login`)}
+                        onClick={() => router.push(`/ko/online-store/login`)}
                         className="w-full py-2 bg-blue-600 text-white font-semibold rounded hover:bg-blue-700"
                     >
                         로그인 돌아가기
@@ -227,7 +228,7 @@ const FindPwForm = () => {
 
                     <button
                         type="button"
-                        onClick={() => router.push(`/ko/login`)}
+                        onClick={() => router.push(`/ko/online-store/login`)}
                         className="w-full py-2 bg-blue-600 text-white font-semibold rounded hover:bg-blue-700"
                     >
                         로그인 돌아가기

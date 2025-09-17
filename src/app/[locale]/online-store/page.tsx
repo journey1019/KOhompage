@@ -3,12 +3,8 @@
 import PageHero from '@/components/PageHero';
 import React, { useState, useEffect } from 'react';
 import AuthComponent from '@/components/(Shop)/Auth';
-import { productsList } from '@/data/products';
-// import ProductCard from '@/components/(Shop)/ProductCard';
 import ProductCard from '@/components/(Payment)/ProductCard';
-// import { Product } from '@/types/product';
-import { getAllProducts, getFilteredProductsByQueryAndFilters, FilterOptions } from '@/service/shop/shopData'
-import SearchBar from '@/components/(Resources)/SearchBar';
+import { FilterOptions } from '@/service/shop/shopData'
 import FilterResource from '@/components/(Resources)/FilterResource';
 import Pagination from '@/components/(Resources)/Pagination';
 import { FaRegUserCircle } from "react-icons/fa";
@@ -19,8 +15,6 @@ import { useRouter } from "next/navigation";
 import { LogOut } from '@/lib/api/authApi';
 import { ProductList, Product } from '@/lib/api/productApi';
 
-
-import Swal from "sweetalert2";
 
 const OnlineStorePage = () => {
     const router = useRouter();
@@ -35,7 +29,7 @@ const OnlineStorePage = () => {
         const expiredAt = tokenExpired ? new Date(tokenExpired.replace(" ", "T")) : null;
 
         if (!token || !expiredAt || expiredAt.getTime() < now.getTime()) {
-            router.push("/ko/login");
+            router.push("/ko/online-store/login");
         }
     }, [router]);
 
@@ -50,14 +44,13 @@ const OnlineStorePage = () => {
             localStorage.clear();
 
             // 로그인 페이지로 이동
-            router.push("/ko/login");
+            router.push("/ko/online-store/login");
         } catch (error) {
             console.error("로그아웃 실패:", error);
             alert("로그아웃 중 오류가 발생했습니다.");
         }
     };
 
-    const [searchQuery, setSearchQuery] = useState<string>(""); // 검색어 상태
     const [filters, setFilters] = useState<FilterOptions>({}); // 필터 상태
     const [products, setProducts] = useState<Product[]>([]);
     const [totalProductsCount, setTotalProductsCount] = useState(products.length);
@@ -100,28 +93,6 @@ const OnlineStorePage = () => {
         fetchProducts();
     }, [currentPage]);
 
-    // useEffect(() => {
-    //     setIsLoading(true); // 시작 시 로딩
-    //     const fetchFilteredProduces = async () => {
-    //         const filteredProducts = await getFilteredProductsByQueryAndFilters(searchQuery, filters)
-    //         const sortedProducts = filteredProducts
-    //             // .filter((item: Product) => item.use === true)
-    //             // .sort((a, b) => {
-    //             //     return new Date(b.date).getTime() - new Date(a.date).getTime();
-    //             // });
-    //
-    //         // setProducts(sortedProducts);
-    //         setTotalProductsCount(sortedProducts.length);
-    //         setCurrentPage(1);
-    //         setIsLoading(false);
-    //     }
-    //     fetchFilteredProduces();
-    // }, [searchQuery, filters])
-
-    // 현재 페이지에 표시할 리소스 계산
-    const startIndex = (currentPage - 1) * itemsPerPage;
-    const currentResources = products.slice(startIndex, startIndex + itemsPerPage);
-
     const toggleDrawer = () => {
         setIsDrawerOpen(!isDrawerOpen); // 드로어 상태 토글
     };
@@ -138,32 +109,39 @@ const OnlineStorePage = () => {
             <AuthComponent />
 
             <div className="mx-auto max-w-7xl maxWeb:max-w-screen-2xl px-6 py-12 lg:px-8">
-                <div className="flex flex-row justify-between items-center">
-                    <h1 className="text-4xl maxWeb:text-5xl font-bold text-gray-800 mb-8">제품</h1>
-                    <div className="flex flex-row items-center space-x-6">
+                <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center">
+                    <h1 className="text-3xl sm:text-4xl maxWeb:text-5xl font-bold text-gray-800 mb-4 sm:mb-8">
+                        제품
+                    </h1>
+
+                    <div className="flex flex-row items-center space-x-2 sm:space-x-6">
                         {/* 로그인 토큰 만료시간 */}
                         {tokenExpired && (
-                            <TokenCountdownTimer
-                                tokenExpired={tokenExpired}
-                            />
+                            <TokenCountdownTimer tokenExpired={tokenExpired} />
                         )}
+
                         {/* 🔹 Admin 전용 버튼 */}
                         {isAdmin && (
                             <div className="relative group">
                                 <Link href="/ko/online-store/superAdmin">
-                                    <button className="hover:bg-gray-200 px-3 py-2 rounded-md text-sm font-semibold text-white bg-indigo-600 hover:bg-indigo-700">
+                                    <button
+                                        className="hover:bg-gray-200 px-3 py-2 rounded-md text-sm font-semibold text-white bg-indigo-600 hover:bg-indigo-700">
                                         관리자 페이지
                                     </button>
                                 </Link>
-                                <div className="absolute bottom-full mb-2 left-1/2 -translate-x-1/2 opacity-0 group-hover:opacity-100 transition-opacity bg-black text-white text-xs rounded px-2 py-1 whitespace-nowrap z-10">
+                                <div
+                                    className="absolute bottom-full mb-2 left-1/2 -translate-x-1/2 opacity-0 group-hover:opacity-100 transition-opacity bg-black text-white text-xs rounded px-2 py-1 whitespace-nowrap z-10">
                                     Admin Only
                                 </div>
                             </div>
                         )}
-                        {/*마이페이지 버튼*/}
+
+                        {/* 마이페이지 버튼 */}
                         <div className="relative group">
-                            <button onClick={() => router.push('/ko/myPage')}
-                                    className="hover:bg-gray-200 p-2 rounded-full transition">
+                            <button
+                                onClick={() => router.push('/ko/online-store/myPage')}
+                                className="hover:bg-gray-200 p-2 rounded-full transition"
+                            >
                                 <FaRegUserCircle className="w-6 h-6 text-gray-800" />
                             </button>
                             <div
@@ -172,12 +150,16 @@ const OnlineStorePage = () => {
                             </div>
                         </div>
 
-                        {/*로그아웃 버튼*/}
+                        {/* 로그아웃 버튼 */}
                         <div className="relative group">
-                            <button onClick={handleLogout} className="hover:bg-gray-200 p-2 rounded-full transition">
+                            <button
+                                onClick={handleLogout}
+                                className="hover:bg-gray-200 p-2 rounded-full transition"
+                            >
                                 <RiLogoutCircleRLine className="w-6 h-6 text-gray-800" />
                             </button>
-                            <div className="absolute bottom-full mb-2 left-1/2 -translate-x-1/2 opacity-0 group-hover:opacity-100 transition-opacity bg-black text-white text-xs rounded px-2 py-1 whitespace-nowrap z-10">
+                            <div
+                                className="absolute bottom-full mb-2 left-1/2 -translate-x-1/2 opacity-0 group-hover:opacity-100 transition-opacity bg-black text-white text-xs rounded px-2 py-1 whitespace-nowrap z-10">
                                 로그아웃
                             </div>
                         </div>
@@ -185,31 +167,6 @@ const OnlineStorePage = () => {
                 </div>
 
                 <div className="grid grid-cols-1 lg:grid-cols-4 lg:gap-2">
-                    {/* Left Section: SearchBar & Filtering */}
-                    {/*<div className="lg:col-span-1 space-y-6">*/}
-                    {/*    <SearchBar onSearch={setSearchQuery} /> /!* 검색어 전달 *!/*/}
-
-                    {/*    /!* 모바일: Filters 버튼 *!/*/}
-                    {/*    <div className="lg:hidden">*/}
-                    {/*        <button*/}
-                    {/*            onClick={toggleDrawer}*/}
-                    {/*            className="py-2 mb-5 px-4 bg-white border-red-700 border-2 text-red-700 rounded-md w-full"*/}
-                    {/*        >*/}
-                    {/*            Filters*/}
-                    {/*        </button>*/}
-                    {/*    </div>*/}
-
-
-                    {/*    /!* 웹: FilterResource *!/*/}
-                    {/*    <div className="hidden lg:block">*/}
-                    {/*        <FilterResource*/}
-                    {/*            filters={filters}*/}
-                    {/*            onFilterChange={setFilters}*/}
-                    {/*            totalResourcesCount={totalProductsCount} // 게시글 개수 전달*/}
-                    {/*        />*/}
-                    {/*    </div>*/}
-                    {/*</div>*/}
-
                     {/* Right Section: Products */}
                     <div className="lg:col-span-4">
                         <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-6">
@@ -217,10 +174,6 @@ const OnlineStorePage = () => {
                                 <div className="col-span-full flex justify-center items-center py-20">
                                     <div className="animate-spin rounded-full h-10 w-10 border-t-4 border-blue-500" />
                                 </div>
-                                // ) : productsList.length > 0 ? (
-                                //     productsList.map((product) => (
-                                //         <ProductCard key={product.id} {...product} />
-                                //     ))
                             ) : products.length > 0 ? (
                                 products.map((product) => (
                                     <ProductCard key={product.productId} {...product} />

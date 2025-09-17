@@ -9,7 +9,7 @@ import { toDash, fromDash } from "@/module/helper";
 import { formatKST } from '@/module/pgAdminHelper';
 import { fmtInputKST, ymdToInput, inputToYmd} from '@/lib/utils/dateUtils';
 import { Badge } from '@/components/(Online-Store)/MyPage/Badge';
-import { toneByStatus, toneByCategory, toneByMethod, toneByType } from '@/lib/utils/toneMapping';
+import { toneByStatusTable, toneByCategory, toneByMethod, toneByType } from '@/lib/utils/toneMapping';
 
 
 // ————————————————————————————————————————————————
@@ -125,6 +125,7 @@ export default function PaidPage() {
     const totalPages = Math.max(1, Math.ceil(total / PAGE_SIZE));
     const pageData = sorted.slice((page - 1) * PAGE_SIZE, page * PAGE_SIZE);
 
+    console.log(pageData)
     return (
         <div className="mx-auto max-w-6xl p-6 overflow-x-hidden">{/* 페이지 수준 가로 스크롤 차단 */}
             {/* Header */}
@@ -144,29 +145,41 @@ export default function PaidPage() {
             {/* Filters */}
             <section className="mb-4 rounded-xl border border-gray-200 bg-white p-4 shadow-sm">
                 <div className="grid grid-cols-1 gap-3 sm:grid-cols-8">
-                    <div>
+                    <div className="col-span-2">
                         <label className="mb-1 block text-xs font-medium text-gray-600">시작일</label>
-                        <input type="date" value={startInput} onChange={(e) => setStartInput(e.target.value)} className="w-full rounded-lg border border-gray-300 px-3 py-2 text-sm focus:ring-2 focus:ring-blue-200" />
+                        <input type="date" value={startInput} onChange={(e) => setStartInput(e.target.value)}
+                               className="w-full rounded-lg border border-gray-300 px-3 py-2 text-sm focus:ring-2 focus:ring-blue-200" />
                     </div>
-                    <div>
+                    <div className="col-span-2">
                         <label className="mb-1 block text-xs font-medium text-gray-600">종료일</label>
-                        <input type="date" value={endInput} onChange={(e) => setEndInput(e.target.value)} className="w-full rounded-lg border border-gray-300 px-3 py-2 text-sm focus:ring-2 focus:ring-blue-200" />
+                        <input type="date" value={endInput} onChange={(e) => setEndInput(e.target.value)}
+                               className="w-full rounded-lg border border-gray-300 px-3 py-2 text-sm focus:ring-2 focus:ring-blue-200" />
                     </div>
-                    <div className="sm:col-span-2">
+                    <div className="sm:col-span-3">
                         <label className="mb-1 block text-xs font-medium text-gray-600">검색</label>
                         <input value={query} onChange={(e)=>{ setQuery(e.target.value); setPage(1); }} placeholder="userId, 주문ID, 결제ID, 상품명" className="w-full rounded-lg border border-gray-300 px-3 py-2 text-sm focus:ring-2 focus:ring-blue-200" />
                     </div>
-                    <div>
+                </div>
+                <div className="grid grid-cols-1 gap-3 sm:grid-cols-8 pt-2">
+                    <div className="col-span-2">
                         <label className="mb-1 block text-xs font-medium text-gray-600">상태</label>
-                        <select value={statusFilter} onChange={(e)=>{ setStatusFilter(e.target.value); setPage(1); }} className="w-full rounded-lg border border-gray-300 px-3 py-2 text-sm focus:ring-2 focus:ring-blue-200">
+                        <select value={statusFilter} onChange={(e) => {
+                            setStatusFilter(e.target.value);
+                            setPage(1);
+                        }}
+                                className="w-full rounded-lg border border-gray-300 px-3 py-2 text-sm focus:ring-2 focus:ring-blue-200">
                             <option value="all">전체</option>
                             <option value="PAID">결제완료</option>
                             <option value="CANCELLED">취소</option>
                         </select>
                     </div>
-                    <div>
+                    <div className="col-span-2">
                         <label className="mb-1 block text-xs font-medium text-gray-600">결제수단</label>
-                        <select value={methodFilter} onChange={(e)=>{ setMethodFilter(e.target.value); setPage(1); }} className="w-full rounded-lg border border-gray-300 px-3 py-2 text-sm focus:ring-2 focus:ring-blue-200">
+                        <select value={methodFilter} onChange={(e) => {
+                            setMethodFilter(e.target.value);
+                            setPage(1);
+                        }}
+                                className="w-full rounded-lg border border-gray-300 px-3 py-2 text-sm focus:ring-2 focus:ring-blue-200">
                             <option value="all">전체</option>
                             <option value="card">card</option>
                             <option value="vbank">vbank</option>
@@ -182,7 +195,7 @@ export default function PaidPage() {
                                 <option value="purchaseDate">구매일</option>
                                 <option value="price">결제금액</option>
                             </select>
-                            <button type="button" onClick={()=>setSortDir(d=>d==="asc"?"desc":"asc")} className="inline-flex items-center rounded-lg border border-gray-300 px-3 py-2 text-sm hover:bg-gray-50">
+                            <button type="button" onClick={()=>setSortDir(d=>d==="asc"?"desc":"asc")} className="inline-flex items-center rounded-lg border border-gray-300 px-3 py-2 text-sm hover:bg-gray-50 whitespace-nowrap">
                                 {sortDir === "desc" ? "내림차순" : "오름차순"}
                             </button>
                         </div>
@@ -235,7 +248,7 @@ export default function PaidPage() {
                                 <td className="p-3 w-[180px] truncate">{r.orderId}</td>
                                 <td className="p-3 w-[180px] truncate">{r.receiptId}</td>
                                 <td className="p-3 w-[120px]">
-                                    <Badge tone={toneByStatus(r.statusLocale, r.purchaseStatus, r.cancelledPrice)}>
+                                    <Badge tone={toneByStatusTable(r.statusLocale, r.purchaseStatus, r.cancelledPrice)}>
                                         {r.statusLocale || r.purchaseStatus || '상태미확인'}
                                     </Badge>
                                 </td>

@@ -162,7 +162,7 @@ export default function SignUpPage() {
             const res = await SignUp(payload);
             console.log(res);
             alert("회원가입이 완료되었습니다.");
-            router.push("/ko/login"); // or your login page
+            router.push("/ko/online-store/login"); // or your login page
         } catch (error: any) {
             console.error("회원가입 실패", error);
             alert("회원가입 실패: " + error.message);

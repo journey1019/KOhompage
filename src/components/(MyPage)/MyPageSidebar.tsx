@@ -5,9 +5,9 @@ import { useRouter, usePathname } from "next/navigation";
 import classNames from "classnames";
 
 const menuItems = [
-    { label: "주문내역/배송정보", path: "/ko/myPage/orders" },
-    // { label: "취소/반품/교환/환불내역", path: "/ko/myPage/cancellations" },
-    { label: "내 정보", path: "/ko/myPage/profile" },
+    { label: "주문내역/배송정보", path: "/ko/online-store/myPage/orders" },
+    // { label: "취소/반품/교환/환불내역", path: "/ko/online-store/myPage/cancellations" },
+    { label: "내 정보", path: "/ko/online-store/myPage/profile" },
 ];
 
 export default function MyPageSidebar() {

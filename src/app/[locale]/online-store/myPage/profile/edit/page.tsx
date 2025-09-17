@@ -1,4 +1,4 @@
-/** src/app/[locale]/myPage/profile/edit/page.tsx */
+/** src/app/[locale]/online-store/myPage/profile/edit/page.tsx */
 "use client";
 
 import React, { useEffect, useState, useRef } from 'react';
@@ -7,7 +7,7 @@ import { UserInfoChange, PwdChange, RemoveUserAccount } from '@/lib/api/userApi'
 import { formatKRPhone, formatBirthDate } from '@/module/helper';
 import Agreement from '@/components/(Online-Store)/MyPage/Agreement';
 import DaumPostcodeModal from "@/components/common/DaumPostcodeModal";
-import Withdraw from '@/app/[locale]/myPage/_components/Withdraw';
+import Withdraw from '@/app/[locale]/online-store/myPage/_components/Withdraw';
 
 
 function onlyDigits(s: string) { return (s || '').replace(/\D/g, ''); }
@@ -106,7 +106,7 @@ const ProfileEditPage = () => {
             localStorage.setItem('paymentUserInfo', JSON.stringify(merged));
 
             alert('회원정보가 저장되었습니다.');
-            router.push(`/${locale}/myPage/profile`);
+            router.push(`/${locale}/online-store/myPage/profile`);
         } catch (err: any) {
             setError(err?.message || '저장 중 오류가 발생했습니다.');
         } finally {
@@ -139,7 +139,7 @@ const ProfileEditPage = () => {
             if (res?.status) {
                 alert('비밀번호가 변경되었습니다. 다시 로그인해야 할 수 있습니다.');
                 setCurrentPw(''); setNewPw(''); setConfirmPw('');
-                router.push(`/${locale}/myPage/profile`);
+                router.push(`/${locale}/online-store/myPage/profile`);
             } else {
                 setPwError('비밀번호 변경에 실패했습니다.');
             }

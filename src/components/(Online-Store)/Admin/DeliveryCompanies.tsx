@@ -228,7 +228,7 @@ export default function DeliveryCompanies() {
     return (
         <section className="rounded-xl border border-gray-200 bg-white shadow-sm">
             {/* Header / Controls */}
-            <div className="flex items-end justify-between gap-2 p-4">
+            <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-2 p-4">
                 <div>
                     <h2 className="text-base font-semibold">배송사 리스트</h2>
                     <p className="mt-1 text-xs text-gray-600">관리자용 · 배송사/추적 URL/코드 길이</p>

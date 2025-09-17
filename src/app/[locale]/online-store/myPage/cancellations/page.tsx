@@ -1,4 +1,4 @@
-/** src/app/[locale]/myPage/cancellations/page.tsx */
+/** src/app/[locale]/online-store/myPage/cancellations/page.tsx */
 export default function CancellationsPage() {
     return (
         <>

@@ -33,7 +33,7 @@ export default function PaymentResultPage() {
         const now = new Date();
         const expiredAt = tokenExpired ? new Date(tokenExpired.replace(' ', 'T')) : null;
         if (!token || !expiredAt || expiredAt.getTime() < now.getTime()) {
-            router.push('/ko/login');
+            router.push('/ko/online-store/login');
         }
     }, [router]);
 
@@ -158,8 +158,8 @@ export default function PaymentResultPage() {
     const lastPaid = lastRaw ? JSON.parse(lastRaw) as PaidSummary & { purchaseId?: number } : null;
     console.log(lastPaid)
     const link = lastPaid?.purchaseId
-        ? `/ko/myPage/orders?purchaseId=${encodeURIComponent(String(lastPaid.purchaseId))}`
-        : '/ko/myPage/orders';
+        ? `/ko/online-store/myPage/orders?purchaseId=${encodeURIComponent(String(lastPaid.purchaseId))}`
+        : '/ko/online-store/myPage/orders';
 
     return (
         <div className="max-w-3xl mx-auto p-6">

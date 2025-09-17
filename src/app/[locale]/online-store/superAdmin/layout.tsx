@@ -40,7 +40,7 @@ export default function AdminPageLayout({ children }: { children: React.ReactNod
             localStorage.clear();
 
             // 로그인 페이지로 이동
-            router.push("/ko/login");
+            router.push("/ko/online-store/login");
         } catch (error) {
             console.error("로그아웃 실패:", error);
             alert("로그아웃 중 오류가 발생했습니다.");
@@ -49,76 +49,84 @@ export default function AdminPageLayout({ children }: { children: React.ReactNod
 
     return (
         <section>
-            <div className="mx-auto max-w-7xl maxWeb:max-w-screen-2xl px-6 py-8 lg:px-8">
-                <div className="flex flex-row justify-between items-center">
+            <div className="mx-auto max-w-7xl maxWeb:max-w-screen-2xl px-4 sm:px-6 py-6 lg:px-8">
+                {/* Top bar */}
+                <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+                    {/* 뒤로가기: 모바일 전체폭 */}
                     <button
                         onClick={() => router.push('/ko/online-store')}
-                        className="flex flex-row space-x-2 items-center text-blue-500 hover:text-blue-700 transition-colors duration-200 pb-4"
+                        className="flex items-center gap-1 text-blue-500 hover:text-blue-700 transition-colors pb-2 sm:pb-0"
                     >
                         <IoIosArrowBack className="text-lg" />
-                        <span>상품 목록 페이지로 가기</span>
+                        <span className="text-sm sm:text-base">상품 목록 페이지로 가기</span>
                     </button>
 
-                    <div className="flex flex-row justify-between items-center">
-                        <div className="flex flex-row items-center space-x-6">
-                            {/* 로그인 토큰 만료시간 */}
-                            {tokenExpired && (
-                                <TokenCountdownTimer
-                                    tokenExpired={tokenExpired}
-                                />
-                            )}
+                    {/* 우측 액션들 */}
+                    <div className="flex flex-wrap items-center gap-2 sm:gap-4">
+                        {/* 토큰 타이머 */}
+                        {tokenExpired && (
+                            <TokenCountdownTimer tokenExpired={tokenExpired} />
+                        )}
 
-                            {/* 🔹 Admin 전용 버튼 */}
-                            {isAdmin && (
-                                <div className="relative group">
-                                    <Link href="/ko/online-store/superAdmin">
-                                        <button
-                                            className="hover:bg-gray-200 px-3 py-2 rounded-md text-sm font-semibold text-white bg-indigo-600 hover:bg-indigo-700">
-                                            관리자 페이지
-                                        </button>
-                                    </Link>
-                                    <div
-                                        className="absolute bottom-full mb-2 left-1/2 -translate-x-1/2 opacity-0 group-hover:opacity-100 transition-opacity bg-black text-white text-xs rounded px-2 py-1 whitespace-nowrap z-10">
-                                        Admin Only
-                                    </div>
-                                </div>
-                            )}
-
-                            {/*마이페이지 버튼*/}
+                        {/* Admin 버튼 */}
+                        {isAdmin && (
                             <div className="relative group">
-                                <button onClick={() => router.push('/ko/myPage')}
-                                        className="hover:bg-gray-200 p-2 rounded-full transition">
-                                    <FaRegUserCircle className="w-6 h-6 text-gray-800" />
-                                </button>
-                                <div
-                                    className="absolute bottom-full mb-2 left-1/2 -translate-x-1/2 opacity-0 group-hover:opacity-100 transition-opacity bg-black text-white text-xs rounded px-2 py-1 whitespace-nowrap z-10">
-                                    마이페이지
+                                <Link href="/ko/online-store/superAdmin">
+                                    <button className="px-3 py-2 rounded-md text-xs sm:text-sm font-semibold text-white bg-indigo-600 hover:bg-indigo-700">
+                                        관리자 페이지
+                                    </button>
+                                </Link>
+                                {/* 모바일에선 툴팁 비표시(터치 환경 배려) */}
+                                <div className="hidden sm:block absolute bottom-full mb-2 left-1/2 -translate-x-1/2 opacity-0 group-hover:opacity-100 transition-opacity bg-black text-white text-xs rounded px-2 py-1 whitespace-nowrap z-10">
+                                    Admin Only
                                 </div>
                             </div>
+                        )}
 
-                            {/*로그아웃 버튼*/}
-                            <div className="relative group">
-                                <button onClick={handleLogout}
-                                        className="hover:bg-gray-200 p-2 rounded-full transition">
-                                    <RiLogoutCircleRLine className="w-6 h-6 text-gray-800" />
-                                </button>
-                                <div
-                                    className="absolute bottom-full mb-2 left-1/2 -translate-x-1/2 opacity-0 group-hover:opacity-100 transition-opacity bg-black text-white text-xs rounded px-2 py-1 whitespace-nowrap z-10">
-                                    로그아웃
-                                </div>
+                        {/* 마이페이지 */}
+                        <div className="relative group">
+                            <button
+                                onClick={() => router.push('/ko/online-store/Page')}
+                                className="hover:bg-gray-100 p-2 rounded-full transition"
+                                aria-label="마이페이지"
+                            >
+                                <FaRegUserCircle className="w-5 h-5 sm:w-6 sm:h-6 text-gray-800" />
+                            </button>
+                            <div className="hidden sm:block absolute bottom-full mb-2 left-1/2 -translate-x-1/2 opacity-0 group-hover:opacity-100 transition-opacity bg-black text-white text-xs rounded px-2 py-1 whitespace-nowrap z-10">
+                                마이페이지
+                            </div>
+                        </div>
+
+                        {/* 로그아웃 */}
+                        <div className="relative group">
+                            <button
+                                onClick={handleLogout}
+                                className="hover:bg-gray-100 p-2 rounded-full transition"
+                                aria-label="로그아웃"
+                            >
+                                <RiLogoutCircleRLine className="w-5 h-5 sm:w-6 sm:h-6 text-gray-800" />
+                            </button>
+                            <div className="hidden sm:block absolute bottom-full mb-2 left-1/2 -translate-x-1/2 opacity-0 group-hover:opacity-100 transition-opacity bg-black text-white text-xs rounded px-2 py-1 whitespace-nowrap z-10">
+                                로그아웃
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <h1 className="text-4xl maxWeb:text-5xl font-bold text-gray-800 mb-8">관리자 페이지</h1>
+                {/* 타이틀: 모바일 여백 조정 */}
+                <h1 className="text-3xl sm:text-4xl maxWeb:text-5xl font-bold text-gray-800 mt-2 mb-4 sm:mb-8">
+                    관리자 페이지
+                </h1>
 
-                <div className="flex">
-                    {/* 좌측 사이드바 */}
-                    <AdminPageSidebar />
+                {/* 본문 레이아웃: 모바일 세로, md↑ 가로 */}
+                <div className="flex flex-col md:flex-row gap-4 md:gap-6">
+                    {/* 사이드바: 모바일에선 상단에 쌓임 */}
+                    <div className="md:shrink-0">
+                        <AdminPageSidebar />
+                    </div>
 
-                    {/* 우측 컨텐츠 */}
-                    <div className="flex-1 min-w-0 bg-white p-6 min-h-[600px] overflow-x-hidden">
+                    {/* 컨텐츠 영역 */}
+                    <div className="flex-1 min-w-0 bg-white overflow-x-hidden rounded-lg md:rounded-xl">
                         {children}
                     </div>
                 </div>

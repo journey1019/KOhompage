@@ -49,7 +49,7 @@ export default function OrderSummaryPage() {
         const expiredAt = tokenExpired ? new Date(tokenExpired.replace(" ", "T")) : null;
 
         if (!token || !expiredAt || expiredAt.getTime() < now.getTime()) {
-            router.push("/ko/login");
+            router.push("/ko/online-store/login");
         }
     }, [router]);
 
@@ -117,7 +117,7 @@ export default function OrderSummaryPage() {
                 order_name: draft.productNm,
                 order_id: draft.orderId,
                 pg: 'nicepay',
-                methods: ['card', 'bank'],
+                method: ['card', 'bank'],
                 // methods: ['card', 'bank', 'vbank'], // 카드/계좌이체/가상계좌 허용
                 user: {},
                 items: [

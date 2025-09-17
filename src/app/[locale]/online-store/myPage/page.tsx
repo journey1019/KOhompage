@@ -10,14 +10,17 @@ export default function MyPage() {
     //     const token = sessionStorage.getItem("userToken");
     //     if (!token) {
     //         alert("로그인이 필요합니다.");
-    //         router.push("/ko/login");
+    //         router.push("/ko/online-store/login");
     //     }
     // }, [router]);
+    // useEffect(() => {
+    //     router.push('myPage/orders')
+    // }, []);
 
     return (
-        <>
-            <h2 className="text-xl font-semibold mb-4">마이페이지 메인</h2>
-            <p>여기에 선택된 페이지의 콘텐츠가 표시됩니다.</p>
-        </>
+        <div className="max-w-4xl mx-auto p-6">
+            <h2 className="text-xl font-semibold mb-4">3개월 주문내역 / 배송정보</h2>
+
+        </div>
     );
 }

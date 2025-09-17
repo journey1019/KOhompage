@@ -1,4 +1,4 @@
-/** src/components/myPage/DeliveryHistoryModal.tsx */
+/** src/components/online-store/myPage/DeliveryHistoryModal.tsx */
 "use client";
 
 import { useEffect, useMemo, useState } from "react";

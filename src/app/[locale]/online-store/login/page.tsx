@@ -90,7 +90,7 @@ export default function PaymentLoginPage() {
                 backgroundPosition: 'center',
             }}
         >
-            <Link href="/ko/login" className="flex items-center mb-8 text-2xl font-semibold text-gray-900">
+            <Link href="/ko/online-store/login" className="flex items-center mb-8 text-2xl font-semibold text-gray-900">
                 <Image
                     src="/images/KO_SmallLogo.png"
                     alt="KO Logo"
@@ -177,7 +177,7 @@ export default function PaymentLoginPage() {
                                     자동 로그인
                                 </label>
                             </div>
-                            <Link href="/ko/findIdPw"
+                            <Link href="/ko/online-store/findIdPw"
                                   className="flex items-center space-x-2 text-sm text-blue-500 group hover:text-blue-600">
                                 <span>아이디 · 비밀번호 찾기</span>
                                 <IoIosArrowForward />
@@ -199,7 +199,7 @@ export default function PaymentLoginPage() {
                         </button>
 
                         <div className="pt-4">
-                            <Link href="/ko/signUp">
+                            <Link href="/ko/online-store/signUp">
                                 <button
                                     type="button"
                                     className="w-full cursor-pointer py-2 px-4 rounded-md border border-blue-600 text-blue-600 font-semibold text-sm transition hover:bg-blue-50"

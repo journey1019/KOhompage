@@ -31,7 +31,7 @@ const Withdraw = () => {
             localStorage.removeItem('paymentUserInfo');
 
             alert('회원탈퇴가 완료되었습니다.');
-            router.replace(`/${locale}`); // 혹은 /login 등
+            router.replace(`/${locale}/online-store/login`); // 혹은 /login 등
         } catch (e: any) {
             setDeleteError(e?.message || '탈퇴 중 오류가 발생했습니다.');
         } finally {

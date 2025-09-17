@@ -23,6 +23,35 @@ export function toneByStatus(
     return "gray";
 }
 
+// 테이블 전용 오버라이드 래퍼
+export function toneByStatusTable(
+    statusLocale?: string, // 결제완료 | 결제취소완료 | ...
+    purchaseStatus?: string | number, // 결제 상태 = Y | N
+    cancelledPrice?: number
+): BadgeTone {
+    // 1) 기본 톤 계산
+    let tone = toneByStatus(statusLocale, purchaseStatus, cancelledPrice);
+
+    const s = (statusLocale || "").toLowerCase().trim();
+    const p = String(purchaseStatus || "").toUpperCase();
+
+    // 2) 테이블에서만 덮어쓸 규칙
+    // - 취소는 무조건 red
+    if (
+        (typeof cancelledPrice === "number" && cancelledPrice > 0) ||
+        /취소|실패|거절/.test(s) ||
+        p === "CANCELLED" ||
+        p === "FAIL"
+    ) {
+        tone = "red";
+    }
+
+    // - 완료는 green(그대로)
+    // - 대기는 yellow(그대로)
+    // - 나머진 gray(그대로)
+    return tone;
+}
+
 export function toneByMethod(method?: string): BadgeTone {
     const m = (method || "").toLowerCase().trim();
     if (m === "card") return "blue";
