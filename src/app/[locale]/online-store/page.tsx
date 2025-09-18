@@ -2,7 +2,6 @@
 
 import PageHero from '@/components/PageHero';
 import React, { useState, useEffect } from 'react';
-import AuthComponent from '@/components/(Shop)/Auth';
 import ProductCard from '@/components/(Payment)/ProductCard';
 import { FilterOptions } from '@/service/shop/shopData'
 import FilterResource from '@/components/(Resources)/FilterResource';
@@ -106,7 +105,6 @@ const OnlineStorePage = () => {
                 title="온라인 스토어"
                 subtitle=""
             />
-            <AuthComponent />
 
             <div className="mx-auto max-w-7xl maxWeb:max-w-screen-2xl px-6 py-12 lg:px-8">
                 <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center">

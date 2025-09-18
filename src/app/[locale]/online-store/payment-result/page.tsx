@@ -42,12 +42,32 @@ export default function PaymentResultPage() {
 
     // 1) 결과 판단 로직
     useEffect(() => {
-        const event = sp.get('event'); // done | confirm | cancel | error | null
-        const urlOrderId = sp.get('order_id') || sp.get('orderId') || '';
+        const event = sp.get('event'); // done | confirm | cancel | error | null (없을 수도 있음)
+        let urlOrderId = sp.get('order_id') || sp.get('orderId') || '';
         const urlReceiptId = sp.get('receipt_id') || sp.get('receiptId') || '';
         const status = sp.get('status'); // success | fail | 2(승인대기) ...
 
         setDisplayOrderId(urlOrderId);
+
+        // ✅ 2-1) order_id가 비어 있으면 sessionStorage에서 최근 order-draft 키를 찾아 복구
+        if (!urlOrderId) {
+            try {
+                const keys: string[] = [];
+                for (let i = 0; i < sessionStorage.length; i++) {
+                    const k = sessionStorage.key(i);
+                    if (k && k.startsWith('order-draft:')) keys.push(k);
+                    }
+                // 하나만 있거나, 가장 마지막(최근) 키를 사용
+                    const lastKey = keys.length > 0 ? keys.sort().at(-1)! : null;
+                if (lastKey) {
+                    const draft = JSON.parse(sessionStorage.getItem(lastKey) || 'null') as CreateOrderDraftResponse | null;
+                    if (draft?.orderId) {
+                            urlOrderId = draft.orderId;
+                            setDisplayOrderId(draft.orderId);
+                    }
+                    }
+            } catch {}
+        }
 
         // A. JS 팝업 경로에서 미리 저장해둔 last-paid가 있으면 그대로 표시 (이미 serverPaid 수행됨)
         const lastRaw = sessionStorage.getItem('last-paid');
@@ -68,15 +88,15 @@ export default function PaymentResultPage() {
             }
         }
 
-        // B. 사용자가 직접 취소하거나 에러 케이스
+        // B. 사용자가 직접 취소하거나 에러 케이스 (status=fail은 명시적일 때만 실패로 간주)
         if (status === 'fail' || event === 'cancel' || event === 'error') {
             setPhase('error');
             setMsg('결제에 실패했거나 취소되었습니다.');
             return;
         }
 
-        // C. 리다이렉트(done) 경로: URL에 receipt_id가 반드시 있어야 serverPaid 호출 가능
-        if (event === 'done') {
+        // C. (완화) event가 'done' 이거나, event가 없더라도 receipt_id가 있으면 "성공 후보"로 간주해 serverPaid 시도
+        if (event === 'done' || (!!urlReceiptId && !event)) {
             if (!urlReceiptId || String(urlReceiptId).trim().length === 0) {
                 setPhase('pending');
                 setMsg('결제는 완료되었지만 영수증 확인이 지연되고 있습니다. 잠시 후 새로고침하거나 주문내역에서 확인해 주세요.');
@@ -96,7 +116,11 @@ export default function PaymentResultPage() {
                         return;
                     }
 
-                    // ✅ 빈 receiptId 금지
+                    const flowRaw = urlOrderId ? sessionStorage.getItem(`order-flow:${urlOrderId}`) : null;
+                    const flow = flowRaw ? JSON.parse(flowRaw) as { requiresConfirm?: boolean } : {};
+                    const requiresConfirm = !!flow?.requiresConfirm;
+
+                    // 빈 receiptId 금지
                     const rid = String(urlReceiptId).trim();
                     if (!rid) {
                         setPhase('error');
@@ -130,10 +154,24 @@ export default function PaymentResultPage() {
                         billingPrice: draft.paidPrice,
                     });
 
-                    // ...
+                    // 저장/기록 성공 처리
+                    setPhase('success');
+                    setMsg('결제가 완료되었습니다!');
+
+                    // 결과 카드 표시에 필요한 최소 정보만 구성(옵션)
+                    setPaid({
+                        orderId: draft.orderId,
+                        receiptId: rid,
+                        paidPrice: Number(draft.paidPrice),
+                        productNm: draft.productNm,
+                    });
+
+                    // 캐시 정리 (원한다면)
+                    sessionStorage.removeItem(`order-draft:${draft.orderId}`);
+                    sessionStorage.removeItem(`order-flow:${draft.orderId}`);
                 } catch (e) {
                     setPhase('error');
-                    setMsg('결제 확정(서버) 처리에 실패했습니다.');
+                    setMsg('결제 확정(서버) 처리에 실패했습니다. (영수증 동기화 지연 가능)');
                 }
             })();
             return;

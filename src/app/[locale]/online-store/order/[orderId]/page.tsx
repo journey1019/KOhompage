@@ -108,6 +108,11 @@ export default function OrderSummaryPage() {
                 typeof navigator !== 'undefined' &&
                 /Android|iPhone|iPad|iPod|Opera Mini|IEMobile|WPDesktop/i.test(navigator.userAgent);
 
+            const requiresConfirm = !isMobile; // PC-popup은 true(수동 승인), 모바일 redirect는 false(자동 승인)
+// 결제 전에 세션에 저장 (결과 페이지에서 분기용)
+
+            sessionStorage.setItem(`order-flow:${draft.orderId}`, JSON.stringify({ requiresConfirm }));
+
             // 서버가 내려준 총액만 신뢰 (최우선: finalPrice, 없으면 paidPrice)
             const TOTAL = Number(draft.finalPrice ?? draft.paidPrice);
 
@@ -131,8 +136,9 @@ export default function OrderSummaryPage() {
                 extra: {
                     open_type: isMobile ? 'redirect' : 'popup', // 모바일은 redirect 권장
                     popup: { width: 800, height: 600 },
-                    separately_confirmed: true, // 수동 승인 플로우
-                    redirect_url: `${baseUrl}/ko/online-store/payment-result`,
+                    separately_confirmed: isMobile ? false : true, // 👈 모바일은 자동 승인 | 수동 승인 플로우
+                    // redirect_url: `${baseUrl}/ko/online-store/payment-result`,
+                    redirect_url: `${baseUrl}/ko/online-store/payment-result?order_id=${encodeURIComponent(draft.orderId)}`,
                     card_quota: '0,2,3',
                 },
             });
@@ -310,140 +316,50 @@ export default function OrderSummaryPage() {
 
 
     return (
-        <div className="mx-auto max-w-6xl p-6">
+        <div className="mx-auto w-full max-w-[475px] px-4 py-6 md:max-w-6xl md:px-6">
             {/* 헤더: 상품명 / 주문번호 / 만료 */}
             <div className="mb-6">
-                <div className="flex items-start justify-between gap-3">
+                <div className="flex flex-col gap-3 md:flex-row md:items-start md:justify-between">
                     <div className="min-w-0">
-                        <h1 className="text-2xl font-bold tracking-tight text-gray-900">{draft.productNm}</h1>
+                        <h1 className="text-xl font-bold tracking-tight text-gray-900 md:text-2xl">
+                            {draft.productNm}
+                        </h1>
                         <div className="mt-2 flex flex-wrap items-center gap-2">
                             <Badge tone="blue">주문번호: {draft.orderId}</Badge>
                             <Badge tone="yellow">주문 만료: {formatDateTimeKST(draft.expiredDate)}</Badge>
                         </div>
                     </div>
-                    <div className="text-right">
+
+                    {/* 모바일에선 아래로 떨어지도록 text-right 대신 자체 정렬 */}
+                    <div className="md:text-right">
                         <div className="text-sm text-gray-600">결제 예정금액</div>
-                        <div className="text-3xl font-extrabold">{formatCurrency(Number(draft.paidPrice))}</div>
+                        <div className="text-2xl font-extrabold md:text-3xl">
+                            {formatCurrency(Number(draft.paidPrice))}
+                        </div>
                     </div>
                 </div>
             </div>
 
             {/* 본문: 좌측 정보 · 우측 금액 요약 */}
             <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
-                {/* 좌측(2칸): 상품/주문/배송/옵션 */}
-                <div className="space-y-6 md:col-span-2">
-                    <SectionCard title="상품 정보">
-                        <div className="grid grid-cols-2 gap-3">
-                            <KV k="상품명" v={draft.productNm} />
-                            <KV k="수량" v={String(draft.purchaseQuantity)} />
-                            <KV k="제품 단가" v={formatCurrency(Number(draft.productPrice))} />
-                            <KV k="부가세" v={<>{draft.taxAddYn === 'Y' ? <Badge tone="green">{taxLabel}</Badge> :
-                                <Badge tone="gray">미부과</Badge>}</>} />
-                            <KV k="개당 최종가(부가세 포함)"
-                                v={<span className="font-semibold">{formatCurrency(Number(draft.finalPrice))}</span>} />
-                        </div>
-                    </SectionCard>
-
-                    <SectionCard title="주문 정보">
-                        <div className="grid grid-cols-2 gap-3">
-                            <KV k="주문번호" v={<span className="font-mono">{draft.orderId}</span>} mono />
-                            {/*<KV k="구매 Index" v={String(draft.purchaseIndex)} />*/}
-                            <KV k="주문 가능 여부"
-                                v={draft.orderStatus ? <Badge tone="green">가능</Badge> : <Badge tone="red">불가</Badge>} />
-                            <KV k="만료일시" v={formatDateTimeKST(draft.expiredDate)} />
-                        </div>
-                    </SectionCard>
-
-                    <SectionCard
-                        title="배송 정보"
-                        right={
-                            <button
-                                onClick={openAddrModal}
-                                className="rounded-md bg-indigo-600 px-3 py-1.5 text-xs font-semibold text-white hover:bg-indigo-700"
-                            >
-                                배송지 변경
-                            </button>
-                        }
-                    >
-                        <div className="grid grid-cols-2 gap-3">
-                            <KV k="수령인" v={draft.deliveryInfo.recipient} />
-                            <KV k="연락처" v={draft.deliveryInfo.phone} />
-                            <KV k="우편번호" v={draft.deliveryInfo.postalCode} />
-                            <KV k="상태" v={
-                                draft.deliveryInfo.deliveryStatus === 'W' ? <Badge tone="gray">대기</Badge> :
-                                    draft.deliveryInfo.deliveryStatus === 'P' ? <Badge tone="blue">배송중</Badge> :
-                                        draft.deliveryInfo.deliveryStatus === 'D' ?
-                                            <Badge tone="green">완료</Badge> : draft.deliveryInfo.deliveryStatus
-                            } />
-                        </div>
-                        <div className="mt-2">
-                            <div className="text-gray-500 text-sm">주소</div>
-                            <div
-                                className="font-medium">{`${draft.deliveryInfo.addressMain} ${draft.deliveryInfo.addressSub ?? ''}`.trim()}</div>
-                        </div>
-                        {(draft.deliveryInfo.deliveryDesc || draft.deliveryInfo.telNo) && (
-                            <div className="mt-2 grid grid-cols-2 gap-3">
-                                {draft.deliveryInfo.deliveryDesc && <KV k="배송메모" v={draft.deliveryInfo.deliveryDesc} />}
-                                {draft.deliveryInfo.telNo && <KV k="TEL" v={draft.deliveryInfo.telNo} />}
-                            </div>
-                        )}
-                    </SectionCard>
-
-                    {/* 배송지 변경 */}
-                    <DeliverySelectModal
-                        open={addrModalOpen}
-                        onClose={closeAddrModal}
-                        onSelect={applySelectedAddress}
-                    />
-
-                    {hasOption && (
-                        <SectionCard title="옵션 정보" right={<span
-                            className="text-xs text-gray-500">{draft.orderOption?.length}개</span>}>
-                            <div className="flex flex-wrap gap-2">
-                                {draft.orderOption!.map((o) => (
-                                    <span
-                                        key={`${o.codeId}:${o.key}:${o.value}`}
-                                        className="inline-flex items-center gap-1 rounded-full border border-gray-200 bg-gray-50 px-3 py-1 text-xs"
-                                    >
-                  <span className="text-gray-500">{o.key}</span>
-                  <span className="text-gray-900 font-medium">{o.value}</span>
-                </span>
-                                ))}
-                            </div>
-                        </SectionCard>
-                    )}
-                </div>
-
-                {/* 우측(1칸): 가격 요약 */}
-                <div className="md:col-span-1 space-y-6">
+                {/* 우측(1칸): 가격 요약 — 모바일에서 먼저 보여주기 */}
+                <div className="space-y-6 order-2 md:col-span-1">
                     <SectionCard title="결제 요약">
                         <div className="space-y-2">
                             <div className="flex items-center justify-between">
                                 <span className="text-gray-600">제품 단가</span>
-                                <span className="font-medium">{formatCurrency(Number(draft.productPrice))}</span>
-                            </div>
-                            <div className="flex items-center justify-between">
-                                <span className="text-gray-600">부가세</span>
-                                <span className="font-medium">
-                                    {draft.taxAddYn === 'Y'
-                                        ? `${draft.taxAddType === 'percent' ? `${draft.taxAddValue}%` : `${formatCurrency(Number(draft.taxAddValue))}`}`
-                                        : '미부과'
-                                    }
-                                </span>
-                            </div>
-                            <div className="flex items-center justify-between">
-                                <span className="text-gray-600">개당 최종가</span>
                                 <span className="font-medium">{formatCurrency(Number(draft.finalPrice))}</span>
                             </div>
                             <div className="flex items-center justify-between">
                                 <span className="text-gray-600">수량</span>
                                 <span className="font-medium">{Number(draft.purchaseQuantity)}</span>
                             </div>
-                            <div className="border-t my-2"></div>
+                            <div className="my-2 border-t" />
                             <div className="flex items-center justify-between text-lg">
-                                <span className="text-gray-800 font-semibold">결제 예정 총액</span>
-                                <span
-                                    className="font-extrabold text-gray-900">{formatCurrency(Number(draft.paidPrice))}</span>
+                                <span className="font-semibold text-gray-800">결제 예정 총액</span>
+                                <span className="font-extrabold text-gray-900">
+                {formatCurrency(Number(draft.paidPrice))}
+              </span>
                             </div>
                         </div>
                     </SectionCard>
@@ -453,24 +369,120 @@ export default function OrderSummaryPage() {
                         <div className="flex flex-col gap-3">
                             <button
                                 onClick={pay}
-                                className={`w-full rounded-md py-3 text-white text-sm font-semibold ${submitting ? 'bg-blue-300' : 'bg-blue-600 hover:bg-blue-700'}`}
+                                className={`h-12 w-full rounded-md text-sm font-semibold text-white ${
+                                    submitting ? 'bg-blue-300' : 'bg-blue-600 hover:bg-blue-700'
+                                }`}
                                 disabled={submitting}
                             >
                                 {submitting ? '결제 중…' : '결제하기'}
                             </button>
                             <button
                                 onClick={() => router.push('/ko/online-store')}
-                                className="w-full rounded-md border py-3 text-sm"
+                                className="h-12 w-full rounded-md border text-sm"
                                 disabled={submitting}
                             >
                                 계속 쇼핑
                             </button>
                         </div>
-                        {/* 유의사항/안내가 필요하면 아래에 간단히 추가 */}
                         <p className="mt-3 text-xs text-gray-500">
                             결제 완료 후, 마이페이지 &gt; 주문내역에서 영수증 및 배송 상태를 확인할 수 있습니다.
                         </p>
                     </div>
+                </div>
+
+                {/* 좌측(2칸): 상품/주문/배송/옵션 — 모바일에선 뒤로 */}
+                <div className="space-y-6 order-1 md:col-span-2">
+                    <SectionCard title="상품 정보">
+                        {/* 모바일 1열, md부터 2열 */}
+                        <div className="grid grid-cols-1 gap-3 md:grid-cols-2">
+                            <KV k="상품명" v={draft.productNm} />
+                            <KV k="수량" v={String(draft.purchaseQuantity)} />
+                            <KV
+                                k="제품 단가"
+                                v={<span className="font-semibold">{formatCurrency(Number(draft.finalPrice))}</span>}
+                            />
+                        </div>
+                    </SectionCard>
+
+                    <SectionCard title="주문 정보">
+                        <div className="grid grid-cols-1 gap-3 md:grid-cols-2">
+                            <KV k="주문번호" v={<span className="font-mono text-sm md:text-base">{draft.orderId}</span>} mono />
+                            <KV
+                                k="주문 가능 여부"
+                                v={draft.orderStatus ? <Badge tone="green">가능</Badge> : <Badge tone="red">불가</Badge>}
+                            />
+                            <KV k="만료일시" v={formatDateTimeKST(draft.expiredDate)} />
+                        </div>
+                    </SectionCard>
+
+                    <SectionCard
+                        title="배송 정보"
+                        right={
+                            <button
+                                onClick={openAddrModal}
+                                className="rounded-md px-3 py-1.5 text-xs font-semibold text-white"
+                            >
+                                <Badge tone="gray">
+                                    배송지 변경
+                                </Badge>
+                            </button>
+                        }
+                    >
+                        <div className="grid grid-cols-1 gap-3 md:grid-cols-2">
+                            <KV k="수령인" v={draft.deliveryInfo.recipient} />
+                            <KV k="연락처" v={draft.deliveryInfo.phone} />
+                            <KV k="우편번호" v={draft.deliveryInfo.postalCode} />
+                            <KV
+                                k="상태"
+                                v={
+                                    draft.deliveryInfo.deliveryStatus === 'W' ? (
+                                        <Badge tone="gray">대기</Badge>
+                                    ) : draft.deliveryInfo.deliveryStatus === 'P' ? (
+                                        <Badge tone="blue">배송중</Badge>
+                                    ) : draft.deliveryInfo.deliveryStatus === 'D' ? (
+                                        <Badge tone="green">완료</Badge>
+                                    ) : (
+                                        draft.deliveryInfo.deliveryStatus
+                                    )
+                                }
+                            />
+                        </div>
+
+                        <div className="mt-2">
+                            <div className="text-sm text-gray-500">주소</div>
+                            <div className="font-medium">
+                                {`${draft.deliveryInfo.addressMain} ${draft.deliveryInfo.addressSub ?? ''}`.trim()}
+                            </div>
+                        </div>
+
+                        {(draft.deliveryInfo.deliveryDesc || draft.deliveryInfo.telNo) && (
+                            <div className="mt-2 grid grid-cols-1 gap-3 md:grid-cols-2">
+                                {draft.deliveryInfo.deliveryDesc && <KV k="배송메모" v={draft.deliveryInfo.deliveryDesc} />}
+                                {draft.deliveryInfo.telNo && <KV k="TEL" v={draft.deliveryInfo.telNo} />}
+                            </div>
+                        )}
+                    </SectionCard>
+
+                    <DeliverySelectModal open={addrModalOpen} onClose={closeAddrModal} onSelect={applySelectedAddress} />
+
+                    {hasOption && (
+                        <SectionCard
+                            title="옵션 정보"
+                            right={<span className="text-xs text-gray-500">{draft.orderOption?.length}개</span>}
+                        >
+                            <div className="flex flex-wrap gap-2">
+                                {draft.orderOption!.map((o) => (
+                                    <span
+                                        key={`${o.codeId}:${o.key}:${o.value}`}
+                                        className="inline-flex items-center gap-1 rounded-full border border-gray-200 bg-gray-50 px-3 py-1 text-xs"
+                                    >
+                  <span className="text-gray-500">{o.key}</span>
+                  <span className="font-medium text-gray-900">{o.value}</span>
+                </span>
+                                ))}
+                            </div>
+                        </SectionCard>
+                    )}
                 </div>
             </div>
         </div>
