@@ -86,7 +86,7 @@ export default function AdminPageLayout({ children }: { children: React.ReactNod
                         {/* 마이페이지 */}
                         <div className="relative group">
                             <button
-                                onClick={() => router.push('/ko/online-store/Page')}
+                                onClick={() => router.push('/ko/online-store/myPage')}
                                 className="hover:bg-gray-100 p-2 rounded-full transition"
                                 aria-label="마이페이지"
                             >

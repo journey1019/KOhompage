@@ -57,7 +57,7 @@ export default function PaymentAdminHomePage() {
 
 
     return (
-        <div className="mx-auto max-w-7xl">
+        <div className="mx-auto max-w-6xl p-6 overflow-x-hidden">
             <div className="space-y-4 sm:space-y-6">
                 <DeliveryCompanies />
                 <RoleTable />

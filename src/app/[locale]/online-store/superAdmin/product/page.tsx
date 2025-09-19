@@ -275,8 +275,8 @@ export default function ProductPage() {
                         <table className="w-max min-w-max divide-y divide-gray-200 table-auto">
                             <thead className="bg-gray-50">
                             <tr className="text-left text-xs font-semibold text-gray-600 whitespace-nowrap">
-                                <th className="p-3 sticky left-0 z-30 bg-gray-50 w-[120px]">상품ID</th>
-                                <th className="p-3 sticky left-[120px] z-30 bg-gray-50 w-[240px]">상품명</th>
+                                <th className="p-3 lg:sticky lg:left-0 lg:z-30 bg-gray-50 w-[80px]">상품ID</th>
+                                <th className="p-3 lg:sticky lg:left-[80px] lg:z-30 bg-gray-50 w-[240px]">상품명</th>
                                 <th className="p-3 w-[160px]">분류</th>
                                 <th className="p-3 w-[140px]">타입</th>
                                 <th className="p-3 w-[100px]">사용</th>
@@ -298,8 +298,8 @@ export default function ProductPage() {
 
                             {!isLoading && pageData.map((p) => (
                                 <tr key={p.productId} className="hover:bg-gray-50">
-                                    <td className="p-3 sticky left-0 z-20 bg-white w-[120px] truncate">{p.productId}</td>
-                                    <td className="p-3 sticky left-[120px] z-20 bg-white w-[240px] truncate">{p.productNm}</td>
+                                    <td className="p-3 lg:sticky lg:left-0 lg:z-20 bg-white w-[80px] truncate">{p.productId}</td>
+                                    <td className="p-3 lg:sticky lg:left-[80px] lg:z-20 bg-white w-[240px] truncate">{p.productNm}</td>
 
                                     <td className="p-3 w-[160px]">{p.productCategory}</td>
                                     <td className="p-3 w-[140px]">{p.productType}</td>

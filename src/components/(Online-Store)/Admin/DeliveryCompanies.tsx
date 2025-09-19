@@ -256,8 +256,9 @@ export default function DeliveryCompanies() {
                 <table className="w-max min-w-max table-auto divide-y divide-gray-200">
                     <thead className="bg-gray-50">
                     <tr className="text-left text-xs font-semibold text-gray-600 whitespace-nowrap">
-                        <th className="sticky left-0 z-30 bg-gray-50 p-3 w-[180px]">회사명</th>
-                        <th className="sticky left-[180px] z-30 bg-gray-50 p-3 w-[160px]">코드</th>
+                        {/* 기존 sticky → lg:sticky / left → lg:left-*, z → lg:z-* */}
+                        <th className="lg:sticky lg:left-0 lg:z-30 bg-gray-50 p-3 w-[150px]">회사명</th>
+                        <th className="lg:sticky lg:left-[150px] lg:z-30 bg-gray-50 p-3 w-[160px]">코드</th>
                         <th className="p-3 w-[260px]">메인 도메인</th>
                         <th className="p-3 w-[400px]">추적 URL (fullUrl)</th>
                         <th className="p-3 w-[160px]">코드 길이</th>
@@ -297,90 +298,82 @@ export default function DeliveryCompanies() {
                         </tr>
                     )}
 
-                    {!loading &&
-                        !err &&
-                        filtered.map((r) => (
-                            <tr key={`${r.deliveryCompany}-${r.companyName}`} className="hover:bg-gray-50">
-                                {/* sticky 2컬럼 */}
-                                <td className="sticky left-0 z-20 bg-white p-3 w-[180px] truncate">
-                                    {r.companyName}
-                                </td>
-                                <td className="sticky left-[180px] z-20 bg-white p-3 w-[160px] truncate">
-                                    {r.deliveryCompany}
-                                </td>
+                    {!loading && !err && filtered.map((r) => (
+                        <tr key={`${r.deliveryCompany}-${r.companyName}`} className="hover:bg-gray-50">
+                            {/* sticky 2컬럼: 모바일 off, 데스크톱부터 on */}
+                            <td className="lg:sticky lg:left-0 lg:z-20 bg-white p-3 w-[150px] truncate">
+                                {r.companyName}
+                            </td>
+                            <td className="lg:sticky lg:left-[150px] lg:z-20 bg-white p-3 w/[160px] truncate">
+                                {r.deliveryCompany}
+                            </td>
 
-                                <td className="p-3 w-[260px] truncate">
-                                    {r.mainDomainUrl ? (
-                                        <a
-                                            href={r.mainDomainUrl}
-                                            target="_blank"
-                                            className="text-blue-600 hover:underline"
-                                        >
-                                            {r.mainDomainUrl}
-                                        </a>
-                                    ) : (
-                                        "-"
-                                    )}
-                                </td>
-                                <td className="p-3 w-[400px] truncate">
-                                    {r.fullUrl ? (
+                            <td className="p-3 w-[260px] truncate">
+                                {r.mainDomainUrl ? (
+                                    <a href={r.mainDomainUrl} target="_blank" className="text-blue-600 hover:underline">
+                                        {r.mainDomainUrl}
+                                    </a>
+                                ) : '-'}
+                            </td>
+                            <td className="p-3 w-[400px] truncate">
+                                {r.fullUrl ? (
+                                    <a
+                                        href={r.fullUrl}
+                                        target="_blank"
+                                        className="text-blue-600 hover:underline"
+                                    >
+                                        {r.fullUrl}
+                                    </a>
+                                ) : (
+                                    '-'
+                                )}
+                            </td>
+                            <td className="p-3 w-[160px]">{r.codeLength}</td>
+                            <td className="p-3 w-[200px]">
+                                <div className="truncate">{r.createId}</div>
+                                <div className="text-xs text-gray-500">{fmtKST(r.createDate)}</div>
+                            </td>
+                            <td className="p-3 w-[200px]">
+                                <div className="truncate">{r.updateId ?? '-'}</div>
+                                <div className="text-xs text-gray-500">{fmtKST(r.updateDate)}</div>
+                            </td>
+                            <td className="p-3 w-[200px]">
+                                <div className="flex gap-2">
+                                    <button
+                                        onClick={() => {
+                                            // 행 데이터로 수정 모달 오픈
+                                            openEdit(r);
+                                        }}
+                                        className="rounded-md border border-gray-300 px-2 py-1 text-xs hover:bg-gray-50"
+                                    >
+                                        수정
+                                    </button>
+                                    <button
+                                        onClick={() => navigator.clipboard.writeText(r.fullUrl)}
+                                        className="rounded-md border border-gray-300 px-2 py-1 text-xs hover:bg-gray-50"
+                                    >
+                                        URL 복사
+                                    </button>
+                                    {r.fullUrl && (
                                         <a
                                             href={r.fullUrl}
                                             target="_blank"
-                                            className="text-blue-600 hover:underline"
+                                            className="rounded-md border border-gray-300 px-2 py-1 text-xs hover:bg-gray-50"
                                         >
-                                            {r.fullUrl}
+                                            추적
                                         </a>
-                                    ) : (
-                                        "-"
                                     )}
-                                </td>
-                                <td className="p-3 w-[160px]">{r.codeLength}</td>
-                                <td className="p-3 w-[200px]">
-                                    <div className="truncate">{r.createId}</div>
-                                    <div className="text-xs text-gray-500">{fmtKST(r.createDate)}</div>
-                                </td>
-                                <td className="p-3 w-[200px]">
-                                    <div className="truncate">{r.updateId ?? "-"}</div>
-                                    <div className="text-xs text-gray-500">{fmtKST(r.updateDate)}</div>
-                                </td>
-                                <td className="p-3 w-[200px]">
-                                    <div className="flex gap-2">
-                                        <button
-                                            onClick={() => {
-                                                // 행 데이터로 수정 모달 오픈
-                                                openEdit(r);
-                                            }}
-                                            className="rounded-md border border-gray-300 px-2 py-1 text-xs hover:bg-gray-50"
-                                        >
-                                            수정
-                                        </button>
-                                        <button
-                                            onClick={() => navigator.clipboard.writeText(r.fullUrl)}
-                                            className="rounded-md border border-gray-300 px-2 py-1 text-xs hover:bg-gray-50"
-                                        >
-                                            URL 복사
-                                        </button>
-                                        {r.fullUrl && (
-                                            <a
-                                                href={r.fullUrl}
-                                                target="_blank"
-                                                className="rounded-md border border-gray-300 px-2 py-1 text-xs hover:bg-gray-50"
-                                            >
-                                                추적
-                                            </a>
-                                        )}
-                                        <button
-                                            onClick={() => openRemove(r)}
-                                            className="rounded-md border border-red-300 px-2 py-1 text-xs text-red-600 hover:bg-red-50"
-                                            title="배송사 삭제"
-                                        >
-                                            삭제
-                                        </button>
-                                    </div>
-                                </td>
-                            </tr>
-                        ))}
+                                    <button
+                                        onClick={() => openRemove(r)}
+                                        className="rounded-md border border-red-300 px-2 py-1 text-xs text-red-600 hover:bg-red-50"
+                                        title="배송사 삭제"
+                                    >
+                                        삭제
+                                    </button>
+                                </div>
+                            </td>
+                        </tr>
+                    ))}
                     </tbody>
                 </table>
             </div>
@@ -398,11 +391,11 @@ export default function DeliveryCompanies() {
                     <div className="absolute inset-0 bg-black/30" onClick={closeModal} />
                     <div className="relative w-full max-w-xl rounded-xl bg-white p-5 shadow-xl">
                         <h3 className="mb-3 text-lg font-semibold">
-                            {mode === "add" ? "배송사 추가" : "배송사 수정"}
+                            {mode === 'add' ? '배송사 추가' : '배송사 수정'}
                         </h3>
 
                         <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
-                            <div className="sm:col-span-1">
+                        <div className="sm:col-span-1">
                                 <label className="mb-1 block text-xs font-medium text-gray-600">
                                     코드 (deliveryCompany) *
                                 </label>

@@ -209,8 +209,8 @@ export default function PaidPage() {
                     <table className="w-max min-w-max divide-y divide-gray-200 table-auto">
                         <thead className="bg-gray-50">
                         <tr className="text-left text-xs font-semibold text-gray-600 whitespace-nowrap">
-                            <th className="p-3 sticky left-0 z-30 bg-gray-50 w-[80px]">구매ID</th>
-                            <th className="p-3 sticky left-[80px] z-30 bg-gray-50 w-[150px]">계정ID</th>
+                            <th className="p-3 lg:sticky lg:left-0 lg:z-30 bg-gray-50 w-[80px]">구매ID</th>
+                            <th className="p-3 lg:sticky lg:left-[80px] lg:z-30 bg-gray-50 w-[150px]">계정ID</th>
                             <th className="p-3 w-[180px]">주문ID</th>
                             <th className="p-3 w-[180px]">결제ID</th>
                             <th className="p-3 w-[120px]">상태</th>
@@ -243,8 +243,8 @@ export default function PaidPage() {
                         {!isLoading && pageData.map((r) => (
                             <tr key={`${r.purchaseId}-${r.orderId}`} className="hover:bg-gray-50 cursor-pointer"
                                 onClick={() => goDetail(r.purchaseId)}>
-                                <td className="p-3 sticky left-0 z-20 bg-white w-[80px] truncate">{r.purchaseId}</td>
-                                <td className="p-3 sticky left-[80px] z-20 bg-white w-[150px] truncate">{r.userId}</td>
+                                <td className="p-3 lg:sticky lg:left-0 lg:z-20 bg-white w-[80px] truncate">{r.purchaseId}</td>
+                                <td className="p-3 lg:sticky lg:left-[80px] lg:z-20 bg-white w-[150px] truncate">{r.userId}</td>
                                 <td className="p-3 w-[180px] truncate">{r.orderId}</td>
                                 <td className="p-3 w-[180px] truncate">{r.receiptId}</td>
                                 <td className="p-3 w-[120px]">

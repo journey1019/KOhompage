@@ -325,27 +325,27 @@ export default function UserPage() {
             {/* Table (horizontal scroll) */}
             {viewMode === "table" && (
                 <section className="rounded-xl border border-gray-200 bg-white shadow-sm">
-                    <div className="w-full overflow-x-auto touch-pan-x">
+                    <div className="relative max-w-full overflow-x-auto overscroll-x-contain touch-pan-x">
                         <table className="w-max min-w-max divide-y divide-gray-200 table-auto">
                             <thead className="bg-gray-50">
                             <tr className="text-left text-xs font-semibold text-gray-600 whitespace-nowrap">
                                 {/* sticky 1: ID */}
-                                <th className="p-3 sticky left-0 z-30 bg-gray-50 w-[100px]">아이디</th>
+                                <th className="p-3 lg:sticky lg:left-0 lg:z-30 bg-gray-50 w-[100px]">아이디</th>
                                 {/* sticky 2: 이름 (left는 ID의 폭과 일치) */}
-                                <th className="p-3 sticky left-[100px] z-30 bg-gray-50 w-[150px]">이름</th>
+                                <th className="p-3 lg:sticky lg:left-[100px] lg:z-30 bg-gray-50 w-[150px]">이름</th>
 
                                 <th className="p-3 w-[120px]">권한</th>
                                 <th className="p-3 w-[96px]">사용</th>
                                 <th className="p-3 w-[96px]">삭제</th>
                                 <th
                                     className="p-3 w-[200px] cursor-pointer"
-                                    onClick={() => toggleSort("subscribeDate")}
+                                    onClick={() => toggleSort('subscribeDate')}
                                 >
                                     가입일
                                 </th>
                                 <th
                                     className="p-3 w-[200px] cursor-pointer"
-                                    onClick={() => toggleSort("updateDate")}
+                                    onClick={() => toggleSort('updateDate')}
                                 >
                                     최종수정
                                 </th>
@@ -376,15 +376,15 @@ export default function UserPage() {
                                     const busy = !!rowBusy[u.userId];
                                     return (
                                         <tr key={u.userId} className="hover:bg-gray-50">
-                                            <td className="p-3 sticky left-0 z-20 bg-white w-[100px] truncate">
+                                            <td className="p-3 lg:sticky lg:left-0 lg:z-20 bg-white w-[100px] truncate">
                                                 {u.userId}
                                             </td>
-                                            <td className="p-3 sticky left-[100px] z-20 bg-white w-[150px] truncate">
+                                            <td className="p-3 lg:sticky lg:left-[100px] lg:z-20 bg-white w-[150px] truncate">
                                                 {u.userNm}
                                             </td>
 
                                             <td className="p-3 w-[120px]">
-                                                {u.roleId === 'admin' ? (
+                                            {u.roleId === 'admin' ? (
                                                     <Badge tone="blue">관리자</Badge>
                                                 ) : (
                                                     <Badge tone="gray">일반사용자</Badge>
@@ -448,7 +448,7 @@ export default function UserPage() {
                                                 </div>
                                             </td>
                                         </tr>
-                                    )
+                                    );
                                 })}
                             </tbody>
                         </table>
