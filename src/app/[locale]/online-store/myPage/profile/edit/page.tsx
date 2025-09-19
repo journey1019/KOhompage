@@ -1,14 +1,12 @@
-/** src/app/[locale]/online-store/myPage/profile/edit/page.tsx */
 "use client";
 
 import React, { useEffect, useState, useRef } from 'react';
 import { useParams, useRouter } from 'next/navigation';
-import { UserInfoChange, PwdChange, RemoveUserAccount } from '@/lib/api/userApi';
+import { UserInfoChange, PwdChange } from '@/lib/api/userApi';
 import { formatKRPhone, formatBirthDate } from '@/module/helper';
 import Agreement from '@/components/(Online-Store)/MyPage/Agreement';
 import DaumPostcodeModal from "@/components/common/DaumPostcodeModal";
 import Withdraw from '@/app/[locale]/online-store/myPage/_components/Withdraw';
-
 
 function onlyDigits(s: string) { return (s || '').replace(/\D/g, ''); }
 function toPayloadBirth(s: string) {
@@ -67,8 +65,8 @@ const ProfileEditPage = () => {
     }, []);
 
     // 회원정보 저장
-    async function handleSaveUserInfo(e: React.FormEvent) {
-        e.preventDefault();
+    async function handleSaveUserInfo(e?: React.FormEvent) {
+        e?.preventDefault?.();
         setError('');
 
         if (!userNm.trim()) return setError('이름을 입력해 주세요.');
@@ -90,9 +88,9 @@ const ProfileEditPage = () => {
                     postalCode: postalCode.trim(),
                 },
             };
-            const updated = await UserInfoChange(payload);
+            await UserInfoChange(payload);
 
-            // API가 전체 객체를 반환하지 않는 경우를 대비해 로컬 병합 저장
+            // 로컬 병합 저장
             const merged = {
                 ...(storedUser ?? {}),
                 userNm: payload.userNm,
@@ -100,7 +98,6 @@ const ProfileEditPage = () => {
                     ...(storedUser?.privateInfo ?? {}),
                     ...payload.userPrivateDTO,
                 },
-                // 선택: 마지막 수정일자 로컬 업데이트
                 updateDate: new Date().toISOString().slice(0, 19).replace('T', ' '),
             };
             localStorage.setItem('paymentUserInfo', JSON.stringify(merged));
@@ -114,7 +111,6 @@ const ProfileEditPage = () => {
         }
     }
 
-    // 비밀번호 규칙 예시 (원하면 강화 가능)
     function validatePw(pw: string) {
         if (pw.length < 8) return '비밀번호는 8자 이상이어야 합니다.';
         if (!/[A-Za-z]/.test(pw) || !/\d/.test(pw)) return '영문과 숫자를 포함해야 합니다.';
@@ -150,214 +146,258 @@ const ProfileEditPage = () => {
         }
     }
 
-    if (loading) return <div>불러오는 중…</div>;
+    if (loading) return <div className="p-4 text-sm">불러오는 중…</div>;
+
 
     return (
-        <div className="min-h-screen flex flex-col">
-            <div className="flex flex-row justify-between items-center">
-                <h2 className="text-xl font-semibold mb-4">회원정보 수정</h2>
-                <div className="flex flex-row space-x-1">
-                    <span className="text-sm text-gray-500">마지막 수정 일자: </span>
-                    <span className="text-sm text-gray-500">{storedUser?.updateDate || '-'}</span>
+        <div className="mx-auto w-full max-w-3xl px-3 sm:px-4 pb-24">
+            {/* 헤더 */}
+            <div className="mb-3 sm:mb-4 flex flex-col gap-1 sm:flex-row sm:items-end sm:justify-between">
+                <h2 className="text-2xl sm:text-3xl font-bold text-gray-900">회원정보 수정</h2>
+                <div className="text-xs sm:text-sm text-gray-500">
+                    <span>마지막 수정 일자: </span>
+                    <span>{storedUser?.updateDate || '-'}</span>
                 </div>
             </div>
 
-            {/* 표 형태 영역 */}
-            <div className="border border-gray-200 rounded-lg overflow-hidden">
+            {/* 컨텐츠 카드 */}
+            <div className="overflow-hidden rounded-lg border border-gray-200 bg-white">
                 {/* 아이디 (읽기 전용) */}
-                <div className="grid grid-cols-3 border-b border-gray-200">
-                    <div className="bg-gray-50 px-4 py-3 font-medium text-gray-700">아이디</div>
-                    <div className="col-span-2 px-4 py-3">{storedUser?.userId || "-"}</div>
-                </div>
+                <section className="px-4 py-3 sm:px-5 sm:py-4 border-b border-gray-200">
+                    <div className="md:grid md:grid-cols-3 md:items-center md:gap-4">
+                        <div className="mb-1 md:mb-0 text-sm font-medium text-gray-700">아이디</div>
+                        <div className="md:col-span-2 text-sm break-all">{storedUser?.userId || "-"}</div>
+                    </div>
+                </section>
 
                 {/* 비밀번호 변경 */}
-                <form onSubmit={handleChangePassword} className="grid grid-cols-3 border-b border-gray-200">
-                    <div className="bg-gray-50 px-4 py-3 font-medium text-gray-700">비밀번호 변경</div>
-                    <div className="flex flex-col col-span-2 px-4 py-3 space-y-2">
-                        <div className="grid grid-cols-3 items-center gap-2">
-                            <label className="col-span-1">현재 비밀번호</label>
-                            <div className="col-span-2">
+                <form onSubmit={handleChangePassword} className="px-4 py-3 sm:px-5 sm:py-4 border-b border-gray-200">
+                    <div className="md:grid md:grid-cols-3 md:gap-4">
+                        <div className="mb-2 md:mb-0 text-sm font-medium text-gray-700">비밀번호 변경</div>
+
+                        <div className="md:col-span-2 space-y-3">
+                            <label className="block">
+                                <span className="mb-1 block text-xs text-gray-600">현재 비밀번호</span>
                                 <input
                                     type="password"
                                     autoComplete="current-password"
                                     value={currentPw}
                                     onChange={(e) => setCurrentPw(e.target.value)}
                                     placeholder="현재 비밀번호"
-                                    className={`w-1/2 border rounded-md px-3 py-2 text-sm focus:outline-none focus:ring-2 ${pwError ? 'border-red-400 focus:ring-red-500' : 'border-gray-300 focus:ring-blue-500'}`}
+                                    className={`h-11 w-full rounded-md border px-3 text-sm focus:outline-none focus:ring-2 ${pwError ? 'border-red-400 focus:ring-red-500' : 'border-gray-300 focus:ring-blue-500'}`}
                                 />
-                            </div>
-                        </div>
-                        <div className="grid grid-cols-3 items-center gap-2">
-                            <label className="col-span-1">새 비밀번호</label>
-                            <div className="col-span-2">
+                            </label>
+
+                            <label className="block">
+                                <span className="mb-1 block text-xs text-gray-600">새 비밀번호</span>
                                 <input
                                     type="password"
                                     autoComplete="new-password"
                                     value={newPw}
                                     onChange={(e) => setNewPw(e.target.value)}
                                     placeholder="새 비밀번호"
-                                    className={`w-1/2 border rounded-md px-3 py-2 text-sm focus:outline-none focus:ring-2 ${pwError ? 'border-red-400 focus:ring-red-500' : 'border-gray-300 focus:ring-blue-500'}`}
+                                    className={`h-11 w-full rounded-md border px-3 text-sm focus:outline-none focus:ring-2 ${pwError ? 'border-red-400 focus:ring-red-500' : 'border-gray-300 focus:ring-blue-500'}`}
                                 />
-                            </div>
-                        </div>
-                        <div className="grid grid-cols-3 items-center gap-2">
-                            <label className="col-span-1">비밀번호 다시 입력</label>
-                            <div className="col-span-2">
+                            </label>
+
+                            <label className="block">
+                                <span className="mb-1 block text-xs text-gray-600">비밀번호 다시 입력</span>
                                 <input
                                     type="password"
                                     autoComplete="new-password"
                                     value={confirmPw}
                                     onChange={(e) => setConfirmPw(e.target.value)}
                                     placeholder="새 비밀번호 확인"
-                                    className={`w-1/2 border rounded-md px-3 py-2 text-sm focus:outline-none focus:ring-2 ${pwError ? 'border-red-400 focus:ring-red-500' : 'border-gray-300 focus:ring-blue-500'}`}
+                                    className={`h-11 w-full rounded-md border px-3 text-sm focus:outline-none focus:ring-2 ${pwError ? 'border-red-400 focus:ring-red-500' : 'border-gray-300 focus:ring-blue-500'}`}
                                 />
+                            </label>
+
+                            {pwError && <p className="text-sm text-red-600">{pwError}</p>}
+
+                            <div className="pt-1">
+                                <button
+                                    type="submit"
+                                    disabled={pwSaving}
+                                    className="h-11 rounded-md bg-gray-900 px-4 text-sm font-semibold text-white hover:bg-gray-800 disabled:opacity-50"
+                                >
+                                    {pwSaving ? '변경 중…' : '비밀번호 변경'}
+                                </button>
                             </div>
-                        </div>
-                        {pwError && <p className="text-sm text-red-600">{pwError}</p>}
-                        <div className="pt-2">
-                            <button
-                                type="submit"
-                                disabled={pwSaving}
-                                className="rounded-md bg-gray-900 px-3 py-2 text-sm text-white hover:bg-gray-800 disabled:opacity-50"
-                            >
-                                {pwSaving ? '변경 중…' : '비밀번호 변경'}
-                            </button>
                         </div>
                     </div>
                 </form>
 
                 {/* 이름 */}
-                <div className="grid grid-cols-3 border-b border-gray-200">
-                    <div className="bg-gray-50 px-4 py-3 font-medium text-gray-700">이름</div>
-                    <div className="col-span-2 px-4 py-3">
-                        <input
-                            value={userNm}
-                            onChange={(e) => setUserNm(e.target.value)}
-                            className="w-1/2 border rounded-md px-3 py-2 text-sm focus:outline-none focus:ring-2 border-gray-300 focus:ring-blue-500"
-                        />
+                <section className="px-4 py-3 sm:px-5 sm:py-4 border-b border-gray-200">
+                    <div className="md:grid md:grid-cols-3 md:items-center md:gap-4">
+                        <label className="mb-1 md:mb-0 text-sm font-medium text-gray-700">이름</label>
+                        <div className="md:col-span-2">
+                            <input
+                                value={userNm}
+                                onChange={(e) => setUserNm(e.target.value)}
+                                className="h-11 w-full rounded-md border border-gray-300 px-3 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+                            />
+                        </div>
                     </div>
-                </div>
+                </section>
 
-                {/* 생년월일 */}
-                <div className="grid grid-cols-3 border-b border-gray-200">
-                    <div className="bg-gray-50 px-4 py-3 font-medium text-gray-700">생년월일</div>
-                    <div className="col-span-2 px-4 py-3">
-                        <input
-                            value={birth}
-                            onChange={(e) => setBirth(e.target.value)}
-                            placeholder="YYYY-MM-DD"
-                            className="w-1/2 border rounded-md px-3 py-2 text-sm focus:outline-none focus:ring-2 border-gray-300 focus:ring-blue-500"
-                        />
+                {/* 생년월일 (모바일 피커) */}
+                <section className="px-4 py-3 sm:px-5 sm:py-4 border-b border-gray-200">
+                    <div className="md:grid md:grid-cols-3 md:items-center md:gap-4">
+                        <label className="mb-1 md:mb-0 text-sm font-medium text-gray-700">생년월일</label>
+                        <div className="md:col-span-2">
+                            <input
+                                type="date"
+                                value={birth}
+                                onChange={(e) => setBirth(e.target.value)}
+                                placeholder="YYYY-MM-DD"
+                                className="h-11 w-full rounded-md border border-gray-300 px-3 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+                            />
+                            <p className="mt-1 text-xs text-gray-500">저장 시 서버 포맷(YYYYMMDD)으로 변환됩니다.</p>
+                        </div>
                     </div>
-                </div>
+                </section>
 
                 {/* 이메일 */}
-                <div className="grid grid-cols-3 border-b border-gray-200">
-                    <div className="bg-gray-50 px-4 py-3 font-medium text-gray-700">이메일</div>
-                    <div className="col-span-2 px-4 py-3">
-                        <input
-                            value={userEmail}
-                            onChange={(e) => setUserEmail(e.target.value)}
-                            type="email"
-                            className="w-1/2 border rounded-md px-3 py-2 text-sm focus:outline-none focus:ring-2 border-gray-300 focus:ring-blue-500"
-                        />
+                <section className="px-4 py-3 sm:px-5 sm:py-4 border-b border-gray-200">
+                    <div className="md:grid md:grid-cols-3 md:items-center md:gap-4">
+                        <label className="mb-1 md:mb-0 text-sm font-medium text-gray-700">이메일</label>
+                        <div className="md:col-span-2">
+                            <input
+                                value={userEmail}
+                                onChange={(e) => setUserEmail(e.target.value)}
+                                type="email"
+                                autoComplete="email"
+                                inputMode="email"
+                                className="h-11 w-full rounded-md border border-gray-300 px-3 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+                            />
+                        </div>
                     </div>
-                </div>
+                </section>
 
                 {/* 휴대폰 번호 */}
-                <div className="grid grid-cols-3 border-b border-gray-200">
-                    <div className="bg-gray-50 px-4 py-3 font-medium text-gray-700">휴대폰 번호</div>
-                    <div className="col-span-2 px-4 py-3">
-                        <input
-                            value={phone}
-                            onChange={(e) => setPhone(e.target.value)}
-                            placeholder="010-1234-5678"
-                            className="w-1/2 border rounded-md px-3 py-2 text-sm focus:outline-none focus:ring-2 border-gray-300 focus:ring-blue-500"
-                        />
-                        <p className="mt-1 text-xs text-gray-500">저장 시 숫자만 전송됩니다. 현재: {formatKRPhone(phone)}</p>
+                <section className="px-4 py-3 sm:px-5 sm:py-4 border-b border-gray-200">
+                    <div className="md:grid md:grid-cols-3 md:items-center md:gap-4">
+                        <label className="mb-1 md:mb-0 text-sm font-medium text-gray-700">휴대폰 번호</label>
+                        <div className="md:col-span-2">
+                            <input
+                                value={phone}
+                                onChange={(e) => setPhone(e.target.value)}
+                                placeholder="010-1234-5678"
+                                inputMode="numeric"
+                                pattern="\d*"
+                                className="h-11 w-full rounded-md border border-gray-300 px-3 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+                            />
+                            <p className="mt-1 text-xs text-gray-500">저장 시 숫자만 전송됩니다. 현재: {formatKRPhone(phone)}</p>
+                        </div>
                     </div>
-                </div>
+                </section>
 
                 {/* 보조 번호 */}
-                <div className="grid grid-cols-3 border-b border-gray-200">
-                    <div className="bg-gray-50 px-4 py-3 font-medium text-gray-700">보조 번호</div>
-                    <div className="col-span-2 px-4 py-3">
-                        <input
-                            value={telNo}
-                            onChange={(e) => setTelNo(e.target.value)}
-                            placeholder="02-123-4567"
-                            className="w-1/2 border rounded-md px-3 py-2 text-sm focus:outline-none focus:ring-2 border-gray-300 focus:ring-blue-500"
-                        />
-                        <p className="mt-1 text-xs text-gray-500">저장 시 숫자만 전송됩니다. 현재: {formatKRPhone(telNo)}</p>
+                <section className="px-4 py-3 sm:px-5 sm:py-4 border-b border-gray-200">
+                    <div className="md:grid md:grid-cols-3 md:items-center md:gap-4">
+                        <label className="mb-1 md:mb-0 text-sm font-medium text-gray-700">보조 번호</label>
+                        <div className="md:col-span-2">
+                            <input
+                                value={telNo}
+                                onChange={(e) => setTelNo(e.target.value)}
+                                placeholder="02-123-4567"
+                                inputMode="numeric"
+                                pattern="\d*"
+                                className="h-11 w-full rounded-md border border-gray-300 px-3 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+                            />
+                            <p className="mt-1 text-xs text-gray-500">저장 시 숫자만 전송됩니다. 현재: {formatKRPhone(telNo)}</p>
+                        </div>
                     </div>
-                </div>
+                </section>
 
                 {/* 기본 배송지 */}
-                <div className="grid grid-cols-3 border-b border-gray-200">
-                    <div className="bg-gray-50 px-4 py-3 font-medium text-gray-700">기본 배송지</div>
-                    <div className="col-span-2 px-4 py-3 space-y-2">
-                        <div className="flex items-center gap-2">
+                <section className="px-4 py-3 sm:px-5 sm:py-4 border-b border-gray-200">
+                    <div className="md:grid md:grid-cols-3 md:items-start md:gap-4">
+                        <label className="mb-2 md:mb-0 text-sm font-medium text-gray-700">기본 배송지</label>
+                        <div className="md:col-span-2 space-y-2">
+                            <div className="flex gap-2">
+                                <input
+                                    value={postalCode}
+                                    onChange={(e) => setPostalCode(e.target.value)}
+                                    placeholder="우편번호"
+                                    inputMode="numeric"
+                                    pattern="\d*"
+                                    className="h-11 w-36 rounded-md border border-gray-300 px-3 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+                                />
+                                <button
+                                    type="button"
+                                    onClick={() => setAddrModalOpen(true)}
+                                    className="h-11 rounded-md border px-3 text-sm hover:bg-gray-50"
+                                >
+                                    주소검색
+                                </button>
+                            </div>
                             <input
-                                value={postalCode}
-                                onChange={(e) => setPostalCode(e.target.value)}
-                                placeholder="우편번호"
-                                className="w-32 border rounded-md px-3 py-2 text-sm focus:outline-none focus:ring-2 border-gray-300 focus:ring-blue-500"
+                                value={addressMain}
+                                onChange={(e) => setAddressMain(e.target.value)}
+                                placeholder="기본 주소"
+                                className="h-11 w-full rounded-md border border-gray-300 px-3 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
                             />
-                            <button
-                                type="button"
-                                onClick={() => setAddrModalOpen(true)}
-                                className="rounded-md border px-3 py-2 text-sm hover:bg-gray-50"
-                            >
-                                주소검색
-                            </button>
+                            <input
+                                ref={addressSubRef}
+                                value={addressSub}
+                                onChange={(e) => setAddressSub(e.target.value)}
+                                placeholder="상세 주소"
+                                className="h-11 w-full rounded-md border border-gray-300 px-3 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+                            />
                         </div>
-                        <input
-                            value={addressMain}
-                            onChange={(e) => setAddressMain(e.target.value)}
-                            placeholder="기본 주소"
-                            className="block w-full border rounded-md px-3 py-2 text-sm focus:outline-none focus:ring-2 border-gray-300 focus:ring-blue-500"
-                        />
-                        <input
-                            ref={addressSubRef}
-                            value={addressSub}
-                            onChange={(e) => setAddressSub(e.target.value)}
-                            placeholder="상세 주소"
-                            className="block w-full border rounded-md px-3 py-2 text-sm focus:outline-none focus:ring-2 border-gray-300 focus:ring-blue-500"
-                        />
                     </div>
-                </div>
+                </section>
 
-                {/* 약관 동의 (표시는 그대로, 실제 API 전송은 현재 스펙에 없음) */}
-                <div className="grid grid-cols-3 border-b border-gray-200">
-                    <div className="bg-gray-50 px-4 py-3 font-medium text-gray-700">약관 동의</div>
-                    <div className="col-span-2 px-4 py-3 space-y-4">
-                        <Agreement />
+                {/* 약관 동의 */}
+                <section className="px-4 py-3 sm:px-5 sm:py-4">
+                    <div className="md:grid md:grid-cols-3 md:items-start md:gap-4">
+                        <div className="mb-2 md:mb-0 text-sm font-medium text-gray-700">약관 동의</div>
+                        <div className="md:col-span-2 space-y-4">
+                            <Agreement
+                                status={{
+                                    terms: {
+                                        agreed: storedUser?.termsAgreeYn === 'Y',
+                                        date: storedUser?.termsAgreeDate,
+                                    },
+                                    exchange: {
+                                        agreed: storedUser?.exchangeRefundYn === 'Y',
+                                        date: storedUser?.exchangeRefundDate,
+                                    },
+                                }}
+                            />
+
+                        </div>
                     </div>
-                </div>
+                </section>
             </div>
 
-            {/* 에러/저장 버튼 영역 */}
+            {/* 에러 */}
             {error && <p className="mt-3 text-sm text-red-600">{error}</p>}
 
-            <div className="mt-4 flex items-center justify-end gap-2">
-                <button
-                    type="button"
-                    onClick={() => router.push(`/${locale}/myPage`)}
-                    className="rounded-md border px-3 py-2 text-sm hover:bg-gray-50"
-                >
-                    취소
-                </button>
-                <button
-                    type="button"
-                    onClick={handleSaveUserInfo}
-                    disabled={saving}
-                    className="rounded-md bg-gray-900 px-3 py-2 text-sm text-white hover:bg-gray-800 disabled:opacity-50"
-                >
-                    {saving ? '저장 중…' : '저장'}
-                </button>
+            {/* 하단 액션바: 모바일 sticky */}
+            <div className="fixed inset-x-0 bottom-0 z-10 border-t border-gray-200 bg-white/95 backdrop-blur supports-[backdrop-filter]:bg-white/70 md:static md:bg-transparent md:border-0">
+                <div className="mx-auto flex max-w-3xl justify-end gap-2 px-3 py-3 sm:px-0 md:py-4">
+                    <button
+                        type="button"
+                        onClick={() => router.push(`/${locale}/online-store/myPage/profile`)}
+                        className="h-11 rounded-md border px-4 text-sm hover:bg-gray-50"
+                    >
+                        취소
+                    </button>
+                    <button
+                        type="button"
+                        onClick={handleSaveUserInfo}
+                        disabled={saving}
+                        className="h-11 rounded-md bg-gray-900 px-4 text-sm font-semibold text-white hover:bg-gray-800 disabled:opacity-50"
+                    >
+                        {saving ? '저장 중…' : '저장'}
+                    </button>
+                </div>
             </div>
 
-
+            {/* 주소 검색 모달 */}
             <DaumPostcodeModal
                 isOpen={addrModalOpen}
                 onClose={() => setAddrModalOpen(false)}
@@ -369,16 +409,10 @@ const ProfileEditPage = () => {
                 }}
             />
 
-
-            {/*<div className="mt-auto pt-4 flex justify-end items-center text-center gap-2 bottom-0 float-end">*/}
-            {/*    <p className="text-xs text-gray-400">*/}
-            {/*        탈퇴를 원하시면 우측의 회원탈퇴 버튼을 눌러주세요.*/}
-            {/*    </p>*/}
-            {/*    <button className="bg-gray-400 text-xs text-white rounded-md border-black py-1 px-2">*/}
-            {/*        회원탈퇴*/}
-            {/*    </button>*/}
-            {/*</div>*/}
-            <Withdraw/>
+            {/* 회원 탈퇴 섹션 (그대로) */}
+            <div className="mt-6">
+                <Withdraw />
+            </div>
         </div>
     );
 };
